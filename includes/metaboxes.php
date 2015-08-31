@@ -52,11 +52,44 @@ function lsx_business_directory_register_metaboxes(){
 	$address_metabox['id'] 			= 'address';
 	$address_metabox['panel'] 		= __( 'Address', 'lsx-business-directory' );
 	$address_metabox['fields'] 		= array(
+			'location'			=>	array(
+				'label' => 'Location',
+				'type' => 'places',
+				'binding' => array(
+					"street_number"					=>	array( 'address', 'short_name' ),
+					"route"							=>	array( 'address_2', 'long_name' ), // route = street in places
+					"sublocality_level_1"			=>	array( 'address_3', 'long_name' ),
+					"locality" 						=>	array( 'address_4', 'short_name' ),
+					"administrative_area_level_1"	=>	array( 'state_province', 'long_name' ), // administrative_area_level_1 = province
+					"country"						=>	array( 'country', 'short_name' ),
+					"postal_code"					=>	array( 'postal_code', 'short_name' )
+				)
+			),
 			'address'			=>	array( 'label' => __('Complex Name / Business Park / Street Number', 'lsx-business-directory') ),
 			'address_2'			=>	array( 'label' => __('Street Name', 'lsx-business-directory')),
 			'address_3'			=>	array( 'label' => __('Suburb', 'lsx-business-directory')),
 			'address_4'			=>	array( 'label' => __('City', 'lsx-business-directory')),
-			'postal_code'		=>	array( 'label' => __('Postal Code', 'lsx-business-directory')),
+			'state_province'	=>	array(
+				'label' 			=> __('State / Province', 'lsx-business-directory'),
+				'type'				=> 'select',
+				'requires' 			=> 'country',
+				'filtered_by' 		=> 'country',
+				'select2'			=>	true,
+				'filtered_options'	=> array(
+					'ZA'	=> array(
+						'Eastern Cape'  => __( 'Eastern Cape', 'lsx-business-directory' ),
+						'Free State'  	=> __( 'Free State', 'lsx-business-directory' ),
+						'Gauteng'  		=> __( 'Gauteng', 'lsx-business-directory' ),
+						'KwaZulu-Natal' => __( 'KwaZulu-Natal', 'lsx-business-directory' ),
+						'Limpopo'  		=> __( 'Limpopo', 'lsx-business-directory' ),
+						'Mpumalanga'  	=> __( 'Mpumalanga', 'lsx-business-directory' ),
+						'Northern Cape' => __( 'Northern Cape', 'lsx-business-directory' ),
+						'North West'  	=> __( 'North West', 'lsx-business-directory' ),
+						'Western Cape'  => __( 'Western Cape', 'lsx-business-directory' )
+					)
+				),
+			),	
+			'postal_code'		=>	array( 'label' => __('Postal Code', 'lsx-business-directory'), 'requires' => 'state_province'),
 			'country'			=>	array( 'label' => __('Country', 'lsx-business-directory'), 'type' => 'country')
 	);
 	// register it
