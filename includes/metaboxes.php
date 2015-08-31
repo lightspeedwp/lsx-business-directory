@@ -20,7 +20,7 @@ function lsx_business_directory_register_metaboxes(){
 	// this is a base array of a metabox to reuse . this makes is easier.
 	$metabox_base = array(
 		'post_type'			=> 	array( 'business-directory' ), // array of post types this should be in
-		'name'				=>	__('Details', 'lsx-business-directory'), // the label/name of the metabox 
+		'name'				=>	__('General', 'lsx-business-directory'), // the label/name of the metabox 
 		'section'			=>	'', // section creates heading in the body. metaboxes pages can join existing metaboxes made by LST
 		'section_priority'	=>	10, // proirity to includ ewhen adding to existing metaboxes
 		'panel'				=>	__( 'General', 'lsx-business-directory' ), // tab panbel to add to
@@ -36,7 +36,7 @@ function lsx_business_directory_register_metaboxes(){
 	*/
 	$general_metabox		= $metabox_base;
 	$general_metabox['id'] 			= 'general';
-	$general_metabox['panel'] 		= __( 'General', 'lsx-business-directory' );
+	$general_metabox['panel'] 		= __( 'Contact', 'lsx-business-directory' );
 	$general_metabox['fields'] 		= array(
 		'primary_email'		=>	array( 'label' => __('Primary Email', 'lsx-business-directory') ),
 		'secondary_email'	=>	array( 'label' => __('Secondary Email', 'lsx-business-directory') ),
@@ -62,5 +62,16 @@ function lsx_business_directory_register_metaboxes(){
 	// register it
 	lsx_register_metabox( $address_metabox );	
 	
+	
+	$information_metabox		= $metabox_base;
+	$information_metabox['id'] 			= 'information';
+	$information_metabox['panel'] 		= __( 'Information', 'lsx-business-directory' );
+	$information_metabox['repeatable']  = true;
+	$information_metabox['fields'] 		= array(
+			'title'				=>	array( 'label' => __('Title', 'lsx-business-directory') ),
+			'content'			=>	array( 'label' => __('Content', 'lsx-business-directory') , 'type' => 'textarea')
+	);
+	// register it
+	lsx_register_metabox( $information_metabox );	
 }
 lsx_business_directory_register_metaboxes();
