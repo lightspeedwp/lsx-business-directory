@@ -61,7 +61,7 @@ function lsx_business_directory_register_metaboxes(){
 					"sublocality_level_1"			=>	array( 'address_3', 'long_name' ),
 					"locality" 						=>	array( 'address_4', 'short_name' ),
 					"administrative_area_level_1"	=>	array( 'state_province', 'long_name' ), // administrative_area_level_1 = province
-					"country"						=>	array( 'country', 'long_name' ),
+					"country"						=>	array( 'country', 'short_name' ),
 					"postal_code"					=>	array( 'postal_code', 'short_name' )
 				)
 			),
