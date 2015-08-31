@@ -52,6 +52,19 @@ function lsx_business_directory_register_metaboxes(){
 	$address_metabox['id'] 			= 'address';
 	$address_metabox['panel'] 		= __( 'Address', 'lsx-business-directory' );
 	$address_metabox['fields'] 		= array(
+			'location'			=>	array(
+				'label' => 'Location',
+				'type' => 'places',
+				'binding' => array(
+					"street_number"					=>	array( 'address', 'short_name' ),
+					"route"							=>	array( 'address_2', 'long_name' ), // route = street in places
+					"sublocality_level_1"			=>	array( 'address_3', 'long_name' ),
+					"locality" 						=>	array( 'address_4', 'short_name' ),
+					"administrative_area_level_1"	=>	array( 'state_province', 'long_name' ), // administrative_area_level_1 = province
+					"country"						=>	array( 'country', 'long_name' ),
+					"postal_code"					=>	array( 'postal_code', 'short_name' )
+				)
+			),
 			'address'			=>	array( 'label' => __('Complex Name / Business Park / Street Number', 'lsx-business-directory') ),
 			'address_2'			=>	array( 'label' => __('Street Name', 'lsx-business-directory')),
 			'address_3'			=>	array( 'label' => __('Suburb', 'lsx-business-directory')),
