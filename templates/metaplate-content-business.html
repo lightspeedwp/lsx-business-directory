@@ -1,0 +1,27 @@
+<article id="post-{{id}}" class="{{post_class}}">
+	<div class="tour-content-wrappe">	
+		{{#if post_thumbnail}}
+			<div class="tour-thumbnail">
+				<a href="{{the_permalink}}">
+					{{{post_thumbnail}}}
+				</a>
+			</div>
+		{{/if}}
+
+		<div class="tour-content">
+			<div class="tour-top">
+				<h3><a href="{{the_permalink}}" title="{{the_title_attribute}}">{{post_title}}</a></h3>
+				
+				<div>
+					Location / Price.
+				</div>
+			</div>
+
+			<p class="tour-excerpt">{{{excerpt}}}</p>
+
+			<div class="tour-bottom">
+				<a class="btn btn-default" title="{{the_title_attribute}}" href="{{{permalink}}}">View Tour</a>
+			</div>
+		</div>
+	</div>
+</article>

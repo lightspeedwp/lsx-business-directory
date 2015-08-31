@@ -61,8 +61,9 @@ class LSX_Business_Directory extends Lsx {
 		// activate property post type
 		add_action( 'init', array( $this, 'register_post_types' ) );
 
-		// Redirect Single Template
+		// Redirect Templates
 		add_filter( 'template_include', array( $this, 'post_type_single_template_include'), 99 );
+		add_filter( 'template_include', array( $this, 'post_type_archive_template_include'), 99 );
 		
 		// Load front style sheet and JavaScript.
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
@@ -107,7 +108,17 @@ class LSX_Business_Directory extends Lsx {
 	 */
 	public function enqueue_scripts() {
 		
-		wp_enqueue_style('lsx_landing_pages_style', LSX_BUSINESS_DIRECTORY_URL.'/assets/css/style.css');
+		//wp_enqueue_style('lsx_landing_pages_style', LSX_BUSINESS_DIRECTORY_URL.'/assets/css/style.css');
+		wp_enqueue_script('lsx_business_directory_script', LSX_BUSINESS_DIRECTORY_URL . 'js/lsx-business-directory.js', array('masonry'), null, false);
+		
+		//Set some parameters that we can use in the JS
+		/*$is_portfolio = false;
+		$param_array = array(
+				'is_portfolio' => $is_portfolio
+		);
+		//Set the columns for the archives
+		$param_array['columns'] = apply_filters('lsx_archive_column_number',3);
+		wp_localize_script( 'lsx_script', 'lsx_params', $param_array );		*/
 	}
 	
 	
@@ -174,6 +185,25 @@ class LSX_Business_Directory extends Lsx {
 		&& '' == locate_template( array( 'single-directory.php' ) )
 		&& file_exists( LSX_BUSINESS_DIRECTORY_PATH.'templates/' . "single-directory.php" )) {
 			$template = LSX_BUSINESS_DIRECTORY_PATH.'templates/' . "single-directory.php";
+		}
+		return $template;
+	}	
+	
+	/**
+	 * Redirect wordpress to the archive template located in the plugin
+	 *
+	 * @param	$template
+	 *
+	 * @return	$template
+	 */
+	public function post_type_archive_template_include( $template ) {
+			
+		if ( is_main_query()
+		 && ( is_post_type_archive('business-directory') ) 
+		 && '' == locate_template( array( 'archive-business-directory.php' ) )
+		 && file_exists( LSX_BUSINESS_DIRECTORY_PATH.'/templates/' . "archive-business-directory.php" )) {
+			
+			$template = LSX_BUSINESS_DIRECTORY_PATH.'/templates/' . "archive-business-directory.php";
 		}
 		return $template;
 	}	
