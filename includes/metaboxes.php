@@ -56,7 +56,27 @@ function lsx_business_directory_register_metaboxes(){
 			'address_2'			=>	array( 'label' => __('Street Name', 'lsx-business-directory')),
 			'address_3'			=>	array( 'label' => __('Suburb', 'lsx-business-directory')),
 			'address_4'			=>	array( 'label' => __('City', 'lsx-business-directory')),
-			'postal_code'		=>	array( 'label' => __('Postal Code', 'lsx-business-directory')),
+			'state_province'	=>	array(
+				'label' 			=> __('State / Province', 'lsx-business-directory'),
+				'type'				=> 'select',
+				'requires' 			=> 'country',
+				'filtered_by' 		=> 'country',
+				'select2'			=>	true,
+				'filtered_options'	=> array(
+					'ZA'	=> array(
+						'Eastern Cape'  => __( 'Eastern Cape', 'lsx-business-directory' ),
+						'Free State'  	=> __( 'Free State', 'lsx-business-directory' ),
+						'Gauteng'  		=> __( 'Gauteng', 'lsx-business-directory' ),
+						'KwaZulu-Natal' => __( 'KwaZulu-Natal', 'lsx-business-directory' ),
+						'Limpopo'  		=> __( 'Limpopo', 'lsx-business-directory' ),
+						'Mpumalanga'  	=> __( 'Mpumalanga', 'lsx-business-directory' ),
+						'Northern Cape' => __( 'Northern Cape', 'lsx-business-directory' ),
+						'North West'  	=> __( 'North West', 'lsx-business-directory' ),
+						'Western Cape'  => __( 'Western Cape', 'lsx-business-directory' )
+					)
+				),
+			),	
+			'postal_code'		=>	array( 'label' => __('Postal Code', 'lsx-business-directory'), 'requires' => 'state_province'),
 			'country'			=>	array( 'label' => __('Country', 'lsx-business-directory'), 'type' => 'country')
 	);
 	// register it
