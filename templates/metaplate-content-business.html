@@ -1,15 +1,15 @@
 <article id="post-{{id}}" class="{{post_class}}">
-	<div class="tour-content-wrappe">	
+	<div class="business-content-wrapper">	
 		{{#if post_thumbnail}}
-			<div class="tour-thumbnail">
+			<div class="logo">
 				<a href="{{the_permalink}}">
 					{{{post_thumbnail}}}
 				</a>
 			</div>
 		{{/if}}
 
-		<div class="tour-content">
-			<div class="tour-top">
+		<div class="business-content">
+			<div class="business-top">
 				<h3><a href="{{the_permalink}}" title="{{the_title_attribute}}">{{post_title}}</a></h3>
 				
 				<div>
@@ -17,10 +17,10 @@
 				</div>
 			</div>
 
-			<p class="tour-excerpt">{{{excerpt}}}</p>
+			<p class="business-excerpt">{{{excerpt}}}</p>
 
-			<div class="tour-bottom">
-				<a class="btn btn-default" title="{{the_title_attribute}}" href="{{{permalink}}}">View Tour</a>
+			<div class="business-bottom">
+				<a class="btn btn-default" title="{{the_title_attribute}}" href="{{{permalink}}}">View Business</a>
 			</div>
 		</div>
 	</div>
