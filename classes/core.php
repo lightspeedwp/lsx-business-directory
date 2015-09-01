@@ -72,6 +72,9 @@ class LSX_Business_Directory extends Lsx {
 		
 		add_image_size( 'lsx-business-logo', 350, 350, true );
 		
+		//Populate the data for the meta plate
+		add_filter( 'metaplate_data', array( $this, 'build_metaplate_data' ), 11, 2 );
+		
 		//Set the single to 1 column
 		add_filter( 'lsx_bootstrap_column_size', array( $this, 'single_layout_filter' )  );
 	}
@@ -235,12 +238,10 @@ class LSX_Business_Directory extends Lsx {
 	 */
 	public function build_metaplate_data( $data, $metaplate ){
 		global $post;
-
+		
 		if( $post->post_type !== 'business-directory' ){
 			return $data;
 		}
-		
-		self::remove_jetpack_sharing();
 
 		// add content
 		ob_start();
@@ -272,8 +273,6 @@ class LSX_Business_Directory extends Lsx {
 		
 		$data['global']['site_url'] = site_url();
 			
-
-		//var_dump( $data );
 		return $data;
 	}
 	

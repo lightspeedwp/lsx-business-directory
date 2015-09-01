@@ -15,7 +15,14 @@
 	</div>
 	
 	<div class="col-md-6">
-	
+		<ul>
+			{{#if primary_email}}<li><a href="mailto:{{website}}" target="_blank"><span class="genericon genericon-mail"></span> {{primary_email}}</a></li>{{/if}}
+			{{#if secondary_email}}<li><a href="mailto:{{website}}" target="_blank"><span class="genericon genericon-mail"></span> {{secondary_email}}</a></li>{{/if}}
+			{{#if primary_phone}}<li><span class="genericon genericon-handset"></span> {{primary_phone}}</li>{{/if}}
+			{{#if secondary_phone}}<li><span class="genericon genericon-handset"></span> {{secondary_phone}}</li>{{/if}}
+			{{#if fax_number}}<li><span class="genericon genericon-handset"></span> {{fax_number}}</li>{{/if}}
+			{{#if website}}<li><a href="{{website}}" target="_blank"><span class="genericon genericon-external"></span> {{website}}</a></li>{{/if}}
+		</ul>
 	</div>	
 </div>
 
