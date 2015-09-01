@@ -1,0 +1,57 @@
+<div class="tour-tabs" role="tabpanel">	
+	<ul class="nav nav-tabs">
+		<li class="active"><a href="#itinerary">Itinerary</a></li>
+		{{#if gallery}}<li><a href="#gallery">Gallery</a></li>{{/if}}
+		{{#if videos}}<li><a href="#videos">Videos</a></li>{{/if}}
+		{{#if map}}<li><a href="#map">Map</a></li>{{/if}}
+		{{#if date_rates}}<li><a href="#rates">Rates</a></li>{{/if}}
+		{{#if enquire_form}}<li><a href="#enquire">Enquire</a></li>{{/if}}
+	</ul>
+
+	<div class="tab-content">
+	
+		<div role="tabpanel" class="tab-pane active" id="itinerary">
+			{{#if days}}
+				
+				{{#each days}}
+					<div class="itinerary">
+						<div class="thumbnail">
+							{{_image thumbnail.selection 400}}
+						</div>
+						<div class="description">
+							<h2 class="title">{{title}}</h2>
+							<div class="entry-content">
+									{{description}}
+							</div>
+							<div class="day-meta">
+								{{#if room_basis}}
+									<div>Room Basis: {{room_basis}}</div>
+								{{/if}}
+								{{#if drinks_basis}}
+									<div>Drinks Basis: {{drinks_basis}}</div>
+								{{/if}}
+							</div>
+						</div>
+					</div>
+				{{/each}}
+			{{/if}}
+		</div>	
+		
+		{{#if map}}
+			<div role="tabpanel" class="tab-pane" id="map">
+				{{{map}}}
+			</div>
+		{{/if}}
+		
+	</div>
+
+</div>
+
+<script type="text/javascript">
+jQuery( function( $ ){
+	$('.nav-tabs a').click(function (e) {
+		e.preventDefault()
+		$(this).tab('show')
+	});
+})
+</script>

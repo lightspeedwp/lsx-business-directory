@@ -67,9 +67,13 @@ class LSX_Business_Directory extends Lsx {
 		
 		// Load front style sheet and JavaScript.
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 		
 		
 		add_image_size( 'lsx-business-logo', 350, 350, true );
+		
+		//Set the single to 1 column
+		add_filter( 'lsx_bootstrap_column_size', array( $this, 'single_layout_filter' )  );
 	}
 
 
@@ -123,6 +127,17 @@ class LSX_Business_Directory extends Lsx {
 		$param_array['columns'] = apply_filters('lsx_archive_column_number',3);
 		wp_localize_script( 'lsx_script', 'lsx_params', $param_array );		*/
 	}
+	
+	/**
+	 * Register and enqueue admin-specific style sheet.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return    null
+	 */
+	public function admin_enqueue_scripts() {
+		wp_enqueue_style('lsx_business_directory_admin_css', LSX_BUSINESS_DIRECTORY_URL.'/assets/css/admin-style.css');
+	}	
 	
 	
 	/**
@@ -184,10 +199,10 @@ class LSX_Business_Directory extends Lsx {
 	public function post_type_single_template_include( $template ) {
 	
 		if ( is_main_query()
-		&& is_singular('directory')
-		&& '' == locate_template( array( 'single-directory.php' ) )
-		&& file_exists( LSX_BUSINESS_DIRECTORY_PATH.'templates/' . "single-directory.php" )) {
-			$template = LSX_BUSINESS_DIRECTORY_PATH.'templates/' . "single-directory.php";
+		&& is_singular('business-directory')
+		&& '' == locate_template( array( 'single-business-directory.php' ) )
+		&& file_exists( LSX_BUSINESS_DIRECTORY_PATH.'templates/' . "single-business-directory.php" )) {
+			$template = LSX_BUSINESS_DIRECTORY_PATH.'templates/' . "single-business-directory.php";
 		}
 		return $template;
 	}	
@@ -205,7 +220,6 @@ class LSX_Business_Directory extends Lsx {
 		 && ( is_post_type_archive('business-directory') ) 
 		 && '' == locate_template( array( 'archive-business-directory.php' ) )
 		 && file_exists( LSX_BUSINESS_DIRECTORY_PATH.'/templates/' . "archive-business-directory.php" )) {
-			
 			$template = LSX_BUSINESS_DIRECTORY_PATH.'/templates/' . "archive-business-directory.php";
 		}
 		return $template;
@@ -249,7 +263,7 @@ class LSX_Business_Directory extends Lsx {
 			}
 		}
 		if( !empty( get_the_post_thumbnail() ) ){
-			$data['post_thumbnail'] = lsx_get_thumbnail( 'full' );	
+			$data['post_thumbnail'] = lsx_get_thumbnail( 'lsx-business-logo' );	
 		}
 		
 		$classes = get_post_class();
@@ -257,8 +271,24 @@ class LSX_Business_Directory extends Lsx {
 
 		
 		$data['global']['site_url'] = site_url();
+			
 
 		//var_dump( $data );
 		return $data;
 	}
+	
+	/**
+	 * Set the single business directory to 1 column
+	 *
+	 * @since 0.0.1
+	 *
+	 * @param	$default_size	string  1c, 2cr, 2cl
+	 * @return	$default_size	string
+	 */
+	public function single_layout_filter( $default_size ){
+		if(is_main_query() && is_singular('business-directory')){
+			$default_size = '1c';
+		}
+		return $default_size;
+	}		
 }

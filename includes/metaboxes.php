@@ -68,7 +68,8 @@ function lsx_business_directory_register_metaboxes(){
 			'address'			=>	array( 'label' => __('Complex Name / Business Park / Street Number', 'lsx-business-directory') ),
 			'address_2'			=>	array( 'label' => __('Street Name', 'lsx-business-directory')),
 			'address_3'			=>	array( 'label' => __('Suburb', 'lsx-business-directory')),
-			'address_4'			=>	array( 'label' => __('City', 'lsx-business-directory')),
+			'address_4'			=>	array( 'label' => __('City', 'lsx-business-directory')),			
+			'country'			=>	array( 'label' => __('Country', 'lsx-business-directory'), 'type' => 'country'),
 			'state_province'	=>	array(
 				'label' 			=> __('State / Province', 'lsx-business-directory'),
 				'type'				=> 'select',
@@ -89,8 +90,7 @@ function lsx_business_directory_register_metaboxes(){
 					)
 				),
 			),	
-			'postal_code'		=>	array( 'label' => __('Postal Code', 'lsx-business-directory'), 'requires' => 'state_province'),
-			'country'			=>	array( 'label' => __('Country', 'lsx-business-directory'), 'type' => 'country')
+			'postal_code'		=>	array( 'label' => __('Postal Code', 'lsx-business-directory'), 'requires' => 'state_province'),			
 	);
 	// register it
 	lsx_register_metabox( $address_metabox );	
@@ -98,7 +98,7 @@ function lsx_business_directory_register_metaboxes(){
 	
 	$information_metabox		= $metabox_base;
 	$information_metabox['id'] 			= 'information';
-	$information_metabox['panel'] 		= __( 'Information', 'lsx-business-directory' );
+	$information_metabox['panel'] 		= __( 'Tabs', 'lsx-business-directory' );
 	$information_metabox['repeatable']  = true;
 	$information_metabox['fields'] 		= array(
 			'title'				=>	array( 'label' => __('Title', 'lsx-business-directory') ),
