@@ -53,7 +53,7 @@ function lsx_business_directory_register_metaboxes(){
 	$address_metabox['panel'] 		= __( 'Address', 'lsx-business-directory' );
 	$address_metabox['fields'] 		= array(
 			'location'			=>	array(
-				'label' => 'Location',
+				'label' => __('Google Maps Search', 'lsx-business-directory'),
 				'type' => 'places',
 				'binding' => array(
 					"street_number"					=>	array( 'address', 'short_name' ),
@@ -98,7 +98,7 @@ function lsx_business_directory_register_metaboxes(){
 	
 	$information_metabox		= $metabox_base;
 	$information_metabox['id'] 			= 'information';
-	$information_metabox['panel'] 		= __( 'Tabs', 'lsx-business-directory' );
+	$information_metabox['panel'] 		= __( 'Additional Info', 'lsx-business-directory' );
 	$information_metabox['repeatable']  = true;
 	$information_metabox['fields'] 		= array(
 			'title'				=>	array( 'label' => __('Title', 'lsx-business-directory') ),
