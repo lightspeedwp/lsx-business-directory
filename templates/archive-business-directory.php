@@ -52,10 +52,10 @@
 							
 							<?php
 							// load content
-							if( function_exists( 'caldera_metaplate_from_file' ) && file_exists( get_stylesheet_directory() . 'templates/metaplate-content-business.html' ) ){
-								echo caldera_metaplate_from_file( get_stylesheet_directory() . 'templates/metaplate-content-property.html', get_the_id() );
+							if( function_exists( 'caldera_metaplate_from_file' ) && file_exists( get_stylesheet_directory() . '/templates/metaplate-content-business.html' ) ){
+								echo caldera_metaplate_from_file( get_stylesheet_directory() . 'templates/metaplate-content-business.html', get_the_id() );
 							}elseif( function_exists( 'caldera_metaplate_from_file' ) && file_exists( LSX_BUSINESS_DIRECTORY_PATH . 'templates/metaplate-content-business.html' ) ){
-								echo caldera_metaplate_from_file( LSX_BUSINESS_DIRECTORY_PATH . 'templates/metaplate-content-tour.html', get_the_id() );
+								echo caldera_metaplate_from_file( LSX_BUSINESS_DIRECTORY_PATH . 'templates/metaplate-content-business.html', get_the_id() );
 							}else{
 								get_template_part( 'content', 'business-directory' );
 							}							
