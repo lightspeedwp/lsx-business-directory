@@ -50,7 +50,7 @@
 	
 						<?php while ( have_posts() ) : the_post(); $count++; ?>
 							
-							<?php
+							<?php 
 							// load content
 							if( function_exists( 'caldera_metaplate_from_file' ) && file_exists( get_stylesheet_directory() . '/templates/metaplate-content-business.html' ) ){
 								echo caldera_metaplate_from_file( get_stylesheet_directory() . 'templates/metaplate-content-business.html', get_the_id() );
