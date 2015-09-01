@@ -24,19 +24,3 @@ function lsx_business_entry(){
 		_e('Please activate the Caldera Metaplate Plugin','lsx-business-directory');
 	}	
 }
-
-/**
- * The Single Tabs for the business
- *
- * @package		lsx-business-directory
- * @subpackage	template-tags
- * @category	single
- */
-function lsx_business_tabs(){
-	// load content
-	if( function_exists( 'caldera_metaplate_from_file' ) && file_exists( get_stylesheet_directory() . '/templates/metaplate-single-business-tabs.html' ) ){
-		echo caldera_metaplate_from_file( get_stylesheet_directory() . 'templates/metaplate-single-business-tabs.html', get_the_id() );
-	}elseif( function_exists( 'caldera_metaplate_from_file' ) && file_exists( LSX_BUSINESS_DIRECTORY_PATH . 'templates/metaplate-single-business-tabs.html' ) ){
-		echo caldera_metaplate_from_file( LSX_BUSINESS_DIRECTORY_PATH . 'templates/metaplate-single-business-tabs.html', get_the_id() );
-	}
-}

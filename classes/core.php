@@ -263,13 +263,14 @@ class LSX_Business_Directory extends Lsx {
 
 			}
 		}
-		if( !empty( get_the_post_thumbnail() ) ){
-			$data['post_thumbnail'] = lsx_get_thumbnail( 'lsx-business-logo' );	
+		if( !empty( get_the_post_thumbnail($post->ID) ) ){
+			$data['post_thumbnail'] = get_the_post_thumbnail( $post->ID,'lsx-business-logo' );	
 		}
 		
 		$classes = get_post_class();
 		$data['post_class'] = implode( ' ', $classes );
 
+	
 		
 		$data['global']['site_url'] = site_url();
 			
