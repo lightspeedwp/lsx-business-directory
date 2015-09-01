@@ -237,7 +237,7 @@ class LSX_Business_Directory extends Lsx {
 	 * @return array landing-page post objects
 	 */
 	public function build_metaplate_data( $data, $metaplate ){
-		global $post;
+		global $post,$lsx_maps;
 		
 		if( $post->post_type !== 'business-directory' ){
 			return $data;
@@ -270,7 +270,9 @@ class LSX_Business_Directory extends Lsx {
 		$classes = get_post_class();
 		$data['post_class'] = implode( ' ', $classes );
 
-	
+		if($data['location']){
+			$data['map'] = $lsx_maps->map_output($data['location']);
+		}
 		
 		$data['global']['site_url'] = site_url();
 			
