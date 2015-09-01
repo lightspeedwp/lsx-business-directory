@@ -69,11 +69,10 @@ function lsx_business_directory_register_metaboxes(){
 			'address_2'			=>	array( 'label' => __('Street Name', 'lsx-business-directory')),
 			'address_3'			=>	array( 'label' => __('Suburb', 'lsx-business-directory')),
 			'address_4'			=>	array( 'label' => __('City', 'lsx-business-directory')),			
-			'country'			=>	array( 'label' => __('Country', 'lsx-business-directory'), 'type' => 'country'),
+			'postal_code'		=>	array( 'label' => __('Postal Code', 'lsx-business-directory')),
 			'state_province'	=>	array(
 				'label' 			=> __('State / Province', 'lsx-business-directory'),
 				'type'				=> 'select',
-				'requires' 			=> 'country',
 				'filtered_by' 		=> 'country',
 				'select2'			=>	true,
 				'filtered_options'	=> array(
@@ -89,8 +88,8 @@ function lsx_business_directory_register_metaboxes(){
 						'Western Cape'  => __( 'Western Cape', 'lsx-business-directory' )
 					)
 				),
-			),	
-			'postal_code'		=>	array( 'label' => __('Postal Code', 'lsx-business-directory'), 'requires' => 'state_province'),			
+			),
+			'country'			=>	array( 'label' => __('Country', 'lsx-business-directory'), 'type' => 'country'),					
 	);
 	// register it
 	lsx_register_metabox( $address_metabox );	
