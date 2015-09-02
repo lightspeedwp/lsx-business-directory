@@ -23,6 +23,17 @@
 			{{#if fax_number}}<li><span class="genericon genericon-handset"></span> {{fax_number}}</li>{{/if}}
 			{{#if website}}<li><a href="{{website}}" target="_blank"><span class="genericon genericon-external"></span> {{website}}</a></li>{{/if}}
 		</ul>
+		
+		
+		{{#if information}}
+			{{#each information}}
+				<div class="info-bubble">
+					<h3 class="entry-title">{{title}}</h3>
+					<div class="entry-content">{{{info_content}}}</div>
+				</div>
+			{{/each}}
+		{{/if}}
+		
 	</div>	
 </div>
 

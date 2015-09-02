@@ -101,7 +101,7 @@ function lsx_business_directory_register_metaboxes(){
 	$information_metabox['repeatable']  = true;
 	$information_metabox['fields'] 		= array(
 			'title'				=>	array( 'label' => __('Title', 'lsx-business-directory') ),
-			'content'			=>	array( 'label' => __('Content', 'lsx-business-directory') , 'type' => 'textarea')
+			'info_content'			=>	array( 'label' => __('Content', 'lsx-business-directory') , 'type' => 'textarea')
 	);
 	// register it
 	lsx_register_metabox( $information_metabox );	
