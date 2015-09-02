@@ -274,7 +274,7 @@ class LSX_Business_Directory extends Lsx {
 			$data['map'] = $lsx_maps->map_output($data['location']);
 		}		
 		$data['global']['site_url'] = site_url();
-			
+		
 		return $data;
 	}
 	
