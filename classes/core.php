@@ -175,7 +175,7 @@ class LSX_Business_Directory extends Lsx {
 				'rewrite' 				=>	array( 'slug' => 'business' ),
 				'exclude_from_search' 	=>	false,
 				'capability_type' 		=>	'page',
-				'has_archive' 			=>	'business-directory',
+				'has_archive' 			=>	LSX_BUSINESS_DIRECTORY_ARCHIVE_SLUG,
 				'hierarchical' 			=>	false,
 				'menu_position' 		=>	null,
 				'menu_icon'				=>	"dashicons-list-view",

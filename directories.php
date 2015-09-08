@@ -28,6 +28,7 @@ define('LSX_BUSINESS_DIRECTORY_PATH',  plugin_dir_path( __FILE__ ) );
 define('LSX_BUSINESS_DIRECTORY_CORE',  __FILE__ );
 define('LSX_BUSINESS_DIRECTORY_URL',  plugin_dir_url( __FILE__ ) );
 define('LSX_BUSINESS_DIRECTORY_VER',  '1.0.0' );
+define('LSX_BUSINESS_DIRECTORY_ARCHIVE_SLUG',  'business-directory' );
 
 
 

@@ -24,3 +24,40 @@ function lsx_business_entry(){
 		_e('Please activate the Caldera Metaplate Plugin','lsx-business-directory');
 	}	
 }
+
+
+/**
+ * A button linking to the business archive
+ *
+ * @package		lsx-business-directory
+ * @subpackage	template-tags
+ * @category	single
+ * 
+ * @param		$text	String
+ */
+function lsx_business_directory_button($text = false,$class = false,$return = false){
+	if(false === $text){
+		$text = __('View the business directory.','lsx-business-directory');
+	}
+	$classes = 'directory btn btn-default';
+	if(false !== $class){
+		$classes .= ' '.$class;
+	}
+	$text = apply_filters('lsx_business_directory_button_text', $text);
+	$link = '<a class="'.$classes.'" href="'.LSX_BUSINESS_DIRECTORY_ARCHIVE_SLUG.'" title="'.__('View the business directory.','lsx-business-directory').'">'.$text.'</a>';
+	if(false === $return){
+		echo $link;
+	}else{
+		return $link;
+	}
+}
+
+function lsx_business_directory_button_shortcode( $atts ) {
+	$atts = shortcode_atts( array(
+			'text' => __('View the business directory.','lsx-business-directory'),
+			'class' => ''
+	), $atts, 'lsx_directory_button' );
+
+	return lsx_business_directory_button($atts['text'],$atts['class'],true);
+}
+add_shortcode( 'lsx_directory_button', 'lsx_business_directory_button_shortcode' );
