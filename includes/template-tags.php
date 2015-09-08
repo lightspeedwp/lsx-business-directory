@@ -44,7 +44,7 @@ function lsx_business_directory_button($text = false,$class = false,$return = fa
 		$classes .= ' '.$class;
 	}
 	$text = apply_filters('lsx_business_directory_button_text', $text);
-	$link = '<a class="'.$classes.'" href="'.LSX_BUSINESS_DIRECTORY_ARCHIVE_SLUG.'" title="'.__('View the business directory.','lsx-business-directory').'">'.$text.'</a>';
+	$link = '<a class="'.$classes.'" href="'.home_url(LSX_BUSINESS_DIRECTORY_ARCHIVE_SLUG).'" title="'.__('View the business directory.','lsx-business-directory').'">'.$text.'</a>';
 	if(false === $return){
 		echo $link;
 	}else{
