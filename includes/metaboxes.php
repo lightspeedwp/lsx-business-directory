@@ -93,17 +93,6 @@ function lsx_business_directory_register_metaboxes(){
 	);
 	// register it
 	lsx_register_metabox( $address_metabox );	
-	
-	
-	$information_metabox		= $metabox_base;
-	$information_metabox['id'] 			= 'information';
-	$information_metabox['name'] 		= __( 'Additional Info', 'lsx-business-directory' );
-	$information_metabox['repeatable']  = true;
-	$information_metabox['fields'] 		= array(
-			'title'				=>	array( 'label' => __('Title', 'lsx-business-directory') ),
-			'info_content'			=>	array( 'label' => __('Content', 'lsx-business-directory') , 'type' => 'textarea')
-	);
-	// register it
-	lsx_register_metabox( $information_metabox );	
+		
 }
 lsx_business_directory_register_metaboxes();
