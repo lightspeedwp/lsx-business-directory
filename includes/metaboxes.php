@@ -97,7 +97,7 @@ function lsx_business_directory_register_metaboxes(){
 	
 	$information_metabox		= $metabox_base;
 	$information_metabox['id'] 			= 'information';
-	$information_metabox['panel'] 		= __( 'Additional Info', 'lsx-business-directory' );
+	$information_metabox['name'] 		= __( 'Additional Info', 'lsx-business-directory' );
 	$information_metabox['repeatable']  = true;
 	$information_metabox['fields'] 		= array(
 			'title'				=>	array( 'label' => __('Title', 'lsx-business-directory') ),
