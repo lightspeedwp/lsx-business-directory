@@ -275,8 +275,7 @@ class LSX_Business_Directory extends Lsx {
 		}		
 		$data['global']['site_url'] = site_url();
 		
-		$data['custom_field'] = false;
-		$data['custom_field'] = apply_filters('lsx-business-directory-metaplate-data',$data['custom_field']);
+		$data = apply_filters('lsx-business-directory-metaplate-data',$data);
 		return $data;
 	}
 	
