@@ -28,8 +28,12 @@ define('LSX_BUSINESS_DIRECTORY_PATH',  plugin_dir_path( __FILE__ ) );
 define('LSX_BUSINESS_DIRECTORY_CORE',  __FILE__ );
 define('LSX_BUSINESS_DIRECTORY_URL',  plugin_dir_url( __FILE__ ) );
 define('LSX_BUSINESS_DIRECTORY_VER',  '1.0.0' );
-define('LSX_BUSINESS_DIRECTORY_ARCHIVE_SLUG',  'business-directory' );
-
+if ( ! defined( 'LSX_BUSINESS_DIRECTORY_ARCHIVE_SLUG' ) ) {
+	define('LSX_BUSINESS_DIRECTORY_ARCHIVE_SLUG',  'business-directory' );
+}
+if ( ! defined( 'LSX_BUSINESS_DIRECTORY_LABEL' ) ) {
+	define('LSX_BUSINESS_DIRECTORY_LABEL',  __('Business Directory', 'lsx-business-directory') );
+}
 
 
 require_once LSX_BUSINESS_DIRECTORY_PATH . 'vendor/class-tgm-plugin-activation.php';
