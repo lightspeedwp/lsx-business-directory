@@ -17,7 +17,7 @@
 function lsx_business_entry(){
 	// load content
 	if( function_exists( 'caldera_metaplate_from_file' ) && file_exists( get_stylesheet_directory() . '/templates/metaplate-single-business-content.html' ) ){
-		echo caldera_metaplate_from_file( get_stylesheet_directory() . 'templates/metaplate-single-business-content.html', get_the_id() );
+		echo caldera_metaplate_from_file( get_stylesheet_directory() . '/templates/metaplate-single-business-content.html', get_the_id() );
 	}elseif( function_exists( 'caldera_metaplate_from_file' ) && file_exists( LSX_BUSINESS_DIRECTORY_PATH . 'templates/metaplate-single-business-content.html' ) ){
 		echo caldera_metaplate_from_file( LSX_BUSINESS_DIRECTORY_PATH . 'templates/metaplate-single-business-content.html', get_the_id() );
 	}else{
