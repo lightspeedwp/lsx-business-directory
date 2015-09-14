@@ -154,18 +154,18 @@ class LSX_Business_Directory extends Lsx {
 		// define the properties post type
 		$args = array(
 				'labels' 				=> array(
-						'name' 				=> __('Business Directory', 'lsx-business-directory'),
-						'singular_name' 	=> __('Business Directory', 'lsx-business-directory'),
+						'name' 				=> LSX_BUSINESS_DIRECTORY_LABEL,
+						'singular_name' 	=> __('Directory', 'lsx-business-directory'),
 						'add_new' 			=> __('Add Business', 'lsx-business-directory'),
 						'add_new_item' 		=> __('Add New Business', 'lsx-business-directory'),
 						'edit_item' 		=> __('Edit Business', 'lsx-business-directory'),
 						'all_items' 		=> __('All Businesses', 'lsx-business-directory'),
-						'view_item' 		=> __('View Directory', 'lsx-business-directory'),
-						'search_items' 		=> __('Search Directory', 'lsx-business-directory'),
+						'view_item' 		=> __('View', 'lsx-business-directory'),
+						'search_items' 		=> __('Search Businesses', 'lsx-business-directory'),
 						'not_found' 		=> __('No businesses defined', 'lsx-business-directory'),
 						'not_found_in_trash'=> __('No businesses in the trash', 'lsx-business-directory'),
 						'parent_item_colon' => '',
-						'menu_name' 		=> __('Business Directory', 'lsx-business-directory')
+						'menu_name' 		=> LSX_BUSINESS_DIRECTORY_LABEL
 				),
 				'public' 				=>	true,
 				'publicly_queryable'	=>	true,
