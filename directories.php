@@ -39,6 +39,9 @@ if ( ! defined( 'LSX_BUSINESS_DIRECTORY_LABEL' ) ) {
 require_once LSX_BUSINESS_DIRECTORY_PATH . 'vendor/class-tgm-plugin-activation.php';
 add_action( 'tgmpa_register', 'lsx_business_directory_register_required_plugins' );
 
+if(!defined('LSX_FRAMEWORK_VERSION')){
+	require_once( LSX_BUSINESS_DIRECTORY_PATH . 'vendor/lsx-framework/plugincore.php' );
+}
 
 
 /**
