@@ -1,0 +1,32 @@
+{
+  "name": "lsx-business-directories",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://bitbucket.org/feedmycode/lsx-business-directory.git"
+  },
+  "keywords": [
+    "lsx",
+    "plugin",
+    "business",
+    "directory"
+  ],
+  "author": "LightSpeed",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://bitbucket.org/feedmycode/lsx-business-directory/issues"
+  },
+  "homepage": "https://bitbucket.org/feedmycode/lsx-business-directory#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-jshint": "^2.0.0",
+    "gulp-sass": "^2.2.0",
+    "jshint": "^2.9.1"
+  }
+}
