@@ -94,7 +94,7 @@ function lsx_business_directory_register_metaboxes(){
 	);
 	// register it
 	lsx_register_metabox( $address_metabox );
-		
-	do_action('lsx-business-directory-register-metaboxes',$metabox_base);
+	
+	do_action('lsx_business_directory_register_metaboxes',$metabox_base);
 }
 lsx_business_directory_register_metaboxes();
