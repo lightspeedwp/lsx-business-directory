@@ -233,8 +233,30 @@ class LSX_Business_Directory extends Lsx {
 		if( $post->post_type !== 'business-directory' ){
 			return $data;
 		}
+		
+		//Load all of the neccesary hooks
+		$data['lsx_entry_before'] = $data['lsx_entry_top'] = $data['lsx_entry_bottom'] = $data['lsx_entry_after'] = '';
+		
+		if(is_post_type_archive('business-directory')){
+			ob_start();
+			lsx_entry_before();
+			$data['lsx_entry_before'] = ob_get_clean();	
+			
+			ob_start();
+			lsx_entry_top();
+			$data['lsx_entry_top'] = ob_get_clean();	
+			
+			ob_start();
+			lsx_entry_bottom();
+			$data['lsx_entry_bottom'] = ob_get_clean();
+			
+			ob_start();
+			lsx_entry_after();
+			$data['lsx_entry_after'] = ob_get_clean();
+		}
+		
 
-		// add content
+		// Load the rest of the Content
 		ob_start();
 		the_content();
 		$data['post_content'] = ob_get_clean();
@@ -267,6 +289,9 @@ class LSX_Business_Directory extends Lsx {
 		$data['global']['site_url'] = site_url();
 		
 		$data = apply_filters('lsx-business-directory-metaplate-data',$data);
+		
+		
+		
 		return $data;
 	}
 	

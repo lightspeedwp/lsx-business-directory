@@ -15,9 +15,11 @@
 	</div>
 	
 	<div class="col-md-4">
+		
 		<div class="contact">
 			<h3 class="entry-title">Contact Details</h3>
 			<ul>
+				{{#if vat}}<li>{{vat}}</li>{{/if}}
 				{{#if primary_email}}<li><a href="mailto:{{website}}" target="_blank"><span class="genericon genericon-mail"></span> {{primary_email}}</a></li>{{/if}}
 				{{#if secondary_email}}<li><a href="mailto:{{website}}" target="_blank"><span class="genericon genericon-mail"></span> {{secondary_email}}</a></li>{{/if}}
 				{{#if primary_phone}}<li><span class="genericon genericon-handset"></span> {{primary_phone}}</li>{{/if}}
