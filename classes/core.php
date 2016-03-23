@@ -176,7 +176,7 @@ class LSX_Business_Directory extends Lsx {
 				'exclude_from_search' 	=>	false,
 				'capability_type' 		=>	'page',
 				'has_archive' 			=>	LSX_BUSINESS_DIRECTORY_ARCHIVE_SLUG,
-				'hierarchical' 			=>	false,
+				'hierarchical' 			=>	true,
 				'menu_position' 		=>	null,
 				'menu_icon'				=>	"dashicons-list-view",
 				'supports' 				=> array(
@@ -184,7 +184,8 @@ class LSX_Business_Directory extends Lsx {
 											'editor',
 											'thumbnail',
 											'excerpt',
-											'custom-fields'
+											'custom-fields',
+											'page-attributes'
 											),
 		);
 	
