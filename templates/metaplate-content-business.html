@@ -2,7 +2,7 @@
 <div class="business-content-wrapper">	
 	{{#if post_thumbnail}}
 		<div class="logo">
-			<a href="{{the_permalink}}">
+			<a href="{{{permalink}}}">
 				{{{post_thumbnail}}}
 			</a>
 		</div>
@@ -10,11 +10,8 @@
 
 	<div class="business-content">
 		<div class="business-top">
-			<h3><a href="{{the_permalink}}" title="{{the_title_attribute}}">{{post_title}}</a></h3>
+			<h3><a href="{{{permalink}}}" title="{{the_title_attribute}}">{{post_title}}</a></h3>
 			
-			<div>
-				Location / Price.
-			</div>
 		</div>
 
 		<p class="business-excerpt">{{{excerpt}}}</p>
