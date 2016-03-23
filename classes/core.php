@@ -117,18 +117,8 @@ class LSX_Business_Directory extends Lsx {
 	 * @return    null
 	 */
 	public function enqueue_scripts() {
-		
 		wp_enqueue_style('lsx_business_directory_style', LSX_BUSINESS_DIRECTORY_URL.'assets/css/frontend.css');
 		wp_enqueue_script('lsx_business_directory_script', LSX_BUSINESS_DIRECTORY_URL . 'assets/js/frontend.min.js', array('jquery'), null, false);
-		
-		//Set some parameters that we can use in the JS
-		/*$is_portfolio = false;
-		$param_array = array(
-				'is_portfolio' => $is_portfolio
-		);
-		//Set the columns for the archives
-		$param_array['columns'] = apply_filters('lsx_archive_column_number',3);
-		wp_localize_script( 'lsx_script', 'lsx_params', $param_array );		*/
 	}
 	
 	/**

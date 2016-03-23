@@ -30,6 +30,18 @@ function lsx_business_directory_register_metaboxes(){
 		'fields'			=>	array() // fields this metabox had
 	);
 	
+	$details_metabox				= $metabox_base;
+	$details_metabox['id'] 			= 'details';
+	$details_metabox['panel'] 		= __( 'Details', 'lsx-business-directory' );
+	$details_metabox['fields'] 		= array(
+			'featured'		=>	array( 'label' => __('Featured', 'lsx-business-directory') ,'type' => 'radio', 'options' => array('0'=>'No','1'=>'Yes') ),
+			'head_office'	=>	array( 'label' => __('Head Office', 'lsx-business-directory'),'type' => 'radio', 'options' => array('0'=>'No','1'=>'Yes') ),
+			'shortname'		=>	array( 'label' => __('Short Name', 'lsx-business-directory') ),
+			'slogan'		=>	array( 'label' => __('Slogan', 'lsx-business-directory') )
+	);
+	// register it
+	lsx_register_metabox( $details_metabox );	
+	
 	/*
 	 * register the general tab
 	 *
