@@ -43,7 +43,8 @@ function lsx_business_directory_register_metaboxes(){
 		'primary_phone'		=>	array( 'label' => __('Primary Phone', 'lsx-business-directory') ),
 		'secondary_phone'	=>	array( 'label' => __('Secondary Phone', 'lsx-business-directory') ),
 		'fax_number'		=>	array( 'label' => __('Fax Number', 'lsx-business-directory') ),
-		'website'			=>	array( 'label' => __('Website', 'lsx-business-directory') ),	
+		'website'			=>	array( 'label' => __('Website', 'lsx-business-directory') ),
+		'vat'				=>	array( 'label' => __('V.A.T #', 'lsx-business-directory') ),
 	);
 	// register it
 	lsx_register_metabox( $general_metabox );
@@ -92,7 +93,8 @@ function lsx_business_directory_register_metaboxes(){
 			'country'			=>	array( 'label' => __('Country', 'lsx-business-directory'), 'type' => 'country'),					
 	);
 	// register it
-	lsx_register_metabox( $address_metabox );	
+	lsx_register_metabox( $address_metabox );
 		
+	do_action('lsx-business-directory-register-metaboxes',$metabox_base);
 }
 lsx_business_directory_register_metaboxes();
