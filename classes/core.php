@@ -333,7 +333,7 @@ class LSX_Business_Directory extends Lsx {
 	 * Get the "related" branches
 	 *
 	 */
-	public function single_layout_filter( $default_size ){
+	/*public function single_layout_filter( $default_size ){
 		global $post;
 		
 		$related_args = array(
@@ -344,5 +344,5 @@ class LSX_Business_Directory extends Lsx {
 		if(0 !== $post->post_parent){
 			$related_args['child_of'] = $post->post_parent;
 		}
-	}	
+	}*/	
 }
