@@ -253,6 +253,17 @@ class LSX_Business_Directory extends Lsx {
 			ob_start();
 			lsx_entry_after();
 			$data['lsx_entry_after'] = ob_get_clean();
+		}elseif(is_singular()){
+			
+			$related_args = array(
+				'post_type'	=>	$post->post_type,
+				'post_type'	=>	'publish',
+				'nopagin' => true
+			);
+			
+			if(0 !== $post->post_parent){
+				$related_args = array();
+			}
 		}
 		
 
@@ -285,12 +296,20 @@ class LSX_Business_Directory extends Lsx {
 
 		if($data['location']){
 			$data['map'] = $lsx_maps->map_output($data['location']);
+		}	
+		
+		
+		if($data['head_office']){
+			if('1' === $data['head_office']){
+				$data['head_office'] = __('Head Office','lsx-business-directory');
+			}else{
+				unset($data['head_office']);
+			}
 		}		
+		
 		$data['global']['site_url'] = site_url();
 		
 		$data = apply_filters('lsx-business-directory-metaplate-data',$data);
-		
-		
 		
 		return $data;
 	}
@@ -308,5 +327,22 @@ class LSX_Business_Directory extends Lsx {
 			$default_size = '1c';
 		}
 		return $default_size;
-	}		
+	}
+	
+	/**
+	 * Get the "related" branches
+	 *
+	 */
+	public function single_layout_filter( $default_size ){
+		global $post;
+		
+		$related_args = array(
+			'post_type'	=>	$post->post_type,
+			'post_type'	=>	'publish',
+			'nopagin' => true
+		);
+		if(0 !== $post->post_parent){
+			$related_args['child_of'] = $post->post_parent;
+		}
+	}	
 }
