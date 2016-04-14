@@ -53,37 +53,39 @@ get_header(); ?>
 
 				<div class="row">
 					<div class="business-content-right col-md-4">
-						<div class="business-contact-form">
-							<h3>Contact <?php the_title(); ?></h3>
+						<div class="contact-form business-content-section">
+							<h4 class="business-section-title">Contact <?php the_title(); ?></h4>
 
 							<form>
-								<input type="text" placeholder="Name">
-								<input type="text" placeholder="Email Address">
-								<textarea placeholder="Message"></textarea>
-								<input type="submit" value="Submit">
+								<div class="ginput_container">
+									<input type="text" placeholder="Name">
+									<input type="text" placeholder="Email Address">
+									<textarea placeholder="Message"></textarea>
+								</div>
+								<input type="submit" class="btn" value="Submit">
 							</form>
 						</div>
 
-						<div class="business-contact-info">
-							<h3>Contact Information</h3>
+						<div class="contact-info business-content-section">
+							<h4 class="business-section-title">Contact Information</h4>
 
 							<div class="row">
 								<div class="col-md-6">
-								<div class="business-telephone">
+									<div class="telephone">
 										<span><strong>Telephone: </strong> <a href="tel:+27215555555" target="_blank">+27 (21) 555 5555</a></span>
 									</div>
 
-									<div class="business-email">
+									<div class="email">
 										<span><strong>Email: </strong> <a href="mailto:info@business.co.za" target="_blank">info@business.co.za</a></span>
 									</div>
 
-									<div class="business-website">
+									<div class="website">
 										<span><strong>Website: </strong> <a href="www.business.co.za" target="_blank">www.business.co.za</a></span>
 									</div>
 								</div>
 
 								<div class="col-md-6">
-									<div class="business-address">
+									<div class="address">
 										<span><strong>Address: </strong> Street Address<br>Suburb<br>City<br>Postal Code</span>
 									</div>
 								</div>
@@ -92,18 +94,71 @@ get_header(); ?>
 					</div>
 
 					<div class="business-content-left col-md-8">
-						<div class="business-description">
-							<h2>Description</h2>
+						<div class="business-description business-content-section">
+							<h3 class="business-section-title">Description</h3>
+
 							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.
 
 Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at felis. Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl. Phasellus pede arcu, dapibus eu, fermentum et, dapibus sed, urna.</p>
 						</div>
 
-						<div class="branches">
-							<h2>Branches</h2>
+						<div class="branches business-content-section">
+							<h3 class="business-section-title">Branches</h3>
 
 							<div class="branch">
-								<h3>The Branch Title</h3>
+								<h4>The Branch Title</h4>
+
+								<div class="branch-content">
+									<div class="row">
+										<div class="col-md-4">
+											<div class="branch-telephone">
+												<span><strong>Telephone: </strong> <a href="tel:+27215555555" target="_blank">+27 (21) 555 5555</a></span>
+											</div>
+
+											<div class="branch-email">
+												<span><strong>Email: </strong> <a href="mailto:info@business.co.za" target="_blank">info@business.co.za</a></span>
+											</div>
+
+											<div class="branch-website">
+												<span><strong>Website: </strong> <a href="www.business.co.za" target="_blank">www.business.co.za</a></span>
+											</div>
+										</div>
+
+										<div class="col-md-8">
+											<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.</p>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="branch">
+								<h4>The Branch Title</h4>
+
+								<div class="branch-content">
+									<div class="row">
+										<div class="col-md-4">
+											<div class="branch-telephone">
+												<span><strong>Telephone: </strong> <a href="tel:+27215555555" target="_blank">+27 (21) 555 5555</a></span>
+											</div>
+
+											<div class="branch-email">
+												<span><strong>Email: </strong> <a href="mailto:info@business.co.za" target="_blank">info@business.co.za</a></span>
+											</div>
+
+											<div class="branch-website">
+												<span><strong>Website: </strong> <a href="www.business.co.za" target="_blank">www.business.co.za</a></span>
+											</div>
+										</div>
+
+										<div class="col-md-8">
+											<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.</p>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="branch">
+								<h4>The Branch Title</h4>
 
 								<div class="branch-content">
 									<div class="row">
@@ -129,16 +184,16 @@ Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metu
 							</div>
 						</div>
 
-						<div class="promotions">
-							<h2>Promotions</h2>
+						<div class="promotions business-content-section">
+							<h3 class="business-section-title">Promotions</h3>
 
 							<div class="promotion">
 								<div class="promotion-thumbnail">
-									<img src="http://placehold.it/300x250">
+									<img src="http://placehold.it/300x220">
 								</div>
 
 								<div class="promotion-content">
-									<h3>Promotion Title</h3>
+									<h4>Promotion Title</h4>
 
 									<div class="promotion-category">
 										<span><strong>Category: </strong>The Promotion Category</span>
@@ -157,7 +212,7 @@ Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metu
 					</div>
 				</div>
 
-				<div class="business-map">
+				<div class="business-map business-content-section">
 					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3310.4539806727535!2d18.451261315211813!3d-33.929449980639504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1dcc5da1b2446d25%3A0x351a974567826b35!2s46+Devon+St%2C+Woodstock%2C+Cape+Town%2C+7915!5e0!3m2!1sen!2sza!4v1460629602884" width="1200" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
 				</div>
 
@@ -167,7 +222,7 @@ Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metu
 					<div class="row">
 						<div class="col-md-4">
 							<div class="related-business">
-								<img src="http://placehold.it/300x250">
+								<img src="http://placehold.it/360x220">
 
 								<h3>Business Title</h3>
 
@@ -177,7 +232,7 @@ Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metu
 
 						<div class="col-md-4">
 							<div class="related-business">
-								<img src="http://placehold.it/300x250">
+								<img src="http://placehold.it/360x220">
 
 								<h3>Business Title</h3>
 
@@ -187,7 +242,7 @@ Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metu
 
 						<div class="col-md-4">
 							<div class="related-business">
-								<img src="http://placehold.it/300x250">
+								<img src="http://placehold.it/360x220">
 
 								<h3>Business Title</h3>
 
