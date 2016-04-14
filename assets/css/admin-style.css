@@ -1,1 +1,19 @@
 @CHARSET "UTF-8";
+/* LSX Business Directory Stylesheet */
+.business-directory .business-header .entry-header-content h1.entry-title {
+  margin-top: 0;
+  margin-bottom: 10px; }
+.business-directory .business-header .entry-header-content .entry-meta {
+  text-align: left; }
+  .business-directory .business-header .entry-header-content .entry-meta .category {
+    margin-bottom: 5px; }
+  .business-directory .business-header .entry-header-content .entry-meta .region {
+    margin-bottom: 10px; }
+@media (min-width: 992px) {
+  .business-directory .business-content-left {
+    float: left; } }
+@media (min-width: 992px) {
+  .business-directory .business-content-right {
+    float: right; } }
+
+/*# sourceMappingURL=admin-style.css.map */

@@ -1,0 +1,40 @@
+@CHARSET "UTF-8";
+
+/* LSX Business Directory Stylesheet */
+
+.business-directory {
+	.business-header {
+		.entry-header-content {
+			h1.entry-title {
+				margin: {
+					top: 0;
+					bottom: 10px;
+				}
+			}
+
+			.entry-meta {
+				text-align: left;
+
+				.category {
+					margin-bottom: 5px;
+				}
+
+				.region {
+					margin-bottom: 10px;
+				}
+			}
+		}
+	}
+
+	.business-content-left {
+		@media (min-width: 992px) {
+			float: left;
+		}
+	}
+
+	.business-content-right {
+		@media (min-width: 992px) {
+			float: right;
+		}
+	}
+}

@@ -67,7 +67,7 @@ class LSX_Business_Directory extends Lsx {
 		
 		// Load front style sheet and JavaScript.
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 		
 		
 		add_image_size( 'lsx-business-logo', 350, 350, true );
@@ -139,7 +139,7 @@ class LSX_Business_Directory extends Lsx {
 	 * @return    null
 	 */
 	public function admin_enqueue_scripts() {
-		wp_enqueue_style('lsx_business_directory_admin_css', LSX_BUSINESS_DIRECTORY_URL.'/assets/css/admin-style.css');
+		wp_enqueue_style('lsx_business_directory_admin_css', LSX_BUSINESS_DIRECTORY_URL . 'assets/css/admin-style.css');
 	}	
 	
 	

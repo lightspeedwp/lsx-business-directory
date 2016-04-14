@@ -46,11 +46,13 @@
 
 	
 				<div class="lsx-business-directory-wrapper filter-items-wrapper">
-					<div id="lsx-business-directory-scroll-wrapper" class="filter-items-container lsx-business-directory masonry">
+					<div id="lsx-business-directory-scroll-wrapper" class="filter-items-container lsx-business-directory">
 	
 						<?php while ( have_posts() ) : the_post(); $count++; ?>
 							
 							<?php 
+							/* Commenting out this stuff for now, static loop below
+
 							// load content
 							if( function_exists( 'caldera_metaplate_from_file' ) && file_exists( get_stylesheet_directory() . '/templates/metaplate-content-business.html' ) ){
 								echo caldera_metaplate_from_file( get_stylesheet_directory() . 'templates/metaplate-content-business.html', get_the_id() );
@@ -58,8 +60,26 @@
 								echo caldera_metaplate_from_file( LSX_BUSINESS_DIRECTORY_PATH . 'templates/metaplate-content-business.html', get_the_id() );
 							}else{
 								get_template_part( 'content', 'business-directory' );
-							}							
+							}	
+							*/						
 							?>
+
+							<article class="business">
+								<div class="business-thumbnail">
+									<?php the_post_thumbnail(); ?>
+								</div>
+
+								<div class="business-content">
+									<h3 class="business-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+
+									<div class="business-details">
+										<div class="row">
+											<div class="col-md-6">
+											</div>
+										</div>
+									</div>
+								</div>
+							</article>
 	
 						<?php endwhile; ?>
 	
