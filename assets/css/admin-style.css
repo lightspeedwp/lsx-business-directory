@@ -1,9 +1,5 @@
 @CHARSET "UTF-8";
 /* LSX Business Directory Stylesheet */
-input
-body.single-business-directory.top-menu-fixed .wrap {
-  margin-top: 80px; }
-
 .business-directory .business-header {
   margin-bottom: 40px; }
   .business-directory .business-header .entry-header-content h1.entry-title {
