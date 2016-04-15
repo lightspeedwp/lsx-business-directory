@@ -2,6 +2,51 @@
 
 /* LSX Business Directory Stylesheet */
 
+
+// Business Archive
+
+.lsx-business-directory-wrapper {
+	.business-facets {
+		h3 {
+			margin: {
+				top: 0;
+				bottom: 15px;
+			}
+			padding-bottom: 5px;
+			border-bottom: 1px solid #ddd;
+		}
+	}
+
+	.business-listings {
+		padding-left: 30px;
+    	border-left: 1px solid #ddd;
+
+    	.business-filters {
+    		padding-bottom: 15px;
+		    margin-bottom: 25px;
+		    border-bottom: 1px solid #ddd;
+    	}
+		
+		.business {
+			margin-bottom: 30px;
+
+			.business-content {
+				.business-title {
+					margin: {
+						top: 0;
+						bottom: 15px;
+					}
+					padding-bottom: 5px;
+					border-bottom: 1px solid #ddd;
+				}
+			}
+		}
+	}
+}
+
+
+// Single Business
+
 .business-directory {
 	.business-header {
 		margin-bottom: 40px;

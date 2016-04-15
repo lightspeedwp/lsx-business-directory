@@ -41,73 +41,115 @@
 					<?php the_archive_description(); ?>
 				</div>
 			<?php } ?>
-			
-			<?php if ( have_posts() ) : $count = 0; ?>
 
-	
-				<div class="lsx-business-directory-wrapper filter-items-wrapper">
-					<div id="lsx-business-directory-scroll-wrapper" class="filter-items-container lsx-business-directory">
-	
-						<?php while ( have_posts() ) : the_post(); $count++; ?>
-							
-							<?php 
-							/* Commenting out this stuff for now, static loop below
+				<?php if ( have_posts() ) : $count = 0; ?>
+		
+					<div class="lsx-business-directory-wrapper">
+						<div class="row">
 
-							// load content
-							if( function_exists( 'caldera_metaplate_from_file' ) && file_exists( get_stylesheet_directory() . '/templates/metaplate-content-business.html' ) ){
-								echo caldera_metaplate_from_file( get_stylesheet_directory() . 'templates/metaplate-content-business.html', get_the_id() );
-							}elseif( function_exists( 'caldera_metaplate_from_file' ) && file_exists( LSX_BUSINESS_DIRECTORY_PATH . 'templates/metaplate-content-business.html' ) ){
-								echo caldera_metaplate_from_file( LSX_BUSINESS_DIRECTORY_PATH . 'templates/metaplate-content-business.html', get_the_id() );
-							}else{
-								get_template_part( 'content', 'business-directory' );
-							}	
-							*/						
-							?>
-
-							<article class="business">
-								<div class="business-thumbnail">
-									<?php the_post_thumbnail(); ?>
+							<div class="col-md-3">
+								<div class="business-facets">
+									<h3>Refine the Results</h3>
+									
+									Facets go here
 								</div>
+							</div>
 
-								<div class="business-content">
-									<h3 class="business-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+							<div class="col-md-9">
 
-									<div class="business-details">
-										<div class="row">
-											<div class="col-md-6">
-											</div>
-										</div>
+								<div class="business-listings">
+
+									<div class="business-filters">
+										Filters go here
 									</div>
+				
+									<?php while ( have_posts() ) : the_post(); $count++; ?>
+										
+										<?php 
+										/* Commenting out this stuff for now, static loop below
+
+										// load content
+										if( function_exists( 'caldera_metaplate_from_file' ) && file_exists( get_stylesheet_directory() . '/templates/metaplate-content-business.html' ) ){
+											echo caldera_metaplate_from_file( get_stylesheet_directory() . 'templates/metaplate-content-business.html', get_the_id() );
+										}elseif( function_exists( 'caldera_metaplate_from_file' ) && file_exists( LSX_BUSINESS_DIRECTORY_PATH . 'templates/metaplate-content-business.html' ) ){
+											echo caldera_metaplate_from_file( LSX_BUSINESS_DIRECTORY_PATH . 'templates/metaplate-content-business.html', get_the_id() );
+										}else{
+											get_template_part( 'content', 'business-directory' );
+										}	
+										*/						
+										?>
+
+										<article class="business">
+											<div class="row">
+												<div class="business-thumbnail col-md-4">
+													<img src="http://placehold.it/270x180">
+												</div>
+
+												<div class="business-content col-md-8">
+													<h4 class="business-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+
+													<div class="business-details">
+														<div class="row">
+															<div class="business-meta col-md-6">
+																<div class="category">
+																	<span><strong>Category: </strong>The Business Category</span>
+																</div>
+
+																<div class="region">
+																	<span><strong>Region: </strong>The Business Region</span>
+																</div>
+
+																<div class="telephone">
+																	<span><strong>Telephone: </strong> <a href="tel:+27215555555" target="_blank">+27 (21) 555 5555</a></span>
+																</div>
+
+																<div class="email">
+																	<span><strong>Email: </strong> <a href="mailto:info@business.co.za" target="_blank">info@business.co.za</a></span>
+																</div>
+
+																<div class="website">
+																	<span><strong>Website: </strong> <a href="www.business.co.za" target="_blank">www.business.co.za</a></span>
+																</div>
+															</div>
+
+															<div class="business-excerpt col-md-6">
+																<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed preti ...</p>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</article>
+				
+									<?php endwhile; ?>
+				
 								</div>
-							</article>
-	
-						<?php endwhile; ?>
-	
+							</div>
+						</div>
 					</div>
-				</div>
-					
-			<?php else : ?>
+						
+				<?php else : ?>
 
-				<section class="no-results not-found">
-					<header class="page-header">
-						<h1 class="page-title"><?php _e( 'Nothing Found', 'lsx-business-directory' ); ?></h1>
-					</header><!-- .page-header -->
+					<section class="no-results not-found">
+						<header class="page-header">
+							<h1 class="page-title"><?php _e( 'Nothing Found', 'lsx-business-directory' ); ?></h1>
+						</header><!-- .page-header -->
 
-					<div class="page-content">
-						<?php if ( current_user_can( 'publish_posts' ) ) : ?>
+						<div class="page-content">
+							<?php if ( current_user_can( 'publish_posts' ) ) : ?>
 
-							<p><?php printf( __( 'Ready to publish your first tour? <a href="%1$s">Get started here</a>.', 'lsx-business-directory' ), esc_url( admin_url( 'post-new.php?post_type=business-directory' ) ) ); ?></p>
+								<p><?php printf( __( 'Ready to publish your first tour? <a href="%1$s">Get started here</a>.', 'lsx-business-directory' ), esc_url( admin_url( 'post-new.php?post_type=business-directory' ) ) ); ?></p>
 
-						<?php else : ?>
+							<?php else : ?>
 
-							<p><?php _e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'lsx-business-directory' ); ?></p>
-							<?php get_search_form(); ?>
+								<p><?php _e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'lsx-business-directory' ); ?></p>
+								<?php get_search_form(); ?>
 
-						<?php endif; ?>
-					</div><!-- .page-content -->
-				</section><!-- .no-results -->
+							<?php endif; ?>
+						</div><!-- .page-content -->
+					</section><!-- .no-results -->
 
-			<?php endif; ?>	
+				<?php endif; ?>	
 
 			<div class="clearfix"></div>
 
