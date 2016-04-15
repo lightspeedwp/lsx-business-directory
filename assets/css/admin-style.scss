@@ -28,7 +28,7 @@
     	}
 		
 		.business {
-			margin-bottom: 30px;
+			margin-bottom: 20px;
 
 			.business-content {
 				.business-title {
@@ -38,6 +38,14 @@
 					}
 					padding-bottom: 5px;
 					border-bottom: 1px solid #ddd;
+				}
+			}
+
+			.business-details {
+				.business-meta {
+					div {
+						margin-bottom: 5px;
+					}
 				}
 			}
 		}

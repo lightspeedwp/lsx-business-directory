@@ -13,12 +13,14 @@
     margin-bottom: 25px;
     border-bottom: 1px solid #ddd; }
   .lsx-business-directory-wrapper .business-listings .business {
-    margin-bottom: 30px; }
+    margin-bottom: 20px; }
     .lsx-business-directory-wrapper .business-listings .business .business-content .business-title {
       margin-top: 0;
       margin-bottom: 15px;
       padding-bottom: 5px;
       border-bottom: 1px solid #ddd; }
+    .lsx-business-directory-wrapper .business-listings .business .business-details .business-meta div {
+      margin-bottom: 5px; }
 
 .business-directory .business-header {
   margin-bottom: 40px; }

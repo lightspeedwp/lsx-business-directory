@@ -82,7 +82,7 @@
 										<article class="business">
 											<div class="row">
 												<div class="business-thumbnail col-md-4">
-													<img src="http://placehold.it/270x180">
+													<img src="http://placehold.it/270x200">
 												</div>
 
 												<div class="business-content col-md-8">
@@ -113,7 +113,7 @@
 															</div>
 
 															<div class="business-excerpt col-md-6">
-																<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed preti ...</p>
+																<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet ...</p>
 															</div>
 														</div>
 													</div>
