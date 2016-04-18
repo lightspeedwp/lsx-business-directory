@@ -50,7 +50,7 @@
 							<div class="col-md-3">
 								<div class="business-facets">
 									<h3>Refine the Results</h3>
-									
+									[facetwp counts="true"]
 									Facets go here
 								</div>
 							</div>
@@ -60,7 +60,9 @@
 								<div class="business-listings">
 
 									<div class="business-filters">
-										Filters go here
+										<?php echo do_shortcode('[facetwp sort="true"]'); ?>
+										<?php echo do_shortcode('[facetwp per_page="true"]'); ?>
+										<?php echo do_shortcode('[facetwp pager="true"]'); ?>
 									</div>
 				
 									<?php while ( have_posts() ) : the_post(); $count++; ?>
