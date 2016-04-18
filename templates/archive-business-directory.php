@@ -42,16 +42,16 @@
 				</div>
 			<?php } ?>
 
+				<div class="facetwp-template">
 				<?php if ( have_posts() ) : $count = 0; ?>
 		
-					<div class="lsx-business-directory-wrapper facetwp-template">
+					<div class="lsx-business-directory-wrapper">
 						<div class="row">
 
 							<div class="col-md-3">
 								<div class="business-facets">
 									<h3>Refine the Results</h3>
-									[facetwp counts="true"]
-									Facets go here
+									<?php echo do_shortcode('[facetwp facet="type"]'); ?>
 								</div>
 							</div>
 
@@ -152,6 +152,7 @@
 					</section><!-- .no-results -->
 
 				<?php endif; ?>	
+				</div>
 
 			<div class="clearfix"></div>
 
