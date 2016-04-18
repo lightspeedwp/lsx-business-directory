@@ -44,7 +44,7 @@
 
 				<?php if ( have_posts() ) : $count = 0; ?>
 		
-					<div class="lsx-business-directory-wrapper">
+					<div class="lsx-business-directory-wrapper facetwp-template">
 						<div class="row">
 
 							<div class="col-md-3">
