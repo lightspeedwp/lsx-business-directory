@@ -25,6 +25,28 @@
     		padding-bottom: 15px;
 		    margin-bottom: 25px;
 		    border-bottom: 1px solid #ddd;
+
+		    .business-filters-top {
+		    	margin-bottom: 20px;
+
+		    	& > div {
+		    		display: inline-block;
+
+		    		&.facetwp-sort {
+		    			margin-right: 10px;
+		    		}
+		    	}
+		    }
+
+		    .business-filters-bottom {
+		    	& > div {
+		    		display: inline-block;
+
+		    		&.facetwp-pager {
+		    			float: right;
+		    		}
+		    	}
+		    }
     	}
 		
 		.business {

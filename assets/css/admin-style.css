@@ -12,6 +12,16 @@
     padding-bottom: 15px;
     margin-bottom: 25px;
     border-bottom: 1px solid #ddd; }
+    .lsx-business-directory-wrapper .business-listings .business-filters .business-filters-top {
+      margin-bottom: 20px; }
+      .lsx-business-directory-wrapper .business-listings .business-filters .business-filters-top > div {
+        display: inline-block; }
+        .lsx-business-directory-wrapper .business-listings .business-filters .business-filters-top > div.facetwp-sort {
+          margin-right: 10px; }
+    .lsx-business-directory-wrapper .business-listings .business-filters .business-filters-bottom > div {
+      display: inline-block; }
+      .lsx-business-directory-wrapper .business-listings .business-filters .business-filters-bottom > div.facetwp-pager {
+        float: right; }
   .lsx-business-directory-wrapper .business-listings .business {
     margin-bottom: 20px; }
     .lsx-business-directory-wrapper .business-listings .business .business-content .business-title {
