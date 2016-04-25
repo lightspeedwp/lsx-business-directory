@@ -65,6 +65,7 @@
 									<div class="business-filters">
 										<?php echo do_shortcode('[facetwp sort="true"]'); ?>
 										<?php echo do_shortcode('[facetwp per_page="true"]'); ?>
+										<?php echo do_shortcode('[facetwp facet="alphabet"]'); ?>
 										<?php echo do_shortcode('[facetwp pager="true"]'); ?>
 									</div>
 				
