@@ -63,10 +63,15 @@
 								<div class="business-listings">
 
 									<div class="business-filters">
-										<?php echo do_shortcode('[facetwp sort="true"]'); ?>
-										<?php echo do_shortcode('[facetwp per_page="true"]'); ?>
-										<?php echo do_shortcode('[facetwp facet="alphabet"]'); ?>
-										<?php echo do_shortcode('[facetwp pager="true"]'); ?>
+										<div class="business-filters-top">
+											<?php echo do_shortcode('[facetwp sort="true"]'); ?>
+											<?php echo do_shortcode('[facetwp per_page="true"]'); ?>
+										</div>
+										
+										<div class="business-filters-bottom">
+											<?php echo do_shortcode('[facetwp facet="alphabet"]'); ?>
+											<?php echo do_shortcode('[facetwp pager="true"]'); ?>
+										</div>
 									</div>
 				
 									<?php while ( have_posts() ) : the_post(); $count++; ?>
