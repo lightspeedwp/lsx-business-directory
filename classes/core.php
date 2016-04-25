@@ -60,6 +60,7 @@ class LSX_Business_Directory extends Lsx {
 
 		// activate property post type
 		add_action( 'init', array( $this, 'register_post_types' ) );
+		add_action( 'init', array( $this, 'register_taxonomies') );
 
 		// Redirect Templates
 		add_filter( 'template_include', array( $this, 'post_type_single_template_include'), 99 );
@@ -191,6 +192,69 @@ class LSX_Business_Directory extends Lsx {
 		// register post type
 		lsx_register_post_type('business-directory', $args);
 	}
+	
+	/**
+	 * Register the global post types.
+	 *
+	 *
+	 * @return    null
+	 */
+	public function register_taxonomies() {
+			
+		$labels = array(
+				'name' => _x( 'Industry', 'lsx-tour-operators' ),
+				'singular_name' => _x( 'Industry', 'lsx-tour-operators' ),
+				'search_items' =>  __( 'Search Industries' , 'lsx-tour-operators' ),
+				'all_items' => __( 'Industries' , 'lsx-tour-operators' ),
+				'parent_item' => __( 'Parent Industry' , 'lsx-tour-operators' ),
+				'parent_item_colon' => __( 'Parent Industry:' , 'lsx-tour-operators' ),
+				'edit_item' => __( 'Edit Industry' , 'lsx-tour-operators' ),
+				'update_item' => __( 'Update Industry' , 'lsx-tour-operators' ),
+				'add_new_item' => __( 'Add New Industry' , 'lsx-tour-operators' ),
+				'new_item_name' => __( 'New Industry' , 'lsx-tour-operators' ),
+				'menu_name' => __( 'Industry' , 'lsx-tour-operators' ),
+		);
+	
+		// Now register the taxonomy
+		register_taxonomy('industry',array('business-directory'), array(
+				'hierarchical' => true,
+				'labels' => $labels,
+				'show_ui' => true,
+				'public' => true,
+				'exclude_from_search' => true,
+				'show_admin_column' => true,
+				'query_var' => true,
+				'rewrite' => array('industry'),
+		));
+	
+		$labels = array(
+				'name' => _x( 'Region', 'lsx-tour-operators' ),
+				'singular_name' => _x( 'Region', 'lsx-tour-operators' ),
+				'search_items' =>  __( 'Search Regions' , 'lsx-tour-operators' ),
+				'all_items' => __( 'Regions' , 'lsx-tour-operators' ),
+				'parent_item' => __( 'Parent Region' , 'lsx-tour-operators' ),
+				'parent_item_colon' => __( 'Parent Region:' , 'lsx-tour-operators' ),
+				'edit_item' => __( 'Edit Region' , 'lsx-tour-operators' ),
+				'update_item' => __( 'Update Region' , 'lsx-tour-operators' ),
+				'add_new_item' => __( 'Add New Region' , 'lsx-tour-operators' ),
+				'new_item_name' => __( 'New Region' , 'lsx-tour-operators' ),
+				'menu_name' => __( 'Regions' , 'lsx-tour-operators' ),
+		);
+	
+	
+		// Now register the taxonomy
+		register_taxonomy('region',array('business-directory'), array(
+				'hierarchical' => true,
+				'labels' => $labels,
+				'show_ui' => true,
+				'public' => true,
+				'exclude_from_search' => true,
+				'show_admin_column' => true,
+				'query_var' => true,
+				'rewrite' => array('region'),
+		));
+	
+	}		
 
 	/**
 	 * Redirect wordpress to the single template located in the plugin
