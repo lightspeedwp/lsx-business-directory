@@ -51,7 +51,8 @@
 							<div class="col-md-3">
 								<div class="business-facets">
 									<h3>Refine the Results</h3>
-									<?php echo do_shortcode('[facetwp facet="type"]'); ?>
+									<?php echo do_shortcode('[facetwp facet="industry"]'); ?>
+									<?php echo do_shortcode('[facetwp facet="region"]'); ?>
 								</div>
 							</div>
 
