@@ -7,10 +7,10 @@
  * @copyright 2015 LightSpeed
  *
  * @wordpress-plugin
- * Plugin Name: LSX Business Directory (2.0 Branch)
+ * Plugin Name: LSX Business Directory
  * Plugin URI:  http://lsdev.biz/
  * Description: Business Directory addon for the LSX Framework
- * Version:     2.0
+ * Version:     1.0.0
  * Author:      LightSpeed Team
  * Author URI:  https://www.lsdev.biz/
  * Text Domain: lsx-business-directory
@@ -39,9 +39,6 @@ if ( ! defined( 'LSX_BUSINESS_DIRECTORY_LABEL' ) ) {
 require_once LSX_BUSINESS_DIRECTORY_PATH . 'vendor/class-tgm-plugin-activation.php';
 add_action( 'tgmpa_register', 'lsx_business_directory_register_required_plugins' );
 
-if(!defined('LSX_FRAMEWORK_VERSION')){
-	require_once( LSX_BUSINESS_DIRECTORY_PATH . 'vendor/lsx-framework/plugincore.php' );
-}
 
 
 /**

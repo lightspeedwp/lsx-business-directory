@@ -68,7 +68,7 @@ class LSX_Business_Directory extends Lsx {
 		
 		// Load front style sheet and JavaScript.
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 		
 		
 		add_image_size( 'lsx-business-logo', 350, 350, true );
@@ -118,8 +118,18 @@ class LSX_Business_Directory extends Lsx {
 	 * @return    null
 	 */
 	public function enqueue_scripts() {
-		wp_enqueue_style('lsx_business_directory_style', LSX_BUSINESS_DIRECTORY_URL.'assets/css/frontend.css');
-		wp_enqueue_script('lsx_business_directory_script', LSX_BUSINESS_DIRECTORY_URL . 'assets/js/frontend.min.js', array('jquery'), null, false);
+		
+		//wp_enqueue_style('lsx_landing_pages_style', LSX_BUSINESS_DIRECTORY_URL.'/assets/css/style.css');
+		wp_enqueue_script('lsx_business_directory_script', LSX_BUSINESS_DIRECTORY_URL . 'assets/js/lsx-business-directory.js', array('jquery'), null, false);
+		
+		//Set some parameters that we can use in the JS
+		/*$is_portfolio = false;
+		$param_array = array(
+				'is_portfolio' => $is_portfolio
+		);
+		//Set the columns for the archives
+		$param_array['columns'] = apply_filters('lsx_archive_column_number',3);
+		wp_localize_script( 'lsx_script', 'lsx_params', $param_array );		*/
 	}
 	
 	/**
@@ -130,7 +140,7 @@ class LSX_Business_Directory extends Lsx {
 	 * @return    null
 	 */
 	public function admin_enqueue_scripts() {
-		wp_enqueue_style('lsx_business_directory_admin_css', LSX_BUSINESS_DIRECTORY_URL.'/assets/css/admin-style.css');
+		wp_enqueue_style('lsx_business_directory_admin_css', LSX_BUSINESS_DIRECTORY_URL . 'assets/css/admin-style.css');
 	}	
 	
 	
@@ -167,7 +177,7 @@ class LSX_Business_Directory extends Lsx {
 				'exclude_from_search' 	=>	false,
 				'capability_type' 		=>	'page',
 				'has_archive' 			=>	LSX_BUSINESS_DIRECTORY_ARCHIVE_SLUG,
-				'hierarchical' 			=>	true,
+				'hierarchical' 			=>	false,
 				'menu_position' 		=>	null,
 				'menu_icon'				=>	"dashicons-list-view",
 				'supports' 				=> array(
@@ -175,8 +185,7 @@ class LSX_Business_Directory extends Lsx {
 											'editor',
 											'thumbnail',
 											'excerpt',
-											'custom-fields',
-											'page-attributes'
+											'custom-fields'
 											),
 		);
 	
@@ -245,7 +254,7 @@ class LSX_Business_Directory extends Lsx {
 				'rewrite' => array('region'),
 		));
 	
-	}	
+	}		
 
 	/**
 	 * Redirect wordpress to the single template located in the plugin
@@ -297,41 +306,8 @@ class LSX_Business_Directory extends Lsx {
 		if( $post->post_type !== 'business-directory' ){
 			return $data;
 		}
-		
-		//Load all of the neccesary hooks
-		$data['lsx_entry_before'] = $data['lsx_entry_top'] = $data['lsx_entry_bottom'] = $data['lsx_entry_after'] = '';
-		
-		if(is_post_type_archive('business-directory')){
-			ob_start();
-			lsx_entry_before();
-			$data['lsx_entry_before'] = ob_get_clean();	
-			
-			ob_start();
-			lsx_entry_top();
-			$data['lsx_entry_top'] = ob_get_clean();	
-			
-			ob_start();
-			lsx_entry_bottom();
-			$data['lsx_entry_bottom'] = ob_get_clean();
-			
-			ob_start();
-			lsx_entry_after();
-			$data['lsx_entry_after'] = ob_get_clean();
-		}elseif(is_singular()){
-			
-			$related_args = array(
-				'post_type'	=>	$post->post_type,
-				'post_type'	=>	'publish',
-				'nopagin' => true
-			);
-			
-			if(0 !== $post->post_parent){
-				$related_args = array();
-			}
-		}
-		
 
-		// Load the rest of the Content
+		// add content
 		ob_start();
 		the_content();
 		$data['post_content'] = ob_get_clean();
@@ -360,21 +336,10 @@ class LSX_Business_Directory extends Lsx {
 
 		if($data['location']){
 			$data['map'] = $lsx_maps->map_output($data['location']);
-		}	
-		
-		
-		if($data['head_office']){
-			if('1' === $data['head_office']){
-				$data['head_office'] = __('Head Office','lsx-business-directory');
-			}else{
-				unset($data['head_office']);
-			}
 		}		
-		
 		$data['global']['site_url'] = site_url();
 		
 		$data = apply_filters('lsx-business-directory-metaplate-data',$data);
-		
 		return $data;
 	}
 	
@@ -391,22 +356,5 @@ class LSX_Business_Directory extends Lsx {
 			$default_size = '1c';
 		}
 		return $default_size;
-	}
-	
-	/**
-	 * Get the "related" branches
-	 *
-	 */
-	/*public function single_layout_filter( $default_size ){
-		global $post;
-		
-		$related_args = array(
-			'post_type'	=>	$post->post_type,
-			'post_type'	=>	'publish',
-			'nopagin' => true
-		);
-		if(0 !== $post->post_parent){
-			$related_args['child_of'] = $post->post_parent;
-		}
-	}*/	
+	}		
 }

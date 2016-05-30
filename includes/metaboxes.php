@@ -30,18 +30,6 @@ function lsx_business_directory_register_metaboxes(){
 		'fields'			=>	array() // fields this metabox had
 	);
 	
-	$details_metabox				= $metabox_base;
-	$details_metabox['id'] 			= 'details';
-	$details_metabox['panel'] 		= __( 'Details', 'lsx-business-directory' );
-	$details_metabox['fields'] 		= array(
-			'featured'		=>	array( 'label' => __('Featured', 'lsx-business-directory') ,'type' => 'radio', 'options' => array('0'=>'No','1'=>'Yes') ),
-			'head_office'	=>	array( 'label' => __('Head Office', 'lsx-business-directory'),'type' => 'radio', 'options' => array('0'=>'No','1'=>'Yes') ),
-			'shortname'		=>	array( 'label' => __('Short Name', 'lsx-business-directory') ),
-			'slogan'		=>	array( 'label' => __('Slogan', 'lsx-business-directory') )
-	);
-	// register it
-	lsx_register_metabox( $details_metabox );	
-	
 	/*
 	 * register the general tab
 	 *
@@ -55,8 +43,7 @@ function lsx_business_directory_register_metaboxes(){
 		'primary_phone'		=>	array( 'label' => __('Primary Phone', 'lsx-business-directory') ),
 		'secondary_phone'	=>	array( 'label' => __('Secondary Phone', 'lsx-business-directory') ),
 		'fax_number'		=>	array( 'label' => __('Fax Number', 'lsx-business-directory') ),
-		'website'			=>	array( 'label' => __('Website', 'lsx-business-directory') ),
-		'vat'				=>	array( 'label' => __('V.A.T #', 'lsx-business-directory') ),
+		'website'			=>	array( 'label' => __('Website', 'lsx-business-directory') ),	
 	);
 	// register it
 	lsx_register_metabox( $general_metabox );
@@ -105,8 +92,7 @@ function lsx_business_directory_register_metaboxes(){
 			'country'			=>	array( 'label' => __('Country', 'lsx-business-directory'), 'type' => 'country'),					
 	);
 	// register it
-	lsx_register_metabox( $address_metabox );
-	
-	do_action('lsx_business_directory_register_metaboxes',$metabox_base);
+	lsx_register_metabox( $address_metabox );	
+		
 }
 lsx_business_directory_register_metaboxes();
