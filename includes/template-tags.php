@@ -25,6 +25,30 @@ function lsx_business_entry(){
 	}	
 }
 
+function lsx_business_promotion() {
+	lsx_business_template( 'single-business-promotion' );
+}
+
+function lsx_business_row() {
+	lsx_business_template( 'single-row-business' );		
+}
+
+function lsx_related_business() {
+	lsx_business_template( 'single-business-related-business' );
+}
+
+function lsx_claim_this_listing_button() {
+	lsx_business_template( 'single-business-claim-button' );
+}
+
+function lsx_business_template ( $filename_base ) {
+	if( file_exists( get_stylesheet_directory() . '/templates/' . $filename_base . '.php' ) ) {
+		include get_stylesheet_directory() . '/templates/' . $filename_base . '.php';
+	}elseif( file_exists( LSX_BUSINESS_DIRECTORY_PATH . 'templates/' . $filename_base . '.php' ) ){
+		include LSX_BUSINESS_DIRECTORY_PATH . 'templates/' . $filename_base . '.php';
+	}
+}
+
 /**
  * Generates a comma seperated string from specified taxonomy
  *

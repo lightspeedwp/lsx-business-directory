@@ -78,8 +78,16 @@ class LSX_Business_Directory extends Lsx {
 		
 		//Set the single to 1 column
 		add_filter( 'lsx_bootstrap_column_size', array( $this, 'single_layout_filter' )  );
-	}
 
+		// Add Business Directory Settings Menu
+		add_action( 'admin_menu', array( $this, 'add_business_directory_settings' ) );
+
+		// Add Directory Settings Menu Fields
+		add_action( 'admin_init', array( $this, 'init_business_directory_settings' ) );
+
+		// Checks if a Caldera Form is being submitted and applies filter
+		add_action( 'init', array( $this, 'caldera_form_submission_conditional' ) );		
+	}
 
 	/**
 	 * Return an instance of this class.
@@ -121,6 +129,8 @@ class LSX_Business_Directory extends Lsx {
 		
 		//wp_enqueue_style('lsx_landing_pages_style', LSX_BUSINESS_DIRECTORY_URL.'/assets/css/style.css');
 		wp_enqueue_script('lsx_business_directory_script', LSX_BUSINESS_DIRECTORY_URL . 'assets/js/lsx-business-directory.js', array('jquery'), null, false);
+
+		wp_enqueue_style( 'lsx_business_directory_style', LSX_BUSINESS_DIRECTORY_URL . 'assets/css/frontend.css' );
 		
 		//Set some parameters that we can use in the JS
 		/*$is_portfolio = false;
@@ -356,5 +366,123 @@ class LSX_Business_Directory extends Lsx {
 			$default_size = '1c';
 		}
 		return $default_size;
-	}		
+	}
+
+	/**
+	 * Add Settings Menu to Business Directory Admin Section
+	 *
+	 * @since 2.1
+	 *
+	 */
+	public function add_business_directory_settings() {
+		add_submenu_page( 'edit.php?post_type=business-directory', 'Settings', 'Settings', 'manage_options', 'business-directory-settings', array( $this, 'display_business_directory_settings' ) );
+	}
+
+	/**
+	 * Register Settings for Settings Menu under Business Directory Admin Section
+	 *
+	 * @since 2.1
+	 *
+	 */
+	public function init_business_directory_settings() {
+	    register_setting( 'business-directory-settings-group', 'lsx-business-directory-generic-form' );
+	    add_settings_section( 'business-directory-settings-section-one', 'Business Directory Settings', array( $this, 'business_directory_settings_section'), 'lsx-business-directory-form' );
+	    add_settings_field( 'lsx-caldera-form', 'Generic Caldera Form', array( $this, 'business_directory_generic_form_caldera_field') , 'lsx-business-directory-form', 'business-directory-settings-section-one' );
+	}
+
+	/**
+	 * Renders First Section for Settings Menu under Business Directory Admin Section
+	 *
+	 * @since 2.1
+	 *
+	 */
+	public function business_directory_settings_section() {
+		// do nothing
+	}
+
+	/**
+	 * Renders Caldera form for Settings Menu under Business Directory Admin Section
+	 *
+	 * @since 2.1
+	 *
+	 */
+	public function business_directory_generic_form_caldera_field() {
+	    $setting = get_option( 'lsx-business-directory-generic-form' );
+
+	    if ( class_exists( 'Caldera_Forms') ) {
+
+		    $forms = Caldera_Forms::get_forms( true );
+		    if ( !empty( $forms ) ) {
+		    	echo '<select name="lsx-business-directory-generic-form">';		    	
+		    	foreach( $forms as $form ) {
+		    		$state = '';
+		    		if ( $setting == $form['ID'] ) $state = 'selected';		    		
+		    		echo '<option value="' . $form["ID"] . '" ' . $state . '>' . $form['name'] . '</option>';
+		    	}
+		    	echo '</select>';
+		    }
+		}
+	}
+
+	/**
+	 * Add Settings Menu under Business Directory Admin Section
+	 *
+	 * @since 2.1
+	 *
+	 */
+	public function display_business_directory_settings() { ?>
+		<div class="wrap">
+	        <form action="options.php" method="POST">
+	            <?php settings_fields( 'business-directory-settings-group' ); ?>
+	            <?php do_settings_sections( 'lsx-business-directory-form' ); ?>
+	            <?php submit_button(); ?>
+	        </form>
+	    </div>
+	<?php }
+
+	/**
+	 * Check $_POST variable for Caldera Form submission and apply pre-send form filter
+	 *
+	 * @since 2.1
+	 *
+	 */
+	function caldera_form_submission_conditional() {
+		$submitted_form = $_POST;
+		if ( isset( $submitted_form ) ) {
+			if( isset( $submitted_form['_cf_frm_id'] ) ) {
+				add_filter( 'caldera_forms_get_form-' . $submitted_form['_cf_frm_id'], array( $this, 'business_recipient_filter' ), 1, 2 );
+			}
+		}
+	}
+
+	/**
+	 * Check $_POST variable for Caldera Form submission and apply pre-send form filter
+	 *
+	 * @since 2.1
+	 * @param	$form			array  	Array with form settings
+	 * @param 	$id_name		string 	Caldera Form Slug
+	 * @return	$form 			array 	Array with form settings
+	 */
+	function business_recipient_filter( $form, $id_name ) {
+		// Check if this is the form selected in the Business Directory settings page
+		if ( get_option( 'lsx-business-directory-generic-form' ) == $id_name ) {
+			$submitted_form = $_POST;
+			if ( isset( $submitted_form['_wp_http_referer'] ) && $referrer = $submitted_form['_wp_http_referer'] ) {
+				$referrer_array = explode( '/', substr( $referrer, 1, strlen( $referrer ) - 1 ) );
+				if ( !empty( $referrer_array ) ) {
+					// Are we on a single business directory?
+					if ( $referrer_array[0] == 'business' ) {
+						$business = get_page_by_path( $referrer_array[1], OBJECT, 'business-directory' );
+						if ( !empty( $business ) ) {
+							$general_tab_fields = get_post_meta( $business->ID, 'general', true );
+							if ( isset( $general_tab_fields['primary_email'] ) && $primary_email = $general_tab_fields['primary_email'] ) {
+								$form['mailer']['recipients'] = $primary_email;
+							}
+						}
+					}
+				}
+			}
+		}
+		return $form;
+	}
 }

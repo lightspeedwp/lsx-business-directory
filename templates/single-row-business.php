@@ -1,7 +1,11 @@
+<?php
+	$general_tab_fields = get_post_meta( get_the_ID(), 'general', true );
+	extract( $general_tab_fields );
+?>
 <article class="business">
 	<div class="row">
 		<div class="business-thumbnail col-md-4">
-			<img src="http://placehold.it/270x200">
+			<img src="<?php echo get_thumbnail_wrapped( get_the_ID(), 270, 200 ); ?>">
 		</div>
 
 		<div class="business-content col-md-8">
@@ -11,28 +15,34 @@
 				<div class="row">
 					<div class="business-meta col-md-6">
 						<div class="category">
-							<span><strong>Category: </strong>The Business Category</span>
+							<span><strong>Category: </strong><?php echo get_formatted_taxonomy_str( get_the_ID(), 'industry' ); ?></span>
 						</div>
 
 						<div class="region">
-							<span><strong>Region: </strong>The Business Region</span>
+							<span><strong>Region: </strong><?php echo get_formatted_taxonomy_str( get_the_ID(), 'region' ); ?></span>
 						</div>
 
-						<div class="telephone">
-							<span><strong>Telephone: </strong> <a href="tel:+27215555555" target="_blank">+27 (21) 555 5555</a></span>
-						</div>
-
+						<?php if ( $primary_phone ) : ?>
+							<div class="telephone">
+								<span><strong>Telephone: </strong> <a href="tel:<?php echo str_replace(' ', '', $primary_phone );?>" target="_blank"><?php echo $primary_phone;?></a></span>
+							</div>
+						<?php endif; ?>
+						
+						<?php if ( $primary_email ) : ?>
 						<div class="email">
-							<span><strong>Email: </strong> <a href="mailto:info@business.co.za" target="_blank">info@business.co.za</a></span>
+							<span><strong>Email: </strong> <a href="mailto:<?php echo $primary_email; ?>" target="_blank"><?php echo $primary_email; ?></a></span>
 						</div>
-
-						<div class="website">
-							<span><strong>Website: </strong> <a href="www.business.co.za" target="_blank">www.business.co.za</a></span>
-						</div>
+						<?php endif; ?>
+						
+						<?php if ( $website ) : ?>
+							<div class="website">
+								<span><strong>Website: </strong> <a href="<?php echo $website; ?>" target="_blank"><?php echo $website; ?></a></span>
+							</div>
+						<?php endif; ?>
 					</div>
 
 					<div class="business-excerpt col-md-6">
-						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet ...</p>
+						<?php echo get_the_excerpt(); ?>
 					</div>
 				</div>
 			</div>

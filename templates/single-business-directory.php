@@ -49,7 +49,12 @@ get_header(); ?>
 										<span><strong>Region: </strong><?php echo get_formatted_taxonomy_str( get_the_ID(), 'region' ); ?></span>
 									</div>
 
-									<a href="#" class="btn">Claim this listing</a>
+									<?php
+										/* Contains HTML for proposed Claim This Listing Button */
+										/* lsx_claim_this_listing_button();
+										*/
+									?>	
+
 								</div>
 							</div>
 						</div>
@@ -60,15 +65,10 @@ get_header(); ?>
 					<div class="business-content-right col-md-4">
 						<div class="contact-form business-content-section">
 							<h4 class="business-section-title">Contact <?php the_title(); ?></h4>
-
-							<form>
-								<div class="ginput_container">
-									<input type="text" placeholder="Name">
-									<input type="text" placeholder="Email Address">
-									<textarea placeholder="Message"></textarea>
-								</div>
-								<input type="submit" class="btn" value="Submit">
-							</form>
+							<?php
+								$form_slug = get_option( 'lsx-business-directory-generic-form' );
+								echo Caldera_Forms::render_form( $form_slug );
+							?>
 						</div>
 
 						<div class="contact-info business-content-section">
@@ -205,78 +205,54 @@ get_header(); ?>
 							</div>
 						</div>
 
-						<div class="promotions business-content-section">
-							<h3 class="business-section-title">Promotions</h3>
-
-							<div class="promotion">
-								<div class="promotion-thumbnail">
-									<img src="http://placehold.it/300x220">
-								</div>
-
-								<div class="promotion-content">
-									<h4>Promotion Title</h4>
-
-									<div class="promotion-category">
-										<span><strong>Category: </strong>The Promotion Category</span>
-									</div>
-
-									<div class="promotion-price">
-										<strong>R99.99</strong>
-									</div>
-
-									<div class="promotion-description">
-										<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.</p>
-									</div>
-								</div>
-							</div>
-						</div>
+						<?php
+							/* Contains HTML for proposed Promotion Section */
+							/* lsx_business_promotion();
+							*/
+						?>						
 					</div>
 				</div>
 
 				<div class="business-map business-content-section">
 					<?php
+						/*
+						* Render the Google Map Div
+						* Includes API parameter and calls custom field
+						*/
 						if ( $location = $address_tab_field['location'] ) {
-							$embed_string = 'https://www.google.com/maps/embed/v1/place?key=' . 'AIzaSyAKJbi0J495DFnSkV1EO5Jyh37bCJZjeaM' . '&q=' . urlencode( $location );
-							echo '<iframe src="' . $embed_string . '" width="1200" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>';
+							$api_key = 'AIzaSyAKJbi0J495DFnSkV1EO5Jyh37bCJZjeaM';
+							echo '<div id="gmap" data-search="' . $location . '" data-api="' . $api_key . '"></div>';
 						}
 					?>
 				</div>
+				<?php
+					$terms = wp_get_post_terms( get_the_ID(), 'industry' );
+					$prepped_terms = array();
+					foreach( $terms as $term ) {
+						array_push( $prepped_terms, $term->term_id ); 
+					}
+					$related_business_query = new WP_Query( array(
+						'post_type' => 'business-directory',
+						'posts_per_page' => 3,
+						'tax_query' => array(
+							array(
+								'taxonomy' => 'industry',
+								'terms'    => $prepped_terms,
+							),
+						),
+					));
 
-				<div class="related-businesses">
-					<h2>Related Businesses</h2>
-
-					<div class="row">
-						<div class="col-md-4">
-							<div class="related-business">
-								<img src="http://placehold.it/360x220">
-
-								<h3>Business Title</h3>
-
-								<span><strong>Category: </strong>The Business Category</span>
+					if ( $related_business_query->have_posts() ) : ?>
+						<div class="related-businesses">
+							<h2>Related Businesses</h2>
+							<div class="row">
+								<?php while( $related_business_query->have_posts() ) : ?>
+									<?php $related_business_query->the_post(); ?>
+									<?php lsx_related_business(); ?>
+								<?php endwhile; ?>								
 							</div>
 						</div>
-
-						<div class="col-md-4">
-							<div class="related-business">
-								<img src="http://placehold.it/360x220">
-
-								<h3>Business Title</h3>
-
-								<span><strong>Category: </strong>The Business Category</span>
-							</div>
-						</div>
-
-						<div class="col-md-4">
-							<div class="related-business">
-								<img src="http://placehold.it/360x220">
-
-								<h3>Business Title</h3>
-
-								<span><strong>Category: </strong>The Business Category</span>
-							</div>
-						</div>
-					</div>
-				</div>
+				<?php endif; ?>
 
 				<?php lsx_entry_bottom(); ?>
 
@@ -294,4 +270,12 @@ get_header(); ?>
 		
 	</div><!-- #primary -->
 
+	<?php
+		/*
+		* Adds the Google Maps Javascript Call if a map field was included
+		*/
+		if ( $location ) : 
+			?><script src="https://maps.googleapis.com/maps/api/js?key=<?php echo $api_key; ?>&callback=initMap&libraries=places" async defer></script><?php
+		endif;
+	?>
 <?php get_footer();
