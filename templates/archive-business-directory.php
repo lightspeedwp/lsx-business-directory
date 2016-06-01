@@ -43,8 +43,7 @@
 			<?php } ?>
 
 				<div class="facetwp-template">
-				<?php if ( have_posts() ) : $count = 0; ?>
-		
+				<?php if ( have_posts() ) : ?>
 					<div class="lsx-business-directory-wrapper">
 						<div class="row">
 
@@ -73,67 +72,11 @@
 											<?php echo do_shortcode('[facetwp pager="true"]'); ?>
 										</div>
 									</div>
-				
-									<?php while ( have_posts() ) : the_post(); $count++; ?>
-										
-										<?php 
-										/* Commenting out this stuff for now, static loop below
-
-										// load content
-										if( function_exists( 'caldera_metaplate_from_file' ) && file_exists( get_stylesheet_directory() . '/templates/metaplate-content-business.html' ) ){
-											echo caldera_metaplate_from_file( get_stylesheet_directory() . 'templates/metaplate-content-business.html', get_the_id() );
-										}elseif( function_exists( 'caldera_metaplate_from_file' ) && file_exists( LSX_BUSINESS_DIRECTORY_PATH . 'templates/metaplate-content-business.html' ) ){
-											echo caldera_metaplate_from_file( LSX_BUSINESS_DIRECTORY_PATH . 'templates/metaplate-content-business.html', get_the_id() );
-										}else{
-											get_template_part( 'content', 'business-directory' );
-										}	
-										*/						
-										?>
-
-										<article class="business">
-											<div class="row">
-												<div class="business-thumbnail col-md-4">
-													<img src="http://placehold.it/270x200">
-												</div>
-
-												<div class="business-content col-md-8">
-													<h4 class="business-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
-
-													<div class="business-details">
-														<div class="row">
-															<div class="business-meta col-md-6">
-																<div class="category">
-																	<span><strong>Category: </strong>The Business Category</span>
-																</div>
-
-																<div class="region">
-																	<span><strong>Region: </strong>The Business Region</span>
-																</div>
-
-																<div class="telephone">
-																	<span><strong>Telephone: </strong> <a href="tel:+27215555555" target="_blank">+27 (21) 555 5555</a></span>
-																</div>
-
-																<div class="email">
-																	<span><strong>Email: </strong> <a href="mailto:info@business.co.za" target="_blank">info@business.co.za</a></span>
-																</div>
-
-																<div class="website">
-																	<span><strong>Website: </strong> <a href="www.business.co.za" target="_blank">www.business.co.za</a></span>
-																</div>
-															</div>
-
-															<div class="business-excerpt col-md-6">
-																<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet ...</p>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</article>
-				
+									<?php while ( have_posts() ) :
+											the_post();		
+											lsx_business_row();									
+										?>										
 									<?php endwhile; ?>
-				
 								</div>
 							</div>
 						</div>
