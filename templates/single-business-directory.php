@@ -149,7 +149,16 @@ get_header(); ?>
 							$api_key = 'AIzaSyAKJbi0J495DFnSkV1EO5Jyh37bCJZjeaM';
 							echo '<div id="gmap" data-search="' . $location . '" data-api="' . $api_key . '"></div>';
 						}
-					?>
+
+						if ( !empty( $branches ) ) : ?>
+							<div id="branch-markers">
+								<?php foreach ( $branches as $branch ) : ?>
+										<?php if ( $branch[ 'branch_google_maps' ] ) : ?>
+											<span class="branch-marker" data-search="<?php echo $branch[ 'branch_google_maps' ]; ?>"></span>
+										<?php endif; ?>
+								<?php endforeach; ?>
+							</div>
+						<?php endif; ?>
 				</div>
 				<?php
 					$terms = wp_get_post_terms( get_the_ID(), 'industry' );

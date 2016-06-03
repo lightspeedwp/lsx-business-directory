@@ -103,7 +103,8 @@ function lsx_business_directory_register_metaboxes(){
 		'branch_name'			=>	array( 'label' => __('Name', 'lsx-business-directory') ),
 		'branch_telephone'		=>	array( 'label' => __('Telephone', 'lsx-business-directory') ), 
 		'branch_email'			=>	array( 'label' => __('Email', 'lsx-business-directory') ), 
-		'branch_website'		=>	array( 'label' => __('Website', 'lsx-business-directory') ), 
+		'branch_website'		=>	array( 'label' => __('Website', 'lsx-business-directory') ),
+		'branch_google_maps'	=>	array( 'label' => __('Google Maps Search', 'lsx-business-directory') ), 
 	);
 
 	lsx_register_metabox( $address_metabox );	

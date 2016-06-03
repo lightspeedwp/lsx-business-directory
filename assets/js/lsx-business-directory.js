@@ -26,14 +26,20 @@ jQuery(document).ready(function($) {
 function createMarker(place) {
 	var placeLoc = place.geometry.location;
 	var marker = new google.maps.Marker({
-	map: map,
+		map: map,
 		position: place.geometry.location
 	});
 
+	markers.push( marker );
+
 	google.maps.event.addListener(marker, 'click', function() {
-		infowindow.setContent(place.name);
+		var infowindow = new google.maps.InfoWindow({
+			content: place.formatted_address
+		});
 		infowindow.open(map, this);
 	});
+
+	setMapCenterZoom();
 }
 
 function initMap() {
@@ -45,6 +51,8 @@ function initMap() {
 		scrollwheel: false
     });
 
+    markers = [];
+
 	var service = new google.maps.places.PlacesService(map);
 	service.textSearch( {
 		query: query
@@ -54,6 +62,29 @@ function initMap() {
 			map.setCenter( myLocation );
 			createMarker(results[0]);
 		}
-
 	});
+
+	if ( jQuery( '#branch-markers' ).length ) {
+		jQuery( '#branch-markers span' ).each( function() {
+			var query = jQuery( this ).data( 'search' );
+			service.textSearch( {
+				query: query
+			}, function( results, status ) {
+				if (status == google.maps.places.PlacesServiceStatus.OK) {
+					createMarker(results[0]);
+				}
+			});
+		});
+	}
+}
+
+function setMapCenterZoom() {
+	if ( markers.length ) {
+		var bounds = new google.maps.LatLngBounds();
+		for (var i = 0; i < markers.length; i++) {
+			bounds.extend(markers[i].getPosition());
+		}
+
+		map.fitBounds(bounds);
+	}
 }
