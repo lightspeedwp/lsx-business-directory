@@ -19,6 +19,7 @@ get_header(); ?>
 			the_post();
 			$general_tab_fields = get_post_meta( get_the_ID(), 'general', true );
 			$address_tab_field = get_post_meta( get_the_ID(), 'address', true );
+			$branches = get_post_meta( get_the_ID(), 'branches', true );
 			extract( $general_tab_fields );
 		?>
 
@@ -121,88 +122,15 @@ get_header(); ?>
 								the_content();
 							?>
 						</div>
-
-						<div class="branches business-content-section">
-							<h3 class="business-section-title">Branches</h3>
-
-							<div class="branch">
-								<h4>The Branch Title</h4>
-
-								<div class="branch-content">
-									<div class="row">
-										<div class="col-md-4">
-											<div class="branch-telephone">
-												<span><strong>Telephone: </strong> <a href="tel:+27215555555" target="_blank">+27 (21) 555 5555</a></span>
-											</div>
-
-											<div class="branch-email">
-												<span><strong>Email: </strong> <a href="mailto:info@business.co.za" target="_blank">info@business.co.za</a></span>
-											</div>
-
-											<div class="branch-website">
-												<span><strong>Website: </strong> <a href="www.business.co.za" target="_blank">www.business.co.za</a></span>
-											</div>
-										</div>
-
-										<div class="col-md-8">
-											<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.</p>
-										</div>
-									</div>
-								</div>
+						
+						<?php if ( !empty( $branches ) ) : ?>
+							<div class="branches business-content-section">
+								<h3 class="business-section-title">Branches</h3>
+								<?php
+									foreach( $branches as $branch ) lsx_business_branch( $branch );
+								?>
 							</div>
-
-							<div class="branch">
-								<h4>The Branch Title</h4>
-
-								<div class="branch-content">
-									<div class="row">
-										<div class="col-md-4">
-											<div class="branch-telephone">
-												<span><strong>Telephone: </strong> <a href="tel:+27215555555" target="_blank">+27 (21) 555 5555</a></span>
-											</div>
-
-											<div class="branch-email">
-												<span><strong>Email: </strong> <a href="mailto:info@business.co.za" target="_blank">info@business.co.za</a></span>
-											</div>
-
-											<div class="branch-website">
-												<span><strong>Website: </strong> <a href="www.business.co.za" target="_blank">www.business.co.za</a></span>
-											</div>
-										</div>
-
-										<div class="col-md-8">
-											<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.</p>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<div class="branch">
-								<h4>The Branch Title</h4>
-
-								<div class="branch-content">
-									<div class="row">
-										<div class="col-md-4">
-											<div class="branch-telephone">
-												<span><strong>Telephone: </strong> <a href="tel:+27215555555" target="_blank">+27 (21) 555 5555</a></span>
-											</div>
-
-											<div class="branch-email">
-												<span><strong>Email: </strong> <a href="mailto:info@business.co.za" target="_blank">info@business.co.za</a></span>
-											</div>
-
-											<div class="branch-website">
-												<span><strong>Website: </strong> <a href="www.business.co.za" target="_blank">www.business.co.za</a></span>
-											</div>
-										</div>
-
-										<div class="col-md-8">
-											<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.</p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+						<?php endif; ?>
 						<?php
 							/* Contains HTML for proposed Promotion Section */
 							/* lsx_business_promotion();

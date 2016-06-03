@@ -41,7 +41,11 @@ function lsx_claim_this_listing_button() {
 	lsx_business_template( 'single-business-claim-button' );
 }
 
-function lsx_business_template ( $filename_base ) {
+function lsx_business_branch( $branch = array() ) {
+	lsx_business_template ( 'single-business-branch', $branch );
+}
+
+function lsx_business_template ( $filename_base, $parameters = array() ) {
 	if( file_exists( get_stylesheet_directory() . '/templates/' . $filename_base . '.php' ) ) {
 		include get_stylesheet_directory() . '/templates/' . $filename_base . '.php';
 	}elseif( file_exists( LSX_BUSINESS_DIRECTORY_PATH . 'templates/' . $filename_base . '.php' ) ){

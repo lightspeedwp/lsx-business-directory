@@ -98,10 +98,12 @@ function lsx_business_directory_register_metaboxes(){
 	$address_metabox		= $metabox_base;
 	$address_metabox['id'] 			= 'branches';
 	$address_metabox['panel'] 		= __( 'Branches', 'lsx-business-directory' );
+	$address_metabox['repeatable'] 	= true;
 	$address_metabox['fields'] 		= array(
-		'test'			=>	array(
-			'label' => __('Test', 'lsx-business-directory'),
-		),
+		'branch_name'			=>	array( 'label' => __('Name', 'lsx-business-directory') ),
+		'branch_telephone'		=>	array( 'label' => __('Telephone', 'lsx-business-directory') ), 
+		'branch_email'			=>	array( 'label' => __('Email', 'lsx-business-directory') ), 
+		'branch_website'		=>	array( 'label' => __('Website', 'lsx-business-directory') ), 
 	);
 
 	lsx_register_metabox( $address_metabox );	
