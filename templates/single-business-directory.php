@@ -7,7 +7,7 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area <?php echo lsx_main_class(); ?>">
+	<div id="primary" class="content-area container <?php echo lsx_main_class(); ?>">
 
 		<?php lsx_content_before(); ?>
 		
@@ -20,7 +20,10 @@ get_header(); ?>
 			$general_tab_fields = get_post_meta( get_the_ID(), 'general', true );
 			$address_tab_field = get_post_meta( get_the_ID(), 'address', true );
 			$branches = get_post_meta( get_the_ID(), 'branches', true );
+			$info = get_post_meta( get_the_ID(), 'info', true );
+
 			extract( $general_tab_fields );
+			extract( $info );
 		?>
 
 			<?php lsx_entry_before(); ?>
@@ -49,6 +52,26 @@ get_header(); ?>
 									<div class="region">
 										<span><strong>Region: </strong><?php echo get_formatted_taxonomy_str( get_the_ID(), 'region' ); ?></span>
 									</div>
+									<?php if ( $fsb ) : ?>
+											<div>
+												<span><strong>FSB: </strong><?php echo $fsb; ?></span>
+											</div>
+									<?php endif; ?>
+									<?php if ( $specialist ) : ?>
+											<div>
+												<span><strong>Specialist: </strong><?php echo $specialist; ?></span>
+											</div>
+									<?php endif; ?>
+									<?php if ( $underwriter ) : ?>
+											<div>
+												<span><strong>Underwriter: </strong><?php echo $underwriter; ?></span>
+											</div>
+									<?php endif; ?>
+									<?php if ( $underwriters ) : ?>
+											<div>
+												<span><strong>Underwriter/s: </strong><?php echo $underwriters; ?></span>
+											</div>
+									<?php endif; ?>
 
 									<?php
 										/* Contains HTML for proposed Claim This Listing Button */
