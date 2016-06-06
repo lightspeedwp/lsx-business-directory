@@ -86,7 +86,8 @@ class LSX_Business_Directory extends Lsx {
 		add_action( 'admin_init', array( $this, 'init_business_directory_settings' ) );
 
 		// Checks if a Caldera Form is being submitted and applies filter
-		add_action( 'init', array( $this, 'caldera_form_submission_conditional' ) );		
+		// Deactivated after internal request. Keeping it here as it could be useful for future use
+		// add_action( 'init', array( $this, 'caldera_form_submission_conditional' ) );		
 	}
 
 	/**
