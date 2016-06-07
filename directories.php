@@ -10,7 +10,7 @@
  * Plugin Name: LSX Business Directory
  * Plugin URI:  http://lsdev.biz/
  * Description: Business Directory addon for the LSX Framework
- * Version:     1.0.0
+ * Version:     1.0.1
  * Author:      LightSpeed Team
  * Author URI:  https://www.lsdev.biz/
  * Text Domain: lsx-business-directory
