@@ -35,15 +35,9 @@ if ( ! defined( 'LSX_BUSINESS_DIRECTORY_LABEL' ) ) {
 	define('LSX_BUSINESS_DIRECTORY_LABEL',  __('Business Directory', 'lsx-business-directory') );
 }
 
-
-require_once LSX_BUSINESS_DIRECTORY_PATH . 'vendor/class-tgm-plugin-activation.php';
-add_action( 'tgmpa_register', 'lsx_business_directory_register_required_plugins' );
-
-
 if(!class_exists('Lsx')){
 	require_once( LSX_BUSINESS_DIRECTORY_PATH . 'vendor/lsx-framework/plugincore.php' );
 }
-
 
 /**
  * Register the module
@@ -70,43 +64,4 @@ function lsx_business_directories_register_module( $modules ){
     );
 	
 	return $modules;
-}
-
-/**
- * Register the LSX Framework as a required plugin
- *
- * @package		lsx-business-directory
- * @category	setup
- */
-function lsx_business_directory_register_required_plugins() {
-	/*
-	 * Array of plugin arrays. Required keys are name and slug.
-	* If the source is NOT from the .org repo, then source is also required.
-	*/
-	$plugins = array(
-
-			array(
-					'name'         => 'LSX Framework', // The plugin name.
-					'slug'         => 'lsx-framework', // The plugin slug (typically the folder name).
-					'source'       => 'https://bitbucket.org/feedmycode/lsx-framework/get/baabe28a14fd.zip', // The plugin source.
-					'required'     => true, // If false, the plugin is only 'recommended' instead of required.
-					'external_url' => 'https://bitbucket.org/feedmycode/lsx-framework/get/baabe28a14fd.zip', // If set, overrides default API URL and points to an external URL.
-			)
-
-	);
-
-	$config = array(
-			'id'           => 'tgmpa-lsx-business-directory',                 // Unique ID for hashing notices for multiple instances of TGMPA.
-			'default_path' => '',                      // Default absolute path to bundled plugins.
-			'menu'         => 'tgmpa-install-plugins', // Menu slug.
-			'parent_slug'  => 'themes.php',            // Parent menu slug.
-			'capability'   => 'edit_theme_options',    // Capability needed to view plugin install page, should be a capability associated with the parent menu used.
-			'has_notices'  => true,                    // Show admin notices or not.
-			'dismissable'  => true,                    // If false, a user cannot dismiss the nag message.
-			'dismiss_msg'  => '',                      // If 'dismissable' is false, this message will be output at top of nag.
-			'is_automatic' => false,                   // Automatically activate plugins after installation or not.
-			'message'      => '',                      // Message to output right before the plugins table.
-	);
-
-	tgmpa( $plugins, $config );
 }
