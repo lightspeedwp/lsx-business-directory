@@ -40,6 +40,10 @@ require_once LSX_BUSINESS_DIRECTORY_PATH . 'vendor/class-tgm-plugin-activation.p
 add_action( 'tgmpa_register', 'lsx_business_directory_register_required_plugins' );
 
 
+if(!class_exists('Lsx')){
+	require_once( LSX_BUSINESS_DIRECTORY_PATH . 'vendor/lsx-framework/plugincore.php' );
+}
+
 
 /**
  * Register the module

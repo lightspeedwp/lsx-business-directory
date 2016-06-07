@@ -1,0 +1,6 @@
+Plugin Name -- LST
+Text domain -- lsx
+Function prefix -- lsx
+Class prefix -- lsx
+Root namespace -- LST
+Hook Prefix -- lsx
