@@ -9,7 +9,7 @@
 ?>
 <?php get_header(); ?>
 
-	<div id="primary" class="content-area col-sm-12">
+	<div id="primary" class="content-area <?php echo lsx_main_class(); ?>">
 
 		<?php //lsx_content_before(); ?>
 
