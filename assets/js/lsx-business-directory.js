@@ -1,6 +1,6 @@
 jQuery(document).ready(function($) {
 
-	/*$('.lsx-map iframe').hover(function() {
+	$('.lsx-map iframe').hover(function() {
 		console.log('HOVERING BITCHES');
 	    $(document).bind('mousewheel DOMMouseScroll',function(){ 
 	        stopWheel(); 
@@ -8,8 +8,11 @@ jQuery(document).ready(function($) {
 	}, function() {
 	    $(document).unbind('mousewheel DOMMouseScroll');
 	});
-	*/
 
+	if ( typeof( google ) != 'undefined' && typeof( google.maps ) == 'object' ) initMap();
+	else {
+		var mapTimer = window.setInterval( watchForMap, 500 );
+	}
 
 	function stopWheel(e){
 	    if(!e){ /* IE7, IE8, Chrome, Safari */ 
@@ -22,6 +25,15 @@ jQuery(document).ready(function($) {
 	    e.returnValue = false; /* IE7, IE8 */
 	}
 });
+
+function watchForMap( ) {
+	if ( typeof( google ) != 'undefined' && typeof( google.maps ) == 'object' ) {
+		window.clearInterval( mapTimer );
+		initMap();
+	} else {
+		var mapTimer = window.setTimeout( watchForMap, 500 );
+	}
+}
 
 function createMarker(place) {
 	var placeLoc = place.geometry.location;
