@@ -7,24 +7,6 @@
  * @copyright 2015 LightSpeed
  */
 
-/**
- * The content and title
- *
- * @package		lsx-business-directory
- * @subpackage	template-tags
- * @category	single
- */
-function lsx_business_entry(){
-	// load content
-	if( function_exists( 'caldera_metaplate_from_file' ) && file_exists( get_stylesheet_directory() . '/templates/metaplate-single-business-content.html' ) ){
-		echo caldera_metaplate_from_file( '/templates/metaplate-single-business-content.html', get_the_id() );
-	}elseif( function_exists( 'caldera_metaplate_from_file' ) && file_exists( LSX_BUSINESS_DIRECTORY_PATH . 'templates/metaplate-single-business-content.html' ) ){
-		echo caldera_metaplate_from_file( LSX_BUSINESS_DIRECTORY_PATH . 'templates/metaplate-single-business-content.html', get_the_id() );
-	}else{
-		_e('Please activate the Caldera Metaplate Plugin','lsx-business-directory');
-	}	
-}
-
 function lsx_business_promotion() {
 	lsx_business_template( 'single-business-promotion' );
 }
@@ -89,7 +71,7 @@ function get_formatted_taxonomy_str( $id, $tax ) {
  * @param 		$height int
  */
 function get_thumbnail_wrapped( $id, $width, $height ) {
-	$image_src = "http://placehold.it/" . (String)$width . 'x' . (String)$height;
+	$image_src = "https://placehold.it/" . (String)$width . 'x' . (String)$height;
 	if ( has_post_thumbnail( $id ) ) {
 		$image = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'large' );
 		$image_src = ( strpos($image[0], 'cover-logo.png') === false ) ? $image[0] : $image_src;

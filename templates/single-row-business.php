@@ -1,6 +1,13 @@
 <?php
+
+	$primary_phone = $primary_email = $website = false;
+
 	$general_tab_fields = get_post_meta( get_the_ID(), 'general', true );
+	if(!is_array($general_tab_fields)){
+		$general_tab_fields = array($general_tab_fields);
+	}
 	extract( $general_tab_fields );
+	
 ?>
 <article class="business">
 	<div class="row">

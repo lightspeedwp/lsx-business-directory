@@ -9,13 +9,13 @@
 ?>
 <?php get_header(); ?>
 
-	<div id="primary" class="content-area col-sm-12">
+	<div id="primary" class="content-area <?php echo lsx_main_class(); ?>">
 
-		<?php lsx_content_before(); ?>
+		<?php //lsx_content_before(); ?>
 
 		<main id="main" class="site-main" role="main">
 
-			<?php lsx_content_top(); ?>
+			<?php //lsx_content_top(); ?>
 
 			<header class="page-header tours-archive-header">
 				<?php if(is_post_type_archive()){ ?>
@@ -42,75 +42,77 @@
 				</div>
 			<?php } ?>
 
-				<div class="facetwp-template">
-				<?php if ( have_posts() ) : ?>
-					<div class="lsx-business-directory-wrapper">
-						<div class="row">
+				
+					<?php if ( have_posts() ) : ?>
+						<div class="lsx-business-directory-wrapper">
+							<div class="row">
 
-							<div class="col-md-3">
-								<div class="business-facets">
-									<h3>Refine the Results</h3>
-									<h4>Industry</h4>
-									<?php echo do_shortcode('[facetwp facet="industry"]'); ?>
-									<h4>Region</h4>
-									<?php echo do_shortcode('[facetwp facet="region"]'); ?>
+								<div class="col-md-3">
+									<div class="business-facets">
+										<h3>Refine the Results</h3>
+										<h4>Industry</h4>
+										<?php echo do_shortcode('[facetwp facet="industry"]'); ?>
+										<h4>Region</h4>
+										<?php echo do_shortcode('[facetwp facet="region"]'); ?>
+									</div>
 								</div>
-							</div>
 
-							<div class="col-md-9">
+								<div class="col-md-9">
 
-								<div class="business-listings">
+									<div class="business-listings">
 
-									<div class="business-filters">
-										<div class="business-filters-top">
-											<?php echo do_shortcode('[facetwp sort="true"]'); ?>
-											<?php echo do_shortcode('[facetwp per_page="true"]'); ?>
+										<div class="business-filters">
+											<div class="business-filters-top">
+												<?php echo do_shortcode('[facetwp sort="true"]'); ?>
+												<?php echo do_shortcode('[facetwp per_page="true"]'); ?>
+											</div>
+											
+											<div class="business-filters-bottom">
+												<?php echo do_shortcode('[facetwp facet="alphabet"]'); ?>
+												<?php echo do_shortcode('[facetwp pager="true"]'); ?>
+											</div>
 										</div>
-										
-										<div class="business-filters-bottom">
-											<?php echo do_shortcode('[facetwp facet="alphabet"]'); ?>
-											<?php echo do_shortcode('[facetwp pager="true"]'); ?>
+										<div class="facetwp-template">
+										<?php while ( have_posts() ) :
+												the_post();		
+												lsx_business_row();									
+											?>										
+										<?php endwhile; ?>
 										</div>
 									</div>
-									<?php while ( have_posts() ) :
-											the_post();		
-											lsx_business_row();									
-										?>										
-									<?php endwhile; ?>
 								</div>
 							</div>
 						</div>
-					</div>
-						
-				<?php else : ?>
+							
+					<?php else : ?>
 
-					<section class="no-results not-found">
-						<header class="page-header">
-							<h1 class="page-title"><?php _e( 'Nothing Found', 'lsx-business-directory' ); ?></h1>
-						</header><!-- .page-header -->
+						<section class="no-results not-found">
+							<header class="page-header">
+								<h1 class="page-title"><?php _e( 'Nothing Found', 'lsx-business-directory' ); ?></h1>
+							</header><!-- .page-header -->
 
-						<div class="page-content">
-							<?php if ( current_user_can( 'publish_posts' ) ) : ?>
+							<div class="page-content">
+								<?php if ( current_user_can( 'publish_posts' ) ) : ?>
 
-								<p><?php printf( __( 'Ready to publish your first tour? <a href="%1$s">Get started here</a>.', 'lsx-business-directory' ), esc_url( admin_url( 'post-new.php?post_type=business-directory' ) ) ); ?></p>
+									<p><?php printf( __( 'Ready to publish your first tour? <a href="%1$s">Get started here</a>.', 'lsx-business-directory' ), esc_url( admin_url( 'post-new.php?post_type=business-directory' ) ) ); ?></p>
 
-							<?php else : ?>
+								<?php else : ?>
 
-								<p><?php _e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'lsx-business-directory' ); ?></p>
-								<?php get_search_form(); ?>
+									<p><?php _e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'lsx-business-directory' ); ?></p>
+									<?php get_search_form(); ?>
 
-							<?php endif; ?>
-						</div><!-- .page-content -->
-					</section><!-- .no-results -->
+								<?php endif; ?>
+							</div><!-- .page-content -->
+						</section><!-- .no-results -->
 
-				<?php endif; ?>	
-				</div>
+					<?php endif; ?>	
+				
 
 			<div class="clearfix"></div>
 
 		</main><!-- #main -->
 
-		<?php lsx_content_after(); ?>
+		<?php //lsx_content_after(); ?>
 		
 	</div><!-- #primary -->
 	

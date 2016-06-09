@@ -73,9 +73,6 @@ class LSX_Business_Directory extends Lsx {
 		
 		add_image_size( 'lsx-business-logo', 350, 350, true );
 		
-		//Populate the data for the meta plate
-		add_filter( 'metaplate_data', array( $this, 'build_metaplate_data' ), 11, 2 );
-		
 		//Set the single to 1 column
 		add_filter( 'lsx_bootstrap_column_size', array( $this, 'single_layout_filter' )  );
 
@@ -302,57 +299,6 @@ class LSX_Business_Directory extends Lsx {
 		}
 		return $template;
 	}	
-
-
-	/**
-	 * Bind meta data objects
-	 *
-	 * @since 0.0.1
-	 *
-	 * @return array landing-page post objects
-	 */
-	public function build_metaplate_data( $data, $metaplate ){
-		global $post,$lsx_maps;
-		
-		if( $post->post_type !== 'business-directory' ){
-			return $data;
-		}
-
-		// add content
-		ob_start();
-		the_content();
-		$data['post_content'] = ob_get_clean();
-		//add exceprt
-		$data['excerpt'] = str_replace('[&hellip;]', '', get_the_excerpt() );
-
-		// permalink
-		$data['permalink'] = get_the_permalink();
-
-		// add taxonomies in with a taxonomy. alias
-		$taxonomies = get_object_taxonomies( $post );
-		if( !empty( $taxonomies ) ){
-			foreach ( $taxonomies as $taxonomy_name  ) {
-
-				$taxonomy = get_taxonomy( $taxonomy_name );
-				$data['taxonomy'][ $taxonomy_name ] = $data[ $taxonomy_name ] = wp_get_post_terms( $post->ID, $taxonomy_name, array("fields" => "all") );
-
-			}
-		}
-		if( !empty( get_the_post_thumbnail($post->ID) ) ){
-			$data['post_thumbnail'] = get_the_post_thumbnail( $post->ID,'lsx-business-logo' );	
-		}
-		
-		$classes = get_post_class();
-		$data['post_class'] = implode( ' ', $classes );
-
-		if($data['location']){
-			$data['map'] = $lsx_maps->map_output($data['location']);
-		}		
-		$data['global']['site_url'] = site_url();
-		
-		$data = apply_filters('lsx-business-directory-metaplate-data',$data);
-		return $data;
-	}
 	
 	/**
 	 * Set the single business directory to 1 column

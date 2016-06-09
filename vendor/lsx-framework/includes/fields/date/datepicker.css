@@ -1,0 +1,790 @@
+/*!
+ * Datepicker for Bootstrap
+ *
+ * Copyright 2012 Stefan Petre
+ * Improvements by Andrew Rowls
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ */
+.lsxdatepicker {
+  padding: 4px;
+  border-radius: 4px;
+  direction: ltr;
+  /*.dow {
+    border-top: 1px solid #ddd !important;
+  }*/
+}
+.lsxdatepicker-inline {
+  width: 220px;
+}
+.lsxdatepicker.lsxdatepicker-rtl {
+  direction: rtl;
+}
+.lsxdatepicker.lsxdatepicker-rtl table tr td span {
+  float: right;
+}
+.lsxdatepicker-dropdown {
+  top: 0;
+  left: 0;
+}
+.lsxdatepicker-dropdown:before {
+  content: '';
+  display: inline-block;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 7px solid #ccc;
+  border-top: 0;
+  border-bottom-color: rgba(0, 0, 0, 0.2);
+  position: absolute;
+}
+.lsxdatepicker-dropdown:after {
+  content: '';
+  display: inline-block;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid #fff;
+  border-top: 0;
+  position: absolute;
+}
+.lsxdatepicker-dropdown.lsxdatepicker-orient-left:before {
+  left: 6px;
+}
+.lsxdatepicker-dropdown.lsxdatepicker-orient-left:after {
+  left: 7px;
+}
+.lsxdatepicker-dropdown.lsxdatepicker-orient-right:before {
+  right: 6px;
+}
+.lsxdatepicker-dropdown.lsxdatepicker-orient-right:after {
+  right: 7px;
+}
+.lsxdatepicker-dropdown.lsxdatepicker-orient-top:before {
+  top: -7px;
+}
+.lsxdatepicker-dropdown.lsxdatepicker-orient-top:after {
+  top: -6px;
+}
+.lsxdatepicker-dropdown.lsxdatepicker-orient-bottom:before {
+  bottom: -7px;
+  border-bottom: 0;
+  border-top: 7px solid #999;
+}
+.lsxdatepicker-dropdown.lsxdatepicker-orient-bottom:after {
+  bottom: -6px;
+  border-bottom: 0;
+  border-top: 6px solid #fff;
+}
+.lsxdatepicker > div {
+  display: none;
+}
+.lsxdatepicker.days div.lsxdatepicker-days {
+  display: block;
+}
+.lsxdatepicker.months div.lsxdatepicker-months {
+  display: block;
+}
+.lsxdatepicker.years div.lsxdatepicker-years {
+  display: block;
+}
+.lsxdatepicker table {
+  margin: 0;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.lsxdatepicker table tr td,
+.lsxdatepicker table tr th {
+  text-align: center;
+  width: 10px;
+  height: 10px;
+  border-radius: 4px;
+  border: none;
+}
+.table-striped .lsxdatepicker table tr td,
+.table-striped .lsxdatepicker table tr th {
+  background-color: transparent;
+}
+.lsxdatepicker table tr td.day:hover,
+.lsxdatepicker table tr td.day.focused {
+  background: #eeeeee;
+  cursor: pointer;
+}
+.lsxdatepicker table tr td.old,
+.lsxdatepicker table tr td.new {
+  color: #999999;
+}
+.lsxdatepicker table tr td.disabled,
+.lsxdatepicker table tr td.disabled:hover {
+  background: none;
+  color: #999999;
+  cursor: default;
+}
+.lsxdatepicker table tr td.today,
+.lsxdatepicker table tr td.today:hover,
+.lsxdatepicker table tr td.today.disabled,
+.lsxdatepicker table tr td.today.disabled:hover {
+  color: #000000;
+  background-color: #ffdb99;
+  border-color: #ffb733;
+}
+.lsxdatepicker table tr td.today:hover,
+.lsxdatepicker table tr td.today:hover:hover,
+.lsxdatepicker table tr td.today.disabled:hover,
+.lsxdatepicker table tr td.today.disabled:hover:hover,
+.lsxdatepicker table tr td.today:focus,
+.lsxdatepicker table tr td.today:hover:focus,
+.lsxdatepicker table tr td.today.disabled:focus,
+.lsxdatepicker table tr td.today.disabled:hover:focus,
+.lsxdatepicker table tr td.today:active,
+.lsxdatepicker table tr td.today:hover:active,
+.lsxdatepicker table tr td.today.disabled:active,
+.lsxdatepicker table tr td.today.disabled:hover:active,
+.lsxdatepicker table tr td.today.active,
+.lsxdatepicker table tr td.today:hover.active,
+.lsxdatepicker table tr td.today.disabled.active,
+.lsxdatepicker table tr td.today.disabled:hover.active,
+.open .dropdown-toggle.lsxdatepicker table tr td.today,
+.open .dropdown-toggle.lsxdatepicker table tr td.today:hover,
+.open .dropdown-toggle.lsxdatepicker table tr td.today.disabled,
+.open .dropdown-toggle.lsxdatepicker table tr td.today.disabled:hover {
+  color: #000000;
+  background-color: #ffcd70;
+  border-color: #f59e00;
+}
+.lsxdatepicker table tr td.today:active,
+.lsxdatepicker table tr td.today:hover:active,
+.lsxdatepicker table tr td.today.disabled:active,
+.lsxdatepicker table tr td.today.disabled:hover:active,
+.lsxdatepicker table tr td.today.active,
+.lsxdatepicker table tr td.today:hover.active,
+.lsxdatepicker table tr td.today.disabled.active,
+.lsxdatepicker table tr td.today.disabled:hover.active,
+.open .dropdown-toggle.lsxdatepicker table tr td.today,
+.open .dropdown-toggle.lsxdatepicker table tr td.today:hover,
+.open .dropdown-toggle.lsxdatepicker table tr td.today.disabled,
+.open .dropdown-toggle.lsxdatepicker table tr td.today.disabled:hover {
+  background-image: none;
+}
+.lsxdatepicker table tr td.today.disabled,
+.lsxdatepicker table tr td.today:hover.disabled,
+.lsxdatepicker table tr td.today.disabled.disabled,
+.lsxdatepicker table tr td.today.disabled:hover.disabled,
+.lsxdatepicker table tr td.today[disabled],
+.lsxdatepicker table tr td.today:hover[disabled],
+.lsxdatepicker table tr td.today.disabled[disabled],
+.lsxdatepicker table tr td.today.disabled:hover[disabled],
+fieldset[disabled] .lsxdatepicker table tr td.today,
+fieldset[disabled] .lsxdatepicker table tr td.today:hover,
+fieldset[disabled] .lsxdatepicker table tr td.today.disabled,
+fieldset[disabled] .lsxdatepicker table tr td.today.disabled:hover,
+.lsxdatepicker table tr td.today.disabled:hover,
+.lsxdatepicker table tr td.today:hover.disabled:hover,
+.lsxdatepicker table tr td.today.disabled.disabled:hover,
+.lsxdatepicker table tr td.today.disabled:hover.disabled:hover,
+.lsxdatepicker table tr td.today[disabled]:hover,
+.lsxdatepicker table tr td.today:hover[disabled]:hover,
+.lsxdatepicker table tr td.today.disabled[disabled]:hover,
+.lsxdatepicker table tr td.today.disabled:hover[disabled]:hover,
+fieldset[disabled] .lsxdatepicker table tr td.today:hover,
+fieldset[disabled] .lsxdatepicker table tr td.today:hover:hover,
+fieldset[disabled] .lsxdatepicker table tr td.today.disabled:hover,
+fieldset[disabled] .lsxdatepicker table tr td.today.disabled:hover:hover,
+.lsxdatepicker table tr td.today.disabled:focus,
+.lsxdatepicker table tr td.today:hover.disabled:focus,
+.lsxdatepicker table tr td.today.disabled.disabled:focus,
+.lsxdatepicker table tr td.today.disabled:hover.disabled:focus,
+.lsxdatepicker table tr td.today[disabled]:focus,
+.lsxdatepicker table tr td.today:hover[disabled]:focus,
+.lsxdatepicker table tr td.today.disabled[disabled]:focus,
+.lsxdatepicker table tr td.today.disabled:hover[disabled]:focus,
+fieldset[disabled] .lsxdatepicker table tr td.today:focus,
+fieldset[disabled] .lsxdatepicker table tr td.today:hover:focus,
+fieldset[disabled] .lsxdatepicker table tr td.today.disabled:focus,
+fieldset[disabled] .lsxdatepicker table tr td.today.disabled:hover:focus,
+.lsxdatepicker table tr td.today.disabled:active,
+.lsxdatepicker table tr td.today:hover.disabled:active,
+.lsxdatepicker table tr td.today.disabled.disabled:active,
+.lsxdatepicker table tr td.today.disabled:hover.disabled:active,
+.lsxdatepicker table tr td.today[disabled]:active,
+.lsxdatepicker table tr td.today:hover[disabled]:active,
+.lsxdatepicker table tr td.today.disabled[disabled]:active,
+.lsxdatepicker table tr td.today.disabled:hover[disabled]:active,
+fieldset[disabled] .lsxdatepicker table tr td.today:active,
+fieldset[disabled] .lsxdatepicker table tr td.today:hover:active,
+fieldset[disabled] .lsxdatepicker table tr td.today.disabled:active,
+fieldset[disabled] .lsxdatepicker table tr td.today.disabled:hover:active,
+.lsxdatepicker table tr td.today.disabled.active,
+.lsxdatepicker table tr td.today:hover.disabled.active,
+.lsxdatepicker table tr td.today.disabled.disabled.active,
+.lsxdatepicker table tr td.today.disabled:hover.disabled.active,
+.lsxdatepicker table tr td.today[disabled].active,
+.lsxdatepicker table tr td.today:hover[disabled].active,
+.lsxdatepicker table tr td.today.disabled[disabled].active,
+.lsxdatepicker table tr td.today.disabled:hover[disabled].active,
+fieldset[disabled] .lsxdatepicker table tr td.today.active,
+fieldset[disabled] .lsxdatepicker table tr td.today:hover.active,
+fieldset[disabled] .lsxdatepicker table tr td.today.disabled.active,
+fieldset[disabled] .lsxdatepicker table tr td.today.disabled:hover.active {
+  background-color: #ffdb99;
+  border-color: #ffb733;
+}
+.lsxdatepicker table tr td.today:hover:hover {
+  color: #000;
+}
+.lsxdatepicker table tr td.today.active:hover {
+  color: #fff;
+}
+.lsxdatepicker table tr td.range,
+.lsxdatepicker table tr td.range:hover,
+.lsxdatepicker table tr td.range.disabled,
+.lsxdatepicker table tr td.range.disabled:hover {
+  background: #eeeeee;
+  border-radius: 0;
+}
+.lsxdatepicker table tr td.range.today,
+.lsxdatepicker table tr td.range.today:hover,
+.lsxdatepicker table tr td.range.today.disabled,
+.lsxdatepicker table tr td.range.today.disabled:hover {
+  color: #000000;
+  background-color: #f7ca77;
+  border-color: #f1a417;
+  border-radius: 0;
+}
+.lsxdatepicker table tr td.range.today:hover,
+.lsxdatepicker table tr td.range.today:hover:hover,
+.lsxdatepicker table tr td.range.today.disabled:hover,
+.lsxdatepicker table tr td.range.today.disabled:hover:hover,
+.lsxdatepicker table tr td.range.today:focus,
+.lsxdatepicker table tr td.range.today:hover:focus,
+.lsxdatepicker table tr td.range.today.disabled:focus,
+.lsxdatepicker table tr td.range.today.disabled:hover:focus,
+.lsxdatepicker table tr td.range.today:active,
+.lsxdatepicker table tr td.range.today:hover:active,
+.lsxdatepicker table tr td.range.today.disabled:active,
+.lsxdatepicker table tr td.range.today.disabled:hover:active,
+.lsxdatepicker table tr td.range.today.active,
+.lsxdatepicker table tr td.range.today:hover.active,
+.lsxdatepicker table tr td.range.today.disabled.active,
+.lsxdatepicker table tr td.range.today.disabled:hover.active,
+.open .dropdown-toggle.lsxdatepicker table tr td.range.today,
+.open .dropdown-toggle.lsxdatepicker table tr td.range.today:hover,
+.open .dropdown-toggle.lsxdatepicker table tr td.range.today.disabled,
+.open .dropdown-toggle.lsxdatepicker table tr td.range.today.disabled:hover {
+  color: #000000;
+  background-color: #f4bb51;
+  border-color: #bf800c;
+}
+.lsxdatepicker table tr td.range.today:active,
+.lsxdatepicker table tr td.range.today:hover:active,
+.lsxdatepicker table tr td.range.today.disabled:active,
+.lsxdatepicker table tr td.range.today.disabled:hover:active,
+.lsxdatepicker table tr td.range.today.active,
+.lsxdatepicker table tr td.range.today:hover.active,
+.lsxdatepicker table tr td.range.today.disabled.active,
+.lsxdatepicker table tr td.range.today.disabled:hover.active,
+.open .dropdown-toggle.lsxdatepicker table tr td.range.today,
+.open .dropdown-toggle.lsxdatepicker table tr td.range.today:hover,
+.open .dropdown-toggle.lsxdatepicker table tr td.range.today.disabled,
+.open .dropdown-toggle.lsxdatepicker table tr td.range.today.disabled:hover {
+  background-image: none;
+}
+.lsxdatepicker table tr td.range.today.disabled,
+.lsxdatepicker table tr td.range.today:hover.disabled,
+.lsxdatepicker table tr td.range.today.disabled.disabled,
+.lsxdatepicker table tr td.range.today.disabled:hover.disabled,
+.lsxdatepicker table tr td.range.today[disabled],
+.lsxdatepicker table tr td.range.today:hover[disabled],
+.lsxdatepicker table tr td.range.today.disabled[disabled],
+.lsxdatepicker table tr td.range.today.disabled:hover[disabled],
+fieldset[disabled] .lsxdatepicker table tr td.range.today,
+fieldset[disabled] .lsxdatepicker table tr td.range.today:hover,
+fieldset[disabled] .lsxdatepicker table tr td.range.today.disabled,
+fieldset[disabled] .lsxdatepicker table tr td.range.today.disabled:hover,
+.lsxdatepicker table tr td.range.today.disabled:hover,
+.lsxdatepicker table tr td.range.today:hover.disabled:hover,
+.lsxdatepicker table tr td.range.today.disabled.disabled:hover,
+.lsxdatepicker table tr td.range.today.disabled:hover.disabled:hover,
+.lsxdatepicker table tr td.range.today[disabled]:hover,
+.lsxdatepicker table tr td.range.today:hover[disabled]:hover,
+.lsxdatepicker table tr td.range.today.disabled[disabled]:hover,
+.lsxdatepicker table tr td.range.today.disabled:hover[disabled]:hover,
+fieldset[disabled] .lsxdatepicker table tr td.range.today:hover,
+fieldset[disabled] .lsxdatepicker table tr td.range.today:hover:hover,
+fieldset[disabled] .lsxdatepicker table tr td.range.today.disabled:hover,
+fieldset[disabled] .lsxdatepicker table tr td.range.today.disabled:hover:hover,
+.lsxdatepicker table tr td.range.today.disabled:focus,
+.lsxdatepicker table tr td.range.today:hover.disabled:focus,
+.lsxdatepicker table tr td.range.today.disabled.disabled:focus,
+.lsxdatepicker table tr td.range.today.disabled:hover.disabled:focus,
+.lsxdatepicker table tr td.range.today[disabled]:focus,
+.lsxdatepicker table tr td.range.today:hover[disabled]:focus,
+.lsxdatepicker table tr td.range.today.disabled[disabled]:focus,
+.lsxdatepicker table tr td.range.today.disabled:hover[disabled]:focus,
+fieldset[disabled] .lsxdatepicker table tr td.range.today:focus,
+fieldset[disabled] .lsxdatepicker table tr td.range.today:hover:focus,
+fieldset[disabled] .lsxdatepicker table tr td.range.today.disabled:focus,
+fieldset[disabled] .lsxdatepicker table tr td.range.today.disabled:hover:focus,
+.lsxdatepicker table tr td.range.today.disabled:active,
+.lsxdatepicker table tr td.range.today:hover.disabled:active,
+.lsxdatepicker table tr td.range.today.disabled.disabled:active,
+.lsxdatepicker table tr td.range.today.disabled:hover.disabled:active,
+.lsxdatepicker table tr td.range.today[disabled]:active,
+.lsxdatepicker table tr td.range.today:hover[disabled]:active,
+.lsxdatepicker table tr td.range.today.disabled[disabled]:active,
+.lsxdatepicker table tr td.range.today.disabled:hover[disabled]:active,
+fieldset[disabled] .lsxdatepicker table tr td.range.today:active,
+fieldset[disabled] .lsxdatepicker table tr td.range.today:hover:active,
+fieldset[disabled] .lsxdatepicker table tr td.range.today.disabled:active,
+fieldset[disabled] .lsxdatepicker table tr td.range.today.disabled:hover:active,
+.lsxdatepicker table tr td.range.today.disabled.active,
+.lsxdatepicker table tr td.range.today:hover.disabled.active,
+.lsxdatepicker table tr td.range.today.disabled.disabled.active,
+.lsxdatepicker table tr td.range.today.disabled:hover.disabled.active,
+.lsxdatepicker table tr td.range.today[disabled].active,
+.lsxdatepicker table tr td.range.today:hover[disabled].active,
+.lsxdatepicker table tr td.range.today.disabled[disabled].active,
+.lsxdatepicker table tr td.range.today.disabled:hover[disabled].active,
+fieldset[disabled] .lsxdatepicker table tr td.range.today.active,
+fieldset[disabled] .lsxdatepicker table tr td.range.today:hover.active,
+fieldset[disabled] .lsxdatepicker table tr td.range.today.disabled.active,
+fieldset[disabled] .lsxdatepicker table tr td.range.today.disabled:hover.active {
+  background-color: #f7ca77;
+  border-color: #f1a417;
+}
+.lsxdatepicker table tr td.selected,
+.lsxdatepicker table tr td.selected:hover,
+.lsxdatepicker table tr td.selected.disabled,
+.lsxdatepicker table tr td.selected.disabled:hover {
+  color: #ffffff;
+  background-color: #999999;
+  border-color: #555555;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+.lsxdatepicker table tr td.selected:hover,
+.lsxdatepicker table tr td.selected:hover:hover,
+.lsxdatepicker table tr td.selected.disabled:hover,
+.lsxdatepicker table tr td.selected.disabled:hover:hover,
+.lsxdatepicker table tr td.selected:focus,
+.lsxdatepicker table tr td.selected:hover:focus,
+.lsxdatepicker table tr td.selected.disabled:focus,
+.lsxdatepicker table tr td.selected.disabled:hover:focus,
+.lsxdatepicker table tr td.selected:active,
+.lsxdatepicker table tr td.selected:hover:active,
+.lsxdatepicker table tr td.selected.disabled:active,
+.lsxdatepicker table tr td.selected.disabled:hover:active,
+.lsxdatepicker table tr td.selected.active,
+.lsxdatepicker table tr td.selected:hover.active,
+.lsxdatepicker table tr td.selected.disabled.active,
+.lsxdatepicker table tr td.selected.disabled:hover.active,
+.open .dropdown-toggle.lsxdatepicker table tr td.selected,
+.open .dropdown-toggle.lsxdatepicker table tr td.selected:hover,
+.open .dropdown-toggle.lsxdatepicker table tr td.selected.disabled,
+.open .dropdown-toggle.lsxdatepicker table tr td.selected.disabled:hover {
+  color: #ffffff;
+  background-color: #858585;
+  border-color: #373737;
+}
+.lsxdatepicker table tr td.selected:active,
+.lsxdatepicker table tr td.selected:hover:active,
+.lsxdatepicker table tr td.selected.disabled:active,
+.lsxdatepicker table tr td.selected.disabled:hover:active,
+.lsxdatepicker table tr td.selected.active,
+.lsxdatepicker table tr td.selected:hover.active,
+.lsxdatepicker table tr td.selected.disabled.active,
+.lsxdatepicker table tr td.selected.disabled:hover.active,
+.open .dropdown-toggle.lsxdatepicker table tr td.selected,
+.open .dropdown-toggle.lsxdatepicker table tr td.selected:hover,
+.open .dropdown-toggle.lsxdatepicker table tr td.selected.disabled,
+.open .dropdown-toggle.lsxdatepicker table tr td.selected.disabled:hover {
+  background-image: none;
+}
+.lsxdatepicker table tr td.selected.disabled,
+.lsxdatepicker table tr td.selected:hover.disabled,
+.lsxdatepicker table tr td.selected.disabled.disabled,
+.lsxdatepicker table tr td.selected.disabled:hover.disabled,
+.lsxdatepicker table tr td.selected[disabled],
+.lsxdatepicker table tr td.selected:hover[disabled],
+.lsxdatepicker table tr td.selected.disabled[disabled],
+.lsxdatepicker table tr td.selected.disabled:hover[disabled],
+fieldset[disabled] .lsxdatepicker table tr td.selected,
+fieldset[disabled] .lsxdatepicker table tr td.selected:hover,
+fieldset[disabled] .lsxdatepicker table tr td.selected.disabled,
+fieldset[disabled] .lsxdatepicker table tr td.selected.disabled:hover,
+.lsxdatepicker table tr td.selected.disabled:hover,
+.lsxdatepicker table tr td.selected:hover.disabled:hover,
+.lsxdatepicker table tr td.selected.disabled.disabled:hover,
+.lsxdatepicker table tr td.selected.disabled:hover.disabled:hover,
+.lsxdatepicker table tr td.selected[disabled]:hover,
+.lsxdatepicker table tr td.selected:hover[disabled]:hover,
+.lsxdatepicker table tr td.selected.disabled[disabled]:hover,
+.lsxdatepicker table tr td.selected.disabled:hover[disabled]:hover,
+fieldset[disabled] .lsxdatepicker table tr td.selected:hover,
+fieldset[disabled] .lsxdatepicker table tr td.selected:hover:hover,
+fieldset[disabled] .lsxdatepicker table tr td.selected.disabled:hover,
+fieldset[disabled] .lsxdatepicker table tr td.selected.disabled:hover:hover,
+.lsxdatepicker table tr td.selected.disabled:focus,
+.lsxdatepicker table tr td.selected:hover.disabled:focus,
+.lsxdatepicker table tr td.selected.disabled.disabled:focus,
+.lsxdatepicker table tr td.selected.disabled:hover.disabled:focus,
+.lsxdatepicker table tr td.selected[disabled]:focus,
+.lsxdatepicker table tr td.selected:hover[disabled]:focus,
+.lsxdatepicker table tr td.selected.disabled[disabled]:focus,
+.lsxdatepicker table tr td.selected.disabled:hover[disabled]:focus,
+fieldset[disabled] .lsxdatepicker table tr td.selected:focus,
+fieldset[disabled] .lsxdatepicker table tr td.selected:hover:focus,
+fieldset[disabled] .lsxdatepicker table tr td.selected.disabled:focus,
+fieldset[disabled] .lsxdatepicker table tr td.selected.disabled:hover:focus,
+.lsxdatepicker table tr td.selected.disabled:active,
+.lsxdatepicker table tr td.selected:hover.disabled:active,
+.lsxdatepicker table tr td.selected.disabled.disabled:active,
+.lsxdatepicker table tr td.selected.disabled:hover.disabled:active,
+.lsxdatepicker table tr td.selected[disabled]:active,
+.lsxdatepicker table tr td.selected:hover[disabled]:active,
+.lsxdatepicker table tr td.selected.disabled[disabled]:active,
+.lsxdatepicker table tr td.selected.disabled:hover[disabled]:active,
+fieldset[disabled] .lsxdatepicker table tr td.selected:active,
+fieldset[disabled] .lsxdatepicker table tr td.selected:hover:active,
+fieldset[disabled] .lsxdatepicker table tr td.selected.disabled:active,
+fieldset[disabled] .lsxdatepicker table tr td.selected.disabled:hover:active,
+.lsxdatepicker table tr td.selected.disabled.active,
+.lsxdatepicker table tr td.selected:hover.disabled.active,
+.lsxdatepicker table tr td.selected.disabled.disabled.active,
+.lsxdatepicker table tr td.selected.disabled:hover.disabled.active,
+.lsxdatepicker table tr td.selected[disabled].active,
+.lsxdatepicker table tr td.selected:hover[disabled].active,
+.lsxdatepicker table tr td.selected.disabled[disabled].active,
+.lsxdatepicker table tr td.selected.disabled:hover[disabled].active,
+fieldset[disabled] .lsxdatepicker table tr td.selected.active,
+fieldset[disabled] .lsxdatepicker table tr td.selected:hover.active,
+fieldset[disabled] .lsxdatepicker table tr td.selected.disabled.active,
+fieldset[disabled] .lsxdatepicker table tr td.selected.disabled:hover.active {
+  background-color: #999999;
+  border-color: #555555;
+}
+.lsxdatepicker table tr td.active,
+.lsxdatepicker table tr td.active:hover,
+.lsxdatepicker table tr td.active.disabled,
+.lsxdatepicker table tr td.active.disabled:hover {
+  color: #ffffff;
+  background-color: #428bca;
+  border-color: #357ebd;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+.lsxdatepicker table tr td.active:hover,
+.lsxdatepicker table tr td.active:hover:hover,
+.lsxdatepicker table tr td.active.disabled:hover,
+.lsxdatepicker table tr td.active.disabled:hover:hover,
+.lsxdatepicker table tr td.active:focus,
+.lsxdatepicker table tr td.active:hover:focus,
+.lsxdatepicker table tr td.active.disabled:focus,
+.lsxdatepicker table tr td.active.disabled:hover:focus,
+.lsxdatepicker table tr td.active:active,
+.lsxdatepicker table tr td.active:hover:active,
+.lsxdatepicker table tr td.active.disabled:active,
+.lsxdatepicker table tr td.active.disabled:hover:active,
+.lsxdatepicker table tr td.active.active,
+.lsxdatepicker table tr td.active:hover.active,
+.lsxdatepicker table tr td.active.disabled.active,
+.lsxdatepicker table tr td.active.disabled:hover.active,
+.open .dropdown-toggle.lsxdatepicker table tr td.active,
+.open .dropdown-toggle.lsxdatepicker table tr td.active:hover,
+.open .dropdown-toggle.lsxdatepicker table tr td.active.disabled,
+.open .dropdown-toggle.lsxdatepicker table tr td.active.disabled:hover {
+  color: #ffffff;
+  background-color: #3276b1;
+  border-color: #285e8e;
+}
+.lsxdatepicker table tr td.active:active,
+.lsxdatepicker table tr td.active:hover:active,
+.lsxdatepicker table tr td.active.disabled:active,
+.lsxdatepicker table tr td.active.disabled:hover:active,
+.lsxdatepicker table tr td.active.active,
+.lsxdatepicker table tr td.active:hover.active,
+.lsxdatepicker table tr td.active.disabled.active,
+.lsxdatepicker table tr td.active.disabled:hover.active,
+.open .dropdown-toggle.lsxdatepicker table tr td.active,
+.open .dropdown-toggle.lsxdatepicker table tr td.active:hover,
+.open .dropdown-toggle.lsxdatepicker table tr td.active.disabled,
+.open .dropdown-toggle.lsxdatepicker table tr td.active.disabled:hover {
+  background-image: none;
+}
+.lsxdatepicker table tr td.active.disabled,
+.lsxdatepicker table tr td.active:hover.disabled,
+.lsxdatepicker table tr td.active.disabled.disabled,
+.lsxdatepicker table tr td.active.disabled:hover.disabled,
+.lsxdatepicker table tr td.active[disabled],
+.lsxdatepicker table tr td.active:hover[disabled],
+.lsxdatepicker table tr td.active.disabled[disabled],
+.lsxdatepicker table tr td.active.disabled:hover[disabled],
+fieldset[disabled] .lsxdatepicker table tr td.active,
+fieldset[disabled] .lsxdatepicker table tr td.active:hover,
+fieldset[disabled] .lsxdatepicker table tr td.active.disabled,
+fieldset[disabled] .lsxdatepicker table tr td.active.disabled:hover,
+.lsxdatepicker table tr td.active.disabled:hover,
+.lsxdatepicker table tr td.active:hover.disabled:hover,
+.lsxdatepicker table tr td.active.disabled.disabled:hover,
+.lsxdatepicker table tr td.active.disabled:hover.disabled:hover,
+.lsxdatepicker table tr td.active[disabled]:hover,
+.lsxdatepicker table tr td.active:hover[disabled]:hover,
+.lsxdatepicker table tr td.active.disabled[disabled]:hover,
+.lsxdatepicker table tr td.active.disabled:hover[disabled]:hover,
+fieldset[disabled] .lsxdatepicker table tr td.active:hover,
+fieldset[disabled] .lsxdatepicker table tr td.active:hover:hover,
+fieldset[disabled] .lsxdatepicker table tr td.active.disabled:hover,
+fieldset[disabled] .lsxdatepicker table tr td.active.disabled:hover:hover,
+.lsxdatepicker table tr td.active.disabled:focus,
+.lsxdatepicker table tr td.active:hover.disabled:focus,
+.lsxdatepicker table tr td.active.disabled.disabled:focus,
+.lsxdatepicker table tr td.active.disabled:hover.disabled:focus,
+.lsxdatepicker table tr td.active[disabled]:focus,
+.lsxdatepicker table tr td.active:hover[disabled]:focus,
+.lsxdatepicker table tr td.active.disabled[disabled]:focus,
+.lsxdatepicker table tr td.active.disabled:hover[disabled]:focus,
+fieldset[disabled] .lsxdatepicker table tr td.active:focus,
+fieldset[disabled] .lsxdatepicker table tr td.active:hover:focus,
+fieldset[disabled] .lsxdatepicker table tr td.active.disabled:focus,
+fieldset[disabled] .lsxdatepicker table tr td.active.disabled:hover:focus,
+.lsxdatepicker table tr td.active.disabled:active,
+.lsxdatepicker table tr td.active:hover.disabled:active,
+.lsxdatepicker table tr td.active.disabled.disabled:active,
+.lsxdatepicker table tr td.active.disabled:hover.disabled:active,
+.lsxdatepicker table tr td.active[disabled]:active,
+.lsxdatepicker table tr td.active:hover[disabled]:active,
+.lsxdatepicker table tr td.active.disabled[disabled]:active,
+.lsxdatepicker table tr td.active.disabled:hover[disabled]:active,
+fieldset[disabled] .lsxdatepicker table tr td.active:active,
+fieldset[disabled] .lsxdatepicker table tr td.active:hover:active,
+fieldset[disabled] .lsxdatepicker table tr td.active.disabled:active,
+fieldset[disabled] .lsxdatepicker table tr td.active.disabled:hover:active,
+.lsxdatepicker table tr td.active.disabled.active,
+.lsxdatepicker table tr td.active:hover.disabled.active,
+.lsxdatepicker table tr td.active.disabled.disabled.active,
+.lsxdatepicker table tr td.active.disabled:hover.disabled.active,
+.lsxdatepicker table tr td.active[disabled].active,
+.lsxdatepicker table tr td.active:hover[disabled].active,
+.lsxdatepicker table tr td.active.disabled[disabled].active,
+.lsxdatepicker table tr td.active.disabled:hover[disabled].active,
+fieldset[disabled] .lsxdatepicker table tr td.active.active,
+fieldset[disabled] .lsxdatepicker table tr td.active:hover.active,
+fieldset[disabled] .lsxdatepicker table tr td.active.disabled.active,
+fieldset[disabled] .lsxdatepicker table tr td.active.disabled:hover.active {
+  background-color: #428bca;
+  border-color: #357ebd;
+}
+.lsxdatepicker table tr td span {
+  display: block;
+  width: 23%;
+  height: 54px;
+  line-height: 54px;
+  float: left;
+  margin: 1%;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.lsxdatepicker table tr td span:hover {
+  background: #eeeeee;
+}
+.lsxdatepicker table tr td span.disabled,
+.lsxdatepicker table tr td span.disabled:hover {
+  background: none;
+  color: #999999;
+  cursor: default;
+}
+.lsxdatepicker table tr td span.active,
+.lsxdatepicker table tr td span.active:hover,
+.lsxdatepicker table tr td span.active.disabled,
+.lsxdatepicker table tr td span.active.disabled:hover {
+  color: #ffffff;
+  background-color: #428bca;
+  border-color: #357ebd;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+.lsxdatepicker table tr td span.active:hover,
+.lsxdatepicker table tr td span.active:hover:hover,
+.lsxdatepicker table tr td span.active.disabled:hover,
+.lsxdatepicker table tr td span.active.disabled:hover:hover,
+.lsxdatepicker table tr td span.active:focus,
+.lsxdatepicker table tr td span.active:hover:focus,
+.lsxdatepicker table tr td span.active.disabled:focus,
+.lsxdatepicker table tr td span.active.disabled:hover:focus,
+.lsxdatepicker table tr td span.active:active,
+.lsxdatepicker table tr td span.active:hover:active,
+.lsxdatepicker table tr td span.active.disabled:active,
+.lsxdatepicker table tr td span.active.disabled:hover:active,
+.lsxdatepicker table tr td span.active.active,
+.lsxdatepicker table tr td span.active:hover.active,
+.lsxdatepicker table tr td span.active.disabled.active,
+.lsxdatepicker table tr td span.active.disabled:hover.active,
+.open .dropdown-toggle.lsxdatepicker table tr td span.active,
+.open .dropdown-toggle.lsxdatepicker table tr td span.active:hover,
+.open .dropdown-toggle.lsxdatepicker table tr td span.active.disabled,
+.open .dropdown-toggle.lsxdatepicker table tr td span.active.disabled:hover {
+  color: #ffffff;
+  background-color: #3276b1;
+  border-color: #285e8e;
+}
+.lsxdatepicker table tr td span.active:active,
+.lsxdatepicker table tr td span.active:hover:active,
+.lsxdatepicker table tr td span.active.disabled:active,
+.lsxdatepicker table tr td span.active.disabled:hover:active,
+.lsxdatepicker table tr td span.active.active,
+.lsxdatepicker table tr td span.active:hover.active,
+.lsxdatepicker table tr td span.active.disabled.active,
+.lsxdatepicker table tr td span.active.disabled:hover.active,
+.open .dropdown-toggle.lsxdatepicker table tr td span.active,
+.open .dropdown-toggle.lsxdatepicker table tr td span.active:hover,
+.open .dropdown-toggle.lsxdatepicker table tr td span.active.disabled,
+.open .dropdown-toggle.lsxdatepicker table tr td span.active.disabled:hover {
+  background-image: none;
+}
+.lsxdatepicker table tr td span.active.disabled,
+.lsxdatepicker table tr td span.active:hover.disabled,
+.lsxdatepicker table tr td span.active.disabled.disabled,
+.lsxdatepicker table tr td span.active.disabled:hover.disabled,
+.lsxdatepicker table tr td span.active[disabled],
+.lsxdatepicker table tr td span.active:hover[disabled],
+.lsxdatepicker table tr td span.active.disabled[disabled],
+.lsxdatepicker table tr td span.active.disabled:hover[disabled],
+fieldset[disabled] .lsxdatepicker table tr td span.active,
+fieldset[disabled] .lsxdatepicker table tr td span.active:hover,
+fieldset[disabled] .lsxdatepicker table tr td span.active.disabled,
+fieldset[disabled] .lsxdatepicker table tr td span.active.disabled:hover,
+.lsxdatepicker table tr td span.active.disabled:hover,
+.lsxdatepicker table tr td span.active:hover.disabled:hover,
+.lsxdatepicker table tr td span.active.disabled.disabled:hover,
+.lsxdatepicker table tr td span.active.disabled:hover.disabled:hover,
+.lsxdatepicker table tr td span.active[disabled]:hover,
+.lsxdatepicker table tr td span.active:hover[disabled]:hover,
+.lsxdatepicker table tr td span.active.disabled[disabled]:hover,
+.lsxdatepicker table tr td span.active.disabled:hover[disabled]:hover,
+fieldset[disabled] .lsxdatepicker table tr td span.active:hover,
+fieldset[disabled] .lsxdatepicker table tr td span.active:hover:hover,
+fieldset[disabled] .lsxdatepicker table tr td span.active.disabled:hover,
+fieldset[disabled] .lsxdatepicker table tr td span.active.disabled:hover:hover,
+.lsxdatepicker table tr td span.active.disabled:focus,
+.lsxdatepicker table tr td span.active:hover.disabled:focus,
+.lsxdatepicker table tr td span.active.disabled.disabled:focus,
+.lsxdatepicker table tr td span.active.disabled:hover.disabled:focus,
+.lsxdatepicker table tr td span.active[disabled]:focus,
+.lsxdatepicker table tr td span.active:hover[disabled]:focus,
+.lsxdatepicker table tr td span.active.disabled[disabled]:focus,
+.lsxdatepicker table tr td span.active.disabled:hover[disabled]:focus,
+fieldset[disabled] .lsxdatepicker table tr td span.active:focus,
+fieldset[disabled] .lsxdatepicker table tr td span.active:hover:focus,
+fieldset[disabled] .lsxdatepicker table tr td span.active.disabled:focus,
+fieldset[disabled] .lsxdatepicker table tr td span.active.disabled:hover:focus,
+.lsxdatepicker table tr td span.active.disabled:active,
+.lsxdatepicker table tr td span.active:hover.disabled:active,
+.lsxdatepicker table tr td span.active.disabled.disabled:active,
+.lsxdatepicker table tr td span.active.disabled:hover.disabled:active,
+.lsxdatepicker table tr td span.active[disabled]:active,
+.lsxdatepicker table tr td span.active:hover[disabled]:active,
+.lsxdatepicker table tr td span.active.disabled[disabled]:active,
+.lsxdatepicker table tr td span.active.disabled:hover[disabled]:active,
+fieldset[disabled] .lsxdatepicker table tr td span.active:active,
+fieldset[disabled] .lsxdatepicker table tr td span.active:hover:active,
+fieldset[disabled] .lsxdatepicker table tr td span.active.disabled:active,
+fieldset[disabled] .lsxdatepicker table tr td span.active.disabled:hover:active,
+.lsxdatepicker table tr td span.active.disabled.active,
+.lsxdatepicker table tr td span.active:hover.disabled.active,
+.lsxdatepicker table tr td span.active.disabled.disabled.active,
+.lsxdatepicker table tr td span.active.disabled:hover.disabled.active,
+.lsxdatepicker table tr td span.active[disabled].active,
+.lsxdatepicker table tr td span.active:hover[disabled].active,
+.lsxdatepicker table tr td span.active.disabled[disabled].active,
+.lsxdatepicker table tr td span.active.disabled:hover[disabled].active,
+fieldset[disabled] .lsxdatepicker table tr td span.active.active,
+fieldset[disabled] .lsxdatepicker table tr td span.active:hover.active,
+fieldset[disabled] .lsxdatepicker table tr td span.active.disabled.active,
+fieldset[disabled] .lsxdatepicker table tr td span.active.disabled:hover.active {
+  background-color: #428bca;
+  border-color: #357ebd;
+}
+.lsxdatepicker table tr td span.old,
+.lsxdatepicker table tr td span.new {
+  color: #999999;
+}
+.lsxdatepicker th.lsxdatepicker-switch {
+  width: 145px;
+}
+.lsxdatepicker thead tr:first-child th,
+.lsxdatepicker tfoot tr th {
+  cursor: pointer;
+}
+.lsxdatepicker thead tr:first-child th:hover,
+.lsxdatepicker tfoot tr th:hover {
+  background: #eeeeee;
+}
+.lsxdatepicker .cw {
+  font-size: 10px;
+  width: 12px;
+  padding: 0 2px 0 5px;
+  vertical-align: middle;
+}
+.lsxdatepicker thead tr:first-child th.cw {
+  cursor: default;
+  background-color: transparent;
+}
+.input-group.date .input-group-addon i {
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+}
+.input-daterange input {
+  text-align: center;
+}
+.input-daterange input:first-child {
+  border-radius: 3px 0 0 3px;
+}
+.input-daterange input:last-child {
+  border-radius: 0 3px 3px 0;
+}
+.input-daterange .input-group-addon {
+  width: auto;
+  min-width: 16px;
+  padding: 4px 5px;
+  font-weight: normal;
+  line-height: 1.42857143;
+  text-align: center;
+  text-shadow: 0 1px 0 #fff;
+  vertical-align: middle;
+  background-color: #eeeeee;
+  border: solid #cccccc;
+  border-width: 1px 0;
+  margin-left: -5px;
+  margin-right: -5px;
+}
+.lsxdatepicker.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  float: left;
+  display: none;
+  min-width: 160px;
+  list-style: none;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+  *border-right-width: 2px;
+  *border-bottom-width: 2px;
+  color: #333333;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.42857143;
+}
+.lsxdatepicker.dropdown-menu th,
+.lsxdatepicker.dropdown-menu td {
+  padding: 4px 5px;
+}
