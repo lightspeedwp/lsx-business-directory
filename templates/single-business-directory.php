@@ -169,8 +169,12 @@ get_header(); ?>
 						* Includes API parameter and calls custom field
 						*/
 						if ( $location = $address_tab_field['location'] ) {
-							$api_key = 'AIzaSyAKJbi0J495DFnSkV1EO5Jyh37bCJZjeaM';
-							echo '<div id="gmap" data-search="' . $location . '" data-api="' . $api_key . '"></div>';
+							if ( class_exists( 'Lsx_Options' ) ) {
+								$lsx = Lsx_Options::get_single( 'lsx' );
+								if ( $api_key = $lsx['gmaps_api_key'] ) {
+									echo '<div id="gmap" data-search="' . $location . '" data-api="' . $api_key . '"></div>';
+								}
+							}
 						}
 
 						if ( !empty( $branches ) ) : ?>
