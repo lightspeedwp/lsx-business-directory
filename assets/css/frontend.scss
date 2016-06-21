@@ -84,6 +84,14 @@
 					top: 0;
 					bottom: 10px;
 				}
+
+				@media only screen and (max-width: 767px) {
+					font-size: 22px;
+				}
+
+				@media only screen and (min-width: 768px) and (max-width: 991px) {
+					font-size: 28px;
+				}
 			}
 
 			.entry-meta {
@@ -218,6 +226,10 @@
 		}
 
 		.related-business {
+			@media only screen and (max-width: 991px) {
+				margin-bottom: 30px;
+			}
+
 			h3 {
 				margin: 20px 0 0px;
 			}
