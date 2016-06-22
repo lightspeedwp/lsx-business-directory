@@ -18,7 +18,7 @@ get_header(); ?>
 		<?php while ( have_posts() ) :
 			the_post();
 			$general_tab_fields = get_post_meta( get_the_ID(), 'general', true );
-			$address_tab_field = get_post_meta( get_the_ID(), 'address2', true );
+			$address_tab_field = get_post_meta( get_the_ID(), 'address', true );
 			$branches = get_post_meta( get_the_ID(), 'branches', true );
 			$info = get_post_meta( get_the_ID(), 'info', true );
 
@@ -168,11 +168,19 @@ get_header(); ?>
 						* Render the Google Map Div
 						* Includes API parameter and calls custom field
 						*/
-						if ( $location = $address_tab_field['location'] ) {
+						$address = false;
+						$address_fields = array( 'address', 'address_2', 'address_3', 'address_4', 'state_province', 'country' );
+						foreach( $address_fields as $field ) {
+							if ( isset($address_tab_field[$field]) ){
+								$address[] = $field;
+							};
+						}
+
+						if ( false !== $address ) {
 							if ( class_exists( 'Lsx_Options' ) ) {
 								$lsx = Lsx_Options::get_single( 'lsx' );
 								if ( $api_key = $lsx['gmaps_api_key'] ) {
-									echo '<div id="gmap" data-search="' . $location . '" data-api="' . $api_key . '"></div>';
+									echo '<div id="gmap" data-search="' . implode(',',$address) . '" data-api="' . $api_key . '"></div>';
 								}
 							}
 						}
