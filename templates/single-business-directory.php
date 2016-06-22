@@ -18,7 +18,7 @@ get_header(); ?>
 		<?php while ( have_posts() ) :
 			the_post();
 			$general_tab_fields = get_post_meta( get_the_ID(), 'general', true );
-			$address_tab_field = get_post_meta( get_the_ID(), 'address', true );
+			$address_tab_field = get_post_meta( get_the_ID(), 'address2', true );
 			$branches = get_post_meta( get_the_ID(), 'branches', true );
 			$info = get_post_meta( get_the_ID(), 'info', true );
 
