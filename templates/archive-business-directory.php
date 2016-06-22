@@ -11,11 +11,11 @@
 
 	<div id="primary" class="content-area <?php echo lsx_main_class(); ?>">
 
-		<?php //lsx_content_before(); ?>
+		<?php lsx_content_before(); ?>
 
 		<main id="main" class="site-main" role="main">
 
-			<?php //lsx_content_top(); ?>
+			<?php lsx_content_top(); ?>
 
 			<header class="page-header tours-archive-header">
 				<?php if(is_post_type_archive()){ ?>

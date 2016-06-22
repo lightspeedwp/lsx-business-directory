@@ -9,6 +9,7 @@
 				top: 0;
 				bottom: 15px;
 			}
+
 			padding-bottom: 5px;
 			border-bottom: 1px solid #ddd;
 		}
@@ -49,14 +50,24 @@
 		.business {
 			margin-bottom: 20px;
 
+			@media only screen and (max-width: 991px) {
+			    padding-bottom: 15px;
+			    border-bottom: 1px solid #ddd;
+			}
+
 			.business-content {
 				.business-title {
 					margin: {
 						top: 0;
 						bottom: 15px;
 					}
+
 					padding-bottom: 5px;
 					border-bottom: 1px solid #ddd;
+
+					@media only screen and (max-width: 991px) {
+						margin-top: 15px;
+					}
 				}
 			}
 
@@ -83,6 +94,18 @@
 				margin: {
 					top: 0;
 					bottom: 10px;
+				}
+
+				@media only screen and (max-width: 767px) {
+					font-size: 22px;
+				}
+
+				@media only screen and (min-width: 768px) and (max-width: 991px) {
+					font-size: 28px;
+				}
+
+				@media only screen and (max-width: 991px) {
+					margin-top: 15px;
 				}
 			}
 
@@ -218,6 +241,10 @@
 		}
 
 		.related-business {
+			@media only screen and (max-width: 991px) {
+				margin-bottom: 30px;
+			}
+
 			h3 {
 				margin: 20px 0 0px;
 			}
