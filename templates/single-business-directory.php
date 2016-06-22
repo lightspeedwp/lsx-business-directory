@@ -171,8 +171,8 @@ get_header(); ?>
 						$address = false;
 						$address_fields = array( 'address', 'address_2', 'address_3', 'address_4', 'state_province', 'country' );
 						foreach( $address_fields as $field ) {
-							if ( isset($address_tab_field[$field]) ){
-								$address[] = $field;
+							if ( isset($address_tab_field[$field]) && '' !== $address_tab_field[$field] ){
+								$address[] = $address_tab_field[$field];
 							};
 						}
 
