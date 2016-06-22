@@ -18,9 +18,9 @@
 					</div>
 				<?php endif; ?>
 				
-				<?php if ( $branch_email ) : ?>
+				<?php if ( $branch_website ) : ?>
 				<div class="branch-website">
-					<span><strong>Website: </strong> <a href="<?php echo $branch_email; ?>" target="_blank"><?php echo $branch_email; ?></a></span>
+					<span><strong>Website: </strong> <a href="<?php echo $branch_website; ?>" target="_blank"><?php echo $branch_website; ?></a></span>
 				</div>
 				<?php endif; ?>
 			</div>

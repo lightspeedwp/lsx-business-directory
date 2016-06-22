@@ -146,7 +146,7 @@ get_header(); ?>
 							?>
 						</div>
 						
-						<?php if ( !empty( $branches ) ) : ?>
+						<?php if ( !empty( $branches ) && is_array($branches) && isset($branches[0]['branch_name']) && '' !== $branches[0]['branch_name'] ) : ?>
 							<div class="branches business-content-section">
 								<h3 class="business-section-title">Branches</h3>
 								<?php

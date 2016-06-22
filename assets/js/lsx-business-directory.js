@@ -80,7 +80,7 @@ function initMap() {
 		}
 	});
 
-	/*if ( jQuery( '#branch-markers' ).length ) {
+	if ( jQuery( '#branch-markers' ).length ) {
 		jQuery( '#branch-markers span' ).each( function() {
 			var query = jQuery( this ).data( 'search' );
 			service.textSearch( {
@@ -91,7 +91,7 @@ function initMap() {
 				}
 			});
 		});
-	}*/
+	}
 }
 
 function setMapCenterZoom() {
