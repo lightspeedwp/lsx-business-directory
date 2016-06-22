@@ -232,8 +232,8 @@ get_header(); ?>
 		/*
 		* Adds the Google Maps Javascript Call if a map field was included
 		*/
-		if ( $location ) : 
+		/*if ( $location ) : 
 			?><script src="https://maps.googleapis.com/maps/api/js?key=<?php echo $api_key; ?>&callback=initMap&libraries=places" async defer></script><?php
-		endif;
+		endif;*/
 	?>
 <?php get_footer();

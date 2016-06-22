@@ -11,6 +11,10 @@ jQuery(document).ready(function($) {
 	*/
 
 
+	if(jQuery('#gmap').length){
+		initMap();
+	}
+
 	function stopWheel(e){
 	    if(!e){ /* IE7, IE8, Chrome, Safari */ 
 	        e = window.event; 
@@ -64,7 +68,7 @@ function initMap() {
 		}
 	});
 
-	if ( jQuery( '#branch-markers' ).length ) {
+	/*if ( jQuery( '#branch-markers' ).length ) {
 		jQuery( '#branch-markers span' ).each( function() {
 			var query = jQuery( this ).data( 'search' );
 			service.textSearch( {
@@ -75,7 +79,7 @@ function initMap() {
 				}
 			});
 		});
-	}
+	}*/
 }
 
 function setMapCenterZoom() {

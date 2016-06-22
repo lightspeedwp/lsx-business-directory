@@ -126,7 +126,8 @@ class LSX_Business_Directory extends Lsx {
 	public function enqueue_scripts() {
 		
 		//wp_enqueue_style('lsx_landing_pages_style', LSX_BUSINESS_DIRECTORY_URL.'/assets/css/style.css');
-		wp_enqueue_script('lsx_business_directory_script', LSX_BUSINESS_DIRECTORY_URL . 'assets/js/lsx-business-directory.js', array('jquery'), null, false);
+		wp_enqueue_script('lsx_business_directory_script', LSX_BUSINESS_DIRECTORY_URL . 'assets/js/lsx-business-directory.js', array('jquery','google_maps_api'), null, false);
+
 
 		wp_enqueue_style( 'lsx_business_directory_style', LSX_BUSINESS_DIRECTORY_URL . 'assets/css/frontend.css' );
 		

@@ -107,11 +107,11 @@ class LSX_Maps {
 			
 			wp_enqueue_script('google_maps_api', 'https://maps.googleapis.com/maps/api/js?key='.$this->api_key.'&signed_in=true&libraries=places', array('jquery'), null, false);
 
-			wp_enqueue_script('lsx_maps', LSX_FRAMEWORK_URL . 'assets/js/lsx-maps.js', array('jquery','google_maps_api'), null, true);
+			/*wp_enqueue_script('lsx_maps', LSX_FRAMEWORK_URL . 'assets/js/lsx-maps.js', array('jquery','google_maps_api'), null, true);
 			 $param_array = array(
 			 		'api_key' => $this->api_key
 			 );
-			wp_localize_script( 'lsx_maps', 'lsx_maps_params', $param_array );
+			wp_localize_script( 'lsx_maps', 'lsx_maps_params', $param_array );*/
 			
 		}
 	}

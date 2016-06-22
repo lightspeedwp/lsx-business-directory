@@ -25,7 +25,11 @@ function initialize() {
     }, lsx_map_places_callback);    
     
 }
-google.maps.event.addDomListener(window, "load", initialize);
+var map = document.getElementById("lsx-map");
+console.log(map);
+if(null !== map){
+  google.maps.event.addDomListener(window, "load", initialize);
+}
 
 function lsx_map_places_callback(results, status) {
 	
