@@ -54,7 +54,7 @@ get_header(); ?>
 									</div>
 									<?php if ( $fsb ) : ?>
 											<div>
-												<span><strong>FSB: </strong><?php echo $fsb; ?></span>
+												<span><strong>FSP: </strong><?php echo $fsb; ?></span>
 											</div>
 									<?php endif; ?>
 									<?php if ( $specialist ) : ?>
