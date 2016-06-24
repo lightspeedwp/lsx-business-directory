@@ -67,10 +67,9 @@
 												<?php echo do_shortcode('[facetwp per_page="true"]'); ?>
 											</div>
 											
-											<div class="business-filters-bottom">
-												<?php echo do_shortcode('[facetwp facet="alphabet"]'); ?>
-												<?php echo do_shortcode('[facetwp pager="true"]'); ?>
-											</div>
+											<!--<div class="business-filters-bottom">
+												<?php // echo do_shortcode('[facetwp facet="alphabet"]'); ?>
+											</div>-->
 										</div>
 										<div class="facetwp-template">
 										<?php while ( have_posts() ) :
@@ -79,6 +78,7 @@
 											?>										
 										<?php endwhile; ?>
 										</div>
+										<?php echo do_shortcode('[facetwp pager="true"]'); ?>
 									</div>
 								</div>
 							</div>
