@@ -103,7 +103,7 @@ class LSX_Maps {
 	 * @return    null
 	 */
 	public function enqueue_scripts() {
-		if(false !== $this->api_key){
+		if(false !== $this->api_key && is_singular('business-directory')){
 			
 			wp_enqueue_script('google_maps_api', 'https://maps.googleapis.com/maps/api/js?key='.$this->api_key.'&signed_in=true&libraries=places', array('jquery'), null, false);
 
