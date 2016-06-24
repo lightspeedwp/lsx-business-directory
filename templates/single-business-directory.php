@@ -86,14 +86,6 @@ get_header(); ?>
 
 				<div class="row">
 					<div class="business-content-right col-md-4">
-						<div class="contact-form business-content-section">
-							<h4 class="business-section-title">Contact <?php the_title(); ?></h4>
-							<?php
-								$form_slug = get_option( 'lsx-business-directory-generic-form' );
-								echo Caldera_Forms::render_form( $form_slug );
-							?>
-						</div>
-
 						<div class="contact-info business-content-section">
 							<h4 class="business-section-title">Contact Information</h4>
 
@@ -135,6 +127,14 @@ get_header(); ?>
 									<?php endif; ?>
 								</div>
 							</div>
+						</div>
+
+						<div class="contact-form business-content-section">
+							<h4 class="business-section-title">Contact <?php the_title(); ?></h4>
+							<?php
+								$form_slug = get_option( 'lsx-business-directory-generic-form' );
+								echo Caldera_Forms::render_form( $form_slug );
+							?>
 						</div>
 					</div>
 
