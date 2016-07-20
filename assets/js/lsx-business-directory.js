@@ -63,7 +63,7 @@ function initMap() {
 	var key = jQuery('#gmap').data( 'api' );
 
 	map = new google.maps.Map(document.getElementById('gmap'), {     
-		zoom: 12,
+		zoom: 4,
 		scrollwheel: false
     });
 
