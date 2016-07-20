@@ -76,7 +76,7 @@ function initMap() {
 		if (status == google.maps.places.PlacesServiceStatus.OK) {
 			var myLocation = results[0].geometry.location;
 			map.setCenter( myLocation );
-			map.setZoom(7);
+			map.setZoom(5);
 			createMarker(results[0]);
 		}
 	});
@@ -103,6 +103,6 @@ function setMapCenterZoom() {
 		}
 
 		map.fitBounds(bounds);
-		map.setZoom(7);
+		map.setZoom(5);
 	}
 }
