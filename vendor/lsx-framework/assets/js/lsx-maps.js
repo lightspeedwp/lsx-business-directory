@@ -5,7 +5,7 @@ function initialize() {
     var latlng = {lat: -33.92945, lng: 18.45345};
     
     var myOptions = {
-        zoom: 5,
+        zoom: 16,
         center: latlng,
         scrollwheel: false,
         mapTypeId: google.maps.MapTypeId.ROADMAP

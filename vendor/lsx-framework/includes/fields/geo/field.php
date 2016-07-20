@@ -173,7 +173,7 @@ return;
 
         map = new google.maps.Map(document.getElementById('{{_id}}_preview'), {
             mapTypeControl: false,
-            zoom: 5,
+            zoom: 11,
             center: new google.maps.LatLng(-29.9103, 24.44373),
             mapTypeId: google.maps.MapTypeId.ROADMAP
         });

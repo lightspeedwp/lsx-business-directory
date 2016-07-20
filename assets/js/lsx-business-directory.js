@@ -63,7 +63,7 @@ function initMap() {
 	var key = jQuery('#gmap').data( 'api' );
 
 	map = new google.maps.Map(document.getElementById('gmap'), {     
-		zoom: 5,
+		zoom: 12,
 		scrollwheel: false
     });
 
@@ -76,6 +76,7 @@ function initMap() {
 		if (status == google.maps.places.PlacesServiceStatus.OK) {
 			var myLocation = results[0].geometry.location;
 			map.setCenter( myLocation );
+			map.setZoom(7);
 			createMarker(results[0]);
 		}
 	});
@@ -102,6 +103,6 @@ function setMapCenterZoom() {
 		}
 
 		map.fitBounds(bounds);
-		map.setZoom(5);
+		map.setZoom(7);
 	}
 }
