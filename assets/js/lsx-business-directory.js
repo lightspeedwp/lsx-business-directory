@@ -102,5 +102,6 @@ function setMapCenterZoom() {
 		}
 
 		map.fitBounds(bounds);
+		map.setZoom(5);
 	}
 }
