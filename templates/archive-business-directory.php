@@ -71,6 +71,7 @@
 											
 											<div class="business-filters-bottom">
 												<?php echo do_shortcode('[facetwp facet="alphabet"]'); ?>
+												<?php echo do_shortcode('[facetwp pager="true"]'); ?>
 											</div>
 										</div>
 										<div class="facetwp-template">
