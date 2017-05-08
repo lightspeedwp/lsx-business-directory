@@ -3,7 +3,7 @@
  * @package   LSX_Business_Directory
  * @author    LightSpeed
  * @license   GPL-2.0+
- * @link      
+ * @link
  * @copyright 2015 LightSpeed
  */
 
@@ -42,7 +42,7 @@ class LSX_Business_Directory extends Lsx {
 	 */
 	protected $plugin_screen_hook_suffix = null;
 
-	
+
 	/**
 	 * Initialize the plugin by setting localization, filters, and administration functions.
 	 *
@@ -65,14 +65,14 @@ class LSX_Business_Directory extends Lsx {
 		// Redirect Templates
 		add_filter( 'template_include', array( $this, 'post_type_single_template_include'), 99 );
 		add_filter( 'template_include', array( $this, 'post_type_archive_template_include'), 99 );
-		
+
 		// Load front style sheet and JavaScript.
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
-		
-		
+
+
 		add_image_size( 'lsx-business-logo', 350, 350, true );
-		
+
 		//Set the single to 1 column
 		add_filter( 'lsx_bootstrap_column_size', array( $this, 'single_layout_filter' )  );
 
@@ -84,7 +84,7 @@ class LSX_Business_Directory extends Lsx {
 
 		// Checks if a Caldera Form is being submitted and applies filter
 		// Deactivated after internal request. Keeping it here as it could be useful for future use
-		// add_action( 'init', array( $this, 'caldera_form_submission_conditional' ) );		
+		// add_action( 'init', array( $this, 'caldera_form_submission_conditional' ) );
 	}
 
 	/**
@@ -115,7 +115,7 @@ class LSX_Business_Directory extends Lsx {
 		load_plugin_textdomain( $this->plugin_slug, false, basename( LSX_BUSINESS_DIRECTORY_PATH ) . '/languages');
 
 	}
-	
+
 	/**
 	 * Register and enqueue front-specific style sheet.
 	 *
@@ -124,13 +124,13 @@ class LSX_Business_Directory extends Lsx {
 	 * @return    null
 	 */
 	public function enqueue_scripts() {
-		
+
 		//wp_enqueue_style('lsx_landing_pages_style', LSX_BUSINESS_DIRECTORY_URL.'/assets/css/style.css');
 		if('business-directory' === get_post_type()){
 			wp_enqueue_script('lsx_business_directory_script', LSX_BUSINESS_DIRECTORY_URL . 'assets/js/lsx-business-directory.js', array('jquery','google_maps_api'), null, false);
 			wp_enqueue_style( 'lsx_business_directory_style', LSX_BUSINESS_DIRECTORY_URL . 'assets/css/frontend.css' );
 		}
-		
+
 		//Set some parameters that we can use in the JS
 		/*$is_portfolio = false;
 		$param_array = array(
@@ -140,7 +140,7 @@ class LSX_Business_Directory extends Lsx {
 		$param_array['columns'] = apply_filters('lsx_archive_column_number',3);
 		wp_localize_script( 'lsx_script', 'lsx_params', $param_array );		*/
 	}
-	
+
 	/**
 	 * Register and enqueue admin-specific style sheet.
 	 *
@@ -150,9 +150,9 @@ class LSX_Business_Directory extends Lsx {
 	 */
 	public function admin_enqueue_scripts() {
 		wp_enqueue_style('lsx_business_directory_admin_css', LSX_BUSINESS_DIRECTORY_URL . 'assets/css/admin-style.css');
-	}	
-	
-	
+	}
+
+
 	/**
 	 * Register the landing pages post type.
 	 *
@@ -160,7 +160,7 @@ class LSX_Business_Directory extends Lsx {
 	 * @return    null
 	 */
 	public function register_post_types() {
-	
+
 		// define the properties post type
 		$args = array(
 				'labels' 				=> array(
@@ -197,11 +197,11 @@ class LSX_Business_Directory extends Lsx {
 											'custom-fields'
 											),
 		);
-	
+
 		// register post type
 		lsx_register_post_type('business-directory', $args);
 	}
-	
+
 	/**
 	 * Register the global post types.
 	 *
@@ -209,23 +209,23 @@ class LSX_Business_Directory extends Lsx {
 	 * @return    null
 	 */
 	public function register_taxonomies() {
-			
+
 		$labels = array(
-				'name' => _x( 'Industry', 'lsx-tour-operators' ),
-				'singular_name' => _x( 'Industry', 'lsx-tour-operators' ),
-				'search_items' =>  __( 'Search Industries' , 'lsx-tour-operators' ),
-				'all_items' => __( 'Industries' , 'lsx-tour-operators' ),
-				'parent_item' => __( 'Parent Industry' , 'lsx-tour-operators' ),
-				'parent_item_colon' => __( 'Parent Industry:' , 'lsx-tour-operators' ),
-				'edit_item' => __( 'Edit Industry' , 'lsx-tour-operators' ),
-				'update_item' => __( 'Update Industry' , 'lsx-tour-operators' ),
-				'add_new_item' => __( 'Add New Industry' , 'lsx-tour-operators' ),
-				'new_item_name' => __( 'New Industry' , 'lsx-tour-operators' ),
-				'menu_name' => __( 'Industry' , 'lsx-tour-operators' ),
+				'name' => _x( 'Industry', 'lsx-business-directory' ),
+				'singular_name' => _x( 'Industry', 'lsx-business-directory' ),
+				'search_items' =>  __( 'Search Industries' , 'lsx-business-directory' ),
+				'all_items' => __( 'Industries' , 'lsx-business-directory' ),
+				'parent_item' => __( 'Parent Industry' , 'lsx-business-directory' ),
+				'parent_item_colon' => __( 'Parent Industry:' , 'lsx-business-directory' ),
+				'edit_item' => __( 'Edit Industry' , 'lsx-business-directory' ),
+				'update_item' => __( 'Update Industry' , 'lsx-business-directory' ),
+				'add_new_item' => __( 'Add New Industry' , 'lsx-business-directory' ),
+				'new_item_name' => __( 'New Industry' , 'lsx-business-directory' ),
+				'menu_name' => __( 'Industry' , 'lsx-business-directory' ),
 		);
-	
+
 		// Now register the taxonomy
-		register_taxonomy('industry',array('business-directory'), array(
+		register_taxonomy('lsx-bd-industry',array('business-directory'), array(
 				'hierarchical' => true,
 				'labels' => $labels,
 				'show_ui' => true,
@@ -235,24 +235,24 @@ class LSX_Business_Directory extends Lsx {
 				'query_var' => true,
 				'rewrite' => array('industry'),
 		));
-	
+
 		$labels = array(
-				'name' => _x( 'Region', 'lsx-tour-operators' ),
-				'singular_name' => _x( 'Region', 'lsx-tour-operators' ),
-				'search_items' =>  __( 'Search Regions' , 'lsx-tour-operators' ),
-				'all_items' => __( 'Regions' , 'lsx-tour-operators' ),
-				'parent_item' => __( 'Parent Region' , 'lsx-tour-operators' ),
-				'parent_item_colon' => __( 'Parent Region:' , 'lsx-tour-operators' ),
-				'edit_item' => __( 'Edit Region' , 'lsx-tour-operators' ),
-				'update_item' => __( 'Update Region' , 'lsx-tour-operators' ),
-				'add_new_item' => __( 'Add New Region' , 'lsx-tour-operators' ),
-				'new_item_name' => __( 'New Region' , 'lsx-tour-operators' ),
-				'menu_name' => __( 'Regions' , 'lsx-tour-operators' ),
+				'name' => _x( 'Region', 'lsx-business-directory' ),
+				'singular_name' => _x( 'Region', 'lsx-business-directory' ),
+				'search_items' =>  __( 'Search Regions' , 'lsx-business-directory' ),
+				'all_items' => __( 'Regions' , 'lsx-business-directory' ),
+				'parent_item' => __( 'Parent Region' , 'lsx-business-directory' ),
+				'parent_item_colon' => __( 'Parent Region:' , 'lsx-business-directory' ),
+				'edit_item' => __( 'Edit Region' , 'lsx-business-directory' ),
+				'update_item' => __( 'Update Region' , 'lsx-business-directory' ),
+				'add_new_item' => __( 'Add New Region' , 'lsx-business-directory' ),
+				'new_item_name' => __( 'New Region' , 'lsx-business-directory' ),
+				'menu_name' => __( 'Regions' , 'lsx-business-directory' ),
 		);
-	
-	
+
+
 		// Now register the taxonomy
-		register_taxonomy('region',array('business-directory'), array(
+		register_taxonomy('lsx-bd-region',array('business-directory'), array(
 				'hierarchical' => true,
 				'labels' => $labels,
 				'show_ui' => true,
@@ -262,8 +262,8 @@ class LSX_Business_Directory extends Lsx {
 				'query_var' => true,
 				'rewrite' => array('region'),
 		));
-	
-	}		
+
+	}
 
 	/**
 	 * Redirect wordpress to the single template located in the plugin
@@ -273,7 +273,7 @@ class LSX_Business_Directory extends Lsx {
 	 * @return	$template
 	 */
 	public function post_type_single_template_include( $template ) {
-	
+
 		if ( is_main_query()
 		&& is_singular('business-directory')
 		&& '' == locate_template( array( 'single-business-directory.php' ) )
@@ -281,8 +281,8 @@ class LSX_Business_Directory extends Lsx {
 			$template = LSX_BUSINESS_DIRECTORY_PATH.'templates/' . "single-business-directory.php";
 		}
 		return $template;
-	}	
-	
+	}
+
 	/**
 	 * Redirect wordpress to the archive template located in the plugin
 	 *
@@ -291,16 +291,16 @@ class LSX_Business_Directory extends Lsx {
 	 * @return	$template
 	 */
 	public function post_type_archive_template_include( $template ) {
-			
+
 		if ( is_main_query()
-		 && ( is_post_type_archive('business-directory') ) 
+		 && ( is_post_type_archive('business-directory') )
 		 && '' == locate_template( array( 'archive-business-directory.php' ) )
 		 && file_exists( LSX_BUSINESS_DIRECTORY_PATH.'/templates/' . "archive-business-directory.php" )) {
 			$template = LSX_BUSINESS_DIRECTORY_PATH.'/templates/' . "archive-business-directory.php";
 		}
 		return $template;
-	}	
-	
+	}
+
 	/**
 	 * Set the single business directory to 1 column
 	 *
@@ -361,10 +361,10 @@ class LSX_Business_Directory extends Lsx {
 
 		    $forms = Caldera_Forms::get_forms( true );
 		    if ( !empty( $forms ) ) {
-		    	echo '<select name="lsx-business-directory-generic-form">';		    	
+		    	echo '<select name="lsx-business-directory-generic-form">';
 		    	foreach( $forms as $form ) {
 		    		$state = '';
-		    		if ( $setting == $form['ID'] ) $state = 'selected';		    		
+		    		if ( $setting == $form['ID'] ) $state = 'selected';
 		    		echo '<option value="' . $form["ID"] . '" ' . $state . '>' . $form['name'] . '</option>';
 		    	}
 		    	echo '</select>';

@@ -10,11 +10,11 @@ get_header(); ?>
 	<div id="primary" class="content-area container <?php echo lsx_main_class(); ?>">
 
 		<?php lsx_content_before(); ?>
-		
+
 		<main id="main" class="site-main" role="main">
 
 		<?php lsx_content_top(); ?>
-		
+
 		<?php while ( have_posts() ) :
 			the_post();
 			$general_tab_fields = get_post_meta( get_the_ID(), 'general', true );
@@ -31,7 +31,7 @@ get_header(); ?>
 			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 				<?php lsx_entry_top(); ?>
-				
+
 				<div class="entry-header business-header">
 					<div class="row">
 						<div class="col-md-4">
@@ -46,11 +46,11 @@ get_header(); ?>
 
 								<div class="entry-meta">
 									<div class="category">
-										<span><strong>Category: </strong><?php echo get_formatted_taxonomy_str( get_the_ID(), 'industry' ); ?></span>
+										<span><strong>Category: </strong><?php echo get_formatted_taxonomy_str( get_the_ID(), 'lsx-bd-industry' ); ?></span>
 									</div>
 
 									<div class="region">
-										<span><strong>Region: </strong><?php echo get_formatted_taxonomy_str( get_the_ID(), 'region' ); ?></span>
+										<span><strong>Region: </strong><?php echo get_formatted_taxonomy_str( get_the_ID(), 'lsx-bd-region' ); ?></span>
 									</div>
 									<?php if ( $fsb ) : ?>
 											<div>
@@ -96,13 +96,13 @@ get_header(); ?>
 											<span><strong>Telephone: </strong> <a href="tel:<?php echo str_replace(' ', '', $primary_phone );?>" target="_blank"><?php echo $primary_phone;?></a></span>
 										</div>
 									<?php endif; ?>
-									
+
 									<?php if ( $primary_email ) : ?>
 									<div class="email">
 										<span><strong>Email: </strong> <a href="mailto:<?php echo $primary_email; ?>" target="_blank"><?php echo $primary_email; ?></a></span>
 									</div>
 									<?php endif; ?>
-									
+
 									<?php if ( $website ) : ?>
 										<div class="website">
 											<span><strong>Website: </strong> <a href="<?php echo $website; ?>" target="_blank"><?php echo $website; ?></a></span>
@@ -145,7 +145,7 @@ get_header(); ?>
 								the_content();
 							?>
 						</div>
-						
+
 						<?php if ( !empty( $branches ) && is_array($branches) && isset($branches[0]['branch_name']) && '' !== $branches[0]['branch_name'] ) : ?>
 							<div class="branches business-content-section">
 								<h3 class="business-section-title">Branches</h3>
@@ -194,20 +194,20 @@ get_header(); ?>
 								<?php endif; ?>
 						</div>
 					</div>
-				</div>				
+				</div>
 
 				<?php
-					$terms = wp_get_post_terms( get_the_ID(), 'industry' );
+					$terms = wp_get_post_terms( get_the_ID(), 'lsx-bd-industry' );
 					$prepped_terms = array();
 					foreach( $terms as $term ) {
-						array_push( $prepped_terms, $term->term_id ); 
+						array_push( $prepped_terms, $term->term_id );
 					}
 					$related_business_query = new WP_Query( array(
 						'post_type' => 'business-directory',
 						'posts_per_page' => 3,
 						'tax_query' => array(
 							array(
-								'taxonomy' => 'industry',
+								'taxonomy' => 'lsx-bd-industry',
 								'terms'    => $prepped_terms,
 							),
 						),
@@ -220,7 +220,7 @@ get_header(); ?>
 								<?php while( $related_business_query->have_posts() ) : ?>
 									<?php $related_business_query->the_post(); ?>
 									<?php lsx_related_business(); ?>
-								<?php endwhile; ?>								
+								<?php endwhile; ?>
 							</div>
 						</div>
 				<?php endif; ?>
@@ -232,13 +232,13 @@ get_header(); ?>
 			<?php lsx_entry_after(); ?>
 
 		<?php endwhile; // end of the loop. ?>
-		
-		<?php lsx_content_bottom(); ?>	
 
-		</main><!-- #main -->			
+		<?php lsx_content_bottom(); ?>
+
+		</main><!-- #main -->
 
 		<?php lsx_content_after(); ?>
-		
+
 	</div><!-- #primary -->
 
 	<?php
@@ -247,7 +247,7 @@ get_header(); ?>
 		* Variable set to quickly include if script is excluded elsewhere
 		*/
 		$include_api = false;
-		if ( $location && $include_api ) : 
+		if ( $location && $include_api ) :
 			?><script src="https://maps.googleapis.com/maps/api/js?key=<?php echo $api_key; ?>&callback=initMap&libraries=places" async defer></script><?php
 		endif;
 	?>

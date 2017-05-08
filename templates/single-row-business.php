@@ -7,7 +7,7 @@
 		$general_tab_fields = array($general_tab_fields);
 	}
 	extract( $general_tab_fields );
-	
+
 ?>
 <article class="business">
 	<div class="row">
@@ -22,11 +22,11 @@
 				<div class="row">
 					<div class="business-meta col-md-6">
 						<div class="category">
-							<span><strong>Category: </strong><?php echo get_formatted_taxonomy_str( get_the_ID(), 'industry' ); ?></span>
+							<span><strong>Category: </strong><?php echo get_formatted_taxonomy_str( get_the_ID(), 'lsx-bd-industry' ); ?></span>
 						</div>
 
 						<div class="region">
-							<span><strong>Region: </strong><?php echo get_formatted_taxonomy_str( get_the_ID(), 'region' ); ?></span>
+							<span><strong>Region: </strong><?php echo get_formatted_taxonomy_str( get_the_ID(), 'lsx-bd-region' ); ?></span>
 						</div>
 
 						<?php if ( $primary_phone ) : ?>
@@ -34,13 +34,13 @@
 								<span><strong>Telephone: </strong> <a href="tel:<?php echo str_replace(' ', '', $primary_phone );?>" target="_blank"><?php echo $primary_phone;?></a></span>
 							</div>
 						<?php endif; ?>
-						
+
 						<?php if ( $primary_email ) : ?>
 						<div class="email">
 							<span><strong>Email: </strong> <a href="mailto:<?php echo $primary_email; ?>" target="_blank"><?php echo $primary_email; ?></a></span>
 						</div>
 						<?php endif; ?>
-						
+
 						<?php if ( $website ) : ?>
 							<div class="website">
 								<span><strong>Website: </strong> <a href="<?php echo $website; ?>" target="_blank"><?php echo $website; ?></a></span>

@@ -4,6 +4,6 @@
 
 		<h3><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h3>
 
-		<span><strong>Category: </strong><?php echo get_formatted_taxonomy_str( get_the_ID(), 'industry' ); ?></span>
+		<span><strong>Category: </strong><?php echo get_formatted_taxonomy_str( get_the_ID(), 'lsx-bd-industry' ); ?></span>
 	</div>
 </div>

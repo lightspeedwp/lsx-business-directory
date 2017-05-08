@@ -23,7 +23,7 @@ class LSX_Maps {
 	 * @var      object|Lsx
 	 */
 	protected static $instance = null;
-	
+
 	/**
 	 * Holds the google api key.
 	 *
@@ -31,8 +31,8 @@ class LSX_Maps {
 	 *
 	 * @var      string
 	 */
-	protected $api_key = false;	
-		
+	protected $api_key = false;
+
 	/**
 	 * Initialize the plugin by setting localization, filters, and administration functions.
 	 *
@@ -41,17 +41,17 @@ class LSX_Maps {
 	 * @access private
 	 */
 	private function __construct() {
-		
+
 		add_action('lsx_settings_module_tabs',array($this,'settings_tabs'));
 		add_action('lsx_settings_module_templates',array($this,'settings_template'));
-		
+
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-		
+
 		$options = Lsx_Options::get_single( 'lsx' );
 		//if( false !== $options && is_array($options['lsx-tour-operators']) ){
 		if(isset($options['gmaps_api_key']) && '' != $options['gmaps_api_key']){
 			$this->api_key = $options['gmaps_api_key'];
-		}		
+		}
 	}
 
 	/**
@@ -62,12 +62,12 @@ class LSX_Maps {
 	 * @return    object|Lsx    A single instance of this class.
 	 */
 	public static function get_instance() {
-	
+
 		// If the single instance hasn't been set, set it now.
 		if ( null == self::$instance ) {
 			self::$instance = new self;
 		}
-	
+
 		return self::$instance;
 	}
 
@@ -77,13 +77,13 @@ class LSX_Maps {
 	function settings_tabs(){
 		echo '<a class="{{#is _current_tab value="#lsx-panel-gmaps"}}nav-tab-active {{/is}}lsx-nav-tab nav-tab" href="#lsx-panel-gmaps">' . __('Google Maps', 'lsx') . '</a>';
 	}
-	
+
 	/**
 	 * Settings page html
 	 */
 	function settings_template(){
 	?>
-		<div id="lsx-panel-gmaps" class="lsx-editor-panel" {{#is _current_tab value="#lsx-panel-gmaps"}}{{else}} style="display:none;" {{/is}}>		
+		<div id="lsx-panel-gmaps" class="lsx-editor-panel" {{#is _current_tab value="#lsx-panel-gmaps"}}{{else}} style="display:none;" {{/is}}>
 			<h4><?php _e('Google Maps', 'lsx') ; ?> <small class="description"><?php _e('API Key', 'lsx') ; ?></small></h4>
 			<div class="lsx-config-group">
 				<label for="lsx-gmaps-key">
@@ -92,8 +92,8 @@ class LSX_Maps {
 				<input type="text" name="gmaps_api_key" value="{{gmaps_api_key}}" id="lsx-gmaps-key">
 			</div>
 		</div>
-	<?php	
-	}	
+	<?php
+	}
 
 	/**
 	 * Register and enqueue front-specific style sheet.
@@ -104,7 +104,7 @@ class LSX_Maps {
 	 */
 	public function enqueue_scripts() {
 		if(false !== $this->api_key && is_singular('business-directory')){
-			
+
 			wp_enqueue_script('google_maps_api', 'https://maps.googleapis.com/maps/api/js?key='.$this->api_key.'&signed_in=true&libraries=places', array('jquery'), null, false);
 
 			/*wp_enqueue_script('lsx_maps', LSX_FRAMEWORK_URL . 'assets/js/lsx-maps.js', array('jquery','google_maps_api'), null, true);
@@ -112,7 +112,7 @@ class LSX_Maps {
 			 		'api_key' => $this->api_key
 			 );
 			wp_localize_script( 'lsx_maps', 'lsx_maps_params', $param_array );*/
-			
+
 		}
 	}
 
@@ -125,9 +125,9 @@ class LSX_Maps {
 	 */
 	public function map_output($search = false,$zoom = 18) {
 		global $content_width;
-		
 
-		/*if(false !== $this->api_key && false !== $search ){	
+
+		/*if(false !== $this->api_key && false !== $search ){
 			$map = "<iframe
 			src=\"https://www.google.com/maps/embed/v1/place
 			?key={$this->api_key}
@@ -137,12 +137,12 @@ class LSX_Maps {
 			height=\"400\"></iframe>";
 			return $map;
 		}*/
-		
+
 		if(false !== $this->api_key && false !== $search ){
 			$map = '<div id="lsx-map" style="width:100%;height:400px;" data-address="'.$search.'"></div>';
 			return $map;
-		}		
-	}	
+		}
+	}
 
 }
 global $lsx_maps;

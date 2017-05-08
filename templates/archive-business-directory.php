@@ -1,11 +1,11 @@
 <?php
 /**
  * The template for the business directory post type archive.
- * 
+ *
  * @package		LSX_Business_Directory
  * @subpackage	template
  * @category	archive
- */ 
+ */
 ?>
 <?php get_header(); ?>
 
@@ -21,7 +21,7 @@
 				<?php if(is_post_type_archive()){ ?>
 					<h1 class="page-title"><?php _e('Business Directory','lsx-business-directory'); ?></h1>
 				<?php } else { ?>
-					<h1 class="page-title"><?php 
+					<h1 class="page-title"><?php
 					if( is_tax() ){
 						$taxo = get_taxonomy( get_queried_object()->taxonomy );
 						$post_type = $taxo->object_type;
@@ -31,18 +31,18 @@
 						the_archive_title();
 					}
 					?></h1>
-				<?php } ?>	
+				<?php } ?>
 
 			</header><!-- .entry-header -->
 
-			
+
 			<?php if(is_tax()){ ?>
-				<div class="entry-content">		
+				<div class="entry-content">
 					<?php the_archive_description(); ?>
 				</div>
 			<?php } ?>
 
-				
+
 					<?php if ( have_posts() ) : ?>
 						<div class="lsx-business-directory-wrapper">
 							<div class="row">
@@ -68,7 +68,7 @@
 												<?php echo do_shortcode('[facetwp sort="true"]'); ?>
 												<?php echo do_shortcode('[facetwp per_page="true"]'); ?>
 											</div>
-											
+
 											<div class="business-filters-bottom">
 												<?php echo do_shortcode('[facetwp facet="alphabet"]'); ?>
 												<?php echo do_shortcode('[facetwp pager="true"]'); ?>
@@ -76,9 +76,9 @@
 										</div>
 										<div class="facetwp-template">
 										<?php while ( have_posts() ) :
-												the_post();		
-												lsx_business_row();									
-											?>										
+												the_post();
+												lsx_business_row();
+											?>
 										<?php endwhile; ?>
 										</div>
 										<?php echo do_shortcode('[facetwp pager="true"]'); ?>
@@ -86,7 +86,7 @@
 								</div>
 							</div>
 						</div>
-							
+
 					<?php else : ?>
 
 						<section class="no-results not-found">
@@ -108,15 +108,15 @@
 							</div><!-- .page-content -->
 						</section><!-- .no-results -->
 
-					<?php endif; ?>	
-				
+					<?php endif; ?>
+
 
 			<div class="clearfix"></div>
 
 		</main><!-- #main -->
 
 		<?php //lsx_content_after(); ?>
-		
+
 	</div><!-- #primary -->
-	
+
 <?php get_footer(); ?>
