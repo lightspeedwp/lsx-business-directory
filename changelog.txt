@@ -1,0 +1,10 @@
+## Change log
+
+### 1.0.1
+* Fix JS error related with GMap non-exists tag
+* Updated the License class so the status is updated on activation.
+* Updated the JS so it works with the new Button JS
+* Changelog created
+
+### 1.0.0
+* First Version

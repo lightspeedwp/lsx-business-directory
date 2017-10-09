@@ -10,7 +10,7 @@
  * Plugin Name: LSX Business Directory
  * Plugin URI:  http://lsdev.biz/
  * Description: Business Directory addon for the LSX Framework
- * Version:     1.0.0
+ * Version:     1.0.1
  * Author:      LightSpeed Team
  * Author URI:  https://www.lsdev.biz/
  * Text Domain: lsx-business-directory
@@ -27,7 +27,7 @@ if ( ! defined( 'WPINC' ) ) {
 define('LSX_BUSINESS_DIRECTORY_PATH',  plugin_dir_path( __FILE__ ) );
 define('LSX_BUSINESS_DIRECTORY_CORE',  __FILE__ );
 define('LSX_BUSINESS_DIRECTORY_URL',  plugin_dir_url( __FILE__ ) );
-define('LSX_BUSINESS_DIRECTORY_VER',  '1.0.0' );
+define('LSX_BUSINESS_DIRECTORY_VER',  '1.0.1' );
 if ( ! defined( 'LSX_BUSINESS_DIRECTORY_ARCHIVE_SLUG' ) ) {
 	define('LSX_BUSINESS_DIRECTORY_ARCHIVE_SLUG',  'business-directory' );
 }
@@ -99,7 +99,7 @@ function lsx_business_directory_api_admin_init() {
 
 	$api_array = array(
 		'product_id' => 'LSX Business Directory',
-		'version'    => '1.0.0',
+		'version'    => '1.0.1',
 		'instance'   => $instance,
 		'email'      => $data['email'],
 		'api_key'    => $data['api_key'],
@@ -131,7 +131,7 @@ function lsx_business_directories_register_module( $modules ){
 	$modules[] = array(
       'Name' => __('Business Directory', 'lsx-business-directory'),
       'ModuleURI' => '',
-      'Version' => '1.0.0',
+      'Version' => '1.0.1',
       'Description' => __('Business Directory addon for the LSX Framework', 'lsx-business-directory'),
       'Author' => __( 'LightSpeed Team', 'lsx-business-directory'),
       'AuthorURI' => 'https://www.lsdev.biz/',
