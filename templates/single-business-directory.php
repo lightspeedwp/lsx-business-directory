@@ -93,19 +93,19 @@ get_header(); ?>
 								<div class="col-md-6">
 									<?php if ( $primary_phone ) : ?>
 										<div class="telephone">
-											<span><strong>Telephone: </strong> <a href="tel:<?php echo str_replace(' ', '', $primary_phone );?>" target="_blank"><?php echo $primary_phone;?></a></span>
+											<span><strong>Telephone: </strong> <a href="tel:<?php echo str_replace(' ', '', $primary_phone );?>" target="_blank" rel="noopener noreferrer"><?php echo $primary_phone;?></a></span>
 										</div>
 									<?php endif; ?>
 
 									<?php if ( $primary_email ) : ?>
 									<div class="email">
-										<span><strong>Email: </strong> <a href="mailto:<?php echo $primary_email; ?>" target="_blank"><?php echo $primary_email; ?></a></span>
+										<span><strong>Email: </strong> <a href="mailto:<?php echo $primary_email; ?>" target="_blank" rel="noopener noreferrer"><?php echo $primary_email; ?></a></span>
 									</div>
 									<?php endif; ?>
 
 									<?php if ( $website ) : ?>
 										<div class="website">
-											<span><strong>Website: </strong> <a href="<?php echo $website; ?>" target="_blank"><?php echo $website; ?></a></span>
+											<span><strong>Website: </strong> <a href="<?php echo $website; ?>" target="_blank" rel="noopener noreferrer"><?php echo $website; ?></a></span>
 										</div>
 									<?php endif; ?>
 								</div>

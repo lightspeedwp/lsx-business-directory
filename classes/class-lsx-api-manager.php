@@ -206,7 +206,7 @@ class LSX_API_Manager {
 		if('active' === $this->status){
 			$description = __( '<span style="color:#008000;">Your license is now active</span>', $this->product_slug );
 		}else{
-			$description = __( 'You can find your key on your <a target="_blank" href="https://www.lsdev.biz/my-account/">My Account</a> page.', $this->product_slug );
+			$description = __( 'You can find your key on your <a target="_blank" href="https://www.lsdev.biz/my-account/" rel="noopener noreferrer">My Account</a> page.', $this->product_slug );
 		}
 
 		?>
@@ -497,8 +497,8 @@ class LSX_API_Manager {
 		if(false !== $this->documentation){$documentation = $this->documentation; }
 		$mylinks = array(
 			'<a href="' . admin_url( $admin_url_base ) . '">'.esc_html__('Settings',$this->product_slug).'</a>',
-			'<a href="https://www.lsdev.biz/documentation/'.$documentation.'/" target="_blank">'.esc_html__('Documentation',$this->product_slug).'</a>',
-			'<a href="https://www.lsdev.biz/contact-us/" target="_blank">'.esc_html__('Support',$this->product_slug).'</a>',
+			'<a href="https://www.lsdev.biz/documentation/'.$documentation.'/" target="_blank" rel="noopener noreferrer">'.esc_html__('Documentation',$this->product_slug).'</a>',
+			'<a href="https://www.lsdev.biz/contact-us/" target="_blank" rel="noopener noreferrer">'.esc_html__('Support',$this->product_slug).'</a>',
 		);
 		return array_merge( $links, $mylinks );
 	}
