@@ -9,18 +9,18 @@
 			<div class="col-md-4">
 				<?php if ( $branch_telephone ) : ?>
 					<div class="branch-telephone">
-						<span><strong>Telephone: </strong> <a href="tel:<?php echo str_replace(' ', '', $branch_telephone); ?>" target="_blank"><?php echo $branch_telephone; ?></a></span>
+						<span><strong>Telephone: </strong> <a href="tel:<?php echo str_replace(' ', '', $branch_telephone); ?>" target="_blank" rel="noopener noreferrer"><?php echo $branch_telephone; ?></a></span>
 					</div>
 				<?php endif; ?>
 				<?php if ( $branch_email ) : ?>
 					<div class="branch-email">
-						<span><strong>Email: </strong> <a href="mailto:<?php echo $branch_email; ?>" target="_blank"><?php echo $branch_email; ?></a></span>
+						<span><strong>Email: </strong> <a href="mailto:<?php echo $branch_email; ?>" target="_blank" rel="noopener noreferrer"><?php echo $branch_email; ?></a></span>
 					</div>
 				<?php endif; ?>
 				
 				<?php if ( $branch_website ) : ?>
 				<div class="branch-website">
-					<span><strong>Website: </strong> <a href="<?php echo $branch_website; ?>" target="_blank"><?php echo $branch_website; ?></a></span>
+					<span><strong>Website: </strong> <a href="<?php echo $branch_website; ?>" target="_blank" rel="noopener noreferrer"><?php echo $branch_website; ?></a></span>
 				</div>
 				<?php endif; ?>
 			</div>
