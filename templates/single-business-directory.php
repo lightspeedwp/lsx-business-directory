@@ -132,8 +132,10 @@ get_header(); ?>
 						<div class="contact-form business-content-section">
 							<h4 class="business-section-title">Contact <?php the_title(); ?></h4>
 							<?php
+							if ( class_exists( 'Caldera_Forms' ) ) {
 								$form_slug = get_option( 'lsx-business-directory-generic-form' );
 								echo Caldera_Forms::render_form( $form_slug );
+							}
 							?>
 						</div>
 					</div>
