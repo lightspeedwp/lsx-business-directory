@@ -1,5 +1,5 @@
 <?php
-namespace lsx_business_directory\classes;
+namespace lsx\business_directory\classes;
 
 /**
  * Contains the recipe post type
@@ -13,7 +13,7 @@ class Custom_Post_Type {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @var      object \lsx_business_directory\classes\Custom_Post_Type()
+	 * @var      object \lsx\business_directory\classes\Custom_Post_Type()
 	 */
 	protected static $instance = null;
 
@@ -39,7 +39,7 @@ class Custom_Post_Type {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return    object \lsx_business_directory\classes\Custom_Post_Type()    A single instance of this class.
+	 * @return    object \lsx\business_directory\classes\Custom_Post_Type()    A single instance of this class.
 	 */
 	public static function get_instance() {
 

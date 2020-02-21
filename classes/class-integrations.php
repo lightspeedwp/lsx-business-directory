@@ -1,5 +1,5 @@
 <?php
-namespace lsx_business_directory\classes;
+namespace lsx\business_directory\classes;
 
 /**
  * Contains all the classes for 3rd party Integrations
@@ -13,7 +13,7 @@ class Integrations {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @var      object \lsx_business_directory\classes\Integrations()
+	 * @var      object \lsx\business_directory\classes\Integrations()
 	 */
 	protected static $instance = null;
 
@@ -30,7 +30,7 @@ class Integrations {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return    object \lsx_business_directory\classes\Integrations()    A single instance of this class.
+	 * @return    object \lsx\business_directory\classes\Integrations()    A single instance of this class.
 	 */
 	public static function get_instance() {
 

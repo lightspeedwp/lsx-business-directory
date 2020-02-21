@@ -1,5 +1,5 @@
 <?php
-namespace lsx_business_directory\classes;
+namespace lsx\business_directory\classes;
 
 /**
  * LSX Starter Plugin Admin Class.
@@ -13,7 +13,7 @@ class Admin {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @var      object \lsx_business_directory\classes\Admin()
+	 * @var      object \lsx\business_directory\classes\Admin()
 	 */
 	protected static $instance = null;
 

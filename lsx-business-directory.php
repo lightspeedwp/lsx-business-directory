@@ -31,6 +31,6 @@ require_once LSX_BD_PATH . '/classes/class-core.php';
  * @return void
  */
 function lsx_business_directory() {
-	return \lsx_business_directory\classes\Core::get_instance();
+	return \lsx\business_directory\classes\Core::get_instance();
 }
 lsx_business_directory();

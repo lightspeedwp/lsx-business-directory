@@ -1,5 +1,5 @@
 <?php
-namespace lsx_business_directory\classes;
+namespace lsx\business_directory\classes;
 
 /**
  * LSX Starter Plugin Frontend Class.
@@ -13,7 +13,7 @@ class Frontend {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @var      object \lsx_business_directory\classes\Frontend()
+	 * @var      object \lsx\business_directory\classes\Frontend()
 	 */
 	protected static $instance = null;
 
@@ -34,7 +34,7 @@ class Frontend {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return    object \lsx_business_directory\classes\Frontend()    A single instance of this class.
+	 * @return    object \lsx\business_directory\classes\Frontend()    A single instance of this class.
 	 */
 	public static function get_instance() {
 		// If the single instance hasn't been set, set it now.

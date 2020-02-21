@@ -1,5 +1,5 @@
 <?php
-namespace lsx_business_directory\classes;
+namespace lsx\business_directory\classes;
 
 /**
  * This class loads the other classes and function files
@@ -13,27 +13,27 @@ class Core {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @var      object \lsx_business_directory\classes\Core()
+	 * @var      object \lsx\business_directory\classes\Core()
 	 */
 	protected static $instance = null;
 
 	/**
-	 * @var object \lsx_business_directory\classes\Setup();
+	 * @var object \lsx\business_directory\classes\Setup();
 	 */
 	public $setup;
 
 	/**
-	 * @var object \lsx_business_directory\classes\Admin();
+	 * @var object \lsx\business_directory\classes\Admin();
 	 */
 	public $admin;
 
 	/**
-	 * @var object \lsx_business_directory\classes\Frontend();
+	 * @var object \lsx\business_directory\classes\Frontend();
 	 */
 	public $frontend;
 
 	/**
-	 * @var object \lsx_business_directory\classes\Integrations();
+	 * @var object \lsx\business_directory\classes\Integrations();
 	 */
 	public $integrations;
 
@@ -57,7 +57,7 @@ class Core {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return    object \lsx_business_directory\classes\Core()    A single instance of this class.
+	 * @return    object \lsx\business_directory\classes\Core()    A single instance of this class.
 	 */
 	public static function get_instance() {
 		// If the single instance hasn't been set, set it now.

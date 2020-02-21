@@ -1,5 +1,5 @@
 <?php
-namespace lsx_business_directory\classes;
+namespace lsx\business_directory\classes;
 
 /**
  * LSX Starter Plugin Post Class.
@@ -13,7 +13,7 @@ class Post_Type {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @var      object \lsx_business_directory\classes\Post_Type()
+	 * @var      object \lsx\business_directory\classes\Post_Type()
 	 */
 	protected static $instance = null;
 
@@ -31,11 +31,11 @@ class Post_Type {
 		// configure our custom post types in here
 		$this->enable_post_types();
 		add_filter( 'lsx_business_directory_post_types', array( $this, 'enable_post_types' ) );
-		foreach ( $this->post_types as $post_type ) {
-			require_once LSX_BD_PATH . 'classes/class-' . $post_type . '.php';
-			$classname        = ucwords( $post_type );
-			$this->$post_type = call_user_func_array( '\\lsx_business_directory\classes\\' . $classname . '::get_instance', array() );
-		}
+		// foreach ( $this->post_types as $post_type ) {
+		// require_once LSX_BD_PATH . 'classes/class-' . $post_type . '.php';
+		// $classname        = ucwords( $post_type );
+		// $this->$post_type = call_user_func_array( '\\lsx_business_directory\classes\\' . $classname . '::get_instance', array() );
+		// }
 	}
 
 	/**
@@ -43,7 +43,7 @@ class Post_Type {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return    object \lsx_business_directory\classes\Post_Type()    A single instance of this class.
+	 * @return    object \lsx\business_directory\classes\Post_Type()    A single instance of this class.
 	 */
 	public static function get_instance() {
 		// If the single instance hasn't been set, set it now.

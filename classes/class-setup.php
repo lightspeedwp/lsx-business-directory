@@ -1,5 +1,5 @@
 <?php
-namespace lsx_business_directory\classes;
+namespace lsx\business_directory\classes;
 
 /**
  * LSX Starter Plugin Admin Class.
@@ -13,7 +13,7 @@ class Setup {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @var      object \lsx_business_directory\classes\Setup()
+	 * @var      object \lsx\business_directory\classes\Setup()
 	 */
 	protected static $instance = null;
 
@@ -35,7 +35,7 @@ class Setup {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return    object \lsx_business_directory\classes\Setup()    A single instance of this class.
+	 * @return    object \lsx\business_directory\classes\Setup()    A single instance of this class.
 	 */
 	public static function get_instance() {
 
