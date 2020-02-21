@@ -16,14 +16,14 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-define( 'LSX_BUSINESS_DIRECTORY_PATH', plugin_dir_path( __FILE__ ) );
-define( 'LSX_BUSINESS_DIRECTORY_CORE', __FILE__ );
-define( 'LSX_BUSINESS_DIRECTORY_URL', plugin_dir_url( __FILE__ ) );
-define( 'LSX_BUSINESS_DIRECTORY_VER', '1.1.0' );
+define( 'LSX_BD_PATH', plugin_dir_path( __FILE__ ) );
+define( 'LSX_BD_CORE', __FILE__ );
+define( 'LSX_BD_URL', plugin_dir_url( __FILE__ ) );
+define( 'LSX_BD_VER', '1.1.0' );
 
 /* ======================= Below is the Plugin Class init ========================= */
 
-require_once LSX_BUSINESS_DIRECTORY_PATH . '/classes/class-core.php';
+require_once LSX_BD_PATH . '/classes/class-core.php';
 
 /**
  * Plugin kicks off with this function.

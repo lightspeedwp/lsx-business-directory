@@ -9,7 +9,7 @@
  * Adds text domain.
  */
 function lsx_business_directory_load_plugin_textdomain() {
-	load_plugin_textdomain( 'lsx-business-directory', false, basename( LSX_BUSINESS_DIRECTORY_PATH ) . '/languages' );
+	load_plugin_textdomain( 'lsx-business-directory', false, basename( LSX_BD_PATH ) . '/languages' );
 }
 add_action( 'init', 'lsx_business_directory_load_plugin_textdomain' );
 

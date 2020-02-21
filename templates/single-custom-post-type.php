@@ -24,7 +24,7 @@ get_header(); ?>
 				the_post();
 				?>
 
-				<?php include LSX_BUSINESS_DIRECTORY_PATH . '/templates/content-custom-post-type.php'; ?>
+				<?php include LSX_BD_PATH . '/templates/content-custom-post-type.php'; ?>
 
 			<?php endwhile; ?>
 

@@ -54,8 +54,8 @@ class Admin {
 		wp_enqueue_script( 'thickbox' );
 		wp_enqueue_style( 'thickbox' );
 
-		wp_enqueue_script( 'lsx-business-directory-admin', LSX_BUSINESS_DIRECTORY_URL . 'assets/js/lsx-business-directory-admin.min.js', array( 'jquery' ), LSX_BUSINESS_DIRECTORY_VER, true );
-		wp_enqueue_style( 'lsx-business-directory-admin', LSX_BUSINESS_DIRECTORY_URL . 'assets/css/lsx-business-directory-admin.css', array(), LSX_BUSINESS_DIRECTORY_VER );
+		wp_enqueue_script( 'lsx-business-directory-admin', LSX_BD_URL . 'assets/js/lsx-business-directory-admin.min.js', array( 'jquery' ), LSX_BD_VER, true );
+		wp_enqueue_style( 'lsx-business-directory-admin', LSX_BD_URL . 'assets/css/lsx-business-directory-admin.css', array(), LSX_BD_VER );
 	}
 
 }

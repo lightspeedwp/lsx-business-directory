@@ -26,7 +26,7 @@ class Setup {
 	 * Contructor
 	 */
 	public function __construct() {
-		require_once LSX_BUSINESS_DIRECTORY_PATH . 'classes/class-post-type.php';
+		require_once LSX_BD_PATH . 'classes/class-post-type.php';
 		$this->post_types = Post_Type::get_instance();
 	}
 

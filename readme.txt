@@ -13,4 +13,4 @@ License: GPLv3
 
  * lsx_business_directory
  * lsx-business-directory
- * LSX_BUSINESS_DIRECTORY
+ * LSX_BD

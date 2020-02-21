@@ -22,7 +22,7 @@ class Integrations {
 	 */
 	public function __construct() {
 		// Initialize CMB2 framework.
-		require_once LSX_BUSINESS_DIRECTORY_PATH . 'vendor/cmb2/init.php';
+		require_once LSX_BD_PATH . 'vendor/cmb2/init.php';
 	}
 
 	/**

@@ -50,7 +50,7 @@ class Frontend {
 	 * @return void
 	 */
 	public function assets() {
-		wp_enqueue_script( 'lsx-business-directory', LSX_BUSINESS_DIRECTORY_URL . 'assets/js/lsx-business-directory.min.js', array( 'jquery' ), LSX_BUSINESS_DIRECTORY_VER, true );
+		wp_enqueue_script( 'lsx-business-directory', LSX_BD_URL . 'assets/js/lsx-business-directory.min.js', array( 'jquery' ), LSX_BD_VER, true );
 
 		$params = apply_filters(
 			'lsx_business_directory_js_params',
@@ -61,7 +61,7 @@ class Frontend {
 
 		wp_localize_script( 'lsx-business-directory', 'lsx_customizer_params', $params );
 
-		wp_enqueue_style( 'lsx-business-directory', LSX_BUSINESS_DIRECTORY_URL . 'assets/css/lsx-business-directory.css', array(), LSX_BUSINESS_DIRECTORY_VER );
+		wp_enqueue_style( 'lsx-business-directory', LSX_BD_URL . 'assets/css/lsx-business-directory.css', array(), LSX_BD_VER );
 		wp_style_add_data( 'lsx-business-directory', 'rtl', 'replace' );
 	}
 
@@ -72,8 +72,8 @@ class Frontend {
 		$applicable_post_types = apply_filters( 'lsx_business_directory_archive_template', array() );
 		if ( ! empty( $applicable_post_types ) && is_main_query() && is_post_type_archive( $applicable_post_types ) ) {
 			$post_type = get_post_type();
-			if ( empty( locate_template( array( 'archive-' . $post_type . '.php' ) ) ) && file_exists( LSX_BUSINESS_DIRECTORY_PATH . 'templates/archive-' . $post_type . '.php' ) ) {
-				$template = LSX_BUSINESS_DIRECTORY_PATH . 'templates/archive-' . $post_type . '.php';
+			if ( empty( locate_template( array( 'archive-' . $post_type . '.php' ) ) ) && file_exists( LSX_BD_PATH . 'templates/archive-' . $post_type . '.php' ) ) {
+				$template = LSX_BD_PATH . 'templates/archive-' . $post_type . '.php';
 			}
 		}
 		return $template;
@@ -86,8 +86,8 @@ class Frontend {
 		$applicable_post_types = apply_filters( 'lsx_business_directory_single_template', array() );
 		if ( ! empty( $applicable_post_types ) && is_main_query() && is_singular( $applicable_taxonomies ) ) {
 			$post_type = get_post_type();
-			if ( empty( locate_template( array( 'single-' . $post_type . '.php' ) ) ) && file_exists( LSX_BUSINESS_DIRECTORY_PATH . 'templates/single-' . $post_type . '.php' ) ) {
-				$template = LSX_BUSINESS_DIRECTORY_PATH . 'templates/single-' . $post_type . '.php';
+			if ( empty( locate_template( array( 'single-' . $post_type . '.php' ) ) ) && file_exists( LSX_BD_PATH . 'templates/single-' . $post_type . '.php' ) ) {
+				$template = LSX_BD_PATH . 'templates/single-' . $post_type . '.php';
 			}
 		}
 		return $template;
@@ -103,8 +103,8 @@ class Frontend {
 		$applicable_taxonomies = apply_filters( 'lsx_business_directory_taxonomies_template', array() );
 		if ( is_main_query() && is_tax( $applicable_taxonomies ) ) {
 			$current_taxonomy = get_query_var( 'taxonomy' );
-			if ( '' == locate_template( array( 'taxonomy-' . $current_taxonomy . '.php' ) ) && file_exists( LSX_BUSINESS_DIRECTORY_PATH . 'templates/taxonomy-' . $current_taxonomy . '.php' ) ) {
-				$template = LSX_BUSINESS_DIRECTORY_PATH . 'templates/taxonomy-' . $current_taxonomy . '.php';
+			if ( '' == locate_template( array( 'taxonomy-' . $current_taxonomy . '.php' ) ) && file_exists( LSX_BD_PATH . 'templates/taxonomy-' . $current_taxonomy . '.php' ) ) {
+				$template = LSX_BD_PATH . 'templates/taxonomy-' . $current_taxonomy . '.php';
 			}
 		}
 		return $template;
