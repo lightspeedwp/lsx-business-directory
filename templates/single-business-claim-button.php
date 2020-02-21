@@ -1,1 +1,0 @@
-<a href="#" class="btn">Claim this listing</a>
