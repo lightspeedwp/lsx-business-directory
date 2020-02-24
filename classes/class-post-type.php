@@ -31,11 +31,11 @@ class Post_Type {
 		// configure our custom post types in here
 		$this->enable_post_types();
 		add_filter( 'lsx_business_directory_post_types', array( $this, 'enable_post_types' ) );
-		// foreach ( $this->post_types as $post_type ) {
-		// require_once LSX_BD_PATH . 'classes/class-' . $post_type . '.php';
-		// $classname        = ucwords( $post_type );
-		// $this->$post_type = call_user_func_array( '\\lsx_business_directory\classes\\' . $classname . '::get_instance', array() );
-		// }
+		foreach ( $this->post_types as $post_type ) {
+			require_once LSX_BD_PATH . 'classes/class-' . $post_type . '.php';
+			$classname        = ucwords( $post_type );
+			$this->$post_type = call_user_func_array( '\\lsx\\business_directory\classes\\' . $classname . '::get_instance', array() );
+		}
 	}
 
 	/**
@@ -60,7 +60,8 @@ class Post_Type {
 	 */
 	public function enable_post_types() {
 		$this->post_types = array(
-			'custom-post-type',
+			// Note: has to use underscores instead of dashes, as it will translate into Business_directory as a classname for a post type.
+			'business_directory',
 		);
 		return $post_types;
 	}
