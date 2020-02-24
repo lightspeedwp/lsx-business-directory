@@ -1,1 +1,2 @@
-# lsx-tour-operators
+# LSX Starter Plugin
+LSX Starter Plugin for building LSX theme extensions.
