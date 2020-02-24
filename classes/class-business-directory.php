@@ -6,14 +6,14 @@ namespace lsx\business_directory\classes;
  *
  * @package lsx-business-directory
  */
-class Business_directory {
+class Business_Directory {
 
 	/**
 	 * Holds class instance
 	 *
 	 * @since 1.0.0
 	 *
-	 * @var      object \lsx\business_directory\classes\Business_directory()
+	 * @var      object \lsx\business_directory\classes\Business_Directory()
 	 */
 	protected static $instance = null;
 
@@ -39,7 +39,7 @@ class Business_directory {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return    object \lsx\business_directory\classes\Business_directory()    A single instance of this class.
+	 * @return    object \lsx\business_directory\classes\Business_Directory()    A single instance of this class.
 	 */
 	public static function get_instance() {
 
