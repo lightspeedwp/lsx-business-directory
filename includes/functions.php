@@ -282,7 +282,8 @@ function get_available_forms() {
 
 	if ( ! empty( $forms ) ) {
 		foreach ( $forms as $form_id => $form_data ) {
-			$options[ $form_id ] = esc_html__( strval( $form_data ), 'lsx-business-directory' );
+			$option_text         = strval( $form_data );
+			$options[ $form_id ] = esc_html__( $option_text, 'lsx-business-directory' );
 		}
 	} else {
 		$options['none'] = esc_html__( 'You have no forms available', 'lsx-business-directory' );
