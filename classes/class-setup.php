@@ -501,6 +501,8 @@ class Setup {
 
 	/**
 	 * Sets the FacetWP variables.
+	 *
+	 * @return  void
 	 */
 	public function set_facetwp_vars() {
 		if ( function_exists( '\FWP' ) ) {
