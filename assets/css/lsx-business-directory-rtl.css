@@ -1,0 +1,92 @@
+/** LSX Starter Plugin styles. @package lsx-business-directory */
+@CHARSET "UTF-8";
+/* Business Directory */
+.lsx-business-directory-wrapper .business-facets h3 { margin-top: 0; margin-bottom: 15px; padding-bottom: 5px; border-bottom: 1px solid #ddd; }
+
+.lsx-business-directory-wrapper .business-listings { padding-right: 30px; border-right: 1px solid #ddd; }
+
+.lsx-business-directory-wrapper .business-listings .business-filters { padding-bottom: 15px; margin-bottom: 25px; border-bottom: 1px solid #ddd; }
+
+.lsx-business-directory-wrapper .business-listings .business-filters .business-filters-top { margin-bottom: 20px; }
+
+.lsx-business-directory-wrapper .business-listings .business-filters .business-filters-top > div { display: inline-block; }
+
+.lsx-business-directory-wrapper .business-listings .business-filters .business-filters-top > div.facetwp-sort { margin-left: 10px; }
+
+.lsx-business-directory-wrapper .business-listings .business-filters .business-filters-bottom > div { display: inline-block; }
+
+.lsx-business-directory-wrapper .business-listings .business-filters .business-filters-bottom > div.facetwp-pager { float: left; }
+
+.lsx-business-directory-wrapper .business-listings .business { margin-bottom: 20px; }
+
+@media only screen and (max-width: 991px) { .lsx-business-directory-wrapper .business-listings .business { padding-bottom: 15px; border-bottom: 1px solid #ddd; } }
+
+.lsx-business-directory-wrapper .business-listings .business .business-content .business-title { margin-top: 0; margin-bottom: 15px; padding-bottom: 5px; border-bottom: 1px solid #ddd; }
+
+@media only screen and (max-width: 991px) { .lsx-business-directory-wrapper .business-listings .business .business-content .business-title { margin-top: 15px; } }
+
+.lsx-business-directory-wrapper .business-listings .business .business-details .business-meta div { margin-bottom: 5px; }
+
+.business-directory .business-header { margin-bottom: 40px; }
+
+.business-directory .business-header .entry-header-content h1.entry-title { margin-top: 0; margin-bottom: 10px; }
+
+@media only screen and (max-width: 767px) { .business-directory .business-header .entry-header-content h1.entry-title { font-size: 22px; } }
+
+@media only screen and (min-width: 768px) and (max-width: 991px) { .business-directory .business-header .entry-header-content h1.entry-title { font-size: 28px; } }
+
+@media only screen and (max-width: 991px) { .business-directory .business-header .entry-header-content h1.entry-title { margin-top: 15px; } }
+
+.business-directory .business-header .entry-header-content .entry-meta { text-align: right; }
+
+.business-directory .business-header .entry-header-content .entry-meta > div { margin-bottom: 5px; }
+
+.business-directory .business-header .entry-header-content .entry-meta > div:last-child { margin-bottom: 20px; }
+
+.business-directory .business-content-left, .business-directory .business-content-right { margin-bottom: 30px; }
+
+@media (min-width: 992px) { .business-directory .business-content-left { float: right; } }
+
+@media (min-width: 992px) { .business-directory .business-content-right { float: left; } }
+
+.business-directory .business-content-section { margin-bottom: 30px; }
+
+.business-directory .business-content-section .business-section-title { margin-top: 0; margin-bottom: 18px; padding-bottom: 8px; border-bottom: 1px solid #ddd; }
+
+.business-directory .business-content-section.branches .branch h4 { margin-top: 0; margin-bottom: 15px; padding-bottom: 5px; border-bottom: 1px solid #ddd; }
+
+.business-directory .business-content-section.branches .branch .branch-content .col-md-4 div { margin-bottom: 5px; }
+
+.business-directory .business-content-section.promotions .promotion .promotion-thumbnail { float: right; margin: 0 0 30px 30px; }
+
+.business-directory .business-content-section.promotions .promotion .promotion-content h4 { margin: 0; }
+
+.business-directory .business-content-section.promotions .promotion .promotion-content .promotion-price { margin: 10px 0; font-size: 18px; }
+
+.business-directory .business-content-section.contact-form { padding: 20px 30px; border: 1px solid #ccc; text-align: center; border-radius: 3px; -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); }
+
+.business-directory .business-content-section.contact-form h4 { padding: 0; border: none; }
+
+.business-directory .business-content-section.contact-form form input, .business-directory .business-content-section.contact-form form textarea { margin-bottom: 10px; }
+
+.business-directory .business-content-section.contact-form form .btn { width: 100%; }
+
+.business-directory .business-content-section.contact-info .telephone, .business-directory .business-content-section.contact-info .email, .business-directory .business-content-section.contact-info .website, .business-directory .business-content-section.contact-info .address { margin-bottom: 10px; }
+
+.business-directory .business-content-section.contact-info .telephone strong, .business-directory .business-content-section.contact-info .email strong, .business-directory .business-content-section.contact-info .website strong, .business-directory .business-content-section.contact-info .address strong { display: block; }
+
+.business-directory .related-businesses h2 { text-align: center; }
+
+@media only screen and (max-width: 991px) { .business-directory .related-businesses .related-business { margin-bottom: 30px; } }
+
+.business-directory .related-businesses .related-business h3 { margin: 20px 0 0px; }
+
+#gmap { height: 500px; }
+
+body { /* For specificity */ }
+
+body.single-business-directory article h1.entry-title { border-bottom: 0 !important; }
+
+body.single-business-directory article .entry-meta { border-top: 0; border-bottom: 0; }
+
+body.single-business-directory article .entry-meta > * { display: block; }

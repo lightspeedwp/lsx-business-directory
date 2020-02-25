@@ -1,1 +1,1 @@
-{"version":3,"sources":["lsx-business-directory-admin.scss"],"names":[],"mappings":"AAAA,qEAIG","file":"../lsx-business-directory-admin.css","sourcesContent":["/**\n * LSX Starter Plugin styles (admin).\n *\n * @package lsx-business-directory\n */\n"]}
+{"version":3,"sources":["lsx-starter-plugin-admin.scss"],"names":[],"mappings":"AAAA,wEAAA","file":"../lsx-starter-plugin-admin.css","sourcesContent":["/**\r\n * LSX Starter Plugin styles (admin).\r\n *\r\n * @package lsx-business-directory\r\n */\r\n"]}

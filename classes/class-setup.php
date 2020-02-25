@@ -271,7 +271,7 @@ class Setup {
 		$cmb_contact->add_field(
 			array(
 				'name' => esc_html__( 'Business Primary Email.', 'lsx-business-directory' ),
-				'id'   => $prefix . '_primary_email',
+				'id'   => $prefix . '_business_primary_email',
 				'type' => 'text_email',
 			)
 		);
@@ -279,7 +279,7 @@ class Setup {
 		$cmb_contact->add_field(
 			array(
 				'name' => esc_html__( 'Business Secondary Email.', 'lsx-business-directory' ),
-				'id'   => $prefix . '_secondary_email',
+				'id'   => $prefix . '_business_secondary_email',
 				'type' => 'text_email',
 			)
 		);
@@ -287,7 +287,7 @@ class Setup {
 		$cmb_contact->add_field(
 			array(
 				'name' => esc_html__( 'Business Primary Phone.', 'lsx-business-directory' ),
-				'id'   => $prefix . '_primary_phone',
+				'id'   => $prefix . '_business_primary_phone',
 				'type' => 'text',
 			)
 		);
@@ -295,7 +295,7 @@ class Setup {
 		$cmb_contact->add_field(
 			array(
 				'name' => esc_html__( 'Business Secondary Phone.', 'lsx-business-directory' ),
-				'id'   => $prefix . '_secondary_phone',
+				'id'   => $prefix . '_business_secondary_phone',
 				'type' => 'text',
 			)
 		);
@@ -303,7 +303,7 @@ class Setup {
 		$cmb_contact->add_field(
 			array(
 				'name' => esc_html__( 'Business Fax.', 'lsx-business-directory' ),
-				'id'   => $prefix . '_fax',
+				'id'   => $prefix . '_business_fax',
 				'type' => 'text',
 			)
 		);
@@ -311,7 +311,7 @@ class Setup {
 		$cmb_contact->add_field(
 			array(
 				'name' => esc_html__( 'Business Website.', 'lsx-business-directory' ),
-				'id'   => $prefix . '_website',
+				'id'   => $prefix . '_business_website',
 				'type' => 'text_url',
 			)
 		);
