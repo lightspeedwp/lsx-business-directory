@@ -268,3 +268,136 @@ function get_country_options() {
 		'ZW' => esc_html__( 'Zimbabwe', 'lsx-business-directory' ),
 	);
 }
+
+/**
+ * Buid array containing options for a select box inside the settings for Business Directory.
+ *
+ * @return  array  Options array containing all available forms.
+ * Key   = Form ID
+ * Value = Form Name
+ */
+function get_available_forms() {
+	$forms   = get_activated_forms();
+	$options = array();
+
+	if ( ! empty( $forms ) ) {
+		foreach ( $forms as $form_id => $form_data ) {
+			$options[ $form_id ] = esc_html__( $form_data, 'lsx-business-directory' );
+		}
+	} else {
+		$options['none'] = esc_html__( 'You have no forms available', 'lsx-business-directory' );
+	}
+
+	return $options;
+}
+
+/**
+ * Checks which form plugin is active, and grabs all available forms from that plugin.
+ *
+ * @return  array  Array with all available forms for a particular plugin which is enabled.
+ */
+function get_activated_forms() {
+	$all_forms = false;
+
+	if ( class_exists( 'WPForms' ) ) {
+		$all_forms = get_wpforms();
+	} elseif ( class_exists( 'Ninja_Forms' ) ) {
+		$all_forms = get_ninja_forms();
+	} elseif ( class_exists( 'GFForms' ) ) {
+		$all_forms = get_gravity_forms();
+	} elseif ( class_exists( 'Caldera_Forms_Forms' ) ) {
+		$all_forms = get_caldera_forms();
+	}
+
+	return $all_forms;
+}
+
+/**
+ * Gets the available WPForms forms.
+ *
+ * @return  array  Array with all available WPForms forms.
+ */
+function get_wpforms() {
+	global $wpdb;
+	$forms = false;
+
+	$args = array(
+		'post_type'     => 'wpforms',
+		'orderby'       => 'id',
+		'order'         => 'ASC',
+		'no_found_rows' => true,
+		'nopaging'      => true,
+	);
+
+	$posts = get_posts( $args );
+
+	if ( ! empty( $posts ) ) {
+		foreach ( $posts as $post ) {
+			$forms[ $post->ID ] = $post->post_title;
+		}
+	} else {
+		$forms = false;
+	}
+
+	return $forms;
+}
+
+/**
+ * Gets the available Ninja forms.
+ *
+ * @return  array  Array with all available Ninja forms.
+ */
+function get_ninja_forms() {
+	global $wpdb;
+
+	$results = $wpdb->get_results( "SELECT id,title FROM {$wpdb->prefix}nf3_forms" );
+	$forms   = false;
+
+	if ( ! empty( $results ) ) {
+		foreach ( $results as $form ) {
+			$forms[ $form->id ] = $form->title;
+		}
+	}
+
+	return $forms;
+}
+
+/**
+ * Gets the available Gravity forms.
+ *
+ * @return  array  Array with all available Gravity forms.
+ */
+function get_gravity_forms() {
+	global $wpdb;
+
+	$results = \RGFormsModel::get_forms( null, 'title' );
+	$forms   = false;
+
+	if ( ! empty( $results ) ) {
+		foreach ( $results as $form ) {
+			$forms[ $form->id ] = $form->title;
+		}
+	}
+
+	return $forms;
+}
+
+/**
+ * Gets the available Caldera forms.
+ *
+ * @return  array  Array with all available Caldera forms.
+ */
+function get_caldera_forms() {
+	global $wpdb;
+
+	$results = \Caldera_Forms_Forms::get_forms( true );
+	$forms   = false;
+
+	if ( ! empty( $results ) ) {
+		foreach ( $results as $form => $form_data ) {
+			$forms[ $form ] = $form_data['name'];
+		}
+	}
+
+	return $forms;
+}
