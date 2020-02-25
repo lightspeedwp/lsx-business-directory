@@ -23,6 +23,20 @@ class Setup {
 	public $post_types;
 
 	/**
+	 * This holds the current facet info.
+	 *
+	 * @var array
+	 */
+	public $facet_data = array();
+
+	/**
+	 * This holds the current cmb2 variable.
+	 *
+	 * @var array
+	 */
+	public $cmb;
+
+	/**
 	 * Contructor
 	 */
 	public function __construct() {
@@ -33,9 +47,10 @@ class Setup {
 		add_action( 'cmb2_init', array( $this, 'configure_business_directory_custom_fields' ) );
 		// Configure Settings page.
 		add_action( 'cmb2_admin_init', array( $this, 'configure_settings_custom_fields' ) );
-		add_action( 'lsx_bd_settings_page', array( $this, 'general_settings' ), 1, 1 );
-		add_action( 'cmb2_before_form', array( $this, 'add_description_to_cmb2_settings_page' ) );
-
+		add_action( 'lsx_bd_settings_page', array( $this, 'configure_settings_single_custom_fields' ), 1, 1 );
+		add_action( 'lsx_bd_settings_page', array( $this, 'configure_settings_general_custom_fields' ), 2, 1 );
+		// We do BD Search setting only at 'admin_init', because we need is_plugin_active() function present to check for LSX Search plugin.
+		add_action( 'admin_init', array( $this, 'configure_settings_search_custom_fields' ) );
 	}
 
 	/**
@@ -310,12 +325,11 @@ class Setup {
 	public function configure_settings_custom_fields() {
 		$prefix = 'businessdirectory';
 
-		$cmb = new_cmb2_box(
+		$this->cmb = new_cmb2_box(
 			array(
 				'id'           => $prefix . '_settings',
-				'title'        => esc_html__( 'Single', 'lsx-business-directory' ),
+				'title'        => esc_html__( 'Business Directory Settings', 'lsx-business-directory' ),
 				'menu_title'   => esc_html__( 'Settings', 'lsx-business-directory' ), // Falls back to 'title' (above).
-				'desc'         => esc_html__( 'field description (optional)', 'lsx-business-directory' ),
 				'object_types' => array( 'options-page' ),
 				'option_key'   => 'lsx-business-directory-settings', // The option key and admin menu page slug.
 				'parent_slug'  => 'edit.php?post_type=business-directory', // Make options page a submenu item of the Business Directory menu.
@@ -323,17 +337,27 @@ class Setup {
 			)
 		);
 
-		do_action( 'lsx_bd_settings_page', $cmb );
+		do_action( 'lsx_bd_settings_page', $this->cmb );
 	}
 
 	/**
-	 * Configure custom fields for the general settings.
+	 * Configure Business Directory custom fields for the Settings page Single section.
 	 *
 	 * @param object $cmb new_cmb2_box().
 	 * @return void
 	 */
-	public function general_settings( $cmb ) {
+	public function configure_settings_single_custom_fields( $cmb ) {
 		$prefix = 'businessdirectory';
+
+		$cmb->add_field(
+			array(
+				'id'          => $prefix . '_settings_single',
+				'type'        => 'title',
+				'name'        => __( 'Single', 'lsx-business-directory' ),
+				'default'     => __( 'Single', 'lsx-business-directory' ),
+				'description' => __( 'The settings for the single business directory view.', 'lsx-business-directory' ),
+			)
+		);
 
 		$cmb->add_field(
 			array(
@@ -347,19 +371,147 @@ class Setup {
 	}
 
 	/**
-	 * Add a description to the Settings Page.
+	 * Configure Business Directory custom fields for the Settings page General section.
 	 *
-	 * @param object $cmb_id    id of cmb2 box.
+	 * @param object $cmb new_cmb2_box().
 	 * @return void
 	 */
-	public function add_description_to_cmb2_settings_page( $cmb_id ) {
-		$prefix          = 'businessdirectory';
-		$settings_box_id = $prefix . '_settings';
+	public function configure_settings_general_custom_fields( $cmb ) {
+		$prefix = 'businessdirectory';
 
-		if ( $settings_box_id !== $cmb_id ) {
-			return;
+		$cmb->add_field(
+			array(
+				'id'          => $prefix . '_settings_general',
+				'type'        => 'title',
+				'name'        => __( 'General', 'lsx-business-directory' ),
+				'default'     => __( 'General', 'lsx-business-directory' ),
+				'description' => __( 'Business Directory general settings.', 'lsx-business-directory' ),
+			)
+		);
+
+		$cmb->add_field(
+			array(
+				'name'             => esc_html__( 'Layout option', 'lsx-business-directory' ),
+				'id'               => $prefix . '_business_layout_option',
+				'type'             => 'radio',
+				'show_option_none' => false,
+				'options'          => array(
+					'grid' => esc_html__( 'Grid', 'lsx-business-directory' ),
+					'list' => esc_html__( 'List', 'lsx-business-directory' ),
+				),
+			)
+		);
+	}
+
+	/**
+	 * Enable Business Directory Search settings only if LSX Search plugin is enabled.
+	 *
+	 * @return  void
+	 */
+	public function configure_settings_search_custom_fields() {
+		if ( is_plugin_active( 'lsx-search/lsx-search.php' ) ) {
+			$cmb    = $this->cmb;
+			$prefix = 'businessdirectory';
+			$this->set_facetwp_vars();
+
+			$cmb->add_field(
+				array(
+					'id'          => $prefix . '_settings_search',
+					'type'        => 'title',
+					'name'        => esc_html__( 'Business Directory - Search', 'lsx-business-directory' ),
+					'default'     => esc_html__( 'Business Directory - Search', 'lsx-business-directory' ),
+					'description' => esc_html__( 'Business Directory search related settings.', 'lsx-business-directory' ),
+				)
+			);
+
+			$cmb->add_field(
+				array(
+					'name' => esc_html__( 'Enable Search', 'lsx-business-directory' ),
+					'id'   => $prefix . '_business_search_enable',
+					'type' => 'checkbox',
+				)
+			);
+
+			$cmb->add_field(
+				array(
+					'name'    => esc_html__( 'Layout', 'lsx-business-directory' ),
+					'id'      => $prefix . '_business_search_layout',
+					'type'    => 'select',
+					'options' => array(
+						''    => esc_html__( 'Follow the theme layout', 'lsx-business-directory' ),
+						'1c'  => esc_html__( '1 column', 'lsx-business-directory' ),
+						'2cr' => esc_html__( '2 columns / Content on right', 'lsx-business-directory' ),
+						'2cl' => esc_html__( '2 columns / Content on left', 'lsx-business-directory' ),
+					),
+					'default' => '',
+				)
+			);
+
+			$cmb->add_field(
+				array(
+					'name' => esc_html__( 'Collapse', 'lsx-business-directory' ),
+					'id'   => $prefix . '_business_search_collapse',
+					'type' => 'checkbox',
+				)
+			);
+
+			$cmb->add_field(
+				array(
+					'name' => esc_html__( 'Disable Sorting', 'lsx-business-directory' ),
+					'id'   => $prefix . '_business_search_disable_sorting',
+					'type' => 'checkbox',
+				)
+			);
+
+			$cmb->add_field(
+				array(
+					'name' => esc_html__( 'Disable the Date Option', 'lsx-business-directory' ),
+					'id'   => $prefix . '_business_search_disable_date',
+					'type' => 'checkbox',
+				)
+			);
+
+			$cmb->add_field(
+				array(
+					'name' => esc_html__( 'Display Clear Button', 'lsx-business-directory' ),
+					'id'   => $prefix . '_business_search_clear_button',
+					'type' => 'checkbox',
+				)
+			);
+
+			$cmb->add_field(
+				array(
+					'name' => esc_html__( 'Display Result Count', 'lsx-business-directory' ),
+					'id'   => $prefix . '_business_search_result_count',
+					'type' => 'checkbox',
+				)
+			);
+
+			$cmb->add_field(
+				array(
+					'name'        => esc_html__( 'Facets', 'lsx-business-directory' ),
+					'description' => esc_html__( 'These are the filters that will appear on your archive page.', 'lsx-business-directory' ),
+					'id'          => $prefix . '_business_search_facets',
+					'type'        => 'multicheck',
+					'options'     => $this->facet_data,
+				)
+			);
+		}
+	}
+
+	/**
+	 * Sets the FacetWP variables.
+	 */
+	public function set_facetwp_vars() {
+		if ( function_exists( '\FWP' ) ) {
+			$facet_data = \FWP()->helper->get_facets();
 		}
 
-		echo '<div class="lsx-bd-settings-description">The settings for the single business directory view</div>';
+		$this->facet_data = array();
+		if ( ! empty( $facet_data ) && is_array( $facet_data ) ) {
+			foreach ( $facet_data as $facet ) {
+				$this->facet_data[ $facet['name'] ] = $facet['label'];
+			}
+		}
 	}
 }
