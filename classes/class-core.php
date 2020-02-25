@@ -71,10 +71,6 @@ class Core {
 	 * Loads the variable classes and the static classes.
 	 */
 	private function load_classes() {
-		// Load plugin settings related functionality.
-		require_once LSX_BD_PATH . '/classes/class-setup.php';
-		$this->setup = Setup::get_instance();
-
 		// Load plugin admin related functionality.
 		require_once LSX_BD_PATH . 'classes/class-admin.php';
 		$this->admin = Admin::get_instance();
@@ -86,6 +82,10 @@ class Core {
 		// Load 3rd party integrations here.
 		require_once LSX_BD_PATH . '/classes/class-integrations.php';
 		$this->integrations = Integrations::get_instance();
+
+		// Load plugin settings related functionality.
+		require_once LSX_BD_PATH . '/classes/class-setup.php';
+		$this->setup = Setup::get_instance();
 	}
 
 	/**
