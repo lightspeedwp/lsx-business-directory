@@ -56,3 +56,27 @@ function get_formatted_taxonomy_str( $id, $tax ) {
 
 	return $terms_str;
 }
+
+/**
+ * Helper function that loads a particular template.
+ *
+ * @param   String $filename_base  Name of a template to load.
+ *
+ * @return  void
+ */
+function lsx_business_template( $filename_base ) {
+	if ( file_exists( get_stylesheet_directory() . '/templates/' . $filename_base . '.php' ) ) {
+		include get_stylesheet_directory() . '/templates/' . $filename_base . '.php';
+	} elseif ( file_exists( LSX_BD_PATH . 'templates/' . $filename_base . '.php' ) ) {
+		include LSX_BD_PATH . 'templates/' . $filename_base . '.php';
+	}
+}
+
+/**
+ * Loads Related Business block teamplte.
+ *
+ * @return  void
+ */
+function lsx_related_business() {
+	lsx_business_template( 'single-business-related-business' );
+}

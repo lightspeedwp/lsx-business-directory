@@ -144,13 +144,13 @@ get_header(); ?>
 									</div>
 									<?php endif; ?>
 
-									<?php if ( $primary_email ) : ?>
+									<?php if ( $business_primary_email ) : ?>
 									<div class="email">
 										<span><strong>Email: </strong> <a href="mailto:<?php echo $business_primary_email; ?>" target="_blank" rel="noopener noreferrer"><?php echo $business_primary_email; ?></a></span>
 									</div>
 									<?php endif; ?>
 
-									<?php if ( $website ) : ?>
+									<?php if ( $business_website ) : ?>
 									<div class="website">
 										<span><strong>Website: </strong> <a href="<?php echo $business_website; ?>" target="_blank" rel="noopener noreferrer"><?php echo $business_website; ?></a></span>
 									</div>
