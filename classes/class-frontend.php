@@ -52,6 +52,19 @@ class Frontend {
 	public function assets() {
 		wp_enqueue_script( 'lsx-business-directory', LSX_BD_URL . 'assets/js/lsx-business-directory.min.js', array( 'jquery' ), LSX_BD_VER, true );
 
+		/*
+		* Adds the Google Maps Javascript Call if a map field was included
+		* Variable set to quickly include if script is excluded elsewhere
+		* NOTE: placed here from the bottom of single-business-directory.php to fix Travis errors
+		*/
+		if ( $location && $include_api ) {
+			$api_key = "???";
+			$script_url = "https://maps.googleapis.com/maps/api/js?key=$api_key&callback=initMap&libraries=places";
+			// <script src="https://maps.googleapis.com/maps/api/js?key=<?php //echo esc_attr( $api_key ); ?>&callback=initMap&libraries=places" async defer></script>
+			wp_enqueue_script( 'lsx-business-directory', $script_url, array(), LSX_BD_VER, true );
+
+		}
+
 		$params = apply_filters(
 			'lsx_business_directory_js_params',
 			array(
