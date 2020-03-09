@@ -58,11 +58,9 @@ class Frontend {
 		* NOTE: placed here from the bottom of single-business-directory.php to fix Travis errors
 		*/
 		if ( $location && $include_api ) {
-			$api_key = "???";
+			$api_key    = 'api_key';
 			$script_url = "https://maps.googleapis.com/maps/api/js?key=$api_key&callback=initMap&libraries=places";
-			// <script src="https://maps.googleapis.com/maps/api/js?key=<?php //echo esc_attr( $api_key ); ?>&callback=initMap&libraries=places" async defer></script>
 			wp_enqueue_script( 'lsx-business-directory', $script_url, array(), LSX_BD_VER, true );
-
 		}
 
 		$params = apply_filters(
