@@ -55,9 +55,9 @@
 										<h4>Keyword Search</h4>
 										<?php echo do_shortcode( '[facetwp facet="post_search"]' ); ?>
 										<h4>Insurance Type</h4>
-										<?php echo do_shortcode( '[facetwp facet="industry"]' ); ?>
+										<?php echo do_shortcode( '[facetwp facet="industries"]' ); ?>
 										<h4>Region</h4>
-										<?php echo do_shortcode( '[facetwp facet="region"]' ); ?>
+										<?php echo do_shortcode( '[facetwp facet="regions"]' ); ?>
 									</div>
 								</div>
 

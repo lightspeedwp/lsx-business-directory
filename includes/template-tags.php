@@ -80,3 +80,12 @@ function lsx_business_template( $filename_base ) {
 function lsx_related_business() {
 	lsx_business_template( 'single-business-related-business' );
 }
+
+/**
+ * Loads Business Template for Archive page.
+ *
+ * @return  void
+ */
+function lsx_business_row() {
+	lsx_business_template( 'single-row-business' );
+}
