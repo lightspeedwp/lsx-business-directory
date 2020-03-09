@@ -216,11 +216,12 @@ get_header(); ?>
 							 */
 							if ( ! empty( $address ) ) {
 								if ( class_exists( 'Lsx_Options' ) ) {
-									$lsx     = Lsx_Options::get_single( 'lsx' );
-									$api_key = $lsx['gmaps_api_key']
+									$lsx         = Lsx_Options::get_single( 'lsx' );
+									$api_key     = $lsx['gmaps_api_key'];
+									$address_str = implode( ',', $address );
 
-									if ( $api_key ) {
-										echo '<div id="gmap" data-search="' . implode( ',', $address ) . '" data-api="' . esc_attr( $api_key ) . '"></div>';
+									if ( ! empty( $api_key ) ) {
+										echo '<div id="gmap" data-search="' . esc_attr( $address_str ) . '" data-api="' . esc_attr( $api_key ) . '"></div>';
 									}
 								}
 							}
@@ -294,13 +295,14 @@ get_header(); ?>
 	 * Adds the Google Maps Javascript Call if a map field was included
 	 * Variable set to quickly include if script is excluded elsewhere
 	 */
-	// $include_api = false;
+	//$include_api = false;
 
-	// if ( $location && $include_api ) :
-	// 	?>
-	// 	<script src="https://maps.googleapis.com/maps/api/js?key=<?php echo esc_attr( $api_key ); ?>&callback=initMap&libraries=places" async defer></script>
-	// 	<?php
-	// endif;
+	//if ( $location && $include_api ) :
+
+	?>
+	<!-- <script src="https://maps.googleapis.com/maps/api/js?key=<?php //echo esc_attr( $api_key ); ?>&callback=initMap&libraries=places" async defer></script> -->
+	<?php
+	//endif;
 	?>
 <?php
 get_footer();
