@@ -140,7 +140,7 @@ get_header(); ?>
 								<div class="col-md-6">
 									<?php if ( $business_primary_phone ) : ?>
 									<div class="telephone">
-										<span><strong><?php esc_html_e( 'Telephone', 'lsx-business-directory' ); ?>: </strong> <a href="tel:<?php echo esc_attr( str_replace( ' ', '', $business_primary_phone ) ); ?>" target="_blank" rel="noopener noreferrer"><?php echo $business_primary_phone; ?></a></span>
+										<span><strong><?php esc_html_e( 'Telephone', 'lsx-business-directory' ); ?>: </strong> <a href="tel:<?php echo esc_attr( str_replace( ' ', '', $business_primary_phone ) ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_attr( $business_primary_phone ); ?></a></span>
 									</div>
 									<?php endif; ?>
 
@@ -216,10 +216,11 @@ get_header(); ?>
 							 */
 							if ( ! empty( $address ) ) {
 								if ( class_exists( 'Lsx_Options' ) ) {
-									$lsx = Lsx_Options::get_single( 'lsx' );
+									$lsx     = Lsx_Options::get_single( 'lsx' );
+									$api_key = $lsx['gmaps_api_key']
 
-									if ( $api_key = $lsx['gmaps_api_key'] ) {
-										echo '<div id="gmap" data-search="' . implode( ',', $address ) . '" data-api="' . $api_key . '"></div>';
+									if ( $api_key ) {
+										echo '<div id="gmap" data-search="' . implode( ',', $address ) . '" data-api="' . esc_attr( $api_key ) . '"></div>';
 									}
 								}
 							}
@@ -293,13 +294,13 @@ get_header(); ?>
 	 * Adds the Google Maps Javascript Call if a map field was included
 	 * Variable set to quickly include if script is excluded elsewhere
 	 */
-	$include_api = false;
+	// $include_api = false;
 
-	if ( $location && $include_api ) :
-		?>
-		<script src="https://maps.googleapis.com/maps/api/js?key=<?php echo esc_attr( $api_key ); ?>&callback=initMap&libraries=places" async defer></script>
-		<?php
-	endif;
+	// if ( $location && $include_api ) :
+	// 	?>
+	// 	<script src="https://maps.googleapis.com/maps/api/js?key=<?php echo esc_attr( $api_key ); ?>&callback=initMap&libraries=places" async defer></script>
+	// 	<?php
+	// endif;
 	?>
 <?php
 get_footer();

@@ -27,7 +27,7 @@
 						$taxo          = get_taxonomy( get_queried_object()->taxonomy );
 						$post_type     = $taxo->object_type;
 						$post_type_obj = get_post_type_object( $post_type[0] );
-						echo $post_type_obj->labels->name . ': ' . single_term_title( '', false );
+						echo esc_arrt( $post_type_obj->labels->name ) . ': ' . single_term_title( '', false );
 					} else {
 						the_archive_title();
 					}
