@@ -128,8 +128,8 @@ class Core {
 		if ( is_main_query()
 		&& is_singular( 'business-directory' )
 		&& '' == locate_template( array( 'single-business-directory.php' ) )
-		&& file_exists( LSX_BD_PATH . 'templates/' . 'single-business-directory.php' ) ) {
-			$template = LSX_BD_PATH . 'templates/' . 'single-business-directory.php';
+		&& file_exists( LSX_BD_PATH . 'templates/single-business-directory.php' ) ) {
+			$template = LSX_BD_PATH . 'templates/single-business-directory.php';
 		}
 
 		return $template;

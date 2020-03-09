@@ -7,7 +7,7 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area container <?php echo lsx_main_class(); ?>">
+	<div id="primary" class="content-area container <?php echo esc_attr( lsx_main_class() ); ?>">
 
 		<?php lsx_content_before(); ?>
 
@@ -77,7 +77,7 @@ get_header(); ?>
 					<div class="row">
 						<div class="col-md-4">
 							<div class="entry-image">
-								<img src="<?php echo get_thumbnail_wrapped( get_the_ID(), 300, 200 ); ?>">
+								<img src="<?php echo esc_url( get_thumbnail_wrapped( get_the_ID(), 300, 200 ) ); ?>">
 							</div>
 						</div>
 
@@ -87,34 +87,34 @@ get_header(); ?>
 
 								<div class="entry-meta">
 									<div class="category">
-										<span><strong>Category: </strong><?php echo get_formatted_taxonomy_str( get_the_ID(), 'lsx-bd-industry' ); ?></span>
+										<span><strong><?php esc_html_e( 'Category', 'lsx-business-directory' ); ?>: </strong><?php echo esc_attr( get_formatted_taxonomy_str( get_the_ID(), 'lsx-bd-industry' ) ); ?></span>
 									</div>
 
 									<div class="region">
-										<span><strong>Region: </strong><?php echo get_formatted_taxonomy_str( get_the_ID(), 'lsx-bd-region' ); ?></span>
+										<span><strong><?php esc_html_e( 'Region', 'lsx-business-directory' ); ?>: </strong><?php echo esc_attr( get_formatted_taxonomy_str( get_the_ID(), 'lsx-bd-region' ) ); ?></span>
 									</div>
 
 									<?php if ( $fsb ) : ?>
 										<div>
-											<span><strong>FSP: </strong><?php echo $fsb; ?></span>
+											<span><strong><?php esc_html_e( 'FSP', 'lsx-business-directory' ); ?>: </strong><?php echo esc_attr($fsb); ?></span>
 										</div>
 									<?php endif; ?>
 
 									<?php if ( $specialist ) : ?>
 										<div>
-											<span><strong>Specialist: </strong><?php echo $specialist; ?></span>
+											<span><strong><?php esc_html_e( 'Specialist', 'lsx-business-directory' ); ?>: </strong><?php echo esc_attr($specialist); ?></span>
 										</div>
 									<?php endif; ?>
 
 									<?php if ( $underwriter ) : ?>
 										<div>
-											<span><strong>Underwriter: </strong><?php echo $underwriter; ?></span>
+											<span><strong><?php esc_html_e( 'Underwriter', 'lsx-business-directory' ); ?>: </strong><?php echo esc_attr($underwriter); ?></span>
 										</div>
 									<?php endif; ?>
 
 									<?php if ( $underwriters ) : ?>
 										<div>
-											<span><strong>Underwriter/s: </strong><?php echo $underwriters; ?></span>
+											<span><strong><?php esc_html_e( 'Underwriter/s', 'lsx-business-directory' ); ?>: </strong><?php echo esc_attr($underwriters); ?></span>
 										</div>
 									<?php endif; ?>
 
@@ -140,19 +140,19 @@ get_header(); ?>
 								<div class="col-md-6">
 									<?php if ( $business_primary_phone ) : ?>
 									<div class="telephone">
-										<span><strong>Telephone: </strong> <a href="tel:<?php echo str_replace( ' ', '', $business_primary_phone ); ?>" target="_blank" rel="noopener noreferrer"><?php echo $business_primary_phone; ?></a></span>
+										<span><strong><?php esc_html_e( 'Telephone', 'lsx-business-directory' ); ?>: </strong> <a href="tel:<?php echo esc_attr (str_replace( ' ', '', $business_primary_phone )); ?>" target="_blank" rel="noopener noreferrer"><?php echo $business_primary_phone; ?></a></span>
 									</div>
 									<?php endif; ?>
 
 									<?php if ( $business_primary_email ) : ?>
 									<div class="email">
-										<span><strong>Email: </strong> <a href="mailto:<?php echo $business_primary_email; ?>" target="_blank" rel="noopener noreferrer"><?php echo $business_primary_email; ?></a></span>
+										<span><strong><?php esc_html_e( 'Email', 'lsx-business-directory' ); ?>: </strong> <a href="mailto:<?php echo esc_attr($business_primary_email); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_attr($business_primary_email); ?></a></span>
 									</div>
 									<?php endif; ?>
 
 									<?php if ( $business_website ) : ?>
 									<div class="website">
-										<span><strong>Website: </strong> <a href="<?php echo $business_website; ?>" target="_blank" rel="noopener noreferrer"><?php echo $business_website; ?></a></span>
+										<span><strong><?php esc_html_e( 'Website', 'lsx-business-directory' ); ?>: </strong> <a href="<?php echo esc_attr($business_website); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_attr($business_website); ?></a></span>
 									</div>
 									<?php endif; ?>
 								</div>
@@ -160,10 +160,10 @@ get_header(); ?>
 								<div class="col-md-6">
 									<?php if ( ! empty( $address ) ) : ?>
 									<div class="address">
-										<span><strong>Address: </strong>
+										<span><strong><?php esc_html_e( 'Address', 'lsx-business-directory' ); ?>: </strong>
 											<?php
 											foreach ( $address as $field_string ) {
-												echo $field_string . '<br />';
+												echo esc_attr($field_string) . '<br />';
 											}
 											?>
 										</span>
@@ -178,7 +178,7 @@ get_header(); ?>
 							<?php
 							if ( class_exists( 'Caldera_Forms' ) ) {
 								$form_slug = get_option( 'lsx-business-directory-generic-form' );
-								echo Caldera_Forms::render_form( $form_slug );
+								echo esc_attr(Caldera_Forms::render_form( $form_slug ));
 							}
 							?>
 						</div>
@@ -229,7 +229,7 @@ get_header(); ?>
 								<div id="branch-markers">
 									<?php foreach ( $branches as $branch ) : ?>
 										<?php if ( $branch['branch_google_maps'] ) : ?>
-											<span class="branch-marker" data-search="<?php echo $branch['branch_google_maps']; ?>"></span>
+											<span class="branch-marker" data-search="<?php echo esc_attr($branch['branch_google_maps']); ?>"></span>
 										<?php endif; ?>
 									<?php endforeach; ?>
 								</div>
@@ -297,7 +297,7 @@ get_header(); ?>
 
 	if ( $location && $include_api ) :
 		?>
-		<script src="https://maps.googleapis.com/maps/api/js?key=<?php echo $api_key; ?>&callback=initMap&libraries=places" async defer></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=<?php echo esc_attr($api_key); ?>&callback=initMap&libraries=places" async defer></script>
 		<?php
 	endif;
 	?>

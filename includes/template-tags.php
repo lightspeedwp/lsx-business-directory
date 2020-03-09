@@ -50,7 +50,7 @@ function get_formatted_taxonomy_str( $id, $tax ) {
 		$terms_str = substr( $terms_str, 0, strlen( $terms_str ) - 2 );
 	}
 
-	if ( $tax == 'post_format' && $terms_str == '' ) {
+	if ( 'post_format' == $tax && '' == $terms_str ) {
 		$terms_str = 'Standard';
 	}
 
