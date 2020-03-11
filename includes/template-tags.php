@@ -38,13 +38,17 @@ function get_thumbnail_wrapped( $id, $width, $height ) {
  * @param       $id int
  * @param       $tax String
  */
-function get_formatted_taxonomy_str( $id, $tax ) {
+function get_formatted_taxonomy_str( $id, $tax, $link = false ) {
 	$terms     = wp_get_post_terms( $id, $tax );
 	$terms_str = '';
 
 	if ( ! empty( $terms ) ) {
 		foreach ( $terms as $term ) {
-			$terms_str .= $term->name . ', ';
+			if ( $link ) {
+				$terms_str .= '<a href="/' . $tax . '/' . $term->slug . '">' . $term->name . '</a>, ';
+			} else {
+				$terms_str .= $term->name . ', ';
+			}
 		}
 
 		$terms_str = substr( $terms_str, 0, strlen( $terms_str ) - 2 );
@@ -82,10 +86,19 @@ function lsx_related_business() {
 }
 
 /**
- * Loads Business Template for Archive page.
+ * Loads Business Template for Archive page for list layout.
  *
  * @return  void
  */
 function lsx_business_row() {
 	lsx_business_template( 'single-row-business' );
+}
+
+/**
+ * Loads Business Template for Archive page for grid layout.
+ *
+ * @return  void
+ */
+function lsx_business_col() {
+	lsx_business_template( 'single-col-business' );
 }

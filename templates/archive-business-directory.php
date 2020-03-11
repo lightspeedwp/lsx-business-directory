@@ -46,26 +46,48 @@
 
 
 					<?php if ( have_posts() ) : ?>
+						<?php
+						$lsx_search_active = false; // TODO: detect if lsx search is on
+						$lsx_layout        = 'col'; // TODO: row or col, get this settings somewhere
+						$layout_classes    = 'facetwp-template'; // default one for list
+
+						if ( 'col' === $lsx_layout ) {
+							$layout_classes = 'facetwp-template lsx-grid';
+						}
+
+						if ( $lsx_search_active ) {
+							$filter_classes     = 'col-md-3';
+							$search_classes     = 'business-filters';
+							$pagination_classes = '';
+							$results_classes    = 'col-md-9';
+						} else {
+							$filter_classes     = 'lsx-hide';
+							$search_classes     = 'lsx-hide';
+							$pagination_classes = 'lsx-hide';
+							$results_classes    = 'col-md-12';
+						}
+
+						?>
 						<div class="lsx-business-directory-wrapper">
 							<div class="row">
 
-								<div class="col-md-3">
+								<div class="<?php print $filter_classes; ?>">
 									<div class="business-facets">
-										<h3>Refine the Results</h3>
-										<h4>Keyword Search</h4>
+										<h3><?php esc_html_e( 'Refine the Results', 'lsx-business-directory' ); ?></h3>
+										<h4><?php esc_html_e( 'Keyword Search', 'lsx-business-directory' ); ?></h4>
 										<?php echo do_shortcode( '[facetwp facet="post_search"]' ); ?>
-										<h4>Insurance Type</h4>
+										<h4><?php esc_html_e( 'Industry', 'lsx-business-directory' ); ?></h4>
 										<?php echo do_shortcode( '[facetwp facet="industries"]' ); ?>
-										<h4>Region</h4>
+										<h4><?php esc_html_e( 'Region', 'lsx-business-directory' ); ?></h4>
 										<?php echo do_shortcode( '[facetwp facet="regions"]' ); ?>
 									</div>
 								</div>
 
-								<div class="col-md-9">
+								<div class="<?php print $results_classes; ?>">
 
 									<div class="business-listings">
 
-										<div class="business-filters">
+										<div class="<?php print $search_classes; ?>">
 											<div class="business-filters-top">
 												<?php echo do_shortcode( '[facetwp sort="true"]' ); ?>
 												<?php echo do_shortcode( '[facetwp per_page="true"]' ); ?>
@@ -76,15 +98,20 @@
 												<?php echo do_shortcode( '[facetwp pager="true"]' ); ?>
 											</div>
 										</div>
-										<div class="facetwp-template">
+										<div class="<?php print $layout_classes; ?>">
 										<?php
 										while ( have_posts() ) :
-												the_post();
+											the_post();
+
+											if ( 'col' === $lsx_layout ) {
+												lsx_business_col();
+											} else {
 												lsx_business_row();
+											}
 											?>
 										<?php endwhile; ?>
 										</div>
-										<?php echo do_shortcode( '[facetwp pager="true"]' ); ?>
+										<div class="<?php print $pagination_classes; ?>"><?php echo do_shortcode( '[facetwp pager="true"]' ); ?></div>
 									</div>
 								</div>
 							</div>
