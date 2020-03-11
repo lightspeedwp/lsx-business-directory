@@ -24,7 +24,7 @@ get_header(); ?>
 				<?php
 				while ( have_posts() ) :
 					the_post();
-					$layout = lsx_bd_get_option( 'businessdirectory_business_layout_option' );
+					$layout = lsx_bd_get_option( 'archive_layout' );
 					if ( false !== $layout && '' !== $layout && 'grid' === $layout ) {
 						include LSX_BD_PATH . '/templates/single-col-business.php';
 					} else {

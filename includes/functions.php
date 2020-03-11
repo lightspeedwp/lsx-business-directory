@@ -20,7 +20,7 @@ add_action( 'init', 'lsx_business_directory_load_plugin_textdomain' );
  * Key          = Country Code
  * Value        = Country Name
  */
-function get_country_options() {
+function lsx_bd_get_country_options() {
 	return array(
 		'AF' => esc_html__( 'Afghanistan', 'lsx-business-directory' ),
 		'AX' => esc_html__( '&#197;land Islands', 'lsx-business-directory' ),
@@ -276,8 +276,8 @@ function get_country_options() {
  * Key   = Form ID
  * Value = Form Name
  */
-function get_available_forms() {
-	$forms   = get_activated_forms();
+function lsx_bd_get_available_forms() {
+	$forms   = lsx_bd_get_activated_forms();
 	$options = array();
 
 	if ( ! empty( $forms ) ) {
@@ -296,17 +296,17 @@ function get_available_forms() {
  *
  * @return  array  Array with all available forms for a particular plugin which is enabled.
  */
-function get_activated_forms() {
+function lsx_bd_get_activated_forms() {
 	$all_forms = false;
 
 	if ( class_exists( 'WPForms' ) ) {
-		$all_forms = get_wpforms();
+		$all_forms = lsx_bd_get_wpforms();
 	} elseif ( class_exists( 'Ninja_Forms' ) ) {
-		$all_forms = get_ninja_forms();
+		$all_forms = lsx_bd_get_ninja_forms();
 	} elseif ( class_exists( 'GFForms' ) ) {
-		$all_forms = get_gravity_forms();
+		$all_forms = lsx_bd_get_gravity_forms();
 	} elseif ( class_exists( 'Caldera_Forms_Forms' ) ) {
-		$all_forms = get_caldera_forms();
+		$all_forms = lsx_bd_get_caldera_forms();
 	}
 
 	return $all_forms;
@@ -317,7 +317,7 @@ function get_activated_forms() {
  *
  * @return  array  Array with all available WPForms forms.
  */
-function get_wpforms() {
+function lsx_bd_get_wpforms() {
 	global $wpdb;
 	$forms = false;
 
@@ -347,7 +347,7 @@ function get_wpforms() {
  *
  * @return  array  Array with all available Ninja forms.
  */
-function get_ninja_forms() {
+function lsx_bd_get_ninja_forms() {
 	global $wpdb;
 
 	$results = $wpdb->get_results( "SELECT id,title FROM {$wpdb->prefix}nf3_forms" );
@@ -367,7 +367,7 @@ function get_ninja_forms() {
  *
  * @return  array  Array with all available Gravity forms.
  */
-function get_gravity_forms() {
+function lsx_bd_get_gravity_forms() {
 	global $wpdb;
 
 	$results = \RGFormsModel::get_forms( null, 'title' );
@@ -387,7 +387,7 @@ function get_gravity_forms() {
  *
  * @return  array  Array with all available Caldera forms.
  */
-function get_caldera_forms() {
+function lsx_bd_get_caldera_forms() {
 	global $wpdb;
 
 	$results = \Caldera_Forms_Forms::get_forms( true );

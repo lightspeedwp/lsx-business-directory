@@ -1,11 +1,11 @@
 <?php
-	$prefix        = 'businessdirectory';
+	$prefix        = 'lsx_bd';
 	$thumbnail     = get_thumbnail_wrapped( get_the_ID(), 265, 150 );
 	$title         = get_the_title();
 	$industries    = get_formatted_taxonomy_str( get_the_ID(), 'lsx-bd-industry', true );
 	$region        = get_formatted_taxonomy_str( get_the_ID(), 'lsx-bd-region' );
-	$primary_phone = get_post_meta( get_the_ID(), $prefix . '_business_primary_phone', true );
-	$primary_email = get_post_meta( get_the_ID(), $prefix . '_business_primary_email', true );
+	$primary_phone = get_post_meta( get_the_ID(), $prefix . '_primary_phone', true );
+	$primary_email = get_post_meta( get_the_ID(), $prefix . '_primary_email', true );
 ?>
 <article class="business row-layout">
 	<div class="row">
@@ -32,8 +32,10 @@
 										if ( $count > 0 ) :
 											?>,
 										<?php endif;
-										?><a href="/lsx-bd-industry/<?php echo esc_attr( $industry['slug'] ); ?>"><?php echo esc_attr( $industry['name'] ); ?></a><?php
-										$count++;
+										?>
+											<a href="/lsx-bd-industry/<?php echo esc_attr( $industry['slug'] ); ?>"><?php echo esc_attr( $industry['name'] ); ?></a>
+											<?php
+											$count++;
 									endforeach;
 									?>
 								</span>
@@ -61,7 +63,7 @@
 
 					<div class="business-excerpt col-md-12 lsx-flex-col">
 						<?php echo esc_attr( get_the_excerpt() ); ?>
-						<span class="read-more-link"><a href="<?php esc_url( the_permalink() ); ?>">READ MORE</a></span>
+						<span class="read-more-link"><a href="<?php esc_url( the_permalink() ); ?>"><?php esc_html_e( 'Read More', 'lsx-business-directory' ); ?></a></span>
 					</div>
 				</div>
 			</div>

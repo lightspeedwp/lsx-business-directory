@@ -1,11 +1,11 @@
 <?php
-	$prefix        = 'businessdirectory';
+	$prefix        = 'lsx_bd';
 	$thumbnail     = get_thumbnail_wrapped( get_the_ID(), 265, 150 );
 	$title         = get_the_title();
 	$industries    = get_formatted_taxonomy_str( get_the_ID(), 'lsx-bd-industry', true );
 	$region        = get_formatted_taxonomy_str( get_the_ID(), 'lsx-bd-region' );
-	$primary_phone = get_post_meta( get_the_ID(), $prefix . '_business_primary_phone', true );
-	$primary_email = get_post_meta( get_the_ID(), $prefix . '_business_primary_email', true );
+	$primary_phone = get_post_meta( get_the_ID(), $prefix . '_primary_phone', true );
+	$primary_email = get_post_meta( get_the_ID(), $prefix . '_primary_email', true );
 ?>
 <article class="business col-layout">
 	<div class="row">

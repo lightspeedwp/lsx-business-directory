@@ -18,24 +18,24 @@ get_header(); ?>
 		<?php
 		while ( have_posts() ) :
 			the_post();
-			$prefix                      = 'businessdirectory';
-			$business_logo               = get_post_meta( get_the_ID(), $prefix . '_business_logo', true );
-			$business_banner             = get_post_meta( get_the_ID(), $prefix . '_business_banner', true );
-			$business_google_maps_search = get_post_meta( get_the_ID(), $prefix . '_business_google_maps_search', true );
-			$business_address_1          = get_post_meta( get_the_ID(), $prefix . '_business_address_1', true );
-			$business_address_2          = get_post_meta( get_the_ID(), $prefix . '_business_address_2', true );
-			$business_address_3          = get_post_meta( get_the_ID(), $prefix . '_business_address_3', true );
-			$business_address_4          = get_post_meta( get_the_ID(), $prefix . '_business_address_4', true );
-			$business_postal_code        = get_post_meta( get_the_ID(), $prefix . '_business_postal_code', true );
-			$business_country            = get_post_meta( get_the_ID(), $prefix . '_business_country', true );
-			$business_province           = get_post_meta( get_the_ID(), $prefix . '_business_province', true );
-			$business_business_branches  = get_post_meta( get_the_ID(), $prefix . '_business_branches', true );
-			$business_primary_email      = get_post_meta( get_the_ID(), $prefix . '_business_primary_email', true );
-			$business_secondary_email    = get_post_meta( get_the_ID(), $prefix . '_business_secondary_email', true );
-			$business_primary_phone      = get_post_meta( get_the_ID(), $prefix . '_business_primary_phone', true );
-			$business_secondary_phone    = get_post_meta( get_the_ID(), $prefix . '_business_secondary_phone', true );
-			$business_fax                = get_post_meta( get_the_ID(), $prefix . '_business_fax', true );
-			$business_website            = get_post_meta( get_the_ID(), $prefix . '_business_website', true );
+			$prefix                      = 'lsx_bd';
+			$business_logo               = get_post_meta( get_the_ID(), $prefix . '_logo', true );
+			$business_banner             = get_post_meta( get_the_ID(), $prefix . '_banner', true );
+			$business_google_maps_search = get_post_meta( get_the_ID(), $prefix . '_address_google_maps_search', true );
+			$business_address_1          = get_post_meta( get_the_ID(), $prefix . '_address_street_number', true );
+			$business_address_2          = get_post_meta( get_the_ID(), $prefix . '_address_street_name', true );
+			$business_address_3          = get_post_meta( get_the_ID(), $prefix . '_address_suburb', true );
+			$business_address_4          = get_post_meta( get_the_ID(), $prefix . '_address_city', true );
+			$business_postal_code        = get_post_meta( get_the_ID(), $prefix . '_address_postal_code', true );
+			$business_country            = get_post_meta( get_the_ID(), $prefix . '_address_country', true );
+			$business_province           = get_post_meta( get_the_ID(), $prefix . '_address_province', true );
+			$business_business_branches  = get_post_meta( get_the_ID(), $prefix . '_branches', true );
+			$business_primary_email      = get_post_meta( get_the_ID(), $prefix . '_primary_email', true );
+			$business_secondary_email    = get_post_meta( get_the_ID(), $prefix . '_secondary_email', true );
+			$business_primary_phone      = get_post_meta( get_the_ID(), $prefix . '_primary_phone', true );
+			$business_secondary_phone    = get_post_meta( get_the_ID(), $prefix . '_secondary_phone', true );
+			$business_fax                = get_post_meta( get_the_ID(), $prefix . '_fax', true );
+			$business_website            = get_post_meta( get_the_ID(), $prefix . '_website', true );
 			$address                     = array();
 
 			if ( $business_address_1 ) {
