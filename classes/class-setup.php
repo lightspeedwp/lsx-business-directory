@@ -66,7 +66,7 @@ class Setup {
 		$cmb_images = new_cmb2_box(
 			array(
 				'id'           => $prefix . '_images_metabox',
-				'title'        => esc_html__( 'Business Images.', 'lsx-business-directory' ),
+				'title'        => esc_html__( 'Business Images', 'lsx-business-directory' ),
 				'object_types' => array( 'business-directory' ),
 			)
 		);
@@ -74,7 +74,7 @@ class Setup {
 		$cmb_images->add_field(
 			array(
 				'name' => esc_html__( 'Featured Image', 'lsx-business-directory' ),
-				'desc' => esc_html__( 'Featured image for a Business.', 'lsx-business-directory' ),
+				'desc' => esc_html__( 'Featured image for a Business', 'lsx-business-directory' ),
 				'id'   => $prefix . '_business_logo',
 				'type' => 'file',
 			)
@@ -83,7 +83,7 @@ class Setup {
 		$cmb_images->add_field(
 			array(
 				'name' => esc_html__( 'Banner Image', 'lsx-business-directory' ),
-				'desc' => esc_html__( 'Banner image for a Business.', 'lsx-business-directory' ),
+				'desc' => esc_html__( 'Banner image for a Business', 'lsx-business-directory' ),
 				'id'   => $prefix . '_business_banner',
 				'type' => 'file',
 			)
@@ -102,7 +102,7 @@ class Setup {
 		$cmb_address = new_cmb2_box(
 			array(
 				'id'           => $prefix . '_address_metabox',
-				'title'        => esc_html__( 'Business Address.', 'lsx-business-directory' ),
+				'title'        => esc_html__( 'Business Address', 'lsx-business-directory' ),
 				'object_types' => array( 'business-directory' ),
 			)
 		);
@@ -199,7 +199,6 @@ class Setup {
 				'name' => esc_html__( 'Branch Name', 'lsx-business-directory' ),
 				'id'   => 'branch_name',
 				'type' => 'text',
-			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
 			)
 		);
 
@@ -209,7 +208,6 @@ class Setup {
 				'name' => esc_html__( 'Branch Telephone', 'lsx-business-directory' ),
 				'id'   => 'branch_phone',
 				'type' => 'text',
-			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
 			)
 		);
 
@@ -219,7 +217,6 @@ class Setup {
 				'name' => esc_html__( 'Branch Email', 'lsx-business-directory' ),
 				'id'   => 'branch_email',
 				'type' => 'text_email',
-			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
 			)
 		);
 
@@ -229,7 +226,6 @@ class Setup {
 				'name' => esc_html__( 'Branch Website', 'lsx-business-directory' ),
 				'id'   => 'branch_website',
 				'type' => 'text_url',
-			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
 			)
 		);
 
@@ -240,7 +236,6 @@ class Setup {
 				'name' => esc_html__( 'Branch Google Maps Search', 'lsx-business-directory' ),
 				'id'   => 'branch_google_maps_search',
 				'type' => 'text',
-			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
 			)
 		);
 
