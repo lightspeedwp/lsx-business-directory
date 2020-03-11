@@ -50,8 +50,6 @@ class Core {
 	public function __construct() {
 		$this->load_classes();
 		$this->load_includes();
-
-		add_filter( 'template_include', array( $this, 'post_type_single_template_include' ), 99 );
 	}
 
 	/**
@@ -115,23 +113,5 @@ class Core {
 		}
 
 		return $post_types;
-	}
-
-	/**
-	 * Redirect WordPress to the single template located in the plugin.
-	 *
-	 * @param   $template
-	 *
-	 * @return  $template
-	 */
-	public function post_type_single_template_include( $template ) {
-		if ( is_main_query()
-		&& is_singular( 'business-directory' )
-		&& '' == locate_template( array( 'single-business-directory.php' ) )
-		&& file_exists( LSX_BD_PATH . 'templates/single-business-directory.php' ) ) {
-			$template = LSX_BD_PATH . 'templates/single-business-directory.php';
-		}
-
-		return $template;
 	}
 }

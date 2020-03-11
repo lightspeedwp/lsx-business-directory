@@ -38,16 +38,25 @@ function get_thumbnail_wrapped( $id, $width, $height ) {
  * @param       $id int
  * @param       $tax String
  */
-function get_formatted_taxonomy_str( $id, $tax ) {
+function get_formatted_taxonomy_str( $id, $tax, $link = false ) {
 	$terms     = wp_get_post_terms( $id, $tax );
-	$terms_str = '';
+	$terms_str = $link ? array() : '';
 
 	if ( ! empty( $terms ) ) {
 		foreach ( $terms as $term ) {
-			$terms_str .= $term->name . ', ';
+			if ( $link ) {
+				$terms_str[] = array(
+					'slug' => trim( $term->slug ),
+					'name' => trim( $term->name ),
+				);
+			} else {
+				$terms_str .= $term->name . ', ';
+			}
 		}
 
-		$terms_str = substr( $terms_str, 0, strlen( $terms_str ) - 2 );
+		if ( ! $link ) {
+			$terms_str = substr( $terms_str, 0, strlen( $terms_str ) - 2 );
+		}
 	}
 
 	if ( 'post_format' == $tax && '' == $terms_str ) {
@@ -79,4 +88,22 @@ function lsx_business_template( $filename_base ) {
  */
 function lsx_related_business() {
 	lsx_business_template( 'single-business-related-business' );
+}
+
+/**
+ * Loads Business Template for Archive page for list layout.
+ *
+ * @return  void
+ */
+function lsx_business_row() {
+	lsx_business_template( 'single-row-business' );
+}
+
+/**
+ * Loads Business Template for Archive page for grid layout.
+ *
+ * @return  void
+ */
+function lsx_business_col() {
+	lsx_business_template( 'single-col-business' );
 }

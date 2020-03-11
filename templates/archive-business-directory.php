@@ -6,125 +6,53 @@
  * @subpackage  template
  * @category    archive
  */
-?>
-<?php get_header(); ?>
+get_header(); ?>
 
-	<div id="primary" class="content-area <?php echo esc_attr( lsx_main_class() ); ?>">
+<?php lsx_content_wrap_before(); ?>
 
-		<?php lsx_content_before(); ?>
+<div id="primary" class="content-area <?php echo esc_attr( lsx_main_class() ); ?>">
 
-		<main id="main" class="site-main" role="main">
+	<?php lsx_content_before(); ?>
 
-			<?php lsx_content_top(); ?>
+	<main id="main" class="site-main" role="main">
 
-			<header class="page-header tours-archive-header">
-				<?php if ( is_post_type_archive() ) { ?>
-					<h1 class="page-title"><?php esc_html_e( 'Business Directory', 'lsx-business-directory' ); ?></h1>
-				<?php } else { ?>
-					<h1 class="page-title">
-					<?php
-					if ( is_tax() ) {
-						$taxo          = get_taxonomy( get_queried_object()->taxonomy );
-						$post_type     = $taxo->object_type;
-						$post_type_obj = get_post_type_object( $post_type[0] );
-						echo esc_attr( $post_type_obj->labels->name ) . ': ' . single_term_title( '', false );
+		<?php lsx_content_top(); ?>
+
+		<?php if ( have_posts() ) : ?>
+
+			<div class="post-wrapper">
+				<?php
+				while ( have_posts() ) :
+					the_post();
+					$layout = lsx_bd_get_option( 'businessdirectory_business_layout_option' );
+					if ( false !== $layout && '' !== $layout && 'grid' === $layout ) {
+						include LSX_BD_PATH . '/templates/single-col-business.php';
 					} else {
-						the_archive_title();
+						include LSX_BD_PATH . '/templates/single-row-business.php';
 					}
-					?>
-					</h1>
-				<?php } ?>
+				endwhile;
+				?>
+			</div>
 
-			</header><!-- .entry-header -->
+			<?php lsx_paging_nav(); ?>
 
+		<?php else : ?>
 
-			<?php if ( is_tax() ) { ?>
-				<div class="entry-content">
-					<?php the_archive_description(); ?>
-				</div>
-			<?php } ?>
+			<?php get_template_part( 'partials/content', 'none' ); ?>
 
+		<?php endif; ?>
 
-					<?php if ( have_posts() ) : ?>
-						<div class="lsx-business-directory-wrapper">
-							<div class="row">
+		<?php lsx_content_bottom(); ?>
 
-								<div class="col-md-3">
-									<div class="business-facets">
-										<h3>Refine the Results</h3>
-										<h4>Keyword Search</h4>
-										<?php echo do_shortcode( '[facetwp facet="post_search"]' ); ?>
-										<h4>Insurance Type</h4>
-										<?php echo do_shortcode( '[facetwp facet="industry"]' ); ?>
-										<h4>Region</h4>
-										<?php echo do_shortcode( '[facetwp facet="region"]' ); ?>
-									</div>
-								</div>
+	</main><!-- #main -->
 
-								<div class="col-md-9">
+	<?php lsx_content_after(); ?>
 
-									<div class="business-listings">
+</div><!-- #primary -->
 
-										<div class="business-filters">
-											<div class="business-filters-top">
-												<?php echo do_shortcode( '[facetwp sort="true"]' ); ?>
-												<?php echo do_shortcode( '[facetwp per_page="true"]' ); ?>
-											</div>
+<?php lsx_content_wrap_after(); ?>
 
-											<div class="business-filters-bottom">
-												<?php echo do_shortcode( '[facetwp facet="alphabet"]' ); ?>
-												<?php echo do_shortcode( '[facetwp pager="true"]' ); ?>
-											</div>
-										</div>
-										<div class="facetwp-template">
-										<?php
-										while ( have_posts() ) :
-												the_post();
-												lsx_business_row();
-											?>
-										<?php endwhile; ?>
-										</div>
-										<?php echo do_shortcode( '[facetwp pager="true"]' ); ?>
-									</div>
-								</div>
-							</div>
-						</div>
+<?php get_sidebar(); ?>
 
-					<?php else : ?>
-
-						<section class="no-results not-found">
-							<header class="page-header">
-								<h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'lsx-business-directory' ); ?></h1>
-							</header><!-- .page-header -->
-
-							<div class="page-content">
-								<?php if ( current_user_can( 'publish_posts' ) ) : ?>
-
-									<p>
-										<?php
-										// translators: %1$s is replaced with a link.
-										printf( esc_html__( 'Ready to publish your first tour? <a href="%1$s">Get started here</a>.', 'lsx-business-directory' ), esc_url( admin_url( 'post-new.php?post_type=business-directory' ) ) );
-										?>
-									</p>
-
-								<?php else : ?>
-
-									<p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'lsx-business-directory' ); ?></p>
-									<?php get_search_form(); ?>
-
-								<?php endif; ?>
-							</div><!-- .page-content -->
-						</section><!-- .no-results -->
-
-					<?php endif; ?>
-
-
-			<div class="clearfix"></div>
-
-		</main><!-- #main -->
-
-		<?php // lsx_content_after(); ?>
-
-	</div><!-- #primary -->
-
-<?php get_footer(); ?>
+<?php
+get_footer();
