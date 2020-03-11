@@ -23,6 +23,11 @@ class Admin {
 	public function __construct() {
 		// Enqueue scripts for all admin pages.
 		add_action( 'admin_enqueue_scripts', array( $this, 'assets' ) );
+
+		// Configure Settings page.
+		add_action( 'cmb2_admin_init', array( $this, 'configure_settings_custom_fields' ) );
+		add_action( 'lsx_bd_settings_page', array( $this, 'configure_settings_single_custom_fields' ), 1, 1 );
+		add_action( 'lsx_bd_settings_page', array( $this, 'configure_settings_general_custom_fields' ), 2, 1 );
 	}
 
 	/**
@@ -57,5 +62,89 @@ class Admin {
 		wp_enqueue_script( 'lsx-business-directory-admin', LSX_BD_URL . 'assets/js/lsx-business-directory-admin.min.js', array( 'jquery' ), LSX_BD_VER, true );
 		wp_enqueue_style( 'lsx-business-directory-admin', LSX_BD_URL . 'assets/css/lsx-business-directory-admin.css', array(), LSX_BD_VER );
 	}
+	/**
+	 * Configure Business Directory custom fields for the Settings page.
+	 *
+	 * @return void
+	 */
+	public function configure_settings_custom_fields() {
+		$prefix = 'businessdirectory';
 
+		$this->cmb = new_cmb2_box(
+			array(
+				'id'           => $prefix . '_settings',
+				'title'        => esc_html__( 'Business Directory Settings', 'lsx-business-directory' ),
+				'menu_title'   => esc_html__( 'Settings', 'lsx-business-directory' ), // Falls back to 'title' (above).
+				'object_types' => array( 'options-page' ),
+				'option_key'   => 'lsx-business-directory-settings', // The option key and admin menu page slug.
+				'parent_slug'  => 'edit.php?post_type=business-directory', // Make options page a submenu item of the Business Directory menu.
+				'capability'   => 'manage_options', // Cap required to view options-page.
+			)
+		);
+
+		do_action( 'lsx_bd_settings_page', $this->cmb );
+	}
+
+	/**
+	 * Configure Business Directory custom fields for the Settings page Single section.
+	 *
+	 * @param object $cmb new_cmb2_box().
+	 * @return void
+	 */
+	public function configure_settings_single_custom_fields( $cmb ) {
+		$prefix = 'businessdirectory';
+
+		$cmb->add_field(
+			array(
+				'id'          => $prefix . '_settings_single',
+				'type'        => 'title',
+				'name'        => __( 'Single', 'lsx-business-directory' ),
+				'default'     => __( 'Single', 'lsx-business-directory' ),
+				'description' => __( 'The settings for the single business directory view.', 'lsx-business-directory' ),
+			)
+		);
+
+		$cmb->add_field(
+			array(
+				'name'             => esc_html__( 'Enquiry Form', 'lsx-business-directory' ),
+				'id'               => $prefix . '_business_enquiry_form',
+				'type'             => 'select',
+				'show_option_none' => 'Choose a Form',
+				'options'          => get_available_forms(),
+			)
+		);
+	}
+
+	/**
+	 * Configure Business Directory custom fields for the Settings page General section.
+	 *
+	 * @param object $cmb new_cmb2_box().
+	 * @return void
+	 */
+	public function configure_settings_general_custom_fields( $cmb ) {
+		$prefix = 'businessdirectory';
+
+		$cmb->add_field(
+			array(
+				'id'          => $prefix . '_settings_general',
+				'type'        => 'title',
+				'name'        => __( 'General', 'lsx-business-directory' ),
+				'default'     => __( 'General', 'lsx-business-directory' ),
+				'description' => __( 'Business Directory general settings.', 'lsx-business-directory' ),
+			)
+		);
+
+		$cmb->add_field(
+			array(
+				'name'             => esc_html__( 'Layout option', 'lsx-business-directory' ),
+				'id'               => $prefix . '_business_layout_option',
+				'type'             => 'radio',
+				'show_option_none' => false,
+				'options'          => array(
+					'grid' => esc_html__( 'Grid', 'lsx-business-directory' ),
+					'list' => esc_html__( 'List', 'lsx-business-directory' ),
+				),
+			)
+		);
+	}
 }
