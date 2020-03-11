@@ -24,9 +24,12 @@ get_header(); ?>
 				<?php
 				while ( have_posts() ) :
 					the_post();
-					?>
-					<?php include( LSX_BD_PATH . '/templates/single-row-business.php' ); ?>
-					<?php
+					$layout = lsx_bd_get_option( 'businessdirectory_business_layout_option' );
+					if ( false !== $layout && '' !== $layout && 'grid' === $layout ) {
+						include LSX_BD_PATH . '/templates/single-col-business.php';
+					} else {
+						include LSX_BD_PATH . '/templates/single-row-business.php';
+					}
 				endwhile;
 				?>
 			</div>
