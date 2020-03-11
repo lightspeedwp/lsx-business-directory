@@ -35,7 +35,7 @@
 										?>
 											<a href="/lsx-bd-industry/<?php echo esc_attr( $industry['slug'] ); ?>"><?php echo esc_attr( $industry['name'] ); ?></a>
 											<?php
-										$count++;
+											$count++;
 									endforeach;
 									?>
 								</span>
