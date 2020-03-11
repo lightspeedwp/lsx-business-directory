@@ -94,30 +94,6 @@ get_header(); ?>
 										<span><strong><?php esc_html_e( 'Region', 'lsx-business-directory' ); ?>: </strong><?php echo esc_attr( get_formatted_taxonomy_str( get_the_ID(), 'lsx-bd-region' ) ); ?></span>
 									</div>
 
-									<?php if ( $fsb ) : ?>
-										<div>
-											<span><strong><?php esc_html_e( 'FSP', 'lsx-business-directory' ); ?>: </strong><?php echo esc_attr( $fsb ); ?></span>
-										</div>
-									<?php endif; ?>
-
-									<?php if ( $specialist ) : ?>
-										<div>
-											<span><strong><?php esc_html_e( 'Specialist', 'lsx-business-directory' ); ?>: </strong><?php echo esc_attr( $specialist ); ?></span>
-										</div>
-									<?php endif; ?>
-
-									<?php if ( $underwriter ) : ?>
-										<div>
-											<span><strong><?php esc_html_e( 'Underwriter', 'lsx-business-directory' ); ?>: </strong><?php echo esc_attr( $underwriter ); ?></span>
-										</div>
-									<?php endif; ?>
-
-									<?php if ( $underwriters ) : ?>
-										<div>
-											<span><strong><?php esc_html_e( 'Underwriter/s', 'lsx-business-directory' ); ?>: </strong><?php echo esc_attr( $underwriters ); ?></span>
-										</div>
-									<?php endif; ?>
-
 									<?php
 									/**
 									 * Contains HTML for proposed "Claim This Listing" Button
