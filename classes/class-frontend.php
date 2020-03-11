@@ -81,7 +81,7 @@ class Frontend {
 	 */
 	public function archive_template_include( $template ) {
 		// $applicable_post_types = apply_filters( 'lsx_business_directory_archive_template', array() );
-		$applicable_post_types = array ( 'business-directory' );
+		$applicable_post_types = array( 'business-directory' );
 		if ( ! empty( $applicable_post_types ) && is_main_query() && is_post_type_archive( $applicable_post_types ) ) {
 			$post_type = get_post_type();
 
@@ -97,7 +97,7 @@ class Frontend {
 	 */
 	public function single_template_include( $template ) {
 		// $applicable_post_types = apply_filters( 'lsx_business_directory_single_template', array() );
-		$applicable_post_types = array ( 'business-directory' );
+		$applicable_post_types = array( 'business-directory' );
 		if ( ! empty( $applicable_post_types ) && is_main_query() && is_singular( $applicable_post_types ) ) {
 			$post_type = get_post_type();
 			if ( empty( locate_template( array( 'single-' . $post_type . '.php' ) ) ) && file_exists( LSX_BD_PATH . 'templates/single-' . $post_type . '.php' ) ) {

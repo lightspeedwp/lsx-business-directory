@@ -48,7 +48,7 @@
 					<?php if ( have_posts() ) : ?>
 						<?php
 						$lsx_search_active = false; // TODO: detect if lsx search is on
-						$lsx_layout        = 'col'; // TODO: row or col, get this settings somewhere
+						$lsx_layout        = 'row'; // TODO: row or col, get this settings somewhere
 						$layout_classes    = 'facetwp-template'; // default one for list
 
 						if ( 'col' === $lsx_layout ) {
@@ -71,7 +71,7 @@
 						<div class="lsx-business-directory-wrapper">
 							<div class="row">
 
-								<div class="<?php print $filter_classes; ?>">
+								<div class="<?php print esc_arrt( $filter_classes ); ?>">
 									<div class="business-facets">
 										<h3><?php esc_html_e( 'Refine the Results', 'lsx-business-directory' ); ?></h3>
 										<h4><?php esc_html_e( 'Keyword Search', 'lsx-business-directory' ); ?></h4>
@@ -83,11 +83,11 @@
 									</div>
 								</div>
 
-								<div class="<?php print $results_classes; ?>">
+								<div class="<?php print esc_arrt( $results_classes ); ?>">
 
 									<div class="business-listings">
 
-										<div class="<?php print $search_classes; ?>">
+										<div class="<?php print esc_arrt( $search_classes ); ?>">
 											<div class="business-filters-top">
 												<?php echo do_shortcode( '[facetwp sort="true"]' ); ?>
 												<?php echo do_shortcode( '[facetwp per_page="true"]' ); ?>
@@ -98,7 +98,7 @@
 												<?php echo do_shortcode( '[facetwp pager="true"]' ); ?>
 											</div>
 										</div>
-										<div class="<?php print $layout_classes; ?>">
+										<div class="<?php print esc_arrt( $layout_classes ); ?>">
 										<?php
 										while ( have_posts() ) :
 											the_post();
@@ -111,7 +111,7 @@
 											?>
 										<?php endwhile; ?>
 										</div>
-										<div class="<?php print $pagination_classes; ?>"><?php echo do_shortcode( '[facetwp pager="true"]' ); ?></div>
+										<div class="<?php print esc_arrt( $pagination_classes ); ?>"><?php echo do_shortcode( '[facetwp pager="true"]' ); ?></div>
 									</div>
 								</div>
 							</div>
