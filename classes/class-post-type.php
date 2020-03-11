@@ -63,6 +63,6 @@ class Post_Type {
 			// make sure that only letters and dashes are used (no underscores)
 			'business-directory',
 		);
-		return $post_types;
+		return $this->post_types;
 	}
 }

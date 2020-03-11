@@ -29,7 +29,11 @@ class Setup {
 		// Register custom post types & taxonomies.
 		require_once LSX_BD_PATH . 'classes/class-post-type.php';
 		$this->post_types = Post_Type::get_instance();
+
 		// Configure custom fields.
+		if ( ! class_exists( 'CMB2' ) ) {
+			require_once LSX_BD_PATH . 'vendor/CMB2/init.php';
+		}
 		add_action( 'cmb2_init', array( $this, 'configure_business_directory_custom_fields' ) );
 	}
 
