@@ -25,9 +25,9 @@ class Admin {
 		add_action( 'admin_enqueue_scripts', array( $this, 'assets' ) );
 
 		// Configure Settings page.
-		add_action( 'cmb2_admin_init', array( $this, 'configure_settings_custom_fields' ) );
-		add_action( 'lsx_bd_settings_page', array( $this, 'configure_settings_single_custom_fields' ), 1, 1 );
-		add_action( 'lsx_bd_settings_page', array( $this, 'configure_settings_general_custom_fields' ), 2, 1 );
+		add_action( 'cmb2_admin_init', array( $this, 'configure_settings_fields' ) );
+		add_action( 'lsx_bd_settings_page', array( $this, 'configure_settings_single_fields' ), 1, 1 );
+		add_action( 'lsx_bd_settings_page', array( $this, 'configure_settings_archive_fields' ), 2, 1 );
 	}
 
 	/**
@@ -67,12 +67,10 @@ class Admin {
 	 *
 	 * @return void
 	 */
-	public function configure_settings_custom_fields() {
-		$prefix = 'businessdirectory';
-
+	public function configure_settings_fields() {
 		$this->cmb = new_cmb2_box(
 			array(
-				'id'           => $prefix . '_settings',
+				'id'           => 'lsx_bd_settings',
 				'title'        => esc_html__( 'Business Directory Settings', 'lsx-business-directory' ),
 				'menu_title'   => esc_html__( 'Settings', 'lsx-business-directory' ), // Falls back to 'title' (above).
 				'object_types' => array( 'options-page' ),
@@ -81,7 +79,6 @@ class Admin {
 				'capability'   => 'manage_options', // Cap required to view options-page.
 			)
 		);
-
 		do_action( 'lsx_bd_settings_page', $this->cmb );
 	}
 
@@ -91,12 +88,10 @@ class Admin {
 	 * @param object $cmb new_cmb2_box().
 	 * @return void
 	 */
-	public function configure_settings_single_custom_fields( $cmb ) {
-		$prefix = 'businessdirectory';
-
+	public function configure_settings_single_fields( $cmb ) {
 		$cmb->add_field(
 			array(
-				'id'          => $prefix . '_settings_single',
+				'id'          => 'settings_single',
 				'type'        => 'title',
 				'name'        => __( 'Single', 'lsx-business-directory' ),
 				'default'     => __( 'Single', 'lsx-business-directory' ),
@@ -107,7 +102,7 @@ class Admin {
 		$cmb->add_field(
 			array(
 				'name'             => esc_html__( 'Enquiry Form', 'lsx-business-directory' ),
-				'id'               => $prefix . '_business_enquiry_form',
+				'id'               => 'single_enquiry_form',
 				'type'             => 'select',
 				'show_option_none' => 'Choose a Form',
 				'options'          => get_available_forms(),
@@ -121,23 +116,21 @@ class Admin {
 	 * @param object $cmb new_cmb2_box().
 	 * @return void
 	 */
-	public function configure_settings_general_custom_fields( $cmb ) {
-		$prefix = 'businessdirectory';
-
+	public function configure_settings_archive_fields( $cmb ) {
 		$cmb->add_field(
 			array(
-				'id'          => $prefix . '_settings_general',
+				'id'          => 'settings_archive',
 				'type'        => 'title',
-				'name'        => __( 'General', 'lsx-business-directory' ),
-				'default'     => __( 'General', 'lsx-business-directory' ),
-				'description' => __( 'Business Directory general settings.', 'lsx-business-directory' ),
+				'name'        => __( 'Archive', 'lsx-business-directory' ),
+				'default'     => __( 'Archive', 'lsx-business-directory' ),
+				'description' => __( 'Business Directory post type archive settings.', 'lsx-business-directory' ),
 			)
 		);
 
 		$cmb->add_field(
 			array(
 				'name'             => esc_html__( 'Layout option', 'lsx-business-directory' ),
-				'id'               => $prefix . '_business_layout_option',
+				'id'               => 'archive_layout',
 				'type'             => 'radio',
 				'show_option_none' => false,
 				'options'          => array(
