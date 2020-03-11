@@ -105,7 +105,7 @@ class Admin {
 				'id'               => 'single_enquiry_form',
 				'type'             => 'select',
 				'show_option_none' => 'Choose a Form',
-				'options'          => get_available_forms(),
+				'options'          => lsx_bd_get_available_forms(),
 			)
 		);
 	}

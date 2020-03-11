@@ -286,7 +286,7 @@ class Business_Directory {
 				'type'             => 'select',
 				'show_option_none' => 'Choose a Country',
 				'default'          => 'ZA',
-				'options'          => get_country_options(),
+				'options'          => lsx_bd_get_country_options(),
 			)
 		);
 		$cmb_address->add_field(
