@@ -27,6 +27,15 @@ class Business_Directory {
 	public $slug = 'business-directory';
 
 	/**
+	 * Holds the prefix for the fields
+	 *
+	 * @since 1.0.0
+	 *
+	 * @var      string
+	 */
+	public $prefix = 'lsx_bd';
+
+	/**
 	 * Contructor
 	 */
 	public function __construct() {
@@ -177,11 +186,9 @@ class Business_Directory {
 	 * @return void
 	 */
 	public function configure_business_directory_custom_fields() {
-		$prefix = 'businessdirectory';
-
 		$cmb_images = new_cmb2_box(
 			array(
-				'id'           => $prefix . '_images_metabox',
+				'id'           => $this->prefix . '_images_metabox',
 				'title'        => esc_html__( 'Business Images', 'lsx-business-directory' ),
 				'object_types' => array( 'business-directory' ),
 			)
@@ -191,7 +198,7 @@ class Business_Directory {
 			array(
 				'name' => esc_html__( 'Featured Image', 'lsx-business-directory' ),
 				'desc' => esc_html__( 'Featured image for a Business', 'lsx-business-directory' ),
-				'id'   => $prefix . '_business_logo',
+				'id'   => $this->prefix . '_logo',
 				'type' => 'file',
 			)
 		);
@@ -200,7 +207,7 @@ class Business_Directory {
 			array(
 				'name' => esc_html__( 'Banner Image', 'lsx-business-directory' ),
 				'desc' => esc_html__( 'Banner image for a Business', 'lsx-business-directory' ),
-				'id'   => $prefix . '_business_banner',
+				'id'   => $this->prefix . '_banner',
 				'type' => 'file',
 			)
 		);
@@ -209,7 +216,7 @@ class Business_Directory {
 			array(
 				'name'    => esc_html__( 'Banner Colour', 'lsx-business-directory' ),
 				'desc'    => esc_html__( 'Banner colour if Banner image is missing.', 'lsx-business-directory' ),
-				'id'      => $prefix . '_business_banner_colour',
+				'id'      => $this->prefix . '_banner_colour',
 				'type'    => 'colorpicker',
 				'default' => '#ffffff',
 			)
@@ -217,7 +224,7 @@ class Business_Directory {
 
 		$cmb_address = new_cmb2_box(
 			array(
-				'id'           => $prefix . '_address_metabox',
+				'id'           => $this->prefix . '_address_metabox',
 				'title'        => esc_html__( 'Business Address', 'lsx-business-directory' ),
 				'object_types' => array( 'business-directory' ),
 			)
@@ -227,7 +234,7 @@ class Business_Directory {
 		$cmb_address->add_field(
 			array(
 				'name' => esc_html__( 'Google Maps Search', 'lsx-business-directory' ),
-				'id'   => $prefix . '_business_google_maps_search',
+				'id'   => $this->prefix . '_address_google_maps_search',
 				'type' => 'text',
 			)
 		);
@@ -235,7 +242,7 @@ class Business_Directory {
 		$cmb_address->add_field(
 			array(
 				'name' => esc_html__( 'Complex Name / Business Park / Street Number', 'lsx-business-directory' ),
-				'id'   => $prefix . '_business_address_1',
+				'id'   => $this->prefix . '_address_street_number',
 				'type' => 'text',
 			)
 		);
@@ -243,7 +250,7 @@ class Business_Directory {
 		$cmb_address->add_field(
 			array(
 				'name' => esc_html__( 'Street Name', 'lsx-business-directory' ),
-				'id'   => $prefix . '_business_address_2',
+				'id'   => $this->prefix . '_address_street_name',
 				'type' => 'text',
 			)
 		);
@@ -251,7 +258,7 @@ class Business_Directory {
 		$cmb_address->add_field(
 			array(
 				'name' => esc_html__( 'Suburb', 'lsx-business-directory' ),
-				'id'   => $prefix . '_business_address_3',
+				'id'   => $this->prefix . '_address_suburb',
 				'type' => 'text',
 			)
 		);
@@ -259,7 +266,7 @@ class Business_Directory {
 		$cmb_address->add_field(
 			array(
 				'name' => esc_html__( 'City', 'lsx-business-directory' ),
-				'id'   => $prefix . '_business_address_4',
+				'id'   => $this->prefix . '_address_city',
 				'type' => 'text',
 			)
 		);
@@ -267,7 +274,7 @@ class Business_Directory {
 		$cmb_address->add_field(
 			array(
 				'name' => esc_html__( 'Postal Code', 'lsx-business-directory' ),
-				'id'   => $prefix . '_business_postal_code',
+				'id'   => $this->prefix . '_address_postal_code',
 				'type' => 'text',
 			)
 		);
@@ -275,25 +282,24 @@ class Business_Directory {
 		$cmb_address->add_field(
 			array(
 				'name'             => esc_html__( 'Country', 'lsx-business-directory' ),
-				'id'               => $prefix . '_business_country',
+				'id'               => $this->prefix . '_address_country',
 				'type'             => 'select',
 				'show_option_none' => 'Choose a Country',
 				'default'          => 'ZA',
 				'options'          => get_country_options(),
 			)
 		);
-
 		$cmb_address->add_field(
 			array(
 				'name' => esc_html__( 'State / Province', 'lsx-business-directory' ),
-				'id'   => $prefix . '_business_province',
+				'id'   => $this->prefix . '_address_province',
 				'type' => 'text',
 			)
 		);
 
 		$branches_group_field_id = $cmb_address->add_field(
 			array(
-				'id'          => $prefix . '_business_branches',
+				'id'          => $this->prefix . '_business_branches',
 				'type'        => 'group',
 				'description' => esc_html__( 'Business Branches', 'lsx-business-directory' ),
 				'repeatable'  => true,
@@ -357,56 +363,56 @@ class Business_Directory {
 
 		$cmb_contact = new_cmb2_box(
 			array(
-				'id'           => $prefix . '_contact_metabox',
-				'title'        => esc_html__( 'Business Contact Details.', 'lsx-business-directory' ),
+				'id'           => $this->prefix . '_contact_metabox',
+				'title'        => esc_html__( 'Contact Details.', 'lsx-business-directory' ),
 				'object_types' => array( 'business-directory' ),
 			)
 		);
 
 		$cmb_contact->add_field(
 			array(
-				'name' => esc_html__( 'Business Primary Email.', 'lsx-business-directory' ),
-				'id'   => $prefix . '_business_primary_email',
+				'name' => esc_html__( 'Primary Email.', 'lsx-business-directory' ),
+				'id'   => $this->prefix . '_primary_email',
 				'type' => 'text_email',
 			)
 		);
 
 		$cmb_contact->add_field(
 			array(
-				'name' => esc_html__( 'Business Secondary Email.', 'lsx-business-directory' ),
-				'id'   => $prefix . '_business_secondary_email',
+				'name' => esc_html__( 'Secondary Email.', 'lsx-business-directory' ),
+				'id'   => $this->prefix . '_secondary_email',
 				'type' => 'text_email',
 			)
 		);
 
 		$cmb_contact->add_field(
 			array(
-				'name' => esc_html__( 'Business Primary Phone.', 'lsx-business-directory' ),
-				'id'   => $prefix . '_business_primary_phone',
+				'name' => esc_html__( 'Primary Phone.', 'lsx-business-directory' ),
+				'id'   => $this->prefix . '_primary_phone',
 				'type' => 'text',
 			)
 		);
 
 		$cmb_contact->add_field(
 			array(
-				'name' => esc_html__( 'Business Secondary Phone.', 'lsx-business-directory' ),
-				'id'   => $prefix . '_business_secondary_phone',
+				'name' => esc_html__( 'Secondary Phone.', 'lsx-business-directory' ),
+				'id'   => $this->prefix . '_secondary_phone',
 				'type' => 'text',
 			)
 		);
 
 		$cmb_contact->add_field(
 			array(
-				'name' => esc_html__( 'Business Fax.', 'lsx-business-directory' ),
-				'id'   => $prefix . '_business_fax',
+				'name' => esc_html__( 'Fax.', 'lsx-business-directory' ),
+				'id'   => $this->prefix . '_fax',
 				'type' => 'text',
 			)
 		);
 
 		$cmb_contact->add_field(
 			array(
-				'name' => esc_html__( 'Business Website.', 'lsx-business-directory' ),
-				'id'   => $prefix . '_business_website',
+				'name' => esc_html__( 'Website.', 'lsx-business-directory' ),
+				'id'   => $this->prefix . '_website',
 				'type' => 'text_url',
 			)
 		);
