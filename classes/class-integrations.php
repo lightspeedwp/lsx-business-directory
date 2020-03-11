@@ -19,7 +19,7 @@ class Integrations {
 
 	/**
 	 * Holds the LSX Search integration functions.
-	 * 
+	 *
 	 * @var object \lsx\business_directory\classes\Frontend();
 	 */
 	public $lsx_search;
