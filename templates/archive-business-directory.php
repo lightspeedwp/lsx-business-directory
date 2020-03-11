@@ -48,7 +48,7 @@
 					<?php if ( have_posts() ) : ?>
 						<?php
 						$lsx_search_active = false; // TODO: detect if lsx search is on
-						$lsx_layout        = 'col'; // TODO: row or col, get this settings somewhere
+						$lsx_layout        = 'row'; // TODO: row or col, get this settings somewhere
 						$layout_classes    = 'facetwp-template'; // default one for list
 
 						if ( 'col' === $lsx_layout ) {

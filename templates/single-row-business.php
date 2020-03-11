@@ -29,7 +29,9 @@
 									<?php
 									$count = 0;
 									foreach ( $industries as $industry ) :
-										if ( $count > 0 ) : echo ', '; endif;
+										if ( $count > 0 ) :
+											?>,
+										<?php endif;
 										?><a href="/lsx-bd-industry/<?php echo esc_attr( $industry['slug'] ); ?>"><?php echo esc_attr( $industry['name'] ); ?></a><?php
 										$count++;
 									endforeach;
