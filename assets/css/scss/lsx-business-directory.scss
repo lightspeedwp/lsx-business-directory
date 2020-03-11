@@ -1,0 +1,281 @@
+/**
+ * LSX Starter Plugin styles.
+ *
+ * @package lsx-business-directory
+ */
+
+@import 'include-media';
+@CHARSET "UTF-8";
+
+/* Business Directory */
+
+.lsx-business-directory-wrapper {
+	.business-facets {
+		h3 {
+			margin: {
+				top: 0;
+				bottom: 15px;
+			}
+
+			padding-bottom: 5px;
+			border-bottom: 1px solid #ddd;
+		}
+	}
+
+	.business-listings {
+		padding-left: 30px;
+    	border-left: 1px solid #ddd;
+
+    	.business-filters {
+    		padding-bottom: 15px;
+		    margin-bottom: 25px;
+		    border-bottom: 1px solid #ddd;
+
+		    .business-filters-top {
+		    	margin-bottom: 20px;
+
+		    	& > div {
+		    		display: inline-block;
+
+		    		&.facetwp-sort {
+		    			margin-right: 10px;
+		    		}
+		    	}
+		    }
+
+		    .business-filters-bottom {
+		    	& > div {
+		    		display: inline-block;
+
+		    		&.facetwp-pager {
+		    			float: right;
+		    		}
+		    	}
+		    }
+    	}
+
+		.business {
+			margin-bottom: 20px;
+
+			@media only screen and (max-width: 991px) {
+			    padding-bottom: 15px;
+			    border-bottom: 1px solid #ddd;
+			}
+
+			.business-content {
+				.business-title {
+					margin: {
+						top: 0;
+						bottom: 15px;
+					}
+
+					padding-bottom: 5px;
+					border-bottom: 1px solid #ddd;
+
+					@media only screen and (max-width: 991px) {
+						margin-top: 15px;
+					}
+				}
+			}
+
+			.business-details {
+				.business-meta {
+					div {
+						margin-bottom: 5px;
+					}
+				}
+			}
+		}
+	}
+}
+
+
+// Single Business
+
+.business-directory {
+	.business-header {
+		margin-bottom: 40px;
+
+		.entry-header-content {
+			h1.entry-title {
+				margin: {
+					top: 0;
+					bottom: 10px;
+				}
+
+				@media only screen and (max-width: 767px) {
+					font-size: 22px;
+				}
+
+				@media only screen and (min-width: 768px) and (max-width: 991px) {
+					font-size: 28px;
+				}
+
+				@media only screen and (max-width: 991px) {
+					margin-top: 15px;
+				}
+			}
+
+			.entry-meta {
+				text-align: left;
+
+				> div {
+					margin-bottom: 5px;
+
+					&:last-child {
+						margin-bottom: 20px;
+					}
+				}
+			}
+		}
+	}
+
+	.business-content-left,
+	.business-content-right {
+		margin-bottom: 30px;
+	}
+
+	.business-content-left {
+		@media (min-width: 992px) {
+			float: left;
+		}
+	}
+
+	.business-content-right {
+		@media (min-width: 992px) {
+			float: right;
+		}
+	}
+
+	.business-content-section {
+		margin-bottom: 30px;
+
+		.business-section-title {
+			margin: {
+				top: 0;
+				bottom: 18px;
+			}
+		    padding-bottom: 8px;
+		    border-bottom: 1px solid #ddd;
+		}
+
+		&.branches {
+			.branch {
+				h4 {
+					margin: {
+						top: 0;
+						bottom: 15px;
+					}
+					padding-bottom: 5px;
+					border-bottom: 1px solid #ddd;
+				}
+
+				.branch-content {
+					.col-md-4 {
+						div {
+							margin-bottom: 5px;
+						}
+					}
+				}
+			}
+		}
+
+		&.promotions {
+			.promotion {
+				.promotion-thumbnail {
+					float: left;
+					margin: 0 30px 30px 0;
+				}
+
+				.promotion-content {
+					h4 {
+						margin: 0;
+					}
+
+					.promotion-price {
+						margin: 10px 0;
+						font-size: 18px;
+					}
+				}
+			}
+		}
+
+		&.contact-form {
+			padding: 20px 30px;
+		    border: 1px solid #ccc;
+		    text-align: center;
+		    -webkit-border-radius: 3px;
+		    -moz-border-radius: 3px;
+		    border-radius: 3px;
+		    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
+		    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
+		    box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
+
+		    h4 {
+		    	padding: 0;
+		    	border: none;
+		    }
+
+		    form {
+		    	input,
+		    	textarea {
+		    		margin-bottom: 10px;
+		    	}
+
+		    	.btn {
+		    		width: 100%;
+		    	}
+		    }
+		}
+
+		&.contact-info {
+			.telephone,
+			.email,
+			.website,
+			.address {
+				margin-bottom: 10px;
+
+				strong {
+					display: block;
+				}
+			}
+		}
+	}
+
+	.related-businesses {
+		h2 {
+			text-align: center;
+		}
+
+		.related-business {
+			@media only screen and (max-width: 991px) {
+				margin-bottom: 30px;
+			}
+
+			h3 {
+				margin: 20px 0 0px;
+			}
+		}
+	}
+}
+
+#gmap {
+	height: 500px;
+}
+
+body { /* For specificity */
+	&.single-business-directory {
+		article {
+			h1.entry-title {
+				border-bottom: 0 !important;
+			}
+			.entry-meta {
+				border-top: 0;
+				border-bottom: 0;
+				> * {
+					display: block;
+				}
+			}
+		}
+	}
+}

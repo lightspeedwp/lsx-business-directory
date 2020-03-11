@@ -1,6 +1,6 @@
 <?php
 /**
- * LSX Starter Plugin functions.
+ * LSX Business Directory functions.
  *
  * @package lsx-business-directory
  */
@@ -14,7 +14,7 @@ function lsx_business_directory_load_plugin_textdomain() {
 add_action( 'init', 'lsx_business_directory_load_plugin_textdomain' );
 
 /**
- * Returns an array of countries
+ * Returns an array of countries.
  *
  * @return array()
  * Key          = Country Code
