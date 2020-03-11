@@ -18,12 +18,21 @@ class LSX_Search {
 	protected static $instance = null;
 
 	/**
+	 * This hold the current search prefix.
+	 *
+	 * @var string
+	 */
+	public $prefix = '';
+
+	/**
 	 * Contructor
 	 */
 	public function __construct() {
 		// We do BD Search setting only at 'admin_init', because we need is_plugin_active() function present to check for LSX Search plugin.
 		add_action( 'lsx_bd_settings_page', array( $this, 'configure_settings_search_engine_fields' ), 15, 1 );
 		add_action( 'lsx_bd_settings_section_archive', array( $this, 'configure_settings_search_archive_fields' ), 15, 1 );
+
+		add_action( 'wp', array( $this, 'maybe_enqueue_search_filters' ), 5 );
 	}
 
 	/**
@@ -186,5 +195,76 @@ class LSX_Search {
 				$this->facet_data[ $facet['name'] ] = $facet['label'];
 			}
 		}
+	}
+
+	/**
+	 * This function runs on the 'init' action, it checks to see if the search is enabled , and then enqueues the relevant filters.
+	 */
+	public function maybe_enqueue_search_filters() {
+		if ( is_plugin_active( 'lsx-search/lsx-search.php' ) ) {
+			add_filter( 'lsx_search_enabled', array( $this, 'lsx_search_enabled' ), 10, 1 );
+			add_filter( 'lsx_search_prefix', array( $this, 'lsx_search_prefix' ), 10, 1 );
+			add_filter( 'lsx_search_options', array( $this, 'lsx_search_options' ), 10, 1 );
+		}
+	}
+
+	/**
+	 * Enables the search if it is the business directory archive.
+	 *
+	 * @var boolean $enabled
+	 * @return boolean
+	 */
+	public function lsx_search_enabled( $enabled = false ) {
+		if ( is_post_type_archive( 'business-directory' ) ) {
+			$is_enabled = lsx_bd_get_option( 'archive_search_enable', false );
+			if ( 'on' === $is_enabled ) {
+				$enabled = true;
+			}
+		}
+		return $enabled;
+	}
+
+	/**
+	 * Enables the search if it is the business directory archive.
+	 *
+	 * @var string $enabled
+	 * @return string
+	 */
+	public function lsx_search_prefix( $prefix = '' ) {
+		if ( is_post_type_archive( 'business-directory' ) ) {
+			$prefix       = 'archive';
+		}
+		return $prefix;
+	}
+
+	/**
+	 * Adds the recipe options to the lsx search options.
+	 *
+	 * @param array $options
+	 * @return array
+	 */
+	public function lsx_search_options( $options = array() ) {
+		if ( is_post_type_archive( 'business-directory' ) ) {
+			$this->prefix  = 'archive';
+			$active_facets = lsx_bd_get_option( $this->prefix . '_search_facets', array() );
+			$facets        = array();
+			if ( ! empty( $active_facets ) ) {
+				foreach ( $active_facets as $index => $facet_name ) {
+					$facets[ $facet_name ] = 'on';
+				}
+			}
+			$options['display'] = array(
+				'search_enable'                => lsx_bd_get_option( 'archive_search_enable', false ),
+				'archive_disable_all_sorting'  => lsx_bd_get_option( $this->prefix . '_search_disable_sorting', false ),
+				'archive_disable_date_sorting' => lsx_bd_get_option( $this->prefix . '_search_disable_date', false ),
+				'archive_layout'               => lsx_bd_get_option( $this->prefix . '_search_layout', '2cr' ),
+				'archive_layout_map'           => lsx_bd_get_option( $this->prefix . '_grid_list', 'list' ),
+				'archive_display_result_count' => lsx_bd_get_option( $this->prefix . '_search_result_count', 'on' ),
+				'enable_collapse'              => lsx_bd_get_option( $this->prefix . '_search_collapse', false ),
+				'archive_facets'               => $facets,
+				'archive_display_clear_button' => lsx_bd_get_option( $this->prefix . '_search_clear_button', false ),
+			);
+		}
+		return $options;
 	}
 }
