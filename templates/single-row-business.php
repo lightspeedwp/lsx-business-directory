@@ -63,7 +63,7 @@
 
 					<div class="business-excerpt col-md-12 lsx-flex-col">
 						<?php echo esc_attr( get_the_excerpt() ); ?>
-						<span class="read-more-link"><a href="<?php esc_url( the_permalink() ); ?>"><?php esc_html_e( 'Read More', 'lsx-business-directory' ); ?></a></span>
+						<span class="read-more-link"><a href="<?php esc_url( the_permalink() ); ?>"><?php esc_html_e( 'Read More', 'lsx-business-directory' ); ?><i class="fas fa-long-arrow-alt-right"></i></a></span>
 					</div>
 				</div>
 			</div>

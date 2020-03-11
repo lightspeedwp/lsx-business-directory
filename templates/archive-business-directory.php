@@ -19,17 +19,21 @@ get_header(); ?>
 		<?php lsx_content_top(); ?>
 
 		<?php if ( have_posts() ) : ?>
+			<?php
+			$layout     = lsx_bd_get_option( 'archive_grid_list' );
+			$template   = LSX_BD_PATH . '/templates/single-row-business.php';
+			$grid_class = '';
 
-			<div class="post-wrapper">
+			if ( false !== $layout && '' !== $layout && 'grid' === $layout ) {
+				$template   = LSX_BD_PATH . '/templates/single-col-business.php';
+				$grid_class = 'lsx-grid';
+			}
+			?>
+			<div class="post-wrapper <?php echo esc_attr( $grid_class ); ?>">
 				<?php
 				while ( have_posts() ) :
 					the_post();
-					$layout = lsx_bd_get_option( 'archive_grid_list' );
-					if ( false !== $layout && '' !== $layout && 'grid' === $layout ) {
-						include LSX_BD_PATH . '/templates/single-col-business.php';
-					} else {
-						include LSX_BD_PATH . '/templates/single-row-business.php';
-					}
+					include $template;
 				endwhile;
 				?>
 			</div>
