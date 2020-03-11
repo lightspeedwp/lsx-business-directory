@@ -130,7 +130,7 @@ class Admin {
 		$cmb->add_field(
 			array(
 				'name'             => esc_html__( 'Layout option', 'lsx-business-directory' ),
-				'id'               => 'archive_layout',
+				'id'               => 'archive_grid_list',
 				'type'             => 'radio',
 				'show_option_none' => false,
 				'options'          => array(
@@ -139,5 +139,6 @@ class Admin {
 				),
 			)
 		);
+		do_action( 'lsx_bd_settings_section_archive', $this->cmb );
 	}
 }
