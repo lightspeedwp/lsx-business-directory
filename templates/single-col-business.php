@@ -2,7 +2,7 @@
 	$prefix        = 'businessdirectory';
 	$thumbnail     = get_thumbnail_wrapped( get_the_ID(), 265, 150 );
 	$title         = get_the_title();
-	$industry      = get_formatted_taxonomy_str( get_the_ID(), 'lsx-bd-industry', true );
+	$industries    = get_formatted_taxonomy_str( get_the_ID(), 'lsx-bd-industry', true );
 	$region        = get_formatted_taxonomy_str( get_the_ID(), 'lsx-bd-region' );
 	$primary_phone = get_post_meta( get_the_ID(), $prefix . '_business_primary_phone', true );
 	$primary_email = get_post_meta( get_the_ID(), $prefix . '_business_primary_email', true );
@@ -21,7 +21,21 @@
 					</div>
 
 					<div class="category col-md-12">
-						<span><i class="fas fa-th"></i><strong><?php esc_html_e( 'Industry', 'lsx-business-directory' ); ?>: </strong><?php echo $industry; ?></span>
+						<span>
+							<i class="fas fa-th"></i>
+							<strong><?php esc_html_e( 'Industry', 'lsx-business-directory' ); ?>: </strong>
+							<?php
+							$count = 0;
+							foreach ( $industries as $industry ) :
+								if ( $count > 0 ) :
+								?>,<?php
+								endif;
+								?>
+								<a href="/lsx-bd-industry/<?php echo esc_attr( $industry['slug'] ); ?>"><?php echo esc_attr( $industry['name'] ); ?></a><?php
+								$count++;
+							endforeach;
+							?>
+						</span>
 					</div>
 
 					<div class="region col-md-12">

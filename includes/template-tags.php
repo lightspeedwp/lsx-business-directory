@@ -40,18 +40,23 @@ function get_thumbnail_wrapped( $id, $width, $height ) {
  */
 function get_formatted_taxonomy_str( $id, $tax, $link = false ) {
 	$terms     = wp_get_post_terms( $id, $tax );
-	$terms_str = '';
+	$terms_str = $link ? array() : '';
 
 	if ( ! empty( $terms ) ) {
 		foreach ( $terms as $term ) {
 			if ( $link ) {
-				$terms_str .= '<a href="/' . $tax . '/' . $term->slug . '">' . $term->name . '</a>, ';
+				$terms_str[] = array(
+					'slug' => trim( $term->slug ),
+					'name' => trim( $term->name ),
+				);
 			} else {
 				$terms_str .= $term->name . ', ';
 			}
 		}
 
-		$terms_str = substr( $terms_str, 0, strlen( $terms_str ) - 2 );
+		if ( ! $link ) {
+			$terms_str = substr( $terms_str, 0, strlen( $terms_str ) - 2 );
+		}
 	}
 
 	if ( 'post_format' == $tax && '' == $terms_str ) {
