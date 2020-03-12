@@ -216,7 +216,7 @@ class Business_Directory {
 				'desc'    => esc_html__( 'Choose a background colour to display in case you don\'t have a banner image.', 'lsx-business-directory' ),
 				'id'      => $this->prefix . '_banner_colour',
 				'type'    => 'colorpicker',
-				'default' => '#ffffff',
+				'default' => '#333333',
 			)
 		);
 		$cmb_images->add_field(
