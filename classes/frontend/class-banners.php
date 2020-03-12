@@ -21,6 +21,7 @@ class Banners {
 	 * Contructor
 	 */
 	public function __construct() {
+		add_action( 'lsx_entry_top', array( $this, 'single_listing_banner' ) );
 	}
 
 	/**
@@ -44,13 +45,36 @@ class Banners {
 	 * @return void
 	 */
 	public function single_listing_banner() {
-		?>
-		<div class="wp-block-cover alignfull has-background-dim" style="background-image:url(https://lsx-business-directory.lsdev.biz/wp-content/uploads/2020/03/taranaki-mountain-scaled.jpg)">
-			<div class="wp-block-cover__inner-container">
-				<h2 class="has-text-align-center">LightSpeed Apex</h2>
-				<p class="has-text-align-center">Designs at its peak</p>
+		$disable = get_post_meta( get_the_ID(), 'lsx_bd_banner_disable', true );
+		if ( true !== $disable && 'on' !== $disable ) {
+			$image  = get_post_meta( get_the_ID(), 'lsx_bd_banner', true );
+			$colour = get_post_meta( get_the_ID(), 'lsx_bd_banner_colour', true );
+			if ( false === $colour || '' === $colour ) {
+				$colour = '#333';
+			}
+			$title    = get_post_meta( get_the_ID(), 'lsx_bd_banner_title', true );
+			$subtitle = get_post_meta( get_the_ID(), 'lsx_bd_banner_subtitle', true );
+
+			$background_image_attr = '';
+			if ( '' === $image || false === $image ) {
+				$background_image_attr = 'background-color:' . $colour;
+			} else {
+				$background_image_attr = 'background-image:url(' . $image . ')';
+			}
+			?>
+			<div class="wp-block-cover alignfull has-background-dim" style="<?php echo esc_html( $background_image_attr ); ?>">
+				<div class="wp-block-cover__inner-container">
+					<?php if ( '' !== $title && false !== $title ) { ?>
+						<h2 class="has-text-align-center"><?php echo esc_html( $title ); ?></h2>
+					<?php } ?>
+
+					<?php if ( '' !== $subtitle && false !== $subtitle ) { ?>
+						<p class="has-text-align-center"><?php echo esc_html( $subtitle ); ?></p>
+					<?php } ?>
+				</div>
 			</div>
-		</div>
-		<?php
+			<div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
+			<?php
+		}
 	}
 }

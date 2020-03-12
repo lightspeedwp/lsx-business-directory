@@ -232,7 +232,7 @@ class LSX_Search {
 	 */
 	public function lsx_search_prefix( $prefix = '' ) {
 		if ( is_post_type_archive( 'business-directory' ) ) {
-			$prefix       = 'archive';
+			$prefix = 'archive';
 		}
 		return $prefix;
 	}
