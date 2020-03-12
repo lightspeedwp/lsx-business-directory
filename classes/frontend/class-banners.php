@@ -18,12 +18,17 @@ class Banners {
 	protected static $instance = null;
 
 	/**
+	 * This holds the current screen being displayed (single, archive or taxonomy ).
+	 *
+	 * @var string
+	 */
+	public $screen = '';
+
+	/**
 	 * Contructor
 	 */
 	public function __construct() {
 		add_action( 'wp_head', array( $this, 'wp_head' ) );
-		add_filter( 'body_class', array( $this, 'banner_class' ), 10, 1 );
-		add_action( 'lsx_header_wrap_after', array( $this, 'maybe_display_banner' ) );
 	}
 
 	/**
@@ -47,9 +52,30 @@ class Banners {
 	 * @return void
 	 */
 	public function wp_head() {
-		// These can be removed if an action is run later in the `wp_head`.
-		add_filter( 'lsx_bd_banner_title', array( $this, 'default_banner_title' ), 10, 1 );
-		add_filter( 'lsx_bd_banner_colour', array( $this, 'default_banner_colour' ), 10, 1 );
+		$this->set_screen();
+		if ( '' !== $this->screen ) {
+			add_filter( 'body_class', array( $this, 'banner_class' ), 10, 1 );
+			add_action( 'lsx_header_wrap_after', array( $this, 'maybe_display_banner' ) );
+
+			// These can be removed if an action is run later in the `wp_head`.
+			add_filter( 'lsx_bd_banner_title', array( $this, 'default_banner_title' ), 10, 1 );
+			add_filter( 'lsx_bd_banner_colour', array( $this, 'default_banner_colour' ), 10, 1 );
+		}
+	}
+
+	/**
+	 * Detects what screen it is and saves it.
+	 *
+	 * @return void
+	 */
+	public function set_screen() {
+		if ( is_singular( 'business-directory' ) ) {
+			$this->screen = 'single';
+		} elseif ( is_post_type_archive( 'business-directory' ) ) {
+			$this->screen = 'archive';
+		} else {
+			$this->screen = '';
+		}
 	}
 
 	/**
@@ -58,10 +84,15 @@ class Banners {
 	 * @return void
 	 */
 	public function maybe_display_banner() {
-		if ( is_singular( 'business-directory' ) ) {
-			$this->single_banner();
-		} elseif ( is_post_type_archive( 'business-directory' ) ) {
-			$this->archive_banner();
+		switch ( $this->screen ) {
+			case 'single':
+				$this->single_banner();
+				break;
+			case 'archive':
+				$this->archive_banner();
+				break;
+			default:
+				break;
 		}
 	}
 
@@ -151,10 +182,15 @@ class Banners {
 	 */
 	public function default_banner_title( $title ) {
 		if ( '' === $title || false === $title ) {
-			if ( is_singular( 'business-directory' ) ) {
-				$title = get_the_title();
-			} elseif ( is_post_type_archive( 'business-directory' ) ) {
-				$title = get_the_archive_title();
+			switch ( $this->screen ) {
+				case 'single':
+					$title = get_the_title();
+					break;
+				case 'archive':
+					$title = get_the_archive_title();
+					break;
+				default:
+					break;
 			}
 		}
 		return $title;
@@ -190,7 +226,17 @@ class Banners {
 	 * @return array
 	 */
 	public function banner_class( $classes = array() ) {
-		$disable = get_post_meta( get_the_ID(), 'lsx_bd_banner_disable', true );
+		switch ( $this->screen ) {
+			case 'single':
+				$disable = get_post_meta( get_the_ID(), 'lsx_bd_banner_disable', true );
+				break;
+			case 'archive':
+				$disable = lsx_bd_get_option( 'archive_banner_disable' );
+				break;
+			default:
+				$disable = '';
+				break;
+		}
 		if ( 'on' === $disable ) {
 			$classes[] = 'banner-disabled';
 		}
