@@ -17,31 +17,33 @@ body {
 	}
 
 	// Single Business Directory
-	&.single-business-directory:not(.using-gutenberg):not(.banner-disabled) {
-		.business-banner {
-			//padding: 0rem 9999rem;
-
-			.wp-block-cover {
-				padding-top: 36px;
-				min-height: 214px;
-				
-				.archive-title {
-					margin-top: 0;
-					margin-bottom: 0;
-				}
-
-				&.has-background-img {
-					min-height: 430px;
-				}
-
-				&.alignfull {
-					width: 100%;
-					max-width: 100%;
+	&.single-business-directory,
+	&.post-type-archive-business-directory {
+		&:not(.using-gutenberg):not(.banner-disabled) {
+			.business-banner {
+	
+				.wp-block-cover {
+					padding-top: 36px;
+					min-height: 214px;
+					
+					.archive-title {
+						margin-top: 0;
+						margin-bottom: 0;
+					}
+	
+					&.has-background-img {
+						min-height: 430px;
+					}
+	
+					&.alignfull {
+						width: 100%;
+						max-width: 100%;
+					}
 				}
 			}
-		}
-		#primary {
-			margin-top:0px;
+			#primary {
+				margin-top:0px;
+			}
 		}
 	}
 }
