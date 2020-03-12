@@ -58,8 +58,8 @@ class Admin {
 	 */
 	private function load_classes() {
 		// Load plugin admin related functionality.
-		require_once LSX_BD_PATH . 'classes/frontend/class-banners.php';
-		$this->banners = frontend\Banners::get_instance();
+		require_once LSX_BD_PATH . 'classes/admin/class-banners.php';
+		$this->banners = admin\Banners::get_instance();
 	}
 
 	/**
