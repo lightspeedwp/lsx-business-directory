@@ -11,7 +11,15 @@ body {
 
 			.wp-block-cover {
 				padding-top: 50px;
-				min-height: 200px;
+				min-height: 214px;
+				
+				.archive-title {
+					margin-top: 0;
+				}
+
+				&.has-background-img {
+					min-height: 414px;
+				}
 
 				&.alignfull {
 					width: 100%;
@@ -19,7 +27,6 @@ body {
 				}
 			}
 		}
-
 		#primary {
 			margin-top:0px;
 		}

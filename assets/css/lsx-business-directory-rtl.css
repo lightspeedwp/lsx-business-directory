@@ -1,6 +1,8 @@
 /** LSX Starter Plugin styles. @package lsx-business-directory */
 /** Business Directory Banner Styles. @package lsx-business-directory */
-body.single-business-directory:not(.using-gutenberg) .business-banner .wp-block-cover { padding-top: 50px; min-height: 200px; }
+body.single-business-directory:not(.using-gutenberg) .business-banner .wp-block-cover { padding-top: 50px; min-height: 214px; }
+
+body.single-business-directory:not(.using-gutenberg) .business-banner .wp-block-cover.has-background-img { min-height: 414px; }
 
 body.single-business-directory:not(.using-gutenberg) .business-banner .wp-block-cover.alignfull { width: 100%; max-width: 100%; }
 
