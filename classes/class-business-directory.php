@@ -235,6 +235,13 @@ class Business_Directory {
 				'type' => 'text',
 			)
 		);
+		$cmb_images->add_field(
+			array(
+				'name' => esc_html__( 'Disable Banner', 'lsx-business-directory' ),
+				'id'   => $this->prefix . '_banner_disable',
+				'type' => 'checkbox',
+			)
+		);
 	}
 
 	/**
