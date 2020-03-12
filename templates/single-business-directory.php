@@ -19,7 +19,6 @@ get_header(); ?>
 		while ( have_posts() ) :
 			the_post();
 			$prefix                      = 'lsx_bd';
-			$business_logo               = get_post_meta( get_the_ID(), $prefix . '_logo', true );
 			$business_banner             = get_post_meta( get_the_ID(), $prefix . '_banner', true );
 			$business_google_maps_search = get_post_meta( get_the_ID(), $prefix . '_address_google_maps_search', true );
 			$business_address_1          = get_post_meta( get_the_ID(), $prefix . '_address_street_number', true );

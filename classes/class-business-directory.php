@@ -40,8 +40,14 @@ class Business_Directory {
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'register_post_type' ) );
-		add_action( 'init', array( $this, 'taxonomy_setup' ) );
-		add_action( 'cmb2_init', array( $this, 'configure_business_directory_custom_fields' ) );
+		add_action( 'init', array( $this, 'register_industry_taxonomy' ) );
+		add_action( 'init', array( $this, 'register_region_taxonomy' ) );
+
+		// Register the custom fields.
+		add_action( 'cmb2_init', array( $this, 'register_banner_custom_fields' ) );
+		add_action( 'cmb2_init', array( $this, 'register_address_custom_fields' ) );
+		add_action( 'cmb2_init', array( $this, 'register_branches_custom_fields' ) );
+		add_action( 'cmb2_init', array( $this, 'register_contact_custom_fields' ) );
 	}
 
 	/**
@@ -113,9 +119,9 @@ class Business_Directory {
 	}
 
 	/**
-	 * Register the Week taxonomy.
+	 * Registers the Industry taxonomy for the Business Directory.
 	 */
-	public function taxonomy_setup() {
+	public function register_industry_taxonomy() {
 		$labels = array(
 			'name'              => esc_html__( 'Industry', 'lsx-business-directory' ),
 			'singular_name'     => esc_html__( 'Industry', 'lsx-business-directory' ),
@@ -129,7 +135,6 @@ class Business_Directory {
 			'new_item_name'     => esc_html__( 'New Industry', 'lsx-business-directory' ),
 			'menu_name'         => esc_html__( 'Industries', 'lsx-business-directory' ),
 		);
-
 		$details = array(
 			'labels'              => $labels,
 			'hierarchical'        => true,
@@ -140,9 +145,13 @@ class Business_Directory {
 			'query_var'           => true,
 			'rewrite'             => array( 'industry' ),
 		);
-
 		register_taxonomy( 'lsx-bd-industry', array( $this->slug ), $details );
+	}
 
+	/**
+	 * Registers the Industry region for the Business Directory.
+	 */
+	public function register_region_taxonomy() {
 		$labels = array(
 			'name'              => esc_html__( 'Region', 'lsx-business-directory' ),
 			'singular_name'     => esc_html__( 'Region', 'lsx-business-directory' ),
@@ -156,7 +165,6 @@ class Business_Directory {
 			'new_item_name'     => esc_html__( 'New Region', 'lsx-business-directory' ),
 			'menu_name'         => esc_html__( 'Regions', 'lsx-business-directory' ),
 		);
-
 		$details = array(
 			'labels'              => $labels,
 			'hierarchical'        => true,
@@ -167,9 +175,9 @@ class Business_Directory {
 			'query_var'           => true,
 			'rewrite'             => array( 'region' ),
 		);
-
 		register_taxonomy( 'lsx-bd-region', array( $this->slug ), $details );
 	}
+
 	/**
 	 * Adds the post type to the different arrays.
 	 *
@@ -180,48 +188,68 @@ class Business_Directory {
 		$post_types[] = $this->slug;
 		return $post_types;
 	}
+
 	/**
 	 * Configure Business Directory custom fields.
 	 *
 	 * @return void
 	 */
-	public function configure_business_directory_custom_fields() {
+	public function register_banner_custom_fields() {
 		$cmb_images = new_cmb2_box(
 			array(
-				'id'           => $this->prefix . '_images_metabox',
-				'title'        => esc_html__( 'Business Images', 'lsx-business-directory' ),
+				'id'           => $this->prefix . '_banner_images_metabox',
+				'title'        => esc_html__( 'Business Banner', 'lsx-business-directory' ),
 				'object_types' => array( 'business-directory' ),
 			)
 		);
-
 		$cmb_images->add_field(
 			array(
-				'name' => esc_html__( 'Featured Image', 'lsx-business-directory' ),
-				'desc' => esc_html__( 'Featured image for a Business', 'lsx-business-directory' ),
-				'id'   => $this->prefix . '_logo',
-				'type' => 'file',
-			)
-		);
-
-		$cmb_images->add_field(
-			array(
-				'name' => esc_html__( 'Banner Image', 'lsx-business-directory' ),
-				'desc' => esc_html__( 'Banner image for a Business', 'lsx-business-directory' ),
+				'name' => esc_html__( 'Image', 'lsx-business-directory' ),
+				'desc' => esc_html__( 'Upload a banner image for to display above your business listing.', 'lsx-business-directory' ),
 				'id'   => $this->prefix . '_banner',
 				'type' => 'file',
 			)
 		);
-
 		$cmb_images->add_field(
 			array(
-				'name'    => esc_html__( 'Banner Colour', 'lsx-business-directory' ),
-				'desc'    => esc_html__( 'Banner colour if Banner image is missing.', 'lsx-business-directory' ),
+				'name'    => esc_html__( 'Colour', 'lsx-business-directory' ),
+				'desc'    => esc_html__( 'Choose a background colour to display in case you don\'t have a banner image.', 'lsx-business-directory' ),
 				'id'      => $this->prefix . '_banner_colour',
 				'type'    => 'colorpicker',
 				'default' => '#ffffff',
 			)
 		);
+		$cmb_images->add_field(
+			array(
+				'name' => esc_html__( 'Title', 'lsx-business-directory' ),
+				'desc' => esc_html__( 'Customize the title for your banner.', 'lsx-business-directory' ),
+				'id'   => $this->prefix . '_banner_title',
+				'type' => 'text',
+			)
+		);
+		$cmb_images->add_field(
+			array(
+				'name' => esc_html__( 'Subtitle', 'lsx-business-directory' ),
+				'desc' => esc_html__( 'Customize the subtitle for your banner, this will display just below your title.', 'lsx-business-directory' ),
+				'id'   => $this->prefix . '_banner_subtitle',
+				'type' => 'text',
+			)
+		);
+		$cmb_images->add_field(
+			array(
+				'name' => esc_html__( 'Disable Banner', 'lsx-business-directory' ),
+				'id'   => $this->prefix . '_banner_disable',
+				'type' => 'checkbox',
+			)
+		);
+	}
 
+	/**
+	 * Registers the Business Directory address custom fields.
+	 *
+	 * @return void
+	 */
+	public function register_address_custom_fields() {
 		$cmb_address = new_cmb2_box(
 			array(
 				'id'           => $this->prefix . '_address_metabox',
@@ -296,14 +324,28 @@ class Business_Directory {
 				'type' => 'text',
 			)
 		);
+	}
+
+	/**
+	 * Registers the Business Directory branches custom fields.
+	 *
+	 * @return void
+	 */
+	public function register_branches_custom_fields() {
+		$cmb_address = new_cmb2_box(
+			array(
+				'id'           => $this->prefix . '_branches_metabox',
+				'title'        => esc_html__( 'Business Branches', 'lsx-business-directory' ),
+				'object_types' => array( 'business-directory' ),
+			)
+		);
 
 		$branches_group_field_id = $cmb_address->add_field(
 			array(
-				'id'          => $this->prefix . '_business_branches',
-				'type'        => 'group',
-				'description' => esc_html__( 'Business Branches', 'lsx-business-directory' ),
-				'repeatable'  => true,
-				'options'     => array(
+				'id'         => $this->prefix . '_business_branches',
+				'type'       => 'group',
+				'repeatable' => true,
+				'options'    => array(
 					'group_title'    => esc_html__( 'Branch {#}', 'lsx-business-directory' ), // since version 1.1.4, {#} gets replaced by row number
 					'add_button'     => esc_html__( 'Add Another Branch', 'lsx-business-directory' ),
 					'remove_button'  => esc_html__( 'Remove Branch', 'lsx-business-directory' ),
@@ -360,11 +402,18 @@ class Business_Directory {
 				'type' => 'text',
 			)
 		);
+	}
 
+	/**
+	 * Registers the Business Directory contact custom fields.
+	 *
+	 * @return void
+	 */
+	public function register_contact_custom_fields() {
 		$cmb_contact = new_cmb2_box(
 			array(
 				'id'           => $this->prefix . '_contact_metabox',
-				'title'        => esc_html__( 'Contact Details.', 'lsx-business-directory' ),
+				'title'        => esc_html__( 'Business Contact Details', 'lsx-business-directory' ),
 				'object_types' => array( 'business-directory' ),
 			)
 		);

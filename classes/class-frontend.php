@@ -18,15 +18,25 @@ class Frontend {
 	protected static $instance = null;
 
 	/**
+	 * Holds the frontend banner actions and filters.
+	 *
+	 * @var object \lsx\business_directory\classes\frontend\Banners();
+	 */
+	public $banners;
+
+	/**
 	 * Contructor
 	 */
 	public function __construct() {
+		$this->load_classes();
 		add_action( 'wp_enqueue_scripts', array( $this, 'assets' ), 5 );
 
 		// Handle the template redirects.
 		add_filter( 'template_include', array( $this, 'archive_template_include' ), 99 );
 		add_filter( 'template_include', array( $this, 'single_template_include' ), 99 );
 		add_filter( 'template_include', array( $this, 'taxonomy_template_include' ), 99 );
+
+		add_filter( 'get_the_archive_title', array( $this, 'get_the_archive_title' ), 100 );
 	}
 
 	/**
@@ -42,6 +52,15 @@ class Frontend {
 			self::$instance = new self();
 		}
 		return self::$instance;
+	}
+
+	/**
+	 * Loads the variable classes and the static classes.
+	 */
+	private function load_classes() {
+		// Load plugin admin related functionality.
+		require_once LSX_BD_PATH . 'classes/frontend/class-banners.php';
+		$this->banners = frontend\Banners::get_instance();
 	}
 
 	/**
@@ -122,5 +141,25 @@ class Frontend {
 			}
 		}
 		return $template;
+	}
+
+	/**
+	 * Remove the "Archives:" from the post type recipes.
+	 *
+	 * @param string $title the term title.
+	 * @return string
+	 */
+	public function get_the_archive_title( $title ) {
+		if ( is_post_type_archive( 'business-directory' ) ) {
+			$title = __( 'Business Directory', 'lsx-health-plan' );
+		}
+		if ( is_tax( array( 'lsx-bd-industry', 'lsx-bd-region' ) ) ) {
+			$queried_object = get_queried_object();
+			if ( isset( $queried_object->name ) ) {
+				$title = $queried_object->name;
+			}
+		}
+		$title = apply_filters( 'lsx_bd_archive_banner_title', $title );
+		return $title;
 	}
 }
