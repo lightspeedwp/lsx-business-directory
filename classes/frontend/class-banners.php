@@ -54,6 +54,7 @@ class Banners {
 	public function wp_head() {
 		$this->set_screen();
 		if ( '' !== $this->screen ) {
+			remove_action( 'lsx_content_wrap_before', 'lsx_global_header' );
 			add_filter( 'body_class', array( $this, 'banner_class' ), 10, 1 );
 			add_action( 'lsx_header_wrap_after', array( $this, 'maybe_display_banner' ) );
 
@@ -76,6 +77,30 @@ class Banners {
 		} else {
 			$this->screen = '';
 		}
+	}
+
+	/**
+	 * Adds a body class if the banner is disabled.
+	 *
+	 * @param array $classes The current <body> tag classes.
+	 * @return array
+	 */
+	public function banner_class( $classes = array() ) {
+		switch ( $this->screen ) {
+			case 'single':
+				$disable = get_post_meta( get_the_ID(), 'lsx_bd_banner_disable', true );
+				break;
+			case 'archive':
+				$disable = lsx_bd_get_option( 'archive_banner_disable' );
+				break;
+			default:
+				$disable = '';
+				break;
+		}
+		if ( 'on' === $disable ) {
+			$classes[] = 'banner-disabled';
+		}
+		return $classes;
 	}
 
 	/**
@@ -120,7 +145,7 @@ class Banners {
 	 * @return void
 	 */
 	public function archive_banner() {
-		$disable = get_post_meta( get_the_ID(), 'lsx_bd_banner_disable', true );
+		$disable = lsx_bd_get_option( 'archive_banner_disable' );
 		if ( true !== $disable && 'on' !== $disable ) {
 			$args = array(
 				'image'    => apply_filters( 'lsx_bd_banner_image', lsx_bd_get_option( 'archive_banner' ) ),
@@ -217,29 +242,5 @@ class Banners {
 	public function change_single_business_listing_tag( $title ) {
 		$title = '<h2 class="entry-title">' . get_the_title() . '</h2>';
 		return $title;
-	}
-
-	/**
-	 * Adds a body class if the banner is disabled.
-	 *
-	 * @param array $classes The current <body> tag classes.
-	 * @return array
-	 */
-	public function banner_class( $classes = array() ) {
-		switch ( $this->screen ) {
-			case 'single':
-				$disable = get_post_meta( get_the_ID(), 'lsx_bd_banner_disable', true );
-				break;
-			case 'archive':
-				$disable = lsx_bd_get_option( 'archive_banner_disable' );
-				break;
-			default:
-				$disable = '';
-				break;
-		}
-		if ( 'on' === $disable ) {
-			$classes[] = 'banner-disabled';
-		}
-		return $classes;
 	}
 }

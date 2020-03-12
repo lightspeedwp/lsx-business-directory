@@ -12,6 +12,9 @@ body.single-business-directory:not(.using-gutenberg):not(.banner-disabled) .busi
 
 body.single-business-directory:not(.using-gutenberg):not(.banner-disabled) #primary, body.post-type-archive-business-directory:not(.using-gutenberg):not(.banner-disabled) #primary { margin-top: 0px; }
 
+@media (min-width: 992px) { body.post-type-archive-business-directory .facetwp-sidebar.widget-area { margin-top: 8.4rem; }
+  body.post-type-archive-business-directory .facetwp-sidebar.widget-area + .content-area { margin-top: 8.4rem; } }
+
 @CHARSET "UTF-8";
 /* General */
 .lsx-hide { display: none !important; }

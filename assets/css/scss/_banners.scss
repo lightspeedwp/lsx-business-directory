@@ -5,17 +5,6 @@
  */
 
 body {
-	// Post Type Archive
-	@media (min-width: 320px) {
-		&.lsx:not(.single-post):not(.page-has-banner){
-			.archive-header-wrapper {
-				.archive-header {
-					padding-bottom: 64px;
-				}
-			}
-		}
-	}
-
 	// Single Business Directory
 	&.single-business-directory,
 	&.post-type-archive-business-directory {
@@ -43,6 +32,28 @@ body {
 			}
 			#primary {
 				margin-top:0px;
+			}
+		}
+	}
+
+	// Post Type Archive
+	@media (min-width: 320px) {
+		&.lsx:not(.single-post):not(.page-has-banner){
+			.archive-header-wrapper {
+				.archive-header {
+					padding-bottom: 64px;
+				}
+			}
+		}
+	}
+	@include media('>=tablet') {
+		&.post-type-archive-business-directory {
+			.facetwp-sidebar.widget-area {
+				margin-top: 8.4rem;
+
+				+ .content-area {
+					margin-top: 8.4rem;
+				}
 			}
 		}
 	}
