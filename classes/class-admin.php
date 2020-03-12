@@ -18,9 +18,17 @@ class Admin {
 	protected static $instance = null;
 
 	/**
+	 * Holds the admin banner actions and filters.
+	 *
+	 * @var object \lsx\business_directory\classes\admin\Banners();
+	 */
+	public $banners;
+
+	/**
 	 * Contructor
 	 */
 	public function __construct() {
+		$this->load_classes();
 		// Enqueue scripts for all admin pages.
 		add_action( 'admin_enqueue_scripts', array( $this, 'assets' ) );
 
@@ -38,14 +46,20 @@ class Admin {
 	 * @return    object \lsx\member_directory\classes\Admin()    A single instance of this class.
 	 */
 	public static function get_instance() {
-
 		// If the single instance hasn't been set, set it now.
 		if ( null == self::$instance ) {
 			self::$instance = new self();
 		}
-
 		return self::$instance;
+	}
 
+	/**
+	 * Loads the variable classes and the static classes.
+	 */
+	private function load_classes() {
+		// Load plugin admin related functionality.
+		require_once LSX_BD_PATH . 'classes/frontend/class-banners.php';
+		$this->banners = frontend\Banners::get_instance();
 	}
 
 	/**

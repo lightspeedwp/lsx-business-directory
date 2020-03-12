@@ -18,9 +18,17 @@ class Frontend {
 	protected static $instance = null;
 
 	/**
+	 * Holds the frontend banner actions and filters.
+	 *
+	 * @var object \lsx\business_directory\classes\frontend\Banners();
+	 */
+	public $banners;
+
+	/**
 	 * Contructor
 	 */
 	public function __construct() {
+		$this->load_classes();
 		add_action( 'wp_enqueue_scripts', array( $this, 'assets' ), 5 );
 
 		// Handle the template redirects.
@@ -44,6 +52,15 @@ class Frontend {
 			self::$instance = new self();
 		}
 		return self::$instance;
+	}
+
+	/**
+	 * Loads the variable classes and the static classes.
+	 */
+	private function load_classes() {
+		// Load plugin admin related functionality.
+		require_once LSX_BD_PATH . 'classes/frontend/class-banners.php';
+		$this->banners = frontend\Banners::get_instance();
 	}
 
 	/**
