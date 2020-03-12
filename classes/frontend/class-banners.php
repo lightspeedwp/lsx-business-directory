@@ -62,18 +62,20 @@ class Banners {
 				$background_image_attr = 'background-image:url(' . $image . ')';
 			}
 			?>
-			<div class="wp-block-cover alignfull has-background-dim" style="<?php echo esc_html( $background_image_attr ); ?>">
-				<div class="wp-block-cover__inner-container">
-					<?php if ( '' !== $title && false !== $title ) { ?>
-						<h2 class="has-text-align-center"><?php echo esc_html( $title ); ?></h2>
-					<?php } ?>
+			<div class="business-banner lsx-full-width">
+				<div class="wp-block-cover alignfull has-background-dim" style="<?php echo esc_html( $background_image_attr ); ?>">
+					<div class="wp-block-cover__inner-container">
+						<?php if ( '' !== $title && false !== $title ) { ?>
+							<h2 class="has-text-align-center"><?php echo esc_html( $title ); ?></h2>
+						<?php } ?>
 
-					<?php if ( '' !== $subtitle && false !== $subtitle ) { ?>
-						<p class="has-text-align-center"><?php echo esc_html( $subtitle ); ?></p>
-					<?php } ?>
+						<?php if ( '' !== $subtitle && false !== $subtitle ) { ?>
+							<p class="has-text-align-center"><?php echo esc_html( $subtitle ); ?></p>
+						<?php } ?>
+					</div>
 				</div>
+				<div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
 			</div>
-			<div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
 			<?php
 		}
 	}

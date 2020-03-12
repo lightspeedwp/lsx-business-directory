@@ -1,0 +1,25 @@
+/**
+ * Business Directory Banner Styles.
+ *
+ * @package lsx-business-directory
+ */
+
+body {
+	&.single-business-directory:not(.using-gutenberg) {
+		#primary {
+			margin-top:0px;
+
+			article {
+				.business-banner {
+					padding: 0rem 9999rem;
+				}
+				.wp-block-cover {
+					&.alignfull {
+						width: 100%;
+						max-width: 100%;
+					}
+				}
+			}
+		}
+	}
+}
