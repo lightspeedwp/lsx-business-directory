@@ -107,3 +107,18 @@ function lsx_business_row() {
 function lsx_business_col() {
 	lsx_business_template( 'single-col-business' );
 }
+
+/**
+ * This function outputs the single business listing title wrapped in <h1>.
+ *
+ * @param boolean $echo Output or return the title.
+ * @return string
+ */
+function lsx_business_listing_title( $echo = true ) {
+	$title = apply_filters( 'lsx_bd_single_business_title', '<h1 class="entry-title">' . get_the_title() . '</h1>' );
+	if ( true === $echo ) {
+		echo wp_kses_post( $title );
+	} else {
+		return $title;
+	}
+}

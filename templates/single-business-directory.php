@@ -82,7 +82,7 @@ get_header(); ?>
 
 						<div class="col-md-8">
 							<div class="entry-header-content">
-								<h1 class="entry-title"><?php the_title(); ?></h1>
+								<?php lsx_business_listing_title(); ?>
 
 								<div class="entry-meta">
 									<div class="category">
