@@ -6,20 +6,22 @@
 
 body {
 	&.single-business-directory:not(.using-gutenberg) {
-		#primary {
-			margin-top:0px;
+		.business-banner {
+			//padding: 0rem 9999rem;
 
-			article {
-				.business-banner {
-					padding: 0rem 9999rem;
-				}
-				.wp-block-cover {
-					&.alignfull {
-						width: 100%;
-						max-width: 100%;
-					}
+			.wp-block-cover {
+				padding-top: 50px;
+				min-height: 200px;
+
+				&.alignfull {
+					width: 100%;
+					max-width: 100%;
 				}
 			}
+		}
+
+		#primary {
+			margin-top:0px;
 		}
 	}
 }
