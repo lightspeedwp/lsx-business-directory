@@ -58,36 +58,52 @@ class Banners {
 	public function single_listing_banner() {
 		$disable = get_post_meta( get_the_ID(), 'lsx_bd_banner_disable', true );
 		if ( true !== $disable && 'on' !== $disable ) {
-			$image  = get_post_meta( get_the_ID(), 'lsx_bd_banner', true );
-			$colour = get_post_meta( get_the_ID(), 'lsx_bd_banner_colour', true );
-			if ( false === $colour || '' === $colour ) {
-				$colour = '#333';
-			}
-			$title    = get_post_meta( get_the_ID(), 'lsx_bd_banner_title', true );
-			$subtitle = get_post_meta( get_the_ID(), 'lsx_bd_banner_subtitle', true );
-
-			$background_image_attr = '';
-			if ( '' === $image || false === $image ) {
-				$background_image_attr = 'background-color:' . $colour;
-			} else {
-				$background_image_attr = 'background-image:url(' . $image . ')';
-			}
-			?>
-			<div class="business-banner lsx-full-width">
-				<div class="wp-block-cover alignfull has-background-dim" style="<?php echo esc_html( $background_image_attr ); ?>">
-					<div class="wp-block-cover__inner-container">
-						<?php if ( '' !== $title && false !== $title ) { ?>
-							<h1 class="has-text-align-center archive-title"><?php echo esc_html( $title ); ?></h1>
-						<?php } ?>
-
-						<?php if ( '' !== $subtitle && false !== $subtitle ) { ?>
-							<p class="has-text-align-center"><?php echo esc_html( $subtitle ); ?></p>
-						<?php } ?>
-					</div>
-				</div>
-				<div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
-			</div>
-			<?php
+			$args = array(
+				'image'    => get_post_meta( get_the_ID(), 'lsx_bd_banner', true ),
+				'colour'   => get_post_meta( get_the_ID(), 'lsx_bd_banner_colour', true ),
+				'title'    => get_post_meta( get_the_ID(), 'lsx_bd_banner_title', true ),
+				'subtitle' => get_post_meta( get_the_ID(), 'lsx_bd_banner_subtitle', true ),
+			);
+			$this->do_banner( $args );
 		}
+	}
+
+	/**
+	 * Outputs the banners based on the arguments.
+	 *
+	 * @param array $args The parameters for the banner
+	 * @return void
+	 */
+	public function do_banner( $args = array() ) {
+		$defaults = array(
+			'image'    => false,
+			'colour'   => '#333',
+			'title'    => '',
+			'subtitle' => '',
+		);
+		$args     = wp_parse_args( $args, $defaults );
+		// Generate the banner style attributes.
+		$background_image_attr = '';
+		if ( '' === $args['image'] || false === $args['image'] ) {
+			$background_image_attr = 'background-color:' . $args['colour'];
+		} else {
+			$background_image_attr = 'background-image:url(' . $args['image'] . ')';
+		}
+		?>
+		<div class="business-banner lsx-full-width">
+			<div class="wp-block-cover alignfull has-background-dim" style="<?php echo esc_html( $background_image_attr ); ?>">
+				<div class="wp-block-cover__inner-container">
+					<?php if ( '' !== $args['title'] && false !== $args['title'] ) { ?>
+						<h1 class="has-text-align-center archive-title"><?php echo esc_html( $args['title'] ); ?></h1>
+					<?php } ?>
+
+					<?php if ( '' !== $args['subtitle'] && false !== $args['subtitle'] ) { ?>
+						<p class="has-text-align-center"><?php echo esc_html( $args['subtitle'] ); ?></p>
+					<?php } ?>
+				</div>
+			</div>
+			<div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
+		</div>
+		<?php
 	}
 }
