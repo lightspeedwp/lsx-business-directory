@@ -105,6 +105,8 @@ body.single-business-directory:not(.using-gutenberg) #primary { margin-top: 0px;
 
 .business-directory .related-businesses .related-business h3 { margin: 20px 0 0px; }
 
+.archive article { margin-bottom: 28px; }
+
 .archive .col-xs-1, .archive .col-sm-1, .archive .col-md-1, .archive .col-lg-1, .archive .col-xs-2, .archive .col-sm-2, .archive .col-md-2, .archive .col-lg-2, .archive .col-xs-3, .archive .col-sm-3, .archive .col-md-3, .archive .col-lg-3, .archive .col-xs-4, .archive .col-sm-4, .archive .col-md-4, .archive .col-lg-4, .archive .col-xs-5, .archive .col-sm-5, .archive .col-md-5, .archive .col-lg-5, .archive .col-xs-6, .archive .col-sm-6, .archive .col-md-6, .archive .col-lg-6, .archive .col-xs-7, .archive .col-sm-7, .archive .col-md-7, .archive .col-lg-7, .archive .col-xs-8, .archive .col-sm-8, .archive .col-md-8, .archive .col-lg-8, .archive .col-xs-9, .archive .col-sm-9, .archive .col-md-9, .archive .col-lg-9, .archive .col-xs-10, .archive .col-sm-10, .archive .col-md-10, .archive .col-lg-10, .archive .col-xs-11, .archive .col-sm-11, .archive .col-md-11, .archive .col-lg-11, .archive .col-xs-12, .archive .col-sm-12, .archive .col-md-12, .archive .col-lg-12 { padding-left: 0px; padding-right: 0px; }
 
 .archive .fas { margin-right: 5px; }
@@ -113,11 +115,19 @@ body.single-business-directory:not(.using-gutenberg) #primary { margin-top: 0px;
 
 .archive .business.row-layout { -webkit-box-sizing: border-box; box-sizing: border-box; border: 1px solid #EEEEEE; background-color: #FFFFFF; -webkit-box-shadow: 1px 2px 6px 0 rgba(155, 155, 155, 0.45); box-shadow: 1px 2px 6px 0 rgba(155, 155, 155, 0.45); padding-right: 10px; padding-bottom: 10px; }
 
-.archive .business.row-layout .business-content .business-details h4.business-title { margin-top: 5px; }
+.archive .business.row-layout .business-content { padding-left: 20px; }
 
-.archive .business.row-layout .business-excerpt { border-top: 1px solid #ddd; padding-top: 10px; }
+.archive .business.row-layout .business-content .business-details h4.business-title { margin-top: 14px; margin-bottom: 9px; }
+
+.archive .business.row-layout .business-content .business-details .business-meta > div { margin-bottom: 10px; }
+
+.archive .business.row-layout .business-excerpt { border-top: 1px solid #ddd; padding-top: 10px; padding-bottom: 4px; }
 
 .archive .business.row-layout .business-excerpt .read-more-link { padding-top: 10px; }
+
+.archive .business.row-layout .business-excerpt .read-more-link a { text-transform: uppercase; }
+
+.archive .business.row-layout .business-excerpt .read-more-link a .fas { margin-left: 5px; }
 
 .archive .business.col-layout { background-color: #FFFFFF; height: 401px; width: 265px; }
 
@@ -125,11 +135,15 @@ body.single-business-directory:not(.using-gutenberg) #primary { margin-top: 0px;
 
 .archive .business.col-layout .business-content { height: 206px; padding-left: 15px; padding-right: 15px; }
 
-.archive .business.col-layout .business-content .business-title { margin-top: 20px; border-bottom: none; }
+.archive .business.col-layout .business-content .business-details .business-title { margin-top: 19px; margin-bottom: 14px; border-bottom: none; }
+
+.archive .business.col-layout .business-content .business-details .category, .archive .business.col-layout .business-content .business-details .region, .archive .business.col-layout .business-content .business-details .telephone, .archive .business.col-layout .business-content .business-details .email { margin-bottom: 2px; }
 
 .archive .business.col-layout .business-button button { width: 100%; height: 45px; background-color: #418AD0; border: none; }
 
 .archive .business.col-layout .business-button button a { color: white; }
+
+.archive .business.col-layout .business-button button a .fas { margin-left: 5px; }
 
 #gmap { height: 500px; }
 
