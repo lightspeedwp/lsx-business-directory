@@ -21,7 +21,7 @@ class Banners {
 	 * Contructor
 	 */
 	public function __construct() {
-		add_action( 'lsx_entry_top', array( $this, 'single_listing_banner' ) );
+		add_action( 'wp_head', array( $this, 'wp_head' ) );
 	}
 
 	/**
@@ -37,6 +37,17 @@ class Banners {
 			self::$instance = new self();
 		}
 		return self::$instance;
+	}
+
+	/**
+	 * Outputs the single
+	 *
+	 * @return void
+	 */
+	public function wp_head() {
+		if ( is_singular( 'business-directory' ) ) {
+			add_action( 'lsx_header_wrap_after', array( $this, 'single_listing_banner' ) );
+		}
 	}
 
 	/**
@@ -62,18 +73,20 @@ class Banners {
 				$background_image_attr = 'background-image:url(' . $image . ')';
 			}
 			?>
-			<div class="wp-block-cover alignfull has-background-dim" style="<?php echo esc_html( $background_image_attr ); ?>">
-				<div class="wp-block-cover__inner-container">
-					<?php if ( '' !== $title && false !== $title ) { ?>
-						<h2 class="has-text-align-center"><?php echo esc_html( $title ); ?></h2>
-					<?php } ?>
+			<div class="business-banner lsx-full-width">
+				<div class="wp-block-cover alignfull has-background-dim" style="<?php echo esc_html( $background_image_attr ); ?>">
+					<div class="wp-block-cover__inner-container">
+						<?php if ( '' !== $title && false !== $title ) { ?>
+							<h1 class="has-text-align-center archive-title"><?php echo esc_html( $title ); ?></h1>
+						<?php } ?>
 
-					<?php if ( '' !== $subtitle && false !== $subtitle ) { ?>
-						<p class="has-text-align-center"><?php echo esc_html( $subtitle ); ?></p>
-					<?php } ?>
+						<?php if ( '' !== $subtitle && false !== $subtitle ) { ?>
+							<p class="has-text-align-center"><?php echo esc_html( $subtitle ); ?></p>
+						<?php } ?>
+					</div>
 				</div>
+				<div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
 			</div>
-			<div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
 			<?php
 		}
 	}
