@@ -5,9 +5,9 @@
  */
 
 body {
-	// Single Business Directory
+	// General Banner
 	&.single-business-directory,
-	&.post-type-archive-business-directory {
+	&.archive.post-type-archive-business-directory {
 		&:not(.using-gutenberg):not(.banner-disabled) {
 			.business-banner {
 	
@@ -30,13 +30,21 @@ body {
 					}
 				}
 			}
-			#primary {
+			#primary, #secondary {
 				margin-top:0px;
 			}
 		}
 	}
 
 	// Post Type Archive
+	&.archive.post-type-archive-business-directory:not(.using-gutenberg):not(.banner-disabled) {
+		.wrap.container {
+			.content.role>div:first-child#primary {
+				margin-top:0px;
+			}
+		}
+	}
+
 	@media (min-width: 320px) {
 		&.lsx:not(.single-post):not(.page-has-banner){
 			.archive-header-wrapper {
@@ -47,7 +55,7 @@ body {
 		}
 	}
 	@include media('>=tablet') {
-		&.post-type-archive-business-directory {
+		&.post-type-archive-business-directory.banner-disabled {
 			.facetwp-sidebar.widget-area {
 				margin-top: 8.4rem;
 
