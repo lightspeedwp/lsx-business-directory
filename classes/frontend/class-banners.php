@@ -62,10 +62,13 @@ class Banners {
 	public function single_listing_banner() {
 		$disable = get_post_meta( get_the_ID(), 'lsx_bd_banner_disable', true );
 		if ( true !== $disable && 'on' !== $disable ) {
+			add_filter( 'lsx_bd_single_business_title', array( $this, 'change_single_business_listing_tag' ), 10, 1 );
+
 			$image    = apply_filters( 'lsx_bd_single_listing_banner_image', get_post_meta( get_the_ID(), 'lsx_bd_banner', true ) );
 			$colour   = apply_filters( 'lsx_bd_single_listing_banner_colour', get_post_meta( get_the_ID(), 'lsx_bd_banner_colour', true ) );
 			$title    = apply_filters( 'lsx_bd_single_listing_banner_title', get_post_meta( get_the_ID(), 'lsx_bd_banner_title', true ) );
 			$subtitle = apply_filters( 'lsx_bd_single_listing_banner_subtitle', get_post_meta( get_the_ID(), 'lsx_bd_banner_subtitle', true ) );
+
 			// Generate the background atts.
 			$background_image_attr = '';
 			$css_classes           = '';
@@ -118,5 +121,16 @@ class Banners {
 			$colour = '#333';
 		}
 		return $colour;
+	}
+
+	/**
+	 * Changes the single business listing title to an H2.
+	 *
+	 * @param string $title The listing title wrapped in an <h1>.
+	 * @return string
+	 */
+	public function change_single_business_listing_tag( $title ) {
+		$title = '<h2 class="entry-title">' . get_the_title() . '</h2>';
+		return $title;
 	}
 }

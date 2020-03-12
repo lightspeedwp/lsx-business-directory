@@ -6,7 +6,7 @@ body.single-business-directory:not(.using-gutenberg) .business-banner .wp-block-
 
 body.single-business-directory:not(.using-gutenberg) .business-banner .wp-block-cover .archive-title { margin-top: 0; margin-bottom: 0; }
 
-body.single-business-directory:not(.using-gutenberg) .business-banner .wp-block-cover.has-background-img { min-height: 414px; }
+body.single-business-directory:not(.using-gutenberg) .business-banner .wp-block-cover.has-background-img { min-height: 430px; }
 
 body.single-business-directory:not(.using-gutenberg) .business-banner .wp-block-cover.alignfull { width: 100%; max-width: 100%; }
 
@@ -59,13 +59,15 @@ body.single-business-directory:not(.using-gutenberg) #primary { margin-top: 0px;
 
 .business-directory .business-header { margin-bottom: 40px; }
 
-.business-directory .business-header .entry-header-content h1.entry-title { margin-top: 0; margin-bottom: 10px; }
+.business-directory .business-header .entry-header-content h2.entry-title { font-size: 40px; }
 
-@media only screen and (max-width: 767px) { .business-directory .business-header .entry-header-content h1.entry-title { font-size: 22px; } }
+.business-directory .business-header .entry-header-content h1.entry-title, .business-directory .business-header .entry-header-content h2.entry-title { margin-top: 0; margin-bottom: 10px; }
 
-@media only screen and (min-width: 768px) and (max-width: 991px) { .business-directory .business-header .entry-header-content h1.entry-title { font-size: 28px; } }
+@media only screen and (max-width: 767px) { .business-directory .business-header .entry-header-content h1.entry-title, .business-directory .business-header .entry-header-content h2.entry-title { font-size: 22px; } }
 
-@media only screen and (max-width: 991px) { .business-directory .business-header .entry-header-content h1.entry-title { margin-top: 15px; } }
+@media only screen and (min-width: 768px) and (max-width: 991px) { .business-directory .business-header .entry-header-content h1.entry-title, .business-directory .business-header .entry-header-content h2.entry-title { font-size: 28px; } }
+
+@media only screen and (max-width: 991px) { .business-directory .business-header .entry-header-content h1.entry-title, .business-directory .business-header .entry-header-content h2.entry-title { margin-top: 15px; } }
 
 .business-directory .business-header .entry-header-content .entry-meta { text-align: right; }
 

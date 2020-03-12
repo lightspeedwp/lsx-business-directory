@@ -149,13 +149,15 @@
 
 
 // Single Business
-
 .business-directory {
 	.business-header {
 		margin-bottom: 40px;
 
 		.entry-header-content {
-			h1.entry-title {
+			h2.entry-title {
+				font-size: 40px;
+			}
+			h1.entry-title, h2.entry-title {
 				margin: {
 					top: 0;
 					bottom: 10px;
