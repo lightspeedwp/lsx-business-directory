@@ -40,7 +40,8 @@ class Business_Directory {
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'register_post_type' ) );
-		add_action( 'init', array( $this, 'taxonomy_setup' ) );
+		add_action( 'init', array( $this, 'register_industry_taxonomy' ) );
+		add_action( 'init', array( $this, 'register_region_taxonomy' ) );
 
 		// Register the custom fields.
 		add_action( 'cmb2_init', array( $this, 'register_banner_custom_fields' ) );
@@ -118,9 +119,9 @@ class Business_Directory {
 	}
 
 	/**
-	 * Register the Week taxonomy.
+	 * Registers the Industry taxonomy for the Business Directory.
 	 */
-	public function taxonomy_setup() {
+	public function register_industry_taxonomy() {
 		$labels = array(
 			'name'              => esc_html__( 'Industry', 'lsx-business-directory' ),
 			'singular_name'     => esc_html__( 'Industry', 'lsx-business-directory' ),
@@ -134,7 +135,6 @@ class Business_Directory {
 			'new_item_name'     => esc_html__( 'New Industry', 'lsx-business-directory' ),
 			'menu_name'         => esc_html__( 'Industries', 'lsx-business-directory' ),
 		);
-
 		$details = array(
 			'labels'              => $labels,
 			'hierarchical'        => true,
@@ -145,9 +145,13 @@ class Business_Directory {
 			'query_var'           => true,
 			'rewrite'             => array( 'industry' ),
 		);
-
 		register_taxonomy( 'lsx-bd-industry', array( $this->slug ), $details );
+	}
 
+	/**
+	 * Registers the Industry region for the Business Directory.
+	 */
+	public function register_region_taxonomy() {
 		$labels = array(
 			'name'              => esc_html__( 'Region', 'lsx-business-directory' ),
 			'singular_name'     => esc_html__( 'Region', 'lsx-business-directory' ),
@@ -161,7 +165,6 @@ class Business_Directory {
 			'new_item_name'     => esc_html__( 'New Region', 'lsx-business-directory' ),
 			'menu_name'         => esc_html__( 'Regions', 'lsx-business-directory' ),
 		);
-
 		$details = array(
 			'labels'              => $labels,
 			'hierarchical'        => true,
@@ -172,9 +175,9 @@ class Business_Directory {
 			'query_var'           => true,
 			'rewrite'             => array( 'region' ),
 		);
-
 		register_taxonomy( 'lsx-bd-region', array( $this->slug ), $details );
 	}
+
 	/**
 	 * Adds the post type to the different arrays.
 	 *
