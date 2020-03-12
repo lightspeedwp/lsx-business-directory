@@ -47,7 +47,6 @@ class Business_Directory {
 		add_action( 'cmb2_init', array( $this, 'register_address_custom_fields' ) );
 		add_action( 'cmb2_init', array( $this, 'register_branches_custom_fields' ) );
 		add_action( 'cmb2_init', array( $this, 'register_contact_custom_fields' ) );
-		add_action( 'cmb2_init', array( $this, 'configure_business_directory_custom_fields' ) );
 	}
 
 	/**
@@ -309,13 +308,20 @@ class Business_Directory {
 	 * @return void
 	 */
 	public function register_branches_custom_fields() {
+		$cmb_address = new_cmb2_box(
+			array(
+				'id'           => $this->prefix . '_branches_metabox',
+				'title'        => esc_html__( 'Business Branches', 'lsx-business-directory' ),
+				'object_types' => array( 'business-directory' ),
+			)
+		);
+
 		$branches_group_field_id = $cmb_address->add_field(
 			array(
-				'id'          => $this->prefix . '_business_branches',
-				'type'        => 'group',
-				'description' => esc_html__( 'Business Branches', 'lsx-business-directory' ),
-				'repeatable'  => true,
-				'options'     => array(
+				'id'         => $this->prefix . '_business_branches',
+				'type'       => 'group',
+				'repeatable' => true,
+				'options'    => array(
 					'group_title'    => esc_html__( 'Branch {#}', 'lsx-business-directory' ), // since version 1.1.4, {#} gets replaced by row number
 					'add_button'     => esc_html__( 'Add Another Branch', 'lsx-business-directory' ),
 					'remove_button'  => esc_html__( 'Remove Branch', 'lsx-business-directory' ),
@@ -383,7 +389,7 @@ class Business_Directory {
 		$cmb_contact = new_cmb2_box(
 			array(
 				'id'           => $this->prefix . '_contact_metabox',
-				'title'        => esc_html__( 'Contact Details.', 'lsx-business-directory' ),
+				'title'        => esc_html__( 'Business Contact Details', 'lsx-business-directory' ),
 				'object_types' => array( 'business-directory' ),
 			)
 		);
@@ -435,13 +441,5 @@ class Business_Directory {
 				'type' => 'text_url',
 			)
 		);
-	}
-
-	/**
-	 * Configure Business Directory custom fields.
-	 *
-	 * @return void
-	 */
-	public function configure_business_directory_custom_fields() {
 	}
 }
