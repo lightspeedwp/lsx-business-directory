@@ -231,7 +231,7 @@ class Business_Directory {
 			array(
 				'name' => esc_html__( 'Subtitle', 'lsx-business-directory' ),
 				'desc' => esc_html__( 'Customize the subtitle for your banner, this will display just below your title.', 'lsx-business-directory' ),
-				'id'   => $this->prefix . '_banner_title',
+				'id'   => $this->prefix . '_banner_subtitle',
 				'type' => 'text',
 			)
 		);
