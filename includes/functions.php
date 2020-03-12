@@ -1,6 +1,6 @@
 <?php
 /**
- * LSX Starter Plugin functions.
+ * LSX Business Directory functions.
  *
  * @package lsx-business-directory
  */
@@ -14,13 +14,13 @@ function lsx_business_directory_load_plugin_textdomain() {
 add_action( 'init', 'lsx_business_directory_load_plugin_textdomain' );
 
 /**
- * Returns an array of countries
+ * Returns an array of countries.
  *
  * @return array()
  * Key          = Country Code
  * Value        = Country Name
  */
-function get_country_options() {
+function lsx_bd_get_country_options() {
 	return array(
 		'AF' => esc_html__( 'Afghanistan', 'lsx-business-directory' ),
 		'AX' => esc_html__( '&#197;land Islands', 'lsx-business-directory' ),
@@ -267,4 +267,151 @@ function get_country_options() {
 		'ZM' => esc_html__( 'Zambia', 'lsx-business-directory' ),
 		'ZW' => esc_html__( 'Zimbabwe', 'lsx-business-directory' ),
 	);
+}
+
+/**
+ * Buid array containing options for a select box inside the settings for Business Directory.
+ *
+ * @return  array  Options array containing all available forms.
+ * Key   = Form ID
+ * Value = Form Name
+ */
+function lsx_bd_get_available_forms() {
+	$forms   = lsx_bd_get_activated_forms();
+	$options = array();
+
+	if ( ! empty( $forms ) ) {
+		foreach ( $forms as $form_id => $form_data ) {
+			$options[ $form_id ] = strval( $form_data );
+		}
+	} else {
+		$options['none'] = esc_html__( 'You have no forms available', 'lsx-business-directory' );
+	}
+
+	return $options;
+}
+
+/**
+ * Checks which form plugin is active, and grabs all available forms from that plugin.
+ *
+ * @return  array  Array with all available forms for a particular plugin which is enabled.
+ */
+function lsx_bd_get_activated_forms() {
+	$all_forms = false;
+
+	if ( class_exists( 'WPForms' ) ) {
+		$all_forms = lsx_bd_get_wpforms();
+	} elseif ( class_exists( 'Ninja_Forms' ) ) {
+		$all_forms = lsx_bd_get_ninja_forms();
+	} elseif ( class_exists( 'GFForms' ) ) {
+		$all_forms = lsx_bd_get_gravity_forms();
+	} elseif ( class_exists( 'Caldera_Forms_Forms' ) ) {
+		$all_forms = lsx_bd_get_caldera_forms();
+	}
+
+	return $all_forms;
+}
+
+/**
+ * Gets the available WPForms forms.
+ *
+ * @return  array  Array with all available WPForms forms.
+ */
+function lsx_bd_get_wpforms() {
+	global $wpdb;
+	$forms = false;
+
+	$args = array(
+		'post_type'     => 'wpforms',
+		'orderby'       => 'id',
+		'order'         => 'ASC',
+		'no_found_rows' => true,
+		'nopaging'      => true,
+	);
+
+	$posts = get_posts( $args );
+
+	if ( ! empty( $posts ) ) {
+		foreach ( $posts as $post ) {
+			$forms[ $post->ID ] = $post->post_title;
+		}
+	} else {
+		$forms = false;
+	}
+
+	return $forms;
+}
+
+/**
+ * Gets the available Ninja forms.
+ *
+ * @return  array  Array with all available Ninja forms.
+ */
+function lsx_bd_get_ninja_forms() {
+	global $wpdb;
+
+	$results = $wpdb->get_results( "SELECT id,title FROM {$wpdb->prefix}nf3_forms" );
+	$forms   = false;
+
+	if ( ! empty( $results ) ) {
+		foreach ( $results as $form ) {
+			$forms[ $form->id ] = $form->title;
+		}
+	}
+
+	return $forms;
+}
+
+/**
+ * Gets the available Gravity forms.
+ *
+ * @return  array  Array with all available Gravity forms.
+ */
+function lsx_bd_get_gravity_forms() {
+	global $wpdb;
+
+	$results = \RGFormsModel::get_forms( null, 'title' );
+	$forms   = false;
+
+	if ( ! empty( $results ) ) {
+		foreach ( $results as $form ) {
+			$forms[ $form->id ] = $form->title;
+		}
+	}
+
+	return $forms;
+}
+
+/**
+ * Gets the available Caldera forms.
+ *
+ * @return  array  Array with all available Caldera forms.
+ */
+function lsx_bd_get_caldera_forms() {
+	global $wpdb;
+
+	$results = \Caldera_Forms_Forms::get_forms( true );
+	$forms   = false;
+
+	if ( ! empty( $results ) ) {
+		foreach ( $results as $form => $form_data ) {
+			$forms[ $form ] = $form_data['name'];
+		}
+	}
+
+	return $forms;
+}
+
+/**
+ * Returns the current post type archive layout selection
+ *
+ * @param  string $key
+ * @return string | boolean
+ */
+function lsx_bd_get_option( $key = '' ) {
+	$value = false;
+	if ( '' !== $key && function_exists( 'cmb2_get_option' ) ) {
+		$value = cmb2_get_option( 'lsx-business-directory-settings', $key, false );
+	}
+	return $value;
 }

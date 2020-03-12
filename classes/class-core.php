@@ -48,6 +48,7 @@ class Core {
 	 * Contructor
 	 */
 	public function __construct() {
+		$this->load_vendors();
 		$this->load_classes();
 		$this->load_includes();
 	}
@@ -93,6 +94,17 @@ class Core {
 	 */
 	private function load_includes() {
 		require_once LSX_BD_PATH . '/includes/functions.php';
+		require_once LSX_BD_PATH . '/includes/template-tags.php';
+	}
+
+	/**
+	 * Loads the plugin functions.
+	 */
+	private function load_vendors() {
+		// Configure custom fields.
+		if ( ! class_exists( 'CMB2' ) ) {
+			require_once LSX_BD_PATH . 'vendor/CMB2/init.php';
+		}
 	}
 
 	/**
@@ -101,6 +113,16 @@ class Core {
 	 * @return void
 	 */
 	public function get_post_types() {
-		return apply_filters( 'lsx_business_directory_post_types', $this->post_types );
+		$post_types = apply_filters( 'lsx_business_directory_post_types', $this->post_types );
+
+		foreach ( $post_types as $index => $post_type ) {
+			$is_disabled = \cmb2_get_option( 'lsx_bd_options', $post_type . '_disabled', false );
+
+			if ( true === $is_disabled || 1 === $is_disabled || 'on' === $is_disabled ) {
+				unset( $post_types[ $index ] );
+			}
+		}
+
+		return $post_types;
 	}
 }
