@@ -27,6 +27,8 @@ class Frontend {
 		add_filter( 'template_include', array( $this, 'archive_template_include' ), 99 );
 		add_filter( 'template_include', array( $this, 'single_template_include' ), 99 );
 		add_filter( 'template_include', array( $this, 'taxonomy_template_include' ), 99 );
+
+		add_filter( 'get_the_archive_title', array( $this, 'get_the_archive_title' ), 100 );
 	}
 
 	/**
@@ -122,5 +124,25 @@ class Frontend {
 			}
 		}
 		return $template;
+	}
+
+	/**
+	 * Remove the "Archives:" from the post type recipes.
+	 *
+	 * @param string $title the term title.
+	 * @return string
+	 */
+	public function get_the_archive_title( $title ) {
+		if ( is_post_type_archive( 'business-directory' ) ) {
+			$title = __( 'Business Directory', 'lsx-health-plan' );
+		}
+		if ( is_tax( array( 'lsx-bd-industry', 'lsx-bd-region' ) ) ) {
+			$queried_object = get_queried_object();
+			if ( isset( $queried_object->name ) ) {
+				$title = $queried_object->name;
+			}
+		}
+		$title = apply_filters( 'lsx_bd_archive_banner_title', $title );
+		return $title;
 	}
 }
