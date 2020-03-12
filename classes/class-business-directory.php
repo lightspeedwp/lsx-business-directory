@@ -44,6 +44,9 @@ class Business_Directory {
 
 		// Register the custom fields.
 		add_action( 'cmb2_init', array( $this, 'register_banner_custom_fields' ) );
+		add_action( 'cmb2_init', array( $this, 'register_address_custom_fields' ) );
+		add_action( 'cmb2_init', array( $this, 'register_branches_custom_fields' ) );
+		add_action( 'cmb2_init', array( $this, 'register_contact_custom_fields' ) );
 		add_action( 'cmb2_init', array( $this, 'configure_business_directory_custom_fields' ) );
 	}
 
@@ -219,6 +222,85 @@ class Business_Directory {
 	}
 
 	/**
+	 * Registers the Business Directory address custom fields.
+	 *
+	 * @return void
+	 */
+	public function register_address_custom_fields() {
+	}
+
+	/**
+	 * Registers the Business Directory branches custom fields.
+	 *
+	 * @return void
+	 */
+	public function register_branches_custom_fields() {
+	}
+
+	/**
+	 * Registers the Business Directory contact custom fields.
+	 *
+	 * @return void
+	 */
+	public function register_contact_custom_fields() {
+		$cmb_contact = new_cmb2_box(
+			array(
+				'id'           => $this->prefix . '_contact_metabox',
+				'title'        => esc_html__( 'Contact Details.', 'lsx-business-directory' ),
+				'object_types' => array( 'business-directory' ),
+			)
+		);
+
+		$cmb_contact->add_field(
+			array(
+				'name' => esc_html__( 'Primary Email.', 'lsx-business-directory' ),
+				'id'   => $this->prefix . '_primary_email',
+				'type' => 'text_email',
+			)
+		);
+
+		$cmb_contact->add_field(
+			array(
+				'name' => esc_html__( 'Secondary Email.', 'lsx-business-directory' ),
+				'id'   => $this->prefix . '_secondary_email',
+				'type' => 'text_email',
+			)
+		);
+
+		$cmb_contact->add_field(
+			array(
+				'name' => esc_html__( 'Primary Phone.', 'lsx-business-directory' ),
+				'id'   => $this->prefix . '_primary_phone',
+				'type' => 'text',
+			)
+		);
+
+		$cmb_contact->add_field(
+			array(
+				'name' => esc_html__( 'Secondary Phone.', 'lsx-business-directory' ),
+				'id'   => $this->prefix . '_secondary_phone',
+				'type' => 'text',
+			)
+		);
+
+		$cmb_contact->add_field(
+			array(
+				'name' => esc_html__( 'Fax.', 'lsx-business-directory' ),
+				'id'   => $this->prefix . '_fax',
+				'type' => 'text',
+			)
+		);
+
+		$cmb_contact->add_field(
+			array(
+				'name' => esc_html__( 'Website.', 'lsx-business-directory' ),
+				'id'   => $this->prefix . '_website',
+				'type' => 'text_url',
+			)
+		);
+	}
+
+	/**
 	 * Configure Business Directory custom fields.
 	 *
 	 * @return void
@@ -360,62 +442,6 @@ class Business_Directory {
 				'name' => esc_html__( 'Branch Google Maps Search', 'lsx-business-directory' ),
 				'id'   => 'branch_google_maps_search',
 				'type' => 'text',
-			)
-		);
-
-		$cmb_contact = new_cmb2_box(
-			array(
-				'id'           => $this->prefix . '_contact_metabox',
-				'title'        => esc_html__( 'Contact Details.', 'lsx-business-directory' ),
-				'object_types' => array( 'business-directory' ),
-			)
-		);
-
-		$cmb_contact->add_field(
-			array(
-				'name' => esc_html__( 'Primary Email.', 'lsx-business-directory' ),
-				'id'   => $this->prefix . '_primary_email',
-				'type' => 'text_email',
-			)
-		);
-
-		$cmb_contact->add_field(
-			array(
-				'name' => esc_html__( 'Secondary Email.', 'lsx-business-directory' ),
-				'id'   => $this->prefix . '_secondary_email',
-				'type' => 'text_email',
-			)
-		);
-
-		$cmb_contact->add_field(
-			array(
-				'name' => esc_html__( 'Primary Phone.', 'lsx-business-directory' ),
-				'id'   => $this->prefix . '_primary_phone',
-				'type' => 'text',
-			)
-		);
-
-		$cmb_contact->add_field(
-			array(
-				'name' => esc_html__( 'Secondary Phone.', 'lsx-business-directory' ),
-				'id'   => $this->prefix . '_secondary_phone',
-				'type' => 'text',
-			)
-		);
-
-		$cmb_contact->add_field(
-			array(
-				'name' => esc_html__( 'Fax.', 'lsx-business-directory' ),
-				'id'   => $this->prefix . '_fax',
-				'type' => 'text',
-			)
-		);
-
-		$cmb_contact->add_field(
-			array(
-				'name' => esc_html__( 'Website.', 'lsx-business-directory' ),
-				'id'   => $this->prefix . '_website',
-				'type' => 'text_url',
 			)
 		);
 	}
