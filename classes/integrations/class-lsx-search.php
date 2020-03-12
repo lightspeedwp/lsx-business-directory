@@ -122,7 +122,7 @@ class LSX_Search {
 							'grid' => esc_html__( 'Grid', 'lsx-business-directory' ),
 							'list' => esc_html__( 'List', 'lsx-business-directory' ),
 						),
-						'default' => 'list',
+						'default'          => 'list',
 					)
 				);
 			}
@@ -188,7 +188,6 @@ class LSX_Search {
 		if ( function_exists( '\FWP' ) ) {
 			$facet_data = \FWP()->helper->get_facets();
 		}
-
 		$this->facet_data = array();
 		if ( ! empty( $facet_data ) && is_array( $facet_data ) ) {
 			foreach ( $facet_data as $facet ) {
@@ -215,7 +214,7 @@ class LSX_Search {
 	 * @return boolean
 	 */
 	public function lsx_search_enabled( $enabled = false ) {
-		if ( is_post_type_archive( 'business-directory' ) ) {
+		if ( is_post_type_archive( 'business-directory' ) || is_tax( array( 'lsx-bd-industry', 'lsx-bd-region' ) ) ) {
 			$is_enabled = lsx_bd_get_option( 'archive_search_enable', false );
 			if ( 'on' === $is_enabled ) {
 				$enabled = true;
@@ -231,8 +230,8 @@ class LSX_Search {
 	 * @return string
 	 */
 	public function lsx_search_prefix( $prefix = '' ) {
-		if ( is_post_type_archive( 'business-directory' ) ) {
-			$prefix       = 'archive';
+		if ( is_post_type_archive( 'business-directory' ) || is_tax( array( 'lsx-bd-industry', 'lsx-bd-region' ) ) ) {
+			$prefix = 'archive';
 		}
 		return $prefix;
 	}
@@ -244,13 +243,17 @@ class LSX_Search {
 	 * @return array
 	 */
 	public function lsx_search_options( $options = array() ) {
-		if ( is_post_type_archive( 'business-directory' ) ) {
-			$this->prefix  = 'archive';
-			$active_facets = lsx_bd_get_option( $this->prefix . '_search_facets', array() );
-			$facets        = array();
+		if ( is_post_type_archive( 'business-directory' ) || is_tax( array( 'lsx-bd-industry', 'lsx-bd-region' ) ) ) {
+			$this->prefix     = 'archive';
+			$active_facets    = lsx_bd_get_option( $this->prefix . '_search_facets', array() );
+			$facets           = array();
+			$current_taxonomy = get_query_var( 'taxonomy' );
 			if ( ! empty( $active_facets ) ) {
 				foreach ( $active_facets as $index => $facet_name ) {
-					$facets[ $facet_name ] = 'on';
+					if ( ! ( 'lsx-bd-industry' === $current_taxonomy && 'industries' === $facet_name ) &&
+						 ! ( 'lsx-bd-region' === $current_taxonomy && 'regions' === $facet_name ) ) {
+						$facets[ $facet_name ] = 'on';
+					}
 				}
 			}
 			$options['display'] = array(

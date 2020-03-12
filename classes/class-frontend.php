@@ -114,11 +114,11 @@ class Frontend {
 	 * @return    string
 	 */
 	public function taxonomy_template_include( $template ) {
-		$applicable_taxonomies = apply_filters( 'lsx_business_directory_taxonomies_template', array() );
+		// $applicable_taxonomies = apply_filters( 'lsx_business_directory_taxonomies_template', array() );
+		$applicable_taxonomies = array( 'lsx-bd-industry', 'lsx-bd-region' );
 		if ( is_main_query() && is_tax( $applicable_taxonomies ) ) {
-			$current_taxonomy = get_query_var( 'taxonomy' );
-			if ( '' == locate_template( array( 'taxonomy-' . $current_taxonomy . '.php' ) ) && file_exists( LSX_BD_PATH . 'templates/taxonomy-' . $current_taxonomy . '.php' ) ) {
-				$template = LSX_BD_PATH . 'templates/taxonomy-' . $current_taxonomy . '.php';
+			if ( '' == locate_template( array( 'taxonomy-business-directory.php' ) ) && file_exists( LSX_BD_PATH . 'templates/taxonomy-business-directory.php' ) ) {
+				$template = LSX_BD_PATH . 'templates/taxonomy-business-directory.php';
 			}
 		}
 		return $template;
