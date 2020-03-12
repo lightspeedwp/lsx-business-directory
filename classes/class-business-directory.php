@@ -196,15 +196,6 @@ class Business_Directory {
 
 		$cmb_images->add_field(
 			array(
-				'name' => esc_html__( 'Featured Image', 'lsx-business-directory' ),
-				'desc' => esc_html__( 'Featured image for a Business', 'lsx-business-directory' ),
-				'id'   => $this->prefix . '_logo',
-				'type' => 'file',
-			)
-		);
-
-		$cmb_images->add_field(
-			array(
 				'name' => esc_html__( 'Banner Image', 'lsx-business-directory' ),
 				'desc' => esc_html__( 'Banner image for a Business', 'lsx-business-directory' ),
 				'id'   => $this->prefix . '_banner',
