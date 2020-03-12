@@ -2,15 +2,15 @@
 /** Business Directory Banner Styles. @package lsx-business-directory */
 @media (min-width: 320px) { body.lsx:not(.single-post):not(.page-has-banner) .archive-header-wrapper .archive-header { padding-bottom: 64px; } }
 
-body.single-business-directory:not(.using-gutenberg) .business-banner .wp-block-cover { padding-top: 36px; min-height: 214px; }
+body.single-business-directory:not(.using-gutenberg):not(.banner-disabled) .business-banner .wp-block-cover { padding-top: 36px; min-height: 214px; }
 
-body.single-business-directory:not(.using-gutenberg) .business-banner .wp-block-cover .archive-title { margin-top: 0; margin-bottom: 0; }
+body.single-business-directory:not(.using-gutenberg):not(.banner-disabled) .business-banner .wp-block-cover .archive-title { margin-top: 0; margin-bottom: 0; }
 
-body.single-business-directory:not(.using-gutenberg) .business-banner .wp-block-cover.has-background-img { min-height: 430px; }
+body.single-business-directory:not(.using-gutenberg):not(.banner-disabled) .business-banner .wp-block-cover.has-background-img { min-height: 430px; }
 
-body.single-business-directory:not(.using-gutenberg) .business-banner .wp-block-cover.alignfull { width: 100%; max-width: 100%; }
+body.single-business-directory:not(.using-gutenberg):not(.banner-disabled) .business-banner .wp-block-cover.alignfull { width: 100%; max-width: 100%; }
 
-body.single-business-directory:not(.using-gutenberg) #primary { margin-top: 0px; }
+body.single-business-directory:not(.using-gutenberg):not(.banner-disabled) #primary { margin-top: 0px; }
 
 @CHARSET "UTF-8";
 /* General */

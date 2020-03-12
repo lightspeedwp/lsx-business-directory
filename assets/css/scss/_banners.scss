@@ -17,7 +17,7 @@ body {
 	}
 
 	// Single Business Directory
-	&.single-business-directory:not(.using-gutenberg) {
+	&.single-business-directory:not(.using-gutenberg):not(.banner-disabled) {
 		.business-banner {
 			//padding: 0rem 9999rem;
 

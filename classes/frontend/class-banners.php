@@ -46,6 +46,7 @@ class Banners {
 	 */
 	public function wp_head() {
 		if ( is_singular( 'business-directory' ) ) {
+			add_filter( 'body_class', array( $this, 'single_listing_banner_class' ), 10, 1 );
 			add_action( 'lsx_header_wrap_after', array( $this, 'single_listing_banner' ) );
 
 			// These can be removed if an action is run later in the `wp_head`.
@@ -132,5 +133,19 @@ class Banners {
 	public function change_single_business_listing_tag( $title ) {
 		$title = '<h2 class="entry-title">' . get_the_title() . '</h2>';
 		return $title;
+	}
+
+	/**
+	 * Adds a body class if the banner is disabled.
+	 *
+	 * @param array $classes The current <body> tag classes.
+	 * @return array
+	 */
+	public function single_listing_banner_class( $classes = array() ) {
+		$disable = get_post_meta( get_the_ID(), 'lsx_bd_banner_disable', true );
+		if ( 'on' === $disable ) {
+			$classes[] = 'banner-disabled';
+		}
+		return $classes;
 	}
 }
