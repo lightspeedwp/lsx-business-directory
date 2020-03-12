@@ -41,6 +41,9 @@ class Business_Directory {
 	public function __construct() {
 		add_action( 'init', array( $this, 'register_post_type' ) );
 		add_action( 'init', array( $this, 'taxonomy_setup' ) );
+
+		// Register the custom fields.
+		add_action( 'cmb2_init', array( $this, 'register_banner_custom_fields' ) );
 		add_action( 'cmb2_init', array( $this, 'configure_business_directory_custom_fields' ) );
 	}
 
@@ -180,16 +183,17 @@ class Business_Directory {
 		$post_types[] = $this->slug;
 		return $post_types;
 	}
+
 	/**
 	 * Configure Business Directory custom fields.
 	 *
 	 * @return void
 	 */
-	public function configure_business_directory_custom_fields() {
+	public function register_banner_custom_fields() {
 		$cmb_images = new_cmb2_box(
 			array(
-				'id'           => $this->prefix . '_images_metabox',
-				'title'        => esc_html__( 'Business Images', 'lsx-business-directory' ),
+				'id'           => $this->prefix . '_banner_images_metabox',
+				'title'        => esc_html__( 'Business Banner', 'lsx-business-directory' ),
 				'object_types' => array( 'business-directory' ),
 			)
 		);
@@ -212,7 +216,14 @@ class Business_Directory {
 				'default' => '#ffffff',
 			)
 		);
+	}
 
+	/**
+	 * Configure Business Directory custom fields.
+	 *
+	 * @return void
+	 */
+	public function configure_business_directory_custom_fields() {
 		$cmb_address = new_cmb2_box(
 			array(
 				'id'           => $this->prefix . '_address_metabox',
