@@ -140,7 +140,7 @@ class Admin {
 				'description' => __( 'Business Directory post type archive settings.', 'lsx-business-directory' ),
 			)
 		);
-
+		do_action( 'lsx_bd_settings_section_archive', $this->cmb, 'top' );
 		$cmb->add_field(
 			array(
 				'name'             => esc_html__( 'Layout option', 'lsx-business-directory' ),
@@ -153,6 +153,6 @@ class Admin {
 				),
 			)
 		);
-		do_action( 'lsx_bd_settings_section_archive', $this->cmb );
+		do_action( 'lsx_bd_settings_section_archive', $this->cmb, 'bottom' );
 	}
 }

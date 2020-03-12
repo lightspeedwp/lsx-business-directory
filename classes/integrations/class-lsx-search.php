@@ -30,7 +30,7 @@ class LSX_Search {
 	public function __construct() {
 		// We do BD Search setting only at 'admin_init', because we need is_plugin_active() function present to check for LSX Search plugin.
 		add_action( 'lsx_bd_settings_page', array( $this, 'configure_settings_search_engine_fields' ), 15, 1 );
-		add_action( 'lsx_bd_settings_section_archive', array( $this, 'configure_settings_search_archive_fields' ), 15, 1 );
+		add_action( 'lsx_bd_settings_section_archive', array( $this, 'configure_settings_search_archive_fields' ), 15, 2 );
 
 		add_action( 'wp', array( $this, 'maybe_enqueue_search_filters' ), 5 );
 	}
@@ -62,16 +62,22 @@ class LSX_Search {
 	/**
 	 * Enable Business Directory Search settings only if LSX Search plugin is enabled.
 	 *
-	 * @return  void
+	 * @param object $cmb The CMB2() class.
+	 * @param string $position either top of bottom.
+	 * @return void
 	 */
-	public function configure_settings_search_archive_fields( $cmb ) {
-		$this->search_fields( $cmb, 'archive' );
+	public function configure_settings_search_archive_fields( $cmb, $position ) {
+		if ( 'bottom' === $position ) {
+			$this->search_fields( $cmb, 'archive' );
+		}
 	}
 
 	/**
 	 * Enable Business Directory Search settings only if LSX Search plugin is enabled.
 	 *
-	 * @return  void
+	 * @param object $cmb The CMB2() class.
+	 * @param string $section either engine,archive or single.
+	 * @return void
 	 */
 	public function search_fields( $cmb, $section ) {
 		if ( is_plugin_active( 'lsx-search/lsx-search.php' ) ) {

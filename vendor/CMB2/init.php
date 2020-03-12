@@ -1,17 +1,5 @@
 <?php
 if ( ! class_exists( 'CMB2_Bootstrap_270_Develop', false ) ) {
-
-	/**
-	 * Handles checking for and loading the newest version of CMB2
-	 *
-	 * @since  2.0.0
-	 *
-	 * @category  WordPress_Plugin
-	 * @package   CMB2
-	 * @author    CMB2 team
-	 * @license   GPL-2.0+
-	 * @link      https://cmb2.io
-	 */
 	class CMB2_Bootstrap_270_Develop {
 
 		/**
