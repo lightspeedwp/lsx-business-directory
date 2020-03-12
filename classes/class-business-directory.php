@@ -227,85 +227,6 @@ class Business_Directory {
 	 * @return void
 	 */
 	public function register_address_custom_fields() {
-	}
-
-	/**
-	 * Registers the Business Directory branches custom fields.
-	 *
-	 * @return void
-	 */
-	public function register_branches_custom_fields() {
-	}
-
-	/**
-	 * Registers the Business Directory contact custom fields.
-	 *
-	 * @return void
-	 */
-	public function register_contact_custom_fields() {
-		$cmb_contact = new_cmb2_box(
-			array(
-				'id'           => $this->prefix . '_contact_metabox',
-				'title'        => esc_html__( 'Contact Details.', 'lsx-business-directory' ),
-				'object_types' => array( 'business-directory' ),
-			)
-		);
-
-		$cmb_contact->add_field(
-			array(
-				'name' => esc_html__( 'Primary Email.', 'lsx-business-directory' ),
-				'id'   => $this->prefix . '_primary_email',
-				'type' => 'text_email',
-			)
-		);
-
-		$cmb_contact->add_field(
-			array(
-				'name' => esc_html__( 'Secondary Email.', 'lsx-business-directory' ),
-				'id'   => $this->prefix . '_secondary_email',
-				'type' => 'text_email',
-			)
-		);
-
-		$cmb_contact->add_field(
-			array(
-				'name' => esc_html__( 'Primary Phone.', 'lsx-business-directory' ),
-				'id'   => $this->prefix . '_primary_phone',
-				'type' => 'text',
-			)
-		);
-
-		$cmb_contact->add_field(
-			array(
-				'name' => esc_html__( 'Secondary Phone.', 'lsx-business-directory' ),
-				'id'   => $this->prefix . '_secondary_phone',
-				'type' => 'text',
-			)
-		);
-
-		$cmb_contact->add_field(
-			array(
-				'name' => esc_html__( 'Fax.', 'lsx-business-directory' ),
-				'id'   => $this->prefix . '_fax',
-				'type' => 'text',
-			)
-		);
-
-		$cmb_contact->add_field(
-			array(
-				'name' => esc_html__( 'Website.', 'lsx-business-directory' ),
-				'id'   => $this->prefix . '_website',
-				'type' => 'text_url',
-			)
-		);
-	}
-
-	/**
-	 * Configure Business Directory custom fields.
-	 *
-	 * @return void
-	 */
-	public function configure_business_directory_custom_fields() {
 		$cmb_address = new_cmb2_box(
 			array(
 				'id'           => $this->prefix . '_address_metabox',
@@ -380,7 +301,14 @@ class Business_Directory {
 				'type' => 'text',
 			)
 		);
+	}
 
+	/**
+	 * Registers the Business Directory branches custom fields.
+	 *
+	 * @return void
+	 */
+	public function register_branches_custom_fields() {
 		$branches_group_field_id = $cmb_address->add_field(
 			array(
 				'id'          => $this->prefix . '_business_branches',
@@ -444,5 +372,76 @@ class Business_Directory {
 				'type' => 'text',
 			)
 		);
+	}
+
+	/**
+	 * Registers the Business Directory contact custom fields.
+	 *
+	 * @return void
+	 */
+	public function register_contact_custom_fields() {
+		$cmb_contact = new_cmb2_box(
+			array(
+				'id'           => $this->prefix . '_contact_metabox',
+				'title'        => esc_html__( 'Contact Details.', 'lsx-business-directory' ),
+				'object_types' => array( 'business-directory' ),
+			)
+		);
+
+		$cmb_contact->add_field(
+			array(
+				'name' => esc_html__( 'Primary Email.', 'lsx-business-directory' ),
+				'id'   => $this->prefix . '_primary_email',
+				'type' => 'text_email',
+			)
+		);
+
+		$cmb_contact->add_field(
+			array(
+				'name' => esc_html__( 'Secondary Email.', 'lsx-business-directory' ),
+				'id'   => $this->prefix . '_secondary_email',
+				'type' => 'text_email',
+			)
+		);
+
+		$cmb_contact->add_field(
+			array(
+				'name' => esc_html__( 'Primary Phone.', 'lsx-business-directory' ),
+				'id'   => $this->prefix . '_primary_phone',
+				'type' => 'text',
+			)
+		);
+
+		$cmb_contact->add_field(
+			array(
+				'name' => esc_html__( 'Secondary Phone.', 'lsx-business-directory' ),
+				'id'   => $this->prefix . '_secondary_phone',
+				'type' => 'text',
+			)
+		);
+
+		$cmb_contact->add_field(
+			array(
+				'name' => esc_html__( 'Fax.', 'lsx-business-directory' ),
+				'id'   => $this->prefix . '_fax',
+				'type' => 'text',
+			)
+		);
+
+		$cmb_contact->add_field(
+			array(
+				'name' => esc_html__( 'Website.', 'lsx-business-directory' ),
+				'id'   => $this->prefix . '_website',
+				'type' => 'text_url',
+			)
+		);
+	}
+
+	/**
+	 * Configure Business Directory custom fields.
+	 *
+	 * @return void
+	 */
+	public function configure_business_directory_custom_fields() {
 	}
 }
