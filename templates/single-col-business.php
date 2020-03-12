@@ -60,7 +60,7 @@
 		</div>
 
 		<div class="business-button col-md-12">
-			<button class="read-more-link"><a href="<?php esc_url( the_permalink() ); ?>">View Listing</a></button>
+			<button class="read-more-link"><a href="<?php esc_url( the_permalink() ); ?>">View Listing<i class="fas fa-long-arrow-alt-right"></i></a></button>
 		</div>
 	</div>
 </article>
