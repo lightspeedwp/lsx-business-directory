@@ -19,6 +19,7 @@ get_header(); ?>
 		while ( have_posts() ) :
 			the_post();
 			$prefix                      = 'lsx_bd';
+			$business_enquiry_form       = lsx_bd_get_option( 'single_enquiry_form' );
 			$business_banner             = get_post_meta( get_the_ID(), $prefix . '_banner', true );
 			$business_google_maps_search = get_post_meta( get_the_ID(), $prefix . '_address_google_maps_search', true );
 			$business_address_1          = get_post_meta( get_the_ID(), $prefix . '_address_street_number', true );
@@ -52,10 +53,6 @@ get_header(); ?>
 			if ( $business_address_4 ) {
 				$address[] = $business_address_4;
 			}
-
-			// if ( $business_postal_code ) {
-			// $address[] = $business_postal_code;
-			// }
 
 			if ( $business_province ) {
 				$address[] = $business_province;
@@ -109,7 +106,7 @@ get_header(); ?>
 				<div class="row">
 					<div class="col-md-4">
 						<div class="contact-info business-content-section">
-							<h4 class="business-section-title">Contact Information</h4>
+							<h4 class="business-section-title"><?php esc_html_e( 'Contact Information', 'lsx-business-directory' ); ?></h4>
 
 							<div class="row">
 								<div class="col-md-6">
@@ -148,26 +145,22 @@ get_header(); ?>
 							</div>
 						</div>
 
-						<div class="contact-form business-content-section">
-							<h4 class="business-section-title">Contact <?php the_title(); ?></h4>
-							<?php
-							if ( class_exists( 'Caldera_Forms' ) ) {
-								$form_slug = get_option( 'lsx-business-directory-generic-form' );
-								echo esc_attr( Caldera_Forms::render_form( $form_slug ) );
-							}
-							?>
+						<?php if ( $business_enquiry_form ) : ?>
+						<div>
+							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#enquiry-form-modal"><?php esc_html_e( 'Contact', 'lsx-business-directory' ); ?> <?php the_title(); ?></button>
 						</div>
+						<?php endif; ?>
 					</div>
 
 					<div class="col-md-8">
 						<div class="business-description business-content-section">
-							<h3 class="business-section-title">Description</h3>
+							<h3 class="business-section-title"><?php esc_html_e( 'Description', 'lsx-business-directory' ); ?></h3>
 							<?php the_content(); ?>
 						</div>
 
 						<?php if ( ! empty( $branches ) && is_array( $branches ) && isset( $branches[0]['branch_name'] ) && '' !== $branches[0]['branch_name'] ) : ?>
 							<div class="branches business-content-section">
-								<h3 class="business-section-title">Branches</h3>
+								<h3 class="business-section-title"><?php esc_html_e( 'Branches', 'lsx-business-directory' ); ?></h3>
 								<?php
 								foreach ( $branches as $branch ) {
 									lsx_business_branch( $branch ); // TODO
@@ -239,7 +232,7 @@ get_header(); ?>
 				if ( $related_business_query->have_posts() ) :
 					?>
 					<div class="related-businesses">
-						<h2>Related Businesses</h2>
+						<h2><?php esc_html_e( 'Related Businesses', 'lsx-business-directory' ); ?></h2>
 						<div class="row">
 							<?php while ( $related_business_query->have_posts() ) : ?>
 								<?php $related_business_query->the_post(); ?>
