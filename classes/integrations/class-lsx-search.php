@@ -92,8 +92,8 @@ class LSX_Search {
 						'description' => esc_html__( 'If you have created an supplemental engine via SearchWP, then you can control the search settings here.', 'lsx-business-directory' ),
 					)
 				);
+				do_action( 'lsx_bd_settings_section_engine', $cmb, 'top' );
 			}
-
 			$cmb->add_field(
 				array(
 					'name' => esc_html__( 'Enable Search', 'lsx-business-directory' ),
@@ -182,6 +182,9 @@ class LSX_Search {
 					'options'     => $this->facet_data,
 				)
 			);
+			if ( 'engine' === $section ) {
+				do_action( 'lsx_bd_settings_section_engine', $cmb, 'bottom' );
+			}
 		}
 	}
 
@@ -220,7 +223,7 @@ class LSX_Search {
 	 * @return boolean
 	 */
 	public function lsx_search_enabled( $enabled = false ) {
-		if ( is_post_type_archive( 'business-directory' ) || is_tax( array( 'lsx-bd-industry', 'lsx-bd-region' ) ) ) {
+		if ( is_post_type_archive( 'business-directory' ) || is_tax( array( 'lsx-bd-industry', 'lsx-bd-region' ) ) || is_search() ) {
 			$is_enabled = lsx_bd_get_option( 'archive_search_enable', false );
 			if ( 'on' === $is_enabled ) {
 				$enabled = true;
@@ -236,7 +239,7 @@ class LSX_Search {
 	 * @return string
 	 */
 	public function lsx_search_prefix( $prefix = '' ) {
-		if ( is_post_type_archive( 'business-directory' ) || is_tax( array( 'lsx-bd-industry', 'lsx-bd-region' ) ) ) {
+		if ( is_post_type_archive( 'business-directory' ) || is_tax( array( 'lsx-bd-industry', 'lsx-bd-region' ) ) || is_search() ) {
 			$prefix = 'archive';
 		}
 		return $prefix;
@@ -249,15 +252,20 @@ class LSX_Search {
 	 * @return array
 	 */
 	public function lsx_search_options( $options = array() ) {
-		if ( is_post_type_archive( 'business-directory' ) || is_tax( array( 'lsx-bd-industry', 'lsx-bd-region' ) ) ) {
-			$this->prefix     = 'archive';
+		if ( is_post_type_archive( 'business-directory' ) || is_tax( array( 'lsx-bd-industry', 'lsx-bd-region' ) ) || is_search() ) {
+			if ( is_search() ) {
+				$this->prefix = 'engine';
+			} else {
+				$this->prefix = 'archive';
+			}
+
 			$active_facets    = lsx_bd_get_option( $this->prefix . '_search_facets', array() );
 			$facets           = array();
 			$current_taxonomy = get_query_var( 'taxonomy' );
 			if ( ! empty( $active_facets ) ) {
 				foreach ( $active_facets as $index => $facet_name ) {
 					if ( ! ( 'lsx-bd-industry' === $current_taxonomy && 'industries' === $facet_name ) &&
-						 ! ( 'lsx-bd-region' === $current_taxonomy && 'regions' === $facet_name ) ) {
+						! ( 'lsx-bd-region' === $current_taxonomy && 'regions' === $facet_name ) ) {
 						$facets[ $facet_name ] = 'on';
 					}
 				}
