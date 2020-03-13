@@ -96,7 +96,7 @@ class Banners {
 				$disable = lsx_bd_get_option( 'archive_banner_disable' );
 				break;
 			case 'taxonomy':
-				$disable = get_term_meta( get_queried_object_id(), 'archive_banner_disable', true );
+				$disable = get_term_meta( get_queried_object_id(), 'lsx_bd_banner_disable', true );
 				break;
 			default:
 				$disable = '';
@@ -171,7 +171,7 @@ class Banners {
 	 * @return void
 	 */
 	public function term_banner() {
-		$disable = get_term_meta( get_the_ID(), 'lsx_bd_banner_disable', true );
+		$disable = get_term_meta( get_queried_object_id(), 'lsx_bd_banner_disable', true );
 		if ( true !== $disable && 'on' !== $disable ) {
 			$args = array(
 				'image'    => apply_filters( 'lsx_bd_banner_image', get_term_meta( get_queried_object_id(), 'lsx_bd_banner', true ) ),

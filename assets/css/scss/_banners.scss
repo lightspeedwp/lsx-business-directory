@@ -4,40 +4,37 @@
  * @package lsx-business-directory
  */
 
-body {
+body.lsx-business-directory-page {
 	// General Banner
-	&.single-business-directory,
-	&.archive.post-type-archive-business-directory {
-		&:not(.using-gutenberg):not(.banner-disabled) {
-			.business-banner {
-	
-				.wp-block-cover {
-					padding-top: 36px;
-					min-height: 214px;
-					
-					.archive-title {
-						margin-top: 0;
-						margin-bottom: 0;
-					}
-	
-					&.has-background-img {
-						min-height: 430px;
-					}
-	
-					&.alignfull {
-						width: 100%;
-						max-width: 100%;
-					}
+	&:not(.using-gutenberg):not(.banner-disabled) {
+		.business-banner {
+
+			.wp-block-cover {
+				padding-top: 36px;
+				min-height: 214px;
+				
+				.archive-title {
+					margin-top: 0;
+					margin-bottom: 0;
+				}
+
+				&.has-background-img {
+					min-height: 430px;
+				}
+
+				&.alignfull {
+					width: 100%;
+					max-width: 100%;
 				}
 			}
-			#primary, #secondary {
-				margin-top:0px;
-			}
+		}
+		#primary, #secondary {
+			margin-top:0px;
 		}
 	}
 
 	// Post Type Archive
-	&.archive.post-type-archive-business-directory:not(.using-gutenberg):not(.banner-disabled) {
+	&.archive:not(.using-gutenberg):not(.banner-disabled) {
 		.wrap.container {
 			.content.role>div:first-child#primary {
 				margin-top:0px;
@@ -55,7 +52,7 @@ body {
 		}
 	}
 	@include media('>=tablet') {
-		&.post-type-archive-business-directory.banner-disabled {
+		&.archive.banner-disabled {
 			.facetwp-sidebar.widget-area {
 				margin-top: 8.4rem;
 

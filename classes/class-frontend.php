@@ -71,7 +71,7 @@ class Frontend {
 	 * @return array
 	 */
 	public function body_class( $classes = array() ) {
-		if ( is_post_type_archive( 'business-direcotry' ) || is_tax( array( 'lsx-bd-industry', 'lsx-bd-region' ) ) ) {
+		if ( is_singular( 'business-directory' ) || is_post_type_archive( 'business-directory' ) || is_tax( array( 'lsx-bd-industry', 'lsx-bd-region' ) ) ) {
 			$classes[] = 'lsx-business-directory-page';
 		}
 		return $classes;
