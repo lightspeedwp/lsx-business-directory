@@ -92,8 +92,8 @@ class LSX_Search {
 						'description' => esc_html__( 'If you have created an supplemental engine via SearchWP, then you can control the search settings here.', 'lsx-business-directory' ),
 					)
 				);
+				do_action( 'lsx_bd_settings_section_engine', $cmb, 'top' );
 			}
-
 			$cmb->add_field(
 				array(
 					'name' => esc_html__( 'Enable Search', 'lsx-business-directory' ),
@@ -182,6 +182,9 @@ class LSX_Search {
 					'options'     => $this->facet_data,
 				)
 			);
+			if ( 'engine' === $section ) {
+				do_action( 'lsx_bd_settings_section_engine', $cmb, 'bottom' );
+			}
 		}
 	}
 

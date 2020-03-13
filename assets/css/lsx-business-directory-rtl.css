@@ -10,12 +10,12 @@ body.lsx-business-directory-page:not(.using-gutenberg):not(.banner-disabled) .bu
 
 body.lsx-business-directory-page:not(.using-gutenberg):not(.banner-disabled) #primary, body.lsx-business-directory-page:not(.using-gutenberg):not(.banner-disabled) #secondary { margin-top: 0px; }
 
-body.lsx-business-directory-page.archive:not(.using-gutenberg):not(.banner-disabled) .wrap.container .content.role > div:first-child#primary { margin-top: 0px; }
+body.lsx-business-directory-page.archive:not(.using-gutenberg):not(.banner-disabled) .wrap.container .content.role > div:first-child#primary, body.lsx-business-directory-page.search:not(.using-gutenberg):not(.banner-disabled) .wrap.container .content.role > div:first-child#primary { margin-top: 0px; }
 
 @media (min-width: 320px) { body.lsx-business-directory-page.lsx:not(.single-post):not(.page-has-banner) .archive-header-wrapper .archive-header { padding-bottom: 64px; } }
 
-@media (min-width: 992px) { body.lsx-business-directory-page.archive.banner-disabled .facetwp-sidebar.widget-area { margin-top: 8.4rem; }
-  body.lsx-business-directory-page.archive.banner-disabled .facetwp-sidebar.widget-area + .content-area { margin-top: 8.4rem; } }
+@media (min-width: 992px) { body.lsx-business-directory-page.archive.banner-disabled .facetwp-sidebar.widget-area, body.lsx-business-directory-page.search.banner-disabled .facetwp-sidebar.widget-area { margin-top: 8.4rem; }
+  body.lsx-business-directory-page.archive.banner-disabled .facetwp-sidebar.widget-area + .content-area, body.lsx-business-directory-page.search.banner-disabled .facetwp-sidebar.widget-area + .content-area { margin-top: 8.4rem; } }
 
 @CHARSET "UTF-8";
 /* General */

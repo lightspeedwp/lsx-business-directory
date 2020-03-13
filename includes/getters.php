@@ -31,7 +31,7 @@ function get_banner_fields( $prefix = '' ) {
 			'desc'    => esc_html__( 'Choose a background colour to display in case you don\'t have a banner image.', 'lsx-business-directory' ),
 			'id'      => '_banner_colour',
 			'type'    => 'colorpicker',
-			'default' => '#ffffff',
+			'default' => '#2b3640',
 		),
 		array(
 			'name' => esc_html__( 'Title', 'lsx-business-directory' ),
