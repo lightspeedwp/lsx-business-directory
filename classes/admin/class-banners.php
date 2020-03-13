@@ -23,6 +23,7 @@ class Banners {
 	public function __construct() {
 		add_action( 'lsx_bd_settings_section_archive', array( $this, 'register_archive_fields' ), 5, 2 );
 		add_action( 'cmb2_init', array( $this, 'register_single_fields' ), 5 );
+		add_action( 'cmb2_init', array( $this, 'register_taxonomy_fields' ), 5 );
 	}
 
 	/**
@@ -74,4 +75,33 @@ class Banners {
 			$cmb_images->add_field( $field );
 		}
 	}
+
+	/**
+	 * Configure Business Directory custom fields.
+	 *
+	 * @return void
+	 */
+	public function register_taxonomy_fields() {
+		$cmb    = new_cmb2_box(
+			array(
+				'id'           => 'lsx_bd_banner_images_metabox',
+				'title'        => esc_html__( 'Banner', 'lsx-business-directory' ),
+				'object_types' => array( 'term' ),
+				'taxonomies'   => array( 'lsx-bd-industry', 'lsx-bd-region', 'industry' ),
+			)
+		);
+		$cmb->add_field( array(
+			'name'     => esc_html__( 'Extra Info', 'cmb2' ),
+			'desc'     => esc_html__( 'field description (optional)', 'cmb2' ),
+			'id'       => 'yourprefix_term_extra_info',
+			'type'     => 'title',
+			'on_front' => false,
+		) );
+		/*$fields = \lsx\business_directory\includes\get_banner_fields( 'lsx_bd' );
+		var_dump($fields);
+		foreach ( $fields as $field ) {
+			$cmb->add_field( $field );
+		}*/
+	}
+
 }
