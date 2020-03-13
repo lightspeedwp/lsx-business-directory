@@ -143,13 +143,6 @@ class Business_Directory {
 			'show_admin_column'   => true,
 			'query_var'           => true,
 			'rewrite'             => array( 'industry' ),
-			'supports'            => array(
-				'title',
-				'editor',
-				'thumbnail',
-				'excerpt',
-				'custom-fields',
-			),
 		);
 		register_taxonomy( 'lsx-bd-industry', array( $this->slug ), $details );
 	}

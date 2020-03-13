@@ -29,6 +29,7 @@ class Frontend {
 	 */
 	public function __construct() {
 		$this->load_classes();
+		add_filter( 'body_class', array( $this, 'body_class' ), 10, 1 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'assets' ), 5 );
 
 		// Handle the template redirects.
@@ -61,6 +62,19 @@ class Frontend {
 		// Load plugin admin related functionality.
 		require_once LSX_BD_PATH . 'classes/frontend/class-banners.php';
 		$this->banners = frontend\Banners::get_instance();
+	}
+
+	/**
+	 * Adds a body class to all the business directory pages.
+	 *
+	 * @param array $classes The current <body> tag classes.
+	 * @return array
+	 */
+	public function body_class( $classes = array() ) {
+		if ( is_post_type_archive( 'business-direcotry' ) || is_tax( array( 'lsx-bd-industry', 'lsx-bd-region' ) ) ) {
+			$classes[] = 'lsx-business-directory-page';
+		}
+		return $classes;
 	}
 
 	/**
