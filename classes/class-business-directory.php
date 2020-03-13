@@ -202,46 +202,10 @@ class Business_Directory {
 				'object_types' => array( 'business-directory' ),
 			)
 		);
-		$cmb_images->add_field(
-			array(
-				'name' => esc_html__( 'Image', 'lsx-business-directory' ),
-				'desc' => esc_html__( 'Upload a banner image for to display above your business listing.', 'lsx-business-directory' ),
-				'id'   => $this->prefix . '_banner',
-				'type' => 'file',
-			)
-		);
-		$cmb_images->add_field(
-			array(
-				'name'    => esc_html__( 'Colour', 'lsx-business-directory' ),
-				'desc'    => esc_html__( 'Choose a background colour to display in case you don\'t have a banner image.', 'lsx-business-directory' ),
-				'id'      => $this->prefix . '_banner_colour',
-				'type'    => 'colorpicker',
-				'default' => '#333333',
-			)
-		);
-		$cmb_images->add_field(
-			array(
-				'name' => esc_html__( 'Title', 'lsx-business-directory' ),
-				'desc' => esc_html__( 'Customize the title for your banner.', 'lsx-business-directory' ),
-				'id'   => $this->prefix . '_banner_title',
-				'type' => 'text',
-			)
-		);
-		$cmb_images->add_field(
-			array(
-				'name' => esc_html__( 'Subtitle', 'lsx-business-directory' ),
-				'desc' => esc_html__( 'Customize the subtitle for your banner, this will display just below your title.', 'lsx-business-directory' ),
-				'id'   => $this->prefix . '_banner_subtitle',
-				'type' => 'text',
-			)
-		);
-		$cmb_images->add_field(
-			array(
-				'name' => esc_html__( 'Disable Banner', 'lsx-business-directory' ),
-				'id'   => $this->prefix . '_banner_disable',
-				'type' => 'checkbox',
-			)
-		);
+		$fields = \lsx\business_directory\includes\get_banner_fields( $this->prefix );
+		foreach ( $fields as $field ) {
+			$cmb_images->add_field( $field );
+		}
 	}
 
 	/**

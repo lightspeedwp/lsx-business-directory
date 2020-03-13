@@ -93,6 +93,8 @@ class Core {
 	 * Loads the plugin functions.
 	 */
 	private function load_includes() {
+		require_once LSX_BD_PATH . '/includes/helpers.php';
+		require_once LSX_BD_PATH . '/includes/getters.php';
 		require_once LSX_BD_PATH . '/includes/functions.php';
 		require_once LSX_BD_PATH . '/includes/template-tags.php';
 	}
