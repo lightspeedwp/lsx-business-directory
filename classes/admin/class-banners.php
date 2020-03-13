@@ -95,5 +95,4 @@ class Banners {
 			$cmb->add_field( $field );
 		}
 	}
-
 }
