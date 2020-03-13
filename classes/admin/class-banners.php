@@ -21,7 +21,8 @@ class Banners {
 	 * Contructor
 	 */
 	public function __construct() {
-		add_action( 'lsx_bd_settings_section_archive', array( $this, 'post_type_archive_banner_settings' ), 5, 2 );
+		add_action( 'lsx_bd_settings_section_archive', array( $this, 'register_archive_fields' ), 5, 2 );
+		add_action( 'cmb2_init', array( $this, 'register_single_fields' ), 5 );
 	}
 
 	/**
@@ -46,12 +47,31 @@ class Banners {
 	 * @param string $position either top of bottom.
 	 * @return void
 	 */
-	public function post_type_archive_banner_settings( $cmb, $position ) {
+	public function register_archive_fields( $cmb, $position ) {
 		if ( 'top' === $position ) {
 			$fields = \lsx\business_directory\includes\get_banner_fields( 'archive' );
 			foreach ( $fields as $field ) {
 				$cmb->add_field( $field );
 			}
+		}
+	}
+
+	/**
+	 * Configure Business Directory custom fields.
+	 *
+	 * @return void
+	 */
+	public function register_single_fields() {
+		$cmb_images = new_cmb2_box(
+			array(
+				'id'           => 'lsx_bd_banner_images_metabox',
+				'title'        => esc_html__( 'Business Banner', 'lsx-business-directory' ),
+				'object_types' => array( 'business-directory' ),
+			)
+		);
+		$fields     = \lsx\business_directory\includes\get_banner_fields( 'lsx_bd' );
+		foreach ( $fields as $field ) {
+			$cmb_images->add_field( $field );
 		}
 	}
 }

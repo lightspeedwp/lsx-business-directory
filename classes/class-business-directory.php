@@ -44,10 +44,9 @@ class Business_Directory {
 		add_action( 'init', array( $this, 'register_region_taxonomy' ) );
 
 		// Register the custom fields.
-		add_action( 'cmb2_init', array( $this, 'register_banner_custom_fields' ) );
-		add_action( 'cmb2_init', array( $this, 'register_address_custom_fields' ) );
-		add_action( 'cmb2_init', array( $this, 'register_branches_custom_fields' ) );
-		add_action( 'cmb2_init', array( $this, 'register_contact_custom_fields' ) );
+		add_action( 'cmb2_init', array( $this, 'register_address_custom_fields' ), 10 );
+		add_action( 'cmb2_init', array( $this, 'register_branches_custom_fields' ), 15 );
+		add_action( 'cmb2_init', array( $this, 'register_contact_custom_fields' ), 20 );
 	}
 
 	/**
@@ -187,25 +186,6 @@ class Business_Directory {
 	public function enable_post_type( $post_types = array() ) {
 		$post_types[] = $this->slug;
 		return $post_types;
-	}
-
-	/**
-	 * Configure Business Directory custom fields.
-	 *
-	 * @return void
-	 */
-	public function register_banner_custom_fields() {
-		$cmb_images = new_cmb2_box(
-			array(
-				'id'           => $this->prefix . '_banner_images_metabox',
-				'title'        => esc_html__( 'Business Banner', 'lsx-business-directory' ),
-				'object_types' => array( 'business-directory' ),
-			)
-		);
-		$fields = \lsx\business_directory\includes\get_banner_fields( $this->prefix );
-		foreach ( $fields as $field ) {
-			$cmb_images->add_field( $field );
-		}
 	}
 
 	/**
