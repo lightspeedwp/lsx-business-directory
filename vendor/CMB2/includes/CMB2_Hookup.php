@@ -193,6 +193,9 @@ class CMB2_Hookup extends CMB2_Hookup_Base {
 		}
 
 		$this->taxonomies = (array) $this->cmb->prop( 'taxonomies' );
+		print_r('<pre></pre>');
+		print_r();
+		print_r();
 		$show_on_term_add = $this->cmb->prop( 'new_term_section' );
 		$priority         = $this->get_priority( 8 );
 

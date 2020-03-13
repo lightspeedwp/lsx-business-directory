@@ -65,7 +65,7 @@ class Banners {
 	public function register_single_fields() {
 		$cmb_images = new_cmb2_box(
 			array(
-				'id'           => 'lsx_bd_banner_images_metabox',
+				'id'           => 'lsx_bd_single_banner_images_metabox',
 				'title'        => esc_html__( 'Business Banner', 'lsx-business-directory' ),
 				'object_types' => array( 'business-directory' ),
 			)
@@ -84,24 +84,16 @@ class Banners {
 	public function register_taxonomy_fields() {
 		$cmb    = new_cmb2_box(
 			array(
-				'id'           => 'lsx_bd_banner_images_metabox',
+				'id'           => 'lsx_bd_term_banner_images_metabox',
 				'title'        => esc_html__( 'Banner', 'lsx-business-directory' ),
 				'object_types' => array( 'term' ),
-				'taxonomies'   => array( 'lsx-bd-industry', 'lsx-bd-region', 'industry' ),
+				'taxonomies'   => array( 'lsx-bd-industry', 'lsx-bd-region' ),
 			)
 		);
-		$cmb->add_field( array(
-			'name'     => esc_html__( 'Extra Info', 'cmb2' ),
-			'desc'     => esc_html__( 'field description (optional)', 'cmb2' ),
-			'id'       => 'yourprefix_term_extra_info',
-			'type'     => 'title',
-			'on_front' => false,
-		) );
-		/*$fields = \lsx\business_directory\includes\get_banner_fields( 'lsx_bd' );
-		var_dump($fields);
+		$fields = \lsx\business_directory\includes\get_banner_fields( 'lsx_bd' );
 		foreach ( $fields as $field ) {
 			$cmb->add_field( $field );
-		}*/
+		}
 	}
 
 }
