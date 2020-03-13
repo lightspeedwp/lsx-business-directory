@@ -21,7 +21,9 @@ class Banners {
 	 * Contructor
 	 */
 	public function __construct() {
-		add_action( 'lsx_bd_settings_section_archive', array( $this, 'post_type_archive_banner_settings' ), 5, 2 );
+		add_action( 'lsx_bd_settings_section_archive', array( $this, 'register_archive_fields' ), 5, 2 );
+		add_action( 'cmb2_init', array( $this, 'register_single_fields' ), 5 );
+		add_action( 'cmb2_init', array( $this, 'register_taxonomy_fields' ), 5 );
 	}
 
 	/**
@@ -46,49 +48,51 @@ class Banners {
 	 * @param string $position either top of bottom.
 	 * @return void
 	 */
-	public function post_type_archive_banner_settings( $cmb, $position ) {
-
+	public function register_archive_fields( $cmb, $position ) {
 		if ( 'top' === $position ) {
-			$cmb->add_field(
-				array(
-					'name' => esc_html__( 'Disable Banner', 'lsx-business-directory' ),
-					'id'   => 'archive_banner_disable',
-					'type' => 'checkbox',
-				)
-			);
-			$cmb->add_field(
-				array(
-					'name' => esc_html__( 'Image', 'lsx-business-directory' ),
-					'desc' => esc_html__( 'Upload a banner image for to display above your business listing.', 'lsx-business-directory' ),
-					'id'   => 'archive_banner',
-					'type' => 'file',
-				)
-			);
-			$cmb->add_field(
-				array(
-					'name'    => esc_html__( 'Colour', 'lsx-business-directory' ),
-					'desc'    => esc_html__( 'Choose a background colour to display in case you don\'t have a banner image.', 'lsx-business-directory' ),
-					'id'      => 'archive_banner_colour',
-					'type'    => 'colorpicker',
-					'default' => '#ffffff',
-				)
-			);
-			$cmb->add_field(
-				array(
-					'name' => esc_html__( 'Title', 'lsx-business-directory' ),
-					'desc' => esc_html__( 'Customize the title for your banner.', 'lsx-business-directory' ),
-					'id'   => 'archive_banner_title',
-					'type' => 'text',
-				)
-			);
-			$cmb->add_field(
-				array(
-					'name' => esc_html__( 'Subtitle', 'lsx-business-directory' ),
-					'desc' => esc_html__( 'Customize the subtitle for your banner, this will display just below your title.', 'lsx-business-directory' ),
-					'id'   => 'archive_banner_subtitle',
-					'type' => 'text',
-				)
-			);
+			$fields = \lsx\business_directory\includes\get_banner_fields( 'archive' );
+			foreach ( $fields as $field ) {
+				$cmb->add_field( $field );
+			}
+		}
+	}
+
+	/**
+	 * Configure Business Directory custom fields.
+	 *
+	 * @return void
+	 */
+	public function register_single_fields() {
+		$cmb_images = new_cmb2_box(
+			array(
+				'id'           => 'lsx_bd_single_banner_images_metabox',
+				'title'        => esc_html__( 'Business Banner', 'lsx-business-directory' ),
+				'object_types' => array( 'business-directory' ),
+			)
+		);
+		$fields     = \lsx\business_directory\includes\get_banner_fields( 'lsx_bd' );
+		foreach ( $fields as $field ) {
+			$cmb_images->add_field( $field );
+		}
+	}
+
+	/**
+	 * Configure Business Directory custom fields.
+	 *
+	 * @return void
+	 */
+	public function register_taxonomy_fields() {
+		$cmb    = new_cmb2_box(
+			array(
+				'id'           => 'lsx_bd_term_banner_images_metabox',
+				'title'        => esc_html__( 'Banner', 'lsx-business-directory' ),
+				'object_types' => array( 'term' ),
+				'taxonomies'   => array( 'lsx-bd-industry', 'lsx-bd-region' ),
+			)
+		);
+		$fields = \lsx\business_directory\includes\get_banner_fields( 'lsx_bd' );
+		foreach ( $fields as $field ) {
+			$cmb->add_field( $field );
 		}
 	}
 }

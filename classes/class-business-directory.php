@@ -44,10 +44,9 @@ class Business_Directory {
 		add_action( 'init', array( $this, 'register_region_taxonomy' ) );
 
 		// Register the custom fields.
-		add_action( 'cmb2_init', array( $this, 'register_banner_custom_fields' ) );
-		add_action( 'cmb2_init', array( $this, 'register_address_custom_fields' ) );
-		add_action( 'cmb2_init', array( $this, 'register_branches_custom_fields' ) );
-		add_action( 'cmb2_init', array( $this, 'register_contact_custom_fields' ) );
+		add_action( 'cmb2_init', array( $this, 'register_address_custom_fields' ), 10 );
+		add_action( 'cmb2_init', array( $this, 'register_branches_custom_fields' ), 15 );
+		add_action( 'cmb2_init', array( $this, 'register_contact_custom_fields' ), 20 );
 	}
 
 	/**
@@ -187,61 +186,6 @@ class Business_Directory {
 	public function enable_post_type( $post_types = array() ) {
 		$post_types[] = $this->slug;
 		return $post_types;
-	}
-
-	/**
-	 * Configure Business Directory custom fields.
-	 *
-	 * @return void
-	 */
-	public function register_banner_custom_fields() {
-		$cmb_images = new_cmb2_box(
-			array(
-				'id'           => $this->prefix . '_banner_images_metabox',
-				'title'        => esc_html__( 'Business Banner', 'lsx-business-directory' ),
-				'object_types' => array( 'business-directory' ),
-			)
-		);
-		$cmb_images->add_field(
-			array(
-				'name' => esc_html__( 'Image', 'lsx-business-directory' ),
-				'desc' => esc_html__( 'Upload a banner image for to display above your business listing.', 'lsx-business-directory' ),
-				'id'   => $this->prefix . '_banner',
-				'type' => 'file',
-			)
-		);
-		$cmb_images->add_field(
-			array(
-				'name'    => esc_html__( 'Colour', 'lsx-business-directory' ),
-				'desc'    => esc_html__( 'Choose a background colour to display in case you don\'t have a banner image.', 'lsx-business-directory' ),
-				'id'      => $this->prefix . '_banner_colour',
-				'type'    => 'colorpicker',
-				'default' => '#333333',
-			)
-		);
-		$cmb_images->add_field(
-			array(
-				'name' => esc_html__( 'Title', 'lsx-business-directory' ),
-				'desc' => esc_html__( 'Customize the title for your banner.', 'lsx-business-directory' ),
-				'id'   => $this->prefix . '_banner_title',
-				'type' => 'text',
-			)
-		);
-		$cmb_images->add_field(
-			array(
-				'name' => esc_html__( 'Subtitle', 'lsx-business-directory' ),
-				'desc' => esc_html__( 'Customize the subtitle for your banner, this will display just below your title.', 'lsx-business-directory' ),
-				'id'   => $this->prefix . '_banner_subtitle',
-				'type' => 'text',
-			)
-		);
-		$cmb_images->add_field(
-			array(
-				'name' => esc_html__( 'Disable Banner', 'lsx-business-directory' ),
-				'id'   => $this->prefix . '_banner_disable',
-				'type' => 'checkbox',
-			)
-		);
 	}
 
 	/**
