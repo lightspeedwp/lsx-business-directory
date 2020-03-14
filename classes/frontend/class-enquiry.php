@@ -93,27 +93,35 @@ class Enquiry {
 							<?php
 							switch ( $this->form_type ) {
 								case 'wp':
-									// $this->form = \RGFormsModel::get_form( $this->form_id );
-									// $form       = \GFForms::get_form( $this->form_id, false, false, false, null, true );
-									// echo $form; // @codingStandardsIgnoreLine
-									echo 'WPFORM ENQUIRY FORM';
+									if ( class_exists( 'WPForms' ) ) {
+										echo do_shortcode( '[wpforms id="' . $this->form_id . '"]' );
+									} else {
+										echo 'Enable WPForms plugin.';
+									}
 									break;
 								case 'ninja':
-									// $this->form = \RGFormsModel::get_form( $this->form_id );
-									// $form       = \GFForms::get_form( $this->form_id, false, false, false, null, true );
-									// echo $form; // @codingStandardsIgnoreLine
-									echo "NINJA ENQUIRY FORM";
+									if ( class_exists( 'Ninja_Forms' ) ) {
+										echo do_shortcode( '[ninja_form id="' . $this->form_id . '"]' );
+									} else {
+										echo 'Enable Ninja Forms plugin.';
+									}
 									break;
 								case 'gravity':
-									$this->form = \RGFormsModel::get_form( $this->form_id );
-									$form       = \GFForms::get_form( $this->form_id, false, false, false, null, true );
-									echo $form; // @codingStandardsIgnoreLine
+									if ( class_exists( 'GFForms' ) ) {
+										// $this->form = \RGFormsModel::get_form( $this->form_id );
+										// $form       = \GFForms::get_form( $this->form_id, false, false, false, null, true );
+										// echo $form; // @codingStandardsIgnoreLine
+										echo do_shortcode( '[gravityform id="' . $this->form_id . '" title="false" description="false" ajax="true"]' );
+									} else {
+										echo 'Enable Gravity Forms plugin.';
+									}
 									break;
 								case 'caldera':
-									// $this->form = \RGFormsModel::get_form( $this->form_id );
-									// $form       = \GFForms::get_form( $this->form_id, false, false, false, null, true );
-									// echo $form; // @codingStandardsIgnoreLine
-									echo "CALDERA ENQUIRY FORM";
+									if ( class_exists( 'Caldera_Forms_Forms' ) ) {
+										echo do_shortcode( '[caldera_form id="' . $this->form_id . '"]' );
+									} else {
+										echo 'Enable Caldera Forms plugin.';
+									}
 									break;
 								default:
 									echo 'NO FORM';
