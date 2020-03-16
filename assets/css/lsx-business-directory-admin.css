@@ -1,3 +1,15 @@
 /** LSX Starter Plugin styles (admin). @package lsx-business-directory */
+/* CMB2 Settings Styles */
+.wp-admin .cmb-row { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; }
+
+.wp-admin div.cmb-th { text-align: left !important; padding: 20px 10px 20px 0 !important; width: 200px !important; font-size: 14px; line-height: 1.3 !important; font-weight: 600 !important; color: #23282d !important; text-shadow: none !important; vertical-align: baseline !important; }
+
+.wp-admin div.cmb-td { text-align: left !important; padding: 20px 10px 20px 0 !important; }
+
+.wp-admin div.cmb-td select { font-size: 14px; line-height: 2; color: #32373c; border-color: #7e8993; -webkit-box-shadow: none; box-shadow: none; border-radius: 3px; padding: 0 24px 0 8px; min-height: 30px; max-width: 25rem; -webkit-appearance: none; background-size: 16px 16px; cursor: pointer; vertical-align: middle; }
+
+.wp-admin p.cmb2-metabox-description { margin: 2px 0 5px; color: #666; font-style: italic; line-height: 1.5; margin-top: 4px; margin-bottom: 0; }
+
+.wp-admin input[type=radio] { margin-top: -4px; margin-right: 4px; float: none; }
 
 /*# sourceMappingURL=maps/lsx-business-directory-admin.css.map */

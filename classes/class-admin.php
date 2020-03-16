@@ -33,6 +33,7 @@ class Admin {
 		add_action( 'admin_enqueue_scripts', array( $this, 'assets' ) );
 
 		// Configure Settings page.
+		add_filter( 'cmb2_enqueue_css', array( $this, 'lsx_bd_disable_cmb2_styles' ), 1, 1 );
 		add_action( 'cmb2_admin_init', array( $this, 'configure_settings_fields' ) );
 		add_action( 'lsx_bd_settings_page_tab1', array( $this, 'configure_settings_single_fields' ), 1, 1 );
 		add_action( 'lsx_bd_settings_page_tab2', array( $this, 'configure_settings_archive_fields' ), 2, 1 );
@@ -82,6 +83,7 @@ class Admin {
 	 * @return void
 	 */
 	public function configure_settings_fields() {
+		// https://github.com/CMB2/CMB2-Snippet-Library/blob/master/options-and-settings-pages/options-pages-with-tabs-and-submenus.php
 		$tab1_args = array(
 			'id'           => 'lsx_bd_settings_tab1',
 			'title'        => esc_html__( 'Business Directory Settings', 'lsx-business-directory' ),
@@ -127,6 +129,18 @@ class Admin {
 		do_action( 'lsx_bd_settings_page_tab1', $tab1_options );
 		do_action( 'lsx_bd_settings_page_tab2', $tab2_options );
 		do_action( 'lsx_bd_settings_page_tab3', $tab3_options );
+	}
+
+	/**
+	 * Disable CMB2 styles on front end forms.
+	 *
+	 * @return bool $enabled Whether to enable (enqueue) styles.
+	 */
+	function lsx_bd_disable_cmb2_styles( $enabled ) {
+		if ( is_admin() ) {
+			$enabled = false;
+		}
+		return $enabled;
 	}
 
 	/**
