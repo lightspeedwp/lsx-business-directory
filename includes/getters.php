@@ -85,7 +85,13 @@ function get_placeholder_fields( $prefix = '' ) {
 		array(
 			'name' => esc_html__( 'Banner Placeholder', 'lsx-business-directory' ),
 			'desc' => esc_html__( 'This placeholder will display if no set image is found. Leaving it blank will default to a banner colour.', 'lsx-business-directory' ),
-			'id'   => '_banner',
+			'id'   => '_banner_placeholder',
+			'type' => 'file',
+		),
+		array(
+			'name' => esc_html__( 'Featured Placeholder', 'lsx-business-directory' ),
+			'desc' => esc_html__( 'This placeholder will display if no set featured image is set.', 'lsx-business-directory' ),
+			'id'   => '_thumbnail_placeholder',
 			'type' => 'file',
 		),
 	);

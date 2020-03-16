@@ -47,7 +47,7 @@ class Term_Thumbnail {
 	public function register_taxonomy_fields() {
 		$cmb    = new_cmb2_box(
 			array(
-				'id'           => 'lsx_bd_term_details_metabox',
+				'id'           => '_term_thumbnail',
 				'title'        => esc_html__( 'Featured Image', 'lsx-business-directory' ),
 				'object_types' => array( 'term' ),
 				'taxonomies'   => array( 'lsx-bd-industry', 'lsx-bd-region' ),
