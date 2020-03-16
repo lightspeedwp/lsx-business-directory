@@ -60,6 +60,9 @@ class Admin {
 		// Load plugin admin related functionality.
 		require_once LSX_BD_PATH . 'classes/admin/class-banners.php';
 		$this->banners = admin\Banners::get_instance();
+
+		require_once LSX_BD_PATH . 'classes/admin/class-term-thumbnail.php';
+		$this->banners = admin\Term_Thumbnail::get_instance();
 	}
 
 	/**

@@ -122,3 +122,25 @@ function lsx_business_listing_title( $echo = true ) {
 		return $title;
 	}
 }
+
+/**
+ * This gets the term thunbnail from the taxonomies.
+ *
+ * @param string $term_id
+ * @param string $size
+ * @param boolean $echo
+ * @return string
+ */
+function lsx_bd_get_term_thumbnail( $term_id = '', $size = 'lsx-thumbnail-wide', $echo = false ) {
+	$image = '';
+	if ( '' !== $term_id ) {
+		$image_src = get_term_meta( $term_id, 'lsx_bd_thumbnail_id', true );
+		if ( false !== $image_src && '' !== $image_src ) {
+			$image = wp_get_attachment_image( $image_src, $size );
+			if ( false !== $echo ) {
+				echo wp_kses_post( $image );
+			}
+		}
+	}
+	return $image;
+}
