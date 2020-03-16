@@ -55,7 +55,7 @@ class Single {
 				'description' => __( 'The settings for the single business directory view.', 'lsx-business-directory' ),
 			)
 		);
-
+		do_action( 'lsx_bd_settings_section_single', $cmb, 'top' );
 		$cmb->add_field(
 			array(
 				'name'             => esc_html__( 'Enquiry Form', 'lsx-business-directory' ),
@@ -65,5 +65,6 @@ class Single {
 				'options'          => lsx_bd_get_available_forms(),
 			)
 		);
+		do_action( 'lsx_bd_settings_section_single', $cmb, 'bottom' );
 	}
 }

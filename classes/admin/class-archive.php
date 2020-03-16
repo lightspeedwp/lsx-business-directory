@@ -6,14 +6,14 @@ namespace lsx\business_directory\classes\admin;
  *
  * @package lsx-business-directory
  */
-class Archives {
+class Archive {
 
 	/**
 	 * Holds class instance
 	 *
 	 * @since 1.0.0
 	 *
-	 * @var      object \lsx\business_directory\classes\admin\Archives()
+	 * @var      object \lsx\business_directory\classes\admin\Archive()
 	 */
 	protected static $instance = null;
 
@@ -29,7 +29,7 @@ class Archives {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return    object \lsx\business_directory\classes\admin\Archives()    A single instance of this class.
+	 * @return    object \lsx\business_directory\classes\admin\Archive()    A single instance of this class.
 	 */
 	public static function get_instance() {
 		// If the single instance hasn't been set, set it now.

@@ -27,9 +27,9 @@ class Admin {
 	/**
 	 * Holds the admin the post type singles.
 	 *
-	 * @var object \lsx\business_directory\classes\admin\Archives();
+	 * @var object \lsx\business_directory\classes\admin\Archive();
 	 */
-	public $archives;
+	public $archive;
 
 	/**
 	 * Holds the admin for the post type archives.
@@ -75,8 +75,8 @@ class Admin {
 		require_once LSX_BD_PATH . 'classes/admin/class-term-thumbnail.php';
 		$this->term_thumbnail = admin\Term_Thumbnail::get_instance();
 
-		require_once LSX_BD_PATH . 'classes/admin/class-archives.php';
-		$this->archives = admin\Archives::get_instance();
+		require_once LSX_BD_PATH . 'classes/admin/class-archive.php';
+		$this->archive = admin\Archive::get_instance();
 
 		require_once LSX_BD_PATH . 'classes/admin/class-single.php';
 		$this->single = admin\Single::get_instance();
