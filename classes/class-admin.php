@@ -80,6 +80,9 @@ class Admin {
 
 		require_once LSX_BD_PATH . 'classes/admin/class-single.php';
 		$this->single = admin\Single::get_instance();
+
+		require_once LSX_BD_PATH . 'classes/admin/class-placeholders.php';
+		$this->single = admin\Placeholders::get_instance();
 	}
 
 	/**

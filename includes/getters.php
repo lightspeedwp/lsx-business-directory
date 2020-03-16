@@ -21,10 +21,11 @@ function get_banner_fields( $prefix = '' ) {
 			'type' => 'checkbox',
 		),
 		array(
-			'name' => esc_html__( 'Image', 'lsx-business-directory' ),
-			'desc' => esc_html__( 'Upload a banner image for to display above your business listing.', 'lsx-business-directory' ),
-			'id'   => '_banner',
-			'type' => 'file',
+			'name'         => esc_html__( 'Image', 'lsx-business-directory' ),
+			'desc'         => esc_html__( 'Upload a banner image for to display above your business listing.', 'lsx-business-directory' ),
+			'id'           => '_banner',
+			'type'         => 'file',
+			'preview_size' => 'lsx-thumbnail-wide',
 		),
 		array(
 			'name'    => esc_html__( 'Colour', 'lsx-business-directory' ),
@@ -83,16 +84,18 @@ function get_featured_image_field( $prefix = '' ) {
 function get_placeholder_fields( $prefix = '' ) {
 	$fields = array(
 		array(
-			'name' => esc_html__( 'Banner Placeholder', 'lsx-business-directory' ),
-			'desc' => esc_html__( 'This placeholder will display if no set image is found. Leaving it blank will default to a banner colour.', 'lsx-business-directory' ),
-			'id'   => '_banner_placeholder',
-			'type' => 'file',
+			'name'         => esc_html__( 'Banner Placeholder', 'lsx-business-directory' ),
+			'desc'         => esc_html__( 'This placeholder will display if no set image is found. Leaving it blank will default to a banner colour.', 'lsx-business-directory' ),
+			'id'           => '_banner_placeholder',
+			'type'         => 'file',
+			'preview_size' => 'lsx-thumbnail-wide',
 		),
 		array(
-			'name' => esc_html__( 'Featured Placeholder', 'lsx-business-directory' ),
-			'desc' => esc_html__( 'This placeholder will display if no set featured image is set.', 'lsx-business-directory' ),
-			'id'   => '_thumbnail_placeholder',
-			'type' => 'file',
+			'name'         => esc_html__( 'Featured Placeholder', 'lsx-business-directory' ),
+			'desc'         => esc_html__( 'This placeholder will display if no set featured image is set.', 'lsx-business-directory' ),
+			'id'           => '_thumbnail_placeholder',
+			'type'         => 'file',
+			'preview_size' => 'lsx-thumbnail-wide',
 		),
 	);
 	if ( '' !== $prefix ) {

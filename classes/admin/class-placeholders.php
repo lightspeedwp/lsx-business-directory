@@ -21,7 +21,7 @@ class Placeholders {
 	 * Contructor
 	 */
 	public function __construct() {
-		add_action( 'lsx_bd_settings_section_archive', array( $this, 'register_placeholder_fields' ), 5, 2 );
+		add_action( 'lsx_bd_settings_section_single', array( $this, 'register_placeholder_fields' ), 5, 2 );
 	}
 
 	/**
@@ -47,8 +47,8 @@ class Placeholders {
 	 * @return void
 	 */
 	public function register_placeholder_fields( $cmb, $position ) {
-		if ( 'top' === $position ) {
-			$fields = \lsx\business_directory\includes\get_banner_fields( 'archive' );
+		if ( 'bottom' === $position ) {
+			$fields = \lsx\business_directory\includes\get_placeholder_fields( 'single' );
 			foreach ( $fields as $field ) {
 				$cmb->add_field( $field );
 			}
