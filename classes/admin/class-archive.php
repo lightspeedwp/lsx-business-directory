@@ -21,7 +21,7 @@ class Archive {
 	 * Contructor
 	 */
 	public function __construct() {
-		add_action( 'lsx_bd_settings_page', array( $this, 'configure_settings_archive_fields' ), 2, 1 );
+		add_action( 'lsx_bd_settings_page', array( $this, 'register_settings_archive' ), 2, 1 );
 	}
 
 	/**
@@ -44,7 +44,7 @@ class Archive {
 	 * @param object $cmb new_cmb2_box().
 	 * @return void
 	 */
-	public function configure_settings_archive_fields( $cmb ) {
+	public function register_settings_archive( $cmb ) {
 		$cmb->add_field(
 			array(
 				'id'          => 'settings_archive',

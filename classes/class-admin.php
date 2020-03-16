@@ -46,7 +46,7 @@ class Admin {
 		// Enqueue scripts for all admin pages.
 		add_action( 'admin_enqueue_scripts', array( $this, 'assets' ) );
 		// Configure Settings page.
-		add_action( 'cmb2_admin_init', array( $this, 'configure_settings_fields' ) );
+		add_action( 'cmb2_admin_init', array( $this, 'register_settings_page' ) );
 	}
 
 	/**
@@ -100,7 +100,7 @@ class Admin {
 	 *
 	 * @return void
 	 */
-	public function configure_settings_fields() {
+	public function register_settings_page() {
 		$this->cmb = new_cmb2_box(
 			array(
 				'id'           => 'lsx_bd_settings',

@@ -21,7 +21,7 @@ class Single {
 	 * Contructor
 	 */
 	public function __construct() {
-		add_action( 'lsx_bd_settings_page', array( $this, 'configure_settings_single_fields' ), 1, 1 );
+		add_action( 'lsx_bd_settings_page', array( $this, 'register_settings_single' ), 1, 1 );
 	}
 
 	/**
@@ -45,7 +45,7 @@ class Single {
 	 * @param object $cmb new_cmb2_box().
 	 * @return void
 	 */
-	public function configure_settings_single_fields( $cmb ) {
+	public function register_settings_single( $cmb ) {
 		$cmb->add_field(
 			array(
 				'id'          => 'settings_single',

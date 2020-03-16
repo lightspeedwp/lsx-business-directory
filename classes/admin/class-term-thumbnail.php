@@ -21,7 +21,7 @@ class Term_Thumbnail {
 	 * Contructor
 	 */
 	public function __construct() {
-		add_action( 'cmb2_init', array( $this, 'register_taxonomy_fields' ), 1 );
+		add_action( 'cmb2_init', array( $this, 'register_term_thumbnail' ), 1 );
 	}
 
 	/**
@@ -44,7 +44,7 @@ class Term_Thumbnail {
 	 *
 	 * @return void
 	 */
-	public function register_taxonomy_fields() {
+	public function register_term_thumbnail() {
 		$cmb    = new_cmb2_box(
 			array(
 				'id'           => '_term_thumbnail',
