@@ -38,7 +38,7 @@ function lsx_bd_get_thumbnail_wrapped( $id, $width, $height ) {
  * @param       $id int
  * @param       $tax String
  */
-function get_formatted_taxonomy_str( $id, $tax, $link = false ) {
+function lsx_bd_get_formatted_taxonomy_str( $id, $tax, $link = false ) {
 	$terms     = wp_get_post_terms( $id, $tax );
 	$terms_str = $link ? array() : '';
 
