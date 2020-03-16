@@ -25,6 +25,13 @@ class LSX_Search {
 	public $prefix = '';
 
 	/**
+	 * This hold the current layout chosen via the settings.
+	 *
+	 * @var string
+	 */
+	public $current_layout = '';
+
+	/**
 	 * Contructor
 	 */
 	public function __construct() {
@@ -33,6 +40,8 @@ class LSX_Search {
 		add_action( 'lsx_bd_settings_section_archive', array( $this, 'configure_settings_search_archive_fields' ), 15, 2 );
 
 		add_action( 'wp', array( $this, 'maybe_enqueue_search_filters' ), 5 );
+		add_filter( 'lsx_get_template_part', array( $this, 'search_content_part_filter' ), 10, 1 );
+		add_filter( 'lsx_post_wrapper_class', array( $this, 'lsx_post_wrapper_class' ), 10, 1 );
 	}
 
 	/**
@@ -258,10 +267,10 @@ class LSX_Search {
 			} else {
 				$this->prefix = 'archive';
 			}
-
 			$active_facets    = lsx_bd_get_option( $this->prefix . '_search_facets', array() );
 			$facets           = array();
 			$current_taxonomy = get_query_var( 'taxonomy' );
+			$this->layout     = lsx_bd_get_option( $this->prefix . '_grid_list' );
 			if ( ! empty( $active_facets ) ) {
 				foreach ( $active_facets as $index => $facet_name ) {
 					if ( ! ( 'lsx-bd-industry' === $current_taxonomy && 'industries' === $facet_name ) &&
@@ -283,5 +292,37 @@ class LSX_Search {
 			);
 		}
 		return $options;
+	}
+
+	/**
+	 * Adds the grid post class as needed.
+	 *
+	 * @param string $class
+	 * @return void
+	 */
+	public function lsx_post_wrapper_class( $class = '' ) {
+		if ( is_search() ) {
+			if ( false !== $this->layout && '' !== $this->layout && 'grid' === $this->layout ) {
+				$class .= 'lsx-grid';
+			}
+		}
+		return $class;
+	}
+
+	/**
+	 * Redirects the content part to the correct template part
+	 *
+	 * @param  string $template
+	 * @return string
+	 */
+	public function search_content_part_filter( $template = '' ) {
+		if ( is_search() ) {
+			if ( false !== $this->layout && '' !== $this->layout && 'grid' === $this->layout ) {
+				$template = LSX_BD_PATH . 'templates/single-col-business.php';
+			} else {
+				$template = LSX_BD_PATH . 'templates/single-row-business.php';
+			}
+		}
+		return $template;
 	}
 }
