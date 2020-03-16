@@ -29,7 +29,7 @@ class LSX_Search {
 	 */
 	public function __construct() {
 		// We do BD Search setting only at 'admin_init', because we need is_plugin_active() function present to check for LSX Search plugin.
-		add_action( 'lsx_bd_settings_page', array( $this, 'configure_settings_search_engine_fields' ), 15, 1 );
+		add_action( 'lsx_bd_settings_page_tab3', array( $this, 'configure_settings_search_engine_fields' ), 15, 1 );
 		add_action( 'lsx_bd_settings_section_archive', array( $this, 'configure_settings_search_archive_fields' ), 15, 2 );
 
 		add_action( 'wp', array( $this, 'maybe_enqueue_search_filters' ), 5 );

@@ -34,8 +34,8 @@ class Admin {
 
 		// Configure Settings page.
 		add_action( 'cmb2_admin_init', array( $this, 'configure_settings_fields' ) );
-		add_action( 'lsx_bd_settings_page', array( $this, 'configure_settings_single_fields' ), 1, 1 );
-		add_action( 'lsx_bd_settings_page', array( $this, 'configure_settings_archive_fields' ), 2, 1 );
+		add_action( 'lsx_bd_settings_page_tab1', array( $this, 'configure_settings_single_fields' ), 1, 1 );
+		add_action( 'lsx_bd_settings_page_tab2', array( $this, 'configure_settings_archive_fields' ), 2, 1 );
 	}
 
 	/**
@@ -82,18 +82,51 @@ class Admin {
 	 * @return void
 	 */
 	public function configure_settings_fields() {
-		$this->cmb = new_cmb2_box(
-			array(
-				'id'           => 'lsx_bd_settings',
-				'title'        => esc_html__( 'Business Directory Settings', 'lsx-business-directory' ),
-				'menu_title'   => esc_html__( 'Settings', 'lsx-business-directory' ), // Falls back to 'title' (above).
-				'object_types' => array( 'options-page' ),
-				'option_key'   => 'lsx-business-directory-settings', // The option key and admin menu page slug.
-				'parent_slug'  => 'edit.php?post_type=business-directory', // Make options page a submenu item of the Business Directory menu.
-				'capability'   => 'manage_options', // Cap required to view options-page.
-			)
+		$tab1_args = array(
+			'id'           => 'lsx_bd_settings_tab1',
+			'title'        => esc_html__( 'Business Directory Settings', 'lsx-business-directory' ),
+			'menu_title'   => esc_html__( 'Single Settings', 'lsx-business-directory' ), // Falls back to 'title' (above).
+			'object_types' => array( 'options-page' ),
+			'option_key'   => 'lsx-business-directory-settings-tab1', // The option key and admin menu page slug.
+			'parent_slug'  => 'edit.php?post_type=business-directory', // Make options page a submenu item of the Business Directory menu.
+			'capability'   => 'manage_options', // Cap required to view options-page.
+			'tab_group'    => 'lsx_bd_main_options',
+			'tab_title'    => 'Single',
 		);
-		do_action( 'lsx_bd_settings_page', $this->cmb );
+
+		$tab1_options = new_cmb2_box( $tab1_args );
+
+		$tab2_args = array(
+			'id'           => 'lsx_bd_settings_tab2',
+			'title'        => esc_html__( 'Business Directory Settings', 'lsx-business-directory' ),
+			'menu_title'   => esc_html__( 'Archive Settings', 'lsx-business-directory' ), // Falls back to 'title' (above).
+			'object_types' => array( 'options-page' ),
+			'option_key'   => 'lsx-business-directory-settings-tab2', // The option key and admin menu page slug.
+			'parent_slug'  => 'edit.php?post_type=business-directory', // Make options page a submenu item of the Business Directory menu.
+			'capability'   => 'manage_options', // Cap required to view options-page.
+			'tab_group'    => 'lsx_bd_main_options',
+			'tab_title'    => 'Archive',
+		);
+
+		$tab2_options = new_cmb2_box( $tab2_args );
+
+		$tab3_args = array(
+			'id'           => 'lsx_bd_settings_tab3',
+			'title'        => esc_html__( 'Business Directory Settings', 'lsx-business-directory' ),
+			'menu_title'   => esc_html__( 'Search Settings', 'lsx-business-directory' ), // Falls back to 'title' (above).
+			'object_types' => array( 'options-page' ),
+			'option_key'   => 'lsx-business-directory-settings-tab3', // The option key and admin menu page slug.
+			'parent_slug'  => 'edit.php?post_type=business-directory', // Make options page a submenu item of the Business Directory menu.
+			'capability'   => 'manage_options', // Cap required to view options-page.
+			'tab_group'    => 'lsx_bd_main_options',
+			'tab_title'    => 'Search',
+		);
+
+		$tab3_options = new_cmb2_box( $tab3_args );
+
+		do_action( 'lsx_bd_settings_page_tab1', $tab1_options );
+		do_action( 'lsx_bd_settings_page_tab2', $tab2_options );
+		do_action( 'lsx_bd_settings_page_tab3', $tab3_options );
 	}
 
 	/**
@@ -140,7 +173,7 @@ class Admin {
 				'description' => __( 'Business Directory post type archive settings.', 'lsx-business-directory' ),
 			)
 		);
-		do_action( 'lsx_bd_settings_section_archive', $this->cmb, 'top' );
+		do_action( 'lsx_bd_settings_section_archive', $cmb, 'top' );
 		$cmb->add_field(
 			array(
 				'name'             => esc_html__( 'Layout option', 'lsx-business-directory' ),
@@ -153,6 +186,6 @@ class Admin {
 				),
 			)
 		);
-		do_action( 'lsx_bd_settings_section_archive', $this->cmb, 'bottom' );
+		do_action( 'lsx_bd_settings_section_archive', $cmb, 'bottom' );
 	}
 }
