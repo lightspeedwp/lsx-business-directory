@@ -32,6 +32,13 @@ class Frontend {
 	public $banners;
 
 	/**
+	 * Enquiry form.
+	 *
+	 * @var object \lsx\business_directory\classes\frontend\Enquiry();
+	 */
+	public $enquiry;
+
+	/**
 	 * Contructor
 	 */
 	public function __construct() {
@@ -65,6 +72,9 @@ class Frontend {
 
 		require_once LSX_BD_PATH . 'classes/frontend/class-banners.php';
 		$this->banners = frontend\Banners::get_instance();
+
+		require_once LSX_BD_PATH . 'classes/frontend/class-enquiry.php';
+		$this->enquiry = frontend\Enquiry::get_instance();
 	}
 
 	/**

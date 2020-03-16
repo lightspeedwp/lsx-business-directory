@@ -277,12 +277,14 @@ function lsx_bd_get_country_options() {
  * Value = Form Name
  */
 function lsx_bd_get_available_forms() {
-	$forms   = lsx_bd_get_activated_forms();
-	$options = array();
+	$forms_data = lsx_bd_get_activated_forms();
+	$options    = array();
 
-	if ( ! empty( $forms ) ) {
-		foreach ( $forms as $form_id => $form_data ) {
-			$options[ $form_id ] = strval( $form_data );
+	if ( ! empty( $forms_data ) ) {
+		$type = $forms_data['form_type'];
+		$data = $forms_data['form_data'];
+		foreach ( $data as $form_id => $form_data ) {
+			$options[ "{$type}_{$form_id}" ] = strval( $form_data );
 		}
 	} else {
 		$options['none'] = esc_html__( 'You have no forms available', 'lsx-business-directory' );
@@ -298,18 +300,26 @@ function lsx_bd_get_available_forms() {
  */
 function lsx_bd_get_activated_forms() {
 	$all_forms = false;
+	$form_type = null;
 
 	if ( class_exists( 'WPForms' ) ) {
 		$all_forms = lsx_bd_get_wpforms();
+		$form_type = 'wp';
 	} elseif ( class_exists( 'Ninja_Forms' ) ) {
 		$all_forms = lsx_bd_get_ninja_forms();
+		$form_type = 'ninja';
 	} elseif ( class_exists( 'GFForms' ) ) {
 		$all_forms = lsx_bd_get_gravity_forms();
+		$form_type = 'gravity';
 	} elseif ( class_exists( 'Caldera_Forms_Forms' ) ) {
 		$all_forms = lsx_bd_get_caldera_forms();
+		$form_type = 'caldera';
 	}
 
-	return $all_forms;
+	return array(
+		'form_data' => $all_forms,
+		'form_type' => $form_type,
+	);
 }
 
 /**
@@ -410,6 +420,7 @@ function lsx_bd_get_caldera_forms() {
  */
 function lsx_bd_get_option( $key = '' ) {
 	$value = false;
+
 	if ( '' !== $key && function_exists( 'cmb2_get_option' ) ) {
 		$value = cmb2_get_option( 'lsx-business-directory-settings', $key, false );
 	}
