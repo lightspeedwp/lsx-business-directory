@@ -73,7 +73,7 @@ get_header(); ?>
 					<div class="row">
 						<div class="col-md-4">
 							<div class="entry-image">
-								<img src="<?php echo esc_url( get_thumbnail_wrapped( get_the_ID(), 300, 200 ) ); ?>">
+								<img src="<?php echo esc_url( lsx_bd_get_thumbnail_wrapped( get_the_ID(), 300, 200 ) ); ?>">
 							</div>
 						</div>
 

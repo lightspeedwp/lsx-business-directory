@@ -13,7 +13,7 @@ class Placeholders {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @var      object \lsx\business_directory\classes\admin\Term_Thumbnail()
+	 * @var      object \lsx\business_directory\classes\admin\Placeholders()
 	 */
 	protected static $instance = null;
 
@@ -29,7 +29,7 @@ class Placeholders {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return    object \lsx\business_directory\classes\admin\Term_Thumbnail()    A single instance of this class.
+	 * @return    object \lsx\business_directory\classes\admin\Placeholders()    A single instance of this class.
 	 */
 	public static function get_instance() {
 		// If the single instance hasn't been set, set it now.

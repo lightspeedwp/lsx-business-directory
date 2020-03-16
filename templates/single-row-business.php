@@ -1,6 +1,6 @@
 <?php
 	$prefix        = 'lsx_bd';
-	$thumbnail     = get_thumbnail_wrapped( get_the_ID(), 265, 150 );
+	$thumbnail     = lsx_bd_get_thumbnail_wrapped( get_the_ID(), 265, 150 );
 	$title         = get_the_title();
 	$industries    = get_formatted_taxonomy_str( get_the_ID(), 'lsx-bd-industry', true );
 	$region        = get_formatted_taxonomy_str( get_the_ID(), 'lsx-bd-region' );

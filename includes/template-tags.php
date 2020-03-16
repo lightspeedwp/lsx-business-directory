@@ -17,7 +17,7 @@
  * @param       $width int
  * @param       $height int
  */
-function get_thumbnail_wrapped( $id, $width, $height ) {
+function lsx_bd_get_thumbnail_wrapped( $id, $width, $height ) {
 	$image_src = 'https://placehold.it/' . (string) $width . 'x' . (string) $height;
 
 	if ( has_post_thumbnail( $id ) ) {
