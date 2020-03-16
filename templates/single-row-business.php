@@ -2,8 +2,8 @@
 	$prefix        = 'lsx_bd';
 	$thumbnail     = get_thumbnail_wrapped( get_the_ID(), 265, 150 );
 	$title         = get_the_title();
-	$industries    = get_formatted_taxonomy_str( get_the_ID(), 'lsx-bd-industry', true );
-	$region        = get_formatted_taxonomy_str( get_the_ID(), 'lsx-bd-region' );
+	$industries    = get_formatted_taxonomy_str( get_the_ID(), 'industry', true );
+	$region        = get_formatted_taxonomy_str( get_the_ID(), 'region' );
 	$primary_phone = get_post_meta( get_the_ID(), $prefix . '_primary_phone', true );
 	$primary_email = get_post_meta( get_the_ID(), $prefix . '_primary_email', true );
 ?>
@@ -33,7 +33,7 @@
 											?>,
 										<?php endif;
 										?>
-											<a href="/lsx-bd-industry/<?php echo esc_attr( $industry['slug'] ); ?>"><?php echo esc_attr( $industry['name'] ); ?></a>
+											<a href="/industry/<?php echo esc_attr( $industry['slug'] ); ?>"><?php echo esc_attr( $industry['name'] ); ?></a>
 											<?php
 											$count++;
 									endforeach;

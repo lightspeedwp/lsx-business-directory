@@ -104,11 +104,11 @@ class Business_Directory {
 			'menu_icon'           => 'dashicons-list-view',
 			'query_var'           => true,
 			'rewrite'             => array(
-				'slug' => 'business',
+				'slug' => 'listing',
 			),
 			'exclude_from_search' => false,
 			'capability_type'     => 'page',
-			'has_archive'         => 'business-directory',
+			'has_archive'         => 'listings',
 			'hierarchical'        => false,
 			'menu_position'       => null,
 			'supports'            => $supports,
@@ -144,7 +144,7 @@ class Business_Directory {
 			'query_var'           => true,
 			'rewrite'             => array( 'industry' ),
 		);
-		register_taxonomy( 'lsx-bd-industry', array( $this->slug ), $details );
+		register_taxonomy( 'industry', array( $this->slug ), $details );
 	}
 
 	/**
@@ -174,7 +174,7 @@ class Business_Directory {
 			'query_var'           => true,
 			'rewrite'             => array( 'region' ),
 		);
-		register_taxonomy( 'lsx-bd-region', array( $this->slug ), $details );
+		register_taxonomy( 'region', array( $this->slug ), $details );
 	}
 
 	/**
