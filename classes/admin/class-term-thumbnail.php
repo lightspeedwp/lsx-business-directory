@@ -21,7 +21,7 @@ class Term_Thumbnail {
 	 * Contructor
 	 */
 	public function __construct() {
-		add_action( 'cmb2_init', array( $this, 'register_taxonomy_fields' ), 1 );
+		add_action( 'cmb2_init', array( $this, 'register_term_thumbnail' ), 1 );
 	}
 
 	/**
@@ -44,10 +44,10 @@ class Term_Thumbnail {
 	 *
 	 * @return void
 	 */
-	public function register_taxonomy_fields() {
+	public function register_term_thumbnail() {
 		$cmb    = new_cmb2_box(
 			array(
-				'id'           => 'lsx_bd_term_details_metabox',
+				'id'           => '_term_thumbnail',
 				'title'        => esc_html__( 'Featured Image', 'lsx-business-directory' ),
 				'object_types' => array( 'term' ),
 				'taxonomies'   => array( 'lsx-bd-industry', 'lsx-bd-region' ),
