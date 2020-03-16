@@ -83,11 +83,11 @@ get_header(); ?>
 
 								<div class="entry-meta">
 									<div class="category">
-										<span><strong><?php esc_html_e( 'Category', 'lsx-business-directory' ); ?>: </strong><?php echo esc_attr( get_formatted_taxonomy_str( get_the_ID(), 'industry' ) ); ?></span>
+										<span><strong><?php esc_html_e( 'Industry', 'lsx-business-directory' ); ?>: </strong><?php echo esc_attr( get_formatted_taxonomy_str( get_the_ID(), 'industry' ) ); ?></span>
 									</div>
 
 									<div class="region">
-										<span><strong><?php esc_html_e( 'Region', 'lsx-business-directory' ); ?>: </strong><?php echo esc_attr( get_formatted_taxonomy_str( get_the_ID(), 'region' ) ); ?></span>
+										<span><strong><?php esc_html_e( 'Location', 'lsx-business-directory' ); ?>: </strong><?php echo esc_attr( get_formatted_taxonomy_str( get_the_ID(), 'location' ) ); ?></span>
 									</div>
 
 									<?php

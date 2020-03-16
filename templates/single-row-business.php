@@ -3,7 +3,7 @@
 	$thumbnail     = get_thumbnail_wrapped( get_the_ID(), 265, 150 );
 	$title         = get_the_title();
 	$industries    = get_formatted_taxonomy_str( get_the_ID(), 'industry', true );
-	$region        = get_formatted_taxonomy_str( get_the_ID(), 'region' );
+	$region        = get_formatted_taxonomy_str( get_the_ID(), 'location' );
 	$primary_phone = get_post_meta( get_the_ID(), $prefix . '_primary_phone', true );
 	$primary_email = get_post_meta( get_the_ID(), $prefix . '_primary_email', true );
 ?>
@@ -42,7 +42,7 @@
 							</div>
 
 							<div class="region col-md-6">
-								<span><i class="fas fa-globe-africa"></i><strong><?php esc_html_e( 'Region', 'lsx-business-directory' ); ?>: </strong><?php echo esc_attr( $region ); ?></span>
+								<span><i class="fas fa-globe-africa"></i><strong><?php esc_html_e( 'Location', 'lsx-business-directory' ); ?>: </strong><?php echo esc_attr( $region ); ?></span>
 							</div>
 						</div>
 

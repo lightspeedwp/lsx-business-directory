@@ -84,7 +84,7 @@ class Frontend {
 	 * @return array
 	 */
 	public function body_class( $classes = array() ) {
-		if ( is_singular( 'business-directory' ) || is_post_type_archive( 'business-directory' ) || is_tax( array( 'industry', 'region' ) ) ) {
+		if ( is_singular( 'business-directory' ) || is_post_type_archive( 'business-directory' ) || is_tax( array( 'industry', 'location' ) ) ) {
 			$classes[] = 'lsx-business-directory-page';
 		}
 		return $classes;
@@ -132,7 +132,7 @@ class Frontend {
 		if ( is_post_type_archive( 'business-directory' ) ) {
 			$title = __( 'Business Directory', 'lsx-health-plan' );
 		}
-		if ( is_tax( array( 'industry', 'region' ) ) ) {
+		if ( is_tax( array( 'industry', 'location' ) ) ) {
 			$queried_object = get_queried_object();
 			if ( isset( $queried_object->name ) ) {
 				$title = $queried_object->name;

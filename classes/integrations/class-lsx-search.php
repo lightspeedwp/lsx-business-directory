@@ -220,7 +220,7 @@ class LSX_Search {
 	 * @return boolean
 	 */
 	public function lsx_search_enabled( $enabled = false ) {
-		if ( is_post_type_archive( 'business-directory' ) || is_tax( array( 'industry', 'region' ) ) ) {
+		if ( is_post_type_archive( 'business-directory' ) || is_tax( array( 'industry', 'location' ) ) ) {
 			$is_enabled = lsx_bd_get_option( 'archive_search_enable', false );
 			if ( 'on' === $is_enabled ) {
 				$enabled = true;
@@ -236,7 +236,7 @@ class LSX_Search {
 	 * @return string
 	 */
 	public function lsx_search_prefix( $prefix = '' ) {
-		if ( is_post_type_archive( 'business-directory' ) || is_tax( array( 'industry', 'region' ) ) ) {
+		if ( is_post_type_archive( 'business-directory' ) || is_tax( array( 'industry', 'location' ) ) ) {
 			$prefix = 'archive';
 		}
 		return $prefix;
@@ -249,7 +249,7 @@ class LSX_Search {
 	 * @return array
 	 */
 	public function lsx_search_options( $options = array() ) {
-		if ( is_post_type_archive( 'business-directory' ) || is_tax( array( 'industry', 'region' ) ) ) {
+		if ( is_post_type_archive( 'business-directory' ) || is_tax( array( 'industry', 'location' ) ) ) {
 			$this->prefix     = 'archive';
 			$active_facets    = lsx_bd_get_option( $this->prefix . '_search_facets', array() );
 			$facets           = array();
@@ -257,7 +257,7 @@ class LSX_Search {
 			if ( ! empty( $active_facets ) ) {
 				foreach ( $active_facets as $index => $facet_name ) {
 					if ( ! ( 'industry' === $current_taxonomy && 'industries' === $facet_name ) &&
-						 ! ( 'region' === $current_taxonomy && 'regions' === $facet_name ) ) {
+						 ! ( 'location' === $current_taxonomy && 'regions' === $facet_name ) ) {
 						$facets[ $facet_name ] = 'on';
 					}
 				}
