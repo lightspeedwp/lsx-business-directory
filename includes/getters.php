@@ -52,3 +52,24 @@ function get_banner_fields( $prefix = '' ) {
 	return $fields;
 }
 
+
+/**
+ * Returns the banner fields for use in registering the custom fields, theme settings etc.
+ *
+ * @param mixed $prefix Add a prefix to the fields IDS
+ * @return array
+ */
+function get_featured_image_field( $prefix = '' ) {
+	$fields = array(
+		array(
+			'name' => esc_html__( 'Featured Image', 'lsx-business-directory' ),
+			'desc' => esc_html__( 'Upload an image.', 'lsx-business-directory' ),
+			'id'   => '_thumbnail',
+			'type' => 'file',
+		),
+	);
+	if ( '' !== $prefix ) {
+		$fields = apply_field_id_prefixes( $fields, $prefix );
+	}
+	return $fields;
+}
