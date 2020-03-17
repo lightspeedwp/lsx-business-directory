@@ -6,6 +6,7 @@
 
 @import 'include-media';
 @import 'banners';
+@import 'related_listings';
 
 @CHARSET "UTF-8";
 
@@ -395,7 +396,9 @@
 		-ms-flex-wrap: wrap;
 		flex-wrap: wrap;
 	}
-
+}
+// Business Column Layout.
+.archive {
 	.business.col-layout {
 		position: relative;
 
