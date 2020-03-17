@@ -66,6 +66,8 @@ body.lsx-business-directory-page.archive:not(.using-gutenberg):not(.banner-disab
 
 .single .business-directory .business-header .business-content-left > .entry-image > img { width: 100%; }
 
+@media screen and (max-width: 1090px) { .single .business-directory .business-header .business-content-left { margin-bottom: 20px; } }
+
 .single .business-directory .business-header .business-content-right { padding-left: 28px; }
 
 .single .business-directory .business-header .entry-header-content h1.entry-title { color: #4D4D4D; font-family: Lora; font-size: 32px; line-height: 39px; }

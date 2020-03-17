@@ -156,11 +156,16 @@
 				background-color: #FFFFFF;
 				box-shadow: 1px 2px 6px 0 rgba(155,155,155,0.45);
 
-
 				>.entry-image {
 					>img {
 						width: 100%;
 					}
+				}
+			}
+
+			@media screen and (max-width: 1090px) {
+				.business-content-left {
+					margin-bottom: 20px;
 				}
 			}
 
@@ -193,6 +198,7 @@
 						margin-top: 15px;
 					}
 				}
+
 				.business-description {
 					padding-top: 8px;
 				}
@@ -224,23 +230,6 @@
 				}
 			}
 		}
-
-		// .business-content-left,
-		// .business-content-right {
-		// 	margin-bottom: 30px;
-		// }
-
-		// .business-content-left {
-		// 	@media (min-width: 992px) {
-		// 		float: left;
-		// 	}
-		// }
-
-		// .business-content-right {
-		// 	@media (min-width: 992px) {
-		// 		float: right;
-		// 	}
-		// }
 
 		.contact-info {
 			padding-top: 65px;

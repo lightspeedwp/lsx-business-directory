@@ -76,12 +76,12 @@ get_header(); ?>
 
 				<div class="entry-header business-header">
 					<div class="row">
-						<div class="col-md-4 business-content-left">
+						<div class="col-xs-12 col-sm-12 col-md-4 business-content-left">
 							<div class="entry-image">
 								<img src="<?php echo esc_url( get_thumbnail_wrapped( get_the_ID(), 300, 200 ) ); ?>">
 							</div>
 
-							<div class="col-md-4">
+							<div class="col-xs-12 col-sm-12 col-md-4">
 								<div class="contact-info business-content-section">
 									<div class="row">
 										<?php if ( $business_primary_phone ) : ?>
