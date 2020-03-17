@@ -23,7 +23,7 @@ get_header(); ?>
 			$layout     = lsx_bd_get_option( 'archive_grid_list' );
 			$template   = LSX_BD_PATH . '/templates/single-row-business.php';
 			$grid_class = '';
-// $layout = 'grid'; // REMOVE
+
 			if ( false !== $layout && '' !== $layout && 'grid' === $layout ) {
 				$template   = LSX_BD_PATH . '/templates/single-col-business.php';
 				$grid_class = 'lsx-grid';

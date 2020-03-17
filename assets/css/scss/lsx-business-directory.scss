@@ -317,7 +317,6 @@
 		background: transparent;
 		padding:0px;
 		margin-top: 0;
-
 		.lsx-search-title {
 			display: none;
 		}
@@ -326,7 +325,11 @@
 		padding-left: 0px;
 		padding-right: 0px;
 	}
-
+	.facetwp-sidebar.widget-area {
+		.facetwp-facet {
+			margin-top: 0px !important;
+		}
+	}
 	article {
 		margin-bottom: 25px;
 	}
@@ -356,6 +359,10 @@
 				h4.business-title {
 					margin-top: 14px;
 					margin-bottom: 9px;
+				}
+				.industry, .location, .telephone, .email {
+					padding-left: 0px;
+					padding-right: 0px;
 				}
 				.business-meta {
 					>div {

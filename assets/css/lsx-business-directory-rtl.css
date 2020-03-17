@@ -122,6 +122,8 @@ body.lsx-business-directory-page.archive:not(.using-gutenberg):not(.banner-disab
 
 .archive .facetwp-item-wrap.facetwp-filters-wrap { padding-right: 0px; padding-left: 0px; }
 
+.archive .facetwp-sidebar.widget-area .facetwp-facet { margin-top: 0px !important; }
+
 .archive article { margin-bottom: 25px; }
 
 .archive .fas { margin-left: 5px; }
@@ -135,6 +137,8 @@ body.lsx-business-directory-page.archive:not(.using-gutenberg):not(.banner-disab
 .archive .business.row-layout .business-content { padding-right: 20px; }
 
 .archive .business.row-layout .business-content .business-details h4.business-title { margin-top: 14px; margin-bottom: 9px; }
+
+.archive .business.row-layout .business-content .business-details .industry, .archive .business.row-layout .business-content .business-details .location, .archive .business.row-layout .business-content .business-details .telephone, .archive .business.row-layout .business-content .business-details .email { padding-right: 0px; padding-left: 0px; }
 
 .archive .business.row-layout .business-content .business-details .business-meta > div { margin-bottom: 10px; }
 
