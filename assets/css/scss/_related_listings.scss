@@ -1,25 +1,50 @@
 /* Slider */
-.slick-slider { position: relative; display: block; box-sizing: border-box; -webkit-touch-callout: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; -ms-touch-action: pan-y; touch-action: pan-y; -webkit-tap-highlight-color: transparent; }
-.slick-list { position: relative; overflow: hidden; display: block; margin: 0; padding: 0; }
-.slick-list:focus { outline: none; }
-.slick-list.dragging { cursor: pointer; cursor: hand; }
-.slick-slider .slick-track, .slick-slider .slick-list { -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
-.slick-track { position: relative; left: 0; top: 0; display: block; }
-.slick-track:before, .slick-track:after { content: ""; display: table; }
-.slick-track:after { clear: both; }
-.slick-loading .slick-track { visibility: hidden; }
-
-[dir="rtl"] .slick-slide { float: right; }
-
-
-
-.slick-loading .slick-slide { visibility: hidden; }
-.slick-vertical .slick-slide { display: block; height: auto; border: 1px solid transparent; }
-.slick-arrow.slick-hidden { display: none; }
-
-
-// Slider Inner.
 .lsx-business-directory-slider {
+	position: relative;
+	display: block;
+	box-sizing: border-box;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-ms-touch-action:pan-y;
+	touch-action: pan-y;
+	-webkit-tap-highlight-color: transparent;
+
+	.slick-track {
+		position: relative;
+		left: 0;
+		top: 0;
+		display: block;
+
+		&:before,
+		&:after {
+			content: "";
+			display: table;
+		}
+
+		&:after { clear: both; }
+	}
+
+	.slick-list {
+		position:
+		relative; overflow:hidden;
+		display: block;
+		margin: 0;
+		padding: 0;
+
+		&.dragging { cursor: pointer; cursor: hand; }
+
+		&:focus { outline: none; }
+	}
+
+	.slick-track,
+	.slick-list {
+		-webkit-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
+	}
+
 	.slick-slide {
 		float: left;
 		height: 100%;
@@ -38,11 +63,28 @@
 				display: none;
 			}
 		}
+
+		[dir="rtl"] & { float: right; }
 	}
 
 	&.slick-initialized {
 		.slick-slide {
 			display: block;
+		}
+	}
+	&.slick-loading {
+		.slick-slide {
+			visibility: hidden;
+		}
+		.slick-track {
+			visibility: hidden;
+		}
+	}
+	&.slick-vertical {
+		.slick-slide {
+			display: block;
+			height: auto;
+			border: 1px solid transparent;
 		}
 	}
 
@@ -132,6 +174,7 @@
 	.slick-arrow {
 		&.slick-prev { left: -4rem; }
 		&.slick-next { right: -4rem; }
+		&.slick-hidden { display: none; }
 	}
 
 	@include media('>=tablet') {
@@ -155,3 +198,16 @@
 	top: 32px;
 }
 .slick-lightbox-slick-caption { display: inline-block; }
+
+.lsx-business-directory-shortcode {
+	.lsx-business-directory-slider {
+		article.business.col-layout {
+			.business-thumbnail {
+				min-height: 168px;
+			}
+			.business-content {
+				padding:19px 15px 20px 15px;
+			}
+		}
+	}
+}

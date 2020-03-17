@@ -18,31 +18,21 @@ body.lsx-business-directory-page.archive:not(.using-gutenberg):not(.banner-disab
   body.lsx-business-directory-page.archive.banner-disabled .facetwp-sidebar.widget-area + .content-area, body.lsx-business-directory-page.search.banner-disabled .facetwp-sidebar.widget-area + .content-area { margin-top: 8.4rem; } }
 
 /* Slider */
-.slick-slider { position: relative; display: block; -webkit-box-sizing: border-box; box-sizing: border-box; -webkit-touch-callout: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; -ms-touch-action: pan-y; touch-action: pan-y; -webkit-tap-highlight-color: transparent; }
+.lsx-business-directory-slider { position: relative; display: block; -webkit-box-sizing: border-box; box-sizing: border-box; -webkit-touch-callout: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; -ms-touch-action: pan-y; touch-action: pan-y; -webkit-tap-highlight-color: transparent; }
 
-.slick-list { position: relative; overflow: hidden; display: block; margin: 0; padding: 0; }
+.lsx-business-directory-slider .slick-track { position: relative; left: 0; top: 0; display: block; }
 
-.slick-list:focus { outline: none; }
+.lsx-business-directory-slider .slick-track:before, .lsx-business-directory-slider .slick-track:after { content: ""; display: table; }
 
-.slick-list.dragging { cursor: pointer; cursor: hand; }
+.lsx-business-directory-slider .slick-track:after { clear: both; }
 
-.slick-slider .slick-track, .slick-slider .slick-list { -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
+.lsx-business-directory-slider .slick-list { position: relative; overflow: hidden; display: block; margin: 0; padding: 0; }
 
-.slick-track { position: relative; left: 0; top: 0; display: block; }
+.lsx-business-directory-slider .slick-list.dragging { cursor: pointer; cursor: hand; }
 
-.slick-track:before, .slick-track:after { content: ""; display: table; }
+.lsx-business-directory-slider .slick-list:focus { outline: none; }
 
-.slick-track:after { clear: both; }
-
-.slick-loading .slick-track { visibility: hidden; }
-
-[dir="rtl"] .slick-slide { float: right; }
-
-.slick-loading .slick-slide { visibility: hidden; }
-
-.slick-vertical .slick-slide { display: block; height: auto; border: 1px solid transparent; }
-
-.slick-arrow.slick-hidden { display: none; }
+.lsx-business-directory-slider .slick-track, .lsx-business-directory-slider .slick-list { -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
 
 .lsx-business-directory-slider .slick-slide { float: left; height: 100%; min-height: 1px; display: none; padding: 0 15px; margin-top: 4.25rem; }
 
@@ -50,7 +40,15 @@ body.lsx-business-directory-page.archive:not(.using-gutenberg):not(.banner-disab
 
 .lsx-business-directory-slider .slick-slide.slick-loading img, .lsx-business-directory-slider .slick-slide.dragging img { display: none; }
 
+[dir="rtl"] .lsx-business-directory-slider .slick-slide { float: right; }
+
 .lsx-business-directory-slider.slick-initialized .slick-slide { display: block; }
+
+.lsx-business-directory-slider.slick-loading .slick-slide { visibility: hidden; }
+
+.lsx-business-directory-slider.slick-loading .slick-track { visibility: hidden; }
+
+.lsx-business-directory-slider.slick-vertical .slick-slide { display: block; height: auto; border: 1px solid transparent; }
 
 .lsx-business-directory-slider .slick-arrow { opacity: .75; }
 
@@ -80,6 +78,8 @@ body.lsx-business-directory-page.archive:not(.using-gutenberg):not(.banner-disab
 
 .lsx-business-directory-slider .slick-arrow.slick-next { right: -4rem; }
 
+.lsx-business-directory-slider .slick-arrow.slick-hidden { display: none; }
+
 @media (min-width: 992px) { .lsx-business-directory-slider { margin: 0 auto; width: 100%; }
   .lsx-business-directory-slider.slick-has-arrows { width: calc(100% - 8rem); } }
 
@@ -91,6 +91,8 @@ body.lsx-business-directory-page.archive:not(.using-gutenberg):not(.banner-disab
 .slick-lightbox-close { right: 32px; top: 32px; }
 
 .slick-lightbox-slick-caption { display: inline-block; }
+
+.lsx-business-directory-shortcode .lsx-business-directory-slider article.business.col-layout .business-content { padding: 19px 15px 20px 15px; }
 
 @CHARSET "UTF-8";
 /* General */
