@@ -36,7 +36,7 @@ get_header(); ?>
 			$business_secondary_phone    = get_post_meta( get_the_ID(), $prefix . '_secondary_phone', true );
 			$business_fax                = get_post_meta( get_the_ID(), $prefix . '_fax', true );
 			$business_website            = get_post_meta( get_the_ID(), $prefix . '_website', true );
-			$industries    				 = get_formatted_taxonomy_str( get_the_ID(), 'industry', true );
+			$industries    				 = lsx_bd_get_formatted_taxonomy_str( get_the_ID(), 'industry', true );
 
 			$business_contact_name		 = 'John Doe';
 			$business_skype		         = 'Skype_User';
@@ -79,7 +79,7 @@ get_header(); ?>
 					<div class="row">
 						<div class="col-xs-12 col-sm-12 col-md-4 business-content-left">
 							<div class="entry-image">
-								<img src="<?php echo esc_url( get_thumbnail_wrapped( get_the_ID(), 300, 200 ) ); ?>">
+								<img src="<?php echo esc_url( lsx_bd_get_thumbnail_wrapped( get_the_ID(), 'lsx-thumbnail-wide' ) ); ?>">
 							</div>
 
 							<div class="col-xs-12 col-sm-12 col-md-4">
@@ -175,7 +175,7 @@ get_header(); ?>
 									</div>
 
 									<div class="location col-xs-6 col-sm-6 col-md-6">
-										<span><strong><?php esc_html_e( 'Location', 'lsx-business-directory' ); ?>: </strong><?php echo esc_attr( get_formatted_taxonomy_str( get_the_ID(), 'location' ) ); ?></span>
+										<span><strong><?php esc_html_e( 'Location', 'lsx-business-directory' ); ?>: </strong><?php echo esc_attr( lsx_bd_get_formatted_taxonomy_str( get_the_ID(), 'location' ) ); ?></span>
 									</div>
 
 									<?php
@@ -247,40 +247,6 @@ get_header(); ?>
 					</div>
 				</div>
 
-				<?php
-				$terms         = wp_get_post_terms( get_the_ID(), 'industry' );
-				$prepped_terms = array();
-
-				foreach ( $terms as $term ) {
-					array_push( $prepped_terms, $term->term_id );
-				}
-
-				$related_business_query = new WP_Query(
-					array(
-						'post_type'      => 'business-directory',
-						'posts_per_page' => 3,
-						'tax_query'      => array(
-							array(
-								'taxonomy' => 'industry',
-								'terms'    => $prepped_terms,
-							),
-						),
-					)
-				);
-
-				if ( $related_business_query->have_posts() ) :
-					?>
-					<div class="related-businesses">
-						<h2><?php esc_html_e( 'Related Businesses', 'lsx-business-directory' ); ?></h2>
-						<div class="row">
-							<?php while ( $related_business_query->have_posts() ) : ?>
-								<?php $related_business_query->the_post(); ?>
-								<?php lsx_related_business(); ?>
-							<?php endwhile; ?>
-						</div>
-					</div>
-				<?php endif; ?>
-
 				<?php lsx_entry_bottom(); ?>
 
 			</article><!-- #post-## -->
@@ -288,6 +254,8 @@ get_header(); ?>
 			<?php lsx_entry_after(); ?>
 
 		<?php endwhile; // end of the loop. ?>
+
+		<?php lsx_bd_related_listings(); ?>
 
 		<?php lsx_content_bottom(); ?>
 
