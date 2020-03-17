@@ -50,7 +50,7 @@ class Term_Thumbnail {
 				'id'           => '_term_thumbnail',
 				'title'        => esc_html__( 'Featured Image', 'lsx-business-directory' ),
 				'object_types' => array( 'term' ),
-				'taxonomies'   => array( 'lsx-bd-industry', 'lsx-bd-region' ),
+				'taxonomies'   => array( 'industry', 'location' ),
 			)
 		);
 		$fields = \lsx\business_directory\includes\get_featured_image_field( 'lsx_bd' );
