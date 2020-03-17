@@ -68,5 +68,11 @@ class Archive {
 			)
 		);
 		do_action( 'lsx_bd_settings_section_archive', $cmb, 'bottom' );
+		$cmb->add_field(
+			array(
+				'id'   => 'settings_archive_closing',
+				'type' => 'tab_closing',
+			)
+		);
 	}
 }

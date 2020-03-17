@@ -193,6 +193,12 @@ class LSX_Search {
 			);
 			if ( 'engine' === $section ) {
 				do_action( 'lsx_bd_settings_section_engine', $cmb, 'bottom' );
+				$cmb->add_field(
+					array(
+						'id'   => 'settings_search_closing',
+						'type' => 'tab_closing',
+					)
+				);
 			}
 		}
 	}

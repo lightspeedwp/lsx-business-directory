@@ -1,6 +1,8 @@
 <?php
 namespace lsx\business_directory\classes\admin;
 
+use CMB_Tab_Field;
+
 /**
  * Houses the functions for the CMB2 Settings page.
  *
@@ -37,6 +39,9 @@ class Settings_Theme {
 	public function __construct() {
 		add_action( 'cmb2_before_form', array( $this, 'generate_navigation' ), 10, 4 );
 		add_action( 'cmb2_before_title_field_row', array( $this, 'output_tab_open_div' ), 10, 1 );
+		add_action( 'cmb2_after_tab_closing_field_row', array( $this, 'output_tab_closing_div' ), 10, 1 );
+		add_action( 'cmb2_render_tab_closing', array( $this, 'cmb2_render_callback_for_tab_closing' ), 10, 5 );
+		add_filter( 'cmb2_sanitize_tab_closing', array( $this, 'cmb2_sanitize_tab_closing_callback' ), 10, 2 );
 	}
 
 	/**
@@ -119,5 +124,27 @@ class Settings_Theme {
 			<div id="<?php echo esc_attr( $field->args['id'] ); ?>_tab">
 			<?php
 		}
+	}
+
+	/**
+	 * Outputs the opening closing div.
+	 *
+	 * @param object $field CMB2_Field();
+	 * @return void
+	 */
+	public function output_tab_closing_div( $field ) {
+		if ( true === $this->is_options_page && isset( $field->args['type'] ) && 'tab_closing' === $field->args['type'] ) {
+			?>
+			</div>
+			<?php
+		}
+	}
+
+	public function cmb2_render_callback_for_tab_closing( $field, $escaped_value, $object_id, $object_type, $field_type_object ) {
+		echo $field_type_object->input( array( 'type' => 'text' ) );
+	}
+
+	public function cmb2_sanitize_tab_closing_callback( $override_value, $value ) {
+		return '';
 	}
 }

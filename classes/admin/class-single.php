@@ -66,5 +66,11 @@ class Single {
 			)
 		);
 		do_action( 'lsx_bd_settings_section_single', $cmb, 'bottom' );
+		$cmb->add_field(
+			array(
+				'id'   => 'settings_single_closing',
+				'type' => 'tab_closing',
+			)
+		);
 	}
 }
