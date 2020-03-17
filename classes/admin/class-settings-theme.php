@@ -18,6 +18,13 @@ class Settings_Theme {
 	protected static $instance = null;
 
 	/**
+	 * Will return true if this is the LSX BD settings page.
+	 *
+	 * @var array
+	 */
+	public $is_options_page = false;
+
+	/**
 	 * Holds the id and labels for the navigation.
 	 *
 	 * @var array
@@ -29,6 +36,7 @@ class Settings_Theme {
 	 */
 	public function __construct() {
 		add_action( 'cmb2_before_form', array( $this, 'generate_navigation' ), 10, 4 );
+		add_action( 'cmb2_before_title_field_row', array( $this, 'output_tab_open_div' ), 10, 1 );
 	}
 
 	/**
@@ -57,7 +65,8 @@ class Settings_Theme {
 	 */
 	public function generate_navigation( $cmb_id, $object_id, $object_type, $cmb2_obj ) {
 		if ( 'lsx_bd_settings' === $cmb_id && 'lsx-business-directory-settings' === $object_id && 'options-page' === $object_type ) {
-			$this->navigation = array();
+			$this->navigation      = array();
+			$this->is_options_page = true;
 			if ( isset( $cmb2_obj->meta_box['fields'] ) && ! empty( $cmb2_obj->meta_box['fields'] ) ) {
 				foreach ( $cmb2_obj->meta_box['fields'] as $field_index => $field ) {
 					if ( 'title' === $field['type'] ) {
@@ -88,12 +97,26 @@ class Settings_Theme {
 							$current_css = 'current';
 						}
 						?>
-							<li><a href="#" class="<?php echo esc_attr( $current_css ); ?>" data-sort="<?php echo esc_attr( $key ); ?>"><?php echo esc_attr( $label ); ?></a></li>
+							<li><a href="#" class="<?php echo esc_attr( $current_css ); ?>" data-sort="<?php echo esc_attr( $key ); ?>_tab"><?php echo esc_attr( $label ); ?></a></li>
 						<?php
 					}
 					?>
 				</ul>
 			</div>
+			<?php
+		}
+	}
+
+	/**
+	 * Outputs the opening tab div.
+	 *
+	 * @param object $field CMB2_Field();
+	 * @return void
+	 */
+	public function output_tab_open_div( $field ) {
+		if ( true === $this->is_options_page && isset( $field->args['type'] ) && 'title' === $field->args['type'] ) {
+			?>
+			<div id="<?php echo esc_attr( $field->args['id'] ); ?>_tab">
 			<?php
 		}
 	}
