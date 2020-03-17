@@ -10,10 +10,9 @@
 .slick-loading .slick-track { visibility: hidden; }
 
 [dir="rtl"] .slick-slide { float: right; }
-.slick-slide img { display: block; }
-.slick-slide.slick-loading img { display: none; }
-.slick-slide.dragging img { pointer-events: none; }
-.slick-initialized .slick-slide { display: block; }
+
+
+
 .slick-loading .slick-slide { visibility: hidden; }
 .slick-vertical .slick-slide { display: block; height: auto; border: 1px solid transparent; }
 .slick-arrow.slick-hidden { display: none; }
@@ -21,7 +20,6 @@
 
 // Slider Inner.
 .lsx-business-directory-slider {
-
 	.slick-slide {
 		float: left;
 		height: 100%;
@@ -29,6 +27,23 @@
 		display: none;
 		padding: 0 15px;
 		margin-top: 4.25rem;
+
+		img {
+			display: block;
+		}
+
+		&.slick-loading,
+		&.dragging {
+			img {
+				display: none;
+			}
+		}
+	}
+
+	&.slick-initialized {
+		.slick-slide {
+			display: block;
+		}
 	}
 
 	.slick-arrow {
