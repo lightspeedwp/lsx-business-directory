@@ -36,6 +36,11 @@ get_header(); ?>
 			$business_secondary_phone    = get_post_meta( get_the_ID(), $prefix . '_secondary_phone', true );
 			$business_fax                = get_post_meta( get_the_ID(), $prefix . '_fax', true );
 			$business_website            = get_post_meta( get_the_ID(), $prefix . '_website', true );
+			$industries    				 = get_formatted_taxonomy_str( get_the_ID(), 'industry', true );
+
+			$business_contact_name		 = "James La Guma";
+			$business_skype		         = "d0minar";
+			$business_whatsapp		     = "0810565236";
 			$address                     = array();
 
 			if ( $business_address_1 ) {
@@ -71,22 +76,104 @@ get_header(); ?>
 
 				<div class="entry-header business-header">
 					<div class="row">
-						<div class="col-md-4">
+						<div class="col-md-4 business-content-left">
 							<div class="entry-image">
 								<img src="<?php echo esc_url( get_thumbnail_wrapped( get_the_ID(), 300, 200 ) ); ?>">
 							</div>
+
+							<div class="col-md-4">
+								<div class="contact-info business-content-section">
+									<div class="row">
+										<?php if ( $business_primary_phone ) : ?>
+										<div class="telephone lsx-flex-row">
+											<div class="col1"><i class="fas fa-phone-square-alt"></i><strong><?php esc_html_e( 'Telephone', 'lsx-business-directory' ); ?>: </strong></div>
+											<div class="col2"><a href="tel:<?php echo esc_attr( str_replace( ' ', '', $business_primary_phone ) ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_attr( $business_primary_phone ); ?></a></div>
+										</div>
+										<?php endif; ?>
+
+										<?php if ( $business_contact_name ) : ?>
+										<div class="contact lsx-flex-row">
+											<div class="col1"><i class="fas fa-user"></i><strong><?php esc_html_e( 'Contact', 'lsx-business-directory' ); ?>: </strong></div>
+											<div class="col2"><?php echo esc_attr( $business_contact_name ); ?></div>
+										</div>
+										<?php endif; ?>
+
+										<?php if ( $business_primary_email ) : ?>
+										<div class="email lsx-flex-row">
+											<div class="col1"><i class="fas fa-envelope-square"></i><strong><?php esc_html_e( 'Email', 'lsx-business-directory' ); ?>: </strong></div>
+											<div class="col2"><a href="mailto:<?php echo esc_attr( $business_primary_email ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_attr( $business_primary_email ); ?></a></div>
+										</div>
+										<?php endif; ?>
+
+										<?php if ( $business_website ) : ?>
+										<div class="website lsx-flex-row">
+											<div class="col1"><i class="fas fa-home"></i><strong><?php esc_html_e( 'Website', 'lsx-business-directory' ); ?>: </strong></div>
+											<div class="col2"><a href="<?php echo esc_attr( $business_website ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_attr( $business_website ); ?></a></div>
+										</div>
+										<?php endif; ?>
+
+										<?php if ( $business_skype ) : ?>
+										<div class="skype lsx-flex-row">
+											<div class="col1"><i class="fab fa-skype"></i><strong><?php esc_html_e( 'Skype', 'lsx-business-directory' ); ?>: </strong></div>
+											<div class="col2"><?php echo esc_attr( $business_skype ); ?></div>
+										</div>
+										<?php endif; ?>
+
+										<?php if ( $business_whatsapp ) : ?>
+										<div class="whatsapp lsx-flex-row">
+											<div class="col1"><i class="fab fa-whatsapp"></i><strong><?php esc_html_e( 'Whatsapp', 'lsx-business-directory' ); ?>: </strong></div>
+											<div class="col2"><?php echo esc_attr( $business_whatsapp ); ?></div>
+										</div>
+										<?php endif; ?>
+
+										<?php if ( ! empty( $address ) ) : ?>
+										<div class="address lsx-flex-row">
+											<div class="col1"><i class="fas fa-map-marker-alt"></i><strong><?php esc_html_e( 'Address', 'lsx-business-directory' ); ?>: </strong></div>
+											<div class="col2">
+												<?php
+												foreach ( $address as $field_string ) {
+													echo esc_attr( $field_string ) . '<br />';
+												}
+												?>
+											</div>
+										</div>
+										<?php endif; ?>
+									</div>
+								</div>
+							</div>
+
+							<?php if ( $business_enquiry_form ) : ?>
+							<div class="button col-xs-12 col-sm-12 col-md-12">
+								<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#enquiry-form-modal"><?php esc_html_e( 'Contact', 'lsx-business-directory' ); ?> <?php the_title(); ?></button>
+							</div>
+							<?php endif; ?>
 						</div>
 
-						<div class="col-md-8">
+						<div class="col-md-8 business-content-right">
 							<div class="entry-header-content">
 								<?php lsx_business_listing_title(); ?>
 
-								<div class="entry-meta">
-									<div class="category">
-										<span><strong><?php esc_html_e( 'Industry', 'lsx-business-directory' ); ?>: </strong><?php echo esc_attr( get_formatted_taxonomy_str( get_the_ID(), 'industry' ) ); ?></span>
+								<div class="entry-meta lsx-flex-row">
+									<div class="industry col-xs-6 col-sm-6 col-md-6">
+										<span>
+											<i class="fas fa-th"></i>
+											<strong><?php esc_html_e( 'Industry', 'lsx-business-directory' ); ?>: </strong>
+											<?php
+											$count = 0;
+											foreach ( $industries as $industry ) :
+												if ( $count > 0 ) :
+													?>,
+												<?php endif;
+												?>
+													<a href="/industry/<?php echo esc_attr( $industry['slug'] ); ?>"><?php echo esc_attr( $industry['name'] ); ?></a>
+													<?php
+													$count++;
+											endforeach;
+											?>
+										</span>
 									</div>
 
-									<div class="region">
+									<div class="location col-xs-6 col-sm-6 col-md-6">
 										<span><strong><?php esc_html_e( 'Location', 'lsx-business-directory' ); ?>: </strong><?php echo esc_attr( get_formatted_taxonomy_str( get_the_ID(), 'location' ) ); ?></span>
 									</div>
 
@@ -98,66 +185,17 @@ get_header(); ?>
 									 */
 									?>
 								</div>
+
+								<div class="business-description business-content-section">
+									<?php the_content(); ?>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 
 				<div class="row">
-					<div class="col-md-4">
-						<div class="contact-info business-content-section">
-							<h4 class="business-section-title"><?php esc_html_e( 'Contact Information', 'lsx-business-directory' ); ?></h4>
-
-							<div class="row">
-								<div class="col-md-6">
-									<?php if ( $business_primary_phone ) : ?>
-									<div class="telephone">
-										<span><strong><?php esc_html_e( 'Telephone', 'lsx-business-directory' ); ?>: </strong> <a href="tel:<?php echo esc_attr( str_replace( ' ', '', $business_primary_phone ) ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_attr( $business_primary_phone ); ?></a></span>
-									</div>
-									<?php endif; ?>
-
-									<?php if ( $business_primary_email ) : ?>
-									<div class="email">
-										<span><strong><?php esc_html_e( 'Email', 'lsx-business-directory' ); ?>: </strong> <a href="mailto:<?php echo esc_attr( $business_primary_email ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_attr( $business_primary_email ); ?></a></span>
-									</div>
-									<?php endif; ?>
-
-									<?php if ( $business_website ) : ?>
-									<div class="website">
-										<span><strong><?php esc_html_e( 'Website', 'lsx-business-directory' ); ?>: </strong> <a href="<?php echo esc_attr( $business_website ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_attr( $business_website ); ?></a></span>
-									</div>
-									<?php endif; ?>
-								</div>
-
-								<div class="col-md-6">
-									<?php if ( ! empty( $address ) ) : ?>
-									<div class="address">
-										<span><strong><?php esc_html_e( 'Address', 'lsx-business-directory' ); ?>: </strong>
-											<?php
-											foreach ( $address as $field_string ) {
-												echo esc_attr( $field_string ) . '<br />';
-											}
-											?>
-										</span>
-									</div>
-									<?php endif; ?>
-								</div>
-							</div>
-						</div>
-
-						<?php if ( $business_enquiry_form ) : ?>
-						<div>
-							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#enquiry-form-modal"><?php esc_html_e( 'Contact', 'lsx-business-directory' ); ?> <?php the_title(); ?></button>
-						</div>
-						<?php endif; ?>
-					</div>
-
 					<div class="col-md-8">
-						<div class="business-description business-content-section">
-							<h3 class="business-section-title"><?php esc_html_e( 'Description', 'lsx-business-directory' ); ?></h3>
-							<?php the_content(); ?>
-						</div>
-
 						<?php if ( ! empty( $branches ) && is_array( $branches ) && isset( $branches[0]['branch_name'] ) && '' !== $branches[0]['branch_name'] ) : ?>
 							<div class="branches business-content-section">
 								<h3 class="business-section-title"><?php esc_html_e( 'Branches', 'lsx-business-directory' ); ?></h3>
