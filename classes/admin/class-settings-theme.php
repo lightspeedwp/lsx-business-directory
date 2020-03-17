@@ -42,6 +42,7 @@ class Settings_Theme {
 		add_action( 'cmb2_after_tab_closing_field_row', array( $this, 'output_tab_closing_div' ), 10, 1 );
 		add_action( 'cmb2_render_tab_closing', array( $this, 'cmb2_render_callback_for_tab_closing' ), 10, 5 );
 		add_filter( 'cmb2_sanitize_tab_closing', array( $this, 'cmb2_sanitize_tab_closing_callback' ), 10, 2 );
+		add_action( 'cmb2_after_form', array( $this, 'navigation_js' ), 10, 4 );
 	}
 
 	/**
@@ -121,7 +122,7 @@ class Settings_Theme {
 	public function output_tab_open_div( $field ) {
 		if ( true === $this->is_options_page && isset( $field->args['type'] ) && 'title' === $field->args['type'] ) {
 			?>
-			<div id="<?php echo esc_attr( $field->args['id'] ); ?>_tab">
+			<div id="<?php echo esc_attr( $field->args['id'] ); ?>_tab" class="tab tab-nav">
 			<?php
 		}
 	}
@@ -141,10 +142,73 @@ class Settings_Theme {
 	}
 
 	public function cmb2_render_callback_for_tab_closing( $field, $escaped_value, $object_id, $object_type, $field_type_object ) {
-		echo $field_type_object->input( array( 'type' => 'text' ) );
+		return;
 	}
 
 	public function cmb2_sanitize_tab_closing_callback( $override_value, $value ) {
 		return '';
+	}
+
+	/**
+	 * Outputs the Script for the tabbed navigation.
+	 *
+	 * @param string $cmb_id
+	 * @param string $object_id
+	 * @param string $object_type
+	 * @param object $cmb2_obj
+	 * @return void
+	 */
+	public function navigation_js( $cmb_id, $object_id, $object_type, $cmb2_obj ) {
+		if ( 'lsx_bd_settings' === $cmb_id && 'lsx-business-directory-settings' === $object_id && 'options-page' === $object_type ) {
+			?>
+			<script>
+				var LSX_BD_CMB2 = Object.create( null );
+
+				;( function( $, window, document, undefined ) {
+
+					'use strict';
+
+					LSX_BD_CMB2.document = $(document);
+
+					/**
+					 * Start the JS Class
+					 */
+					LSX_BD_CMB2.init = function() {
+						var counter = 1;
+						$( ".tab.tab-nav" ).each(function(){
+							if ( 1 !== counter ) {
+								$( this ).hide();
+							} else {
+								$( this ).addClass( 'current' );
+							}
+							counter++;
+						});
+						LSX_BD_CMB2.watchNavigation();
+					};
+
+					LSX_BD_CMB2.watchNavigation = function() {
+						$( ".wp-filter li a" ).on( 'click', function(event){
+							event.preventDefault();
+							// Change the current Tab heading.
+							$( ".wp-filter li a" ).removeClass('current');
+							$( this ).addClass('current');
+
+							// Change the current tab div.
+							var target = $( this ).attr('data-sort');
+							$( ".tab.tab-nav.current" ).hide().removeClass('current');
+							$( "#"+target ).show().addClass('current');
+
+							console.log(target);
+						});
+					};
+
+					LSX_BD_CMB2.document.ready( function() {
+						LSX_BD_CMB2.init();
+					} );
+
+				} )( jQuery, window, document );
+			</script>
+			<?php
+		}
 	}
 }
