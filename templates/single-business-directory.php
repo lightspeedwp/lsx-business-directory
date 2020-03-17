@@ -36,7 +36,7 @@ get_header(); ?>
 			$business_secondary_phone    = get_post_meta( get_the_ID(), $prefix . '_secondary_phone', true );
 			$business_fax                = get_post_meta( get_the_ID(), $prefix . '_fax', true );
 			$business_website            = get_post_meta( get_the_ID(), $prefix . '_website', true );
-			$industries    				 = get_formatted_taxonomy_str( get_the_ID(), 'industry', true );
+			$industries    				 = lsx_bd_get_formatted_taxonomy_str( get_the_ID(), 'industry', true );
 
 			$business_contact_name		 = 'John Doe';
 			$business_skype		         = 'Skype_User';
@@ -174,7 +174,7 @@ get_header(); ?>
 									</div>
 
 									<div class="location col-xs-6 col-sm-6 col-md-6">
-										<span><strong><?php esc_html_e( 'Location', 'lsx-business-directory' ); ?>: </strong><?php echo esc_attr( get_formatted_taxonomy_str( get_the_ID(), 'location' ) ); ?></span>
+										<span><strong><?php esc_html_e( 'Location', 'lsx-business-directory' ); ?>: </strong><?php echo esc_attr( lsx_bd_get_formatted_taxonomy_str( get_the_ID(), 'location' ) ); ?></span>
 									</div>
 
 									<?php
