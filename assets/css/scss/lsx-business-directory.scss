@@ -141,173 +141,133 @@
 	}
 }
 
-
 // Single Business
-.business-directory {
-	.business-header {
-		margin-bottom: 40px;
+.single {
+	.business-directory {
+		.business-header {
+			margin-bottom: 40px;
 
-		.entry-header-content {
-			h2.entry-title {
-				font-size: 40px;
-			}
-			h1.entry-title, h2.entry-title {
-				margin: {
-					top: 0;
-					bottom: 10px;
-				}
+			.business-content-left {
+				background-color: white;
+				padding-left: 0px;
+				padding-right: 0px;
+				padding-bottom: 27px;
+				box-sizing: border-box;
+				border: 1px solid #EEEEEE;
+				background-color: #FFFFFF;
+				box-shadow: 1px 2px 6px 0 rgba(155,155,155,0.45);
 
-				@media only screen and (max-width: 767px) {
-					font-size: 22px;
-				}
-
-				@media only screen and (min-width: 768px) and (max-width: 991px) {
-					font-size: 28px;
-				}
-
-				@media only screen and (max-width: 991px) {
-					margin-top: 15px;
-				}
-			}
-
-			.entry-meta {
-				text-align: left;
-
-				> div {
-					margin-bottom: 5px;
-
-					&:last-child {
-						margin-bottom: 20px;
+				>.entry-image {
+					>img {
+						width: 100%;
 					}
 				}
 			}
-		}
-	}
 
-	.business-content-left,
-	.business-content-right {
-		margin-bottom: 30px;
-	}
-
-	.business-content-left {
-		@media (min-width: 992px) {
-			float: left;
-		}
-	}
-
-	.business-content-right {
-		@media (min-width: 992px) {
-			float: right;
-		}
-	}
-
-	.business-content-section {
-		margin-bottom: 30px;
-
-		.business-section-title {
-			margin: {
-				top: 0;
-				bottom: 18px;
+			@media screen and (max-width: 1090px) {
+				.business-content-left {
+					margin-bottom: 20px;
+				}
 			}
-		    padding-bottom: 8px;
-		    border-bottom: 1px solid #ddd;
-		}
 
-		&.branches {
-			.branch {
-				h4 {
+			.business-content-right {
+				padding-left: 28px;
+			}
+
+			.entry-header-content {
+				h1.entry-title {
+					color: #4D4D4D;
+					font-family: Lora;
+					font-size: 32px;
+					line-height: 39px;
+				}
+				h1.entry-title, h2.entry-title {
 					margin: {
 						top: 0;
-						bottom: 15px;
+						bottom: 27px;
 					}
-					padding-bottom: 5px;
-					border-bottom: 1px solid #ddd;
+
+					@media only screen and (max-width: 767px) {
+						font-size: 22px;
+					}
+
+					@media only screen and (min-width: 768px) and (max-width: 991px) {
+						font-size: 28px;
+					}
+
+					@media only screen and (max-width: 991px) {
+						margin-top: 15px;
+					}
 				}
 
-				.branch-content {
-					.col-md-4 {
-						div {
-							margin-bottom: 5px;
+				.business-description {
+					padding-top: 8px;
+				}
+				.entry-meta {
+					text-align: left;
+
+					.industry, .location {
+						padding-left: 0px;
+						padding-right: 0px;
+					}
+
+					> div {
+						margin-bottom: 5px;
+
+						&:last-child {
+							margin-bottom: 20px;
 						}
 					}
 				}
 			}
-		}
 
-		&.promotions {
-			.promotion {
-				.promotion-thumbnail {
-					float: left;
-					margin: 0 30px 30px 0;
-				}
+			.button {
+				padding-left: 25px;
+				padding-right: 25px;
 
-				.promotion-content {
-					h4 {
-						margin: 0;
-					}
-
-					.promotion-price {
-						margin: 10px 0;
-						font-size: 18px;
-					}
+				button.btn.btn-primary {
+					margin-top: 14px;
+					width: 100%;
 				}
 			}
 		}
 
-		&.contact-form {
-			padding: 20px 30px;
-		    border: 1px solid #ccc;
-		    text-align: center;
-		    -webkit-border-radius: 3px;
-		    -moz-border-radius: 3px;
-		    border-radius: 3px;
-		    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
-		    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
-		    box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
-
-		    h4 {
-		    	padding: 0;
-		    	border: none;
-		    }
-
-		    form {
-		    	input,
-		    	textarea {
-		    		margin-bottom: 10px;
-		    	}
-
-		    	.btn {
-		    		width: 100%;
-		    	}
-		    }
-		}
-
-		&.contact-info {
-			.telephone,
-			.email,
-			.website,
-			.address {
-				margin-bottom: 10px;
-
-				strong {
-					display: block;
+		.contact-info {
+			padding-top: 65px;
+			padding-left: 14px;
+			.telephone, .contact, .email, .website, .skype, .whatsapp, .address {
+				padding-left: 15px;
+				padding-bottom: 15px;
+				i {
+					margin-right: 3px;
+				}
+				.col1 {
+					min-width: 141px;
+					color: #919191;
+					font-family: "Noto Sans";
+					font-size: 15px;
+					font-weight: bold;
+					line-height: 24px;
+				}
+				.col2 {
+					min-width: 141px;
 				}
 			}
 		}
-	}
 
-	.related-businesses {
-		h2 {
-			text-align: center;
-		}
-
-		.related-business {
-			@media only screen and (max-width: 991px) {
-				margin-bottom: 30px;
+		.related-businesses {
+			h2 {
+				text-align: center;
 			}
 
-			h3 {
-				margin: 20px 0 0px;
+			.related-business {
+				@media only screen and (max-width: 991px) {
+					margin-bottom: 30px;
+				}
+
+				h3 {
+					margin: 20px 0 0px;
+				}
 			}
 		}
 	}
