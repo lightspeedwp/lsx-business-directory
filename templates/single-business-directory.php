@@ -196,12 +196,24 @@ get_header(); ?>
 								</div>
 
 								<div class="social-links lsx-flex-row">
+									<?php if ( $business_facebook ) : ?>
 									<div><a href="<?php echo esc_url( $business_facebook ); ?>" target="_blank"><i class="fa fa-facebook-f"></i></a></div>
+									<?php endif; ?>
+									<?php if ( $business_twitter ) : ?>
 									<div><a href="<?php echo esc_url( $business_twitter ); ?>" target="_blank"><i class="fa fa-twitter"></i></a></div>
+									<?php endif; ?>
+									<?php if ( $business_linkedin ) : ?>
 									<div><a href="<?php echo esc_url( $business_linkedin ); ?>" target="_blank"><i class="fa fa-linkedin"></i></a></div>
+									<?php endif; ?>
+									<?php if ( $business_instagram ) : ?>
 									<div><a href="<?php echo esc_url( $business_instagram ); ?>" target="_blank"><i class="fa fa-instagram"></i></a></div>
+									<?php endif; ?>
+									<?php if ( $business_youtube ) : ?>
 									<div><a href="<?php echo esc_url( $business_youtube ); ?>" target="_blank"><i class="fa fa-youtube"></i></a></div>
+									<?php endif; ?>
+									<?php if ( $business_pinterest ) : ?>
 									<div><a href="<?php echo esc_url( $business_pinterest ); ?>" target="_blank"><i class="fa fa-pinterest"></i></a></div>
+									<?php endif; ?>
 								</div>
 
 								<div class="business-description business-content-section">
