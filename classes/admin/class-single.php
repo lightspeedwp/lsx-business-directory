@@ -21,7 +21,7 @@ class Single {
 	 * Contructor
 	 */
 	public function __construct() {
-		add_action( 'lsx_bd_settings_page_tab1', array( $this, 'register_settings_single' ), 1, 1 );
+		add_action( 'lsx_bd_settings_page', array( $this, 'register_settings_single' ), 1, 1 );
 	}
 
 	/**
@@ -66,5 +66,11 @@ class Single {
 			)
 		);
 		do_action( 'lsx_bd_settings_section_single', $cmb, 'bottom' );
+		$cmb->add_field(
+			array(
+				'id'   => 'settings_single_closing',
+				'type' => 'tab_closing',
+			)
+		);
 	}
 }

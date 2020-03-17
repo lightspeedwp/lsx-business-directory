@@ -39,6 +39,20 @@ class Admin {
 	public $single;
 
 	/**
+	 * Holds the placeholders admin class
+	 *
+	 * @var object \lsx\business_directory\classes\admin\Placeholders();
+	 */
+	public $placeholders;
+
+	/**
+	 * Holds the settings page theme functions
+	 *
+	 * @var object \lsx\business_directory\classes\admin\Settings_Theme();
+	 */
+	public $settings_theme;
+
+	/**
 	 * Contructor
 	 */
 	public function __construct() {
@@ -47,8 +61,6 @@ class Admin {
 		add_action( 'admin_enqueue_scripts', array( $this, 'assets' ) );
 		// Configure Settings page.
 		add_action( 'cmb2_admin_init', array( $this, 'register_settings_page' ) );
-		// Removed the standard CMB2 styling.
-		add_filter( 'cmb2_enqueue_css', array( $this, 'lsx_bd_disable_cmb2_styles' ), 1, 1 );
 	}
 
 	/**
@@ -85,6 +97,9 @@ class Admin {
 
 		require_once LSX_BD_PATH . 'classes/admin/class-placeholders.php';
 		$this->placeholders = admin\Placeholders::get_instance();
+
+		require_once LSX_BD_PATH . 'classes/admin/class-settings-theme.php';
+		$this->settings_theme = admin\Settings_Theme::get_instance();
 	}
 
 	/**
@@ -106,62 +121,16 @@ class Admin {
 	 * @return void
 	 */
 	public function register_settings_page() {
-		$tab1_args = array(
-			'id'           => 'lsx_bd_settings_tab1',
+		$args = array(
+			'id'           => 'lsx_bd_settings',
 			'title'        => esc_html__( 'Business Directory Settings', 'lsx-business-directory' ),
-			'menu_title'   => esc_html__( 'Single Settings', 'lsx-business-directory' ), // Falls back to 'title' (above).
+			'menu_title'   => esc_html__( 'Settings', 'lsx-business-directory' ), // Falls back to 'title' (above).
 			'object_types' => array( 'options-page' ),
-			'option_key'   => 'lsx-business-directory-settings-tab1', // The option key and admin menu page slug.
+			'option_key'   => 'lsx-business-directory-settings', // The option key and admin menu page slug.
 			'parent_slug'  => 'edit.php?post_type=business-directory', // Make options page a submenu item of the Business Directory menu.
 			'capability'   => 'manage_options', // Cap required to view options-page.
-			'tab_group'    => 'lsx_bd_main_options',
-			'tab_title'    => 'Single',
 		);
-
-		$tab1_options = new_cmb2_box( $tab1_args );
-
-		$tab2_args = array(
-			'id'           => 'lsx_bd_settings_tab2',
-			'title'        => esc_html__( 'Business Directory Settings', 'lsx-business-directory' ),
-			'menu_title'   => esc_html__( 'Archive Settings', 'lsx-business-directory' ), // Falls back to 'title' (above).
-			'object_types' => array( 'options-page' ),
-			'option_key'   => 'lsx-business-directory-settings-tab2', // The option key and admin menu page slug.
-			'parent_slug'  => 'edit.php?post_type=business-directory', // Make options page a submenu item of the Business Directory menu.
-			'capability'   => 'manage_options', // Cap required to view options-page.
-			'tab_group'    => 'lsx_bd_main_options',
-			'tab_title'    => 'Archive',
-		);
-
-		$tab2_options = new_cmb2_box( $tab2_args );
-
-		$tab3_args = array(
-			'id'           => 'lsx_bd_settings_tab3',
-			'title'        => esc_html__( 'Business Directory Settings', 'lsx-business-directory' ),
-			'menu_title'   => esc_html__( 'Search Settings', 'lsx-business-directory' ), // Falls back to 'title' (above).
-			'object_types' => array( 'options-page' ),
-			'option_key'   => 'lsx-business-directory-settings-tab3', // The option key and admin menu page slug.
-			'parent_slug'  => 'edit.php?post_type=business-directory', // Make options page a submenu item of the Business Directory menu.
-			'capability'   => 'manage_options', // Cap required to view options-page.
-			'tab_group'    => 'lsx_bd_main_options',
-			'tab_title'    => 'Search',
-		);
-
-		$tab3_options = new_cmb2_box( $tab3_args );
-
-		do_action( 'lsx_bd_settings_page_tab1', $tab1_options );
-		do_action( 'lsx_bd_settings_page_tab2', $tab2_options );
-		do_action( 'lsx_bd_settings_page_tab3', $tab3_options );
-	}
-
-	/**
-	 * Disable CMB2 styles on front end forms.
-	 *
-	 * @return bool $enabled Whether to enable (enqueue) styles.
-	 */
-	public function lsx_bd_disable_cmb2_styles( $enabled ) {
-		if ( is_admin() ) {
-			$enabled = false;
-		}
-		return $enabled;
+		$cmb  = new_cmb2_box( $args );
+		do_action( 'lsx_bd_settings_page', $cmb );
 	}
 }
