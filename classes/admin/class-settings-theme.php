@@ -68,7 +68,10 @@ class Settings_Theme {
 	 */
 	public function disable_cmb2_styles( $enabled ) {
 		if ( is_admin() ) {
-			$enabled = false;
+			$current_screen = get_current_screen();
+			if ( is_object( $current_screen ) && 'business-directory_page_lsx-business-directory-settings' === $current_screen->id ) {
+				$enabled = false;
+			}
 		}
 		return $enabled;
 	}
