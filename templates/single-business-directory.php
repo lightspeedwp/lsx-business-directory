@@ -246,40 +246,6 @@ get_header(); ?>
 					</div>
 				</div>
 
-				<?php
-				$terms         = wp_get_post_terms( get_the_ID(), 'industry' );
-				$prepped_terms = array();
-
-				foreach ( $terms as $term ) {
-					array_push( $prepped_terms, $term->term_id );
-				}
-
-				$related_business_query = new WP_Query(
-					array(
-						'post_type'      => 'business-directory',
-						'posts_per_page' => 3,
-						'tax_query'      => array(
-							array(
-								'taxonomy' => 'industry',
-								'terms'    => $prepped_terms,
-							),
-						),
-					)
-				);
-
-				if ( $related_business_query->have_posts() ) :
-					?>
-					<div class="related-businesses">
-						<h2><?php esc_html_e( 'Related Businesses', 'lsx-business-directory' ); ?></h2>
-						<div class="row">
-							<?php while ( $related_business_query->have_posts() ) : ?>
-								<?php $related_business_query->the_post(); ?>
-								<?php lsx_related_business(); ?>
-							<?php endwhile; ?>
-						</div>
-					</div>
-				<?php endif; ?>
-
 				<?php lsx_entry_bottom(); ?>
 
 			</article><!-- #post-## -->
@@ -287,6 +253,8 @@ get_header(); ?>
 			<?php lsx_entry_after(); ?>
 
 		<?php endwhile; // end of the loop. ?>
+
+		<?php lsx_bd_related_listings(); ?>
 
 		<?php lsx_content_bottom(); ?>
 
