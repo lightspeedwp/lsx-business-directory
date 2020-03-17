@@ -74,6 +74,8 @@ body.lsx-business-directory-page.archive:not(.using-gutenberg):not(.banner-disab
 
 @media (min-width: 992px) { .lsx-business-directory-slider .slick-dots:not(.dropdown-menu) > li > button { height: 6px; } }
 
+.lsx-business-directory-slider .slick-dots:not(.dropdown-menu) > li.slick-active > button { background-color: #4a4a4a; }
+
 .lsx-business-directory-slider .slick-arrow.slick-prev { right: -4rem; }
 
 .lsx-business-directory-slider .slick-arrow.slick-next { left: -4rem; }
