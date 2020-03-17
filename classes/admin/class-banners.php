@@ -22,6 +22,7 @@ class Banners {
 	 */
 	public function __construct() {
 		add_action( 'lsx_bd_settings_section_archive', array( $this, 'register_archive_fields' ), 5, 2 );
+		add_action( 'lsx_bd_settings_section_engine', array( $this, 'register_search_fields' ), 5, 2 );
 		add_action( 'cmb2_init', array( $this, 'register_single_fields' ), 5 );
 		add_action( 'cmb2_init', array( $this, 'register_taxonomy_fields' ), 5 );
 	}
@@ -51,6 +52,22 @@ class Banners {
 	public function register_archive_fields( $cmb, $position ) {
 		if ( 'top' === $position ) {
 			$fields = \lsx\business_directory\includes\get_banner_fields( 'archive' );
+			foreach ( $fields as $field ) {
+				$cmb->add_field( $field );
+			}
+		}
+	}
+
+	/**
+	 * Enable Business Directory Search settings only if LSX Search plugin is enabled.
+	 *
+	 * @param object $cmb The CMB2() class.
+	 * @param string $position either top of bottom.
+	 * @return void
+	 */
+	public function register_search_fields( $cmb, $position ) {
+		if ( 'top' === $position ) {
+			$fields = \lsx\business_directory\includes\get_banner_fields( 'engine' );
 			foreach ( $fields as $field ) {
 				$cmb->add_field( $field );
 			}
@@ -90,7 +107,7 @@ class Banners {
 				'taxonomies'   => array( 'industry', 'location' ),
 			)
 		);
-		$fields = \lsx\business_directory\includes\get_banner_fields( 'lsx_bd' );
+		$fields = \lsx\business_directory\includes\get_banner_fields( 'lsx_bd', esc_html__( 'Banner', 'lsx-business-directory' ) . ' ' );
 		foreach ( $fields as $field ) {
 			$cmb->add_field( $field );
 		}

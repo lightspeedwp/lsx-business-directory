@@ -84,7 +84,7 @@ class Frontend {
 	 * @return array
 	 */
 	public function body_class( $classes = array() ) {
-		if ( is_singular( 'business-directory' ) || is_post_type_archive( 'business-directory' ) || is_tax( array( 'industry', 'location' ) ) ) {
+		if ( is_singular( 'business-directory' ) || is_post_type_archive( 'business-directory' ) || is_tax( array( 'industry', 'location' ) ) || is_search() ) {
 			$classes[] = 'lsx-business-directory-page';
 		}
 		return $classes;
@@ -137,6 +137,9 @@ class Frontend {
 			if ( isset( $queried_object->name ) ) {
 				$title = $queried_object->name;
 			}
+		}
+		if ( is_search() ) {
+			$title = get_query_var( 's' );
 		}
 		$title = apply_filters( 'lsx_bd_archive_banner_title', $title );
 		return $title;

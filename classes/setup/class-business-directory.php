@@ -45,7 +45,6 @@ class Business_Directory {
 
 		// Register the custom fields.
 		add_action( 'cmb2_init', array( $this, 'register_address_custom_fields' ), 10 );
-		add_action( 'cmb2_init', array( $this, 'register_branches_custom_fields' ), 15 );
 		add_action( 'cmb2_init', array( $this, 'register_contact_custom_fields' ), 20 );
 	}
 
@@ -199,15 +198,6 @@ class Business_Directory {
 				'id'           => $this->prefix . '_address_metabox',
 				'title'        => esc_html__( 'Business Address', 'lsx-business-directory' ),
 				'object_types' => array( 'business-directory' ),
-			)
-		);
-
-		// TODO: Google Maps Search
-		$cmb_address->add_field(
-			array(
-				'name' => esc_html__( 'Google Maps Search', 'lsx-business-directory' ),
-				'id'   => $this->prefix . '_address_google_maps_search',
-				'type' => 'text',
 			)
 		);
 

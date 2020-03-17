@@ -1,13 +1,20 @@
 /** LSX Starter Plugin styles (admin). @package lsx-business-directory */
+/** The CMB2 Settings Page Tabbed Theme. @package lsx-business-directory */
 /* CMB2 Settings Styles */
-.wp-admin .cmb-row { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; }
+.wp-admin.business-directory_page_lsx-business-directory-settings .cmb2-wrap.form-table { margin-top: 0; border: 1px solid transparent; }
 
-.wp-admin div.cmb-th { text-align: right; padding: 20px 0 20px 10px; width: 200px; font-size: 14px; line-height: 1.3; font-weight: 600; color: #23282d; text-shadow: none; vertical-align: baseline; }
+.wp-admin.business-directory_page_lsx-business-directory-settings .cmb2-wrap.form-table .tab.tab-nav .cmb-row { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; }
 
-.wp-admin div.cmb-td { text-align: right !important; padding: 20px 0 20px 10px !important; }
+.wp-admin.business-directory_page_lsx-business-directory-settings .cmb2-wrap.form-table .tab.tab-nav .cmb-row.cmb-type-title { display: none; }
 
-.wp-admin div.cmb-td select { font-size: 14px; line-height: 2; color: #32373c; border-color: #7e8993; -webkit-box-shadow: none; box-shadow: none; border-radius: 3px; padding: 0 8px 0 24px; min-height: 30px; max-width: 25rem; -webkit-appearance: none; background-size: 16px 16px; cursor: pointer; vertical-align: middle; }
+.wp-admin.business-directory_page_lsx-business-directory-settings .cmb2-wrap.form-table .tab.tab-nav .cmb-row:nth-child(2) .cmb-th, .wp-admin.business-directory_page_lsx-business-directory-settings .cmb2-wrap.form-table .tab.tab-nav .cmb-row:nth-child(2) .cmb-td { padding-top: 0px; }
 
-.wp-admin p.cmb2-metabox-description { margin: 2px 0 5px; color: #666; font-style: italic; line-height: 1.5; margin-top: 4px; margin-bottom: 0; }
+.wp-admin.business-directory_page_lsx-business-directory-settings .cmb2-wrap.form-table .tab.tab-nav .cmb-row div.cmb-th { text-align: right; padding: 20px 0 20px 10px; width: 200px; font-size: 14px; line-height: 1.3; font-weight: 600; color: #23282d; text-shadow: none; vertical-align: baseline; }
 
-.wp-admin input[type=radio] { margin-top: -4px; margin-left: 4px; float: none; }
+.wp-admin.business-directory_page_lsx-business-directory-settings .cmb2-wrap.form-table .tab.tab-nav .cmb-row div.cmb-td { text-align: right !important; padding: 20px 0 20px 10px !important; }
+
+.wp-admin.business-directory_page_lsx-business-directory-settings .cmb2-wrap.form-table .tab.tab-nav .cmb-row div.cmb-td select { font-size: 14px; line-height: 2; color: #32373c; border-color: #7e8993; -webkit-box-shadow: none; box-shadow: none; border-radius: 3px; padding: 0 8px 0 24px; min-height: 30px; max-width: 25rem; -webkit-appearance: none; background-size: 16px 16px; cursor: pointer; vertical-align: middle; }
+
+.wp-admin.business-directory_page_lsx-business-directory-settings .cmb2-wrap.form-table .tab.tab-nav .cmb-row p.cmb2-metabox-description { margin: 2px 0 5px; color: #666; font-style: italic; line-height: 1.5; margin-top: 4px; margin-bottom: 0; }
+
+.wp-admin.business-directory_page_lsx-business-directory-settings .cmb2-wrap.form-table .tab.tab-nav .cmb-row input[type=radio] { margin-top: -4px; margin-left: 4px; float: none; }
