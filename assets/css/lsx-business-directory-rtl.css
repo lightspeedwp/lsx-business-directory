@@ -80,6 +80,12 @@ body.lsx-business-directory-page.archive:not(.using-gutenberg):not(.banner-disab
 
 @media only screen and (max-width: 991px) { .single .business-directory .business-header .entry-header-content h1.entry-title, .single .business-directory .business-header .entry-header-content h2.entry-title { margin-top: 15px; } }
 
+.single .business-directory .business-header .entry-header-content .social-links { margin-bottom: 20px; }
+
+.single .business-directory .business-header .entry-header-content .social-links > div { margin-left: 10px; }
+
+.single .business-directory .business-header .entry-header-content .social-links > div a { color: #5693D9; font-size: 22px; line-height: 22px; text-align: center; }
+
 .single .business-directory .business-header .entry-header-content .business-description { padding-top: 8px; }
 
 .single .business-directory .business-header .entry-header-content .entry-meta { text-align: right; }
