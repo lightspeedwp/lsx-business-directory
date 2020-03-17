@@ -22,11 +22,9 @@ get_header(); ?>
 			<?php
 			$layout     = lsx_bd_get_option( 'archive_grid_list' );
 			$template   = LSX_BD_PATH . '/templates/single-row-business.php';
-			$grid_class = '';
 
 			if ( false !== $layout && '' !== $layout && 'grid' === $layout ) {
 				$template   = LSX_BD_PATH . '/templates/single-col-business.php';
-				$grid_class = 'lsx-grid';
 			}
 			?>
 			<div class="post-wrapper archive-plan">
