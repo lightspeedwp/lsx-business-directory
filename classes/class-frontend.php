@@ -39,6 +39,13 @@ class Frontend {
 	public $enquiry;
 
 	/**
+	 * Holds the widget class.
+	 *
+	 * @var object \lsx\business_directory\classes\frontend\Widget();
+	 */
+	public $widget;
+
+	/**
 	 * Contructor
 	 */
 	public function __construct() {
@@ -75,6 +82,9 @@ class Frontend {
 
 		require_once LSX_BD_PATH . 'classes/frontend/class-enquiry.php';
 		$this->enquiry = frontend\Enquiry::get_instance();
+
+		require_once LSX_BD_PATH . 'classes/frontend/class-widget.php';
+		$this->widget = frontend\Widget::get_instance();
 	}
 
 	/**
