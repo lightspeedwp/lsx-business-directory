@@ -37,6 +37,7 @@ class Settings_Theme {
 	 * Contructor
 	 */
 	public function __construct() {
+		add_filter( 'cmb2_enqueue_css', array( $this, 'lsx_bd_disable_cmb2_styles' ), 1, 1 );
 		add_action( 'cmb2_before_form', array( $this, 'generate_navigation' ), 10, 4 );
 		add_action( 'cmb2_before_title_field_row', array( $this, 'output_tab_open_div' ), 10, 1 );
 		add_action( 'cmb2_after_tab_closing_field_row', array( $this, 'output_tab_closing_div' ), 10, 1 );
@@ -58,6 +59,18 @@ class Settings_Theme {
 			self::$instance = new self();
 		}
 		return self::$instance;
+	}
+
+	/**
+	 * Disable CMB2 styles on front end forms.
+	 *
+	 * @return bool $enabled Whether to enable (enqueue) styles.
+	 */
+	public function lsx_bd_disable_cmb2_styles( $enabled ) {
+		if ( is_admin() ) {
+			$enabled = false;
+		}
+		return $enabled;
 	}
 
 	/**

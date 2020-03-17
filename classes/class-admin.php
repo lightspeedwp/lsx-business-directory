@@ -61,8 +61,6 @@ class Admin {
 		add_action( 'admin_enqueue_scripts', array( $this, 'assets' ) );
 		// Configure Settings page.
 		add_action( 'cmb2_admin_init', array( $this, 'register_settings_page' ) );
-		// Removed the standard CMB2 styling.
-		add_filter( 'cmb2_enqueue_css', array( $this, 'lsx_bd_disable_cmb2_styles' ), 1, 1 );
 	}
 
 	/**
@@ -134,17 +132,5 @@ class Admin {
 		);
 		$cmb  = new_cmb2_box( $args );
 		do_action( 'lsx_bd_settings_page', $cmb );
-	}
-
-	/**
-	 * Disable CMB2 styles on front end forms.
-	 *
-	 * @return bool $enabled Whether to enable (enqueue) styles.
-	 */
-	public function lsx_bd_disable_cmb2_styles( $enabled ) {
-		if ( is_admin() ) {
-			$enabled = false;
-		}
-		return $enabled;
 	}
 }
