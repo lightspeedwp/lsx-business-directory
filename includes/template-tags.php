@@ -80,12 +80,30 @@ function lsx_business_template( $filename_base ) {
 }
 
 /**
- * Loads Related Business block teamplte.
+ * Returns the related listing block
  *
- * @return  void
+ * @param  boolean $echo
+ * @return string
  */
-function lsx_related_business() {
-	lsx_business_template( 'single-business-related-business' );
+function lsx_bd_related_listings( $echo = true, $atts = array() ) {
+	$lsx_bd        = lsx_business_directory();
+	$terms         = wp_get_post_terms( get_the_ID(), 'industry' );
+	$prepped_terms = array();
+	foreach ( $terms as $term ) {
+		array_push( $prepped_terms, $term->term_id );
+	}
+	$args = array(
+		'title_text' => esc_html__( 'Related Listings', 'lsx-member-directory' ),
+		'carousel'   => true,
+		'taxonomy'   => 'industry',
+		'terms'      => $prepped_terms,
+		'orderby'    => 'rand',
+	);
+	if ( true === $echo ) {
+		echo wp_kses_post( $lsx_bd->frontend->widget->render( $args ) );
+	} else {
+		return $lsx_bd->frontend->widget->render( $args );
+	}
 }
 
 /**

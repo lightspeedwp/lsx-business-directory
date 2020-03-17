@@ -95,7 +95,7 @@ class Widget {
 		$shortcode_args = $this->args;
 
 		$this->query_members();
-		if ( $this->has_members() ) {
+		if ( $this->has_items() ) {
 			$this->start_loop();
 			$this->run_loop();
 			$this->end_loop();
@@ -144,11 +144,11 @@ class Widget {
 	}
 
 	/**
-	 * Checks to see it the current query found any members
+	 * Checks to see it the current query found any items
 	 *
 	 * @return boolean
 	 */
-	public function has_members() {
+	public function has_items() {
 		$has_members = false;
 		if ( false !== $this->query && $this->query->have_posts() ) {
 			$has_members = true;
@@ -161,13 +161,13 @@ class Widget {
 	 */
 	public function start_loop() {
 		// This is the wrapper for the shortcode.
-		$this->html = '<div class="lsx-member-directory-shortcode ' . $this->args['custom_css'] . '">';
+		$this->html = '<div class="lsx-business-directory-shortcode ' . $this->args['custom_css'] . '">';
 
 		$this->title();
 
 		// This outputs a carousel or a row.
 		if ( 'true' === $this->args['carousel'] || true === $this->args['carousel'] ) {
-			$this->html .= "<div class='lsx-member-directory-slider lsx-slick-slider' data-lsx-slick='{\"slidesToShow\": " . $this->args['slides_to_show'] . ", \"slidesToScroll\": " . $this->args['slides_to_scroll'] . " }'>";
+			$this->html .= "<div class='lsx-business-directory-slider lsx-slick-slider' data-lsx-slick='{\"slidesToShow\": " . $this->args['slides_to_show'] . ", \"slidesToScroll\": " . $this->args['slides_to_scroll'] . " }'>";
 		} else {
 			$this->html .= "<div class='row row-flex'>";
 		}
@@ -195,10 +195,12 @@ class Widget {
 	 */
 	public function run_loop() {
 		$this->counter = 0;
-		while( $this->query->have_posts() ) {
+		while ( $this->query->have_posts() ) {
 			$this->counter++;
 			$this->query->the_post();
-			$this->html .= lsx_member_directory_widget_content( false );
+			ob_start();
+			lsx_business_template( 'single-col-business' );
+			$this->html .= ob_get_clean();
 			$this->loop_bottom();
 		}
 	}
