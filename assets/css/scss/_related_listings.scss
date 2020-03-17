@@ -208,6 +208,22 @@
 			.business-content {
 				padding:19px 15px 20px 15px;
 			}
+			.business-button {
+				a {
+					&:after {
+						color: inherit;
+						content: '\f178';
+						display: inline-block;
+						font-family: 'FontAwesome';
+						font-size: inherit;
+						margin-left: 5px;
+						text-rendering: auto;
+		
+						-webkit-font-smoothing: antialiased;
+						-moz-osx-font-smoothing: grayscale;
+					}
+				}
+			}
 		}
 	}
 }

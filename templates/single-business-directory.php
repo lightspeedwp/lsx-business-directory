@@ -87,28 +87,28 @@ get_header(); ?>
 									<div class="row">
 										<?php if ( $business_primary_phone ) : ?>
 										<div class="telephone lsx-flex-row">
-											<div class="col1"><i class="fas fa-phone-square-alt"></i><strong><?php esc_html_e( 'Telephone', 'lsx-business-directory' ); ?>: </strong></div>
+											<div class="col1"><i class="fa fa-phone-square-alt"></i><strong><?php esc_html_e( 'Telephone', 'lsx-business-directory' ); ?>: </strong></div>
 											<div class="col2"><a href="tel:<?php echo esc_attr( str_replace( ' ', '', $business_primary_phone ) ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_attr( $business_primary_phone ); ?></a></div>
 										</div>
 										<?php endif; ?>
 
 										<?php if ( $business_contact_name ) : ?>
 										<div class="contact lsx-flex-row">
-											<div class="col1"><i class="fas fa-user"></i><strong><?php esc_html_e( 'Contact', 'lsx-business-directory' ); ?>: </strong></div>
+											<div class="col1"><i class="fa fa-user"></i><strong><?php esc_html_e( 'Contact', 'lsx-business-directory' ); ?>: </strong></div>
 											<div class="col2"><?php echo esc_attr( $business_contact_name ); ?></div>
 										</div>
 										<?php endif; ?>
 
 										<?php if ( $business_primary_email ) : ?>
 										<div class="email lsx-flex-row">
-											<div class="col1"><i class="fas fa-envelope-square"></i><strong><?php esc_html_e( 'Email', 'lsx-business-directory' ); ?>: </strong></div>
+											<div class="col1"><i class="fa fa-envelope-square"></i><strong><?php esc_html_e( 'Email', 'lsx-business-directory' ); ?>: </strong></div>
 											<div class="col2"><a href="mailto:<?php echo esc_attr( $business_primary_email ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_attr( $business_primary_email ); ?></a></div>
 										</div>
 										<?php endif; ?>
 
 										<?php if ( $business_website ) : ?>
 										<div class="website lsx-flex-row">
-											<div class="col1"><i class="fas fa-home"></i><strong><?php esc_html_e( 'Website', 'lsx-business-directory' ); ?>: </strong></div>
+											<div class="col1"><i class="fa fa-home"></i><strong><?php esc_html_e( 'Website', 'lsx-business-directory' ); ?>: </strong></div>
 											<div class="col2"><a href="<?php echo esc_attr( $business_website ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_attr( $business_website ); ?></a></div>
 										</div>
 										<?php endif; ?>
@@ -129,7 +129,7 @@ get_header(); ?>
 
 										<?php if ( ! empty( $address ) ) : ?>
 										<div class="address lsx-flex-row">
-											<div class="col1"><i class="fas fa-map-marker-alt"></i><strong><?php esc_html_e( 'Address', 'lsx-business-directory' ); ?>: </strong></div>
+											<div class="col1"><i class="fa fa-map-marker-alt"></i><strong><?php esc_html_e( 'Address', 'lsx-business-directory' ); ?>: </strong></div>
 											<div class="col2">
 												<?php
 												foreach ( $address as $field_string ) {
@@ -157,7 +157,7 @@ get_header(); ?>
 								<div class="entry-meta lsx-flex-row">
 									<div class="industry col-xs-6 col-sm-6 col-md-6">
 										<span>
-											<i class="fas fa-th"></i>
+											<i class="fa fa-th"></i>
 											<strong><?php esc_html_e( 'Industry', 'lsx-business-directory' ); ?>: </strong>
 											<?php
 											$count = 0;
