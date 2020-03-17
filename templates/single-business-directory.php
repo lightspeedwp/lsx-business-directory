@@ -38,9 +38,9 @@ get_header(); ?>
 			$business_website            = get_post_meta( get_the_ID(), $prefix . '_website', true );
 			$industries    				 = get_formatted_taxonomy_str( get_the_ID(), 'industry', true );
 
-			$business_contact_name		 = "James La Guma";
-			$business_skype		         = "d0minar";
-			$business_whatsapp		     = "0810565236";
+			$business_contact_name		 = 'John Doe';
+			$business_skype		         = 'Skype_User';
+			$business_whatsapp		     = '0810565236';
 			$address                     = array();
 
 			if ( $business_address_1 ) {
