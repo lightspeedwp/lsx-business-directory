@@ -73,7 +73,7 @@ get_header(); ?>
 					<div class="row">
 						<div class="col-md-4">
 							<div class="entry-image">
-								<img src="<?php echo esc_url( get_thumbnail_wrapped( get_the_ID(), 300, 200 ) ); ?>">
+								<img src="<?php echo esc_url( lsx_bd_get_thumbnail_wrapped( get_the_ID(), 'lsx-thumbnail-wide' ) ); ?>">
 							</div>
 						</div>
 
@@ -83,11 +83,11 @@ get_header(); ?>
 
 								<div class="entry-meta">
 									<div class="category">
-										<span><strong><?php esc_html_e( 'Industry', 'lsx-business-directory' ); ?>: </strong><?php echo esc_attr( get_formatted_taxonomy_str( get_the_ID(), 'industry' ) ); ?></span>
+										<span><strong><?php esc_html_e( 'Industry', 'lsx-business-directory' ); ?>: </strong><?php echo esc_attr( lsx_bd_get_formatted_taxonomy_str( get_the_ID(), 'industry' ) ); ?></span>
 									</div>
 
 									<div class="region">
-										<span><strong><?php esc_html_e( 'Location', 'lsx-business-directory' ); ?>: </strong><?php echo esc_attr( get_formatted_taxonomy_str( get_the_ID(), 'location' ) ); ?></span>
+										<span><strong><?php esc_html_e( 'Location', 'lsx-business-directory' ); ?>: </strong><?php echo esc_attr( lsx_bd_get_formatted_taxonomy_str( get_the_ID(), 'location' ) ); ?></span>
 									</div>
 
 									<?php

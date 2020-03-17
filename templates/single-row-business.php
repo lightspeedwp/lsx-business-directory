@@ -1,9 +1,9 @@
 <?php
 	$prefix        = 'lsx_bd';
-	$thumbnail     = get_thumbnail_wrapped( get_the_ID(), 265, 150 );
+	$thumbnail     = lsx_bd_get_thumbnail_wrapped( get_the_ID(), 'lsx-thumbnail-wide' );
 	$title         = get_the_title();
-	$industries    = get_formatted_taxonomy_str( get_the_ID(), 'industry', true );
-	$location      = get_formatted_taxonomy_str( get_the_ID(), 'location' );
+	$industries    = lsx_bd_get_formatted_taxonomy_str( get_the_ID(), 'industry', true );
+	$region        = lsx_bd_get_formatted_taxonomy_str( get_the_ID(), 'location' );
 	$primary_phone = get_post_meta( get_the_ID(), $prefix . '_primary_phone', true );
 	$primary_email = get_post_meta( get_the_ID(), $prefix . '_primary_email', true );
 ?>

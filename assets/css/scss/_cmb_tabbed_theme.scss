@@ -1,0 +1,82 @@
+/**
+ * The CMB2 Settings Page Tabbed Theme.
+ *
+ * @package lsx-business-directory
+ */
+
+/* CMB2 Settings Styles */
+.wp-admin.business-directory_page_lsx-business-directory-settings {
+
+	.cmb2-wrap {
+		&.form-table {
+			margin-top: 0;
+			border: 1px solid transparent;
+
+			.tab.tab-nav {
+				.cmb-row {
+					display: flex;
+					flex-direction: row;
+					
+					&.cmb-type-title {
+						display:none;
+					}
+
+					&:nth-child(2) {
+						.cmb-th,
+						.cmb-td {
+							padding-top: 0px;
+						}
+					}
+
+					div.cmb-th {
+						text-align: left;
+						padding: 20px 10px 20px 0;
+						width: 200px;
+						font-size: 14px;
+						line-height: 1.3;
+						font-weight: 600;
+						color: #23282d;
+						text-shadow: none;
+						vertical-align: baseline;
+					}
+				
+					div.cmb-td {
+						text-align: left !important;
+						padding: 20px 10px 20px 0 !important;
+				
+						select {
+							font-size: 14px;
+							line-height: 2;
+							color: #32373c;
+							border-color: #7e8993;
+							box-shadow: none;
+							border-radius: 3px;
+							padding: 0 24px 0 8px;
+							min-height: 30px;
+							max-width: 25rem;
+							-webkit-appearance: none;
+							background-size: 16px 16px;
+							cursor: pointer;
+							vertical-align: middle;
+						}
+					}
+				
+					p.cmb2-metabox-description {
+						margin: 2px 0 5px;
+						color: #666;
+						font-style: italic;
+						line-height: 1.5;
+						margin-top: 4px;
+						margin-bottom: 0;
+					}
+				
+					input[type=radio] {
+						margin-top: -4px;
+						margin-right: 4px;
+						float: none;
+					}
+				}
+			}
+		}
+	}
+}

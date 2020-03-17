@@ -34,7 +34,8 @@ body.lsx-business-directory-page {
 	}
 
 	// Post Type Archive
-	&.archive:not(.using-gutenberg):not(.banner-disabled) {
+	&.archive:not(.using-gutenberg):not(.banner-disabled),
+	&.search:not(.using-gutenberg):not(.banner-disabled) {
 		.wrap.container {
 			.content.role>div:first-child#primary {
 				margin-top:0px;
@@ -52,7 +53,8 @@ body.lsx-business-directory-page {
 		}
 	}
 	@include media('>=tablet') {
-		&.archive.banner-disabled {
+		&.archive.banner-disabled,
+		&.search.banner-disabled {
 			.facetwp-sidebar.widget-area {
 				margin-top: 8.4rem;
 

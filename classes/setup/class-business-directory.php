@@ -45,7 +45,7 @@ class Business_Directory {
 
 		// Register the custom fields.
 		add_action( 'cmb2_init', array( $this, 'register_address_custom_fields' ), 10 );
-		add_action( 'cmb2_init', array( $this, 'register_branches_custom_fields' ), 15 );
+		//add_action( 'cmb2_init', array( $this, 'register_branches_custom_fields' ), 15 );
 		add_action( 'cmb2_init', array( $this, 'register_contact_custom_fields' ), 20 );
 	}
 
