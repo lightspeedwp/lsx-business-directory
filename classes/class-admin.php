@@ -39,6 +39,20 @@ class Admin {
 	public $single;
 
 	/**
+	 * Holds the placeholders admin class
+	 *
+	 * @var object \lsx\business_directory\classes\admin\Placeholders();
+	 */
+	public $placeholders;
+
+	/**
+	 * Holds the settings page theme functions
+	 *
+	 * @var object \lsx\business_directory\classes\admin\Settings_Theme();
+	 */
+	public $settings_theme;
+
+	/**
 	 * Contructor
 	 */
 	public function __construct() {
@@ -85,6 +99,9 @@ class Admin {
 
 		require_once LSX_BD_PATH . 'classes/admin/class-placeholders.php';
 		$this->placeholders = admin\Placeholders::get_instance();
+
+		require_once LSX_BD_PATH . 'classes/admin/class-settings-theme.php';
+		$this->settings_theme = admin\Settings_Theme::get_instance();
 	}
 
 	/**
