@@ -106,51 +106,17 @@ class Admin {
 	 * @return void
 	 */
 	public function register_settings_page() {
-		$tab1_args = array(
-			'id'           => 'lsx_bd_settings_tab1',
+		$args = array(
+			'id'           => 'lsx_bd_settings',
 			'title'        => esc_html__( 'Business Directory Settings', 'lsx-business-directory' ),
-			'menu_title'   => esc_html__( 'Single Settings', 'lsx-business-directory' ), // Falls back to 'title' (above).
+			'menu_title'   => esc_html__( 'Settings', 'lsx-business-directory' ), // Falls back to 'title' (above).
 			'object_types' => array( 'options-page' ),
-			'option_key'   => 'lsx-business-directory-settings-tab1', // The option key and admin menu page slug.
+			'option_key'   => 'lsx-business-directory-settings', // The option key and admin menu page slug.
 			'parent_slug'  => 'edit.php?post_type=business-directory', // Make options page a submenu item of the Business Directory menu.
 			'capability'   => 'manage_options', // Cap required to view options-page.
-			'tab_group'    => 'lsx_bd_main_options',
-			'tab_title'    => 'Single',
 		);
-
-		$tab1_options = new_cmb2_box( $tab1_args );
-
-		$tab2_args = array(
-			'id'           => 'lsx_bd_settings_tab2',
-			'title'        => esc_html__( 'Business Directory Settings', 'lsx-business-directory' ),
-			'menu_title'   => esc_html__( 'Archive Settings', 'lsx-business-directory' ), // Falls back to 'title' (above).
-			'object_types' => array( 'options-page' ),
-			'option_key'   => 'lsx-business-directory-settings-tab2', // The option key and admin menu page slug.
-			'parent_slug'  => 'edit.php?post_type=business-directory', // Make options page a submenu item of the Business Directory menu.
-			'capability'   => 'manage_options', // Cap required to view options-page.
-			'tab_group'    => 'lsx_bd_main_options',
-			'tab_title'    => 'Archive',
-		);
-
-		$tab2_options = new_cmb2_box( $tab2_args );
-
-		$tab3_args = array(
-			'id'           => 'lsx_bd_settings_tab3',
-			'title'        => esc_html__( 'Business Directory Settings', 'lsx-business-directory' ),
-			'menu_title'   => esc_html__( 'Search Settings', 'lsx-business-directory' ), // Falls back to 'title' (above).
-			'object_types' => array( 'options-page' ),
-			'option_key'   => 'lsx-business-directory-settings-tab3', // The option key and admin menu page slug.
-			'parent_slug'  => 'edit.php?post_type=business-directory', // Make options page a submenu item of the Business Directory menu.
-			'capability'   => 'manage_options', // Cap required to view options-page.
-			'tab_group'    => 'lsx_bd_main_options',
-			'tab_title'    => 'Search',
-		);
-
-		$tab3_options = new_cmb2_box( $tab3_args );
-
-		do_action( 'lsx_bd_settings_page_tab1', $tab1_options );
-		do_action( 'lsx_bd_settings_page_tab2', $tab2_options );
-		do_action( 'lsx_bd_settings_page_tab3', $tab3_options );
+		$cmb  = new_cmb2_box( $args );
+		do_action( 'lsx_bd_settings_page', $cmb );
 	}
 
 	/**
