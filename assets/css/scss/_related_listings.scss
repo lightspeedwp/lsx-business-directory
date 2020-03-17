@@ -178,6 +178,8 @@
 	}
 
 	.slick-arrow {
+		border-color: #374750;
+		
 		&.slick-prev { left: -4rem; }
 		&.slick-next { right: -4rem; }
 		&.slick-hidden { display: none; }
