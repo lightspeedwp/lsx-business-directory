@@ -72,19 +72,19 @@ class Business_Directory {
 	 */
 	public function register_post_type() {
 		$labels = array(
-			'name'               => esc_html_x( 'Business Directory', 'post type general name', 'lsx-business-directory' ),
-			'singular_name'      => esc_html_x( 'Directory', 'post type general name', 'lsx-business-directory' ),
-			'add_new'            => esc_html__( 'Add Business', 'lsx-business-directory' ),
-			'add_new_item'       => esc_html__( 'Add New Business', 'lsx-business-directory' ),
-			'edit_item'          => esc_html__( 'Edit Business', 'lsx-business-directory' ),
-			'new_item'           => esc_html__( 'New Business', 'lsx-business-directory' ),
-			'all_items'          => esc_html__( 'All Businesses', 'lsx-business-directory' ),
-			'view_item'          => esc_html__( 'View Business', 'lsx-business-directory' ),
-			'search_items'       => esc_html__( 'Search Businesses', 'lsx-business-directory' ),
-			'not_found'          => esc_html__( 'No businesses defined', 'lsx-business-directory' ),
-			'not_found_in_trash' => esc_html__( 'No businesses in the trash', 'lsx-business-directory' ),
+			'name'               => esc_html_x( 'Listings', 'post type general name', 'lsx-business-directory' ),
+			'singular_name'      => esc_html_x( 'Listing', 'post type general name', 'lsx-business-directory' ),
+			'add_new'            => esc_html__( 'Add Listings', 'lsx-business-directory' ),
+			'add_new_item'       => esc_html__( 'Add New Listing', 'lsx-business-directory' ),
+			'edit_item'          => esc_html__( 'Edit Listing', 'lsx-business-directory' ),
+			'new_item'           => esc_html__( 'New Listing', 'lsx-business-directory' ),
+			'all_items'          => esc_html__( 'All Listings', 'lsx-business-directory' ),
+			'view_item'          => esc_html__( 'View Listing', 'lsx-business-directory' ),
+			'search_items'       => esc_html__( 'Search Listings', 'lsx-business-directory' ),
+			'not_found'          => esc_html__( 'No listings defined', 'lsx-business-directory' ),
+			'not_found_in_trash' => esc_html__( 'No listings in the trash', 'lsx-business-directory' ),
 			'parent_item_colon'  => '',
-			'menu_name'          => esc_html__( 'Business Directory', 'lsx-business-directory' ),
+			'menu_name'          => esc_html__( 'Listings', 'lsx-business-directory' ),
 		);
 
 		$supports = array(
@@ -104,11 +104,11 @@ class Business_Directory {
 			'menu_icon'           => 'dashicons-list-view',
 			'query_var'           => true,
 			'rewrite'             => array(
-				'slug' => 'business',
+				'slug' => 'listing',
 			),
 			'exclude_from_search' => false,
 			'capability_type'     => 'page',
-			'has_archive'         => 'business-directory',
+			'has_archive'         => 'listings',
 			'hierarchical'        => false,
 			'menu_position'       => null,
 			'supports'            => $supports,
@@ -144,7 +144,7 @@ class Business_Directory {
 			'query_var'           => true,
 			'rewrite'             => array( 'industry' ),
 		);
-		register_taxonomy( 'lsx-bd-industry', array( $this->slug ), $details );
+		register_taxonomy( 'industry', array( $this->slug ), $details );
 	}
 
 	/**
@@ -152,17 +152,17 @@ class Business_Directory {
 	 */
 	public function register_region_taxonomy() {
 		$labels = array(
-			'name'              => esc_html__( 'Region', 'lsx-business-directory' ),
-			'singular_name'     => esc_html__( 'Region', 'lsx-business-directory' ),
-			'search_items'      => esc_html__( 'Search Regions', 'lsx-business-directory' ),
-			'all_items'         => esc_html__( 'Regions', 'lsx-business-directory' ),
-			'parent_item'       => esc_html__( 'Parent Region', 'lsx-business-directory' ),
-			'parent_item_colon' => esc_html__( 'Parent Region:', 'lsx-business-directory' ),
-			'edit_item'         => esc_html__( 'Edit Region', 'lsx-business-directory' ),
-			'update_item'       => esc_html__( 'Update Region', 'lsx-business-directory' ),
-			'add_new_item'      => esc_html__( 'Add New Region', 'lsx-business-directory' ),
-			'new_item_name'     => esc_html__( 'New Region', 'lsx-business-directory' ),
-			'menu_name'         => esc_html__( 'Regions', 'lsx-business-directory' ),
+			'name'              => esc_html__( 'Location', 'lsx-business-directory' ),
+			'singular_name'     => esc_html__( 'Location', 'lsx-business-directory' ),
+			'search_items'      => esc_html__( 'Search Locations', 'lsx-business-directory' ),
+			'all_items'         => esc_html__( 'Locations', 'lsx-business-directory' ),
+			'parent_item'       => esc_html__( 'Parent Location', 'lsx-business-directory' ),
+			'parent_item_colon' => esc_html__( 'Parent Location:', 'lsx-business-directory' ),
+			'edit_item'         => esc_html__( 'Edit Location', 'lsx-business-directory' ),
+			'update_item'       => esc_html__( 'Update Location', 'lsx-business-directory' ),
+			'add_new_item'      => esc_html__( 'Add New Location', 'lsx-business-directory' ),
+			'new_item_name'     => esc_html__( 'New Location', 'lsx-business-directory' ),
+			'menu_name'         => esc_html__( 'Locations', 'lsx-business-directory' ),
 		);
 		$details = array(
 			'labels'              => $labels,
@@ -172,9 +172,9 @@ class Business_Directory {
 			'exclude_from_search' => true,
 			'show_admin_column'   => true,
 			'query_var'           => true,
-			'rewrite'             => array( 'region' ),
+			'rewrite'             => array( 'location' ),
 		);
-		register_taxonomy( 'lsx-bd-region', array( $this->slug ), $details );
+		register_taxonomy( 'location', array( $this->slug ), $details );
 	}
 
 	/**

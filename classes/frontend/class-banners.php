@@ -74,7 +74,7 @@ class Banners {
 			$this->screen = 'single';
 		} elseif ( is_post_type_archive( 'business-directory' ) ) {
 			$this->screen = 'archive';
-		} elseif ( is_tax( array( 'lsx-bd-industry', 'lsx-bd-region' ) ) ) {
+		} elseif ( is_tax( array( 'industry', 'location' ) ) ) {
 			$this->screen = 'taxonomy';
 		} elseif ( is_search() ) {
 			$this->screen = 'search';

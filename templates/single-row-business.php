@@ -2,8 +2,8 @@
 	$prefix        = 'lsx_bd';
 	$thumbnail     = lsx_bd_get_thumbnail_wrapped( get_the_ID(), 'lsx-thumbnail-wide' );
 	$title         = get_the_title();
-	$industries    = lsx_bd_get_formatted_taxonomy_str( get_the_ID(), 'lsx-bd-industry', true );
-	$region        = lsx_bd_get_formatted_taxonomy_str( get_the_ID(), 'lsx-bd-region' );
+	$industries    = lsx_bd_get_formatted_taxonomy_str( get_the_ID(), 'industry', true );
+	$region        = lsx_bd_get_formatted_taxonomy_str( get_the_ID(), 'location' );
 	$primary_phone = get_post_meta( get_the_ID(), $prefix . '_primary_phone', true );
 	$primary_email = get_post_meta( get_the_ID(), $prefix . '_primary_email', true );
 ?>
@@ -33,7 +33,7 @@
 											?>,
 										<?php endif;
 										?>
-											<a href="/lsx-bd-industry/<?php echo esc_attr( $industry['slug'] ); ?>"><?php echo esc_attr( $industry['name'] ); ?></a>
+											<a href="/industry/<?php echo esc_attr( $industry['slug'] ); ?>"><?php echo esc_attr( $industry['name'] ); ?></a>
 											<?php
 											$count++;
 									endforeach;
@@ -42,7 +42,7 @@
 							</div>
 
 							<div class="region col-md-6">
-								<span><i class="fas fa-globe-africa"></i><strong><?php esc_html_e( 'Region', 'lsx-business-directory' ); ?>: </strong><?php echo esc_attr( $region ); ?></span>
+								<span><i class="fas fa-globe-africa"></i><strong><?php esc_html_e( 'Location', 'lsx-business-directory' ); ?>: </strong><?php echo esc_attr( $region ); ?></span>
 							</div>
 						</div>
 

@@ -28,7 +28,7 @@
     "gulp-minify-css": "^1.2.4",
     "gulp-plumber": "^1.2.1",
     "gulp-rename": "^2.0.0",
-    "gulp-rtlcss": "^1.4.0",
+    "gulp-rtlcss": "^1.4.1",
     "gulp-sass": "^4.0.2",
     "gulp-sort": "^2.0.0",
     "gulp-sourcemaps": "^2.6.5",
@@ -38,6 +38,7 @@
     "jshint": "^2.11.0"
   },
   "dependencies": {
+    "acorn": "^7.1.1",
     "clean-css": "^4.2.3",
     "extend": "^3.0.2",
     "fstream": "^1.0.12",

@@ -36,7 +36,7 @@ class LSX_Search {
 	 */
 	public function __construct() {
 		// We do BD Search setting only at 'admin_init', because we need is_plugin_active() function present to check for LSX Search plugin.
-		add_action( 'lsx_bd_settings_page', array( $this, 'configure_settings_search_engine_fields' ), 15, 1 );
+		add_action( 'lsx_bd_settings_page_tab3', array( $this, 'configure_settings_search_engine_fields' ), 15, 1 );
 		add_action( 'lsx_bd_settings_section_archive', array( $this, 'configure_settings_search_archive_fields' ), 15, 2 );
 
 		add_action( 'wp', array( $this, 'maybe_enqueue_search_filters' ), 5 );
@@ -232,7 +232,7 @@ class LSX_Search {
 	 * @return boolean
 	 */
 	public function lsx_search_enabled( $enabled = false ) {
-		if ( is_post_type_archive( 'business-directory' ) || is_tax( array( 'lsx-bd-industry', 'lsx-bd-region' ) ) || is_search() ) {
+		if ( is_post_type_archive( 'business-directory' ) || is_tax( array( 'industry', 'location' ) ) || is_search() ) {
 			$is_enabled = lsx_bd_get_option( 'archive_search_enable', false );
 			if ( 'on' === $is_enabled ) {
 				$enabled = true;
@@ -248,7 +248,7 @@ class LSX_Search {
 	 * @return string
 	 */
 	public function lsx_search_prefix( $prefix = '' ) {
-		if ( is_post_type_archive( 'business-directory' ) || is_tax( array( 'lsx-bd-industry', 'lsx-bd-region' ) ) || is_search() ) {
+		if ( is_post_type_archive( 'business-directory' ) || is_tax( array( 'industry', 'location' ) ) || is_search() ) {
 			$prefix = 'archive';
 		}
 		return $prefix;
@@ -261,7 +261,7 @@ class LSX_Search {
 	 * @return array
 	 */
 	public function lsx_search_options( $options = array() ) {
-		if ( is_post_type_archive( 'business-directory' ) || is_tax( array( 'lsx-bd-industry', 'lsx-bd-region' ) ) || is_search() ) {
+		if ( is_post_type_archive( 'business-directory' ) || is_tax( array( 'industry', 'location' ) ) || is_search() ) {
 			if ( is_search() ) {
 				$this->prefix = 'engine';
 			} else {
@@ -273,8 +273,8 @@ class LSX_Search {
 			$this->layout     = lsx_bd_get_option( $this->prefix . '_grid_list' );
 			if ( ! empty( $active_facets ) ) {
 				foreach ( $active_facets as $index => $facet_name ) {
-					if ( ! ( 'lsx-bd-industry' === $current_taxonomy && 'industries' === $facet_name ) &&
-						! ( 'lsx-bd-region' === $current_taxonomy && 'regions' === $facet_name ) ) {
+					if ( ! ( 'industry' === $current_taxonomy && 'industries' === $facet_name ) &&
+						 ! ( 'location' === $current_taxonomy && 'regions' === $facet_name ) ) {
 						$facets[ $facet_name ] = 'on';
 					}
 				}

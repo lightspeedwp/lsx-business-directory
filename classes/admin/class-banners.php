@@ -104,7 +104,7 @@ class Banners {
 				'id'           => 'lsx_bd_term_banner_images_metabox',
 				'title'        => esc_html__( 'Banner', 'lsx-business-directory' ),
 				'object_types' => array( 'term' ),
-				'taxonomies'   => array( 'lsx-bd-industry', 'lsx-bd-region' ),
+				'taxonomies'   => array( 'industry', 'location' ),
 			)
 		);
 		$fields = \lsx\business_directory\includes\get_banner_fields( 'lsx_bd' );

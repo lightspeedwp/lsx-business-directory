@@ -83,11 +83,11 @@ get_header(); ?>
 
 								<div class="entry-meta">
 									<div class="category">
-										<span><strong><?php esc_html_e( 'Category', 'lsx-business-directory' ); ?>: </strong><?php echo esc_attr( lsx_bd_get_formatted_taxonomy_str( get_the_ID(), 'lsx-bd-industry' ) ); ?></span>
+										<span><strong><?php esc_html_e( 'Industry', 'lsx-business-directory' ); ?>: </strong><?php echo esc_attr( lsx_bd_get_formatted_taxonomy_str( get_the_ID(), 'industry' ) ); ?></span>
 									</div>
 
 									<div class="region">
-										<span><strong><?php esc_html_e( 'Region', 'lsx-business-directory' ); ?>: </strong><?php echo esc_attr( lsx_bd_get_formatted_taxonomy_str( get_the_ID(), 'lsx-bd-region' ) ); ?></span>
+										<span><strong><?php esc_html_e( 'Location', 'lsx-business-directory' ); ?>: </strong><?php echo esc_attr( lsx_bd_get_formatted_taxonomy_str( get_the_ID(), 'location' ) ); ?></span>
 									</div>
 
 									<?php
@@ -209,7 +209,7 @@ get_header(); ?>
 				</div>
 
 				<?php
-				$terms         = wp_get_post_terms( get_the_ID(), 'lsx-bd-industry' );
+				$terms         = wp_get_post_terms( get_the_ID(), 'industry' );
 				$prepped_terms = array();
 
 				foreach ( $terms as $term ) {
@@ -222,7 +222,7 @@ get_header(); ?>
 						'posts_per_page' => 3,
 						'tax_query'      => array(
 							array(
-								'taxonomy' => 'lsx-bd-industry',
+								'taxonomy' => 'industry',
 								'terms'    => $prepped_terms,
 							),
 						),

@@ -80,7 +80,7 @@ class Template_Redirects {
 	 * @return string
 	 */
 	public function taxonomy_template_include( $template ) {
-		$applicable_taxonomies = array( 'lsx-bd-industry', 'lsx-bd-region' );
+		$applicable_taxonomies = array( 'industry', 'location' );
 		if ( is_main_query() && is_tax( $applicable_taxonomies ) ) {
 			if ( '' == locate_template( array( 'taxonomy-business-directory.php' ) ) && file_exists( LSX_BD_PATH . 'templates/taxonomy-business-directory.php' ) ) {
 				$template = LSX_BD_PATH . 'templates/taxonomy-business-directory.php';
