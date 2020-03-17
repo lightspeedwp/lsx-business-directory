@@ -107,7 +107,7 @@ class Banners {
 				'taxonomies'   => array( 'industry', 'location' ),
 			)
 		);
-		$fields = \lsx\business_directory\includes\get_banner_fields( 'lsx_bd' );
+		$fields = \lsx\business_directory\includes\get_banner_fields( 'lsx_bd', esc_html__( 'Banner', 'lsx-business-directory' ) . ' ' );
 		foreach ( $fields as $field ) {
 			$cmb->add_field( $field );
 		}
