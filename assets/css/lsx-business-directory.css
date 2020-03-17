@@ -92,11 +92,9 @@ body.lsx-business-directory-page.archive:not(.using-gutenberg):not(.banner-disab
 
 .slick-lightbox-slick-caption { display: inline-block; }
 
-.lsx-business-directory-shortcode .lsx-business-directory-slider article.business.col-layout .business-thumbnail { min-height: 168px; }
+.lsx-business-directory-shortcode .lsx-business-directory-slider article.business.col-layout .business-thumbnail { min-height: 168px; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; }
 
 .lsx-business-directory-shortcode .lsx-business-directory-slider article.business.col-layout .business-content { padding: 19px 15px 20px 15px; }
-
-.lsx-business-directory-shortcode .lsx-business-directory-slider article.business.col-layout .business-button a:after { color: inherit; content: '\f178'; display: inline-block; font-family: 'FontAwesome'; font-size: inherit; margin-left: 5px; text-rendering: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
 @CHARSET "UTF-8";
 /* General */
