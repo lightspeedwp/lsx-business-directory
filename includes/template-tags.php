@@ -93,7 +93,7 @@ function lsx_bd_related_listings( $echo = true, $atts = array() ) {
 		array_push( $prepped_terms, $term->term_id );
 	}
 	$args = array(
-		'title_text' => esc_html__( 'Related Listings', 'lsx-member-directory' ),
+		'title_text' => esc_html__( 'You might also be interested in...', 'lsx-member-directory' ),
 		'carousel'   => true,
 		'taxonomy'   => 'industry',
 		'terms'      => $prepped_terms,

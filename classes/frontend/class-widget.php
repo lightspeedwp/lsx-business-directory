@@ -178,7 +178,7 @@ class Widget {
 	 */
 	public function title() {
 		if ( '' !== $this->args['title_text'] ) {
-			$this->html .= '<h2 class="section-title lined">';
+			$this->html .= '<h2 class="section-title lined lsx-title">';
 			if ( '' !== $this->args['title_link'] ) {
 				$this->html .= '<a href="' . $this->args['title_link'] . '">';
 			}
