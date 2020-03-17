@@ -40,7 +40,8 @@ get_header(); ?>
 
 			$business_contact_name		 = 'John Doe';
 			$business_skype		         = 'Skype_User';
-			$business_whatsapp		     = '0810565236';
+			$business_whatsapp		     = '(083) 123-45-67';
+			$business_whatsapp           = preg_replace("/[^0-9]/", "", $business_whatsapp );
 			$address                     = array();
 
 			if ( $business_address_1 ) {
@@ -115,14 +116,14 @@ get_header(); ?>
 										<?php if ( $business_skype ) : ?>
 										<div class="skype lsx-flex-row">
 											<div class="col1"><i class="fab fa-skype"></i><strong><?php esc_html_e( 'Skype', 'lsx-business-directory' ); ?>: </strong></div>
-											<div class="col2"><?php echo esc_attr( $business_skype ); ?></div>
+											<div class="col2 lsx-flex-center"><a href="skype:<?php echo esc_attr( $business_skype ); ?>?call"><i class="fab fa-skype"></i>Call: <?php echo esc_attr( $business_skype ); ?></a></div>
 										</div>
 										<?php endif; ?>
 
 										<?php if ( $business_whatsapp ) : ?>
 										<div class="whatsapp lsx-flex-row">
 											<div class="col1"><i class="fab fa-whatsapp"></i><strong><?php esc_html_e( 'Whatsapp', 'lsx-business-directory' ); ?>: </strong></div>
-											<div class="col2"><?php echo esc_attr( $business_whatsapp ); ?></div>
+											<div class="col2 lsx-flex-center"><a href="https://wa.me/<?php echo esc_attr( $business_whatsapp ); ?>">Click to Chat</a></div>
 										</div>
 										<?php endif; ?>
 

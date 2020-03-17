@@ -102,7 +102,15 @@ body.lsx-business-directory-page.archive:not(.using-gutenberg):not(.banner-disab
 
 .single .business-directory .contact-info .telephone .col1, .single .business-directory .contact-info .contact .col1, .single .business-directory .contact-info .email .col1, .single .business-directory .contact-info .website .col1, .single .business-directory .contact-info .skype .col1, .single .business-directory .contact-info .whatsapp .col1, .single .business-directory .contact-info .address .col1 { min-width: 141px; color: #919191; font-family: "Noto Sans"; font-size: 15px; font-weight: bold; line-height: 24px; }
 
-.single .business-directory .contact-info .telephone .col2, .single .business-directory .contact-info .contact .col2, .single .business-directory .contact-info .email .col2, .single .business-directory .contact-info .website .col2, .single .business-directory .contact-info .skype .col2, .single .business-directory .contact-info .whatsapp .col2, .single .business-directory .contact-info .address .col2 { min-width: 141px; }
+.single .business-directory .contact-info .telephone .col2, .single .business-directory .contact-info .contact .col2, .single .business-directory .contact-info .email .col2, .single .business-directory .contact-info .website .col2, .single .business-directory .contact-info .skype .col2, .single .business-directory .contact-info .whatsapp .col2, .single .business-directory .contact-info .address .col2 { min-width: 151px; }
+
+.single .business-directory .contact-info .skype .col2 { border-radius: 15px; padding-left: 10px; padding-right: 10px; background-color: #46B6EF; }
+
+.single .business-directory .contact-info .skype .col2 a { color: white; }
+
+.single .business-directory .contact-info .whatsapp .col2 { border-radius: 15px; padding-left: 10px; padding-right: 10px; background-color: #5AC352; }
+
+.single .business-directory .contact-info .whatsapp a { color: white; }
 
 .single .business-directory .related-businesses h2 { text-align: center; }
 

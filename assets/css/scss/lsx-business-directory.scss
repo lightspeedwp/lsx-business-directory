@@ -249,7 +249,33 @@
 					line-height: 24px;
 				}
 				.col2 {
-					min-width: 141px;
+					min-width: 151px;
+				}
+			}
+
+			.skype {
+				.col2 {
+					border-radius: 15px;
+					padding-left: 10px;
+					padding-right: 10px;
+					background-color: #46B6EF;
+
+					a {
+						color: white;
+					}
+				}
+			}
+
+			.whatsapp {
+				.col2 {
+					border-radius: 15px;
+					padding-left: 10px;
+					padding-right: 10px;
+					background-color: #5AC352;
+				}
+
+				a {
+					color: white;
 				}
 			}
 		}
