@@ -21,7 +21,7 @@ class Archive {
 	 * Contructor
 	 */
 	public function __construct() {
-		add_action( 'lsx_bd_settings_page', array( $this, 'register_settings_archive' ), 2, 1 );
+		add_action( 'lsx_bd_settings_page_tab2', array( $this, 'register_settings_archive' ), 2, 1 );
 	}
 
 	/**
