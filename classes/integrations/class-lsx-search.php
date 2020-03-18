@@ -102,14 +102,25 @@ class LSX_Search {
 					)
 				);
 				do_action( 'lsx_bd_settings_section_engine', $cmb, 'top' );
+				$cmb->add_field(
+					array(
+						'name'        => esc_html__( 'Enable Search Filters', 'lsx-business-directory' ),
+						'id'          => $section . '_search_enable',
+						'description' => esc_html__( 'Display FacetWP filters on your search results page.', 'lsx-business-directory' ),
+						'type'        => 'checkbox',
+					)
+				);
+			} else {
+				$cmb->add_field(
+					array(
+						'name'        => esc_html__( 'Enable Search Filters', 'lsx-business-directory' ),
+						'id'          => $section . '_search_enable',
+						'description' => esc_html__( 'Display FacetWP filters on your listing archive pages.', 'lsx-business-directory' ),
+						'type'        => 'checkbox',
+					)
+				);
 			}
-			$cmb->add_field(
-				array(
-					'name' => esc_html__( 'Enable Search', 'lsx-business-directory' ),
-					'id'   => $section . '_search_enable',
-					'type' => 'checkbox',
-				)
-			);
+
 
 			$cmb->add_field(
 				array(
