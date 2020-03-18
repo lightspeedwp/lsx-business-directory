@@ -51,7 +51,7 @@ class Placeholders {
 	 */
 	public function banner_image_placeholder( $banner = '' ) {
 		if ( '' === $banner || false === $banner ) {
-			$image_src = \lsx\business_directory\includes\get_placeholder( 'full', 'archive' );
+			$image_src = \lsx\business_directory\includes\get_placeholder( 'full', 'archive_banner' );
 			if ( '' !== $image_src && false !== $image_src ) {
 				$banner = $image_src;
 			}
