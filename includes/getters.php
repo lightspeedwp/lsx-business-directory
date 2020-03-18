@@ -7,6 +7,8 @@
 
 namespace lsx\business_directory\includes;
 
+use WP_Query;
+
 /**
  * Returns the banner fields for use in registering the custom fields, theme settings etc.
  *
@@ -176,10 +178,10 @@ function get_wpforms() {
 		'nopaging'      => true,
 	);
 
-	$posts = get_posts( $args );
+	$form_query = new WP_Query( $args );
 
-	if ( ! empty( $posts ) ) {
-		foreach ( $posts as $post ) {
+	if ( $form_query->have_posts() ) {
+		foreach ( $form_query->posts as $post ) {
 			$forms[ 'wp_' . $post->ID ] = $post->post_title;
 		}
 	} else {
