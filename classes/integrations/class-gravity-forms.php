@@ -2,18 +2,18 @@
 namespace lsx\business_directory\classes\integrations;
 
 /**
- * LSX Ninja Forms Integration class
+ * Gravity_Forms Integration class
  *
  * @package lsx-business-directory
  */
-class LSX_Gravity_Forms {
+class Gravity_Forms {
 
 	/**
 	 * Holds class instance
 	 *
 	 * @since 1.0.0
 	 *
-	 * @var      object \lsx\business_directory\classes\LSX_Gravity()
+	 * @var      object \lsx\business_directory\classes\Gravity_Forms()
 	 */
 	protected static $instance = null;
 
@@ -30,7 +30,7 @@ class LSX_Gravity_Forms {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return    object \lsx\business_directory\classes\LSX_Gravity()    A single instance of this class.
+	 * @return    object \lsx\business_directory\classes\Gravity_Forms()    A single instance of this class.
 	 */
 	public static function get_instance() {
 		// If the single instance hasn't been set, set it now.
@@ -42,8 +42,6 @@ class LSX_Gravity_Forms {
 
 	/**
 	 * Register Merge Tags Call Back.
-	 *
-	 * @link   https://docs.gravityforms.com/gform_custom_merge_tags/
 	 *
 	 * @return void
 	 */

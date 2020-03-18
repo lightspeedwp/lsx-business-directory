@@ -39,11 +39,11 @@ class Integrations {
 	public $lsx_ninja;
 
 	/**
-	 * Holds the LSX Gravity Forms integration functions.
+	 * Holds the Gravity Forms integration functions.
 	 *
-	 * @var object \lsx\business_directory\classes\Frontend();
+	 * @var object \lsx\business_directory\classes\integrations\Gravity_Forms();
 	 */
-	public $lsx_gravity;
+	public $gravity_forms;
 
 	/**
 	 * Holds the Caldera Forms integration functions.
@@ -70,8 +70,8 @@ class Integrations {
 		require_once LSX_BD_PATH . '/classes/integrations/class-wpforms.php';
 		$this->wpforms = integrations\WPForms::get_instance();
 
-		require_once LSX_BD_PATH . '/classes/integrations/class-lsx-gravity-forms.php';
-		$this->lsx_gravity = integrations\LSX_Gravity_Forms::get_instance();
+		require_once LSX_BD_PATH . '/classes/integrations/class-gravity-forms.php';
+		$this->gravity_forms = integrations\Caldera_Forms::get_instance();
 
 		require_once LSX_BD_PATH . '/classes/integrations/class-lsx-ninja-forms.php';
 		$this->lsx_ninja = integrations\LSX_Ninja_Forms::get_instance();
