@@ -25,6 +25,13 @@ class Integrations {
 	public $lsx_search;
 
 	/**
+	 * Holds the LSX Search integration functions.
+	 *
+	 * @var object \lsx\business_directory\classes\Frontend();
+	 */
+	public $lsx_wpforms;
+
+	/**
 	 * This holds the current facet info.
 	 *
 	 * @var array
@@ -38,6 +45,9 @@ class Integrations {
 		// Load plugin settings related functionality.
 		require_once LSX_BD_PATH . '/classes/integrations/class-lsx-search.php';
 		$this->lsx_search = integrations\LSX_Search::get_instance();
+
+		require_once LSX_BD_PATH . '/classes/integrations/class-wpforms.php';
+		$this->lsx_wpforms = integrations\LSX_WPForms::get_instance();
 	}
 
 	/**

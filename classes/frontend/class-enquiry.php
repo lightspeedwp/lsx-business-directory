@@ -47,6 +47,27 @@ class Enquiry {
 	 */
 	private function __construct() {
 		add_action( 'wp_footer', array( $this, 'output_enquiry_form' ) );
+		add_filter( 'wpforms_smart_tag_process', array( $this, 'wpf_dev_process_smarttag' ), 10, 2 );
+	}
+
+	/**
+	 * Process the Smart Tag.
+	 *
+	 * @link   https://wpforms.com/developers/how-to-create-a-custom-smart-tag/
+	 *
+	 * @param  string $content
+	 * @param  string $tag
+	 * @return string
+	 */
+	public function wpf_dev_process_smarttag( $content, $tag ) {
+		// Only run if it is our desired tag.
+		if ( 'listing_primary_email' === $tag ) {
+			$prefix                = 'lsx_bd';
+			$listing_primary_email = get_post_meta( get_the_ID(), $prefix . '_primary_email', true );
+			$content               = str_replace( '{listing_primary_email}', $listing_primary_email, $content );
+		}
+
+		return $content;
 	}
 
 	/**
