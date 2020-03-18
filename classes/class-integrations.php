@@ -68,6 +68,9 @@ class Integrations {
 
 		require_once LSX_BD_PATH . '/classes/integrations/class-lsx-ninja-forms.php';
 		$this->lsx_ninja = integrations\LSX_Ninja_Forms::get_instance();
+
+		require_once LSX_BD_PATH . '/classes/integrations/class-caldera-forms.php';
+		$this->caldera_forms = integrations\Caldera_Forms::get_instance();
 	}
 
 	/**
