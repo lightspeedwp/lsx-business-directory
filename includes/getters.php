@@ -178,7 +178,7 @@ function get_wpforms() {
 		'nopaging'      => true,
 	);
 
-	$form_query = new WP_Query( $args );
+	$form_query = new \WP_Query( $args );
 
 	if ( $form_query->have_posts() ) {
 		foreach ( $form_query->posts as $post ) {
