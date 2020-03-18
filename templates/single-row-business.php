@@ -3,7 +3,7 @@
 	$thumbnail     = lsx_bd_get_thumbnail_wrapped( get_the_ID(), 'lsx-thumbnail-wide' );
 	$title         = get_the_title();
 	$industries    = lsx_bd_get_formatted_taxonomy_str( get_the_ID(), 'industry', true );
-	$location      = lsx_bd_get_formatted_taxonomy_str( get_the_ID(), 'location' );
+	$locations     = lsx_bd_get_formatted_taxonomy_str( get_the_ID(), 'location', true );
 	$primary_phone = get_post_meta( get_the_ID(), $prefix . '_primary_phone', true );
 	$primary_email = get_post_meta( get_the_ID(), $prefix . '_primary_email', true );
 ?>
@@ -42,14 +42,29 @@
 							</div>
 
 							<div class="location col-xs-6 col-sm-6 col-md-6">
-								<span><i class="fa fa-globe"></i><strong><?php esc_html_e( 'Location', 'lsx-business-directory' ); ?>: </strong><?php echo esc_attr( $location ); ?></span>
+								<span>
+									<i class="fa fa-globe"></i>
+									<strong><?php esc_html_e( 'Location', 'lsx-business-directory' ); ?>: </strong>
+									<?php
+									$count = 0;
+									foreach ( $locations as $location ) :
+										if ( $count > 0 ) :
+											?>,
+										<?php endif;
+										?>
+											<a href="/location/<?php echo esc_attr( $location['slug'] ); ?>"><?php echo esc_attr( $location['name'] ); ?></a>
+											<?php
+											$count++;
+									endforeach;
+									?>
+								</span>
 							</div>
 						</div>
 
 						<div class="lsx-flex-row">
 							<?php if ( $primary_phone ) : ?>
 								<div class="telephone col-xs-6 col-sm-6 col-md-6">
-									<span><i class="fa fa-phone-square-alt"></i><strong><?php esc_html_e( 'Phone', 'lsx-business-directory' ); ?>: </strong> <a href="tel:<?php echo esc_attr( str_replace( ' ', '', $primary_phone ) ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_attr( $primary_phone ); ?></a></span>
+									<span><i class="fa fa-phone-square"></i><strong><?php esc_html_e( 'Phone', 'lsx-business-directory' ); ?>: </strong> <a href="tel:<?php echo esc_attr( str_replace( ' ', '', $primary_phone ) ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_attr( $primary_phone ); ?></a></span>
 								</div>
 							<?php endif; ?>
 
