@@ -6,14 +6,14 @@ namespace lsx\business_directory\classes\integrations;
  *
  * @package lsx-business-directory
  */
-class LSX_WPForms {
+class WPForms {
 
 	/**
 	 * Holds class instance
 	 *
 	 * @since 1.0.0
 	 *
-	 * @var      object \lsx\business_directory\classes\LSX_WPForms()
+	 * @var      object \lsx\business_directory\classes\WPForms()
 	 */
 	protected static $instance = null;
 
@@ -30,7 +30,7 @@ class LSX_WPForms {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return    object \lsx\business_directory\classes\LSX_WPForms()    A single instance of this class.
+	 * @return    object \lsx\business_directory\classes\WPForms()    A single instance of this class.
 	 */
 	public static function get_instance() {
 		// If the single instance hasn't been set, set it now.
