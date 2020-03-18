@@ -6,14 +6,14 @@ namespace lsx\business_directory\classes\integrations;
  *
  * @package lsx-business-directory
  */
-class LSX_Ninja_Forms {
+class Ninja_Forms {
 
 	/**
 	 * Holds class instance
 	 *
 	 * @since 1.0.0
 	 *
-	 * @var      object \lsx\business_directory\classes\LSX_Gravity()
+	 * @var      object \lsx\business_directory\classes\Ninja_Forms()
 	 */
 	protected static $instance = null;
 
