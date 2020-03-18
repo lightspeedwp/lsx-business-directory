@@ -47,11 +47,13 @@ class Enquiry {
 	 */
 	private function __construct() {
 		add_action( 'wp_footer', array( $this, 'output_enquiry_form' ) );
-		add_filter( 'wpforms_smart_tag_process', array( $this, 'wpf_dev_process_smarttag' ), 10, 2 );
+		add_filter( 'wpforms_smart_tag_process', array( $this, 'lsx_bd_wpforms_smart_tag_process' ), 10, 2 );
+		add_filter( 'caldera_forms_do_magic_tag', array( $this, 'lsx_bd_caldera_magic_tag_process' ), 10, 2 );
+		add_filter( 'gform_replace_merge_tags', array( $this, 'lsx_bd_gravity_merge_tag_process' ), 10, 7 );
 	}
 
 	/**
-	 * Process the Smart Tag.
+	 * Process the WPForms Smart Tag.
 	 *
 	 * @link   https://wpforms.com/developers/how-to-create-a-custom-smart-tag/
 	 *
@@ -59,7 +61,7 @@ class Enquiry {
 	 * @param  string $tag
 	 * @return string
 	 */
-	public function wpf_dev_process_smarttag( $content, $tag ) {
+	public function lsx_bd_smart_tag_process( $content, $tag ) {
 		// Only run if it is our desired tag.
 		if ( 'listing_primary_email' === $tag ) {
 			$prefix                = 'lsx_bd';
@@ -68,6 +70,49 @@ class Enquiry {
 		}
 
 		return $content;
+	}
+
+	/**
+	 * Process the Caldera Forms Magic Tag.
+	 *
+	 * @link   https://calderaforms.com/doc/caldera_forms_do_magic_tag/
+	 *
+	 * @param  string $value
+	 * @param  string $magic_tag
+	 * @return string
+	 */
+	public function lsx_bd_caldera_magic_tag_process( $value, $magic_tag ) {
+		// make sure we only act on the right magic tag, and when we have a valid entry (positive integer)
+		if ( '{listing_primary_email}' == $magic_tag ) {
+			$prefix = 'lsx_bd';
+			$value  = get_post_meta( get_the_ID(), $prefix . '_primary_email', true );
+		}
+
+		return $value;
+	}
+
+	/**
+	 * Process the Gravity Forms Merge Tag.
+	 *
+	 * @link   https://docs.gravityforms.com/gform_replace_merge_tags/
+	 *
+	 * @param   string  $text
+	 * @param   object  $form
+	 * @param   object  $entry
+	 * @param   boolean $url_encode
+	 * @param   boolean $esc_html
+	 * @param   boolean $nl2br
+	 * @param   string  $format
+	 *
+	 * @return  string
+	 */
+	public function lsx_bd_gravity_merge_tag_process( $text, $form, $entry, $url_encode, $esc_html, $nl2br, $format ) {
+		if ( strpos( $text, '{listing_primary_email}' ) !== false ) {
+			$prefix = 'lsx_bd';
+			$text   = get_post_meta( get_the_ID(), $prefix . '_primary_email', true );
+		}
+
+		return $text;
 	}
 
 	/**

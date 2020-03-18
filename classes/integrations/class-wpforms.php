@@ -21,7 +21,7 @@ class LSX_WPForms {
 	 * Contructor
 	 */
 	public function __construct() {
-		add_filter( 'wpforms_smart_tags', array( $this, 'wpf_dev_register_smarttag' ) );
+		add_filter( 'wpforms_smart_tags', array( $this, 'lsx_bd_wpforms_register_smarttag' ) );
 	}
 
 	/**
@@ -47,7 +47,7 @@ class LSX_WPForms {
 	 * @param  array $tags
 	 * @return array
 	 */
-	public function wpf_dev_register_smarttag( $tags ) {
+	public function lsx_bd_wpforms_register_smarttag( $tags ) {
 		// Key is the tag, item is the tag name.
 		$tags['listing_primary_email'] = 'Listing Primary Email';
 

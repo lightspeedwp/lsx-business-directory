@@ -25,11 +25,25 @@ class Integrations {
 	public $lsx_search;
 
 	/**
-	 * Holds the LSX Search integration functions.
+	 * Holds the LSX WPForms integration functions.
 	 *
 	 * @var object \lsx\business_directory\classes\Frontend();
 	 */
 	public $lsx_wpforms;
+
+	/**
+	 * Holds the LSX Ninja Forms integration functions.
+	 *
+	 * @var object \lsx\business_directory\classes\Frontend();
+	 */
+	public $lsx_ninja;
+
+	/**
+	 * Holds the LSX Gravity Forms integration functions.
+	 *
+	 * @var object \lsx\business_directory\classes\Frontend();
+	 */
+	public $lsx_gravity;
 
 	/**
 	 * This holds the current facet info.
@@ -48,6 +62,9 @@ class Integrations {
 
 		require_once LSX_BD_PATH . '/classes/integrations/class-wpforms.php';
 		$this->lsx_wpforms = integrations\LSX_WPForms::get_instance();
+
+		require_once LSX_BD_PATH . '/classes/integrations/class-gravity-forms.php';
+		$this->lsx_ninja = integrations\LSX_Gravity::get_instance();
 	}
 
 	/**
