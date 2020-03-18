@@ -71,7 +71,7 @@ class Integrations {
 		$this->wpforms = integrations\WPForms::get_instance();
 
 		require_once LSX_BD_PATH . '/classes/integrations/class-gravity-forms.php';
-		$this->gravity_forms = integrations\Caldera_Forms::get_instance();
+		$this->gravity_forms = integrations\Gravity_Forms::get_instance();
 
 		require_once LSX_BD_PATH . '/classes/integrations/class-ninja-forms.php';
 		$this->ninja_forms = integrations\Ninja_Forms::get_instance();
