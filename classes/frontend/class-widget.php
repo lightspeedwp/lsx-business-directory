@@ -24,6 +24,7 @@ class Widget {
 
 	/**
 	 * Holds the defaults for the current shortcode.
+	 *
 	 * @var array
 	 */
 	public $defaults = array(
@@ -33,8 +34,8 @@ class Widget {
 		'custom_css'       => '',
 		'title_text'       => '',
 		'title_link'       => '',
-		'taxonomy'	       => '',
-		'terms'		       => '',
+		'taxonomy'         => '',
+		'terms'            => '',
 		'posts_per_page'   => 9,
 		'post__not_in'     => '',
 		'order'            => '',
@@ -79,7 +80,7 @@ class Widget {
 	public static function get_instance() {
 		// If the single instance hasn't been set, set it now.
 		if ( null == self::$instance ) {
-			self::$instance = new self;
+			self::$instance = new self();
 		}
 		return self::$instance;
 	}
@@ -115,8 +116,8 @@ class Widget {
 		}
 
 		$query_args = array(
-			'post_type' => $post_type,
-			'posts_per_page' => $this->args['posts_per_page']
+			'post_type'      => $post_type,
+			'posts_per_page' => $this->args['posts_per_page'],
 		);
 
 		if ( '' !== $this->args['order'] ) {
@@ -167,7 +168,7 @@ class Widget {
 
 		// This outputs a carousel or a row.
 		if ( 'true' === $this->args['carousel'] || true === $this->args['carousel'] ) {
-			$this->html .= "<div class='lsx-business-directory-slider lsx-slick-slider' data-lsx-slick='{\"slidesToShow\": " . $this->args['slides_to_show'] . ", \"slidesToScroll\": " . $this->args['slides_to_scroll'] . " }'>";
+			$this->html .= "<div class='lsx-business-directory-slider lsx-slick-slider' data-lsx-slick='{\"slidesToShow\": " . $this->args['slides_to_show'] . ', "slidesToScroll": ' . $this->args['slides_to_scroll'] . " }'>";
 		} else {
 			$this->html .= "<div class='row row-flex'>";
 		}

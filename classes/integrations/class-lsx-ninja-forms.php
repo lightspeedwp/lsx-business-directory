@@ -6,7 +6,7 @@ namespace lsx\business_directory\classes\integrations;
  *
  * @package lsx-business-directory
  */
-class LSX_Ninja {
+class LSX_Ninja_Forms {
 
 	/**
 	 * Holds class instance

@@ -6,14 +6,14 @@ namespace lsx\business_directory\classes\integrations;
  *
  * @package lsx-business-directory
  */
-class LSX_Gravity {
+class LSX_Gravity_Forms {
 
 	/**
 	 * Holds class instance
 	 *
 	 * @since 1.0.0
 	 *
-	 * @var      object \lsx\business_directory\classes\LSX_Gravity()
+	 * @var      object \lsx\business_directory\classes\LSX_Gravity_Forms()
 	 */
 	protected static $instance = null;
 
@@ -29,7 +29,7 @@ class LSX_Gravity {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return    object \lsx\business_directory\classes\LSX_Gravity()    A single instance of this class.
+	 * @return    object \lsx\business_directory\classes\LSX_Gravity_Forms()    A single instance of this class.
 	 */
 	public static function get_instance() {
 		// If the single instance hasn't been set, set it now.

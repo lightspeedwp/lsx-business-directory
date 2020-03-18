@@ -61,13 +61,13 @@ class Integrations {
 		$this->lsx_search = integrations\LSX_Search::get_instance();
 
 		require_once LSX_BD_PATH . '/classes/integrations/class-wpforms.php';
-		$this->lsx_wpforms = integrations\LSX_WPForms::get_instance();
+		$this->lsx_wpforms = integrations\LSX_Gravity_Forms::get_instance();
 
 		require_once LSX_BD_PATH . '/classes/integrations/class-gravity-forms.php';
-		$this->lsx_gravity = integrations\LSX_Gravity::get_instance();
+		$this->lsx_gravity = integrations\LSX_Gravity_Forms::get_instance();
 
 		require_once LSX_BD_PATH . '/classes/integrations/class-ninja-forms.php';
-		$this->lsx_ninja = integrations\LSX_Ninja::get_instance();
+		$this->lsx_ninja = integrations\LSX_Ninja_Forms::get_instance();
 	}
 
 	/**
