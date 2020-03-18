@@ -281,11 +281,7 @@ function lsx_bd_get_available_forms() {
 	$options    = array();
 
 	if ( ! empty( $forms_data ) ) {
-		$type = $forms_data['form_type'];
-		$data = $forms_data['form_data'];
-		foreach ( $data as $form_id => $form_data ) {
-			$options[ "{$type}_{$form_id}" ] = strval( $form_data );
-		}
+		$options = $forms_data;
 	} else {
 		$options['none'] = esc_html__( 'You have no forms available', 'lsx-business-directory' );
 	}
@@ -299,27 +295,34 @@ function lsx_bd_get_available_forms() {
  * @return  array  Array with all available forms for a particular plugin which is enabled.
  */
 function lsx_bd_get_activated_forms() {
-	$all_forms = false;
-	$form_type = null;
+	$all_forms = array();
 
 	if ( class_exists( 'WPForms' ) ) {
-		$all_forms = lsx_bd_get_wpforms();
-		$form_type = 'wp';
-	} elseif ( class_exists( 'Ninja_Forms' ) ) {
-		$all_forms = lsx_bd_get_ninja_forms();
-		$form_type = 'ninja';
-	} elseif ( class_exists( 'GFForms' ) ) {
-		$all_forms = lsx_bd_get_gravity_forms();
-		$form_type = 'gravity';
-	} elseif ( class_exists( 'Caldera_Forms_Forms' ) ) {
-		$all_forms = lsx_bd_get_caldera_forms();
-		$form_type = 'caldera';
+		$wpforms = lsx_bd_get_wpforms();
+		if ( ! empty( $wpforms ) ) {
+			$all_forms = array_merge( $all_forms, $wpforms );
+		}
+	}
+	if ( class_exists( 'Ninja_Forms' ) ) {
+		$ninja_forms = lsx_bd_get_ninja_forms();
+		if ( ! empty( $ninja_forms ) ) {
+			$all_forms = array_merge( $all_forms, $ninja_forms );
+		}
+	}
+	if ( class_exists( 'GFForms' ) ) {
+		$gravity_forms = lsx_bd_get_gravity_forms();
+		if ( ! empty( $gravity_forms ) ) {
+			$all_forms = array_merge( $all_forms, $gravity_forms );
+		}
+	}
+	if ( class_exists( 'Caldera_Forms_Forms' ) ) {
+		$caldera_forms = lsx_bd_get_caldera_forms();
+		if ( ! empty( $caldera_forms ) ) {
+			$all_forms = array_merge( $all_forms, $caldera_forms );
+		}
 	}
 
-	return array(
-		'form_data' => $all_forms,
-		'form_type' => $form_type,
-	);
+	return $all_forms;
 }
 
 /**
@@ -343,7 +346,7 @@ function lsx_bd_get_wpforms() {
 
 	if ( ! empty( $posts ) ) {
 		foreach ( $posts as $post ) {
-			$forms[ $post->ID ] = $post->post_title;
+			$forms[ 'wp_' . $post->ID ] = $post->post_title;
 		}
 	} else {
 		$forms = false;
@@ -365,7 +368,7 @@ function lsx_bd_get_ninja_forms() {
 
 	if ( ! empty( $results ) ) {
 		foreach ( $results as $form ) {
-			$forms[ $form->id ] = $form->title;
+			$forms[ 'ninja_' . $form->id ] = $form->title;
 		}
 	}
 
@@ -385,7 +388,7 @@ function lsx_bd_get_gravity_forms() {
 
 	if ( ! empty( $results ) ) {
 		foreach ( $results as $form ) {
-			$forms[ $form->id ] = $form->title;
+			$forms[ 'gravity_' . $form->id ] = $form->title;
 		}
 	}
 
@@ -405,7 +408,7 @@ function lsx_bd_get_caldera_forms() {
 
 	if ( ! empty( $results ) ) {
 		foreach ( $results as $form => $form_data ) {
-			$forms[ $form ] = $form_data['name'];
+			$forms[ 'caldera_' . $form ] = $form_data['name'];
 		}
 	}
 
