@@ -270,22 +270,6 @@ function lsx_bd_get_country_options() {
 }
 
 /**
- * Output a Settings section name (Ashleys requirement).
- *
- * @param  object $field_args Current field args
- * @param  object $field      Current field object
- */
-function lsx_bd_print_setting_heading( $field_args, $field ) {
-	if ( 'lsx-business-directory-settings' === $field->object_id && 'Single' === $field->args['name'] ) {
-		echo '<h2>Single</h2>';
-	} else if ( 'lsx-business-directory-settings' === $field->object_id && 'Archive' === $field->args['name'] ) {
-		echo '<h2>Archive</h2>';
-	} else if ( 'lsx-business-directory-settings' === $field->object_id && 'Search' === $field->args['name'] ) {
-		echo '<h2>Search</h2>';
-	}
-}
-
-/**
  * Buid array containing options for a select box inside the settings for Business Directory.
  *
  * @return  array  Options array containing all available forms.

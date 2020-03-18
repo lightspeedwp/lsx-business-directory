@@ -49,7 +49,6 @@ class Archive {
 			array(
 				'id'          => 'settings_archive',
 				'type'        => 'title',
-				'before_row'  => 'lsx_bd_print_setting_heading',
 				'name'        => __( 'Archive', 'lsx-business-directory' ),
 				'default'     => __( 'Archive', 'lsx-business-directory' ),
 				'description' => __( 'Business Directory post type archive settings.', 'lsx-business-directory' ),

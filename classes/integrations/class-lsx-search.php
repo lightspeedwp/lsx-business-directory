@@ -96,7 +96,6 @@ class LSX_Search {
 					array(
 						'id'          => 'settings_' . $section . '_search',
 						'type'        => 'title',
-						'before_row'  => 'lsx_bd_print_setting_heading',
 						'name'        => esc_html__( 'Search', 'lsx-business-directory' ),
 						'default'     => esc_html__( 'Search', 'lsx-business-directory' ),
 						'description' => esc_html__( 'If you have created an supplemental engine via SearchWP, then you can control the search settings here.', 'lsx-business-directory' ),
