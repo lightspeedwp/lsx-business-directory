@@ -181,11 +181,10 @@ class LSX_Search {
 					'type' => 'checkbox',
 				)
 			);
-
 			$cmb->add_field(
 				array(
 					'name'        => esc_html__( 'Facets', 'lsx-business-directory' ),
-					'description' => esc_html__( 'These are the filters that will appear on your page.', 'lsx-business-directory' ),
+					'description' => esc_html__( 'Choose your filters above, these will display on the page. Edit your FacetWP Facets to change the display of each of them.', 'lsx-business-directory' ),
 					'id'          => $section . '_search_facets',
 					'type'        => 'multicheck',
 					'options'     => $this->facet_data,
