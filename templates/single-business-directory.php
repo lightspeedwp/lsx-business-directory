@@ -30,19 +30,27 @@ get_header(); ?>
 			$business_country            = get_post_meta( get_the_ID(), $prefix . '_address_country', true );
 			$business_province           = get_post_meta( get_the_ID(), $prefix . '_address_province', true );
 			$business_business_branches  = get_post_meta( get_the_ID(), $prefix . '_branches', true );
+			$business_contact_name       = get_post_meta( get_the_ID(), $prefix . '_contact_person', true );
 			$business_primary_email      = get_post_meta( get_the_ID(), $prefix . '_primary_email', true );
 			$business_secondary_email    = get_post_meta( get_the_ID(), $prefix . '_secondary_email', true );
 			$business_primary_phone      = get_post_meta( get_the_ID(), $prefix . '_primary_phone', true );
 			$business_secondary_phone    = get_post_meta( get_the_ID(), $prefix . '_secondary_phone', true );
 			$business_fax                = get_post_meta( get_the_ID(), $prefix . '_fax', true );
 			$business_website            = get_post_meta( get_the_ID(), $prefix . '_website', true );
-			$industries    				 = lsx_bd_get_formatted_taxonomy_str( get_the_ID(), 'industry', true );
-
-			$business_contact_name		 = 'John Doe';
-			$business_skype		         = 'Skype_User';
-			$business_whatsapp		     = '(083) 123-45-67';
-			$business_whatsapp           = preg_replace("/[^0-9]/", "", $business_whatsapp );
+			$business_skype              = get_post_meta( get_the_ID(), $prefix . '_skype', true );
+			$business_whatsapp           = get_post_meta( get_the_ID(), $prefix . '_whatsapp', true );
+			$business_facebook           = get_post_meta( get_the_ID(), $prefix . '_facebook', true );
+			$business_twitter            = get_post_meta( get_the_ID(), $prefix . '_twitter', true );
+			$business_linkedin           = get_post_meta( get_the_ID(), $prefix . '_linkedin', true );
+			$business_instagram          = get_post_meta( get_the_ID(), $prefix . '_instagram', true );
+			$business_youtube            = get_post_meta( get_the_ID(), $prefix . '_youtube', true );
+			$business_pinterest          = get_post_meta( get_the_ID(), $prefix . '_pinterest', true );
+			$industries    				 = get_formatted_taxonomy_str( get_the_ID(), 'industry', true );
 			$address                     = array();
+
+			if ( ! empty( $business_whatsapp ) ) {
+				$business_whatsapp = preg_replace( '/[^0-9]/', '', $business_whatsapp );
+			}
 
 			if ( $business_address_1 ) {
 				$address[] = $business_address_1;
@@ -115,14 +123,14 @@ get_header(); ?>
 
 										<?php if ( $business_skype ) : ?>
 										<div class="skype lsx-flex-row">
-											<div class="col1"><i class="fab fa-skype"></i><strong><?php esc_html_e( 'Skype', 'lsx-business-directory' ); ?>: </strong></div>
-											<div class="col2 lsx-flex-center"><a href="skype:<?php echo esc_attr( $business_skype ); ?>?call"><i class="fab fa-skype"></i>Call: <?php echo esc_attr( $business_skype ); ?></a></div>
+											<div class="col1"><i class="fa fa-skype"></i><strong><?php esc_html_e( 'Skype', 'lsx-business-directory' ); ?>: </strong></div>
+											<div class="col2 lsx-flex-center"><a href="skype:<?php echo esc_attr( $business_skype ); ?>?call"><i class="fa fa-skype"></i>Call: <?php echo esc_attr( $business_skype ); ?></a></div>
 										</div>
 										<?php endif; ?>
 
 										<?php if ( $business_whatsapp ) : ?>
 										<div class="whatsapp lsx-flex-row">
-											<div class="col1"><i class="fab fa-whatsapp"></i><strong><?php esc_html_e( 'Whatsapp', 'lsx-business-directory' ); ?>: </strong></div>
+											<div class="col1"><i class="fa fa-whatsapp"></i><strong><?php esc_html_e( 'Whatsapp', 'lsx-business-directory' ); ?>: </strong></div>
 											<div class="col2 lsx-flex-center"><a href="https://wa.me/<?php echo esc_attr( $business_whatsapp ); ?>">Click to Chat</a></div>
 										</div>
 										<?php endif; ?>
@@ -185,6 +193,27 @@ get_header(); ?>
 									 * lsx_claim_this_listing_button();
 									 */
 									?>
+								</div>
+
+								<div class="social-links lsx-flex-row">
+									<?php if ( $business_facebook ) : ?>
+									<div><a href="<?php echo esc_url( $business_facebook ); ?>" target="_blank"><i class="fa fa-facebook-f"></i></a></div>
+									<?php endif; ?>
+									<?php if ( $business_twitter ) : ?>
+									<div><a href="<?php echo esc_url( $business_twitter ); ?>" target="_blank"><i class="fa fa-twitter"></i></a></div>
+									<?php endif; ?>
+									<?php if ( $business_linkedin ) : ?>
+									<div><a href="<?php echo esc_url( $business_linkedin ); ?>" target="_blank"><i class="fa fa-linkedin"></i></a></div>
+									<?php endif; ?>
+									<?php if ( $business_instagram ) : ?>
+									<div><a href="<?php echo esc_url( $business_instagram ); ?>" target="_blank"><i class="fa fa-instagram"></i></a></div>
+									<?php endif; ?>
+									<?php if ( $business_youtube ) : ?>
+									<div><a href="<?php echo esc_url( $business_youtube ); ?>" target="_blank"><i class="fa fa-youtube"></i></a></div>
+									<?php endif; ?>
+									<?php if ( $business_pinterest ) : ?>
+									<div><a href="<?php echo esc_url( $business_pinterest ); ?>" target="_blank"><i class="fa fa-pinterest"></i></a></div>
+									<?php endif; ?>
 								</div>
 
 								<div class="business-description business-content-section">

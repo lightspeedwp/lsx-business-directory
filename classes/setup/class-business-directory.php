@@ -354,6 +354,14 @@ class Business_Directory {
 
 		$cmb_contact->add_field(
 			array(
+				'name' => esc_html__( 'Contact Person.', 'lsx-business-directory' ),
+				'id'   => $this->prefix . '_contact_person',
+				'type' => 'text',
+			)
+		);
+
+		$cmb_contact->add_field(
+			array(
 				'name' => esc_html__( 'Primary Email.', 'lsx-business-directory' ),
 				'id'   => $this->prefix . '_primary_email',
 				'type' => 'text_email',
@@ -397,6 +405,70 @@ class Business_Directory {
 				'name' => esc_html__( 'Website.', 'lsx-business-directory' ),
 				'id'   => $this->prefix . '_website',
 				'type' => 'text_url',
+			)
+		);
+
+		$cmb_contact->add_field(
+			array(
+				'name' => esc_html__( 'Skype Username.', 'lsx-business-directory' ),
+				'id'   => $this->prefix . '_skype',
+				'type' => 'text',
+			)
+		);
+
+		$cmb_contact->add_field(
+			array(
+				'name' => esc_html__( 'Whatsapp Number.', 'lsx-business-directory' ),
+				'id'   => $this->prefix . '_whatsapp',
+				'type' => 'text',
+			)
+		);
+
+		$cmb_contact->add_field(
+			array(
+				'name' => esc_html__( 'Facebook Address.', 'lsx-business-directory' ),
+				'id'   => $this->prefix . '_facebook',
+				'type' => 'text',
+			)
+		);
+
+		$cmb_contact->add_field(
+			array(
+				'name' => esc_html__( 'Twitter Address.', 'lsx-business-directory' ),
+				'id'   => $this->prefix . '_twitter',
+				'type' => 'text',
+			)
+		);
+
+		$cmb_contact->add_field(
+			array(
+				'name' => esc_html__( 'LinkedIn Address.', 'lsx-business-directory' ),
+				'id'   => $this->prefix . '_linkedin',
+				'type' => 'text',
+			)
+		);
+
+		$cmb_contact->add_field(
+			array(
+				'name' => esc_html__( 'Instagram Address.', 'lsx-business-directory' ),
+				'id'   => $this->prefix . '_instagram',
+				'type' => 'text',
+			)
+		);
+
+		$cmb_contact->add_field(
+			array(
+				'name' => esc_html__( 'Youtube Address.', 'lsx-business-directory' ),
+				'id'   => $this->prefix . '_youtube',
+				'type' => 'text',
+			)
+		);
+
+		$cmb_contact->add_field(
+			array(
+				'name' => esc_html__( 'Pinterest Address.', 'lsx-business-directory' ),
+				'id'   => $this->prefix . '_pinterest',
+				'type' => 'text',
 			)
 		);
 	}

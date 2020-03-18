@@ -200,6 +200,20 @@
 					}
 				}
 
+				.social-links {
+					margin-bottom: 20px;
+					>div {
+						margin-right: 10px;
+
+						a {
+							color: #5693D9;
+							font-size: 22px;
+							line-height: 22px;
+							text-align: center;
+						}
+					}
+				}
+
 				.business-description {
 					padding-top: 8px;
 				}
