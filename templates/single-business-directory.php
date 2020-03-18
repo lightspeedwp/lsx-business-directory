@@ -45,7 +45,7 @@ get_header(); ?>
 			$business_instagram          = get_post_meta( get_the_ID(), $prefix . '_instagram', true );
 			$business_youtube            = get_post_meta( get_the_ID(), $prefix . '_youtube', true );
 			$business_pinterest          = get_post_meta( get_the_ID(), $prefix . '_pinterest', true );
-			$industries    				 = get_formatted_taxonomy_str( get_the_ID(), 'industry', true );
+			$industries    				 = lsx_bd_get_formatted_taxonomy_str( get_the_ID(), 'industry', true );
 			$address                     = array();
 
 			if ( ! empty( $business_whatsapp ) ) {

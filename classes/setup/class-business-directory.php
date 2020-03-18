@@ -354,7 +354,7 @@ class Business_Directory {
 
 		$cmb_contact->add_field(
 			array(
-				'name' => esc_html__( 'Contact Person.', 'lsx-business-directory' ),
+				'name' => esc_html__( 'Contact Person', 'lsx-business-directory' ),
 				'id'   => $this->prefix . '_contact_person',
 				'type' => 'text',
 			)
@@ -362,15 +362,16 @@ class Business_Directory {
 
 		$cmb_contact->add_field(
 			array(
-				'name' => esc_html__( 'Primary Email.', 'lsx-business-directory' ),
+				'name' => esc_html__( 'Primary Email', 'lsx-business-directory' ),
 				'id'   => $this->prefix . '_primary_email',
+				'desc' => esc_html__( 'This is the email address that the enquiry form will send to.', 'lsx-business-directory' ),
 				'type' => 'text_email',
 			)
 		);
 
 		$cmb_contact->add_field(
 			array(
-				'name' => esc_html__( 'Secondary Email.', 'lsx-business-directory' ),
+				'name' => esc_html__( 'Secondary Email', 'lsx-business-directory' ),
 				'id'   => $this->prefix . '_secondary_email',
 				'type' => 'text_email',
 			)
@@ -378,7 +379,7 @@ class Business_Directory {
 
 		$cmb_contact->add_field(
 			array(
-				'name' => esc_html__( 'Primary Phone.', 'lsx-business-directory' ),
+				'name' => esc_html__( 'Primary Phone', 'lsx-business-directory' ),
 				'id'   => $this->prefix . '_primary_phone',
 				'type' => 'text',
 			)
@@ -386,7 +387,7 @@ class Business_Directory {
 
 		$cmb_contact->add_field(
 			array(
-				'name' => esc_html__( 'Secondary Phone.', 'lsx-business-directory' ),
+				'name' => esc_html__( 'Secondary Phone', 'lsx-business-directory' ),
 				'id'   => $this->prefix . '_secondary_phone',
 				'type' => 'text',
 			)
@@ -394,7 +395,7 @@ class Business_Directory {
 
 		$cmb_contact->add_field(
 			array(
-				'name' => esc_html__( 'Fax.', 'lsx-business-directory' ),
+				'name' => esc_html__( 'Fax', 'lsx-business-directory' ),
 				'id'   => $this->prefix . '_fax',
 				'type' => 'text',
 			)
@@ -402,7 +403,7 @@ class Business_Directory {
 
 		$cmb_contact->add_field(
 			array(
-				'name' => esc_html__( 'Website.', 'lsx-business-directory' ),
+				'name' => esc_html__( 'Website', 'lsx-business-directory' ),
 				'id'   => $this->prefix . '_website',
 				'type' => 'text_url',
 			)
@@ -410,7 +411,7 @@ class Business_Directory {
 
 		$cmb_contact->add_field(
 			array(
-				'name' => esc_html__( 'Skype Username.', 'lsx-business-directory' ),
+				'name' => esc_html__( 'Skype Username', 'lsx-business-directory' ),
 				'id'   => $this->prefix . '_skype',
 				'type' => 'text',
 			)
@@ -418,7 +419,7 @@ class Business_Directory {
 
 		$cmb_contact->add_field(
 			array(
-				'name' => esc_html__( 'Whatsapp Number.', 'lsx-business-directory' ),
+				'name' => esc_html__( 'Whatsapp Number', 'lsx-business-directory' ),
 				'id'   => $this->prefix . '_whatsapp',
 				'type' => 'text',
 			)
@@ -426,7 +427,8 @@ class Business_Directory {
 
 		$cmb_contact->add_field(
 			array(
-				'name' => esc_html__( 'Facebook Address.', 'lsx-business-directory' ),
+				'name' => esc_html__( 'Facebook', 'lsx-business-directory' ),
+				'desc' => esc_html__( 'Add your Facebook profile URL.', 'lsx-business-directory' ),
 				'id'   => $this->prefix . '_facebook',
 				'type' => 'text',
 			)
@@ -434,40 +436,45 @@ class Business_Directory {
 
 		$cmb_contact->add_field(
 			array(
-				'name' => esc_html__( 'Twitter Address.', 'lsx-business-directory' ),
+				'name' => esc_html__( 'Twitter', 'lsx-business-directory' ),
 				'id'   => $this->prefix . '_twitter',
+				'desc' => esc_html__( 'Add your Twitter profile URL.', 'lsx-business-directory' ),
 				'type' => 'text',
 			)
 		);
 
 		$cmb_contact->add_field(
 			array(
-				'name' => esc_html__( 'LinkedIn Address.', 'lsx-business-directory' ),
+				'name' => esc_html__( 'LinkedIn', 'lsx-business-directory' ),
 				'id'   => $this->prefix . '_linkedin',
+				'desc' => esc_html__( 'Add your LinkedIn profile URL.', 'lsx-business-directory' ),
 				'type' => 'text',
 			)
 		);
 
 		$cmb_contact->add_field(
 			array(
-				'name' => esc_html__( 'Instagram Address.', 'lsx-business-directory' ),
+				'name' => esc_html__( 'Instagram', 'lsx-business-directory' ),
 				'id'   => $this->prefix . '_instagram',
+				'desc' => esc_html__( 'Add your Instagram profile URL.', 'lsx-business-directory' ),
 				'type' => 'text',
 			)
 		);
 
 		$cmb_contact->add_field(
 			array(
-				'name' => esc_html__( 'Youtube Address.', 'lsx-business-directory' ),
+				'name' => esc_html__( 'Youtube', 'lsx-business-directory' ),
 				'id'   => $this->prefix . '_youtube',
+				'desc' => esc_html__( 'Add your Youtube profile or channel URL.', 'lsx-business-directory' ),
 				'type' => 'text',
 			)
 		);
 
 		$cmb_contact->add_field(
 			array(
-				'name' => esc_html__( 'Pinterest Address.', 'lsx-business-directory' ),
+				'name' => esc_html__( 'Pinterest', 'lsx-business-directory' ),
 				'id'   => $this->prefix . '_pinterest',
+				'desc' => esc_html__( 'Add your Pinterest profile URL or any board you would like to highlight.', 'lsx-business-directory' ),
 				'type' => 'text',
 			)
 		);
