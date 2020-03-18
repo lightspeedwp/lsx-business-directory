@@ -115,8 +115,8 @@ class Widget {
 		}
 
 		$query_args = array(
-			'post_type' => $post_type,
-			'posts_per_page' => $this->args['posts_per_page']
+			'post_type'      => $post_type,
+			'posts_per_page' => $this->args['posts_per_page'],
 		);
 
 		if ( '' !== $this->args['order'] ) {
@@ -167,9 +167,9 @@ class Widget {
 
 		// This outputs a carousel or a row.
 		if ( 'true' === $this->args['carousel'] || true === $this->args['carousel'] ) {
-			$this->html .= "<div class='lsx-business-directory-slider lsx-slick-slider' data-lsx-slick='{\"slidesToShow\": " . $this->args['slides_to_show'] . ", \"slidesToScroll\": " . $this->args['slides_to_scroll'] . " }'>";
+			$this->html .= '<div class="lsx-business-directory-slider lsx-slick-slider" data-lsx-slick="{\"slidesToShow\": ' . $this->args['slides_to_show'] . ', \"slidesToScroll\": ' . $this->args['slides_to_scroll'] . ' }">';
 		} else {
-			$this->html .= "<div class='row row-flex'>";
+			$this->html .= '<div class="row row-flex">';
 		}
 	}
 
