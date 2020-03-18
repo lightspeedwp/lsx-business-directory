@@ -48,7 +48,6 @@ class Enquiry {
 	private function __construct() {
 		add_action( 'wp_footer', array( $this, 'output_enquiry_form' ) );
 		add_filter( 'caldera_forms_do_magic_tag', array( $this, 'lsx_bd_caldera_magic_tag_process' ), 10, 2 );
-		add_filter( 'gform_replace_merge_tags', array( $this, 'lsx_bd_gravity_merge_tag_process' ), 10, 7 );
 	}
 
 	/**
@@ -68,30 +67,6 @@ class Enquiry {
 		}
 
 		return $value;
-	}
-
-	/**
-	 * Process the Gravity Forms Merge Tag.
-	 *
-	 * @link   https://docs.gravityforms.com/gform_replace_merge_tags/
-	 *
-	 * @param   string  $text
-	 * @param   object  $form
-	 * @param   object  $entry
-	 * @param   boolean $url_encode
-	 * @param   boolean $esc_html
-	 * @param   boolean $nl2br
-	 * @param   string  $format
-	 *
-	 * @return  string
-	 */
-	public function lsx_bd_gravity_merge_tag_process( $text, $form, $entry, $url_encode, $esc_html, $nl2br, $format ) {
-		if ( strpos( $text, '{listing_primary_email}' ) !== false ) {
-			$prefix = 'lsx_bd';
-			$text   = get_post_meta( get_the_ID(), $prefix . '_primary_email', true );
-		}
-
-		return $text;
 	}
 
 	/**
