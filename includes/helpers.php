@@ -35,9 +35,6 @@ function apply_field_id_prefixes( $fields = array(), $prefix = '' ) {
  */
 function get_placeholder( $id = '', $size = 'lsx-thumbnail-wide', $key = 'single' ) {
 	$placeholder = '';
-	if ( is_archive() ) {
-		//$key = 'archive';
-	}
 	$possible_placeholder_id = lsx_bd_get_option( $key . '_thumbnail_placeholder_id' );
 	if ( '' !== $possible_placeholder_id ) {
 		$image = wp_get_attachment_image_src( $possible_placeholder_id, $size );
