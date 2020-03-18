@@ -22,7 +22,7 @@ class WPForms {
 	 */
 	public function __construct() {
 		add_filter( 'wpforms_smart_tags', array( $this, 'register_smart_tag' ) );
-		add_filter( 'wpforms_smart_tag_process', array( $this, 'smart_tag_process' ), 10, 2 );
+		add_filter( 'wpforms_smart_tag_process', array( $this, 'smart_tag_process' ), 10, 1 );
 	}
 
 	/**
@@ -57,20 +57,16 @@ class WPForms {
 	/**
 	 * Process the WPForms Smart Tag.
 	 *
-	 * @link   https://wpforms.com/developers/how-to-create-a-custom-smart-tag/
-	 *
 	 * @param  string $content
 	 * @param  string $tag
 	 * @return string
 	 */
-	public function smart_tag_process( $content, $tag ) {
-		// Only run if it is our desired tag.
-		if ( 'listing_primary_email' === $tag ) {
+	public function smart_tag_process( $content ) {
+		if ( false !== stripos( $content, '{listing_primary_email}' ) ) {
 			$prefix                = 'lsx_bd';
 			$listing_primary_email = get_post_meta( get_the_ID(), $prefix . '_primary_email', true );
 			$content               = str_replace( '{listing_primary_email}', $listing_primary_email, $content );
 		}
-
 		return $content;
 	}
 }
