@@ -21,7 +21,7 @@ class Ninja_Forms {
 	 * Contructor
 	 */
 	public function __construct() {
-		add_filter( 'ninja_forms_loaded', array( $this, 'lsx_bd_ninja_forms_register_merge_tag' ) );
+		add_filter( 'ninja_forms_loaded', array( $this, 'register_merge_tag' ) );
 	}
 
 	/**
@@ -46,7 +46,7 @@ class Ninja_Forms {
 	 *
 	 * @return void
 	 */
-	public function lsx_bd_ninja_forms_register_merge_tag() {
+	public function register_merge_tag() {
 
 	}
 }

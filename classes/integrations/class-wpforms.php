@@ -21,8 +21,8 @@ class WPForms {
 	 * Contructor
 	 */
 	public function __construct() {
-		add_filter( 'wpforms_smart_tags', array( $this, 'lsx_bd_wpforms_register_smarttag' ) );
-		add_filter( 'wpforms_smart_tag_process', array( $this, 'lsx_bd_wpforms_smart_tag_process' ), 10, 2 );
+		add_filter( 'wpforms_smart_tags', array( $this, 'register_smart_tag' ) );
+		add_filter( 'wpforms_smart_tag_process', array( $this, 'smart_tag_process' ), 10, 2 );
 	}
 
 	/**
@@ -48,7 +48,7 @@ class WPForms {
 	 * @param  array $tags
 	 * @return array
 	 */
-	public function lsx_bd_wpforms_register_smarttag( $tags ) {
+	public function register_smart_tag( $tags ) {
 		// Key is the tag, item is the tag name.
 		$tags['listing_primary_email'] = 'Listing Primary Email';
 		return $tags;
@@ -63,7 +63,7 @@ class WPForms {
 	 * @param  string $tag
 	 * @return string
 	 */
-	public function lsx_bd_smart_tag_process( $content, $tag ) {
+	public function smart_tag_process( $content, $tag ) {
 		// Only run if it is our desired tag.
 		if ( 'listing_primary_email' === $tag ) {
 			$prefix                = 'lsx_bd';
