@@ -102,14 +102,24 @@ class LSX_Search {
 					)
 				);
 				do_action( 'lsx_bd_settings_section_engine', $cmb, 'top' );
+				$cmb->add_field(
+					array(
+						'name'        => esc_html__( 'Enable Search Filters', 'lsx-business-directory' ),
+						'id'          => $section . '_search_enable',
+						'description' => esc_html__( 'Display FacetWP filters on your search results page.', 'lsx-business-directory' ),
+						'type'        => 'checkbox',
+					)
+				);
+			} else {
+				$cmb->add_field(
+					array(
+						'name'        => esc_html__( 'Enable Search Filters', 'lsx-business-directory' ),
+						'id'          => $section . '_search_enable',
+						'description' => esc_html__( 'Display FacetWP filters on your listing archive pages.', 'lsx-business-directory' ),
+						'type'        => 'checkbox',
+					)
+				);
 			}
-			$cmb->add_field(
-				array(
-					'name' => esc_html__( 'Enable Search', 'lsx-business-directory' ),
-					'id'   => $section . '_search_enable',
-					'type' => 'checkbox',
-				)
-			);
 
 			$cmb->add_field(
 				array(
@@ -181,11 +191,10 @@ class LSX_Search {
 					'type' => 'checkbox',
 				)
 			);
-
 			$cmb->add_field(
 				array(
 					'name'        => esc_html__( 'Facets', 'lsx-business-directory' ),
-					'description' => esc_html__( 'These are the filters that will appear on your page.', 'lsx-business-directory' ),
+					'description' => esc_html__( 'Choose your filters above, these will display on the page. Edit your FacetWP Facets to change the display of each of them.', 'lsx-business-directory' ),
 					'id'          => $section . '_search_facets',
 					'type'        => 'multicheck',
 					'options'     => $this->facet_data,
@@ -279,10 +288,10 @@ class LSX_Search {
 			$this->layout     = lsx_bd_get_option( $this->prefix . '_grid_list' );
 			if ( ! empty( $active_facets ) ) {
 				foreach ( $active_facets as $index => $facet_name ) {
-					if ( ! ( 'industry' === $current_taxonomy && 'industries' === $facet_name ) &&
-						 ! ( 'location' === $current_taxonomy && 'regions' === $facet_name ) ) {
+					/*if ( ! ( 'industry' === $current_taxonomy && 'industries' === $facet_name ) &&
+						 ! ( 'location' === $current_taxonomy && 'regions' === $facet_name ) ) {*/
 						$facets[ $facet_name ] = 'on';
-					}
+					/*}*/
 				}
 			}
 			$options['display'] = array(

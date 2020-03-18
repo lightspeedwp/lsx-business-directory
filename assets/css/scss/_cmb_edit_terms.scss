@@ -1,0 +1,36 @@
+/**
+ * The CMB2 Settings Page Tabbed Theme.
+ *
+ * @package lsx-business-directory
+ */
+
+/* CMB2 Settings Styles */
+/*.wp-admin {
+	&.taxonomy-industry,
+	&.taxonomy-location {
+		.cmb2-wrap {
+			.cmb-row {
+				display: flex;
+				flex-direction: row;
+				flex-wrap: wrap;
+				width: 100%;
+
+				.cmb-th,
+				.cmb-td {
+					display: flex;
+					
+				}
+				.cmb-th {
+					flex-basis: 200px;
+					flex-direction: column;
+				}
+
+				.cmb-td {
+					flex-direction: row;
+					flex-basis: 100%;
+					flex: 1;
+				}
+			}
+		}
+	}
+}*/

@@ -420,7 +420,6 @@ function lsx_bd_get_caldera_forms() {
  */
 function lsx_bd_get_option( $key = '' ) {
 	$value = false;
-
 	if ( '' !== $key && function_exists( 'cmb2_get_option' ) ) {
 		$value = cmb2_get_option( 'lsx-business-directory-settings', $key, false );
 	}

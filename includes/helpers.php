@@ -33,11 +33,11 @@ function apply_field_id_prefixes( $fields = array(), $prefix = '' ) {
  * @param string $type
  * @return string
  */
-function get_placeholder( $id = '', $size = 'lsx-thumbnail-square', $type = 'post' ) {
-	$placeholder             = '';
-	$possible_placeholder_id = lsx_bd_get_option( 'single_thumbnail_placeholder_id' );
+function get_placeholder( $size = 'lsx-thumbnail-wide', $key = 'single_thumbnail' ) {
+	$placeholder = '';
+	$possible_placeholder_id = lsx_bd_get_option( $key . '_placeholder_id' );
 	if ( '' !== $possible_placeholder_id ) {
-		$image = wp_get_attachment_image_src( $id, $size );
+		$image = wp_get_attachment_image_src( $possible_placeholder_id, $size );
 		if ( is_array( $image ) && isset( $image[0] ) ) {
 			$placeholder = $image[0];
 		}
@@ -54,6 +54,7 @@ function get_placeholder( $id = '', $size = 'lsx-thumbnail-square', $type = 'pos
 				$placeholder = LSX_BD_URL . 'assets/img/placeholder-750x350.jpg';
 				break;
 
+			case 'full':
 			case 'lsx-banner':
 				$placeholder = LSX_BD_URL . 'assets/img/placeholder-1920x600.jpg';
 				break;

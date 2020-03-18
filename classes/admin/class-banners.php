@@ -51,7 +51,7 @@ class Banners {
 	 */
 	public function register_archive_fields( $cmb, $position ) {
 		if ( 'top' === $position ) {
-			$fields = \lsx\business_directory\includes\get_banner_fields( 'archive' );
+			$fields = \lsx\business_directory\includes\get_banner_fields( 'archive', esc_html__( 'Banner', 'lsx-business-directory' ) . ' ' );
 			foreach ( $fields as $field ) {
 				$cmb->add_field( $field );
 			}

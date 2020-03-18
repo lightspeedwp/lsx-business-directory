@@ -17,8 +17,8 @@
  * @param       string $size int
  * @return      string
  */
-function lsx_bd_get_thumbnail_wrapped( $id, $size = 'lsx-thumbnail-wide' ) {
-	$image_src = \lsx\business_directory\includes\get_placeholder( get_the_ID(), $size );
+function lsx_bd_get_thumbnail_wrapped( $id, $size = 'lsx-thumbnail-wide', $key = '' ) {
+	$image_src = \lsx\business_directory\includes\get_placeholder( $size );
 	if ( has_post_thumbnail( $id ) ) {
 		$image     = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), $size );
 		$image_src = ( strpos( $image[0], 'cover-logo.png' ) === false ) ? $image[0] : $image_src;

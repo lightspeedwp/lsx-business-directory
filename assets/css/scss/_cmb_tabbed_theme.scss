@@ -21,13 +21,6 @@
 						display:none;
 					}
 
-					&:nth-child(2) {
-						.cmb-th,
-						.cmb-td {
-							padding-top: 0px;
-						}
-					}
-
 					div.cmb-th {
 						text-align: left;
 						padding: 20px 10px 20px 0;
@@ -59,6 +52,17 @@
 							cursor: pointer;
 							vertical-align: middle;
 						}
+
+						.cmb2-media-status {
+							padding-top: 10px;
+						}
+						input {
+							&.cmb2-upload-file {
+								margin-right:15px;
+							}
+						}
+
+						margin-right: 15px;
 					}
 				
 					p.cmb2-metabox-description {
