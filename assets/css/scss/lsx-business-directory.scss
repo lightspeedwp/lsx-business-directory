@@ -352,7 +352,7 @@
 		background-color: #FFFFFF;
 		box-shadow: 1px 2px 6px 0 rgba(155,155,155,0.45);
 		padding-right: 10px;
-		padding-bottom: 10px;
+		padding-bottom: 22px;
 
 		.business-thumbnail {
 			background: white;
@@ -363,8 +363,8 @@
 			.business-details {
 				h4.business-title {
 					color: #434343;
-					margin-top: 14px;
-					margin-bottom: 9px;
+					margin-top: 13px;
+					margin-bottom: 7px;
 				}
 				.industry, .location, .telephone, .email {
 					padding-left: 0px;
@@ -373,7 +373,7 @@
 				}
 				.business-meta {
 					>div {
-						margin-bottom: 10px;
+						margin-bottom: 6px;
 					}
 				}
 			}
@@ -383,6 +383,7 @@
 			border-top: 1px solid #ddd;
 			padding-top: 10px;
 			padding-bottom: 4px;
+			margin-top: 1px;
 			.read-more-link {
 				padding-top: 10px;
 				a {

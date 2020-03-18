@@ -16,7 +16,7 @@
 		<div class="business-content col-xs-12 col-sm-12 col-md-8">
 			<div class="business-details">
 				<div class="row">
-					<h4 class="business-title"><a href="<?php esc_url( the_permalink() ); ?>"><?php echo esc_attr( $title ); ?></a></h4>
+					<h4 class="business-title"><?php echo esc_attr( $title ); ?></h4>
 				</div>
 
 				<div class="row">

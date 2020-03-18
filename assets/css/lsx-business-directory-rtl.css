@@ -223,19 +223,19 @@ body.lsx-business-directory-page.archive:not(.using-gutenberg):not(.banner-disab
 
 .archive .row { margin-right: 0px; margin-left: 0px; }
 
-.archive .business.row-layout { -webkit-box-sizing: border-box; box-sizing: border-box; border: 1px solid #EEEEEE; background-color: #FFFFFF; -webkit-box-shadow: -1px 2px 6px 0 rgba(155, 155, 155, 0.45); box-shadow: -1px 2px 6px 0 rgba(155, 155, 155, 0.45); padding-left: 10px; padding-bottom: 10px; }
+.archive .business.row-layout { -webkit-box-sizing: border-box; box-sizing: border-box; border: 1px solid #EEEEEE; background-color: #FFFFFF; -webkit-box-shadow: -1px 2px 6px 0 rgba(155, 155, 155, 0.45); box-shadow: -1px 2px 6px 0 rgba(155, 155, 155, 0.45); padding-left: 10px; padding-bottom: 22px; }
 
 .archive .business.row-layout .business-thumbnail { background: white; }
 
 .archive .business.row-layout .business-content { padding-right: 20px; }
 
-.archive .business.row-layout .business-content .business-details h4.business-title { color: #434343; margin-top: 14px; margin-bottom: 9px; }
+.archive .business.row-layout .business-content .business-details h4.business-title { color: #434343; margin-top: 13px; margin-bottom: 7px; }
 
 .archive .business.row-layout .business-content .business-details .industry, .archive .business.row-layout .business-content .business-details .location, .archive .business.row-layout .business-content .business-details .telephone, .archive .business.row-layout .business-content .business-details .email { padding-right: 0px; padding-left: 0px; padding-bottom: 1px; }
 
-.archive .business.row-layout .business-content .business-details .business-meta > div { margin-bottom: 10px; }
+.archive .business.row-layout .business-content .business-details .business-meta > div { margin-bottom: 6px; }
 
-.archive .business.row-layout .business-excerpt { border-top: 1px solid #ddd; padding-top: 10px; padding-bottom: 4px; }
+.archive .business.row-layout .business-excerpt { border-top: 1px solid #ddd; padding-top: 10px; padding-bottom: 4px; margin-top: 1px; }
 
 .archive .business.row-layout .business-excerpt .read-more-link { padding-top: 10px; }
 
