@@ -270,26 +270,6 @@ function lsx_bd_get_country_options() {
 }
 
 /**
- * Buid array containing options for a select box inside the settings for Business Directory.
- *
- * @return  array  Options array containing all available forms.
- * Key   = Form ID
- * Value = Form Name
- */
-function lsx_bd_get_available_forms() {
-	$forms_data = lsx_bd_get_activated_forms();
-	$options    = array();
-
-	if ( ! empty( $forms_data ) ) {
-		$options = $forms_data;
-	} else {
-		$options['none'] = esc_html__( 'You have no forms available', 'lsx-business-directory' );
-	}
-
-	return $options;
-}
-
-/**
  * Checks which form plugin is active, and grabs all available forms from that plugin.
  *
  * @return  array  Array with all available forms for a particular plugin which is enabled.

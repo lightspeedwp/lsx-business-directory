@@ -103,3 +103,23 @@ function get_placeholder_fields( $prefix = '' ) {
 	}
 	return $fields;
 }
+
+/**
+ * Buid array containing options for a select box inside the settings for Business Directory.
+ *
+ * @return  array  Options array containing all available forms.
+ * Key   = Form ID
+ * Value = Form Name
+ */
+function get_available_forms() {
+	$forms_data = \lsx_bd_get_activated_forms();
+	$options    = array();
+
+	if ( ! empty( $forms_data ) ) {
+		$options = $forms_data;
+	} else {
+		$options['none'] = esc_html__( 'You have no forms available', 'lsx-business-directory' );
+	}
+
+	return $options;
+}
