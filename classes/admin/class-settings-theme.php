@@ -126,7 +126,7 @@ class Settings_Theme {
 							$separator = '';
 						}
 						?>
-							<li><a href="#" class="<?php echo esc_attr( $current_css ); ?>" data-sort="<?php echo esc_attr( $key ); ?>_tab"><?php echo esc_attr( $label ); ?></a><?php echo $separator; ?></li>
+							<li><a href="#" class="<?php echo esc_attr( $current_css ); ?>" data-sort="<?php echo esc_attr( $key ); ?>_tab"><?php echo esc_attr( $label ); ?></a><?php echo esc_attr( $separator ); ?></li>
 						<?php
 					}
 					?>
