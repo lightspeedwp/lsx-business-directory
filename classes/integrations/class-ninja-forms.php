@@ -37,7 +37,7 @@ class Ninja_Forms {
 	 * @since 1.0.0
 	 *
 	 * @return    object \lsx\business_directory\classes\integrations\Ninja_Forms()    A single instance of this class.
-	 */	
+	 */
 	public static function get_instance() {
 		// If the single instance hasn't been set, set it now.
 		if ( null == self::$instance ) {
