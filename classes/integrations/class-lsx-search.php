@@ -278,10 +278,10 @@ class LSX_Search {
 			$this->layout     = lsx_bd_get_option( $this->prefix . '_grid_list' );
 			if ( ! empty( $active_facets ) ) {
 				foreach ( $active_facets as $index => $facet_name ) {
-					if ( ! ( 'industry' === $current_taxonomy && 'industries' === $facet_name ) &&
-						 ! ( 'location' === $current_taxonomy && 'regions' === $facet_name ) ) {
+					/*if ( ! ( 'industry' === $current_taxonomy && 'industries' === $facet_name ) &&
+						 ! ( 'location' === $current_taxonomy && 'regions' === $facet_name ) ) {*/
 						$facets[ $facet_name ] = 'on';
-					}
+					/*}*/
 				}
 			}
 			$options['display'] = array(
