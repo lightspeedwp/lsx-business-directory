@@ -22,6 +22,7 @@ class Placeholders {
 	 */
 	public function __construct() {
 		add_action( 'lsx_bd_settings_section_single', array( $this, 'register_single_placeholder_fields' ), 5, 2 );
+		add_action( 'lsx_bd_settings_section_archive', array( $this, 'register_archive_placeholder_fields' ), 4, 2 );
 	}
 
 	/**
@@ -40,7 +41,7 @@ class Placeholders {
 	}
 
 	/**
-	 * Enable Business Directory Search settings only if LSX Search plugin is enabled.
+	 * Registers the Single tabs placeholder settings.
 	 *
 	 * @param object $cmb The CMB2() class.
 	 * @param string $position either top of bottom.
@@ -49,6 +50,22 @@ class Placeholders {
 	public function register_single_placeholder_fields( $cmb, $position ) {
 		if ( 'bottom' === $position ) {
 			$fields = \lsx\business_directory\includes\get_placeholder_fields( 'single' );
+			foreach ( $fields as $field ) {
+				$cmb->add_field( $field );
+			}
+		}
+	}
+
+	/**
+	 * Registers the Single tabs placeholder settings
+	 *
+	 * @param object $cmb The CMB2() class.
+	 * @param string $position either top of bottom.
+	 * @return void
+	 */
+	public function register_archive_placeholder_fields( $cmb, $position ) {
+		if ( 'top' === $position ) {
+			$fields = \lsx\business_directory\includes\get_placeholder_fields( 'archive' );
 			foreach ( $fields as $field ) {
 				$cmb->add_field( $field );
 			}

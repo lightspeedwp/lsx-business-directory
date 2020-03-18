@@ -46,6 +46,13 @@ class Frontend {
 	public $widget;
 
 	/**
+	 * Holds the placeholders class.
+	 *
+	 * @var object \lsx\business_directory\classes\frontend\Placeholders();
+	 */
+	public $placeholders;
+
+	/**
 	 * Contructor
 	 */
 	public function __construct() {
@@ -85,6 +92,9 @@ class Frontend {
 
 		require_once LSX_BD_PATH . 'classes/frontend/class-widget.php';
 		$this->widget = frontend\Widget::get_instance();
+
+		require_once LSX_BD_PATH . 'classes/frontend/class-placeholders.php';
+		$this->placeholders = frontend\Placeholders::get_instance();
 	}
 
 	/**

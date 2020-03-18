@@ -33,7 +33,7 @@ function apply_field_id_prefixes( $fields = array(), $prefix = '' ) {
  * @param string $type
  * @return string
  */
-function get_placeholder( $id = '', $size = 'lsx-thumbnail-wide', $key = 'single' ) {
+function get_placeholder( $size = 'lsx-thumbnail-wide', $key = 'single' ) {
 	$placeholder = '';
 	$possible_placeholder_id = lsx_bd_get_option( $key . '_thumbnail_placeholder_id' );
 	if ( '' !== $possible_placeholder_id ) {
@@ -54,6 +54,7 @@ function get_placeholder( $id = '', $size = 'lsx-thumbnail-wide', $key = 'single
 				$placeholder = LSX_BD_URL . 'assets/img/placeholder-750x350.jpg';
 				break;
 
+			case 'full':
 			case 'lsx-banner':
 				$placeholder = LSX_BD_URL . 'assets/img/placeholder-1920x600.jpg';
 				break;
