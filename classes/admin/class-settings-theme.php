@@ -112,14 +112,21 @@ class Settings_Theme {
 				<ul class="filter-links">
 					<?php
 					$first_tab = true;
+					$total = count( $this->navigation );
+					$count = 0;
+					$separator = ' |';
 					foreach ( $this->navigation as $key => $label ) {
+						$count++;
 						$current_css = '';
 						if ( true === $first_tab ) {
 							$first_tab   = false;
 							$current_css = 'current';
 						}
+						if ( $count === $total ) {
+							$separator = '';
+						}
 						?>
-							<li><a href="#" class="<?php echo esc_attr( $current_css ); ?>" data-sort="<?php echo esc_attr( $key ); ?>_tab"><?php echo esc_attr( $label ); ?></a></li>
+							<li><a href="#" class="<?php echo esc_attr( $current_css ); ?>" data-sort="<?php echo esc_attr( $key ); ?>_tab"><?php echo esc_attr( $label ); ?></a><?php echo $separator; ?></li>
 						<?php
 					}
 					?>
