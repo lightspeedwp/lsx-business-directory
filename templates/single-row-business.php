@@ -42,7 +42,7 @@
 							</div>
 
 							<div class="location col-xs-6 col-sm-6 col-md-6">
-								<span><i class="fa fa-globe-africa"></i><strong><?php esc_html_e( 'Location', 'lsx-business-directory' ); ?>: </strong><?php echo esc_attr( $location ); ?></span>
+								<span><i class="fa fa-globe"></i><strong><?php esc_html_e( 'Location', 'lsx-business-directory' ); ?>: </strong><?php echo esc_attr( $location ); ?></span>
 							</div>
 						</div>
 
@@ -63,7 +63,7 @@
 
 					<div class="business-excerpt lsx-flex-col">
 						<?php echo esc_attr( get_the_excerpt() ); ?>
-						<span class="read-more-link"><a href="<?php esc_url( the_permalink() ); ?>"><?php esc_html_e( 'Read More', 'lsx-business-directory' ); ?><i class="fa fa-long-arrow-alt-right"></i></a></span>
+						<span class="read-more-link"><a href="<?php esc_url( the_permalink() ); ?>"><?php esc_html_e( 'Read More', 'lsx-business-directory' ); ?><i class="fa fa-long-arrow-right"></i></a></span>
 					</div>
 				</div>
 			</div>

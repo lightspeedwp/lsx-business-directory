@@ -217,7 +217,7 @@ body.lsx-business-directory-page.archive:not(.using-gutenberg):not(.banner-disab
 
 .archive article { margin-bottom: 25px; }
 
-.archive .fas { margin-left: 5px; }
+.archive .fa { margin-left: 5px; }
 
 .archive .row { margin-right: 0px; margin-left: 0px; }
 
@@ -239,7 +239,7 @@ body.lsx-business-directory-page.archive:not(.using-gutenberg):not(.banner-disab
 
 .archive .business.row-layout .business-excerpt .read-more-link a { text-transform: uppercase; }
 
-.archive .business.row-layout .business-excerpt .read-more-link a .fas { margin-right: 5px; }
+.archive .business.row-layout .business-excerpt .read-more-link a .fa { margin-right: 5px; }
 
 .archive .archive-plan { display: -ms-flexbox; display: -webkit-box; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; }
 
@@ -261,7 +261,7 @@ body.lsx-business-directory-page.archive:not(.using-gutenberg):not(.banner-disab
 
 .archive .business.col-layout .business-button button a, .lsx-business-directory-shortcode .business.col-layout .business-button button a { color: white; }
 
-.archive .business.col-layout .business-button button a .fas, .lsx-business-directory-shortcode .business.col-layout .business-button button a .fas { margin-right: 5px; }
+.archive .business.col-layout .business-button button a .fa, .lsx-business-directory-shortcode .business.col-layout .business-button button a .fa { margin-right: 5px; }
 
 #gmap { height: 500px; }
 
