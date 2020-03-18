@@ -47,7 +47,7 @@ class Gravity_Forms {
 	 */
 	public function register_merge_tag( $merge_tags, $form_id, $fields, $element_id ) {
 		$merge_tags[] = array(
-			'label' => 'Listing Primary Email',
+			'label' => __( 'Listing Primary Email', 'lsx-business-directory' ),
 			'tag'   => '{listing_primary_email}',
 		);
 

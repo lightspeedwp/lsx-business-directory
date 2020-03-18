@@ -50,7 +50,7 @@ class WPForms {
 	 */
 	public function register_smart_tag( $tags ) {
 		// Key is the tag, item is the tag name.
-		$tags['listing_primary_email'] = 'Listing Primary Email';
+		$tags['listing_primary_email'] = __( 'Listing Primary Email', 'lsx-business-directory' );
 		return $tags;
 	}
 
