@@ -84,16 +84,16 @@ function get_featured_image_field( $prefix = '' ) {
 function get_placeholder_fields( $prefix = '' ) {
 	$fields = array(
 		array(
-			'name'         => esc_html__( 'Banner Placeholder', 'lsx-business-directory' ),
-			'desc'         => esc_html__( 'Your image should be 1920px x 600px preferably, but no less than 1440px x 430px.', 'lsx-business-directory' ),
-			'id'           => '_banner_placeholder',
+			'name'         => esc_html__( 'Featured Placeholder', 'lsx-business-directory' ),
+			'desc'         => esc_html__( 'Your image should be 800px x 600px preferably, but no less than 360px x 168px.', 'lsx-business-directory' ),
+			'id'           => '_thumbnail_placeholder',
 			'type'         => 'file',
 			'preview_size' => 'lsx-thumbnail-wide',
 		),
 		array(
-			'name'         => esc_html__( 'Featured Placeholder', 'lsx-business-directory' ),
-			'desc'         => esc_html__( 'Your image should be 800px x 600px preferably, but no less than 360px x 168px.', 'lsx-business-directory' ),
-			'id'           => '_thumbnail_placeholder',
+			'name'         => esc_html__( 'Banner Placeholder', 'lsx-business-directory' ),
+			'desc'         => esc_html__( 'Your image should be 1920px x 600px preferably, but no less than 1440px x 430px.', 'lsx-business-directory' ),
+			'id'           => '_banner_placeholder',
 			'type'         => 'file',
 			'preview_size' => 'lsx-thumbnail-wide',
 		),
