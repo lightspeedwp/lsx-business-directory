@@ -21,7 +21,7 @@ class Caldera_Forms {
 	 * Contructor
 	 */
 	public function __construct() {
-		add_filter( 'caldera_forms_do_magic_tag', array( $this, 'lsx_bd_caldera_magic_tag_process' ), 10, 2 );
+		add_filter( 'caldera_forms_do_magic_tag', array( $this, 'process_magic_tag' ), 10, 2 );
 	}
 
 	/**
@@ -42,14 +42,12 @@ class Caldera_Forms {
 	/**
 	 * Process the Caldera Forms Magic Tag.
 	 *
-	 * @link   https://calderaforms.com/doc/caldera_forms_do_magic_tag/
-	 *
 	 * @param  string $value
 	 * @param  string $magic_tag
 	 * @return string
 	 */
-	public function lsx_bd_caldera_magic_tag_process( $value, $magic_tag ) {
-		// make sure we only act on the right magic tag, and when we have a valid entry (positive integer)
+	public function process_magic_tag( $value, $magic_tag ) {
+		// make sure we only act on the right magic tag, and when we have a valid entry (positive integer).
 		if ( '{listing_primary_email}' === $magic_tag ) {
 			$prefix = 'lsx_bd';
 			$value  = get_post_meta( get_the_ID(), $prefix . '_primary_email', true );
