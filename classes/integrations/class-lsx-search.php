@@ -121,7 +121,6 @@ class LSX_Search {
 				);
 			}
 
-
 			$cmb->add_field(
 				array(
 					'name'    => esc_html__( 'Layout', 'lsx-business-directory' ),
