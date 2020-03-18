@@ -42,7 +42,7 @@
 
 					<?php if ( $location ) : ?>
 					<div class="location">
-						<span><i class="fa fa-globe-africa"></i> <strong><?php esc_html_e( 'Location', 'lsx-business-directory' ); ?>: </strong><?php echo esc_attr( $location ); ?></span>
+						<span><i class="fa fa-globe"></i> <strong><?php esc_html_e( 'Location', 'lsx-business-directory' ); ?>: </strong><?php echo esc_attr( $location ); ?></span>
 					</div>
 					<?php endif; ?>
 
