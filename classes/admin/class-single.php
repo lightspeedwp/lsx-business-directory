@@ -50,6 +50,7 @@ class Single {
 			array(
 				'id'          => 'settings_single',
 				'type'        => 'title',
+				'before_row'  => 'lsx_bd_print_setting_heading',
 				'name'        => __( 'Single', 'lsx-business-directory' ),
 				'default'     => __( 'Single', 'lsx-business-directory' ),
 				'description' => __( 'The settings for the single business directory view.', 'lsx-business-directory' ),
