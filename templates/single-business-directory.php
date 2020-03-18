@@ -225,7 +225,7 @@ get_header(); ?>
 									<div><a href="<?php echo esc_url( $business_instagram ); ?>" target="_blank"><i class="fa fa-instagram"></i></a></div>
 									<?php endif; ?>
 									<?php if ( $business_youtube ) : ?>
-									<div><a href="<?php echo esc_url( $business_youtube ); ?>" target="_blank"><i class="fa fa-youtube"></i></a></div>
+									<div><a href="<?php echo esc_url( $business_youtube ); ?>" target="_blank"><i class="fa fa-youtube-play"></i></a></div>
 									<?php endif; ?>
 									<?php if ( $business_pinterest ) : ?>
 									<div><a href="<?php echo esc_url( $business_pinterest ); ?>" target="_blank"><i class="fa fa-pinterest"></i></a></div>

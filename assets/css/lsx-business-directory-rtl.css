@@ -151,7 +151,7 @@ body.lsx-business-directory-page.archive:not(.using-gutenberg):not(.banner-disab
 
 @media screen and (max-width: 1090px) { .single .business-directory .business-header .business-content-left { margin-bottom: 20px; } }
 
-.single .business-directory .business-header .business-content-right { padding-right: 28px; }
+.single .business-directory .business-header .business-content-right { padding-right: 26px; }
 
 .single .business-directory .business-header .entry-header-content h1.entry-title { color: #4D4D4D; font-family: Lora; font-size: 32px; line-height: 39px; }
 
@@ -165,7 +165,7 @@ body.lsx-business-directory-page.archive:not(.using-gutenberg):not(.banner-disab
 
 .single .business-directory .business-header .entry-header-content .social-links { margin-bottom: 20px; }
 
-.single .business-directory .business-header .entry-header-content .social-links > div { margin-left: 10px; }
+.single .business-directory .business-header .entry-header-content .social-links > div { margin-left: 24px; }
 
 .single .business-directory .business-header .entry-header-content .social-links > div a { color: #5693D9; font-size: 22px; line-height: 22px; text-align: center; }
 
