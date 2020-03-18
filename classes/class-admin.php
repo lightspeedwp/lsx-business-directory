@@ -123,7 +123,7 @@ class Admin {
 	public function register_settings_page() {
 		$args = array(
 			'id'           => 'lsx_bd_settings',
-			'title'        => "<h1>" . esc_html__( 'Business Directory Settings', 'lsx-business-directory' ) . " <span class='version'>1.0.0</span></h1>",
+			'title'        => '<h1>' . esc_html__( 'Business Directory Settings', 'lsx-business-directory' ) . ' <span class="version">1.0.0</span></h1>',
 			'menu_title'   => esc_html__( 'Settings', 'lsx-business-directory' ), // Falls back to 'title' (above).
 			'object_types' => array( 'options-page' ),
 			'option_key'   => 'lsx-business-directory-settings', // The option key and admin menu page slug.
