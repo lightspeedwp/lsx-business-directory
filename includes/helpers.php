@@ -33,11 +33,14 @@ function apply_field_id_prefixes( $fields = array(), $prefix = '' ) {
  * @param string $type
  * @return string
  */
-function get_placeholder( $id = '', $size = 'lsx-thumbnail-square', $type = 'post' ) {
-	$placeholder             = '';
-	$possible_placeholder_id = lsx_bd_get_option( 'single_thumbnail_placeholder_id' );
+function get_placeholder( $id = '', $size = 'lsx-thumbnail-wide', $key = 'single' ) {
+	$placeholder = '';
+	if ( is_archive() ) {
+		//$key = 'archive';
+	}
+	$possible_placeholder_id = lsx_bd_get_option( $key . '_thumbnail_placeholder_id' );
 	if ( '' !== $possible_placeholder_id ) {
-		$image = wp_get_attachment_image_src( $id, $size );
+		$image = wp_get_attachment_image_src( $possible_placeholder_id, $size );
 		if ( is_array( $image ) && isset( $image[0] ) ) {
 			$placeholder = $image[0];
 		}
