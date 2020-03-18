@@ -62,7 +62,7 @@ class Single {
 				'id'               => 'single_enquiry_form',
 				'type'             => 'select',
 				'show_option_none' => 'Choose a Form',
-				'options'          => lsx_bd_get_available_forms(),
+				'options'          => \lsx\business_directory\includes\get_available_forms(),
 			)
 		);
 		do_action( 'lsx_bd_settings_section_single', $cmb, 'bottom' );

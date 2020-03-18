@@ -7,6 +7,8 @@
 
 namespace lsx\business_directory\includes;
 
+use WP_Query;
+
 /**
  * Returns the banner fields for use in registering the custom fields, theme settings etc.
  *
@@ -102,4 +104,149 @@ function get_placeholder_fields( $prefix = '' ) {
 		$fields = apply_field_id_prefixes( $fields, $prefix );
 	}
 	return $fields;
+}
+
+/**
+ * Buid array containing options for a select box inside the settings for Business Directory.
+ *
+ * @return  array  Options array containing all available forms.
+ * Key   = Form ID
+ * Value = Form Name
+ */
+function get_available_forms() {
+	$forms_data = get_activated_forms();
+	$options    = array();
+
+	if ( ! empty( $forms_data ) ) {
+		$options = $forms_data;
+	} else {
+		$options['none'] = esc_html__( 'You have no forms available', 'lsx-business-directory' );
+	}
+
+	return $options;
+}
+
+/**
+ * Checks which form plugin is active, and grabs all available forms from that plugin.
+ *
+ * @return  array  Array with all available forms for a particular plugin which is enabled.
+ */
+function get_activated_forms() {
+	$all_forms = array();
+
+	if ( class_exists( 'WPForms' ) ) {
+		$wpforms = get_wpforms();
+		if ( ! empty( $wpforms ) ) {
+			$all_forms = array_merge( $all_forms, $wpforms );
+		}
+	}
+	if ( class_exists( 'Ninja_Forms' ) ) {
+		$ninja_forms = get_ninja_forms();
+		if ( ! empty( $ninja_forms ) ) {
+			$all_forms = array_merge( $all_forms, $ninja_forms );
+		}
+	}
+	if ( class_exists( 'GFForms' ) ) {
+		$gravity_forms = get_gravity_forms();
+		if ( ! empty( $gravity_forms ) ) {
+			$all_forms = array_merge( $all_forms, $gravity_forms );
+		}
+	}
+	if ( class_exists( 'Caldera_Forms_Forms' ) ) {
+		$caldera_forms = get_caldera_forms();
+		if ( ! empty( $caldera_forms ) ) {
+			$all_forms = array_merge( $all_forms, $caldera_forms );
+		}
+	}
+	return $all_forms;
+}
+
+/**
+ * Gets the available WPForms forms.
+ *
+ * @return  array  Array with all available WPForms forms.
+ */
+function get_wpforms() {
+	global $wpdb;
+	$forms = false;
+
+	$args = array(
+		'post_type'     => 'wpforms',
+		'orderby'       => 'id',
+		'order'         => 'ASC',
+		'no_found_rows' => true,
+		'nopaging'      => true,
+	);
+
+	$form_query = new \WP_Query( $args );
+
+	if ( $form_query->have_posts() ) {
+		foreach ( $form_query->posts as $post ) {
+			$forms[ 'wp_' . $post->ID ] = $post->post_title;
+		}
+	} else {
+		$forms = false;
+	}
+
+	return $forms;
+}
+
+/**
+ * Gets the available Ninja forms.
+ *
+ * @return  array  Array with all available Ninja forms.
+ */
+function get_ninja_forms() {
+	global $wpdb;
+
+	$results = $wpdb->get_results( "SELECT id,title FROM {$wpdb->prefix}nf3_forms" );
+	$forms   = false;
+
+	if ( ! empty( $results ) ) {
+		foreach ( $results as $form ) {
+			$forms[ 'ninja_' . $form->id ] = $form->title;
+		}
+	}
+
+	return $forms;
+}
+
+/**
+ * Gets the available Gravity forms.
+ *
+ * @return  array  Array with all available Gravity forms.
+ */
+function get_gravity_forms() {
+	global $wpdb;
+
+	$results = \RGFormsModel::get_forms( null, 'title' );
+	$forms   = false;
+
+	if ( ! empty( $results ) ) {
+		foreach ( $results as $form ) {
+			$forms[ 'gravity_' . $form->id ] = $form->title;
+		}
+	}
+
+	return $forms;
+}
+
+/**
+ * Gets the available Caldera forms.
+ *
+ * @return  array  Array with all available Caldera forms.
+ */
+function get_caldera_forms() {
+	global $wpdb;
+
+	$results = \Caldera_Forms_Forms::get_forms( true );
+	$forms   = false;
+
+	if ( ! empty( $results ) ) {
+		foreach ( $results as $form => $form_data ) {
+			$forms[ 'caldera_' . $form ] = $form_data['name'];
+		}
+	}
+
+	return $forms;
 }

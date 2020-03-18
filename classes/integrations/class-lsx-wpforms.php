@@ -6,14 +6,14 @@ namespace lsx\business_directory\classes\integrations;
  *
  * @package lsx-business-directory
  */
-class LSX_WPForms {
+class WPForms {
 
 	/**
 	 * Holds class instance
 	 *
 	 * @since 1.0.0
 	 *
-	 * @var      object \lsx\business_directory\classes\LSX_WPForms()
+	 * @var      object \lsx\business_directory\classes\WPForms()
 	 */
 	protected static $instance = null;
 
@@ -21,7 +21,8 @@ class LSX_WPForms {
 	 * Contructor
 	 */
 	public function __construct() {
-		add_filter( 'wpforms_smart_tags', array( $this, 'lsx_bd_wpforms_register_smarttag' ) );
+		add_filter( 'wpforms_smart_tags', array( $this, 'register_smart_tag' ) );
+		add_filter( 'wpforms_smart_tag_process', array( $this, 'smart_tag_process' ), 10, 1 );
 	}
 
 	/**
@@ -29,7 +30,7 @@ class LSX_WPForms {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return    object \lsx\business_directory\classes\LSX_WPForms()    A single instance of this class.
+	 * @return    object \lsx\business_directory\classes\WPForms()    A single instance of this class.
 	 */
 	public static function get_instance() {
 		// If the single instance hasn't been set, set it now.
@@ -47,10 +48,25 @@ class LSX_WPForms {
 	 * @param  array $tags
 	 * @return array
 	 */
-	public function lsx_bd_wpforms_register_smarttag( $tags ) {
+	public function register_smart_tag( $tags ) {
 		// Key is the tag, item is the tag name.
-		$tags['listing_primary_email'] = 'Listing Primary Email';
-
+		$tags['listing_primary_email'] = __( 'Listing Primary Email', 'lsx-business-directory' );
 		return $tags;
+	}
+
+	/**
+	 * Process the WPForms Smart Tag.
+	 *
+	 * @param  string $content
+	 * @param  string $tag
+	 * @return string
+	 */
+	public function smart_tag_process( $content ) {
+		if ( false !== stripos( $content, '{listing_primary_email}' ) ) {
+			$prefix                = 'lsx_bd';
+			$listing_primary_email = get_post_meta( get_the_ID(), $prefix . '_primary_email', true );
+			$content               = str_replace( '{listing_primary_email}', $listing_primary_email, $content );
+		}
+		return $content;
 	}
 }
