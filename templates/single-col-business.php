@@ -17,7 +17,7 @@
 			<div class="business-details">
 				<div class="row lsx-flex-col">
 					<div class="business-title">
-						<h4><a href="<?php esc_url( the_permalink() ); ?>"><?php echo esc_attr( $title ); ?></a></h4>
+						<h4><?php echo esc_attr( $title ); ?></h4>
 					</div>
 
 					<?php if ( $industries ) : ?>
