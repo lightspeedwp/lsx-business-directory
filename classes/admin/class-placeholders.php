@@ -21,7 +21,7 @@ class Placeholders {
 	 * Contructor
 	 */
 	public function __construct() {
-		add_action( 'lsx_bd_settings_section_single', array( $this, 'register_placeholder_fields' ), 5, 2 );
+		add_action( 'lsx_bd_settings_section_single', array( $this, 'register_single_placeholder_fields' ), 5, 2 );
 	}
 
 	/**
@@ -46,7 +46,7 @@ class Placeholders {
 	 * @param string $position either top of bottom.
 	 * @return void
 	 */
-	public function register_placeholder_fields( $cmb, $position ) {
+	public function register_single_placeholder_fields( $cmb, $position ) {
 		if ( 'bottom' === $position ) {
 			$fields = \lsx\business_directory\includes\get_placeholder_fields( 'single' );
 			foreach ( $fields as $field ) {
