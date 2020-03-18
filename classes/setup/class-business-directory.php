@@ -100,6 +100,7 @@ class Business_Directory {
 			'publicly_queryable'  => true,
 			'show_ui'             => true,
 			'show_in_menu'        => true,
+			'show_in_rest'        => true,
 			'menu_icon'           => 'dashicons-list-view',
 			'query_var'           => true,
 			'rewrite'             => array(
