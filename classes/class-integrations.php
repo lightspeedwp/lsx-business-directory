@@ -60,13 +60,13 @@ class Integrations {
 		require_once LSX_BD_PATH . '/classes/integrations/class-lsx-search.php';
 		$this->lsx_search = integrations\LSX_Search::get_instance();
 
-		require_once LSX_BD_PATH . '/classes/integrations/class-wpforms.php';
+		require_once LSX_BD_PATH . '/classes/integrations/class-lsx-wpforms.php';
 		$this->lsx_wpforms = integrations\LSX_WPForms::get_instance();
 
-		require_once LSX_BD_PATH . '/classes/integrations/class-gravity-forms.php';
+		require_once LSX_BD_PATH . '/classes/integrations/class-lsx-gravity-forms.php';
 		$this->lsx_gravity = integrations\LSX_Gravity_Forms::get_instance();
 
-		require_once LSX_BD_PATH . '/classes/integrations/class-ninja-forms.php';
+		require_once LSX_BD_PATH . '/classes/integrations/class-lsx-ninja-forms.php';
 		$this->lsx_ninja = integrations\LSX_Ninja_Forms::get_instance();
 	}
 
