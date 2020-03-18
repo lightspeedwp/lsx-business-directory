@@ -83,7 +83,7 @@ class Enquiry {
 	 */
 	public function lsx_bd_caldera_magic_tag_process( $value, $magic_tag ) {
 		// make sure we only act on the right magic tag, and when we have a valid entry (positive integer)
-		if ( '{listing_primary_email}' == $magic_tag ) {
+		if ( '{listing_primary_email}' === $magic_tag ) {
 			$prefix = 'lsx_bd';
 			$value  = get_post_meta( get_the_ID(), $prefix . '_primary_email', true );
 		}

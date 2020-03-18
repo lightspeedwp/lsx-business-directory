@@ -50,7 +50,6 @@ class LSX_WPForms {
 	public function lsx_bd_wpforms_register_smarttag( $tags ) {
 		// Key is the tag, item is the tag name.
 		$tags['listing_primary_email'] = 'Listing Primary Email';
-
 		return $tags;
 	}
 }
