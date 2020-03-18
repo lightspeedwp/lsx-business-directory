@@ -22,7 +22,7 @@ function get_banner_fields( $prefix = '', $label_prefix = '' ) {
 		),
 		array(
 			'name'         => $label_prefix . esc_html__( 'Image', 'lsx-business-directory' ),
-			'desc'         => esc_html__( 'Upload a banner image for to display above your business listing. Your image should be 1920px x 600px preferably, but no less than 1440px x 430px.', 'lsx-business-directory' ),
+			'desc'         => esc_html__( 'Your image should be 1920px x 600px preferably, but no less than 1440px x 430px.', 'lsx-business-directory' ),
 			'id'           => '_banner',
 			'type'         => 'file',
 			'preview_size' => 'lsx-thumbnail-wide',
@@ -63,7 +63,7 @@ function get_featured_image_field( $prefix = '' ) {
 	$fields = array(
 		array(
 			'name'         => esc_html__( 'Featured Image', 'lsx-business-directory' ),
-			'desc'         => esc_html__( 'Upload an image. Your image should be 800px x 600px preferably, but no less than 360px x 168px', 'lsx-business-directory' ),
+			'desc'         => esc_html__( 'Your image should be 800px x 600px preferably, but no less than 360px x 168px', 'lsx-business-directory' ),
 			'id'           => '_thumbnail',
 			'type'         => 'file',
 			'preview_size' => 'lsx-thumbnail-wide',
