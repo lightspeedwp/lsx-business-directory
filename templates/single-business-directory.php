@@ -95,7 +95,7 @@ get_header(); ?>
 									<div class="row">
 										<?php if ( $business_primary_phone ) : ?>
 										<div class="telephone lsx-flex-row">
-											<div class="col1"><i class="fa fa-phone-square-alt"></i><strong><?php esc_html_e( 'Telephone', 'lsx-business-directory' ); ?>: </strong></div>
+											<div class="col1"><i class="fa fa-phone-square"></i><strong><?php esc_html_e( 'Telephone', 'lsx-business-directory' ); ?>: </strong></div>
 											<div class="col2"><a href="tel:<?php echo esc_attr( str_replace( ' ', '', $business_primary_phone ) ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_attr( $business_primary_phone ); ?></a></div>
 										</div>
 										<?php endif; ?>
@@ -137,7 +137,7 @@ get_header(); ?>
 
 										<?php if ( ! empty( $address ) ) : ?>
 										<div class="address lsx-flex-row">
-											<div class="col1"><i class="fa fa-map-marker-alt"></i><strong><?php esc_html_e( 'Address', 'lsx-business-directory' ); ?>: </strong></div>
+											<div class="col1"><i class="fa fa-map-marker"></i><strong><?php esc_html_e( 'Address', 'lsx-business-directory' ); ?>: </strong></div>
 											<div class="col2">
 												<?php
 												foreach ( $address as $field_string ) {
