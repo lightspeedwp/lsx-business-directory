@@ -183,13 +183,13 @@ body.lsx-business-directory-page.archive:not(.using-gutenberg):not(.banner-disab
 
 .single .business-directory .business-header .entry-header-content .entry-meta > div:last-child { margin-bottom: 20px; }
 
-.single .business-directory .business-header .button { padding-right: 13px; padding-left: 14px; }
+.single .business-directory .business-header .button { padding-right: 14px; padding-left: 15px; }
 
 .single .business-directory .business-header .button button.btn.btn-primary { margin-top: 14px; width: 100%; }
 
 .single .business-directory .contact-info { padding-top: 30px; padding-right: 0px; }
 
-.single .business-directory .contact-info .telephone, .single .business-directory .contact-info .contact, .single .business-directory .contact-info .email, .single .business-directory .contact-info .website, .single .business-directory .contact-info .skype, .single .business-directory .contact-info .whatsapp, .single .business-directory .contact-info .address { padding-right: 14px; padding-bottom: 15px; }
+.single .business-directory .contact-info .telephone, .single .business-directory .contact-info .contact, .single .business-directory .contact-info .email, .single .business-directory .contact-info .website, .single .business-directory .contact-info .skype, .single .business-directory .contact-info .whatsapp, .single .business-directory .contact-info .address { padding-right: 15px; padding-bottom: 15px; }
 
 .single .business-directory .contact-info .telephone i, .single .business-directory .contact-info .contact i, .single .business-directory .contact-info .email i, .single .business-directory .contact-info .website i, .single .business-directory .contact-info .skype i, .single .business-directory .contact-info .whatsapp i, .single .business-directory .contact-info .address i { margin-left: 3px; }
 
