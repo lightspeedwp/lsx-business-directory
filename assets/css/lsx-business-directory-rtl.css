@@ -249,6 +249,8 @@ body.lsx-business-directory-page.archive:not(.using-gutenberg):not(.banner-disab
 
 .archive .business.row-layout .business-content .business-details h4.business-title, .search .business.row-layout .business-content .business-details h4.business-title { color: #434343; margin-top: 13px; margin-bottom: 7px; }
 
+.archive .business.row-layout .business-content .business-details h4.business-title a, .search .business.row-layout .business-content .business-details h4.business-title a { color: #434343; }
+
 .archive .business.row-layout .business-content .business-details .industry, .archive .business.row-layout .business-content .business-details .location, .archive .business.row-layout .business-content .business-details .telephone, .archive .business.row-layout .business-content .business-details .email, .search .business.row-layout .business-content .business-details .industry, .search .business.row-layout .business-content .business-details .location, .search .business.row-layout .business-content .business-details .telephone, .search .business.row-layout .business-content .business-details .email { padding-right: 0px; padding-left: 0px; padding-bottom: 1px; }
 
 .archive .business.row-layout .business-content .business-details .business-meta > div, .search .business.row-layout .business-content .business-details .business-meta > div { margin-bottom: 6px; }
