@@ -199,11 +199,15 @@ body.lsx-business-directory-page.archive:not(.using-gutenberg):not(.banner-disab
 
 .single .business-directory .contact-info .skype .col2 { border-radius: 15px; padding-left: 10px; padding-right: 10px; background-color: #46B6EF; }
 
+.single .business-directory .contact-info .skype .col2:hover { background-color: #2281B1; }
+
 .single .business-directory .contact-info .skype .col2 a { color: white; }
 
 .single .business-directory .contact-info .whatsapp .col2 { border-radius: 15px; padding-left: 10px; padding-right: 10px; background-color: #5AC352; }
 
-.single .business-directory .contact-info .whatsapp a { color: white; }
+.single .business-directory .contact-info .whatsapp .col2:hover { background-color: #288B21; }
+
+.single .business-directory .contact-info .whatsapp .col2 a { color: white; }
 
 .single .business-directory .related-businesses h2 { text-align: center; }
 
