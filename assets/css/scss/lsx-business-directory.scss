@@ -349,7 +349,7 @@
 			line-height: 30px;
 		}
 	}
-	.search-submit.btn.facetwp-btn {
+	.search-submit.btn {
 		background-color: #418AD0;
 		box-shadow: 1px 1px 0 0 #27619B;
 	}
@@ -396,10 +396,22 @@
 						color: #434343;
 					}
 				}
+				.industry, .location {
+					i.fa {
+						margin-right: 0px;
+					}
+				}
 				.industry, .location, .telephone, .email {
 					padding-left: 0px;
 					padding-right: 0px;
 					padding-bottom: 1px;
+
+					span {
+						i, strong, a {
+							font-size: 13px;
+							line-height: 24px;
+						}
+					}
 				}
 				.business-meta {
 					>div {
@@ -425,8 +437,6 @@
 			}
 		}
 	}
-
-
 
 	.archive-plan {
 		display: -ms-flexbox;
