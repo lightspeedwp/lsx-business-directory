@@ -229,7 +229,7 @@ body.archive.lsx-body-grid-layout .post-wrapper, body.search-results.lsx-body-gr
 
 .archive .fa, .search .fa { margin-left: 5px; }
 
-.archive .business-row-wrapper, .search .business-row-wrapper { -webkit-box-sizing: border-box; box-sizing: border-box; border: 1px solid #EEEEEE; background-color: #FFFFFF; -webkit-box-shadow: -1px 2px 6px 0 rgba(155, 155, 155, 0.45); box-shadow: -1px 2px 6px 0 rgba(155, 155, 155, 0.45); padding-right: 0px; padding-left: 30px; }
+.archive .business-row-wrapper, .search .business-row-wrapper { -webkit-box-sizing: border-box; box-sizing: border-box; border: 1px solid #EEEEEE; background-color: #FFFFFF; -webkit-box-shadow: -1px 2px 6px 0 rgba(155, 155, 155, 0.45); box-shadow: -1px 2px 6px 0 rgba(155, 155, 155, 0.45); padding-right: 0px; padding-left: 30px; margin-bottom: 25px; }
 
 .archive .business-row-wrapper .business.row-layout, .search .business-row-wrapper .business.row-layout { padding: 0; }
 
