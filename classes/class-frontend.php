@@ -111,7 +111,11 @@ class Frontend {
 				$classes[] = 'lsx-body-full-width';
 			} else {
 				$classes[] = 'lsx-body-full-width';
-				$layout         = lsx_bd_get_option( 'archive_grid_list' );
+				$prefix    = 'archive';
+				if ( is_search() ) {
+					$prefix = 'engine';
+				}
+				$layout = lsx_bd_get_option( $prefix . '_grid_list' );
 				if ( false !== $layout && '' !== $layout && 'grid' === $layout ) {
 					$classes[] = 'lsx-body-grid-layout';
 				} else {
