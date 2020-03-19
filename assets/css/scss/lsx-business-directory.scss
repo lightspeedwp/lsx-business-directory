@@ -331,8 +331,10 @@
 		}
 	}
 	.facetwp-sidebar.widget-area {
-		.facetwp-facet {
-			margin-top: 0px !important;
+		.row:nth-child(1) {
+			.facetwp-facet {
+				margin-top: 0px !important;
+			}
 		}
 	}
 	article {

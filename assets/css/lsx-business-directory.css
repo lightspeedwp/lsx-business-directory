@@ -217,7 +217,7 @@ body.archive.lsx-body-grid-layout .post-wrapper, body.search-results.lsx-body-gr
 
 .archive #secondary.facetwp-sidebar .facetwp-item.parent-facetwp-facet-post_search .lsx-search-title { display: none; }
 
-.archive .facetwp-sidebar.widget-area .facetwp-facet { margin-top: 0px !important; }
+.archive .facetwp-sidebar.widget-area .row:nth-child(1) .facetwp-facet { margin-top: 0px !important; }
 
 .archive article { margin-bottom: 25px; }
 
