@@ -221,7 +221,7 @@ body.archive.lsx-body-grid-layout .post-wrapper, body.search-results.lsx-body-gr
 
 .archive .facetwp-sort, .search .facetwp-sort { margin-right: 22px; }
 
-.archive .facetwp-sort .facetwp-sort-select, .search .facetwp-sort .facetwp-sort-select { left: 32px; bottom: -1px; line-height: 14px; }
+.archive .facetwp-sort .facetwp-sort-select, .search .facetwp-sort .facetwp-sort-select { left: 32px !important; bottom: -1px; line-height: 14px; }
 
 .archive .facetwp-type-checkboxes .is-child, .search .facetwp-type-checkboxes .is-child { line-height: 30px; }
 
