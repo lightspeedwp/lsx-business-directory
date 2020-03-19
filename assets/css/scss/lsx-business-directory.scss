@@ -7,6 +7,7 @@
 @import 'include-media';
 @import 'banners';
 @import 'related_listings';
+@import 'lsx_blog_customizer';
 
 @CHARSET "UTF-8";
 
@@ -344,10 +345,6 @@
 	.fa {
 		margin-right: 5px;
 	}
-	.row {
-		margin-left: 0px;
-		margin-right: 0px;
-	}
 
 	.business.row-layout {
 		box-sizing: border-box;
@@ -407,6 +404,7 @@
 		flex-wrap: wrap;
 	}
 }
+
 // Business Column Layout.
 .archive,
 .lsx-business-directory-shortcode {

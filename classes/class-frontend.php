@@ -106,6 +106,18 @@ class Frontend {
 	public function body_class( $classes = array() ) {
 		if ( is_singular( 'business-directory' ) || is_post_type_archive( 'business-directory' ) || is_tax( array( 'industry', 'location' ) ) || is_search() ) {
 			$classes[] = 'lsx-business-directory-page';
+
+			if ( is_singular( 'business-directory' ) ) {
+				$classes[] = 'lsx-body-full-width';
+			} else {
+				$classes[] = 'lsx-body-full-width';
+				$layout         = lsx_bd_get_option( 'archive_grid_list' );
+				if ( false !== $layout && '' !== $layout && 'grid' === $layout ) {
+					$classes[] = 'lsx-body-grid-layout';
+				} else {
+					$classes[] = 'lsx-body-list-layout';
+				}
+			}
 		}
 		return $classes;
 	}
