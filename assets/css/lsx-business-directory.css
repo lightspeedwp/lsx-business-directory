@@ -100,7 +100,7 @@ body.lsx-business-directory-page.archive:not(.using-gutenberg):not(.banner-disab
 
 .lsx-business-directory-shortcode .lsx-business-directory-slider article.business.col-layout .business-content { padding: 19px 15px 20px 15px; }
 
-body.archive .lsx-body-grid-layout.search-results .post-wrapper, body.search-results .lsx-body-grid-layout.search-results .post-wrapper { margin-left: -15px; margin-right: -15px; }
+body.archive.lsx-body-grid-layout .post-wrapper, body.search-results.lsx-body-grid-layout .post-wrapper { margin-left: -15px; margin-right: -15px; }
 
 @CHARSET "UTF-8";
 /* General */
@@ -216,8 +216,6 @@ body.archive .lsx-body-grid-layout.search-results .post-wrapper, body.search-res
 .archive #secondary.facetwp-sidebar .facetwp-item.parent-facetwp-facet-post_search { background: transparent; padding: 0px; margin-top: 0; }
 
 .archive #secondary.facetwp-sidebar .facetwp-item.parent-facetwp-facet-post_search .lsx-search-title { display: none; }
-
-.archive .facetwp-item-wrap.facetwp-filters-wrap { padding-left: 0px; padding-right: 0px; }
 
 .archive .facetwp-sidebar.widget-area .facetwp-facet { margin-top: 0px !important; }
 
