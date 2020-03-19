@@ -11,13 +11,15 @@
 	<article class="business row-layout row">
 		<div class="entry-layout">
 			<div class="business-thumbnail col-xs-12 col-sm-12 col-md-4">
-				<img src="<?php echo esc_url( $thumbnail ); ?>">
+				<a href="<?php esc_url( the_permalink() ); ?>">
+					<img src="<?php echo esc_url( $thumbnail ); ?>">
+				</a>
 			</div>
 
 			<div class="business-content col-xs-12 col-sm-12 col-md-8">
 				<div class="business-details">
 					<div class="row">
-						<h4 class="business-title"><?php echo esc_attr( $title ); ?></h4>
+						<h4 class="business-title"><a href="<?php esc_url( the_permalink() ); ?>"><?php echo esc_attr( $title ); ?></a></h4>
 					</div>
 
 					<div class="row">
