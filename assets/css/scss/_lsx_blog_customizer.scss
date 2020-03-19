@@ -1,0 +1,12 @@
+
+body {
+	&.archive,
+	&.search-results {
+		&.lsx-body-grid-layout {
+			.post-wrapper {
+				margin-left: -15px;
+				margin-right: -15px;
+			}
+		}	
+	}
+}

@@ -7,6 +7,7 @@
 @import 'include-media';
 @import 'banners';
 @import 'related_listings';
+@import 'lsx_blog_customizer';
 
 @CHARSET "UTF-8";
 
@@ -329,13 +330,11 @@
 			display: none;
 		}
 	}
-	.facetwp-item-wrap.facetwp-filters-wrap {
-		padding-left: 0px;
-		padding-right: 0px;
-	}
 	.facetwp-sidebar.widget-area {
-		.facetwp-facet {
-			margin-top: 0px !important;
+		.row:nth-child(1) {
+			.facetwp-facet {
+				margin-top: 0px !important;
+			}
 		}
 	}
 	article {
@@ -343,10 +342,6 @@
 	}
 	.fa {
 		margin-right: 5px;
-	}
-	.row {
-		margin-left: 0px;
-		margin-right: 0px;
 	}
 
 	.business.row-layout {
@@ -407,6 +402,7 @@
 		flex-wrap: wrap;
 	}
 }
+
 // Business Column Layout.
 .archive,
 .lsx-business-directory-shortcode {
