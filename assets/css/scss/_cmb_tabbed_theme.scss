@@ -21,9 +21,33 @@
 		-webkit-background-clip: padding-box;
 		background-clip: padding-box;
 	}
-	div.wp-filter {
-		margin-bottom: 0px;
+	.wp-filter {
+		background: none;
+		border: none;
+		box-shadow: none;
+		margin: 0;
+		padding-left: 0;
+		.filter-links {
+			.current {
+				border-bottom: none;
+				font-weight: 600;
+				color: #23282d;
+			}
+			>li {
+				>a {
+					border-bottom: none;
+					margin: 2px;
+				}
+
+				&:nth-of-type(1) {
+					>a {
+						margin-left: 0;
+					}
+				}
+			}
+		}
 	}
+
 	.cmb2-wrap {
 		&.form-table {
 			margin-top: 0;
