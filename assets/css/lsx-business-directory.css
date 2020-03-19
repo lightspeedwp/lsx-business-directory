@@ -139,6 +139,8 @@ body.lsx-business-directory-page.archive:not(.using-gutenberg):not(.banner-disab
 
 .lsx-business-directory-wrapper .business-listings .business .business-content .business-title { margin-top: 0; margin-bottom: 15px; padding-bottom: 5px; border-bottom: 1px solid #ddd; }
 
+.lsx-business-directory-wrapper .business-listings .business .business-content .business-title h4 { color: #434343; }
+
 @media only screen and (max-width: 991px) { .lsx-business-directory-wrapper .business-listings .business .business-content .business-title { margin-top: 15px; } }
 
 .lsx-business-directory-wrapper .business-listings .business .business-details .business-meta div { margin-bottom: 5px; }
@@ -219,29 +221,29 @@ body.lsx-business-directory-page.archive:not(.using-gutenberg):not(.banner-disab
 
 .archive article { margin-bottom: 25px; }
 
-.archive .fas { margin-right: 5px; }
+.archive .fa { margin-right: 5px; }
 
 .archive .row { margin-left: 0px; margin-right: 0px; }
 
-.archive .business.row-layout { -webkit-box-sizing: border-box; box-sizing: border-box; border: 1px solid #EEEEEE; background-color: #FFFFFF; -webkit-box-shadow: 1px 2px 6px 0 rgba(155, 155, 155, 0.45); box-shadow: 1px 2px 6px 0 rgba(155, 155, 155, 0.45); padding-right: 10px; padding-bottom: 10px; }
+.archive .business.row-layout { -webkit-box-sizing: border-box; box-sizing: border-box; border: 1px solid #EEEEEE; background-color: #FFFFFF; -webkit-box-shadow: 1px 2px 6px 0 rgba(155, 155, 155, 0.45); box-shadow: 1px 2px 6px 0 rgba(155, 155, 155, 0.45); padding-right: 10px; padding-bottom: 22px; }
 
 .archive .business.row-layout .business-thumbnail { background: white; }
 
 .archive .business.row-layout .business-content { padding-left: 20px; }
 
-.archive .business.row-layout .business-content .business-details h4.business-title { margin-top: 14px; margin-bottom: 9px; }
+.archive .business.row-layout .business-content .business-details h4.business-title { color: #434343; margin-top: 13px; margin-bottom: 7px; }
 
-.archive .business.row-layout .business-content .business-details .industry, .archive .business.row-layout .business-content .business-details .location, .archive .business.row-layout .business-content .business-details .telephone, .archive .business.row-layout .business-content .business-details .email { padding-left: 0px; padding-right: 0px; }
+.archive .business.row-layout .business-content .business-details .industry, .archive .business.row-layout .business-content .business-details .location, .archive .business.row-layout .business-content .business-details .telephone, .archive .business.row-layout .business-content .business-details .email { padding-left: 0px; padding-right: 0px; padding-bottom: 1px; }
 
-.archive .business.row-layout .business-content .business-details .business-meta > div { margin-bottom: 10px; }
+.archive .business.row-layout .business-content .business-details .business-meta > div { margin-bottom: 6px; }
 
-.archive .business.row-layout .business-excerpt { border-top: 1px solid #ddd; padding-top: 10px; padding-bottom: 4px; }
+.archive .business.row-layout .business-excerpt { border-top: 1px solid #ddd; padding-top: 10px; padding-bottom: 4px; margin-top: 1px; }
 
 .archive .business.row-layout .business-excerpt .read-more-link { padding-top: 10px; }
 
 .archive .business.row-layout .business-excerpt .read-more-link a { text-transform: uppercase; }
 
-.archive .business.row-layout .business-excerpt .read-more-link a .fas { margin-left: 5px; }
+.archive .business.row-layout .business-excerpt .read-more-link a .fa { margin-left: 5px; }
 
 .archive .archive-plan { display: -ms-flexbox; display: -webkit-box; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; }
 
@@ -251,19 +253,21 @@ body.lsx-business-directory-page.archive:not(.using-gutenberg):not(.banner-disab
 
 .archive .business.col-layout .business-thumbnail img, .lsx-business-directory-shortcode .business.col-layout .business-thumbnail img { width: 100%; }
 
-.archive .business.col-layout .business-content, .lsx-business-directory-shortcode .business.col-layout .business-content { background-color: #FFFFFF; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; padding: 19px 0px 20px 0px; }
+.archive .business.col-layout .business-content, .lsx-business-directory-shortcode .business.col-layout .business-content { background-color: #FFFFFF; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; padding: 19px 0px 19px 0px; }
 
-.archive .business.col-layout .business-content .business-details .business-title, .lsx-business-directory-shortcode .business.col-layout .business-content .business-details .business-title { padding: 0px 15px 14px 15px; }
+.archive .business.col-layout .business-content .business-details .business-title, .lsx-business-directory-shortcode .business.col-layout .business-content .business-details .business-title { padding: 0px 15px 15px 15px; }
 
-.archive .business.col-layout .business-content .business-details .business-title h4, .lsx-business-directory-shortcode .business.col-layout .business-content .business-details .business-title h4 { margin-bottom: 0px; }
+.archive .business.col-layout .business-content .business-details .business-title h4, .lsx-business-directory-shortcode .business.col-layout .business-content .business-details .business-title h4 { margin-bottom: 0px; color: #434343; }
 
-.archive .business.col-layout .business-content .industry, .archive .business.col-layout .business-content .location, .archive .business.col-layout .business-content .telephone, .archive .business.col-layout .business-content .email, .lsx-business-directory-shortcode .business.col-layout .business-content .industry, .lsx-business-directory-shortcode .business.col-layout .business-content .location, .lsx-business-directory-shortcode .business.col-layout .business-content .telephone, .lsx-business-directory-shortcode .business.col-layout .business-content .email { padding: 0px 15px 0px 15px; }
+.archive .business.col-layout .business-content .industry, .archive .business.col-layout .business-content .location, .archive .business.col-layout .business-content .telephone, .archive .business.col-layout .business-content .email, .lsx-business-directory-shortcode .business.col-layout .business-content .industry, .lsx-business-directory-shortcode .business.col-layout .business-content .location, .lsx-business-directory-shortcode .business.col-layout .business-content .telephone, .lsx-business-directory-shortcode .business.col-layout .business-content .email { padding: 0px 15px 1px 17px; }
+
+.archive .business.col-layout .business-content .industry i, .archive .business.col-layout .business-content .location i, .archive .business.col-layout .business-content .telephone i, .archive .business.col-layout .business-content .email i, .lsx-business-directory-shortcode .business.col-layout .business-content .industry i, .lsx-business-directory-shortcode .business.col-layout .business-content .location i, .lsx-business-directory-shortcode .business.col-layout .business-content .telephone i, .lsx-business-directory-shortcode .business.col-layout .business-content .email i { margin-right: 0px; }
 
 .archive .business.col-layout .business-button button, .lsx-business-directory-shortcode .business.col-layout .business-button button { width: 100%; height: 45px; background-color: #418AD0; border: none; }
 
 .archive .business.col-layout .business-button button a, .lsx-business-directory-shortcode .business.col-layout .business-button button a { color: white; }
 
-.archive .business.col-layout .business-button button a .fas, .lsx-business-directory-shortcode .business.col-layout .business-button button a .fas { margin-left: 5px; }
+.archive .business.col-layout .business-button button a .fa, .lsx-business-directory-shortcode .business.col-layout .business-button button a .fa { margin-left: 5px; }
 
 #gmap { height: 500px; }
 

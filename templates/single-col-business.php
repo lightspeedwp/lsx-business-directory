@@ -3,7 +3,7 @@
 	$thumbnail     = lsx_bd_get_thumbnail_wrapped( get_the_ID(), 'lsx-thumbnail-wide' );
 	$title         = get_the_title();
 	$industries    = lsx_bd_get_formatted_taxonomy_str( get_the_ID(), 'industry', true );
-	$location      = lsx_bd_get_formatted_taxonomy_str( get_the_ID(), 'location' );
+	$locations     = lsx_bd_get_formatted_taxonomy_str( get_the_ID(), 'location', true );
 	$primary_phone = get_post_meta( get_the_ID(), $prefix . '_primary_phone', true );
 	$primary_email = get_post_meta( get_the_ID(), $prefix . '_primary_email', true );
 ?>
@@ -17,7 +17,7 @@
 			<div class="business-details">
 				<div class="row lsx-flex-col">
 					<div class="business-title">
-						<h4><a href="<?php esc_url( the_permalink() ); ?>"><?php echo esc_attr( $title ); ?></a></h4>
+						<h4><?php echo esc_attr( $title ); ?></h4>
 					</div>
 
 					<?php if ( $industries ) : ?>
@@ -40,9 +40,23 @@
 					</div>
 					<?php endif; ?>
 
-					<?php if ( $location ) : ?>
+					<?php if ( $locations ) : ?>
 					<div class="location">
-						<span><i class="fa fa-globe-africa"></i> <strong><?php esc_html_e( 'Location', 'lsx-business-directory' ); ?>: </strong><?php echo esc_attr( $location ); ?></span>
+						<span>
+							<i class="fa fa-globe"></i>
+							<strong><?php esc_html_e( 'Location', 'lsx-business-directory' ); ?>: </strong>
+							<?php
+							$count = 0;
+							foreach ( $locations as $location ) :
+								if ( $count > 0 ) :
+								?>,<?php
+								endif;
+								?>
+								<a href="/location/<?php echo esc_attr( $location['slug'] ); ?>"><?php echo esc_attr( $location['name'] ); ?></a><?php
+								$count++;
+							endforeach;
+							?>
+						</span>
 					</div>
 					<?php endif; ?>
 
@@ -62,7 +76,7 @@
 		</div>
 
 		<div class="business-button">
-			<button class="read-more-link"><a href="<?php esc_url( the_permalink() ); ?>">View Listing<i class="fa fa-long-arrow-alt-right"></i></a></button>
+			<button class="read-more-link"><a href="<?php esc_url( the_permalink() ); ?>">View Listing<i class="fa fa-long-arrow-right"></i></a></button>
 		</div>
 	</article>
 </div>
