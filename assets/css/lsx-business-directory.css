@@ -147,13 +147,13 @@ body.lsx-business-directory-page.archive:not(.using-gutenberg):not(.banner-disab
 
 .single .business-directory .business-header { margin-bottom: 40px; }
 
-.single .business-directory .business-header .business-content-left { background-color: white; padding-left: 0px; padding-right: 0px; padding-bottom: 27px; -webkit-box-sizing: border-box; box-sizing: border-box; border: 1px solid #EEEEEE; background-color: #FFFFFF; -webkit-box-shadow: 1px 2px 6px 0 rgba(155, 155, 155, 0.45); box-shadow: 1px 2px 6px 0 rgba(155, 155, 155, 0.45); }
+.single .business-directory .business-header .business-content-left { background-color: white; padding-left: 0px; padding-right: 0px; padding-bottom: 29px; -webkit-box-sizing: border-box; box-sizing: border-box; border: 1px solid #EEEEEE; background-color: #FFFFFF; -webkit-box-shadow: 1px 2px 6px 0 rgba(155, 155, 155, 0.45); box-shadow: 1px 2px 6px 0 rgba(155, 155, 155, 0.45); }
 
 .single .business-directory .business-header .business-content-left > .entry-image > img { width: 100%; }
 
 @media screen and (max-width: 1090px) { .single .business-directory .business-header .business-content-left { margin-bottom: 20px; } }
 
-.single .business-directory .business-header .business-content-right { padding-left: 28px; }
+.single .business-directory .business-header .business-content-right { padding-left: 26px; }
 
 .single .business-directory .business-header .entry-header-content h1.entry-title { color: #4D4D4D; font-family: Lora; font-size: 32px; line-height: 39px; }
 
@@ -167,9 +167,11 @@ body.lsx-business-directory-page.archive:not(.using-gutenberg):not(.banner-disab
 
 .single .business-directory .business-header .entry-header-content .social-links { margin-bottom: 20px; }
 
-.single .business-directory .business-header .entry-header-content .social-links > div { margin-right: 10px; }
+.single .business-directory .business-header .entry-header-content .social-links > div { margin-right: 24px; }
 
 .single .business-directory .business-header .entry-header-content .social-links > div a { color: #5693D9; font-size: 22px; line-height: 22px; text-align: center; }
+
+.single .business-directory .business-header .entry-header-content .social-links > div a:hover { color: #F7AE00; }
 
 .single .business-directory .business-header .entry-header-content .business-description { padding-top: 8px; }
 
@@ -181,13 +183,13 @@ body.lsx-business-directory-page.archive:not(.using-gutenberg):not(.banner-disab
 
 .single .business-directory .business-header .entry-header-content .entry-meta > div:last-child { margin-bottom: 20px; }
 
-.single .business-directory .business-header .button { padding-left: 25px; padding-right: 25px; }
+.single .business-directory .business-header .button { padding-left: 13px; padding-right: 14px; }
 
 .single .business-directory .business-header .button button.btn.btn-primary { margin-top: 14px; width: 100%; }
 
-.single .business-directory .contact-info { padding-top: 65px; padding-left: 14px; }
+.single .business-directory .contact-info { padding-top: 30px; padding-left: 0px; }
 
-.single .business-directory .contact-info .telephone, .single .business-directory .contact-info .contact, .single .business-directory .contact-info .email, .single .business-directory .contact-info .website, .single .business-directory .contact-info .skype, .single .business-directory .contact-info .whatsapp, .single .business-directory .contact-info .address { padding-left: 15px; padding-bottom: 15px; }
+.single .business-directory .contact-info .telephone, .single .business-directory .contact-info .contact, .single .business-directory .contact-info .email, .single .business-directory .contact-info .website, .single .business-directory .contact-info .skype, .single .business-directory .contact-info .whatsapp, .single .business-directory .contact-info .address { padding-left: 14px; padding-bottom: 15px; }
 
 .single .business-directory .contact-info .telephone i, .single .business-directory .contact-info .contact i, .single .business-directory .contact-info .email i, .single .business-directory .contact-info .website i, .single .business-directory .contact-info .skype i, .single .business-directory .contact-info .whatsapp i, .single .business-directory .contact-info .address i { margin-right: 3px; }
 

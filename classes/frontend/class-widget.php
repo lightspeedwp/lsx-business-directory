@@ -168,9 +168,9 @@ class Widget {
 
 		// This outputs a carousel or a row.
 		if ( 'true' === $this->args['carousel'] || true === $this->args['carousel'] ) {
-			$this->html .= "<div class='lsx-business-directory-slider lsx-slick-slider' data-lsx-slick='{\"slidesToShow\": " . $this->args['slides_to_show'] . ', "slidesToScroll": ' . $this->args['slides_to_scroll'] . " }'>";
+			$this->html .= '<div class="lsx-business-directory-slider lsx-slick-slider" data-lsx-slick="{\"slidesToShow\": ' . $this->args['slides_to_show'] . ', \"slidesToScroll\": ' . $this->args['slides_to_scroll'] . ' }">';
 		} else {
-			$this->html .= "<div class='row row-flex'>";
+			$this->html .= '<div class="row row-flex">';
 		}
 	}
 

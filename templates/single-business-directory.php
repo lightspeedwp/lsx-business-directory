@@ -46,6 +46,7 @@ get_header(); ?>
 			$business_youtube            = get_post_meta( get_the_ID(), $prefix . '_youtube', true );
 			$business_pinterest          = get_post_meta( get_the_ID(), $prefix . '_pinterest', true );
 			$industries    				 = lsx_bd_get_formatted_taxonomy_str( get_the_ID(), 'industry', true );
+			$locations    				 = lsx_bd_get_formatted_taxonomy_str( get_the_ID(), 'location', true );
 			$address                     = array();
 
 			if ( ! empty( $business_whatsapp ) ) {
@@ -95,7 +96,7 @@ get_header(); ?>
 									<div class="row">
 										<?php if ( $business_primary_phone ) : ?>
 										<div class="telephone lsx-flex-row">
-											<div class="col1"><i class="fa fa-phone-square-alt"></i><strong><?php esc_html_e( 'Telephone', 'lsx-business-directory' ); ?>: </strong></div>
+											<div class="col1"><i class="fa fa-phone-square"></i><strong><?php esc_html_e( 'Telephone', 'lsx-business-directory' ); ?>: </strong></div>
 											<div class="col2"><a href="tel:<?php echo esc_attr( str_replace( ' ', '', $business_primary_phone ) ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_attr( $business_primary_phone ); ?></a></div>
 										</div>
 										<?php endif; ?>
@@ -137,7 +138,7 @@ get_header(); ?>
 
 										<?php if ( ! empty( $address ) ) : ?>
 										<div class="address lsx-flex-row">
-											<div class="col1"><i class="fa fa-map-marker-alt"></i><strong><?php esc_html_e( 'Address', 'lsx-business-directory' ); ?>: </strong></div>
+											<div class="col1"><i class="fa fa-map-marker"></i><strong><?php esc_html_e( 'Address', 'lsx-business-directory' ); ?>: </strong></div>
 											<div class="col2">
 												<?php
 												foreach ( $address as $field_string ) {
@@ -183,7 +184,22 @@ get_header(); ?>
 									</div>
 
 									<div class="location col-xs-6 col-sm-6 col-md-6">
-										<span><strong><?php esc_html_e( 'Location', 'lsx-business-directory' ); ?>: </strong><?php echo esc_attr( lsx_bd_get_formatted_taxonomy_str( get_the_ID(), 'location' ) ); ?></span>
+										<span>
+											<i class="fa fa-globe"></i>
+											<strong><?php esc_html_e( 'Location', 'lsx-business-directory' ); ?>: </strong>
+											<?php
+											$count = 0;
+											foreach ( $locations as $location ) :
+												if ( $count > 0 ) :
+													?>,
+												<?php endif;
+												?>
+													<a href="/location/<?php echo esc_attr( $location['slug'] ); ?>"><?php echo esc_attr( $location['name'] ); ?></a>
+													<?php
+													$count++;
+											endforeach;
+											?>
+										</span>
 									</div>
 
 									<?php
@@ -209,7 +225,7 @@ get_header(); ?>
 									<div><a href="<?php echo esc_url( $business_instagram ); ?>" target="_blank"><i class="fa fa-instagram"></i></a></div>
 									<?php endif; ?>
 									<?php if ( $business_youtube ) : ?>
-									<div><a href="<?php echo esc_url( $business_youtube ); ?>" target="_blank"><i class="fa fa-youtube"></i></a></div>
+									<div><a href="<?php echo esc_url( $business_youtube ); ?>" target="_blank"><i class="fa fa-youtube-play"></i></a></div>
 									<?php endif; ?>
 									<?php if ( $business_pinterest ) : ?>
 									<div><a href="<?php echo esc_url( $business_pinterest ); ?>" target="_blank"><i class="fa fa-pinterest"></i></a></div>

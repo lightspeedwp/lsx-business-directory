@@ -27,9 +27,9 @@ class Integrations {
 	/**
 	 * Holds the LSX WPForms integration functions.
 	 *
-	 * @var object \lsx\business_directory\classes\Frontend();
+	 * @var object \lsx\business_directory\classes\integrations\WPForms();
 	 */
-	public $lsx_wpforms;
+	public $wpforms;
 
 	/**
 	 * Holds the LSX Ninja Forms integration functions.
@@ -39,11 +39,18 @@ class Integrations {
 	public $lsx_ninja;
 
 	/**
-	 * Holds the LSX Gravity Forms integration functions.
+	 * Holds the Gravity Forms integration functions.
 	 *
-	 * @var object \lsx\business_directory\classes\Frontend();
+	 * @var object \lsx\business_directory\classes\integrations\Gravity_Forms();
 	 */
-	public $lsx_gravity;
+	public $gravity_forms;
+
+	/**
+	 * Holds the Caldera Forms integration functions.
+	 *
+	 * @var object \lsx\business_directory\classes\integrations\Caldera_Forms();
+	 */
+	public $caldera_forms;
 
 	/**
 	 * This holds the current facet info.
@@ -60,14 +67,17 @@ class Integrations {
 		require_once LSX_BD_PATH . '/classes/integrations/class-lsx-search.php';
 		$this->lsx_search = integrations\LSX_Search::get_instance();
 
-		require_once LSX_BD_PATH . '/classes/integrations/class-lsx-wpforms.php';
-		$this->lsx_wpforms = integrations\LSX_WPForms::get_instance();
+		require_once LSX_BD_PATH . '/classes/integrations/class-wpforms.php';
+		$this->wpforms = integrations\WPForms::get_instance();
 
-		require_once LSX_BD_PATH . '/classes/integrations/class-lsx-gravity-forms.php';
-		$this->lsx_gravity = integrations\LSX_Gravity_Forms::get_instance();
+		require_once LSX_BD_PATH . '/classes/integrations/class-gravity-forms.php';
+		$this->gravity_forms = integrations\Gravity_Forms::get_instance();
 
-		require_once LSX_BD_PATH . '/classes/integrations/class-lsx-ninja-forms.php';
-		$this->lsx_ninja = integrations\LSX_Ninja_Forms::get_instance();
+		require_once LSX_BD_PATH . '/classes/integrations/class-ninja-forms.php';
+		$this->ninja_forms = integrations\Ninja_Forms::get_instance();
+
+		require_once LSX_BD_PATH . '/classes/integrations/class-caldera-forms.php';
+		$this->caldera_forms = integrations\Caldera_Forms::get_instance();
 	}
 
 	/**
