@@ -116,6 +116,10 @@
 
 			.business-content {
 				.business-title {
+					h4 {
+						color: #434343;
+					}
+
 					margin: {
 						top: 0;
 						bottom: 15px;
@@ -337,7 +341,7 @@
 	article {
 		margin-bottom: 25px;
 	}
-	.fas {
+	.fa {
 		margin-right: 5px;
 	}
 	.row {
@@ -351,7 +355,7 @@
 		background-color: #FFFFFF;
 		box-shadow: 1px 2px 6px 0 rgba(155,155,155,0.45);
 		padding-right: 10px;
-		padding-bottom: 10px;
+		padding-bottom: 22px;
 
 		.business-thumbnail {
 			background: white;
@@ -361,16 +365,18 @@
 			padding-left: 20px;
 			.business-details {
 				h4.business-title {
-					margin-top: 14px;
-					margin-bottom: 9px;
+					color: #434343;
+					margin-top: 13px;
+					margin-bottom: 7px;
 				}
 				.industry, .location, .telephone, .email {
 					padding-left: 0px;
 					padding-right: 0px;
+					padding-bottom: 1px;
 				}
 				.business-meta {
 					>div {
-						margin-bottom: 10px;
+						margin-bottom: 6px;
 					}
 				}
 			}
@@ -380,11 +386,12 @@
 			border-top: 1px solid #ddd;
 			padding-top: 10px;
 			padding-bottom: 4px;
+			margin-top: 1px;
 			.read-more-link {
 				padding-top: 10px;
 				a {
 					text-transform: uppercase;
-					.fas {
+					.fa {
 						margin-left: 5px;
 					}
 				}
@@ -419,20 +426,25 @@
 			display: flex;
             flex-direction: column;
             justify-content: space-between;
-			padding: 19px 0px 20px 0px;
+			padding: 19px 0px 19px 0px;
 
 			.business-details {
 				.business-title {
-					padding: 0px 15px 14px 15px;
+					padding: 0px 15px 15px 15px;
 
 					h4 {
 						margin-bottom: 0px;
+						color: #434343;
 					}
 				}
 			}
 
 			.industry, .location, .telephone, .email {
-				padding: 0px 15px 0px 15px;
+				padding: 0px 15px 1px 17px;
+
+				i {
+					margin-right: 0px;
+				}
 			}
 		}
 
@@ -444,7 +456,7 @@
 
 			a {
 				color: white;
-				.fas {
+				.fa {
 					margin-left: 5px;
 				}
 			}
