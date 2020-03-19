@@ -328,6 +328,10 @@
 }
 
 .archive, .search {
+	.search-submit.btn.facetwp-btn {
+		background-color: #418AD0;
+		box-shadow: 1px 1px 0 0 #27619B;
+	}
 	#secondary.facetwp-sidebar .facetwp-item.parent-facetwp-facet-post_search {
 		background: transparent;
 		padding:0px;
