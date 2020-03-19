@@ -106,7 +106,6 @@
 		    	}
 		    }
     	}
-
 		.business {
 			margin-bottom: 20px;
 
@@ -244,8 +243,8 @@
 			}
 
 			.button {
-				padding-left: 13px;
-				padding-right: 14px;
+				padding-left: 14px;
+				padding-right: 15px;
 
 				button.btn.btn-primary {
 					margin-top: 14px;
@@ -258,7 +257,7 @@
 			padding-top: 30px;
 			padding-left: 0px;
 			.telephone, .contact, .email, .website, .skype, .whatsapp, .address {
-				padding-left: 14px;
+				padding-left: 15px;
 				padding-bottom: 15px;
 				i {
 					margin-right: 3px;
@@ -283,6 +282,10 @@
 					padding-right: 10px;
 					background-color: #46B6EF;
 
+					&:hover {
+						background-color: #2281B1;
+					}
+
 					a {
 						color: white;
 					}
@@ -295,10 +298,14 @@
 					padding-left: 10px;
 					padding-right: 10px;
 					background-color: #5AC352;
-				}
 
-				a {
-					color: white;
+					&:hover {
+						background-color: #288B21;
+					}
+
+					a {
+						color: white;
+					}
 				}
 			}
 		}
