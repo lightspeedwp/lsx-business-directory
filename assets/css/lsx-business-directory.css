@@ -229,25 +229,25 @@ body.archive.lsx-body-grid-layout .post-wrapper, body.search-results.lsx-body-gr
 
 .archive .fa, .search .fa { margin-right: 5px; }
 
-.archive .business.row-layout, .search .business.row-layout { -webkit-box-sizing: border-box; box-sizing: border-box; border: 1px solid #EEEEEE; background-color: #FFFFFF; -webkit-box-shadow: 1px 2px 6px 0 rgba(155, 155, 155, 0.45); box-shadow: 1px 2px 6px 0 rgba(155, 155, 155, 0.45); padding-right: 10px; padding-bottom: 22px; }
+.archive .business-row-wrapper, .search .business-row-wrapper { -webkit-box-sizing: border-box; box-sizing: border-box; border: 1px solid #EEEEEE; background-color: #FFFFFF; -webkit-box-shadow: 1px 2px 6px 0 rgba(155, 155, 155, 0.45); box-shadow: 1px 2px 6px 0 rgba(155, 155, 155, 0.45); padding-left: 0px; padding-right: 30px; margin-bottom: 25px; }
 
-.archive .business.row-layout .business-thumbnail, .search .business.row-layout .business-thumbnail { background: white; }
+.archive .business-row-wrapper .business.row-layout, .search .business-row-wrapper .business.row-layout { padding: 0; }
 
-.archive .business.row-layout .business-content, .search .business.row-layout .business-content { padding-left: 20px; }
+.archive .business-row-wrapper .business.row-layout .business-content, .search .business-row-wrapper .business.row-layout .business-content { padding-left: 20px; }
 
-.archive .business.row-layout .business-content .business-details h4.business-title, .search .business.row-layout .business-content .business-details h4.business-title { color: #434343; margin-top: 13px; margin-bottom: 7px; }
+.archive .business-row-wrapper .business.row-layout .business-content .business-details h4.business-title, .search .business-row-wrapper .business.row-layout .business-content .business-details h4.business-title { color: #434343; margin-top: 13px; margin-bottom: 7px; }
 
-.archive .business.row-layout .business-content .business-details .industry, .archive .business.row-layout .business-content .business-details .location, .archive .business.row-layout .business-content .business-details .telephone, .archive .business.row-layout .business-content .business-details .email, .search .business.row-layout .business-content .business-details .industry, .search .business.row-layout .business-content .business-details .location, .search .business.row-layout .business-content .business-details .telephone, .search .business.row-layout .business-content .business-details .email { padding-left: 0px; padding-right: 0px; padding-bottom: 1px; }
+.archive .business-row-wrapper .business.row-layout .business-content .business-details .industry, .archive .business-row-wrapper .business.row-layout .business-content .business-details .location, .archive .business-row-wrapper .business.row-layout .business-content .business-details .telephone, .archive .business-row-wrapper .business.row-layout .business-content .business-details .email, .search .business-row-wrapper .business.row-layout .business-content .business-details .industry, .search .business-row-wrapper .business.row-layout .business-content .business-details .location, .search .business-row-wrapper .business.row-layout .business-content .business-details .telephone, .search .business-row-wrapper .business.row-layout .business-content .business-details .email { padding-left: 0px; padding-right: 0px; padding-bottom: 1px; }
 
-.archive .business.row-layout .business-content .business-details .business-meta > div, .search .business.row-layout .business-content .business-details .business-meta > div { margin-bottom: 6px; }
+.archive .business-row-wrapper .business.row-layout .business-content .business-details .business-meta > div, .search .business-row-wrapper .business.row-layout .business-content .business-details .business-meta > div { margin-bottom: 6px; }
 
-.archive .business.row-layout .business-excerpt, .search .business.row-layout .business-excerpt { border-top: 1px solid #ddd; padding-top: 10px; padding-bottom: 4px; margin-top: 1px; }
+.archive .business-row-wrapper .business.row-layout .business-excerpt, .search .business-row-wrapper .business.row-layout .business-excerpt { border-top: 1px solid #ddd; padding-top: 10px; padding-bottom: 4px; margin-top: 1px; }
 
-.archive .business.row-layout .business-excerpt .read-more-link, .search .business.row-layout .business-excerpt .read-more-link { padding-top: 10px; }
+.archive .business-row-wrapper .business.row-layout .business-excerpt .read-more-link, .search .business-row-wrapper .business.row-layout .business-excerpt .read-more-link { padding-top: 10px; }
 
-.archive .business.row-layout .business-excerpt .read-more-link a, .search .business.row-layout .business-excerpt .read-more-link a { text-transform: uppercase; }
+.archive .business-row-wrapper .business.row-layout .business-excerpt .read-more-link a, .search .business-row-wrapper .business.row-layout .business-excerpt .read-more-link a { text-transform: uppercase; }
 
-.archive .business.row-layout .business-excerpt .read-more-link a .fa, .search .business.row-layout .business-excerpt .read-more-link a .fa { margin-left: 5px; }
+.archive .business-row-wrapper .business.row-layout .business-excerpt .read-more-link a .fa, .search .business-row-wrapper .business.row-layout .business-excerpt .read-more-link a .fa { margin-left: 5px; }
 
 .archive .archive-plan, .search .archive-plan { display: -ms-flexbox; display: -webkit-box; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; }
 
