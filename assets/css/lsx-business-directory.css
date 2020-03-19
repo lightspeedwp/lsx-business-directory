@@ -217,6 +217,10 @@ body.lsx-business-directory-page.archive:not(.using-gutenberg):not(.banner-disab
 
 .archive .facetwp-filter-title, .archive .lsx-search-title, .search .facetwp-filter-title, .search .lsx-search-title { font-size: 20px; line-height: 24px; }
 
+.archive .facetwp-sort, .search .facetwp-sort { margin-right: 22px; }
+
+.archive .facetwp-sort .facetwp-sort-select, .search .facetwp-sort .facetwp-sort-select { left: 32px; bottom: -1px; line-height: 14px; }
+
 .archive .facetwp-type-checkboxes .is-child, .search .facetwp-type-checkboxes .is-child { line-height: 30px; }
 
 .archive .facetwp-type-checkboxes .is-child.facetwp-checkbox:before, .search .facetwp-type-checkboxes .is-child.facetwp-checkbox:before { top: 8px; }

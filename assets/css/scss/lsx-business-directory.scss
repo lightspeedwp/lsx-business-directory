@@ -330,7 +330,15 @@
 .archive, .search {
 	.facetwp-filter-title, .lsx-search-title {
 		font-size: 20px;
-  		line-height: 24px;
+		line-height: 24px;
+	}
+	.facetwp-sort {
+		margin-right: 22px;
+		.facetwp-sort-select {
+			left: 32px;
+			bottom: -1px;
+			line-height: 14px;
+		}
 	}
 	.facetwp-type-checkboxes {
 		.is-child {
