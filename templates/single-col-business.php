@@ -15,7 +15,7 @@
 
 		<div class="business-content">
 			<div class="business-details">
-				<div class="row lsx-flex-col">
+				<div class="lsx-flex-col">
 					<div class="business-title">
 						<h4><?php echo esc_attr( $title ); ?></h4>
 					</div>

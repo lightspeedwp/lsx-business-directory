@@ -100,6 +100,8 @@ body.lsx-business-directory-page.archive:not(.using-gutenberg):not(.banner-disab
 
 .lsx-business-directory-shortcode .lsx-business-directory-slider article.business.col-layout .business-content { padding: 19px 15px 20px 15px; }
 
+body.archive.lsx-body-grid-layout .post-wrapper, body.search-results.lsx-body-grid-layout .post-wrapper { margin-left: -15px; margin-right: -15px; }
+
 @CHARSET "UTF-8";
 /* General */
 .lsx-hide { display: none !important; }
@@ -219,15 +221,11 @@ body.lsx-business-directory-page.archive:not(.using-gutenberg):not(.banner-disab
 
 .archive #secondary.facetwp-sidebar .facetwp-item.parent-facetwp-facet-post_search .lsx-search-title { display: none; }
 
-.archive .facetwp-item-wrap.facetwp-filters-wrap { padding-left: 0px; padding-right: 0px; }
-
-.archive .facetwp-sidebar.widget-area .facetwp-facet { margin-top: 0px !important; }
+.archive .facetwp-sidebar.widget-area .row:nth-child(1) .facetwp-facet { margin-top: 0px !important; }
 
 .archive article { margin-bottom: 25px; }
 
 .archive .fa { margin-right: 5px; }
-
-.archive .row { margin-left: 0px; margin-right: 0px; }
 
 .archive .business.row-layout { -webkit-box-sizing: border-box; box-sizing: border-box; border: 1px solid #EEEEEE; background-color: #FFFFFF; -webkit-box-shadow: 1px 2px 6px 0 rgba(155, 155, 155, 0.45); box-shadow: 1px 2px 6px 0 rgba(155, 155, 155, 0.45); padding-right: 10px; padding-bottom: 22px; }
 
