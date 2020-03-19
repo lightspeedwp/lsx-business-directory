@@ -263,7 +263,9 @@ body.lsx-business-directory-page.archive:not(.using-gutenberg):not(.banner-disab
 
 .archive .business.col-layout .business-content .business-details .business-title, .lsx-business-directory-shortcode .business.col-layout .business-content .business-details .business-title { padding: 0px 15px 15px 15px; }
 
-.archive .business.col-layout .business-content .business-details .business-title h4, .lsx-business-directory-shortcode .business.col-layout .business-content .business-details .business-title h4 { margin-bottom: 0px; color: #434343; }
+.archive .business.col-layout .business-content .business-details .business-title h4, .lsx-business-directory-shortcode .business.col-layout .business-content .business-details .business-title h4 { margin-bottom: 0px; }
+
+.archive .business.col-layout .business-content .business-details .business-title h4 a, .lsx-business-directory-shortcode .business.col-layout .business-content .business-details .business-title h4 a { color: #434343; }
 
 .archive .business.col-layout .business-content .industry, .archive .business.col-layout .business-content .location, .archive .business.col-layout .business-content .telephone, .archive .business.col-layout .business-content .email, .lsx-business-directory-shortcode .business.col-layout .business-content .industry, .lsx-business-directory-shortcode .business.col-layout .business-content .location, .lsx-business-directory-shortcode .business.col-layout .business-content .telephone, .lsx-business-directory-shortcode .business.col-layout .business-content .email { padding: 0px 15px 1px 17px; }
 

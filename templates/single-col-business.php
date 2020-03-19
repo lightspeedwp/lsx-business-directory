@@ -10,14 +10,16 @@
 <div class="col-xs-12 col-sm-6 col-md-4">
 	<article class="business col-layout">
 		<div class="business-thumbnail">
-			<img src="<?php echo esc_url( $thumbnail ); ?>">
+			<a href="<?php esc_url( the_permalink() ); ?>">
+				<img src="<?php echo esc_url( $thumbnail ); ?>">
+			</a>
 		</div>
 
 		<div class="business-content">
 			<div class="business-details">
 				<div class="row lsx-flex-col">
 					<div class="business-title">
-						<h4><?php echo esc_attr( $title ); ?></h4>
+						<h4><a href="<?php esc_url( the_permalink() ); ?>"><?php echo esc_attr( $title ); ?></a></h4>
 					</div>
 
 					<?php if ( $industries ) : ?>
