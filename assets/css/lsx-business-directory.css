@@ -215,6 +215,8 @@ body.lsx-business-directory-page.archive:not(.using-gutenberg):not(.banner-disab
 
 .single .business-directory .related-businesses .related-business h3 { margin: 20px 0 0px; }
 
+.archive .facetwp-filter-title, .search .facetwp-filter-title { font-size: 20px; line-height: 24px; }
+
 .archive .search-submit.btn.facetwp-btn, .search .search-submit.btn.facetwp-btn { background-color: #418AD0; -webkit-box-shadow: 1px 1px 0 0 #27619B; box-shadow: 1px 1px 0 0 #27619B; }
 
 .archive #secondary.facetwp-sidebar .facetwp-item.parent-facetwp-facet-post_search, .search #secondary.facetwp-sidebar .facetwp-item.parent-facetwp-facet-post_search { background: transparent; padding: 0px; margin-top: 0; }
