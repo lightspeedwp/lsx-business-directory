@@ -9,12 +9,22 @@
 		padding-right: 30px;
 		margin-bottom: 25px;
 
+		@media screen and (max-width: $mobile_width) {
+			padding-left: 0px;
+			padding-right: 0px;
+		}
+
 		.business-content {
 			padding-left: 20px;
 
+			@media screen and (max-width: $mobile_width) {
+				padding-left: 15px;
+			}
+
 			.business-details {
 				@media screen and (max-width: $mobile_width) {
-					padding-left: 20px;
+					padding-left: 25px;
+					padding-right: 25px;
 				}
 
 				h4.business-title {
