@@ -4,6 +4,8 @@ var LSX_BD = Object.create( null );
 
     'use strict';
 
+    console.log(window.innerWidth);
+
     LSX_BD.document = $(document);
 
     //Holds the slider function

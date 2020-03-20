@@ -123,6 +123,8 @@ body.single-business-directory article .entry-meta > * { display: block; }
 
 .archive .business-row-wrapper .business-content, .search .business-row-wrapper .business-content { padding-right: 20px; }
 
+@media screen and (max-width: 991px) { .archive .business-row-wrapper .business-content .business-details, .search .business-row-wrapper .business-content .business-details { padding-right: 20px; } }
+
 .archive .business-row-wrapper .business-content .business-details h4.business-title, .search .business-row-wrapper .business-content .business-details h4.business-title { color: #4D4D4D; margin-top: 13px; margin-bottom: 7px; }
 
 .archive .business-row-wrapper .business-content .business-details h4.business-title a, .search .business-row-wrapper .business-content .business-details h4.business-title a { color: #4D4D4D; }
