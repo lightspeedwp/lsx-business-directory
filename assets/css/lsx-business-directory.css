@@ -36,6 +36,8 @@ body.single-business-directory article .entry-meta > * { display: block; }
 
 .single .business-directory .business-header .business-content-right { padding-left: 26px; }
 
+@media screen and (max-width: 991px) { .single .business-directory .business-header .business-content-right { padding-left: 15px; } }
+
 .single .business-directory .business-header .entry-header-content h1.entry-title { color: #4D4D4D; font-family: Lora; font-size: 32px; line-height: 39px; }
 
 .single .business-directory .business-header .entry-header-content h1.entry-title, .single .business-directory .business-header .entry-header-content h2.entry-title { margin-top: 0; margin-bottom: 27px; }

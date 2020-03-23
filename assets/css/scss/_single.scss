@@ -36,6 +36,12 @@
 				padding-left: 26px;
 			}
 
+			@media screen and (max-width: $mobile_width) {
+				.business-content-right {
+					padding-left: 15px;
+				}
+			}
+
 			.entry-header-content {
 				h1.entry-title {
 					color: $title_color;
