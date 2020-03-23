@@ -83,6 +83,16 @@
 				.entry-meta {
 					text-align: left;
 
+					@media screen and (max-width: $mobile_width) {
+						display: -webkit-box !important;
+						display: -ms-flexbox !important;
+						display: flex !important;
+						-webkit-box-orient: vertical !important;
+						-webkit-box-direction: normal !important;
+							-ms-flex-direction: column !important;
+								flex-direction: column !important;
+					}
+
 					.industry, .location {
 						padding-left: 0px;
 						padding-right: 0px;
