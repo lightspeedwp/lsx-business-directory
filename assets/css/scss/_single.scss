@@ -1,5 +1,11 @@
 // Single Template
 .single {
+	@media screen and (max-width: $mobile_width) {
+		.slick-arrow {
+			display: none !important;
+		}
+	}
+
 	.business-directory {
 		.business-header {
 			margin-bottom: 40px;
