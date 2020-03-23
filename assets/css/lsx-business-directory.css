@@ -1,4 +1,187 @@
 /** LSX Starter Plugin styles. @package lsx-business-directory */
+/* General */
+#gmap { height: 500px; }
+
+body { /* For specificity */ }
+
+body.single-business-directory article h1.entry-title { border-bottom: 0 !important; }
+
+body.single-business-directory article .entry-meta { border-top: 0; border-bottom: 0; }
+
+body.single-business-directory article .entry-meta > * { display: block; }
+
+.lsx-hide { display: none !important; }
+
+.lsx-flex-row { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; }
+
+.lsx-flex-col { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; }
+
+.lsx-flex-center { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; }
+
+.lsx-float-right { float: right; }
+
+.lsx-bold { font-weight: bold; }
+
+.lsx-flex-1 { -webkit-box-flex: 1; -ms-flex: 1; flex: 1; }
+
+@media screen and (max-width: 991px) { .single .slick-arrow { display: none !important; } }
+
+.single .business-directory .business-header { margin-bottom: 40px; }
+
+.single .business-directory .business-header .business-content-left { padding-left: 0px; padding-right: 0px; padding-bottom: 29px; -webkit-box-sizing: border-box; box-sizing: border-box; border: 1px solid #EEEEEE; background-color: white; -webkit-box-shadow: 1px 2px 6px 0 rgba(155, 155, 155, 0.45); box-shadow: 1px 2px 6px 0 rgba(155, 155, 155, 0.45); }
+
+.single .business-directory .business-header .business-content-left > .entry-image > img { width: 100%; }
+
+@media screen and (max-width: 1090px) { .single .business-directory .business-header .business-content-left { margin-bottom: 20px; } }
+
+.single .business-directory .business-header .business-content-right { padding-left: 26px; }
+
+@media screen and (max-width: 991px) { .single .business-directory .business-header .business-content-right { padding-left: 15px; } }
+
+.single .business-directory .business-header .entry-header-content h1.entry-title { color: #4D4D4D; font-family: Lora; font-size: 32px; line-height: 39px; }
+
+.single .business-directory .business-header .entry-header-content h1.entry-title, .single .business-directory .business-header .entry-header-content h2.entry-title { margin-top: 0; margin-bottom: 27px; }
+
+@media only screen and (max-width: 767px) { .single .business-directory .business-header .entry-header-content h1.entry-title, .single .business-directory .business-header .entry-header-content h2.entry-title { font-size: 22px; } }
+
+@media only screen and (min-width: 768px) and (max-width: 991px) { .single .business-directory .business-header .entry-header-content h1.entry-title, .single .business-directory .business-header .entry-header-content h2.entry-title { font-size: 28px; } }
+
+@media only screen and (max-width: 991px) { .single .business-directory .business-header .entry-header-content h1.entry-title, .single .business-directory .business-header .entry-header-content h2.entry-title { margin-top: 15px; } }
+
+.single .business-directory .business-header .entry-header-content .social-links { margin-bottom: 20px; }
+
+.single .business-directory .business-header .entry-header-content .social-links > div { margin-right: 24px; }
+
+.single .business-directory .business-header .entry-header-content .social-links > div a { color: #5693D9; font-size: 22px; line-height: 22px; text-align: center; }
+
+.single .business-directory .business-header .entry-header-content .social-links > div a:hover { color: #F7AE00; }
+
+.single .business-directory .business-header .entry-header-content .business-description { padding-top: 8px; }
+
+.single .business-directory .business-header .entry-header-content .entry-meta { text-align: left; }
+
+@media screen and (max-width: 991px) { .single .business-directory .business-header .entry-header-content .entry-meta { display: -webkit-box !important; display: -ms-flexbox !important; display: flex !important; -webkit-box-orient: vertical !important; -webkit-box-direction: normal !important; -ms-flex-direction: column !important; flex-direction: column !important; } }
+
+.single .business-directory .business-header .entry-header-content .entry-meta .industry, .single .business-directory .business-header .entry-header-content .entry-meta .location { padding-left: 0px; padding-right: 0px; }
+
+.single .business-directory .business-header .entry-header-content .entry-meta > div { margin-bottom: 5px; }
+
+.single .business-directory .business-header .entry-header-content .entry-meta > div:last-child { margin-bottom: 20px; }
+
+.single .business-directory .business-header .button { padding-left: 14px; padding-right: 15px; }
+
+.single .business-directory .business-header .button button.btn.btn-primary { margin-top: 14px; width: 100%; }
+
+.single .business-directory .contact-info { padding-top: 30px; padding-left: 0px; }
+
+.single .business-directory .contact-info .telephone, .single .business-directory .contact-info .contact, .single .business-directory .contact-info .email, .single .business-directory .contact-info .website, .single .business-directory .contact-info .skype, .single .business-directory .contact-info .whatsapp, .single .business-directory .contact-info .address { padding-left: 15px; padding-bottom: 15px; }
+
+.single .business-directory .contact-info .telephone i, .single .business-directory .contact-info .contact i, .single .business-directory .contact-info .email i, .single .business-directory .contact-info .website i, .single .business-directory .contact-info .skype i, .single .business-directory .contact-info .whatsapp i, .single .business-directory .contact-info .address i { margin-right: 3px; }
+
+.single .business-directory .contact-info .telephone .col1, .single .business-directory .contact-info .contact .col1, .single .business-directory .contact-info .email .col1, .single .business-directory .contact-info .website .col1, .single .business-directory .contact-info .skype .col1, .single .business-directory .contact-info .whatsapp .col1, .single .business-directory .contact-info .address .col1 { min-width: 141px; color: #919191; font-family: "Noto Sans"; font-size: 15px; font-weight: bold; line-height: 24px; }
+
+.single .business-directory .contact-info .telephone .col2, .single .business-directory .contact-info .contact .col2, .single .business-directory .contact-info .email .col2, .single .business-directory .contact-info .website .col2, .single .business-directory .contact-info .skype .col2, .single .business-directory .contact-info .whatsapp .col2, .single .business-directory .contact-info .address .col2 { min-width: 151px; }
+
+.single .business-directory .contact-info .skype .col2 { border-radius: 15px; padding-left: 10px; padding-right: 10px; background-color: #46B6EF; }
+
+.single .business-directory .contact-info .skype .col2:hover { background-color: #2281B1; }
+
+.single .business-directory .contact-info .skype .col2 a { color: white; }
+
+.single .business-directory .contact-info .whatsapp .col2 { border-radius: 15px; padding-left: 10px; padding-right: 10px; background-color: #5AC352; }
+
+.single .business-directory .contact-info .whatsapp .col2:hover { background-color: #288B21; }
+
+.single .business-directory .contact-info .whatsapp .col2 a { color: white; }
+
+.single .business-directory .related-businesses h2 { text-align: center; }
+
+@media only screen and (max-width: 991px) { .single .business-directory .related-businesses .related-business { margin-bottom: 30px; } }
+
+.single .business-directory .related-businesses .related-business h3 { margin: 20px 0 0px; }
+
+.archive .facetwp-filter-title, .archive .lsx-search-title, .search .facetwp-filter-title, .search .lsx-search-title { font-size: 20px; line-height: 24px; }
+
+.archive .facetwp-sort, .search .facetwp-sort { margin-right: 22px; }
+
+.archive .facetwp-sort .facetwp-sort-select, .search .facetwp-sort .facetwp-sort-select { left: 32px !important; bottom: -1px; line-height: 14px; }
+
+.archive .facetwp-type-checkboxes .is-child, .search .facetwp-type-checkboxes .is-child { line-height: 30px; }
+
+.archive .facetwp-type-checkboxes .is-child.facetwp-checkbox:before, .search .facetwp-type-checkboxes .is-child.facetwp-checkbox:before { top: 8px; }
+
+.archive .search-submit.btn, .search .search-submit.btn { background-color: #418AD0; -webkit-box-shadow: 1px 1px 0 0 #27619B; box-shadow: 1px 1px 0 0 #27619B; }
+
+.archive #secondary.facetwp-sidebar .facetwp-item.parent-facetwp-facet-post_search, .search #secondary.facetwp-sidebar .facetwp-item.parent-facetwp-facet-post_search { background: transparent; padding: 0px; margin-top: 0; }
+
+.archive #secondary.facetwp-sidebar .facetwp-item.parent-facetwp-facet-post_search .lsx-search-title, .search #secondary.facetwp-sidebar .facetwp-item.parent-facetwp-facet-post_search .lsx-search-title { display: none; }
+
+.archive .facetwp-sidebar.widget-area .row:nth-child(1) .facetwp-facet, .search .facetwp-sidebar.widget-area .row:nth-child(1) .facetwp-facet { margin-top: 0px !important; }
+
+.archive article, .search article { margin-bottom: 25px; }
+
+.archive .fa, .search .fa { margin-right: 5px; }
+
+.archive .archive-plan, .search .archive-plan { display: -ms-flexbox; display: -webkit-box; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; }
+
+/* Archive Template Row Layout */
+.archive .business-row-wrapper, .search .business-row-wrapper { -webkit-box-sizing: border-box; box-sizing: border-box; border: 1px solid #EEEEEE; background-color: white; -webkit-box-shadow: 1px 2px 6px 0 rgba(155, 155, 155, 0.45); box-shadow: 1px 2px 6px 0 rgba(155, 155, 155, 0.45); padding-left: 0px; padding-right: 30px; margin-bottom: 25px; }
+
+@media screen and (max-width: 991px) { .archive .business-row-wrapper, .search .business-row-wrapper { padding-left: 0px; padding-right: 0px; } }
+
+.archive .business-row-wrapper .business-content, .search .business-row-wrapper .business-content { padding-left: 20px; }
+
+@media screen and (max-width: 991px) { .archive .business-row-wrapper .business-content, .search .business-row-wrapper .business-content { padding-left: 15px; } }
+
+@media screen and (max-width: 991px) { .archive .business-row-wrapper .business-content .business-details, .search .business-row-wrapper .business-content .business-details { padding-left: 25px; padding-right: 25px; } }
+
+.archive .business-row-wrapper .business-content .business-details h4.business-title, .search .business-row-wrapper .business-content .business-details h4.business-title { color: #4D4D4D; margin-top: 13px; margin-bottom: 7px; }
+
+.archive .business-row-wrapper .business-content .business-details h4.business-title a, .search .business-row-wrapper .business-content .business-details h4.business-title a { color: #4D4D4D; }
+
+.archive .business-row-wrapper .business-content .business-details .industry i.fa, .archive .business-row-wrapper .business-content .business-details .location i.fa, .search .business-row-wrapper .business-content .business-details .industry i.fa, .search .business-row-wrapper .business-content .business-details .location i.fa { margin-right: 0px; }
+
+.archive .business-row-wrapper .business-content .business-details .industry, .archive .business-row-wrapper .business-content .business-details .location, .archive .business-row-wrapper .business-content .business-details .telephone, .archive .business-row-wrapper .business-content .business-details .email, .search .business-row-wrapper .business-content .business-details .industry, .search .business-row-wrapper .business-content .business-details .location, .search .business-row-wrapper .business-content .business-details .telephone, .search .business-row-wrapper .business-content .business-details .email { padding-left: 0px; padding-right: 0px; padding-bottom: 1px; }
+
+.archive .business-row-wrapper .business-content .business-details .industry span i, .archive .business-row-wrapper .business-content .business-details .industry span strong, .archive .business-row-wrapper .business-content .business-details .industry span a, .archive .business-row-wrapper .business-content .business-details .location span i, .archive .business-row-wrapper .business-content .business-details .location span strong, .archive .business-row-wrapper .business-content .business-details .location span a, .archive .business-row-wrapper .business-content .business-details .telephone span i, .archive .business-row-wrapper .business-content .business-details .telephone span strong, .archive .business-row-wrapper .business-content .business-details .telephone span a, .archive .business-row-wrapper .business-content .business-details .email span i, .archive .business-row-wrapper .business-content .business-details .email span strong, .archive .business-row-wrapper .business-content .business-details .email span a, .search .business-row-wrapper .business-content .business-details .industry span i, .search .business-row-wrapper .business-content .business-details .industry span strong, .search .business-row-wrapper .business-content .business-details .industry span a, .search .business-row-wrapper .business-content .business-details .location span i, .search .business-row-wrapper .business-content .business-details .location span strong, .search .business-row-wrapper .business-content .business-details .location span a, .search .business-row-wrapper .business-content .business-details .telephone span i, .search .business-row-wrapper .business-content .business-details .telephone span strong, .search .business-row-wrapper .business-content .business-details .telephone span a, .search .business-row-wrapper .business-content .business-details .email span i, .search .business-row-wrapper .business-content .business-details .email span strong, .search .business-row-wrapper .business-content .business-details .email span a { font-size: 13px; line-height: 24px; }
+
+.archive .business-row-wrapper .business-content .business-details .business-meta > div, .search .business-row-wrapper .business-content .business-details .business-meta > div { margin-bottom: 6px; }
+
+.archive .business-row-wrapper .business-content .business-excerpt, .search .business-row-wrapper .business-content .business-excerpt { border-top: 1px solid #DDDDDD; color: #4A4A4A; padding-top: 10px; padding-bottom: 4px; margin-top: 1px; }
+
+.archive .business-row-wrapper .business-content .business-excerpt .read-more-link, .search .business-row-wrapper .business-content .business-excerpt .read-more-link { padding-top: 10px; }
+
+.archive .business-row-wrapper .business-content .business-excerpt .read-more-link a, .search .business-row-wrapper .business-content .business-excerpt .read-more-link a { text-transform: uppercase; }
+
+.archive .business-row-wrapper .business-content .business-excerpt .read-more-link a .fa, .search .business-row-wrapper .business-content .business-excerpt .read-more-link a .fa { margin-left: 5px; }
+
+/* Archive Template Column Layout */
+.archive .business.col-layout, .single .business.col-layout, .search .business.col-layout, .lsx-business-directory-shortcode .business.col-layout { position: relative; }
+
+.archive .business.col-layout .business-thumbnail, .single .business.col-layout .business-thumbnail, .search .business.col-layout .business-thumbnail, .lsx-business-directory-shortcode .business.col-layout .business-thumbnail { background-color: white; }
+
+.archive .business.col-layout .business-thumbnail img, .single .business.col-layout .business-thumbnail img, .search .business.col-layout .business-thumbnail img, .lsx-business-directory-shortcode .business.col-layout .business-thumbnail img { width: 100%; }
+
+.archive .business.col-layout .business-content, .single .business.col-layout .business-content, .search .business.col-layout .business-content, .lsx-business-directory-shortcode .business.col-layout .business-content { background-color: white; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; padding: 19px 0px 19px 0px; }
+
+.archive .business.col-layout .business-content .business-details .business-title, .single .business.col-layout .business-content .business-details .business-title, .search .business.col-layout .business-content .business-details .business-title, .lsx-business-directory-shortcode .business.col-layout .business-content .business-details .business-title { padding: 0px 15px 15px 15px; }
+
+.archive .business.col-layout .business-content .business-details .business-title h4, .single .business.col-layout .business-content .business-details .business-title h4, .search .business.col-layout .business-content .business-details .business-title h4, .lsx-business-directory-shortcode .business.col-layout .business-content .business-details .business-title h4 { margin-bottom: 0px; }
+
+.archive .business.col-layout .business-content .business-details .business-title h4 a, .single .business.col-layout .business-content .business-details .business-title h4 a, .search .business.col-layout .business-content .business-details .business-title h4 a, .lsx-business-directory-shortcode .business.col-layout .business-content .business-details .business-title h4 a { color: #4D4D4D; }
+
+.archive .business.col-layout .business-content .industry, .archive .business.col-layout .business-content .location, .archive .business.col-layout .business-content .telephone, .archive .business.col-layout .business-content .email, .single .business.col-layout .business-content .industry, .single .business.col-layout .business-content .location, .single .business.col-layout .business-content .telephone, .single .business.col-layout .business-content .email, .search .business.col-layout .business-content .industry, .search .business.col-layout .business-content .location, .search .business.col-layout .business-content .telephone, .search .business.col-layout .business-content .email, .lsx-business-directory-shortcode .business.col-layout .business-content .industry, .lsx-business-directory-shortcode .business.col-layout .business-content .location, .lsx-business-directory-shortcode .business.col-layout .business-content .telephone, .lsx-business-directory-shortcode .business.col-layout .business-content .email { padding: 0px 15px 1px 17px; }
+
+.archive .business.col-layout .business-content .industry span i, .archive .business.col-layout .business-content .industry span strong, .archive .business.col-layout .business-content .industry span a, .archive .business.col-layout .business-content .location span i, .archive .business.col-layout .business-content .location span strong, .archive .business.col-layout .business-content .location span a, .archive .business.col-layout .business-content .telephone span i, .archive .business.col-layout .business-content .telephone span strong, .archive .business.col-layout .business-content .telephone span a, .archive .business.col-layout .business-content .email span i, .archive .business.col-layout .business-content .email span strong, .archive .business.col-layout .business-content .email span a, .single .business.col-layout .business-content .industry span i, .single .business.col-layout .business-content .industry span strong, .single .business.col-layout .business-content .industry span a, .single .business.col-layout .business-content .location span i, .single .business.col-layout .business-content .location span strong, .single .business.col-layout .business-content .location span a, .single .business.col-layout .business-content .telephone span i, .single .business.col-layout .business-content .telephone span strong, .single .business.col-layout .business-content .telephone span a, .single .business.col-layout .business-content .email span i, .single .business.col-layout .business-content .email span strong, .single .business.col-layout .business-content .email span a, .search .business.col-layout .business-content .industry span i, .search .business.col-layout .business-content .industry span strong, .search .business.col-layout .business-content .industry span a, .search .business.col-layout .business-content .location span i, .search .business.col-layout .business-content .location span strong, .search .business.col-layout .business-content .location span a, .search .business.col-layout .business-content .telephone span i, .search .business.col-layout .business-content .telephone span strong, .search .business.col-layout .business-content .telephone span a, .search .business.col-layout .business-content .email span i, .search .business.col-layout .business-content .email span strong, .search .business.col-layout .business-content .email span a, .lsx-business-directory-shortcode .business.col-layout .business-content .industry span i, .lsx-business-directory-shortcode .business.col-layout .business-content .industry span strong, .lsx-business-directory-shortcode .business.col-layout .business-content .industry span a, .lsx-business-directory-shortcode .business.col-layout .business-content .location span i, .lsx-business-directory-shortcode .business.col-layout .business-content .location span strong, .lsx-business-directory-shortcode .business.col-layout .business-content .location span a, .lsx-business-directory-shortcode .business.col-layout .business-content .telephone span i, .lsx-business-directory-shortcode .business.col-layout .business-content .telephone span strong, .lsx-business-directory-shortcode .business.col-layout .business-content .telephone span a, .lsx-business-directory-shortcode .business.col-layout .business-content .email span i, .lsx-business-directory-shortcode .business.col-layout .business-content .email span strong, .lsx-business-directory-shortcode .business.col-layout .business-content .email span a { font-size: 13px; line-height: 24px; }
+
+.archive .business.col-layout .business-content .industry i, .archive .business.col-layout .business-content .location i, .archive .business.col-layout .business-content .telephone i, .archive .business.col-layout .business-content .email i, .single .business.col-layout .business-content .industry i, .single .business.col-layout .business-content .location i, .single .business.col-layout .business-content .telephone i, .single .business.col-layout .business-content .email i, .search .business.col-layout .business-content .industry i, .search .business.col-layout .business-content .location i, .search .business.col-layout .business-content .telephone i, .search .business.col-layout .business-content .email i, .lsx-business-directory-shortcode .business.col-layout .business-content .industry i, .lsx-business-directory-shortcode .business.col-layout .business-content .location i, .lsx-business-directory-shortcode .business.col-layout .business-content .telephone i, .lsx-business-directory-shortcode .business.col-layout .business-content .email i { margin-right: 0px; }
+
+.archive .business.col-layout .business-button button, .single .business.col-layout .business-button button, .search .business.col-layout .business-button button, .lsx-business-directory-shortcode .business.col-layout .business-button button { width: 100%; height: 45px; background-color: #418AD0; border: none; }
+
+.archive .business.col-layout .business-button button a, .single .business.col-layout .business-button button a, .search .business.col-layout .business-button button a, .lsx-business-directory-shortcode .business.col-layout .business-button button a { color: white; }
+
+.archive .business.col-layout .business-button button a .fa, .single .business.col-layout .business-button button a .fa, .search .business.col-layout .business-button button a .fa, .lsx-business-directory-shortcode .business.col-layout .business-button button a .fa { margin-left: 5px; }
+
 /** Business Directory Banner Styles. @package lsx-business-directory */
 body.lsx-business-directory-page:not(.using-gutenberg):not(.banner-disabled) .business-banner .wp-block-cover { padding-top: 36px; min-height: 214px; }
 
@@ -103,202 +286,5 @@ body.lsx-business-directory-page.archive:not(.using-gutenberg):not(.banner-disab
 body.archive.lsx-body-grid-layout .post-wrapper, body.search-results.lsx-body-grid-layout .post-wrapper { margin-left: -15px; margin-right: -15px; }
 
 @CHARSET "UTF-8";
-/* General */
-.lsx-hide { display: none !important; }
-
-.lsx-flex-row { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; }
-
-.lsx-flex-col { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; }
-
-.lsx-flex-center { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; }
-
-.lsx-float-right { float: right; }
-
-.lsx-bold { font-weight: bold; }
-
-.lsx-flex-1 { -webkit-box-flex: 1; -ms-flex: 1; flex: 1; }
-
-/* Business Directory */
-.lsx-business-directory-wrapper .business-facets h3 { margin-top: 0; margin-bottom: 15px; padding-bottom: 5px; border-bottom: 1px solid #ddd; }
-
-.lsx-business-directory-wrapper .business-listings { padding-left: 30px; border-left: 1px solid #ddd; }
-
-.lsx-business-directory-wrapper .business-listings .business-filters { padding-bottom: 15px; margin-bottom: 25px; border-bottom: 1px solid #ddd; }
-
-.lsx-business-directory-wrapper .business-listings .business-filters .business-filters-top { margin-bottom: 20px; }
-
-.lsx-business-directory-wrapper .business-listings .business-filters .business-filters-top > div { display: inline-block; }
-
-.lsx-business-directory-wrapper .business-listings .business-filters .business-filters-top > div.facetwp-sort { margin-right: 10px; }
-
-.lsx-business-directory-wrapper .business-listings .business-filters .business-filters-bottom > div { display: inline-block; }
-
-.lsx-business-directory-wrapper .business-listings .business-filters .business-filters-bottom > div.facetwp-pager { float: right; }
-
-.lsx-business-directory-wrapper .business-listings .business { margin-bottom: 20px; }
-
-@media only screen and (max-width: 991px) { .lsx-business-directory-wrapper .business-listings .business { padding-bottom: 15px; border-bottom: 1px solid #ddd; } }
-
-.lsx-business-directory-wrapper .business-listings .business .business-content .business-title { margin-top: 0; margin-bottom: 15px; padding-bottom: 5px; border-bottom: 1px solid #ddd; }
-
-.lsx-business-directory-wrapper .business-listings .business .business-content .business-title h4 { color: #434343; }
-
-@media only screen and (max-width: 991px) { .lsx-business-directory-wrapper .business-listings .business .business-content .business-title { margin-top: 15px; } }
-
-.lsx-business-directory-wrapper .business-listings .business .business-details .business-meta div { margin-bottom: 5px; }
-
-.single .business-directory .business-header { margin-bottom: 40px; }
-
-.single .business-directory .business-header .business-content-left { background-color: white; padding-left: 0px; padding-right: 0px; padding-bottom: 29px; -webkit-box-sizing: border-box; box-sizing: border-box; border: 1px solid #EEEEEE; background-color: #FFFFFF; -webkit-box-shadow: 1px 2px 6px 0 rgba(155, 155, 155, 0.45); box-shadow: 1px 2px 6px 0 rgba(155, 155, 155, 0.45); }
-
-.single .business-directory .business-header .business-content-left > .entry-image > img { width: 100%; }
-
-@media screen and (max-width: 1090px) { .single .business-directory .business-header .business-content-left { margin-bottom: 20px; } }
-
-.single .business-directory .business-header .business-content-right { padding-left: 26px; }
-
-.single .business-directory .business-header .entry-header-content h1.entry-title { color: #4D4D4D; font-family: Lora; font-size: 32px; line-height: 39px; }
-
-.single .business-directory .business-header .entry-header-content h1.entry-title, .single .business-directory .business-header .entry-header-content h2.entry-title { margin-top: 0; margin-bottom: 27px; }
-
-@media only screen and (max-width: 767px) { .single .business-directory .business-header .entry-header-content h1.entry-title, .single .business-directory .business-header .entry-header-content h2.entry-title { font-size: 22px; } }
-
-@media only screen and (min-width: 768px) and (max-width: 991px) { .single .business-directory .business-header .entry-header-content h1.entry-title, .single .business-directory .business-header .entry-header-content h2.entry-title { font-size: 28px; } }
-
-@media only screen and (max-width: 991px) { .single .business-directory .business-header .entry-header-content h1.entry-title, .single .business-directory .business-header .entry-header-content h2.entry-title { margin-top: 15px; } }
-
-.single .business-directory .business-header .entry-header-content .social-links { margin-bottom: 20px; }
-
-.single .business-directory .business-header .entry-header-content .social-links > div { margin-right: 24px; }
-
-.single .business-directory .business-header .entry-header-content .social-links > div a { color: #5693D9; font-size: 22px; line-height: 22px; text-align: center; }
-
-.single .business-directory .business-header .entry-header-content .social-links > div a:hover { color: #F7AE00; }
-
-.single .business-directory .business-header .entry-header-content .business-description { padding-top: 8px; }
-
-.single .business-directory .business-header .entry-header-content .entry-meta { text-align: left; }
-
-.single .business-directory .business-header .entry-header-content .entry-meta .industry, .single .business-directory .business-header .entry-header-content .entry-meta .location { padding-left: 0px; padding-right: 0px; }
-
-.single .business-directory .business-header .entry-header-content .entry-meta > div { margin-bottom: 5px; }
-
-.single .business-directory .business-header .entry-header-content .entry-meta > div:last-child { margin-bottom: 20px; }
-
-.single .business-directory .business-header .button { padding-left: 14px; padding-right: 15px; }
-
-.single .business-directory .business-header .button button.btn.btn-primary { margin-top: 14px; width: 100%; }
-
-.single .business-directory .contact-info { padding-top: 30px; padding-left: 0px; }
-
-.single .business-directory .contact-info .telephone, .single .business-directory .contact-info .contact, .single .business-directory .contact-info .email, .single .business-directory .contact-info .website, .single .business-directory .contact-info .skype, .single .business-directory .contact-info .whatsapp, .single .business-directory .contact-info .address { padding-left: 15px; padding-bottom: 15px; }
-
-.single .business-directory .contact-info .telephone i, .single .business-directory .contact-info .contact i, .single .business-directory .contact-info .email i, .single .business-directory .contact-info .website i, .single .business-directory .contact-info .skype i, .single .business-directory .contact-info .whatsapp i, .single .business-directory .contact-info .address i { margin-right: 3px; }
-
-.single .business-directory .contact-info .telephone .col1, .single .business-directory .contact-info .contact .col1, .single .business-directory .contact-info .email .col1, .single .business-directory .contact-info .website .col1, .single .business-directory .contact-info .skype .col1, .single .business-directory .contact-info .whatsapp .col1, .single .business-directory .contact-info .address .col1 { min-width: 141px; color: #919191; font-family: "Noto Sans"; font-size: 15px; font-weight: bold; line-height: 24px; }
-
-.single .business-directory .contact-info .telephone .col2, .single .business-directory .contact-info .contact .col2, .single .business-directory .contact-info .email .col2, .single .business-directory .contact-info .website .col2, .single .business-directory .contact-info .skype .col2, .single .business-directory .contact-info .whatsapp .col2, .single .business-directory .contact-info .address .col2 { min-width: 151px; }
-
-.single .business-directory .contact-info .skype .col2 { border-radius: 15px; padding-left: 10px; padding-right: 10px; background-color: #46B6EF; }
-
-.single .business-directory .contact-info .skype .col2:hover { background-color: #2281B1; }
-
-.single .business-directory .contact-info .skype .col2 a { color: white; }
-
-.single .business-directory .contact-info .whatsapp .col2 { border-radius: 15px; padding-left: 10px; padding-right: 10px; background-color: #5AC352; }
-
-.single .business-directory .contact-info .whatsapp .col2:hover { background-color: #288B21; }
-
-.single .business-directory .contact-info .whatsapp .col2 a { color: white; }
-
-.single .business-directory .related-businesses h2 { text-align: center; }
-
-@media only screen and (max-width: 991px) { .single .business-directory .related-businesses .related-business { margin-bottom: 30px; } }
-
-.single .business-directory .related-businesses .related-business h3 { margin: 20px 0 0px; }
-
-.archive .facetwp-filter-title, .archive .lsx-search-title, .search .facetwp-filter-title, .search .lsx-search-title { font-size: 20px; line-height: 24px; }
-
-.archive .facetwp-sort, .search .facetwp-sort { margin-right: 22px; }
-
-.archive .facetwp-sort .facetwp-sort-select, .search .facetwp-sort .facetwp-sort-select { left: 32px !important; bottom: -1px; line-height: 14px; }
-
-.archive .facetwp-type-checkboxes .is-child, .search .facetwp-type-checkboxes .is-child { line-height: 30px; }
-
-.archive .facetwp-type-checkboxes .is-child.facetwp-checkbox:before, .search .facetwp-type-checkboxes .is-child.facetwp-checkbox:before { top: 8px; }
-
-.archive .search-submit.btn, .search .search-submit.btn { background-color: #418AD0; -webkit-box-shadow: 1px 1px 0 0 #27619B; box-shadow: 1px 1px 0 0 #27619B; }
-
-.archive #secondary.facetwp-sidebar .facetwp-item.parent-facetwp-facet-post_search, .search #secondary.facetwp-sidebar .facetwp-item.parent-facetwp-facet-post_search { background: transparent; padding: 0px; margin-top: 0; }
-
-.archive #secondary.facetwp-sidebar .facetwp-item.parent-facetwp-facet-post_search .lsx-search-title, .search #secondary.facetwp-sidebar .facetwp-item.parent-facetwp-facet-post_search .lsx-search-title { display: none; }
-
-.archive .facetwp-sidebar.widget-area .row:nth-child(1) .facetwp-facet, .search .facetwp-sidebar.widget-area .row:nth-child(1) .facetwp-facet { margin-top: 0px !important; }
-
-.archive article, .search article { margin-bottom: 25px; }
-
-.archive .fa, .search .fa { margin-right: 5px; }
-
-.archive .business-row-wrapper, .search .business-row-wrapper { -webkit-box-sizing: border-box; box-sizing: border-box; border: 1px solid #EEEEEE; background-color: #FFFFFF; -webkit-box-shadow: 1px 2px 6px 0 rgba(155, 155, 155, 0.45); box-shadow: 1px 2px 6px 0 rgba(155, 155, 155, 0.45); padding-left: 0px; padding-right: 30px; margin-bottom: 25px; }
-
-.archive .business-row-wrapper .business-content, .search .business-row-wrapper .business-content { padding-left: 20px; }
-
-.archive .business-row-wrapper .business-content .business-details h4.business-title, .search .business-row-wrapper .business-content .business-details h4.business-title { color: #434343; margin-top: 13px; margin-bottom: 7px; }
-
-.archive .business-row-wrapper .business-content .business-details h4.business-title a, .search .business-row-wrapper .business-content .business-details h4.business-title a { color: #434343; }
-
-.archive .business-row-wrapper .business-content .business-details .industry i.fa, .archive .business-row-wrapper .business-content .business-details .location i.fa, .search .business-row-wrapper .business-content .business-details .industry i.fa, .search .business-row-wrapper .business-content .business-details .location i.fa { margin-right: 0px; }
-
-.archive .business-row-wrapper .business-content .business-details .industry, .archive .business-row-wrapper .business-content .business-details .location, .archive .business-row-wrapper .business-content .business-details .telephone, .archive .business-row-wrapper .business-content .business-details .email, .search .business-row-wrapper .business-content .business-details .industry, .search .business-row-wrapper .business-content .business-details .location, .search .business-row-wrapper .business-content .business-details .telephone, .search .business-row-wrapper .business-content .business-details .email { padding-left: 0px; padding-right: 0px; padding-bottom: 1px; }
-
-.archive .business-row-wrapper .business-content .business-details .industry span i, .archive .business-row-wrapper .business-content .business-details .industry span strong, .archive .business-row-wrapper .business-content .business-details .industry span a, .archive .business-row-wrapper .business-content .business-details .location span i, .archive .business-row-wrapper .business-content .business-details .location span strong, .archive .business-row-wrapper .business-content .business-details .location span a, .archive .business-row-wrapper .business-content .business-details .telephone span i, .archive .business-row-wrapper .business-content .business-details .telephone span strong, .archive .business-row-wrapper .business-content .business-details .telephone span a, .archive .business-row-wrapper .business-content .business-details .email span i, .archive .business-row-wrapper .business-content .business-details .email span strong, .archive .business-row-wrapper .business-content .business-details .email span a, .search .business-row-wrapper .business-content .business-details .industry span i, .search .business-row-wrapper .business-content .business-details .industry span strong, .search .business-row-wrapper .business-content .business-details .industry span a, .search .business-row-wrapper .business-content .business-details .location span i, .search .business-row-wrapper .business-content .business-details .location span strong, .search .business-row-wrapper .business-content .business-details .location span a, .search .business-row-wrapper .business-content .business-details .telephone span i, .search .business-row-wrapper .business-content .business-details .telephone span strong, .search .business-row-wrapper .business-content .business-details .telephone span a, .search .business-row-wrapper .business-content .business-details .email span i, .search .business-row-wrapper .business-content .business-details .email span strong, .search .business-row-wrapper .business-content .business-details .email span a { font-size: 13px; line-height: 24px; }
-
-.archive .business-row-wrapper .business-content .business-details .business-meta > div, .search .business-row-wrapper .business-content .business-details .business-meta > div { margin-bottom: 6px; }
-
-.archive .business-row-wrapper .business-content .business-excerpt, .search .business-row-wrapper .business-content .business-excerpt { border-top: 1px solid #ddd; padding-top: 10px; padding-bottom: 4px; margin-top: 1px; }
-
-.archive .business-row-wrapper .business-content .business-excerpt .read-more-link, .search .business-row-wrapper .business-content .business-excerpt .read-more-link { padding-top: 10px; }
-
-.archive .business-row-wrapper .business-content .business-excerpt .read-more-link a, .search .business-row-wrapper .business-content .business-excerpt .read-more-link a { text-transform: uppercase; }
-
-.archive .business-row-wrapper .business-content .business-excerpt .read-more-link a .fa, .search .business-row-wrapper .business-content .business-excerpt .read-more-link a .fa { margin-left: 5px; }
-
-.archive .archive-plan, .search .archive-plan { display: -ms-flexbox; display: -webkit-box; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; }
-
-.archive .business.col-layout, .single .business.col-layout, .search .business.col-layout, .lsx-business-directory-shortcode .business.col-layout { position: relative; }
-
-.archive .business.col-layout .business-thumbnail, .single .business.col-layout .business-thumbnail, .search .business.col-layout .business-thumbnail, .lsx-business-directory-shortcode .business.col-layout .business-thumbnail { background-color: white; }
-
-.archive .business.col-layout .business-thumbnail img, .single .business.col-layout .business-thumbnail img, .search .business.col-layout .business-thumbnail img, .lsx-business-directory-shortcode .business.col-layout .business-thumbnail img { width: 100%; }
-
-.archive .business.col-layout .business-content, .single .business.col-layout .business-content, .search .business.col-layout .business-content, .lsx-business-directory-shortcode .business.col-layout .business-content { background-color: #FFFFFF; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; padding: 19px 0px 19px 0px; }
-
-.archive .business.col-layout .business-content .business-details .business-title, .single .business.col-layout .business-content .business-details .business-title, .search .business.col-layout .business-content .business-details .business-title, .lsx-business-directory-shortcode .business.col-layout .business-content .business-details .business-title { padding: 0px 15px 15px 15px; }
-
-.archive .business.col-layout .business-content .business-details .business-title h4, .single .business.col-layout .business-content .business-details .business-title h4, .search .business.col-layout .business-content .business-details .business-title h4, .lsx-business-directory-shortcode .business.col-layout .business-content .business-details .business-title h4 { margin-bottom: 0px; }
-
-.archive .business.col-layout .business-content .business-details .business-title h4 a, .single .business.col-layout .business-content .business-details .business-title h4 a, .search .business.col-layout .business-content .business-details .business-title h4 a, .lsx-business-directory-shortcode .business.col-layout .business-content .business-details .business-title h4 a { color: #434343; }
-
-.archive .business.col-layout .business-content .industry, .archive .business.col-layout .business-content .location, .archive .business.col-layout .business-content .telephone, .archive .business.col-layout .business-content .email, .single .business.col-layout .business-content .industry, .single .business.col-layout .business-content .location, .single .business.col-layout .business-content .telephone, .single .business.col-layout .business-content .email, .search .business.col-layout .business-content .industry, .search .business.col-layout .business-content .location, .search .business.col-layout .business-content .telephone, .search .business.col-layout .business-content .email, .lsx-business-directory-shortcode .business.col-layout .business-content .industry, .lsx-business-directory-shortcode .business.col-layout .business-content .location, .lsx-business-directory-shortcode .business.col-layout .business-content .telephone, .lsx-business-directory-shortcode .business.col-layout .business-content .email { padding: 0px 15px 1px 17px; }
-
-.archive .business.col-layout .business-content .industry span i, .archive .business.col-layout .business-content .industry span strong, .archive .business.col-layout .business-content .industry span a, .archive .business.col-layout .business-content .location span i, .archive .business.col-layout .business-content .location span strong, .archive .business.col-layout .business-content .location span a, .archive .business.col-layout .business-content .telephone span i, .archive .business.col-layout .business-content .telephone span strong, .archive .business.col-layout .business-content .telephone span a, .archive .business.col-layout .business-content .email span i, .archive .business.col-layout .business-content .email span strong, .archive .business.col-layout .business-content .email span a, .single .business.col-layout .business-content .industry span i, .single .business.col-layout .business-content .industry span strong, .single .business.col-layout .business-content .industry span a, .single .business.col-layout .business-content .location span i, .single .business.col-layout .business-content .location span strong, .single .business.col-layout .business-content .location span a, .single .business.col-layout .business-content .telephone span i, .single .business.col-layout .business-content .telephone span strong, .single .business.col-layout .business-content .telephone span a, .single .business.col-layout .business-content .email span i, .single .business.col-layout .business-content .email span strong, .single .business.col-layout .business-content .email span a, .search .business.col-layout .business-content .industry span i, .search .business.col-layout .business-content .industry span strong, .search .business.col-layout .business-content .industry span a, .search .business.col-layout .business-content .location span i, .search .business.col-layout .business-content .location span strong, .search .business.col-layout .business-content .location span a, .search .business.col-layout .business-content .telephone span i, .search .business.col-layout .business-content .telephone span strong, .search .business.col-layout .business-content .telephone span a, .search .business.col-layout .business-content .email span i, .search .business.col-layout .business-content .email span strong, .search .business.col-layout .business-content .email span a, .lsx-business-directory-shortcode .business.col-layout .business-content .industry span i, .lsx-business-directory-shortcode .business.col-layout .business-content .industry span strong, .lsx-business-directory-shortcode .business.col-layout .business-content .industry span a, .lsx-business-directory-shortcode .business.col-layout .business-content .location span i, .lsx-business-directory-shortcode .business.col-layout .business-content .location span strong, .lsx-business-directory-shortcode .business.col-layout .business-content .location span a, .lsx-business-directory-shortcode .business.col-layout .business-content .telephone span i, .lsx-business-directory-shortcode .business.col-layout .business-content .telephone span strong, .lsx-business-directory-shortcode .business.col-layout .business-content .telephone span a, .lsx-business-directory-shortcode .business.col-layout .business-content .email span i, .lsx-business-directory-shortcode .business.col-layout .business-content .email span strong, .lsx-business-directory-shortcode .business.col-layout .business-content .email span a { font-size: 13px; line-height: 24px; }
-
-.archive .business.col-layout .business-content .industry i, .archive .business.col-layout .business-content .location i, .archive .business.col-layout .business-content .telephone i, .archive .business.col-layout .business-content .email i, .single .business.col-layout .business-content .industry i, .single .business.col-layout .business-content .location i, .single .business.col-layout .business-content .telephone i, .single .business.col-layout .business-content .email i, .search .business.col-layout .business-content .industry i, .search .business.col-layout .business-content .location i, .search .business.col-layout .business-content .telephone i, .search .business.col-layout .business-content .email i, .lsx-business-directory-shortcode .business.col-layout .business-content .industry i, .lsx-business-directory-shortcode .business.col-layout .business-content .location i, .lsx-business-directory-shortcode .business.col-layout .business-content .telephone i, .lsx-business-directory-shortcode .business.col-layout .business-content .email i { margin-right: 0px; }
-
-.archive .business.col-layout .business-button button, .single .business.col-layout .business-button button, .search .business.col-layout .business-button button, .lsx-business-directory-shortcode .business.col-layout .business-button button { width: 100%; height: 45px; background-color: #418AD0; border: none; }
-
-.archive .business.col-layout .business-button button a, .single .business.col-layout .business-button button a, .search .business.col-layout .business-button button a, .lsx-business-directory-shortcode .business.col-layout .business-button button a { color: white; }
-
-.archive .business.col-layout .business-button button a .fa, .single .business.col-layout .business-button button a .fa, .search .business.col-layout .business-button button a .fa, .lsx-business-directory-shortcode .business.col-layout .business-button button a .fa { margin-left: 5px; }
-
-#gmap { height: 500px; }
-
-body { /* For specificity */ }
-
-body.single-business-directory article h1.entry-title { border-bottom: 0 !important; }
-
-body.single-business-directory article .entry-meta { border-top: 0; border-bottom: 0; }
-
-body.single-business-directory article .entry-meta > * { display: block; }
 
 /*# sourceMappingURL=maps/lsx-business-directory.css.map */
