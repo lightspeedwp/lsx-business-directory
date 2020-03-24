@@ -27,6 +27,10 @@
 
 						a {
 							color: $title_color;
+
+							&:hover {
+								color: $orange;
+							}
 						}
 					}
 				}
