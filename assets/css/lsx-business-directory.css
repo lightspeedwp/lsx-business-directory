@@ -26,7 +26,7 @@ body.single-business-directory article .entry-meta > * { display: block; }
 
 @media screen and (max-width: 991px) { .single .slick-arrow { display: none !important; } }
 
-.single .business-directory .business-header { margin-bottom: 40px; }
+.single .business-directory .business-header { margin-bottom: 77px; }
 
 .single .business-directory .business-header .business-content-left { padding-left: 0px; padding-right: 0px; padding-bottom: 29px; -webkit-box-sizing: border-box; box-sizing: border-box; border: 1px solid #EEEEEE; background-color: white; -webkit-box-shadow: 1px 2px 6px 0 rgba(155, 155, 155, 0.45); box-shadow: 1px 2px 6px 0 rgba(155, 155, 155, 0.45); }
 
