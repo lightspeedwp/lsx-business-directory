@@ -141,6 +141,8 @@ body.single-business-directory article .entry-meta > * { display: block; }
 
 .archive .business-row-wrapper .business-content .business-details h4.business-title a, .search .business-row-wrapper .business-content .business-details h4.business-title a { color: #4D4D4D; }
 
+.archive .business-row-wrapper .business-content .business-details h4.business-title a:hover, .search .business-row-wrapper .business-content .business-details h4.business-title a:hover { color: #F7AE00; }
+
 .archive .business-row-wrapper .business-content .business-details .industry i.fa, .archive .business-row-wrapper .business-content .business-details .location i.fa, .search .business-row-wrapper .business-content .business-details .industry i.fa, .search .business-row-wrapper .business-content .business-details .location i.fa { margin-right: 0px; }
 
 .archive .business-row-wrapper .business-content .business-details .industry, .archive .business-row-wrapper .business-content .business-details .location, .archive .business-row-wrapper .business-content .business-details .telephone, .archive .business-row-wrapper .business-content .business-details .email, .search .business-row-wrapper .business-content .business-details .industry, .search .business-row-wrapper .business-content .business-details .location, .search .business-row-wrapper .business-content .business-details .telephone, .search .business-row-wrapper .business-content .business-details .email { padding-left: 0px; padding-right: 0px; padding-bottom: 1px; }
