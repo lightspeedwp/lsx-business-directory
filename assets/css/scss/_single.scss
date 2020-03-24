@@ -10,6 +10,10 @@
 		.business-header {
 			margin-bottom: 77px;
 
+			@media screen and (max-width: $mobile_width) {
+				margin-bottom: 52px;
+			}
+
 			.business-content-left {
 				padding-left: 0px;
 				padding-right: 0px;
@@ -212,6 +216,12 @@
 	.lsx-business-directory-shortcode {
 		.section-title.lsx-title {
 			margin-bottom: 2px;
+		}
+
+		@media screen and (max-width: $mobile_width) {
+			.section-title.lsx-title {
+				margin-bottom: 11px !important;
+			}
 		}
 	}
 }

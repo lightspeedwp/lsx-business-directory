@@ -28,6 +28,8 @@ body.single-business-directory article .entry-meta > * { display: block; }
 
 .single .business-directory .business-header { margin-bottom: 77px; }
 
+@media screen and (max-width: 991px) { .single .business-directory .business-header { margin-bottom: 52px; } }
+
 .single .business-directory .business-header .business-content-left { padding-left: 0px; padding-right: 0px; padding-bottom: 29px; -webkit-box-sizing: border-box; box-sizing: border-box; border: 1px solid #EEEEEE; background-color: white; -webkit-box-shadow: 1px 2px 6px 0 rgba(155, 155, 155, 0.45); box-shadow: 1px 2px 6px 0 rgba(155, 155, 155, 0.45); }
 
 .single .business-directory .business-header .business-content-left > .entry-image > img { width: 100%; }
@@ -101,6 +103,8 @@ body.single-business-directory article .entry-meta > * { display: block; }
 .single .business-directory .related-businesses .related-business h3 { margin: 20px 0 0px; }
 
 .single .lsx-business-directory-shortcode .section-title.lsx-title { margin-bottom: 2px; }
+
+@media screen and (max-width: 991px) { .single .lsx-business-directory-shortcode .section-title.lsx-title { margin-bottom: 11px !important; } }
 
 .archive .facetwp-filter-title, .archive .lsx-search-title, .search .facetwp-filter-title, .search .lsx-search-title { font-size: 20px; line-height: 24px; }
 
