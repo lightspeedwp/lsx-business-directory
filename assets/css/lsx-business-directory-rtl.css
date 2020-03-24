@@ -100,8 +100,6 @@ body.single-business-directory article .entry-meta > * { display: block; }
 
 .single .business-directory .related-businesses .related-business h3 { margin: 20px 0 0px; }
 
-.single .lsx-business-directory-shortcode .section-title.lsx-title { margin-bottom: 2px; }
-
 .archive .facetwp-filter-title, .archive .lsx-search-title, .search .facetwp-filter-title, .search .lsx-search-title { font-size: 20px; line-height: 24px; }
 
 .archive .facetwp-sort, .search .facetwp-sort { margin-left: 22px; }
