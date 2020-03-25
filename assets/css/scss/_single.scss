@@ -10,10 +10,6 @@
 		.business-header {
 			margin-bottom: 77px;
 
-			@media screen and (max-width: $mobile_width) {
-				margin-bottom: 52px;
-			}
-
 			.business-content-left {
 				padding-left: 0px;
 				padding-right: 0px;
@@ -30,14 +26,19 @@
 				}
 			}
 
-			@media screen and (max-width: 1090px) {
-				.business-content-left {
-					margin-bottom: 20px;
-				}
-			}
-
 			.business-content-right {
 				padding-left: 26px;
+			}
+
+			@media screen and (max-width: $mobile_width) {
+				margin-bottom: 52px;
+				.business-content-left {
+					margin-bottom: 21px;
+				}
+
+				.business-content-right .entry-title {
+					margin-bottom: 4px !important;
+				}
 			}
 
 			@media screen and (max-width: $mobile_width) {
@@ -68,13 +69,17 @@
 						font-size: 28px;
 					}
 
-					@media only screen and (max-width: 991px) {
+					@media only screen and (max-width: $mobile_width) {
 						margin-top: 15px;
 					}
 				}
 
 				.social-links {
 					margin-bottom: 20px;
+
+					@media only screen and (max-width: $mobile_width) {
+						margin-bottom: 10px;
+					}
 
 					>div {
 						margin-right: 24px;
@@ -119,6 +124,14 @@
 
 						&:last-child {
 							margin-bottom: 20px;
+						}
+
+						@media screen and (max-width: $mobile_width) {
+							margin-bottom: 8px;
+
+							&:last-child {
+								margin-bottom: 14px;
+							}
 						}
 					}
 				}
