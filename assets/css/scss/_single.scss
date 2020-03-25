@@ -13,7 +13,7 @@
 			.business-content-left {
 				padding-left: 0px;
 				padding-right: 0px;
-				padding-bottom: 29px;
+				padding-bottom: 30px;
 				box-sizing: border-box;
 				border: 1px solid $border_color;
 				background-color: white;
@@ -33,11 +33,11 @@
 			@media screen and (max-width: $mobile_width) {
 				margin-bottom: 52px;
 				.business-content-left {
-					margin-bottom: 21px;
+					margin-bottom: 30px;
 				}
 
 				.business-content-right .entry-title {
-					margin-bottom: 4px !important;
+					margin-bottom: 12px !important;
 				}
 			}
 
@@ -118,6 +118,13 @@
 						padding-left: 0px;
 						padding-right: 0px;
 					}
+
+					@media screen and (max-width: $mobile_width) {
+						.industry {
+							margin-bottom: 15px;
+						}
+					}
+					
 
 					> div {
 						margin-bottom: 5px;
