@@ -164,7 +164,7 @@ get_header(); ?>
 								<?php lsx_business_listing_title(); ?>
 
 								<div class="entry-meta lsx-flex-row">
-									<div class="industry col-xs-6 col-sm-6 col-md-6">
+									<div class="industry col-xs-12 col-sm-12 col-md-6">
 										<span>
 											<i class="fa fa-th"></i>
 											<strong><?php esc_html_e( 'Industry', 'lsx-business-directory' ); ?>: </strong>
@@ -183,7 +183,7 @@ get_header(); ?>
 										</span>
 									</div>
 
-									<div class="location col-xs-6 col-sm-6 col-md-6">
+									<div class="location col-xs-12 col-sm-12 col-md-6">
 										<span>
 											<i class="fa fa-globe"></i>
 											<strong><?php esc_html_e( 'Location', 'lsx-business-directory' ); ?>: </strong>
