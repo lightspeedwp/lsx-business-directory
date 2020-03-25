@@ -6,10 +6,14 @@
   <a href="https://lsx.lsdev.biz/"><img src="https://lsx.lsdev.biz/wp-content/uploads/2019/06/Designed-for-LSX-Theme-blue.png" alt="Made for LSX"></a>
 </p>
 
-LSX Business Directory plugin adds the ability to include a structured exercise and nutrition programme to your WordPress website using the LSX Theme and extensions. TODO: change this description
+LSX Business Directory plugin allows you to add a business directory listings to your WordPress website using the LSX Theme and extensions.
 
 Features include:
-* TODO: add list of features
+* Category and location filters on the listing archive page
+* Set a banner image for each listing
+* Configure contact form for individual listings
+* Compact contact details card with logo
+* HTML enabled description field for business description
 
 
 The *LSX Business Directory* is a fully Gutenberg compatible [WordPress](https://wordpress.org) plugin, powered by the latest software.
