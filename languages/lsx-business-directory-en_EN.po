@@ -1,0 +1,1502 @@
+# Copyright (C) 2020 lsx-business-directory
+# This file is distributed under the same license as the lsx-business-directory package.
+msgid ""
+msgstr ""
+"Project-Id-Version: lsx-business-directory\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language-Team: LightSpeed <webmaster@lsdev.biz>\n"
+"Report-Msgid-Bugs-To: https://github.com/lightspeeddevelopment/lsx-business-directory/issues\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: classes/class-admin.php:126
+msgid "Business Directory Settings"
+msgstr ""
+
+#: classes/class-admin.php:127
+msgid "Settings"
+msgstr ""
+
+#: includes/functions.php:25
+msgid "Afghanistan"
+msgstr ""
+
+#: includes/functions.php:26
+msgid "&#197;land Islands"
+msgstr ""
+
+#: includes/functions.php:27
+msgid "Albania"
+msgstr ""
+
+#: includes/functions.php:28
+msgid "Algeria"
+msgstr ""
+
+#: includes/functions.php:29
+msgid "Andorra"
+msgstr ""
+
+#: includes/functions.php:30
+msgid "Angola"
+msgstr ""
+
+#: includes/functions.php:31
+msgid "Anguilla"
+msgstr ""
+
+#: includes/functions.php:32
+msgid "Antarctica"
+msgstr ""
+
+#: includes/functions.php:33
+msgid "Antigua and Barbuda"
+msgstr ""
+
+#: includes/functions.php:34
+msgid "Argentina"
+msgstr ""
+
+#: includes/functions.php:35
+msgid "Armenia"
+msgstr ""
+
+#: includes/functions.php:36
+msgid "Aruba"
+msgstr ""
+
+#: includes/functions.php:37
+msgid "Australia"
+msgstr ""
+
+#: includes/functions.php:38
+msgid "Austria"
+msgstr ""
+
+#: includes/functions.php:39
+msgid "Azerbaijan"
+msgstr ""
+
+#: includes/functions.php:40
+msgid "Bahamas"
+msgstr ""
+
+#: includes/functions.php:41
+msgid "Bahrain"
+msgstr ""
+
+#: includes/functions.php:42
+msgid "Bangladesh"
+msgstr ""
+
+#: includes/functions.php:43
+msgid "Barbados"
+msgstr ""
+
+#: includes/functions.php:44
+msgid "Belarus"
+msgstr ""
+
+#: includes/functions.php:45
+msgid "Belgium"
+msgstr ""
+
+#: includes/functions.php:46
+msgid "Belau"
+msgstr ""
+
+#: includes/functions.php:47
+msgid "Belize"
+msgstr ""
+
+#: includes/functions.php:48
+msgid "Benin"
+msgstr ""
+
+#: includes/functions.php:49
+msgid "Bermuda"
+msgstr ""
+
+#: includes/functions.php:50
+msgid "Bhutan"
+msgstr ""
+
+#: includes/functions.php:51
+msgid "Bolivia"
+msgstr ""
+
+#: includes/functions.php:52
+msgid "Bonaire, Saint Eustatius and Saba"
+msgstr ""
+
+#: includes/functions.php:53
+msgid "Bosnia and Herzegovina"
+msgstr ""
+
+#: includes/functions.php:54
+msgid "Botswana"
+msgstr ""
+
+#: includes/functions.php:55
+msgid "Bouvet Island"
+msgstr ""
+
+#: includes/functions.php:56
+msgid "Brazil"
+msgstr ""
+
+#: includes/functions.php:57
+msgid "British Indian Ocean Territory"
+msgstr ""
+
+#: includes/functions.php:58
+msgid "British Virgin Islands"
+msgstr ""
+
+#: includes/functions.php:59
+msgid "Brunei"
+msgstr ""
+
+#: includes/functions.php:60
+msgid "Bulgaria"
+msgstr ""
+
+#: includes/functions.php:61
+msgid "Burkina Faso"
+msgstr ""
+
+#: includes/functions.php:62
+msgid "Burundi"
+msgstr ""
+
+#: includes/functions.php:63
+msgid "Cambodia"
+msgstr ""
+
+#: includes/functions.php:64
+msgid "Cameroon"
+msgstr ""
+
+#: includes/functions.php:65
+msgid "Canada"
+msgstr ""
+
+#: includes/functions.php:66
+msgid "Cape Verde"
+msgstr ""
+
+#: includes/functions.php:67
+msgid "Cayman Islands"
+msgstr ""
+
+#: includes/functions.php:68
+msgid "Central African Republic"
+msgstr ""
+
+#: includes/functions.php:69
+msgid "Chad"
+msgstr ""
+
+#: includes/functions.php:70
+msgid "Chile"
+msgstr ""
+
+#: includes/functions.php:71
+msgid "China"
+msgstr ""
+
+#: includes/functions.php:72
+msgid "Christmas Island"
+msgstr ""
+
+#: includes/functions.php:73
+msgid "Cocos (Keeling) Islands"
+msgstr ""
+
+#: includes/functions.php:74
+msgid "Colombia"
+msgstr ""
+
+#: includes/functions.php:75
+msgid "Comoros"
+msgstr ""
+
+#: includes/functions.php:76
+msgid "Congo (Brazzaville)"
+msgstr ""
+
+#: includes/functions.php:77
+msgid "Congo (Kinshasa)"
+msgstr ""
+
+#: includes/functions.php:78
+msgid "Cook Islands"
+msgstr ""
+
+#: includes/functions.php:79
+msgid "Costa Rica"
+msgstr ""
+
+#: includes/functions.php:80
+msgid "Croatia"
+msgstr ""
+
+#: includes/functions.php:81
+msgid "Cuba"
+msgstr ""
+
+#: includes/functions.php:82
+msgid "Cura&Ccedil;ao"
+msgstr ""
+
+#: includes/functions.php:83
+msgid "Cyprus"
+msgstr ""
+
+#: includes/functions.php:84
+msgid "Czech Republic"
+msgstr ""
+
+#: includes/functions.php:85
+msgid "Denmark"
+msgstr ""
+
+#: includes/functions.php:86
+msgid "Djibouti"
+msgstr ""
+
+#: includes/functions.php:87
+msgid "Dominica"
+msgstr ""
+
+#: includes/functions.php:88
+msgid "Dominican Republic"
+msgstr ""
+
+#: includes/functions.php:89
+msgid "Ecuador"
+msgstr ""
+
+#: includes/functions.php:90
+msgid "Egypt"
+msgstr ""
+
+#: includes/functions.php:91
+msgid "El Salvador"
+msgstr ""
+
+#: includes/functions.php:92
+msgid "Equatorial Guinea"
+msgstr ""
+
+#: includes/functions.php:93
+msgid "Eritrea"
+msgstr ""
+
+#: includes/functions.php:94
+msgid "Estonia"
+msgstr ""
+
+#: includes/functions.php:95
+msgid "Ethiopia"
+msgstr ""
+
+#: includes/functions.php:96
+msgid "Falkland Islands"
+msgstr ""
+
+#: includes/functions.php:97
+msgid "Faroe Islands"
+msgstr ""
+
+#: includes/functions.php:98
+msgid "Fiji"
+msgstr ""
+
+#: includes/functions.php:99
+msgid "Finland"
+msgstr ""
+
+#: includes/functions.php:100
+msgid "France"
+msgstr ""
+
+#: includes/functions.php:101
+msgid "French Guiana"
+msgstr ""
+
+#: includes/functions.php:102
+msgid "French Polynesia"
+msgstr ""
+
+#: includes/functions.php:103
+msgid "French Southern Territories"
+msgstr ""
+
+#: includes/functions.php:104
+msgid "Gabon"
+msgstr ""
+
+#: includes/functions.php:105
+msgid "Gambia"
+msgstr ""
+
+#: includes/functions.php:106
+msgid "Georgia"
+msgstr ""
+
+#: includes/functions.php:107
+msgid "Germany"
+msgstr ""
+
+#: includes/functions.php:108
+msgid "Ghana"
+msgstr ""
+
+#: includes/functions.php:109
+msgid "Gibraltar"
+msgstr ""
+
+#: includes/functions.php:110
+msgid "Greece"
+msgstr ""
+
+#: includes/functions.php:111
+msgid "Greenland"
+msgstr ""
+
+#: includes/functions.php:112
+msgid "Grenada"
+msgstr ""
+
+#: includes/functions.php:113
+msgid "Guadeloupe"
+msgstr ""
+
+#: includes/functions.php:114
+msgid "Guatemala"
+msgstr ""
+
+#: includes/functions.php:115
+msgid "Guernsey"
+msgstr ""
+
+#: includes/functions.php:116
+msgid "Guinea"
+msgstr ""
+
+#: includes/functions.php:117
+msgid "Guinea-Bissau"
+msgstr ""
+
+#: includes/functions.php:118
+msgid "Guyana"
+msgstr ""
+
+#: includes/functions.php:119
+msgid "Haiti"
+msgstr ""
+
+#: includes/functions.php:120
+msgid "Heard Island and McDonald Islands"
+msgstr ""
+
+#: includes/functions.php:121
+msgid "Honduras"
+msgstr ""
+
+#: includes/functions.php:122
+msgid "Hong Kong"
+msgstr ""
+
+#: includes/functions.php:123
+msgid "Hungary"
+msgstr ""
+
+#: includes/functions.php:124
+msgid "Iceland"
+msgstr ""
+
+#: includes/functions.php:125
+msgid "India"
+msgstr ""
+
+#: includes/functions.php:126
+msgid "Indonesia"
+msgstr ""
+
+#: includes/functions.php:127
+msgid "Iran"
+msgstr ""
+
+#: includes/functions.php:128
+msgid "Iraq"
+msgstr ""
+
+#: includes/functions.php:129
+msgid "Republic of Ireland"
+msgstr ""
+
+#: includes/functions.php:130
+msgid "Isle of Man"
+msgstr ""
+
+#: includes/functions.php:131
+msgid "Israel"
+msgstr ""
+
+#: includes/functions.php:132
+msgid "Italy"
+msgstr ""
+
+#: includes/functions.php:133
+msgid "Ivory Coast"
+msgstr ""
+
+#: includes/functions.php:134
+msgid "Jamaica"
+msgstr ""
+
+#: includes/functions.php:135
+msgid "Japan"
+msgstr ""
+
+#: includes/functions.php:136
+msgid "Jersey"
+msgstr ""
+
+#: includes/functions.php:137
+msgid "Jordan"
+msgstr ""
+
+#: includes/functions.php:138
+msgid "Kazakhstan"
+msgstr ""
+
+#: includes/functions.php:139
+msgid "Kenya"
+msgstr ""
+
+#: includes/functions.php:140
+msgid "Kiribati"
+msgstr ""
+
+#: includes/functions.php:141
+msgid "Kuwait"
+msgstr ""
+
+#: includes/functions.php:142
+msgid "Kyrgyzstan"
+msgstr ""
+
+#: includes/functions.php:143
+msgid "Laos"
+msgstr ""
+
+#: includes/functions.php:144
+msgid "Latvia"
+msgstr ""
+
+#: includes/functions.php:145
+msgid "Lebanon"
+msgstr ""
+
+#: includes/functions.php:146
+msgid "Lesotho"
+msgstr ""
+
+#: includes/functions.php:147
+msgid "Liberia"
+msgstr ""
+
+#: includes/functions.php:148
+msgid "Libya"
+msgstr ""
+
+#: includes/functions.php:149
+msgid "Liechtenstein"
+msgstr ""
+
+#: includes/functions.php:150
+msgid "Lithuania"
+msgstr ""
+
+#: includes/functions.php:151
+msgid "Luxembourg"
+msgstr ""
+
+#: includes/functions.php:152
+msgid "Macao S.A.R., China"
+msgstr ""
+
+#: includes/functions.php:153
+msgid "Macedonia"
+msgstr ""
+
+#: includes/functions.php:154
+msgid "Madagascar"
+msgstr ""
+
+#: includes/functions.php:155
+msgid "Malawi"
+msgstr ""
+
+#: includes/functions.php:156
+msgid "Malaysia"
+msgstr ""
+
+#: includes/functions.php:157
+msgid "Maldives"
+msgstr ""
+
+#: includes/functions.php:158
+msgid "Mali"
+msgstr ""
+
+#: includes/functions.php:159
+msgid "Malta"
+msgstr ""
+
+#: includes/functions.php:160
+msgid "Marshall Islands"
+msgstr ""
+
+#: includes/functions.php:161
+msgid "Martinique"
+msgstr ""
+
+#: includes/functions.php:162
+msgid "Mauritania"
+msgstr ""
+
+#: includes/functions.php:163
+msgid "Mauritius"
+msgstr ""
+
+#: includes/functions.php:164
+msgid "Mayotte"
+msgstr ""
+
+#: includes/functions.php:165
+msgid "Mexico"
+msgstr ""
+
+#: includes/functions.php:166
+msgid "Micronesia"
+msgstr ""
+
+#: includes/functions.php:167
+msgid "Moldova"
+msgstr ""
+
+#: includes/functions.php:168
+msgid "Monaco"
+msgstr ""
+
+#: includes/functions.php:169
+msgid "Mongolia"
+msgstr ""
+
+#: includes/functions.php:170
+msgid "Montenegro"
+msgstr ""
+
+#: includes/functions.php:171
+msgid "Montserrat"
+msgstr ""
+
+#: includes/functions.php:172
+msgid "Morocco"
+msgstr ""
+
+#: includes/functions.php:173
+msgid "Mozambique"
+msgstr ""
+
+#: includes/functions.php:174
+msgid "Myanmar"
+msgstr ""
+
+#: includes/functions.php:175
+msgid "Namibia"
+msgstr ""
+
+#: includes/functions.php:176
+msgid "Nauru"
+msgstr ""
+
+#: includes/functions.php:177
+msgid "Nepal"
+msgstr ""
+
+#: includes/functions.php:178
+msgid "Netherlands"
+msgstr ""
+
+#: includes/functions.php:179
+msgid "Netherlands Antilles"
+msgstr ""
+
+#: includes/functions.php:180
+msgid "New Caledonia"
+msgstr ""
+
+#: includes/functions.php:181
+msgid "New Zealand"
+msgstr ""
+
+#: includes/functions.php:182
+msgid "Nicaragua"
+msgstr ""
+
+#: includes/functions.php:183
+msgid "Niger"
+msgstr ""
+
+#: includes/functions.php:184
+msgid "Nigeria"
+msgstr ""
+
+#: includes/functions.php:185
+msgid "Niue"
+msgstr ""
+
+#: includes/functions.php:186
+msgid "Norfolk Island"
+msgstr ""
+
+#: includes/functions.php:187
+msgid "North Korea"
+msgstr ""
+
+#: includes/functions.php:188
+msgid "Norway"
+msgstr ""
+
+#: includes/functions.php:189
+msgid "Oman"
+msgstr ""
+
+#: includes/functions.php:190
+msgid "Pakistan"
+msgstr ""
+
+#: includes/functions.php:191
+msgid "Palestinian Territory"
+msgstr ""
+
+#: includes/functions.php:192
+msgid "Panama"
+msgstr ""
+
+#: includes/functions.php:193
+msgid "Papua New Guinea"
+msgstr ""
+
+#: includes/functions.php:194
+msgid "Paraguay"
+msgstr ""
+
+#: includes/functions.php:195
+msgid "Peru"
+msgstr ""
+
+#: includes/functions.php:196
+msgid "Philippines"
+msgstr ""
+
+#: includes/functions.php:197
+msgid "Pitcairn"
+msgstr ""
+
+#: includes/functions.php:198
+msgid "Poland"
+msgstr ""
+
+#: includes/functions.php:199
+msgid "Portugal"
+msgstr ""
+
+#: includes/functions.php:200
+msgid "Qatar"
+msgstr ""
+
+#: includes/functions.php:201
+msgid "Reunion"
+msgstr ""
+
+#: includes/functions.php:202
+msgid "Romania"
+msgstr ""
+
+#: includes/functions.php:203
+msgid "Russia"
+msgstr ""
+
+#: includes/functions.php:204
+msgid "Rwanda"
+msgstr ""
+
+#: includes/functions.php:205
+msgid "Saint Barth&eacute;lemy"
+msgstr ""
+
+#: includes/functions.php:206
+msgid "Saint Helena"
+msgstr ""
+
+#: includes/functions.php:207
+msgid "Saint Kitts and Nevis"
+msgstr ""
+
+#: includes/functions.php:208
+msgid "Saint Lucia"
+msgstr ""
+
+#: includes/functions.php:209
+msgid "Saint Martin (French part)"
+msgstr ""
+
+#: includes/functions.php:210
+msgid "Saint Martin (Dutch part)"
+msgstr ""
+
+#: includes/functions.php:211
+msgid "Saint Pierre and Miquelon"
+msgstr ""
+
+#: includes/functions.php:212
+msgid "Saint Vincent and the Grenadines"
+msgstr ""
+
+#: includes/functions.php:213
+msgid "San Marino"
+msgstr ""
+
+#: includes/functions.php:214
+msgid "S&atilde;o Tom&eacute; and Pr&iacute;ncipe"
+msgstr ""
+
+#: includes/functions.php:215
+msgid "Saudi Arabia"
+msgstr ""
+
+#: includes/functions.php:216
+msgid "Senegal"
+msgstr ""
+
+#: includes/functions.php:217
+msgid "Serbia"
+msgstr ""
+
+#: includes/functions.php:218
+msgid "Seychelles"
+msgstr ""
+
+#: includes/functions.php:219
+msgid "Sierra Leone"
+msgstr ""
+
+#: includes/functions.php:220
+msgid "Singapore"
+msgstr ""
+
+#: includes/functions.php:221
+msgid "Slovakia"
+msgstr ""
+
+#: includes/functions.php:222
+msgid "Slovenia"
+msgstr ""
+
+#: includes/functions.php:223
+msgid "Solomon Islands"
+msgstr ""
+
+#: includes/functions.php:224
+msgid "Somalia"
+msgstr ""
+
+#: includes/functions.php:225
+msgid "South Africa"
+msgstr ""
+
+#: includes/functions.php:226
+msgid "South Georgia/Sandwich Islands"
+msgstr ""
+
+#: includes/functions.php:227
+msgid "South Korea"
+msgstr ""
+
+#: includes/functions.php:228
+msgid "South Sudan"
+msgstr ""
+
+#: includes/functions.php:229
+msgid "Spain"
+msgstr ""
+
+#: includes/functions.php:230
+msgid "Sri Lanka"
+msgstr ""
+
+#: includes/functions.php:231
+msgid "Sudan"
+msgstr ""
+
+#: includes/functions.php:232
+msgid "Suriname"
+msgstr ""
+
+#: includes/functions.php:233
+msgid "Svalbard and Jan Mayen"
+msgstr ""
+
+#: includes/functions.php:234
+msgid "Swaziland"
+msgstr ""
+
+#: includes/functions.php:235
+msgid "Sweden"
+msgstr ""
+
+#: includes/functions.php:236
+msgid "Switzerland"
+msgstr ""
+
+#: includes/functions.php:237
+msgid "Syria"
+msgstr ""
+
+#: includes/functions.php:238
+msgid "Taiwan"
+msgstr ""
+
+#: includes/functions.php:239
+msgid "Tajikistan"
+msgstr ""
+
+#: includes/functions.php:240
+msgid "Tanzania"
+msgstr ""
+
+#: includes/functions.php:241
+msgid "Thailand"
+msgstr ""
+
+#: includes/functions.php:242
+msgid "Timor-Leste"
+msgstr ""
+
+#: includes/functions.php:243
+msgid "Togo"
+msgstr ""
+
+#: includes/functions.php:244
+msgid "Tokelau"
+msgstr ""
+
+#: includes/functions.php:245
+msgid "Tonga"
+msgstr ""
+
+#: includes/functions.php:246
+msgid "Trinidad and Tobago"
+msgstr ""
+
+#: includes/functions.php:247
+msgid "Tunisia"
+msgstr ""
+
+#: includes/functions.php:248
+msgid "Turkey"
+msgstr ""
+
+#: includes/functions.php:249
+msgid "Turkmenistan"
+msgstr ""
+
+#: includes/functions.php:250
+msgid "Turks and Caicos Islands"
+msgstr ""
+
+#: includes/functions.php:251
+msgid "Tuvalu"
+msgstr ""
+
+#: includes/functions.php:252
+msgid "Uganda"
+msgstr ""
+
+#: includes/functions.php:253
+msgid "Ukraine"
+msgstr ""
+
+#: includes/functions.php:254
+msgid "United Arab Emirates"
+msgstr ""
+
+#: includes/functions.php:255
+msgid "United Kingdom (UK)"
+msgstr ""
+
+#: includes/functions.php:256
+msgid "United States (US)"
+msgstr ""
+
+#: includes/functions.php:257
+msgid "Uruguay"
+msgstr ""
+
+#: includes/functions.php:258
+msgid "Uzbekistan"
+msgstr ""
+
+#: includes/functions.php:259
+msgid "Vanuatu"
+msgstr ""
+
+#: includes/functions.php:260
+msgid "Vatican"
+msgstr ""
+
+#: includes/functions.php:261
+msgid "Venezuela"
+msgstr ""
+
+#: includes/functions.php:262
+msgid "Vietnam"
+msgstr ""
+
+#: includes/functions.php:263
+msgid "Wallis and Futuna"
+msgstr ""
+
+#: includes/functions.php:264
+msgid "Western Sahara"
+msgstr ""
+
+#: includes/functions.php:265
+msgid "Western Samoa"
+msgstr ""
+
+#: includes/functions.php:266
+msgid "Yemen"
+msgstr ""
+
+#: includes/functions.php:267
+msgid "Zambia"
+msgstr ""
+
+#: includes/functions.php:268
+msgid "Zimbabwe"
+msgstr ""
+
+#: includes/getters.php:21
+msgid "Disable Banner"
+msgstr ""
+
+#: includes/getters.php:26
+msgid "Image"
+msgstr ""
+
+#: includes/getters.php:27, includes/getters.php:97
+msgid "Your image should be 1920px x 600px preferably, but no less than 1440px x 430px."
+msgstr ""
+
+#: includes/getters.php:33
+msgid "Colour"
+msgstr ""
+
+#: includes/getters.php:34
+msgid "Choose a background colour to display in case you don't have a banner image."
+msgstr ""
+
+#: includes/getters.php:40
+msgid "Title"
+msgstr ""
+
+#: includes/getters.php:41
+msgid "Customize the title for your banner."
+msgstr ""
+
+#: includes/getters.php:46
+msgid "Subtitle"
+msgstr ""
+
+#: includes/getters.php:47
+msgid "Customize the subtitle for your banner, this will display just below your title."
+msgstr ""
+
+#: includes/getters.php:67, classes/admin/class-term-thumbnail.php:51
+msgid "Featured Image"
+msgstr ""
+
+#: includes/getters.php:68
+msgid "Your image should be 800px x 600px preferably, but no less than 360px x 168px"
+msgstr ""
+
+#: includes/getters.php:89
+msgid "Featured Placeholder"
+msgstr ""
+
+#: includes/getters.php:90
+msgid "Your image should be 800px x 600px preferably, but no less than 360px x 168px."
+msgstr ""
+
+#: includes/getters.php:96
+msgid "Banner Placeholder"
+msgstr ""
+
+#: includes/getters.php:123
+msgid "You have no forms available"
+msgstr ""
+
+#: templates/single-business-directory.php:99
+msgid "Telephone"
+msgstr ""
+
+#: templates/single-business-directory.php:106, templates/single-business-directory.php:157, classes/frontend/class-enquiry.php:87
+msgid "Contact"
+msgstr ""
+
+#: templates/single-business-directory.php:113, templates/single-col-business.php:73, templates/single-row-business.php:76
+msgid "Email"
+msgstr ""
+
+#: templates/single-business-directory.php:120, classes/setup/class-business-directory.php:409
+msgid "Website"
+msgstr ""
+
+#: templates/single-business-directory.php:127
+msgid "Skype"
+msgstr ""
+
+#: templates/single-business-directory.php:134
+msgid "Whatsapp"
+msgstr ""
+
+#: templates/single-business-directory.php:141
+msgid "Address"
+msgstr ""
+
+#: templates/single-business-directory.php:170, templates/single-col-business.php:29, templates/single-row-business.php:31, classes/setup/class-business-directory.php:125, classes/setup/class-business-directory.php:126
+msgid "Industry"
+msgstr ""
+
+#: templates/single-business-directory.php:189, templates/single-col-business.php:49, templates/single-row-business.php:50, classes/setup/class-business-directory.php:156, classes/setup/class-business-directory.php:157
+msgid "Location"
+msgstr ""
+
+#: templates/single-business-directory.php:247
+msgid "Branches"
+msgstr ""
+
+#: templates/single-col-business.php:67, templates/single-row-business.php:70
+msgid "Phone"
+msgstr ""
+
+#: templates/single-row-business.php:84
+msgid "Read More"
+msgstr ""
+
+#: classes/admin/class-archive.php:52, classes/admin/class-archive.php:53
+msgid "Archive"
+msgstr ""
+
+#: classes/admin/class-archive.php:54
+msgid "Business Directory post type archive settings."
+msgstr ""
+
+#: classes/admin/class-archive.php:60
+msgid "Layout option"
+msgstr ""
+
+#: classes/admin/class-archive.php:65, classes/integrations/class-lsx-search.php:147
+msgid "Grid"
+msgstr ""
+
+#: classes/admin/class-archive.php:66, classes/integrations/class-lsx-search.php:148
+msgid "List"
+msgstr ""
+
+#: classes/admin/class-banners.php:54, classes/admin/class-banners.php:105, classes/admin/class-banners.php:110
+msgid "Banner"
+msgstr ""
+
+#: classes/admin/class-banners.php:86
+msgid "Business Banner"
+msgstr ""
+
+#: classes/admin/class-single.php:53, classes/admin/class-single.php:54
+msgid "Single"
+msgstr ""
+
+#: classes/admin/class-single.php:55
+msgid "The settings for the single business directory view."
+msgstr ""
+
+#: classes/admin/class-single.php:61
+msgid "Enquiry Form"
+msgstr ""
+
+#: classes/frontend/class-banners.php:271
+msgid "Search Results for: "
+msgstr ""
+
+#: classes/integrations/class-gravity-forms.php:50, classes/integrations/class-ninja-forms.php:60, classes/integrations/class-wpforms.php:53
+msgid "Listing Primary Email"
+msgstr ""
+
+#: classes/integrations/class-lsx-search.php:99, classes/integrations/class-lsx-search.php:100
+msgid "Search"
+msgstr ""
+
+#: classes/integrations/class-lsx-search.php:101
+msgid "If you have created an supplemental engine via SearchWP, then you can control the search settings here."
+msgstr ""
+
+#: classes/integrations/class-lsx-search.php:107, classes/integrations/class-lsx-search.php:116
+msgid "Enable Search Filters"
+msgstr ""
+
+#: classes/integrations/class-lsx-search.php:109
+msgid "Display FacetWP filters on your search results page."
+msgstr ""
+
+#: classes/integrations/class-lsx-search.php:118
+msgid "Display FacetWP filters on your listing archive pages."
+msgstr ""
+
+#: classes/integrations/class-lsx-search.php:126
+msgid "Layout"
+msgstr ""
+
+#: classes/integrations/class-lsx-search.php:130
+msgid "Follow the theme layout"
+msgstr ""
+
+#: classes/integrations/class-lsx-search.php:131
+msgid "1 column"
+msgstr ""
+
+#: classes/integrations/class-lsx-search.php:132
+msgid "2 columns / Content on right"
+msgstr ""
+
+#: classes/integrations/class-lsx-search.php:133
+msgid "2 columns / Content on left"
+msgstr ""
+
+#: classes/integrations/class-lsx-search.php:142
+msgid "Grid vs List"
+msgstr ""
+
+#: classes/integrations/class-lsx-search.php:157
+msgid "Collapse"
+msgstr ""
+
+#: classes/integrations/class-lsx-search.php:165
+msgid "Disable Sorting"
+msgstr ""
+
+#: classes/integrations/class-lsx-search.php:173
+msgid "Disable the Date Option"
+msgstr ""
+
+#: classes/integrations/class-lsx-search.php:181
+msgid "Display Clear Button"
+msgstr ""
+
+#: classes/integrations/class-lsx-search.php:189
+msgid "Display Result Count"
+msgstr ""
+
+#: classes/integrations/class-lsx-search.php:196
+msgid "Facets"
+msgstr ""
+
+#: classes/integrations/class-lsx-search.php:197
+msgid "Choose your filters above, these will display on the page. Edit your FacetWP Facets to change the display of each of them."
+msgstr ""
+
+#: classes/setup/class-business-directory.php:74
+msgctxt "post type general name"
+msgid "Listings"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:75
+msgctxt "post type general name"
+msgid "Listing"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:76
+msgid "Add Listings"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:77
+msgid "Add New Listing"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:78
+msgid "Edit Listing"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:79
+msgid "New Listing"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:80
+msgid "All Listings"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:81
+msgid "View Listing"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:82
+msgid "Search Listings"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:83
+msgid "No listings defined"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:84
+msgid "No listings in the trash"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:86
+msgid "Listings"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:127
+msgid "Search Industries"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:128, classes/setup/class-business-directory.php:135
+msgid "Industries"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:129
+msgid "Parent Industry"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:130
+msgid "Parent Industry:"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:131
+msgid "Edit Industry"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:132
+msgid "Update Industry"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:133
+msgid "Add New Industry"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:134
+msgid "New Industry"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:158
+msgid "Search Locations"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:159, classes/setup/class-business-directory.php:166
+msgid "Locations"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:160
+msgid "Parent Location"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:161
+msgid "Parent Location:"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:162
+msgid "Edit Location"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:163
+msgid "Update Location"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:164
+msgid "Add New Location"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:165
+msgid "New Location"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:202
+msgid "Business Address"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:209
+msgid "Complex Name / Business Park / Street Number"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:217
+msgid "Street Name"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:225
+msgid "Suburb"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:233
+msgid "City"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:241
+msgid "Postal Code"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:249
+msgid "Country"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:259
+msgid "State / Province"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:275
+msgid "Business Branches"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:286
+msgid "Branch {#}"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:287
+msgid "Add Another Branch"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:288
+msgid "Remove Branch"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:291
+msgid "Are you sure you want to remove thie Branch?"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:300
+msgid "Branch Name"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:309
+msgid "Branch Telephone"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:318
+msgid "Branch Email"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:327
+msgid "Branch Website"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:337
+msgid "Branch Google Maps Search"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:353
+msgid "Business Contact Details"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:360
+msgid "Contact Person"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:368
+msgid "Primary Email"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:370
+msgid "This is the email address that the enquiry form will send to."
+msgstr ""
+
+#: classes/setup/class-business-directory.php:377
+msgid "Secondary Email"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:385
+msgid "Primary Phone"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:393
+msgid "Secondary Phone"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:401
+msgid "Fax"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:417
+msgid "Skype Username"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:425
+msgid "Whatsapp Number"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:433
+msgid "Facebook"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:434
+msgid "Add your Facebook profile URL."
+msgstr ""
+
+#: classes/setup/class-business-directory.php:442
+msgid "Twitter"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:444
+msgid "Add your Twitter profile URL."
+msgstr ""
+
+#: classes/setup/class-business-directory.php:451
+msgid "LinkedIn"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:453
+msgid "Add your LinkedIn profile URL."
+msgstr ""
+
+#: classes/setup/class-business-directory.php:460
+msgid "Instagram"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:462
+msgid "Add your Instagram profile URL."
+msgstr ""
+
+#: classes/setup/class-business-directory.php:469
+msgid "Youtube"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:471
+msgid "Add your Youtube profile or channel URL."
+msgstr ""
+
+#: classes/setup/class-business-directory.php:478
+msgid "Pinterest"
+msgstr ""
+
+#: classes/setup/class-business-directory.php:480
+msgid "Add your Pinterest profile URL or any board you would like to highlight."
+msgstr ""
