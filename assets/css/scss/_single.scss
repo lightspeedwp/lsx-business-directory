@@ -76,10 +76,7 @@
 
 				.social-links {
 					margin-bottom: 20px;
-
-					@media only screen and (max-width: $mobile_width) {
-						margin-bottom: 10px;
-					}
+					margin-top: 20px;
 
 					>div {
 						margin-right: 24px;
@@ -137,7 +134,7 @@
 							margin-bottom: 8px;
 
 							&:last-child {
-								margin-bottom: 14px;
+								margin-bottom: 0px;
 							}
 						}
 					}
