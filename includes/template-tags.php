@@ -13,18 +13,16 @@
  * @subpackage  template-tags
  * @category    single
  *
- * @param       $id int
- * @param       $width int
- * @param       $height int
+ * @param       string $id
+ * @param       string $size int
+ * @return      string
  */
-function get_thumbnail_wrapped( $id, $width, $height ) {
-	$image_src = 'https://placehold.it/' . (string) $width . 'x' . (string) $height;
-
+function lsx_bd_get_thumbnail_wrapped( $id, $size = 'lsx-thumbnail-wide', $key = '' ) {
+	$image_src = \lsx\business_directory\includes\get_placeholder( $size );
 	if ( has_post_thumbnail( $id ) ) {
-		$image     = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'large' );
+		$image     = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), $size );
 		$image_src = ( strpos( $image[0], 'cover-logo.png' ) === false ) ? $image[0] : $image_src;
 	}
-
 	return $image_src;
 }
 
@@ -38,7 +36,7 @@ function get_thumbnail_wrapped( $id, $width, $height ) {
  * @param       $id int
  * @param       $tax String
  */
-function get_formatted_taxonomy_str( $id, $tax, $link = false ) {
+function lsx_bd_get_formatted_taxonomy_str( $id, $tax, $link = false ) {
 	$terms     = wp_get_post_terms( $id, $tax );
 	$terms_str = $link ? array() : '';
 
@@ -82,12 +80,30 @@ function lsx_business_template( $filename_base ) {
 }
 
 /**
- * Loads Related Business block teamplte.
+ * Returns the related listing block
  *
- * @return  void
+ * @param  boolean $echo
+ * @return string
  */
-function lsx_related_business() {
-	lsx_business_template( 'single-business-related-business' );
+function lsx_bd_related_listings( $echo = true, $atts = array() ) {
+	$lsx_bd        = lsx_business_directory();
+	$terms         = wp_get_post_terms( get_the_ID(), 'industry' );
+	$prepped_terms = array();
+	foreach ( $terms as $term ) {
+		array_push( $prepped_terms, $term->term_id );
+	}
+	$args = array(
+		'title_text' => esc_html__( 'You might also be interested in...', 'lsx-member-directory' ),
+		'carousel'   => true,
+		'taxonomy'   => 'industry',
+		'terms'      => $prepped_terms,
+		'orderby'    => 'rand',
+	);
+	if ( true === $echo ) {
+		echo wp_kses_post( $lsx_bd->frontend->widget->render( $args ) );
+	} else {
+		return $lsx_bd->frontend->widget->render( $args );
+	}
 }
 
 /**
@@ -121,4 +137,26 @@ function lsx_business_listing_title( $echo = true ) {
 	} else {
 		return $title;
 	}
+}
+
+/**
+ * This gets the term thunbnail from the taxonomies.
+ *
+ * @param string $term_id
+ * @param string $size
+ * @param boolean $echo
+ * @return string
+ */
+function lsx_bd_get_term_thumbnail( $term_id = '', $size = 'lsx-thumbnail-wide', $echo = false ) {
+	$image = '';
+	if ( '' !== $term_id ) {
+		$image_src = get_term_meta( $term_id, 'lsx_bd_thumbnail_id', true );
+		if ( false !== $image_src && '' !== $image_src ) {
+			$image = wp_get_attachment_image( $image_src, $size );
+			if ( false !== $echo ) {
+				echo wp_kses_post( $image );
+			}
+		}
+	}
+	return $image;
 }

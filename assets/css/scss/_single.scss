@@ -1,0 +1,244 @@
+// Single Template
+.single {
+	@media screen and (max-width: $mobile_width) {
+		.slick-arrow {
+			display: none !important;
+		}
+	}
+
+	.business-directory {
+		.business-header {
+			margin-bottom: 77px;
+
+			.business-content-left {
+				padding-left: 0px;
+				padding-right: 0px;
+				padding-bottom: 30px;
+				box-sizing: border-box;
+				border: 1px solid $border_color;
+				background-color: white;
+				box-shadow: 1px 2px 6px 0 rgba(155,155,155,0.45);
+
+				>.entry-image {
+					>img {
+						width: 100%;
+					}
+				}
+			}
+
+			.business-content-right {
+				padding-left: 26px;
+			}
+
+			@media screen and (max-width: $mobile_width) {
+				margin-bottom: 52px;
+				.business-content-left {
+					margin-bottom: 30px;
+				}
+
+				.business-content-right .entry-title {
+					margin-bottom: 12px !important;
+				}
+			}
+
+			@media screen and (max-width: $mobile_width) {
+				.business-content-right {
+					padding-left: 15px;
+				}
+			}
+
+			.entry-header-content {
+				h1.entry-title {
+					color: $title_color;
+					font-family: Lora;
+					font-size: 32px;
+					line-height: 39px;
+				}
+
+				h1.entry-title, h2.entry-title {
+					margin: {
+						top: 0;
+						bottom: 27px;
+					}
+
+					@media only screen and (max-width: 767px) {
+						font-size: 22px;
+					}
+
+					@media only screen and (min-width: 768px) and (max-width: 991px) {
+						font-size: 28px;
+					}
+
+					@media only screen and (max-width: $mobile_width) {
+						margin-top: 15px;
+					}
+				}
+
+				.social-links {
+					margin-bottom: 20px;
+					margin-top: 20px;
+
+					>div {
+						margin-right: 24px;
+
+						a {
+							color: $blue;
+							font-size: 22px;
+							line-height: 22px;
+							text-align: center;
+
+							&:hover {
+								color: $orange;
+							}
+						}
+					}
+				}
+
+				.business-description {
+					padding-top: 8px;
+				}
+
+				.entry-meta {
+					text-align: left;
+
+					@media screen and (max-width: $mobile_width) {
+						display: -webkit-box !important;
+						display: -ms-flexbox !important;
+						display: flex !important;
+						-webkit-box-orient: vertical !important;
+						-webkit-box-direction: normal !important;
+							-ms-flex-direction: column !important;
+								flex-direction: column !important;
+					}
+
+					.industry, .location {
+						padding-left: 0px;
+						padding-right: 0px;
+					}
+
+					@media screen and (max-width: $mobile_width) {
+						.industry {
+							margin-bottom: 15px;
+						}
+					}
+					
+
+					> div {
+						margin-bottom: 5px;
+
+						&:last-child {
+							margin-bottom: 20px;
+						}
+
+						@media screen and (max-width: $mobile_width) {
+							margin-bottom: 8px;
+
+							&:last-child {
+								margin-bottom: 0px;
+							}
+						}
+					}
+				}
+			}
+
+			.button {
+				padding-left: 14px;
+				padding-right: 15px;
+
+				button.btn.btn-primary {
+					margin-top: 14px;
+					width: 100%;
+				}
+			}
+		}
+
+		.contact-info {
+			padding-top: 30px;
+			padding-left: 0px;
+
+			.telephone, .contact, .email, .website, .skype, .whatsapp, .address {
+				padding-left: 15px;
+				padding-bottom: 15px;
+
+				i {
+					margin-right: 3px;
+				}
+
+				.col1 {
+					min-width: 141px;
+					color: $grey;
+					font-family: "Noto Sans";
+					font-size: 15px;
+					font-weight: bold;
+					line-height: 24px;
+				}
+
+				.col2 {
+					min-width: 151px;
+				}
+			}
+
+			.skype {
+				.col2 {
+					border-radius: 15px;
+					padding-left: 10px;
+					padding-right: 10px;
+					background-color: $skype_blue;
+
+					&:hover {
+						background-color: $skype_dark_blue;
+					}
+
+					a {
+						color: white;
+					}
+				}
+			}
+
+			.whatsapp {
+				.col2 {
+					border-radius: 15px;
+					padding-left: 10px;
+					padding-right: 10px;
+					background-color: $whatsapp_green;
+
+					&:hover {
+						background-color: $whatsapp_dark_green;
+					}
+
+					a {
+						color: white;
+					}
+				}
+			}
+		}
+
+		.related-businesses {
+			h2 {
+				text-align: center;
+			}
+
+			.related-business {
+				@media only screen and (max-width: 991px) {
+					margin-bottom: 30px;
+				}
+
+				h3 {
+					margin: 20px 0 0px;
+				}
+			}
+		}
+	}
+
+	.lsx-business-directory-shortcode {
+		.section-title.lsx-title {
+			margin-bottom: 2px;
+		}
+
+		@media screen and (max-width: $mobile_width) {
+			.section-title.lsx-title {
+				margin-bottom: 11px !important;
+			}
+		}
+	}
+}

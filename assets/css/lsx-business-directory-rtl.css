@@ -1,24 +1,15 @@
 /** LSX Starter Plugin styles. @package lsx-business-directory */
-/** Business Directory Banner Styles. @package lsx-business-directory */
-body.single-business-directory:not(.using-gutenberg):not(.banner-disabled) .business-banner .wp-block-cover, body.archive.post-type-archive-business-directory:not(.using-gutenberg):not(.banner-disabled) .business-banner .wp-block-cover { padding-top: 36px; min-height: 214px; }
-
-body.single-business-directory:not(.using-gutenberg):not(.banner-disabled) .business-banner .wp-block-cover .archive-title, body.archive.post-type-archive-business-directory:not(.using-gutenberg):not(.banner-disabled) .business-banner .wp-block-cover .archive-title { margin-top: 0; margin-bottom: 0; }
-
-body.single-business-directory:not(.using-gutenberg):not(.banner-disabled) .business-banner .wp-block-cover.has-background-img, body.archive.post-type-archive-business-directory:not(.using-gutenberg):not(.banner-disabled) .business-banner .wp-block-cover.has-background-img { min-height: 430px; }
-
-body.single-business-directory:not(.using-gutenberg):not(.banner-disabled) .business-banner .wp-block-cover.alignfull, body.archive.post-type-archive-business-directory:not(.using-gutenberg):not(.banner-disabled) .business-banner .wp-block-cover.alignfull { width: 100%; max-width: 100%; }
-
-body.single-business-directory:not(.using-gutenberg):not(.banner-disabled) #primary, body.single-business-directory:not(.using-gutenberg):not(.banner-disabled) #secondary, body.archive.post-type-archive-business-directory:not(.using-gutenberg):not(.banner-disabled) #primary, body.archive.post-type-archive-business-directory:not(.using-gutenberg):not(.banner-disabled) #secondary { margin-top: 0px; }
-
-body.archive.post-type-archive-business-directory:not(.using-gutenberg):not(.banner-disabled) .wrap.container .content.role > div:first-child#primary { margin-top: 0px; }
-
-@media (min-width: 320px) { body.lsx:not(.single-post):not(.page-has-banner) .archive-header-wrapper .archive-header { padding-bottom: 64px; } }
-
-@media (min-width: 992px) { body.post-type-archive-business-directory.banner-disabled .facetwp-sidebar.widget-area { margin-top: 8.4rem; }
-  body.post-type-archive-business-directory.banner-disabled .facetwp-sidebar.widget-area + .content-area { margin-top: 8.4rem; } }
-
-@CHARSET "UTF-8";
 /* General */
+#gmap { height: 500px; }
+
+body { /* For specificity */ }
+
+body.single-business-directory article h1.entry-title { border-bottom: 0 !important; }
+
+body.single-business-directory article .entry-meta { border-top: 0; border-bottom: 0; }
+
+body.single-business-directory article .entry-meta > * { display: block; }
+
 .lsx-hide { display: none !important; }
 
 .lsx-flex-row { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; }
@@ -33,137 +24,280 @@ body.archive.post-type-archive-business-directory:not(.using-gutenberg):not(.ban
 
 .lsx-flex-1 { -webkit-box-flex: 1; -ms-flex: 1; flex: 1; }
 
-.lsx-grid { display: grid; grid-template-columns: 265px 265px 265px; grid-auto-rows: 401px; grid-gap: 25px; }
+@media screen and (max-width: 991px) { .single .slick-arrow { display: none !important; } }
 
-/* Business Directory */
-.lsx-business-directory-wrapper .business-facets h3 { margin-top: 0; margin-bottom: 15px; padding-bottom: 5px; border-bottom: 1px solid #ddd; }
+.single .business-directory .business-header { margin-bottom: 77px; }
 
-.lsx-business-directory-wrapper .business-listings { padding-right: 30px; border-right: 1px solid #ddd; }
+.single .business-directory .business-header .business-content-left { padding-right: 0px; padding-left: 0px; padding-bottom: 30px; -webkit-box-sizing: border-box; box-sizing: border-box; border: 1px solid #EEEEEE; background-color: white; -webkit-box-shadow: -1px 2px 6px 0 rgba(155, 155, 155, 0.45); box-shadow: -1px 2px 6px 0 rgba(155, 155, 155, 0.45); }
 
-.lsx-business-directory-wrapper .business-listings .business-filters { padding-bottom: 15px; margin-bottom: 25px; border-bottom: 1px solid #ddd; }
+.single .business-directory .business-header .business-content-left > .entry-image > img { width: 100%; }
 
-.lsx-business-directory-wrapper .business-listings .business-filters .business-filters-top { margin-bottom: 20px; }
+.single .business-directory .business-header .business-content-right { padding-right: 26px; }
 
-.lsx-business-directory-wrapper .business-listings .business-filters .business-filters-top > div { display: inline-block; }
+@media screen and (max-width: 991px) { .single .business-directory .business-header { margin-bottom: 52px; }
+  .single .business-directory .business-header .business-content-left { margin-bottom: 30px; }
+  .single .business-directory .business-header .business-content-right .entry-title { margin-bottom: 12px !important; } }
 
-.lsx-business-directory-wrapper .business-listings .business-filters .business-filters-top > div.facetwp-sort { margin-left: 10px; }
+@media screen and (max-width: 991px) { .single .business-directory .business-header .business-content-right { padding-right: 15px; } }
 
-.lsx-business-directory-wrapper .business-listings .business-filters .business-filters-bottom > div { display: inline-block; }
+.single .business-directory .business-header .entry-header-content h1.entry-title { color: #4D4D4D; font-family: Lora; font-size: 32px; line-height: 39px; }
 
-.lsx-business-directory-wrapper .business-listings .business-filters .business-filters-bottom > div.facetwp-pager { float: left; }
+.single .business-directory .business-header .entry-header-content h1.entry-title, .single .business-directory .business-header .entry-header-content h2.entry-title { margin-top: 0; margin-bottom: 27px; }
 
-.lsx-business-directory-wrapper .business-listings .business { margin-bottom: 20px; }
+@media only screen and (max-width: 767px) { .single .business-directory .business-header .entry-header-content h1.entry-title, .single .business-directory .business-header .entry-header-content h2.entry-title { font-size: 22px; } }
 
-@media only screen and (max-width: 991px) { .lsx-business-directory-wrapper .business-listings .business { padding-bottom: 15px; border-bottom: 1px solid #ddd; } }
+@media only screen and (min-width: 768px) and (max-width: 991px) { .single .business-directory .business-header .entry-header-content h1.entry-title, .single .business-directory .business-header .entry-header-content h2.entry-title { font-size: 28px; } }
 
-.lsx-business-directory-wrapper .business-listings .business .business-content .business-title { margin-top: 0; margin-bottom: 15px; padding-bottom: 5px; border-bottom: 1px solid #ddd; }
+@media only screen and (max-width: 991px) { .single .business-directory .business-header .entry-header-content h1.entry-title, .single .business-directory .business-header .entry-header-content h2.entry-title { margin-top: 15px; } }
 
-@media only screen and (max-width: 991px) { .lsx-business-directory-wrapper .business-listings .business .business-content .business-title { margin-top: 15px; } }
+.single .business-directory .business-header .entry-header-content .social-links { margin-bottom: 20px; margin-top: 20px; }
 
-.lsx-business-directory-wrapper .business-listings .business .business-details .business-meta div { margin-bottom: 5px; }
+.single .business-directory .business-header .entry-header-content .social-links > div { margin-left: 24px; }
 
-.business-directory .business-header { margin-bottom: 40px; }
+.single .business-directory .business-header .entry-header-content .social-links > div a { color: #5693D9; font-size: 22px; line-height: 22px; text-align: center; }
 
-.business-directory .business-header .entry-header-content h2.entry-title { font-size: 40px; }
+.single .business-directory .business-header .entry-header-content .social-links > div a:hover { color: #F7AE00; }
 
-.business-directory .business-header .entry-header-content h1.entry-title, .business-directory .business-header .entry-header-content h2.entry-title { margin-top: 0; margin-bottom: 10px; }
+.single .business-directory .business-header .entry-header-content .business-description { padding-top: 8px; }
 
-@media only screen and (max-width: 767px) { .business-directory .business-header .entry-header-content h1.entry-title, .business-directory .business-header .entry-header-content h2.entry-title { font-size: 22px; } }
+.single .business-directory .business-header .entry-header-content .entry-meta { text-align: right; }
 
-@media only screen and (min-width: 768px) and (max-width: 991px) { .business-directory .business-header .entry-header-content h1.entry-title, .business-directory .business-header .entry-header-content h2.entry-title { font-size: 28px; } }
+@media screen and (max-width: 991px) { .single .business-directory .business-header .entry-header-content .entry-meta { display: -webkit-box !important; display: -ms-flexbox !important; display: flex !important; -webkit-box-orient: vertical !important; -webkit-box-direction: normal !important; -ms-flex-direction: column !important; flex-direction: column !important; } }
 
-@media only screen and (max-width: 991px) { .business-directory .business-header .entry-header-content h1.entry-title, .business-directory .business-header .entry-header-content h2.entry-title { margin-top: 15px; } }
+.single .business-directory .business-header .entry-header-content .entry-meta .industry, .single .business-directory .business-header .entry-header-content .entry-meta .location { padding-right: 0px; padding-left: 0px; }
 
-.business-directory .business-header .entry-header-content .entry-meta { text-align: right; }
+@media screen and (max-width: 991px) { .single .business-directory .business-header .entry-header-content .entry-meta .industry { margin-bottom: 15px; } }
 
-.business-directory .business-header .entry-header-content .entry-meta > div { margin-bottom: 5px; }
+.single .business-directory .business-header .entry-header-content .entry-meta > div { margin-bottom: 5px; }
 
-.business-directory .business-header .entry-header-content .entry-meta > div:last-child { margin-bottom: 20px; }
+.single .business-directory .business-header .entry-header-content .entry-meta > div:last-child { margin-bottom: 20px; }
 
-.business-directory .business-content-left, .business-directory .business-content-right { margin-bottom: 30px; }
+@media screen and (max-width: 991px) { .single .business-directory .business-header .entry-header-content .entry-meta > div { margin-bottom: 8px; }
+  .single .business-directory .business-header .entry-header-content .entry-meta > div:last-child { margin-bottom: 0px; } }
 
-@media (min-width: 992px) { .business-directory .business-content-left { float: right; } }
+.single .business-directory .business-header .button { padding-right: 14px; padding-left: 15px; }
 
-@media (min-width: 992px) { .business-directory .business-content-right { float: left; } }
+.single .business-directory .business-header .button button.btn.btn-primary { margin-top: 14px; width: 100%; }
 
-.business-directory .business-content-section { margin-bottom: 30px; }
+.single .business-directory .contact-info { padding-top: 30px; padding-right: 0px; }
 
-.business-directory .business-content-section .business-section-title { margin-top: 0; margin-bottom: 18px; padding-bottom: 8px; border-bottom: 1px solid #ddd; }
+.single .business-directory .contact-info .telephone, .single .business-directory .contact-info .contact, .single .business-directory .contact-info .email, .single .business-directory .contact-info .website, .single .business-directory .contact-info .skype, .single .business-directory .contact-info .whatsapp, .single .business-directory .contact-info .address { padding-right: 15px; padding-bottom: 15px; }
 
-.business-directory .business-content-section.branches .branch h4 { margin-top: 0; margin-bottom: 15px; padding-bottom: 5px; border-bottom: 1px solid #ddd; }
+.single .business-directory .contact-info .telephone i, .single .business-directory .contact-info .contact i, .single .business-directory .contact-info .email i, .single .business-directory .contact-info .website i, .single .business-directory .contact-info .skype i, .single .business-directory .contact-info .whatsapp i, .single .business-directory .contact-info .address i { margin-left: 3px; }
 
-.business-directory .business-content-section.branches .branch .branch-content .col-md-4 div { margin-bottom: 5px; }
+.single .business-directory .contact-info .telephone .col1, .single .business-directory .contact-info .contact .col1, .single .business-directory .contact-info .email .col1, .single .business-directory .contact-info .website .col1, .single .business-directory .contact-info .skype .col1, .single .business-directory .contact-info .whatsapp .col1, .single .business-directory .contact-info .address .col1 { min-width: 141px; color: #919191; font-family: "Noto Sans"; font-size: 15px; font-weight: bold; line-height: 24px; }
 
-.business-directory .business-content-section.promotions .promotion .promotion-thumbnail { float: right; margin: 0 0 30px 30px; }
+.single .business-directory .contact-info .telephone .col2, .single .business-directory .contact-info .contact .col2, .single .business-directory .contact-info .email .col2, .single .business-directory .contact-info .website .col2, .single .business-directory .contact-info .skype .col2, .single .business-directory .contact-info .whatsapp .col2, .single .business-directory .contact-info .address .col2 { min-width: 151px; }
 
-.business-directory .business-content-section.promotions .promotion .promotion-content h4 { margin: 0; }
+.single .business-directory .contact-info .skype .col2 { border-radius: 15px; padding-right: 10px; padding-left: 10px; background-color: #46B6EF; }
 
-.business-directory .business-content-section.promotions .promotion .promotion-content .promotion-price { margin: 10px 0; font-size: 18px; }
+.single .business-directory .contact-info .skype .col2:hover { background-color: #2281B1; }
 
-.business-directory .business-content-section.contact-form { padding: 20px 30px; border: 1px solid #ccc; text-align: center; border-radius: 3px; -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); }
+.single .business-directory .contact-info .skype .col2 a { color: white; }
 
-.business-directory .business-content-section.contact-form h4 { padding: 0; border: none; }
+.single .business-directory .contact-info .whatsapp .col2 { border-radius: 15px; padding-right: 10px; padding-left: 10px; background-color: #5AC352; }
 
-.business-directory .business-content-section.contact-form form input, .business-directory .business-content-section.contact-form form textarea { margin-bottom: 10px; }
+.single .business-directory .contact-info .whatsapp .col2:hover { background-color: #288B21; }
 
-.business-directory .business-content-section.contact-form form .btn { width: 100%; }
+.single .business-directory .contact-info .whatsapp .col2 a { color: white; }
 
-.business-directory .business-content-section.contact-info .telephone, .business-directory .business-content-section.contact-info .email, .business-directory .business-content-section.contact-info .website, .business-directory .business-content-section.contact-info .address { margin-bottom: 10px; }
+.single .business-directory .related-businesses h2 { text-align: center; }
 
-.business-directory .business-content-section.contact-info .telephone strong, .business-directory .business-content-section.contact-info .email strong, .business-directory .business-content-section.contact-info .website strong, .business-directory .business-content-section.contact-info .address strong { display: block; }
+@media only screen and (max-width: 991px) { .single .business-directory .related-businesses .related-business { margin-bottom: 30px; } }
 
-.business-directory .related-businesses h2 { text-align: center; }
+.single .business-directory .related-businesses .related-business h3 { margin: 20px 0 0px; }
 
-@media only screen and (max-width: 991px) { .business-directory .related-businesses .related-business { margin-bottom: 30px; } }
+.single .lsx-business-directory-shortcode .section-title.lsx-title { margin-bottom: 2px; }
 
-.business-directory .related-businesses .related-business h3 { margin: 20px 0 0px; }
+@media screen and (max-width: 991px) { .single .lsx-business-directory-shortcode .section-title.lsx-title { margin-bottom: 11px !important; } }
 
-.archive article { margin-bottom: 28px; }
+.archive .facetwp-filter-title, .archive .lsx-search-title, .search .facetwp-filter-title, .search .lsx-search-title { font-size: 20px; line-height: 24px; }
 
-.archive .col-xs-1, .archive .col-sm-1, .archive .col-md-1, .archive .col-lg-1, .archive .col-xs-2, .archive .col-sm-2, .archive .col-md-2, .archive .col-lg-2, .archive .col-xs-3, .archive .col-sm-3, .archive .col-md-3, .archive .col-lg-3, .archive .col-xs-4, .archive .col-sm-4, .archive .col-md-4, .archive .col-lg-4, .archive .col-xs-5, .archive .col-sm-5, .archive .col-md-5, .archive .col-lg-5, .archive .col-xs-6, .archive .col-sm-6, .archive .col-md-6, .archive .col-lg-6, .archive .col-xs-7, .archive .col-sm-7, .archive .col-md-7, .archive .col-lg-7, .archive .col-xs-8, .archive .col-sm-8, .archive .col-md-8, .archive .col-lg-8, .archive .col-xs-9, .archive .col-sm-9, .archive .col-md-9, .archive .col-lg-9, .archive .col-xs-10, .archive .col-sm-10, .archive .col-md-10, .archive .col-lg-10, .archive .col-xs-11, .archive .col-sm-11, .archive .col-md-11, .archive .col-lg-11, .archive .col-xs-12, .archive .col-sm-12, .archive .col-md-12, .archive .col-lg-12 { padding-right: 0px; padding-left: 0px; }
+.archive .facetwp-sort, .search .facetwp-sort { margin-left: 22px; }
 
-.archive .fas { margin-left: 5px; }
+.archive .facetwp-sort .facetwp-sort-select, .search .facetwp-sort .facetwp-sort-select { right: 32px !important; bottom: -1px; line-height: 14px; }
 
-.archive .row { margin-right: 0px; margin-left: 0px; }
+.archive .facetwp-type-checkboxes .is-child, .search .facetwp-type-checkboxes .is-child { line-height: 30px; }
 
-.archive .business.row-layout { -webkit-box-sizing: border-box; box-sizing: border-box; border: 1px solid #EEEEEE; background-color: #FFFFFF; -webkit-box-shadow: -1px 2px 6px 0 rgba(155, 155, 155, 0.45); box-shadow: -1px 2px 6px 0 rgba(155, 155, 155, 0.45); padding-left: 10px; padding-bottom: 10px; }
+.archive .facetwp-type-checkboxes .is-child.facetwp-checkbox:before, .search .facetwp-type-checkboxes .is-child.facetwp-checkbox:before { top: 8px; }
 
-.archive .business.row-layout .business-content { padding-right: 20px; }
+.archive .search-submit.btn, .search .search-submit.btn { background-color: #418AD0; -webkit-box-shadow: -1px 1px 0 0 #27619B; box-shadow: -1px 1px 0 0 #27619B; }
 
-.archive .business.row-layout .business-content .business-details h4.business-title { margin-top: 14px; margin-bottom: 9px; }
+.archive #secondary.facetwp-sidebar .facetwp-item.parent-facetwp-facet-post_search, .search #secondary.facetwp-sidebar .facetwp-item.parent-facetwp-facet-post_search { background: transparent; padding: 0px; margin-top: 0; }
 
-.archive .business.row-layout .business-content .business-details .business-meta > div { margin-bottom: 10px; }
+.archive #secondary.facetwp-sidebar .facetwp-item.parent-facetwp-facet-post_search .lsx-search-title, .search #secondary.facetwp-sidebar .facetwp-item.parent-facetwp-facet-post_search .lsx-search-title { display: none; }
 
-.archive .business.row-layout .business-excerpt { border-top: 1px solid #ddd; padding-top: 10px; padding-bottom: 4px; }
+.archive .facetwp-sidebar.widget-area .row:nth-child(1) .facetwp-facet, .search .facetwp-sidebar.widget-area .row:nth-child(1) .facetwp-facet { margin-top: 0px !important; }
 
-.archive .business.row-layout .business-excerpt .read-more-link { padding-top: 10px; }
+.archive article, .search article { margin-bottom: 25px; }
 
-.archive .business.row-layout .business-excerpt .read-more-link a { text-transform: uppercase; }
+.archive .fa, .search .fa { margin-left: 5px; }
 
-.archive .business.row-layout .business-excerpt .read-more-link a .fas { margin-right: 5px; }
+.archive .archive-plan, .search .archive-plan { display: -ms-flexbox; display: -webkit-box; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; }
 
-.archive .business.col-layout { background-color: #FFFFFF; height: 401px; width: 265px; }
+/* Archive Template Row Layout */
+.archive .business-row-wrapper, .search .business-row-wrapper { -webkit-box-sizing: border-box; box-sizing: border-box; border: 1px solid #EEEEEE; background-color: white; -webkit-box-shadow: -1px 2px 6px 0 rgba(155, 155, 155, 0.45); box-shadow: -1px 2px 6px 0 rgba(155, 155, 155, 0.45); padding-right: 0px; padding-left: 30px; margin-bottom: 25px; }
 
-.archive .business.col-layout .business-thumbnail { height: 150px; }
+@media screen and (max-width: 991px) { .archive .business-row-wrapper, .search .business-row-wrapper { padding-right: 0px; padding-left: 0px; } }
 
-.archive .business.col-layout .business-content { height: 206px; padding-right: 15px; padding-left: 15px; }
+.archive .business-row-wrapper .business-content, .search .business-row-wrapper .business-content { padding-right: 20px; }
 
-.archive .business.col-layout .business-content .business-details .business-title { margin-top: 19px; margin-bottom: 14px; border-bottom: none; }
+@media screen and (max-width: 991px) { .archive .business-row-wrapper .business-content, .search .business-row-wrapper .business-content { padding-right: 15px; } }
 
-.archive .business.col-layout .business-content .business-details .category, .archive .business.col-layout .business-content .business-details .region, .archive .business.col-layout .business-content .business-details .telephone, .archive .business.col-layout .business-content .business-details .email { margin-bottom: 2px; }
+@media screen and (max-width: 991px) { .archive .business-row-wrapper .business-content .business-details, .search .business-row-wrapper .business-content .business-details { padding-right: 25px; padding-left: 25px; } }
 
-.archive .business.col-layout .business-button button { width: 100%; height: 45px; background-color: #418AD0; border: none; }
+.archive .business-row-wrapper .business-content .business-details h4.business-title, .search .business-row-wrapper .business-content .business-details h4.business-title { color: #4D4D4D; margin-top: 13px; margin-bottom: 7px; }
 
-.archive .business.col-layout .business-button button a { color: white; }
+.archive .business-row-wrapper .business-content .business-details h4.business-title a, .search .business-row-wrapper .business-content .business-details h4.business-title a { color: #4D4D4D; }
 
-.archive .business.col-layout .business-button button a .fas { margin-right: 5px; }
+.archive .business-row-wrapper .business-content .business-details h4.business-title a:hover, .search .business-row-wrapper .business-content .business-details h4.business-title a:hover { color: #F7AE00; }
 
-#gmap { height: 500px; }
+.archive .business-row-wrapper .business-content .business-details .industry i.fa, .archive .business-row-wrapper .business-content .business-details .location i.fa, .search .business-row-wrapper .business-content .business-details .industry i.fa, .search .business-row-wrapper .business-content .business-details .location i.fa { margin-left: 0px; }
 
-body { /* For specificity */ }
+.archive .business-row-wrapper .business-content .business-details .industry, .archive .business-row-wrapper .business-content .business-details .location, .archive .business-row-wrapper .business-content .business-details .telephone, .archive .business-row-wrapper .business-content .business-details .email, .search .business-row-wrapper .business-content .business-details .industry, .search .business-row-wrapper .business-content .business-details .location, .search .business-row-wrapper .business-content .business-details .telephone, .search .business-row-wrapper .business-content .business-details .email { padding-right: 0px; padding-left: 0px; padding-bottom: 1px; }
 
-body.single-business-directory article h1.entry-title { border-bottom: 0 !important; }
+.archive .business-row-wrapper .business-content .business-details .industry span i, .archive .business-row-wrapper .business-content .business-details .industry span strong, .archive .business-row-wrapper .business-content .business-details .industry span a, .archive .business-row-wrapper .business-content .business-details .location span i, .archive .business-row-wrapper .business-content .business-details .location span strong, .archive .business-row-wrapper .business-content .business-details .location span a, .archive .business-row-wrapper .business-content .business-details .telephone span i, .archive .business-row-wrapper .business-content .business-details .telephone span strong, .archive .business-row-wrapper .business-content .business-details .telephone span a, .archive .business-row-wrapper .business-content .business-details .email span i, .archive .business-row-wrapper .business-content .business-details .email span strong, .archive .business-row-wrapper .business-content .business-details .email span a, .search .business-row-wrapper .business-content .business-details .industry span i, .search .business-row-wrapper .business-content .business-details .industry span strong, .search .business-row-wrapper .business-content .business-details .industry span a, .search .business-row-wrapper .business-content .business-details .location span i, .search .business-row-wrapper .business-content .business-details .location span strong, .search .business-row-wrapper .business-content .business-details .location span a, .search .business-row-wrapper .business-content .business-details .telephone span i, .search .business-row-wrapper .business-content .business-details .telephone span strong, .search .business-row-wrapper .business-content .business-details .telephone span a, .search .business-row-wrapper .business-content .business-details .email span i, .search .business-row-wrapper .business-content .business-details .email span strong, .search .business-row-wrapper .business-content .business-details .email span a { font-size: 13px; line-height: 24px; }
 
-body.single-business-directory article .entry-meta { border-top: 0; border-bottom: 0; }
+.archive .business-row-wrapper .business-content .business-details .business-meta > div, .search .business-row-wrapper .business-content .business-details .business-meta > div { margin-bottom: 6px; }
 
-body.single-business-directory article .entry-meta > * { display: block; }
+.archive .business-row-wrapper .business-content .business-excerpt, .search .business-row-wrapper .business-content .business-excerpt { border-top: 1px solid #DDDDDD; color: #4A4A4A; padding-top: 10px; padding-bottom: 4px; margin-top: 1px; }
+
+.archive .business-row-wrapper .business-content .business-excerpt .read-more-link, .search .business-row-wrapper .business-content .business-excerpt .read-more-link { padding-top: 10px; }
+
+.archive .business-row-wrapper .business-content .business-excerpt .read-more-link a, .search .business-row-wrapper .business-content .business-excerpt .read-more-link a { text-transform: uppercase; }
+
+.archive .business-row-wrapper .business-content .business-excerpt .read-more-link a .fa, .search .business-row-wrapper .business-content .business-excerpt .read-more-link a .fa { margin-right: 5px; }
+
+/* Archive Template Column Layout */
+.archive .business.col-layout, .single .business.col-layout, .search .business.col-layout, .lsx-business-directory-shortcode .business.col-layout { position: relative; }
+
+.archive .business.col-layout .business-thumbnail, .single .business.col-layout .business-thumbnail, .search .business.col-layout .business-thumbnail, .lsx-business-directory-shortcode .business.col-layout .business-thumbnail { background-color: white; }
+
+.archive .business.col-layout .business-thumbnail img, .single .business.col-layout .business-thumbnail img, .search .business.col-layout .business-thumbnail img, .lsx-business-directory-shortcode .business.col-layout .business-thumbnail img { width: 100%; }
+
+.archive .business.col-layout .business-content, .single .business.col-layout .business-content, .search .business.col-layout .business-content, .lsx-business-directory-shortcode .business.col-layout .business-content { background-color: white; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; padding: 19px 0px 19px 0px; }
+
+.archive .business.col-layout .business-content .business-details .business-title, .single .business.col-layout .business-content .business-details .business-title, .search .business.col-layout .business-content .business-details .business-title, .lsx-business-directory-shortcode .business.col-layout .business-content .business-details .business-title { padding: 0px 15px 15px 15px; }
+
+.archive .business.col-layout .business-content .business-details .business-title h4, .single .business.col-layout .business-content .business-details .business-title h4, .search .business.col-layout .business-content .business-details .business-title h4, .lsx-business-directory-shortcode .business.col-layout .business-content .business-details .business-title h4 { margin-bottom: 0px; }
+
+.archive .business.col-layout .business-content .business-details .business-title h4 a, .single .business.col-layout .business-content .business-details .business-title h4 a, .search .business.col-layout .business-content .business-details .business-title h4 a, .lsx-business-directory-shortcode .business.col-layout .business-content .business-details .business-title h4 a { color: #4D4D4D; }
+
+.archive .business.col-layout .business-content .business-details .business-title h4 a:hover, .single .business.col-layout .business-content .business-details .business-title h4 a:hover, .search .business.col-layout .business-content .business-details .business-title h4 a:hover, .lsx-business-directory-shortcode .business.col-layout .business-content .business-details .business-title h4 a:hover { color: #F7AE00; }
+
+.archive .business.col-layout .business-content .industry, .archive .business.col-layout .business-content .location, .archive .business.col-layout .business-content .telephone, .archive .business.col-layout .business-content .email, .single .business.col-layout .business-content .industry, .single .business.col-layout .business-content .location, .single .business.col-layout .business-content .telephone, .single .business.col-layout .business-content .email, .search .business.col-layout .business-content .industry, .search .business.col-layout .business-content .location, .search .business.col-layout .business-content .telephone, .search .business.col-layout .business-content .email, .lsx-business-directory-shortcode .business.col-layout .business-content .industry, .lsx-business-directory-shortcode .business.col-layout .business-content .location, .lsx-business-directory-shortcode .business.col-layout .business-content .telephone, .lsx-business-directory-shortcode .business.col-layout .business-content .email { padding: 0px 17px 1px 15px; }
+
+.archive .business.col-layout .business-content .industry span i, .archive .business.col-layout .business-content .industry span strong, .archive .business.col-layout .business-content .industry span a, .archive .business.col-layout .business-content .location span i, .archive .business.col-layout .business-content .location span strong, .archive .business.col-layout .business-content .location span a, .archive .business.col-layout .business-content .telephone span i, .archive .business.col-layout .business-content .telephone span strong, .archive .business.col-layout .business-content .telephone span a, .archive .business.col-layout .business-content .email span i, .archive .business.col-layout .business-content .email span strong, .archive .business.col-layout .business-content .email span a, .single .business.col-layout .business-content .industry span i, .single .business.col-layout .business-content .industry span strong, .single .business.col-layout .business-content .industry span a, .single .business.col-layout .business-content .location span i, .single .business.col-layout .business-content .location span strong, .single .business.col-layout .business-content .location span a, .single .business.col-layout .business-content .telephone span i, .single .business.col-layout .business-content .telephone span strong, .single .business.col-layout .business-content .telephone span a, .single .business.col-layout .business-content .email span i, .single .business.col-layout .business-content .email span strong, .single .business.col-layout .business-content .email span a, .search .business.col-layout .business-content .industry span i, .search .business.col-layout .business-content .industry span strong, .search .business.col-layout .business-content .industry span a, .search .business.col-layout .business-content .location span i, .search .business.col-layout .business-content .location span strong, .search .business.col-layout .business-content .location span a, .search .business.col-layout .business-content .telephone span i, .search .business.col-layout .business-content .telephone span strong, .search .business.col-layout .business-content .telephone span a, .search .business.col-layout .business-content .email span i, .search .business.col-layout .business-content .email span strong, .search .business.col-layout .business-content .email span a, .lsx-business-directory-shortcode .business.col-layout .business-content .industry span i, .lsx-business-directory-shortcode .business.col-layout .business-content .industry span strong, .lsx-business-directory-shortcode .business.col-layout .business-content .industry span a, .lsx-business-directory-shortcode .business.col-layout .business-content .location span i, .lsx-business-directory-shortcode .business.col-layout .business-content .location span strong, .lsx-business-directory-shortcode .business.col-layout .business-content .location span a, .lsx-business-directory-shortcode .business.col-layout .business-content .telephone span i, .lsx-business-directory-shortcode .business.col-layout .business-content .telephone span strong, .lsx-business-directory-shortcode .business.col-layout .business-content .telephone span a, .lsx-business-directory-shortcode .business.col-layout .business-content .email span i, .lsx-business-directory-shortcode .business.col-layout .business-content .email span strong, .lsx-business-directory-shortcode .business.col-layout .business-content .email span a { font-size: 13px; line-height: 24px; }
+
+.archive .business.col-layout .business-content .industry i, .archive .business.col-layout .business-content .location i, .archive .business.col-layout .business-content .telephone i, .archive .business.col-layout .business-content .email i, .single .business.col-layout .business-content .industry i, .single .business.col-layout .business-content .location i, .single .business.col-layout .business-content .telephone i, .single .business.col-layout .business-content .email i, .search .business.col-layout .business-content .industry i, .search .business.col-layout .business-content .location i, .search .business.col-layout .business-content .telephone i, .search .business.col-layout .business-content .email i, .lsx-business-directory-shortcode .business.col-layout .business-content .industry i, .lsx-business-directory-shortcode .business.col-layout .business-content .location i, .lsx-business-directory-shortcode .business.col-layout .business-content .telephone i, .lsx-business-directory-shortcode .business.col-layout .business-content .email i { margin-left: 0px; }
+
+.archive .business.col-layout .business-button button, .single .business.col-layout .business-button button, .search .business.col-layout .business-button button, .lsx-business-directory-shortcode .business.col-layout .business-button button { width: 100%; height: 45px; background-color: #418AD0; border: none; }
+
+.archive .business.col-layout .business-button button a, .single .business.col-layout .business-button button a, .search .business.col-layout .business-button button a, .lsx-business-directory-shortcode .business.col-layout .business-button button a { color: white; }
+
+.archive .business.col-layout .business-button button a .fa, .single .business.col-layout .business-button button a .fa, .search .business.col-layout .business-button button a .fa, .lsx-business-directory-shortcode .business.col-layout .business-button button a .fa { margin-right: 5px; }
+
+/** Business Directory Banner Styles. @package lsx-business-directory */
+body.lsx-business-directory-page:not(.using-gutenberg):not(.banner-disabled) .business-banner .wp-block-cover { padding-top: 36px; min-height: 214px; }
+
+body.lsx-business-directory-page:not(.using-gutenberg):not(.banner-disabled) .business-banner .wp-block-cover .archive-title { margin-top: 0; margin-bottom: 0; }
+
+body.lsx-business-directory-page:not(.using-gutenberg):not(.banner-disabled) .business-banner .wp-block-cover.has-background-img { min-height: 430px; }
+
+body.lsx-business-directory-page:not(.using-gutenberg):not(.banner-disabled) .business-banner .wp-block-cover.alignfull { width: 100%; max-width: 100%; }
+
+body.lsx-business-directory-page:not(.using-gutenberg):not(.banner-disabled) #primary, body.lsx-business-directory-page:not(.using-gutenberg):not(.banner-disabled) #secondary { margin-top: 0px; }
+
+body.lsx-business-directory-page.archive:not(.using-gutenberg):not(.banner-disabled) .wrap.container .content.role > div:first-child#primary, body.lsx-business-directory-page.search:not(.using-gutenberg):not(.banner-disabled) .wrap.container .content.role > div:first-child#primary { margin-top: 0px; }
+
+@media (min-width: 320px) { body.lsx-business-directory-page.lsx:not(.single-post):not(.page-has-banner) .archive-header-wrapper .archive-header { padding-bottom: 64px; } }
+
+@media (min-width: 992px) { body.lsx-business-directory-page.archive.banner-disabled .facetwp-sidebar.widget-area, body.lsx-business-directory-page.search.banner-disabled .facetwp-sidebar.widget-area { margin-top: 8.4rem; }
+  body.lsx-business-directory-page.archive.banner-disabled .facetwp-sidebar.widget-area + .content-area, body.lsx-business-directory-page.search.banner-disabled .facetwp-sidebar.widget-area + .content-area { margin-top: 8.4rem; } }
+
+/* Slider */
+.lsx-business-directory-slider { position: relative; display: block; -webkit-box-sizing: border-box; box-sizing: border-box; -webkit-touch-callout: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; -ms-touch-action: pan-y; touch-action: pan-y; -webkit-tap-highlight-color: transparent; }
+
+.lsx-business-directory-slider .slick-track { position: relative; right: 0; top: 0; display: block; }
+
+.lsx-business-directory-slider .slick-track:before, .lsx-business-directory-slider .slick-track:after { content: ""; display: table; }
+
+.lsx-business-directory-slider .slick-track:after { clear: both; }
+
+.lsx-business-directory-slider .slick-list { position: relative; overflow: hidden; display: block; margin: 0; padding: 0; }
+
+.lsx-business-directory-slider .slick-list.dragging { cursor: pointer; cursor: hand; }
+
+.lsx-business-directory-slider .slick-list:focus { outline: none; }
+
+.lsx-business-directory-slider .slick-track, .lsx-business-directory-slider .slick-list { -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
+
+.lsx-business-directory-slider .slick-slide { float: right; height: 100%; min-height: 1px; display: none; padding: 0 15px; margin-top: 4.25rem; }
+
+.lsx-business-directory-slider .slick-slide img { display: block; }
+
+.lsx-business-directory-slider .slick-slide.slick-loading img, .lsx-business-directory-slider .slick-slide.dragging img { display: none; }
+
+[dir="rtl"] .lsx-business-directory-slider .slick-slide { float: left; }
+
+.lsx-business-directory-slider.slick-initialized .slick-slide { display: block; }
+
+.lsx-business-directory-slider.slick-loading .slick-slide { visibility: hidden; }
+
+.lsx-business-directory-slider.slick-loading .slick-track { visibility: hidden; }
+
+.lsx-business-directory-slider.slick-vertical .slick-slide { display: block; height: auto; border: 1px solid transparent; }
+
+.lsx-business-directory-slider .slick-arrow { opacity: .75; }
+
+.lsx-business-directory-slider .slick-arrow:hover { opacity: 1; }
+
+.lsx-business-directory-slider .slick-arrow { background: transparent; border-radius: 50%; border-style: solid; border-width: 2px; font: 0/0 a; height: 4rem; margin-top: calc((2.25rem - 17px) / 2); padding: 0; position: absolute; text-shadow: none; top: 50%; -webkit-transform: translateY(-50%); transform: translateY(-50%); -webkit-transition: border 300ms ease; transition: border 300ms ease; width: 4rem; z-index: 3; }
+
+.lsx-business-directory-slider .slick-arrow:before { display: block; font-family: 'FontAwesome'; font-size: 3rem; line-height: 1; position: absolute; text-rendering: auto; top: 47%; -webkit-transform: translateY(-50%); transform: translateY(-50%); -webkit-transition: color 300ms ease; transition: color 300ms ease; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+.lsx-business-directory-slider .slick-arrow.slick-disabled { cursor: not-allowed; }
+
+.lsx-business-directory-slider .slick-arrow.slick-prev:before { content: '\f104'; right: 1.1rem; }
+
+.lsx-business-directory-slider .slick-arrow.slick-next:before { content: '\f105'; right: 1.5rem; }
+
+.lsx-business-directory-slider .slick-dots:not(.dropdown-menu) { -webkit-box-align: center; -ms-flex-align: center; align-items: center; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-flow: row wrap; flex-flow: row wrap; height: auto; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; list-style: none; margin: 2rem 0 0; padding: 0; }
+
+.lsx-business-directory-slider .slick-dots:not(.dropdown-menu) > li { line-height: 1; padding: 5px; }
+
+@media (min-width: 992px) { .lsx-business-directory-slider .slick-dots:not(.dropdown-menu) > li { padding: 0 7.5px; } }
+
+.lsx-business-directory-slider .slick-dots:not(.dropdown-menu) > li > button { background: transparent; border-style: solid; border-width: 1px; font: 0/0 a; height: 12px; -webkit-transition: all 300ms ease-in-out; transition: all 300ms ease-in-out; width: 4rem; }
+
+@media (min-width: 992px) { .lsx-business-directory-slider .slick-dots:not(.dropdown-menu) > li > button { height: 6px; } }
+
+.lsx-business-directory-slider .slick-dots:not(.dropdown-menu) > li.slick-active > button { background-color: #4a4a4a; }
+
+.lsx-business-directory-slider .slick-arrow { border-color: #374750; }
+
+.lsx-business-directory-slider .slick-arrow.slick-prev { right: -4rem; }
+
+.lsx-business-directory-slider .slick-arrow.slick-next { left: -4rem; }
+
+.lsx-business-directory-slider .slick-arrow.slick-hidden { display: none; }
+
+@media (min-width: 992px) { .lsx-business-directory-slider { margin: 0 auto; width: 100%; }
+  .lsx-business-directory-slider.slick-has-arrows { width: calc(100% - 8rem); } }
+
+@media (min-width: 1280px) { .lsx-business-directory-slider { margin: 0 -15px; width: calc(100% + 30px); }
+  .lsx-business-directory-slider.slick-has-arrows { width: calc(100% + 30px); } }
+
+.lsx-business-directory-slider.slider-disabled { overflow: hidden; }
+
+.slick-lightbox-close { left: 32px; top: 32px; }
+
+.slick-lightbox-slick-caption { display: inline-block; }
+
+.lsx-business-directory-shortcode .lsx-business-directory-slider article.business.col-layout .business-thumbnail { min-height: 168px; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; }
+
+.lsx-business-directory-shortcode .lsx-business-directory-slider article.business.col-layout .business-content { padding: 19px 0px 20px 15px; }
+
+body.archive.lsx-body-grid-layout .post-wrapper, body.search-results.lsx-body-grid-layout .post-wrapper { margin-right: -15px; margin-left: -15px; }
+
+@CHARSET "UTF-8";

@@ -25,6 +25,34 @@ class Integrations {
 	public $lsx_search;
 
 	/**
+	 * Holds the LSX WPForms integration functions.
+	 *
+	 * @var object \lsx\business_directory\classes\integrations\WPForms();
+	 */
+	public $wpforms;
+
+	/**
+	 * Holds the LSX Ninja Forms integration functions.
+	 *
+	 * @var object \lsx\business_directory\classes\Frontend();
+	 */
+	public $lsx_ninja;
+
+	/**
+	 * Holds the Gravity Forms integration functions.
+	 *
+	 * @var object \lsx\business_directory\classes\integrations\Gravity_Forms();
+	 */
+	public $gravity_forms;
+
+	/**
+	 * Holds the Caldera Forms integration functions.
+	 *
+	 * @var object \lsx\business_directory\classes\integrations\Caldera_Forms();
+	 */
+	public $caldera_forms;
+
+	/**
 	 * This holds the current facet info.
 	 *
 	 * @var array
@@ -38,6 +66,18 @@ class Integrations {
 		// Load plugin settings related functionality.
 		require_once LSX_BD_PATH . '/classes/integrations/class-lsx-search.php';
 		$this->lsx_search = integrations\LSX_Search::get_instance();
+
+		require_once LSX_BD_PATH . '/classes/integrations/class-wpforms.php';
+		$this->wpforms = integrations\WPForms::get_instance();
+
+		require_once LSX_BD_PATH . '/classes/integrations/class-gravity-forms.php';
+		$this->gravity_forms = integrations\Gravity_Forms::get_instance();
+
+		require_once LSX_BD_PATH . '/classes/integrations/class-ninja-forms.php';
+		$this->ninja_forms = integrations\Ninja_Forms::get_instance();
+
+		require_once LSX_BD_PATH . '/classes/integrations/class-caldera-forms.php';
+		$this->caldera_forms = integrations\Caldera_Forms::get_instance();
 	}
 
 	/**

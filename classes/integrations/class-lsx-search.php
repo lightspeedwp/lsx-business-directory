@@ -25,6 +25,13 @@ class LSX_Search {
 	public $prefix = '';
 
 	/**
+	 * This hold the current layout chosen via the settings.
+	 *
+	 * @var string
+	 */
+	public $current_layout = '';
+
+	/**
 	 * Contructor
 	 */
 	public function __construct() {
@@ -33,6 +40,8 @@ class LSX_Search {
 		add_action( 'lsx_bd_settings_section_archive', array( $this, 'configure_settings_search_archive_fields' ), 15, 2 );
 
 		add_action( 'wp', array( $this, 'maybe_enqueue_search_filters' ), 5 );
+		add_filter( 'lsx_get_template_part', array( $this, 'search_content_part_filter' ), 10, 1 );
+		add_filter( 'lsx_post_wrapper_class', array( $this, 'lsx_post_wrapper_class' ), 10, 1 );
 	}
 
 	/**
@@ -92,15 +101,25 @@ class LSX_Search {
 						'description' => esc_html__( 'If you have created an supplemental engine via SearchWP, then you can control the search settings here.', 'lsx-business-directory' ),
 					)
 				);
+				do_action( 'lsx_bd_settings_section_engine', $cmb, 'top' );
+				$cmb->add_field(
+					array(
+						'name'        => esc_html__( 'Enable Search Filters', 'lsx-business-directory' ),
+						'id'          => $section . '_search_enable',
+						'description' => esc_html__( 'Display FacetWP filters on your search results page.', 'lsx-business-directory' ),
+						'type'        => 'checkbox',
+					)
+				);
+			} else {
+				$cmb->add_field(
+					array(
+						'name'        => esc_html__( 'Enable Search Filters', 'lsx-business-directory' ),
+						'id'          => $section . '_search_enable',
+						'description' => esc_html__( 'Display FacetWP filters on your listing archive pages.', 'lsx-business-directory' ),
+						'type'        => 'checkbox',
+					)
+				);
 			}
-
-			$cmb->add_field(
-				array(
-					'name' => esc_html__( 'Enable Search', 'lsx-business-directory' ),
-					'id'   => $section . '_search_enable',
-					'type' => 'checkbox',
-				)
-			);
 
 			$cmb->add_field(
 				array(
@@ -172,16 +191,24 @@ class LSX_Search {
 					'type' => 'checkbox',
 				)
 			);
-
 			$cmb->add_field(
 				array(
 					'name'        => esc_html__( 'Facets', 'lsx-business-directory' ),
-					'description' => esc_html__( 'These are the filters that will appear on your page.', 'lsx-business-directory' ),
+					'description' => esc_html__( 'Choose your filters above, these will display on the page. Edit your FacetWP Facets to change the display of each of them.', 'lsx-business-directory' ),
 					'id'          => $section . '_search_facets',
 					'type'        => 'multicheck',
 					'options'     => $this->facet_data,
 				)
 			);
+			if ( 'engine' === $section ) {
+				do_action( 'lsx_bd_settings_section_engine', $cmb, 'bottom' );
+				$cmb->add_field(
+					array(
+						'id'   => 'settings_search_closing',
+						'type' => 'tab_closing',
+					)
+				);
+			}
 		}
 	}
 
@@ -220,7 +247,7 @@ class LSX_Search {
 	 * @return boolean
 	 */
 	public function lsx_search_enabled( $enabled = false ) {
-		if ( is_post_type_archive( 'business-directory' ) || is_tax( array( 'lsx-bd-industry', 'lsx-bd-region' ) ) ) {
+		if ( is_post_type_archive( 'business-directory' ) || is_tax( array( 'industry', 'location' ) ) || is_search() ) {
 			$is_enabled = lsx_bd_get_option( 'archive_search_enable', false );
 			if ( 'on' === $is_enabled ) {
 				$enabled = true;
@@ -236,7 +263,7 @@ class LSX_Search {
 	 * @return string
 	 */
 	public function lsx_search_prefix( $prefix = '' ) {
-		if ( is_post_type_archive( 'business-directory' ) || is_tax( array( 'lsx-bd-industry', 'lsx-bd-region' ) ) ) {
+		if ( is_post_type_archive( 'business-directory' ) || is_tax( array( 'industry', 'location' ) ) || is_search() ) {
 			$prefix = 'archive';
 		}
 		return $prefix;
@@ -249,17 +276,22 @@ class LSX_Search {
 	 * @return array
 	 */
 	public function lsx_search_options( $options = array() ) {
-		if ( is_post_type_archive( 'business-directory' ) || is_tax( array( 'lsx-bd-industry', 'lsx-bd-region' ) ) ) {
-			$this->prefix     = 'archive';
+		if ( is_post_type_archive( 'business-directory' ) || is_tax( array( 'industry', 'location' ) ) || is_search() ) {
+			if ( is_search() ) {
+				$this->prefix = 'engine';
+			} else {
+				$this->prefix = 'archive';
+			}
 			$active_facets    = lsx_bd_get_option( $this->prefix . '_search_facets', array() );
 			$facets           = array();
 			$current_taxonomy = get_query_var( 'taxonomy' );
+			$this->layout     = lsx_bd_get_option( $this->prefix . '_grid_list' );
 			if ( ! empty( $active_facets ) ) {
 				foreach ( $active_facets as $index => $facet_name ) {
-					if ( ! ( 'lsx-bd-industry' === $current_taxonomy && 'industries' === $facet_name ) &&
-						 ! ( 'lsx-bd-region' === $current_taxonomy && 'regions' === $facet_name ) ) {
+					/*if ( ! ( 'industry' === $current_taxonomy && 'industries' === $facet_name ) &&
+						 ! ( 'location' === $current_taxonomy && 'regions' === $facet_name ) ) {*/
 						$facets[ $facet_name ] = 'on';
-					}
+					/*}*/
 				}
 			}
 			$options['display'] = array(
@@ -275,5 +307,37 @@ class LSX_Search {
 			);
 		}
 		return $options;
+	}
+
+	/**
+	 * Adds the grid post class as needed.
+	 *
+	 * @param string $class
+	 * @return void
+	 */
+	public function lsx_post_wrapper_class( $class = '' ) {
+		if ( is_search() ) {
+			if ( false !== $this->layout && '' !== $this->layout && 'grid' === $this->layout ) {
+				$class .= 'lsx-grid';
+			}
+		}
+		return $class;
+	}
+
+	/**
+	 * Redirects the content part to the correct template part
+	 *
+	 * @param  string $template
+	 * @return string
+	 */
+	public function search_content_part_filter( $template = '' ) {
+		if ( is_search() ) {
+			if ( false !== $this->layout && '' !== $this->layout && 'grid' === $this->layout ) {
+				$template = LSX_BD_PATH . 'templates/single-col-business.php';
+			} else {
+				$template = LSX_BD_PATH . 'templates/single-row-business.php';
+			}
+		}
+		return $template;
 	}
 }

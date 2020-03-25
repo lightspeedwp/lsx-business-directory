@@ -74,6 +74,10 @@ class Banners {
 			$this->screen = 'single';
 		} elseif ( is_post_type_archive( 'business-directory' ) ) {
 			$this->screen = 'archive';
+		} elseif ( is_tax( array( 'industry', 'location' ) ) ) {
+			$this->screen = 'taxonomy';
+		} elseif ( is_search() ) {
+			$this->screen = 'search';
 		} else {
 			$this->screen = '';
 		}
@@ -92,6 +96,12 @@ class Banners {
 				break;
 			case 'archive':
 				$disable = lsx_bd_get_option( 'archive_banner_disable' );
+				break;
+			case 'taxonomy':
+				$disable = get_term_meta( get_queried_object_id(), 'lsx_bd_banner_disable', true );
+				break;
+			case 'search':
+				$disable = lsx_bd_get_option( 'engine_banner_disable' );
 				break;
 			default:
 				$disable = '';
@@ -115,6 +125,12 @@ class Banners {
 				break;
 			case 'archive':
 				$this->archive_banner();
+				break;
+			case 'taxonomy':
+				$this->term_banner();
+				break;
+			case 'search':
+				$this->search_banner();
 				break;
 			default:
 				break;
@@ -158,6 +174,42 @@ class Banners {
 	}
 
 	/**
+	 * Outputs the taxonomies term banner
+	 *
+	 * @return void
+	 */
+	public function term_banner() {
+		$disable = get_term_meta( get_queried_object_id(), 'lsx_bd_banner_disable', true );
+		if ( true !== $disable && 'on' !== $disable ) {
+			$args = array(
+				'image'    => apply_filters( 'lsx_bd_banner_image', get_term_meta( get_queried_object_id(), 'lsx_bd_banner', true ) ),
+				'colour'   => apply_filters( 'lsx_bd_banner_colour', get_term_meta( get_queried_object_id(), 'lsx_bd_banner_colour', true ) ),
+				'title'    => apply_filters( 'lsx_bd_banner_title', get_term_meta( get_queried_object_id(), 'lsx_bd_banner_title', true ) ),
+				'subtitle' => apply_filters( 'lsx_bd_banner_subtitle', get_term_meta( get_queried_object_id(), 'lsx_bd_banner_subtitle', true ) ),
+			);
+			$this->do_banner( $args );
+		}
+	}
+
+	/**
+	 * Outputs the search page banner.
+	 *
+	 * @return void
+	 */
+	public function search_banner() {
+		$disable = lsx_bd_get_option( 'engine_banner_disable' );
+		if ( true !== $disable && 'on' !== $disable ) {
+			$args = array(
+				'image'    => apply_filters( 'lsx_bd_banner_image', lsx_bd_get_option( 'engine_banner' ) ),
+				'colour'   => apply_filters( 'lsx_bd_banner_colour', lsx_bd_get_option( 'engine_banner_colour' ) ),
+				'title'    => apply_filters( 'lsx_bd_banner_title', lsx_bd_get_option( 'engine_banner_title' ) ),
+				'subtitle' => apply_filters( 'lsx_bd_banner_subtitle', lsx_bd_get_option( 'engine_banner_subtitle' ) ),
+			);
+			$this->do_banner( $args );
+		}
+	}
+
+	/**
 	 * Outputs the banners based on the arguments.
 	 *
 	 * @param array $args The parameters for the banner
@@ -166,7 +218,7 @@ class Banners {
 	public function do_banner( $args = array() ) {
 		$defaults = array(
 			'image'    => false,
-			'colour'   => '#333',
+			'colour'   => '#2b3640',
 			'title'    => '',
 			'subtitle' => '',
 		);
@@ -212,7 +264,11 @@ class Banners {
 					$title = get_the_title();
 					break;
 				case 'archive':
+				case 'taxonomy':
 					$title = get_the_archive_title();
+					break;
+				case 'search':
+					$title = __( 'Search Results for: ', 'lsx-business-directory' ) . get_query_var( 's' );
 					break;
 				default:
 					break;
@@ -228,7 +284,7 @@ class Banners {
 	 */
 	public function default_banner_colour( $colour ) {
 		if ( false === $colour || '' === $colour ) {
-			$colour = '#333';
+			$colour = '#2b3640';
 		}
 		return $colour;
 	}

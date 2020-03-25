@@ -19,6 +19,7 @@ get_header(); ?>
 		while ( have_posts() ) :
 			the_post();
 			$prefix                      = 'lsx_bd';
+			$business_enquiry_form       = lsx_bd_get_option( 'single_enquiry_form' );
 			$business_banner             = get_post_meta( get_the_ID(), $prefix . '_banner', true );
 			$business_google_maps_search = get_post_meta( get_the_ID(), $prefix . '_address_google_maps_search', true );
 			$business_address_1          = get_post_meta( get_the_ID(), $prefix . '_address_street_number', true );
@@ -29,13 +30,28 @@ get_header(); ?>
 			$business_country            = get_post_meta( get_the_ID(), $prefix . '_address_country', true );
 			$business_province           = get_post_meta( get_the_ID(), $prefix . '_address_province', true );
 			$business_business_branches  = get_post_meta( get_the_ID(), $prefix . '_branches', true );
+			$business_contact_name       = get_post_meta( get_the_ID(), $prefix . '_contact_person', true );
 			$business_primary_email      = get_post_meta( get_the_ID(), $prefix . '_primary_email', true );
 			$business_secondary_email    = get_post_meta( get_the_ID(), $prefix . '_secondary_email', true );
 			$business_primary_phone      = get_post_meta( get_the_ID(), $prefix . '_primary_phone', true );
 			$business_secondary_phone    = get_post_meta( get_the_ID(), $prefix . '_secondary_phone', true );
 			$business_fax                = get_post_meta( get_the_ID(), $prefix . '_fax', true );
 			$business_website            = get_post_meta( get_the_ID(), $prefix . '_website', true );
+			$business_skype              = get_post_meta( get_the_ID(), $prefix . '_skype', true );
+			$business_whatsapp           = get_post_meta( get_the_ID(), $prefix . '_whatsapp', true );
+			$business_facebook           = get_post_meta( get_the_ID(), $prefix . '_facebook', true );
+			$business_twitter            = get_post_meta( get_the_ID(), $prefix . '_twitter', true );
+			$business_linkedin           = get_post_meta( get_the_ID(), $prefix . '_linkedin', true );
+			$business_instagram          = get_post_meta( get_the_ID(), $prefix . '_instagram', true );
+			$business_youtube            = get_post_meta( get_the_ID(), $prefix . '_youtube', true );
+			$business_pinterest          = get_post_meta( get_the_ID(), $prefix . '_pinterest', true );
+			$industries    				 = lsx_bd_get_formatted_taxonomy_str( get_the_ID(), 'industry', true );
+			$locations    				 = lsx_bd_get_formatted_taxonomy_str( get_the_ID(), 'location', true );
 			$address                     = array();
+
+			if ( ! empty( $business_whatsapp ) ) {
+				$business_whatsapp = preg_replace( '/[^0-9]/', '', $business_whatsapp );
+			}
 
 			if ( $business_address_1 ) {
 				$address[] = $business_address_1;
@@ -52,10 +68,6 @@ get_header(); ?>
 			if ( $business_address_4 ) {
 				$address[] = $business_address_4;
 			}
-
-			// if ( $business_postal_code ) {
-			// $address[] = $business_postal_code;
-			// }
 
 			if ( $business_province ) {
 				$address[] = $business_province;
@@ -74,23 +86,120 @@ get_header(); ?>
 
 				<div class="entry-header business-header">
 					<div class="row">
-						<div class="col-md-4">
+						<div class="col-xs-12 col-sm-12 col-md-4 business-content-left">
 							<div class="entry-image">
-								<img src="<?php echo esc_url( get_thumbnail_wrapped( get_the_ID(), 300, 200 ) ); ?>">
+								<img src="<?php echo esc_url( lsx_bd_get_thumbnail_wrapped( get_the_ID(), 'lsx-thumbnail-wide' ) ); ?>">
 							</div>
+
+							<div class="col-xs-12 col-sm-12 col-md-4">
+								<div class="contact-info business-content-section">
+									<div class="row">
+										<?php if ( $business_primary_phone ) : ?>
+										<div class="telephone lsx-flex-row">
+											<div class="col1"><i class="fa fa-phone-square"></i><strong><?php esc_html_e( 'Telephone', 'lsx-business-directory' ); ?>: </strong></div>
+											<div class="col2"><a href="tel:<?php echo esc_attr( str_replace( ' ', '', $business_primary_phone ) ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_attr( $business_primary_phone ); ?></a></div>
+										</div>
+										<?php endif; ?>
+
+										<?php if ( $business_contact_name ) : ?>
+										<div class="contact lsx-flex-row">
+											<div class="col1"><i class="fa fa-user"></i><strong><?php esc_html_e( 'Contact', 'lsx-business-directory' ); ?>: </strong></div>
+											<div class="col2"><?php echo esc_attr( $business_contact_name ); ?></div>
+										</div>
+										<?php endif; ?>
+
+										<?php if ( $business_primary_email ) : ?>
+										<div class="email lsx-flex-row">
+											<div class="col1"><i class="fa fa-envelope-square"></i><strong><?php esc_html_e( 'Email', 'lsx-business-directory' ); ?>: </strong></div>
+											<div class="col2"><a href="mailto:<?php echo esc_attr( $business_primary_email ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_attr( $business_primary_email ); ?></a></div>
+										</div>
+										<?php endif; ?>
+
+										<?php if ( $business_website ) : ?>
+										<div class="website lsx-flex-row">
+											<div class="col1"><i class="fa fa-home"></i><strong><?php esc_html_e( 'Website', 'lsx-business-directory' ); ?>: </strong></div>
+											<div class="col2"><a href="<?php echo esc_attr( $business_website ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_attr( $business_website ); ?></a></div>
+										</div>
+										<?php endif; ?>
+
+										<?php if ( $business_skype ) : ?>
+										<div class="skype lsx-flex-row">
+											<div class="col1"><i class="fa fa-skype"></i><strong><?php esc_html_e( 'Skype', 'lsx-business-directory' ); ?>: </strong></div>
+											<div class="col2 lsx-flex-center"><a href="skype:<?php echo esc_attr( $business_skype ); ?>?call"><i class="fa fa-skype"></i>Call: <?php echo esc_attr( $business_skype ); ?></a></div>
+										</div>
+										<?php endif; ?>
+
+										<?php if ( $business_whatsapp ) : ?>
+										<div class="whatsapp lsx-flex-row">
+											<div class="col1"><i class="fa fa-whatsapp"></i><strong><?php esc_html_e( 'Whatsapp', 'lsx-business-directory' ); ?>: </strong></div>
+											<div class="col2 lsx-flex-center"><a href="https://wa.me/<?php echo esc_attr( $business_whatsapp ); ?>">Click to Chat</a></div>
+										</div>
+										<?php endif; ?>
+
+										<?php if ( ! empty( $address ) ) : ?>
+										<div class="address lsx-flex-row">
+											<div class="col1"><i class="fa fa-map-marker"></i><strong><?php esc_html_e( 'Address', 'lsx-business-directory' ); ?>: </strong></div>
+											<div class="col2">
+												<?php
+												foreach ( $address as $field_string ) {
+													echo esc_attr( $field_string ) . '<br />';
+												}
+												?>
+											</div>
+										</div>
+										<?php endif; ?>
+									</div>
+								</div>
+							</div>
+
+							<?php if ( $business_enquiry_form ) : ?>
+							<div class="button col-xs-12 col-sm-12 col-md-12">
+								<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#enquiry-form-modal"><?php esc_html_e( 'Contact', 'lsx-business-directory' ); ?> <?php the_title(); ?></button>
+							</div>
+							<?php endif; ?>
 						</div>
 
-						<div class="col-md-8">
+						<div class="col-md-8 business-content-right">
 							<div class="entry-header-content">
 								<?php lsx_business_listing_title(); ?>
 
-								<div class="entry-meta">
-									<div class="category">
-										<span><strong><?php esc_html_e( 'Category', 'lsx-business-directory' ); ?>: </strong><?php echo esc_attr( get_formatted_taxonomy_str( get_the_ID(), 'lsx-bd-industry' ) ); ?></span>
+								<div class="entry-meta lsx-flex-row">
+									<div class="industry col-xs-12 col-sm-12 col-md-6">
+										<span>
+											<i class="fa fa-th"></i>
+											<strong><?php esc_html_e( 'Industry', 'lsx-business-directory' ); ?>: </strong>
+											<?php
+											$count = 0;
+											foreach ( $industries as $industry ) :
+												if ( $count > 0 ) :
+													?>,
+												<?php endif;
+												?>
+													<a href="/industry/<?php echo esc_attr( $industry['slug'] ); ?>"><?php echo esc_attr( $industry['name'] ); ?></a>
+													<?php
+													$count++;
+											endforeach;
+											?>
+										</span>
 									</div>
 
-									<div class="region">
-										<span><strong><?php esc_html_e( 'Region', 'lsx-business-directory' ); ?>: </strong><?php echo esc_attr( get_formatted_taxonomy_str( get_the_ID(), 'lsx-bd-region' ) ); ?></span>
+									<div class="location col-xs-12 col-sm-12 col-md-6">
+										<span>
+											<i class="fa fa-globe"></i>
+											<strong><?php esc_html_e( 'Location', 'lsx-business-directory' ); ?>: </strong>
+											<?php
+											$count = 0;
+											foreach ( $locations as $location ) :
+												if ( $count > 0 ) :
+													?>,
+												<?php endif;
+												?>
+													<a href="/location/<?php echo esc_attr( $location['slug'] ); ?>"><?php echo esc_attr( $location['name'] ); ?></a>
+													<?php
+													$count++;
+											endforeach;
+											?>
+										</span>
 									</div>
 
 									<?php
@@ -101,73 +210,41 @@ get_header(); ?>
 									 */
 									?>
 								</div>
+
+								<div class="social-links lsx-flex-row">
+									<?php if ( $business_facebook ) : ?>
+									<div><a href="<?php echo esc_url( $business_facebook ); ?>" target="_blank"><i class="fa fa-facebook-f"></i></a></div>
+									<?php endif; ?>
+									<?php if ( $business_twitter ) : ?>
+									<div><a href="<?php echo esc_url( $business_twitter ); ?>" target="_blank"><i class="fa fa-twitter"></i></a></div>
+									<?php endif; ?>
+									<?php if ( $business_linkedin ) : ?>
+									<div><a href="<?php echo esc_url( $business_linkedin ); ?>" target="_blank"><i class="fa fa-linkedin"></i></a></div>
+									<?php endif; ?>
+									<?php if ( $business_instagram ) : ?>
+									<div><a href="<?php echo esc_url( $business_instagram ); ?>" target="_blank"><i class="fa fa-instagram"></i></a></div>
+									<?php endif; ?>
+									<?php if ( $business_youtube ) : ?>
+									<div><a href="<?php echo esc_url( $business_youtube ); ?>" target="_blank"><i class="fa fa-youtube-play"></i></a></div>
+									<?php endif; ?>
+									<?php if ( $business_pinterest ) : ?>
+									<div><a href="<?php echo esc_url( $business_pinterest ); ?>" target="_blank"><i class="fa fa-pinterest"></i></a></div>
+									<?php endif; ?>
+								</div>
+
+								<div class="business-description business-content-section">
+									<?php the_content(); ?>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 
 				<div class="row">
-					<div class="col-md-4">
-						<div class="contact-info business-content-section">
-							<h4 class="business-section-title">Contact Information</h4>
-
-							<div class="row">
-								<div class="col-md-6">
-									<?php if ( $business_primary_phone ) : ?>
-									<div class="telephone">
-										<span><strong><?php esc_html_e( 'Telephone', 'lsx-business-directory' ); ?>: </strong> <a href="tel:<?php echo esc_attr( str_replace( ' ', '', $business_primary_phone ) ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_attr( $business_primary_phone ); ?></a></span>
-									</div>
-									<?php endif; ?>
-
-									<?php if ( $business_primary_email ) : ?>
-									<div class="email">
-										<span><strong><?php esc_html_e( 'Email', 'lsx-business-directory' ); ?>: </strong> <a href="mailto:<?php echo esc_attr( $business_primary_email ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_attr( $business_primary_email ); ?></a></span>
-									</div>
-									<?php endif; ?>
-
-									<?php if ( $business_website ) : ?>
-									<div class="website">
-										<span><strong><?php esc_html_e( 'Website', 'lsx-business-directory' ); ?>: </strong> <a href="<?php echo esc_attr( $business_website ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_attr( $business_website ); ?></a></span>
-									</div>
-									<?php endif; ?>
-								</div>
-
-								<div class="col-md-6">
-									<?php if ( ! empty( $address ) ) : ?>
-									<div class="address">
-										<span><strong><?php esc_html_e( 'Address', 'lsx-business-directory' ); ?>: </strong>
-											<?php
-											foreach ( $address as $field_string ) {
-												echo esc_attr( $field_string ) . '<br />';
-											}
-											?>
-										</span>
-									</div>
-									<?php endif; ?>
-								</div>
-							</div>
-						</div>
-
-						<div class="contact-form business-content-section">
-							<h4 class="business-section-title">Contact <?php the_title(); ?></h4>
-							<?php
-							if ( class_exists( 'Caldera_Forms' ) ) {
-								$form_slug = get_option( 'lsx-business-directory-generic-form' );
-								echo esc_attr( Caldera_Forms::render_form( $form_slug ) );
-							}
-							?>
-						</div>
-					</div>
-
 					<div class="col-md-8">
-						<div class="business-description business-content-section">
-							<h3 class="business-section-title">Description</h3>
-							<?php the_content(); ?>
-						</div>
-
 						<?php if ( ! empty( $branches ) && is_array( $branches ) && isset( $branches[0]['branch_name'] ) && '' !== $branches[0]['branch_name'] ) : ?>
 							<div class="branches business-content-section">
-								<h3 class="business-section-title">Branches</h3>
+								<h3 class="business-section-title"><?php esc_html_e( 'Branches', 'lsx-business-directory' ); ?></h3>
 								<?php
 								foreach ( $branches as $branch ) {
 									lsx_business_branch( $branch ); // TODO
@@ -215,40 +292,6 @@ get_header(); ?>
 					</div>
 				</div>
 
-				<?php
-				$terms         = wp_get_post_terms( get_the_ID(), 'lsx-bd-industry' );
-				$prepped_terms = array();
-
-				foreach ( $terms as $term ) {
-					array_push( $prepped_terms, $term->term_id );
-				}
-
-				$related_business_query = new WP_Query(
-					array(
-						'post_type'      => 'business-directory',
-						'posts_per_page' => 3,
-						'tax_query'      => array(
-							array(
-								'taxonomy' => 'lsx-bd-industry',
-								'terms'    => $prepped_terms,
-							),
-						),
-					)
-				);
-
-				if ( $related_business_query->have_posts() ) :
-					?>
-					<div class="related-businesses">
-						<h2>Related Businesses</h2>
-						<div class="row">
-							<?php while ( $related_business_query->have_posts() ) : ?>
-								<?php $related_business_query->the_post(); ?>
-								<?php lsx_related_business(); ?>
-							<?php endwhile; ?>
-						</div>
-					</div>
-				<?php endif; ?>
-
 				<?php lsx_entry_bottom(); ?>
 
 			</article><!-- #post-## -->
@@ -256,6 +299,8 @@ get_header(); ?>
 			<?php lsx_entry_after(); ?>
 
 		<?php endwhile; // end of the loop. ?>
+
+		<?php lsx_bd_related_listings(); ?>
 
 		<?php lsx_content_bottom(); ?>
 
