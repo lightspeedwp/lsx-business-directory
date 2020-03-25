@@ -10,10 +10,14 @@ License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 == Description ==
-LSX Business Directory plugin adds the ability to include a structured exercise and nutrition programme to your WordPress website using the LSX Theme and extensions. TODO: change description
+LSX Business Directory plugin allows you to add a business directory listings to your WordPress website using the LSX Theme and extensions.
 
 Features include:
-* TODO: add features
+* Category and location filters on the listing archive page (requires FacetWP and LSX Search)
+* Set a banner image for each listing
+* Configure contact form for individual listings
+* Compact contact details card with logo
+* HTML enabled description field for business description
 
 == Gutenberg Compatible Plugin ==
 The *LSX Business Directory* is a fully Gutenberg compatible [WordPress](https://wordpress.org/) plugin, powered by the latest software.
