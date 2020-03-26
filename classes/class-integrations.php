@@ -63,6 +63,10 @@ class Integrations {
 	 * Contructor
 	 */
 	public function __construct() {
+		if ( ! function_exists( 'is_plugin_active' ) ) {
+			require_once ABSPATH . 'wp-admin/includes/plugin.php';
+		}
+
 		// Load plugin settings related functionality.
 		require_once LSX_BD_PATH . '/classes/integrations/class-lsx-search.php';
 		$this->lsx_search = integrations\LSX_Search::get_instance();
