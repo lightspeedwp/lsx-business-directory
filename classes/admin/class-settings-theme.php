@@ -44,6 +44,7 @@ class Settings_Theme {
 		add_action( 'cmb2_render_tab_closing', array( $this, 'cmb2_render_callback_for_tab_closing' ), 10, 5 );
 		add_filter( 'cmb2_sanitize_tab_closing', array( $this, 'cmb2_sanitize_tab_closing_callback' ), 10, 2 );
 		add_action( 'cmb2_after_form', array( $this, 'navigation_js' ), 10, 4 );
+		add_filter( 'cmb2_options_page_redirect_url', array( $this, 'add_tab_argument' ), 10, 1 );
 	}
 
 	/**
@@ -233,5 +234,18 @@ class Settings_Theme {
 			</script>
 			<?php
 		}
+	}
+
+	/**
+	 * This will add the tab selection to the url.
+	 *
+	 * @param string $url
+	 * @return void
+	 */
+	public function add_tab_argument( $url ) {
+		if ( isset( $_POST['cmb2_tab_selection'] ) ) {
+			$url = add_query_arg( 'cmb-tab', $_POST['cmb2_tab_selection'], $url );
+		}
+		return $url;
 	}
 }
