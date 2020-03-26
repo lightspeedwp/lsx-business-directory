@@ -39,7 +39,6 @@ We’re firm believers in open source – that’s why the LSX Business Director
 * Once you see the LSX Business Directory plugin, select "Install".
 * Activate the plugin.
 * That's it!
-TODO: do we need to add descriptions on how to install FacetWP and LSX Search here as well?
 
 == Documentation ==
 
