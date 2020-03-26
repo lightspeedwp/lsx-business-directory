@@ -295,6 +295,7 @@ class CMB2_Options_Hookup extends CMB2_Hookup {
 				->was_updated(); // Will be false if no values were changed/updated.
 
 			$url = add_query_arg( 'settings-updated', $updated ? 'true' : 'false', $url );
+			$url = apply_filters( 'cmb2_options_page_redirect_url', $url );
 		}
 
 		wp_safe_redirect( esc_url_raw( $url ), 303 /* WP_Http::SEE_OTHER */ );
