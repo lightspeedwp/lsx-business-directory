@@ -222,9 +222,9 @@ class Settings_Theme {
 						$( ".tab.tab-nav" ).each(function(){
 							console.log( tab );
 							if ( ( 1 !== counter && '' === tab ) || ( '' !== tab && 'settings_' + tab + '_tab' !== $( this ).attr('id') ) ) {
-								$( this ).hide();
+								$( this ).hide().removeClass('hidden');
 							} else {
-								$( this ).addClass( 'current' );
+								$( this ).addClass( 'current' ).removeClass('hidden');
 							}
 							counter++;
 						});
@@ -241,7 +241,7 @@ class Settings_Theme {
 							var target = $( this ).attr('data-sort');
 							$( ".tab.tab-nav.current" ).hide().removeClass('current');
 							$( "#"+target ).show().addClass('current');
-							$( 'input[name="cmb_tab]').val(target);
+							$( 'input[name="cmb_tab"]').val(target);
 						});
 					};
 
@@ -271,10 +271,14 @@ class Settings_Theme {
 	 * @return void
 	 */
 	public function add_tab_argument( $url ) {
-		if ( isset( $_POST['cmb2_tab_selection'] ) && '' !== $_POST['cmb2_tab_selection'] ) { // @codingStandardsIgnoreLine
-			$tab_selection = sanitize_text_field( $_POST['cmb2_tab_selection'] ); // @codingStandardsIgnoreLine
+		if ( isset( $_POST['cmb_tab'] ) && '' !== $_POST['cmb_tab'] ) { // @codingStandardsIgnoreLine
+			$tab_selection = sanitize_text_field( $_POST['cmb_tab'] ); // @codingStandardsIgnoreLine
 			$tab_selection = str_replace( array( 'settings_', '_tab' ), '', $tab_selection ); // @codingStandardsIgnoreLine
-			$url = add_query_arg( 'cmb-tab', $tab_selection, $url );
+			if ( 'single' !== $tab_selection ) {
+				$url = add_query_arg( 'cmb_tab', $tab_selection, $url );
+			} else {
+				$url = remove_query_arg( 'cmb_tab', $url );
+			}
 		}
 		return $url;
 	}
