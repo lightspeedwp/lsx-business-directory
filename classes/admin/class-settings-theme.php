@@ -112,14 +112,19 @@ class Settings_Theme {
 			<div class="wp-filter hide-if-no-js">
 				<ul class="filter-links">
 					<?php
-					$first_tab = true;
-					$total = count( $this->navigation );
-					$count = 0;
-					$separator = ' |';
+					$first_tab    = true;
+					$total        = count( $this->navigation );
+					$count        = 0;
+					$separator    = ' |';
+					$selected_tab = '';
+					if ( isset( $_GET['cmb_tab'] ) && '' !== $_GET['cmb_tab'] ) {
+						$selected_tab  = sanitize_text_field( $_GET['cmb_tab'] );
+						$selected_tab  = 'settings_' . $selected_tab;
+					}
 					foreach ( $this->navigation as $key => $label ) {
 						$count++;
 						$current_css = '';
-						if ( true === $first_tab ) {
+						if ( ( true === $first_tab && '' === $selected_tab ) || $key === $selected_tab ) {
 							$first_tab   = false;
 							$current_css = 'current';
 						}
@@ -236,8 +241,7 @@ class Settings_Theme {
 							var target = $( this ).attr('data-sort');
 							$( ".tab.tab-nav.current" ).hide().removeClass('current');
 							$( "#"+target ).show().addClass('current');
-
-							console.log(target);
+							$( 'input[name="cmb_tab]').val(target);
 						});
 					};
 
@@ -267,8 +271,10 @@ class Settings_Theme {
 	 * @return void
 	 */
 	public function add_tab_argument( $url ) {
-		if ( isset( $_POST['cmb2_tab_selection'] ) ) {
-			$url = add_query_arg( 'cmb-tab', $_POST['cmb2_tab_selection'], $url );
+		if ( isset( $_POST['cmb2_tab_selection'] ) && '' !== $_POST['cmb2_tab_selection'] ) {
+			$tab_selection = sanitize_text_field( $_POST['cmb2_tab_selection'] );
+			$tab_selection = str_replace( array( 'settings_', '_tab' ), '', $tab_selection );
+			$url = add_query_arg( 'cmb-tab', $tab_selection, $url );
 		}
 		return $url;
 	}
