@@ -13,7 +13,7 @@ License URI: https://www.gnu.org/licenses/gpl-3.0.html
 LSX Business Directory plugin allows you to add a business directory listings to your WordPress website using the LSX Theme and extensions.
 
 Features include:
-* Category and location filters on the listing archive page (requires FacetWP and LSX Search)
+* Category and location filters on the listing archive page (requires [FacetWP](https://facetwp.com/) and [LSX Search](https://wordpress.org/plugins/lsx-search/) plugins)
 * Set a banner image for each listing
 * Configure contact form for individual listings
 * Compact contact details card with logo
