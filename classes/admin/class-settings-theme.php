@@ -151,7 +151,7 @@ class Settings_Theme {
 	public function output_tab_open_div( $field ) {
 		if ( true === $this->is_options_page && isset( $field->args['type'] ) && 'title' === $field->args['type'] ) {
 			?>
-			<div id="<?php echo esc_attr( $field->args['id'] ); ?>_tab" class="tab tab-nav">
+			<div id="<?php echo esc_attr( $field->args['id'] ); ?>_tab" class="tab tab-nav hidden">
 			<?php
 		}
 	}
@@ -271,9 +271,9 @@ class Settings_Theme {
 	 * @return void
 	 */
 	public function add_tab_argument( $url ) {
-		if ( isset( $_POST['cmb2_tab_selection'] ) && '' !== $_POST['cmb2_tab_selection'] ) {
-			$tab_selection = sanitize_text_field( $_POST['cmb2_tab_selection'] );
-			$tab_selection = str_replace( array( 'settings_', '_tab' ), '', $tab_selection );
+		if ( isset( $_POST['cmb2_tab_selection'] ) && '' !== $_POST['cmb2_tab_selection'] ) { // @codingStandardsIgnoreLine
+			$tab_selection = sanitize_text_field( $_POST['cmb2_tab_selection'] ); // @codingStandardsIgnoreLine
+			$tab_selection = str_replace( array( 'settings_', '_tab' ), '', $tab_selection ); // @codingStandardsIgnoreLine
 			$url = add_query_arg( 'cmb-tab', $tab_selection, $url );
 		}
 		return $url;
