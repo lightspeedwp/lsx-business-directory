@@ -198,17 +198,32 @@ class Settings_Theme {
 					 * Start the JS Class
 					 */
 					LSX_BD_CMB2.init = function() {
+						var tab = LSX_BD_CMB2.urlParam( 'cmb_tab' );
+						if ( 0 === tab || '0' === tab ) {
+							tab = '';
+						}
+						LSX_BD_CMB2.addTabInput( tab );
+						LSX_BD_CMB2.prepNavigation( tab );
+						LSX_BD_CMB2.watchNavigation();
+					};
+
+					LSX_BD_CMB2.addTabInput = function( tab = '' ) {
+						var counter = 1;
+						$( "form.cmb-form" ).append('<input type="hidden" name="cmb_tab" value="' + tab + '" />');
+					}
+
+					LSX_BD_CMB2.prepNavigation = function( tab = '' ) {
 						var counter = 1;
 						$( ".tab.tab-nav" ).each(function(){
-							if ( 1 !== counter ) {
+							console.log( tab );
+							if ( ( 1 !== counter && '' === tab ) || ( '' !== tab && 'settings_' + tab + '_tab' !== $( this ).attr('id') ) ) {
 								$( this ).hide();
 							} else {
 								$( this ).addClass( 'current' );
 							}
 							counter++;
 						});
-						LSX_BD_CMB2.watchNavigation();
-					};
+					}
 
 					LSX_BD_CMB2.watchNavigation = function() {
 						$( ".wp-filter li a" ).on( 'click', function(event){
@@ -225,6 +240,15 @@ class Settings_Theme {
 							console.log(target);
 						});
 					};
+
+					LSX_BD_CMB2.urlParam = function(name){
+						var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+						if ( results == null ){
+							return 0;
+						} else {
+							return results[1] || 0;
+						}
+					}
 
 					LSX_BD_CMB2.document.ready( function() {
 						LSX_BD_CMB2.init();
