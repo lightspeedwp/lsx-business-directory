@@ -96,6 +96,7 @@ class Core {
 		require_once LSX_BD_PATH . '/includes/helpers.php';
 		require_once LSX_BD_PATH . '/includes/getters.php';
 		require_once LSX_BD_PATH . '/includes/functions.php';
+		require_once LSX_BD_PATH . '/includes/shortcodes.php';
 		require_once LSX_BD_PATH . '/includes/template-tags.php';
 	}
 

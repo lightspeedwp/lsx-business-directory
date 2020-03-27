@@ -152,7 +152,7 @@ function lsx_bd_featured_listings( $args = array() ) {
 	$params   = array(
 		'title_text' => $args['title'],
 		'carousel'   => true,
-		'orderby'    => 'recent',
+		'orderby'    => 'featured',
 	);
 	if ( true === $args['echo'] ) {
 		echo wp_kses_post( $lsx_bd->frontend->widget->render( $params ) );
@@ -170,14 +170,14 @@ function lsx_bd_featured_listings( $args = array() ) {
 function lsx_bd_random_listings( $args = array() ) {
 	$defaults = array(
 		'echo'  => true,
-		'title' => esc_html__( 'Featured Listings', 'lsx-member-directory' ),
+		'title' => esc_html__( 'Listings', 'lsx-member-directory' ),
 	);
 	$args     = wp_parse_args( $args, $defaults );
 	$lsx_bd   = lsx_business_directory();
 	$params   = array(
 		'title_text' => $args['title'],
 		'carousel'   => true,
-		'orderby'    => 'recent',
+		'orderby'    => 'rand',
 	);
 	if ( true === $args['echo'] ) {
 		echo wp_kses_post( $lsx_bd->frontend->widget->render( $params ) );

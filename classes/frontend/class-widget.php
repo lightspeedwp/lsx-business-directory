@@ -158,6 +158,10 @@ class Widget {
 			);
 		}
 
+		print_r('<pre>');
+		print_r($query_args);
+		print_r('</pre>');
+
 		$this->query = new \WP_Query( $query_args );
 	}
 
