@@ -87,7 +87,8 @@ function lsx_business_template( $filename_base ) {
  */
 function lsx_bd_related_listings( $args = array() ) {
 	$defaults      = array(
-		'echo' => true,
+		'echo'  => true,
+		'title' => esc_html__( 'You might also be interested in...', 'lsx-member-directory' ),
 	);
 	$args          = wp_parse_args( $args, $defaults );
 	$lsx_bd        = lsx_business_directory();
@@ -96,17 +97,92 @@ function lsx_bd_related_listings( $args = array() ) {
 	foreach ( $terms as $term ) {
 		array_push( $prepped_terms, $term->term_id );
 	}
-	$args = array(
-		'title_text' => esc_html__( 'You might also be interested in...', 'lsx-member-directory' ),
+	$params = array(
+		'title_text' => $args['title'],
 		'carousel'   => true,
 		'taxonomy'   => 'industry',
 		'terms'      => $prepped_terms,
 		'orderby'    => 'rand',
 	);
 	if ( true === $args['echo'] ) {
-		echo wp_kses_post( $lsx_bd->frontend->widget->render( $args ) );
+		echo wp_kses_post( $lsx_bd->frontend->widget->render( $params ) );
 	} else {
-		return $lsx_bd->frontend->widget->render( $args );
+		return $lsx_bd->frontend->widget->render( $params );
+	}
+}
+
+/**
+ * Returns the recent listing block
+ *
+ * @param  boolean $echo
+ * @return string
+ */
+function lsx_bd_recent_listings( $args = array() ) {
+	$defaults = array(
+		'echo'  => true,
+		'title' => esc_html__( 'Recent Listings', 'lsx-member-directory' ),
+	);
+	$args     = wp_parse_args( $args, $defaults );
+	$lsx_bd   = lsx_business_directory();
+	$params   = array(
+		'title_text' => $args['title'],
+		'carousel'   => true,
+		'orderby'    => 'recent',
+	);
+	if ( true === $args['echo'] ) {
+		echo wp_kses_post( $lsx_bd->frontend->widget->render( $params ) );
+	} else {
+		return $lsx_bd->frontend->widget->render( $params );
+	}
+}
+
+/**
+ * Returns the recent listing block
+ *
+ * @param  boolean $echo
+ * @return string
+ */
+function lsx_bd_featured_listings( $args = array() ) {
+	$defaults = array(
+		'echo'  => true,
+		'title' => esc_html__( 'Featured Listings', 'lsx-member-directory' ),
+	);
+	$args     = wp_parse_args( $args, $defaults );
+	$lsx_bd   = lsx_business_directory();
+	$params   = array(
+		'title_text' => $args['title'],
+		'carousel'   => true,
+		'orderby'    => 'recent',
+	);
+	if ( true === $args['echo'] ) {
+		echo wp_kses_post( $lsx_bd->frontend->widget->render( $params ) );
+	} else {
+		return $lsx_bd->frontend->widget->render( $params );
+	}
+}
+
+/**
+ * Returns the recent listing block
+ *
+ * @param  boolean $echo
+ * @return string
+ */
+function lsx_bd_random_listings( $args = array() ) {
+	$defaults = array(
+		'echo'  => true,
+		'title' => esc_html__( 'Featured Listings', 'lsx-member-directory' ),
+	);
+	$args     = wp_parse_args( $args, $defaults );
+	$lsx_bd   = lsx_business_directory();
+	$params   = array(
+		'title_text' => $args['title'],
+		'carousel'   => true,
+		'orderby'    => 'recent',
+	);
+	if ( true === $args['echo'] ) {
+		echo wp_kses_post( $lsx_bd->frontend->widget->render( $params ) );
+	} else {
+		return $lsx_bd->frontend->widget->render( $params );
 	}
 }
 
