@@ -134,6 +134,11 @@ class Widget {
 					);
 					break;
 
+				case 'recent':
+					$query_args['orderby'] = $this->args['date'];
+					$query_args['order']   = $this->args['desc'];
+					break;
+
 				default:
 					$query_args['orderby'] = $this->args['orderby'];
 					break;
