@@ -95,7 +95,7 @@ class Widget {
 		$this->args     = wp_parse_args( $args, $this->defaults );
 		$shortcode_args = $this->args;
 
-		$this->query_members();
+		$this->query_post_type();
 		if ( $this->has_items() ) {
 			$this->start_loop();
 			$this->run_loop();
@@ -107,7 +107,7 @@ class Widget {
 	/**
 	 *  Runs a WP_Query() for your members.
 	 */
-	public function query_members() {
+	public function query_post_type() {
 
 		$post_type = $this->args['post_type'];
 		$post_type = explode( ',', $post_type );
@@ -125,7 +125,24 @@ class Widget {
 		}
 
 		if ( '' !== $this->args['orderby'] ) {
-			$query_args['orderby'] = $this->args['orderby'];
+			switch ( $this->args['orderby'] ) {
+				case 'featured':
+					$query_args['meta_query'][] = array(
+						'key'     => 'lsx_be_featured',
+						'value'   => '1',
+						'compare' => '=',
+					);
+					break;
+
+				case 'recent':
+					$query_args['orderby'] = $this->args['date'];
+					$query_args['order']   = $this->args['desc'];
+					break;
+
+				default:
+					$query_args['orderby'] = $this->args['orderby'];
+					break;
+			}
 		}
 
 		if ( '' !== $this->args['post__not_in'] ) {
