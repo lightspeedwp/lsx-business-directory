@@ -1160,7 +1160,7 @@ msgid "Search"
 msgstr ""
 
 #: classes/integrations/class-lsx-search.php:101
-msgid "If you have created an supplemental engine via SearchWP, then you can control the search settings here."
+msgid "Control the filters which show on your WordPress search results page."
 msgstr ""
 
 #: classes/integrations/class-lsx-search.php:107, classes/integrations/class-lsx-search.php:116

@@ -98,7 +98,7 @@ class LSX_Search {
 						'type'        => 'title',
 						'name'        => esc_html__( 'Search', 'lsx-business-directory' ),
 						'default'     => esc_html__( 'Search', 'lsx-business-directory' ),
-						'description' => esc_html__( 'If you have created an supplemental engine via SearchWP, then you can control the search settings here.', 'lsx-business-directory' ),
+						'description' => esc_html__( 'Control the filters which show on your WordPress search results page.', 'lsx-business-directory' ),
 					)
 				);
 				do_action( 'lsx_bd_settings_section_engine', $cmb, 'top' );
