@@ -85,7 +85,11 @@ function lsx_business_template( $filename_base ) {
  * @param  boolean $echo
  * @return string
  */
-function lsx_bd_related_listings( $echo = true, $atts = array() ) {
+function lsx_bd_related_listings( $args = array() ) {
+	$defaults      = array(
+		'echo' => true,
+	);
+	$args          = wp_parse_args( $args, $defaults );
 	$lsx_bd        = lsx_business_directory();
 	$terms         = wp_get_post_terms( get_the_ID(), 'industry' );
 	$prepped_terms = array();
@@ -99,7 +103,7 @@ function lsx_bd_related_listings( $echo = true, $atts = array() ) {
 		'terms'      => $prepped_terms,
 		'orderby'    => 'rand',
 	);
-	if ( true === $echo ) {
+	if ( true === $args['echo'] ) {
 		echo wp_kses_post( $lsx_bd->frontend->widget->render( $args ) );
 	} else {
 		return $lsx_bd->frontend->widget->render( $args );

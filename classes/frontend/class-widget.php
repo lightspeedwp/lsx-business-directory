@@ -125,7 +125,19 @@ class Widget {
 		}
 
 		if ( '' !== $this->args['orderby'] ) {
-			$query_args['orderby'] = $this->args['orderby'];
+			switch ( $this->args['orderby'] ) {
+				case 'featured':
+					$query_args['meta_query'][] = array(
+						'key'     => 'lsx_be_featured',
+						'value'   => '1',
+						'compare' => '=',
+					);
+					break;
+
+				default:
+					$query_args['orderby'] = $this->args['orderby'];
+					break;
+			}
 		}
 
 		if ( '' !== $this->args['post__not_in'] ) {
