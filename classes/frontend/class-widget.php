@@ -95,7 +95,11 @@ class Widget {
 		$this->args     = wp_parse_args( $args, $this->defaults );
 		$shortcode_args = $this->args;
 
-		$this->query_members();
+		if ( 'post_type' === $this->args['content_type'] ) {
+			$this->query_post_type();
+		} else {
+			$this->query_tax_terms();
+		}
 		if ( $this->has_items() ) {
 			$this->start_loop();
 			$this->run_loop();
@@ -104,10 +108,12 @@ class Widget {
 		return $this->html;
 	}
 
+	public function 
+
 	/**
 	 *  Runs a WP_Query() for your members.
 	 */
-	public function query_members() {
+	public function query_post_type() {
 
 		$post_type = $this->args['post_type'];
 		$post_type = explode( ',', $post_type );
@@ -157,10 +163,6 @@ class Widget {
 				),
 			);
 		}
-
-		print_r('<pre>');
-		print_r($query_args);
-		print_r('</pre>');
 
 		$this->query = new \WP_Query( $query_args );
 	}
