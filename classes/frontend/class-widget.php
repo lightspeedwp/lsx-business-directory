@@ -95,11 +95,7 @@ class Widget {
 		$this->args     = wp_parse_args( $args, $this->defaults );
 		$shortcode_args = $this->args;
 
-		if ( 'post_type' === $this->args['content_type'] ) {
-			$this->query_post_type();
-		} else {
-			$this->query_tax_terms();
-		}
+		$this->query_post_type();
 		if ( $this->has_items() ) {
 			$this->start_loop();
 			$this->run_loop();
@@ -107,8 +103,6 @@ class Widget {
 		}
 		return $this->html;
 	}
-
-	public function 
 
 	/**
 	 *  Runs a WP_Query() for your members.
