@@ -1,7 +1,7 @@
 === LSX Business Directory ===
 Contributors: feedmymedia
 Donate link: https://donate.lsdev.biz/
-Tags: lsx, business, directory, blocks, listings TODO: add tags
+Tags: lsx, business, directory, blocks, listings
 Requires at least: 5.1.1
 Tested up to: 5.4.0
 Requires PHP: 7.0
