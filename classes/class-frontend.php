@@ -60,6 +60,7 @@ class Frontend {
 		add_filter( 'body_class', array( $this, 'body_class' ), 10, 1 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'assets' ), 5 );
 		add_filter( 'get_the_archive_title', array( $this, 'get_the_archive_title' ), 100 );
+		add_filter( 'wp_kses_allowed_html', array( $this, 'wp_kses_allowed_html' ), 10, 2 );
 	}
 
 	/**
@@ -132,7 +133,14 @@ class Frontend {
 	 * @return void
 	 */
 	public function assets() {
-		wp_enqueue_script( 'lsx-business-directory', LSX_BD_URL . 'assets/js/lsx-business-directory.min.js', array( 'jquery' ), LSX_BD_VER, true );
+		if ( defined( 'SCRIPT_DEBUG' ) ) {
+			$prefix = 'src/';
+			$suffix = '';
+		} else {
+			$prefix = '';
+			$suffix = '.min';
+		}
+		wp_enqueue_script( 'lsx-business-directory', LSX_BD_URL . 'assets/js/' . $prefix . 'lsx-business-directory' . $suffix . '.js', array( 'jquery' ), LSX_BD_VER, true );
 
 		/*
 		* Adds the Google Maps Javascript Call if a map field was included
@@ -179,5 +187,17 @@ class Frontend {
 		}
 		$title = apply_filters( 'lsx_bd_archive_banner_title', $title );
 		return $title;
+	}
+	/**
+	 * Add our data paramters to the list of allowed ones by WP.
+	 *
+	 * @param array $allowedtags
+	 * @param string $context
+	 * @return array
+	 */
+	public function wp_kses_allowed_html( $allowedtags, $context ) {
+		$allowedtags['div']['data-lsx-slick'] = true;
+		$allowedtags['div']['data-slick']     = true;
+		return $allowedtags;
 	}
 }

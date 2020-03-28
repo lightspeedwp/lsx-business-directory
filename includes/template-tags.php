@@ -103,6 +103,7 @@ function lsx_bd_related_listings( $args = array() ) {
 		'taxonomy'   => 'industry',
 		'terms'      => $prepped_terms,
 		'orderby'    => 'rand',
+		'custom_css' => 'lsx-bd-related-listings',
 	);
 	if ( true === $args['echo'] ) {
 		echo wp_kses_post( $lsx_bd->frontend->widget->render( $params ) );
@@ -128,6 +129,7 @@ function lsx_bd_recent_listings( $args = array() ) {
 		'title_text' => $args['title'],
 		'carousel'   => true,
 		'orderby'    => 'recent',
+		'custom_css' => 'lsx-bd-recent-listings',
 	);
 	if ( true === $args['echo'] ) {
 		echo wp_kses_post( $lsx_bd->frontend->widget->render( $params ) );
@@ -153,6 +155,7 @@ function lsx_bd_featured_listings( $args = array() ) {
 		'title_text' => $args['title'],
 		'carousel'   => true,
 		'orderby'    => 'featured',
+		'custom_css' => 'lsx-bd-featured-listings',
 	);
 	if ( true === $args['echo'] ) {
 		echo wp_kses_post( $lsx_bd->frontend->widget->render( $params ) );
@@ -178,11 +181,39 @@ function lsx_bd_random_listings( $args = array() ) {
 		'title_text' => $args['title'],
 		'carousel'   => true,
 		'orderby'    => 'rand',
+		'custom_css' => 'lsx-bd-random-listings',
 	);
 	if ( true === $args['echo'] ) {
 		echo wp_kses_post( $lsx_bd->frontend->widget->render( $params ) );
 	} else {
 		return $lsx_bd->frontend->widget->render( $params );
+	}
+}
+
+/**
+ * Returns the industries nav block.
+ *
+ * @param  boolean $echo
+ * @return string
+ */
+function lsx_bd_industries_nav( $args = array() ) {
+	$defaults = array(
+		'echo'         => true,
+		'title_text'   => esc_html__( 'Pick an industry', 'lsx-member-directory' ),
+		'carousel'     => false,
+		'orderby'      => 'rand',
+		'taxonomy'     => 'industry',
+		'content_type' => 'term',
+		'template'     => 'single-industry-nav',
+		'columns'      => 6,
+		'custom_css'   => 'lsx-bd-industries-nav',
+	);
+	$args     = wp_parse_args( $args, $defaults );
+	$lsx_bd   = lsx_business_directory();
+	if ( true === $args['echo'] ) {
+		echo wp_kses_post( $lsx_bd->frontend->widget->render( $args ) );
+	} else {
+		return $lsx_bd->frontend->widget->render( $args );
 	}
 }
 
@@ -231,11 +262,14 @@ function lsx_bd_get_term_thumbnail( $term_id = '', $size = 'lsx-thumbnail-wide',
 	$image = '';
 	if ( '' !== $term_id ) {
 		$image_src = get_term_meta( $term_id, 'lsx_bd_thumbnail_id', true );
-		if ( false !== $image_src && '' !== $image_src ) {
+		if ( false === $image_src || '' === $image_src ) {
+			$image_src = \lsx\business_directory\includes\get_placeholder( $size, 'archive_thumbnail' );
+			$image     = '<img width="150" height="150" src="' . $image_src . '" class="attachment-thumbnail size-thumbnail" alt="">';
+		} elseif ( false !== $image_src && '' !== $image_src ) {
 			$image = wp_get_attachment_image( $image_src, $size );
-			if ( false !== $echo ) {
-				echo wp_kses_post( $image );
-			}
+		}
+		if ( false !== $echo ) {
+			echo wp_kses_post( $image );
 		}
 	}
 	return $image;

@@ -62,3 +62,17 @@ function random_listings( $atts = array() ) {
 	return $content;
 }
 add_shortcode( 'lsx_bd_random_listings', '\lsx\business_directory\includes\random_listings' );
+
+/**
+ * Returns the industries in nav type block.
+ *
+ * @param array $atts The shortcode atts.
+ * @return html
+ */
+function industries_nav( $atts = array() ) {
+	ob_start();
+	lsx_bd_industries_nav( $atts );
+	$content = ob_get_clean();
+	return $content;
+}
+add_shortcode( 'lsx_bd_industries_nav', '\lsx\business_directory\includes\industries_nav' );
