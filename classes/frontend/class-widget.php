@@ -172,6 +172,9 @@ class Widget {
 	 *  Runs a WP_Query() for your members.
 	 */
 	public function query_terms() {
+		if ( '' === $this->args['order'] ) {
+			$this->args['order'] = 'asc';
+		}
 		$args = array(
 			'taxonomy'   => $this->args['taxonomy'],
 			'number'     => (int) $this->args['posts_per_page'],

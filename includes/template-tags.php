@@ -198,15 +198,16 @@ function lsx_bd_random_listings( $args = array() ) {
  */
 function lsx_bd_industries_nav( $args = array() ) {
 	$defaults = array(
-		'echo'         => true,
-		'title_text'   => esc_html__( 'Pick an industry', 'lsx-member-directory' ),
-		'carousel'     => false,
-		'orderby'      => 'rand',
-		'taxonomy'     => 'industry',
-		'content_type' => 'term',
-		'template'     => 'single-industry-nav',
-		'columns'      => 6,
-		'custom_css'   => 'lsx-bd-industries-nav',
+		'echo'           => true,
+		'title_text'     => esc_html__( 'Pick an industry', 'lsx-member-directory' ),
+		'carousel'       => false,
+		'orderby'        => 'rand',
+		'taxonomy'       => 'industry',
+		'content_type'   => 'term',
+		'template'       => 'single-industry-nav',
+		'columns'        => 6,
+		'custom_css'     => 'lsx-bd-industries-nav',
+		'posts_per_page' => false,
 	);
 	$args     = wp_parse_args( $args, $defaults );
 	$lsx_bd   = lsx_business_directory();
