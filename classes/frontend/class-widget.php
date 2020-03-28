@@ -29,7 +29,7 @@ class Widget {
 	 */
 	public $defaults = array(
 		'carousel'         => false,
-		'slides_to_show'   => 3,
+		'columns'          => 3,
 		'slides_to_scroll' => 3,
 		'custom_css'       => '',
 		'title_text'       => '',
@@ -38,11 +38,13 @@ class Widget {
 		'terms'            => '',
 		'posts_per_page'   => 9,
 		'post__not_in'     => '',
+		'post__in'         => '',
 		'order'            => '',
 		'orderby'          => '',
 		'hide_meta'        => false,
 		'post_type'        => 'business-directory',
 		'content_type'     => 'post',
+		'template'         => 'single-col-business',
 	);
 
 	/**
@@ -93,8 +95,9 @@ class Widget {
 	 */
 	public function render( $args = array() ) {
 		global $shortcode_args;
-		$this->args     = wp_parse_args( $args, $this->defaults );
-		$shortcode_args = $this->args;
+		$this->args              = wp_parse_args( $args, $this->defaults );
+		$this->args['col_class'] = 12 / (int) $this->args['columns'];
+		$shortcode_args          = $this->args;
 		if ( 'post' === $this->args['content_type'] ) {
 			$this->query_post_type();
 		} else {
@@ -171,16 +174,15 @@ class Widget {
 	public function query_terms() {
 		$args = array(
 			'taxonomy'   => $this->args['taxonomy'],
-			'number'     => (int) $this->args['limit'],
-			'include'    => explode( ',', $this->args['include'] ),
+			'number'     => (int) $this->args['posts_per_page'],
 			'orderby'    => $this->args['orderby'],
 			'order'      => $this->args['order'],
 			'hide_empty' => 0,
 		);
 
-		if ( '' !== $this->args['include'] ) {
+		if ( '' !== $this->args['post__in'] ) {
 			$args = array(
-				'include' => explode( ',', $this->args['include'] ),
+				'include' => explode( ',', $this->args['post__in'] ),
 				'orderby' => 'include',
 			);
 		}
@@ -221,7 +223,7 @@ class Widget {
 
 		// This outputs a carousel or a row.
 		if ( 'true' === $this->args['carousel'] || true === $this->args['carousel'] ) {
-			$this->html .= '<div class="lsx-business-directory-slider lsx-slick-slider" data-lsx-slick="{\"slidesToShow\": ' . $this->args['slides_to_show'] . ', \"slidesToScroll\": ' . $this->args['slides_to_scroll'] . ' }">';
+			$this->html .= '<div class="lsx-business-directory-slider lsx-slick-slider" data-lsx-slick="{\"slidesToShow\": ' . $this->args['columns'] . ', \"slidesToScroll\": ' . $this->args['columns'] . ' }">';
 		} else {
 			$this->html .= '<div class="row row-flex">';
 		}
@@ -249,13 +251,26 @@ class Widget {
 	 */
 	public function run_loop() {
 		$this->counter = 0;
-		while ( $this->query->have_posts() ) {
-			$this->counter++;
-			$this->query->the_post();
-			ob_start();
-			lsx_business_template( 'single-col-business' );
-			$this->html .= ob_get_clean();
-			$this->loop_bottom();
+		if ( 'post' === $this->args['content_type'] ) {
+			while ( $this->query->have_posts() ) {
+				$this->counter++;
+				$this->query->the_post();
+				ob_start();
+				lsx_business_template( $this->args['template'] );
+				$this->html .= ob_get_clean();
+				$this->loop_bottom();
+			}
+		} else {
+			global $item_term;
+			$item_term = false;
+			foreach ( $this->query as $item_term ) {
+				$this->counter++;
+				$item_term->col_class = $this->args['col_class'];
+				ob_start();
+				lsx_business_template( $this->args['template'] );
+				$this->html .= ob_get_clean();
+				$this->loop_bottom();
+			}
 		}
 	}
 
@@ -265,7 +280,7 @@ class Widget {
 	 * @return void
 	 */
 	public function loop_bottom() {
-		if ( false === $this->args['carousel'] && 3 === $this->counter ) {
+		if ( false === $this->args['carousel'] && $this->args['columns'] === $this->counter ) {
 			$this->html   .= wp_kses_post( '</div>' );
 			$this->html   .= wp_kses_post( '<div class="row row-flex">' );
 			$this->counter = 0;
@@ -276,12 +291,7 @@ class Widget {
 	 * Ends the html output and resets the query.
 	 */
 	public function end_loop() {
-		if ( 'true' === $this->args['carousel'] || true === $this->args['carousel'] ) {
-			$this->html .= '</div>';
-		} else {
-			$this->html .= '</div>';
-		}
-		$this->html .= '</div>';
+		$this->html .= '</div></div>';
 		$this->reset_query();
 	}
 

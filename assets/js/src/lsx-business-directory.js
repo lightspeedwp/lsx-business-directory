@@ -28,18 +28,30 @@ var LSX_BD = Object.create( null );
      */
     LSX_BD.sliders.init = function( ) {
         LSX_BD.sliders.element.each( function() {
+			var slidesToScroll = 3;
+			var slidesToShow = 3;
+			var overrides = $(this).attr( 'data-lsx-slick' );
+			if ( undefined !== overrides && false !== overrides ) {
+				overrides = jQuery.parseJSON( overrides );
+				if ( undefined !== overrides.slidesToShow && '' !== overrides.slidesToShow ) {
+					slidesToShow = overrides.slidesToShow;
+				}
+				if ( undefined !== overrides.slidesToScroll && '' !== overrides.slidesToScroll ) {
+					slidesToScroll = overrides.slidesToScroll;
+				}
+			}
             $(this).slick({
                 dots: true,
                 infinite: false,
                 speed: 300,
-                slidesToShow: 3,
-                slidesToScroll: 3,
+                slidesToShow: slidesToShow,
+                slidesToScroll: slidesToScroll,
                 responsive: [
                     {
                         breakpoint: 1024,
                         settings: {
-                            slidesToShow: 3,
-                            slidesToScroll: 3,
+                            slidesToShow: slidesToShow,
+                            slidesToScroll: slidesToScroll,
                             infinite: true,
                             dots: true
                         }
