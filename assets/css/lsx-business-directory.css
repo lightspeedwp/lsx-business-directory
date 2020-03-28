@@ -300,6 +300,6 @@ body.lsx-business-directory-page.archive:not(.using-gutenberg):not(.banner-disab
 
 body.archive.lsx-body-grid-layout .post-wrapper, body.search-results.lsx-body-grid-layout .post-wrapper { margin-left: -15px; margin-right: -15px; }
 
-@CHARSET "UTF-8";
+.lsx-business-directory-shortcode.lsx-bd-industries-nav img { max-width: 25%; margin-right: 10px; }
 
 /*# sourceMappingURL=maps/lsx-business-directory.css.map */

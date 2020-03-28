@@ -103,6 +103,7 @@ function lsx_bd_related_listings( $args = array() ) {
 		'taxonomy'   => 'industry',
 		'terms'      => $prepped_terms,
 		'orderby'    => 'rand',
+		'custom_css' => 'lsx-bd-related-listings',
 	);
 	if ( true === $args['echo'] ) {
 		echo wp_kses_post( $lsx_bd->frontend->widget->render( $params ) );
@@ -128,6 +129,7 @@ function lsx_bd_recent_listings( $args = array() ) {
 		'title_text' => $args['title'],
 		'carousel'   => true,
 		'orderby'    => 'recent',
+		'custom_css' => 'lsx-bd-recent-listings',
 	);
 	if ( true === $args['echo'] ) {
 		echo wp_kses_post( $lsx_bd->frontend->widget->render( $params ) );
@@ -153,6 +155,7 @@ function lsx_bd_featured_listings( $args = array() ) {
 		'title_text' => $args['title'],
 		'carousel'   => true,
 		'orderby'    => 'featured',
+		'custom_css' => 'lsx-bd-featured-listings',
 	);
 	if ( true === $args['echo'] ) {
 		echo wp_kses_post( $lsx_bd->frontend->widget->render( $params ) );
@@ -178,6 +181,7 @@ function lsx_bd_random_listings( $args = array() ) {
 		'title_text' => $args['title'],
 		'carousel'   => true,
 		'orderby'    => 'rand',
+		'custom_css' => 'lsx-bd-random-listings',
 	);
 	if ( true === $args['echo'] ) {
 		echo wp_kses_post( $lsx_bd->frontend->widget->render( $params ) );
@@ -202,6 +206,7 @@ function lsx_bd_industries_nav( $args = array() ) {
 		'content_type' => 'term',
 		'template'     => 'single-industry-nav',
 		'columns'      => 6,
+		'custom_css'   => 'lsx-bd-industries-nav',
 	);
 	$args     = wp_parse_args( $args, $defaults );
 	$lsx_bd   = lsx_business_directory();
@@ -260,7 +265,7 @@ function lsx_bd_get_term_thumbnail( $term_id = '', $size = 'lsx-thumbnail-wide',
 		if ( false === $image_src || '' === $image_src ) {
 			$image_src = \lsx\business_directory\includes\get_placeholder( $size, 'archive_thumbnail' );
 			$image     = '<img width="150" height="150" src="' . $image_src . '" class="attachment-thumbnail size-thumbnail" alt="">';
-		} else if ( false !== $image_src && '' !== $image_src ) {
+		} elseif ( false !== $image_src && '' !== $image_src ) {
 			$image = wp_get_attachment_image( $image_src, $size );
 		}
 		if ( false !== $echo ) {

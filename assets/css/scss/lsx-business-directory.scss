@@ -5,15 +5,13 @@
  */
 
 @import 'variables';
+@import 'include-media';
 @import 'general';
 @import 'single';
 @import 'archive';
 @import 'archive_row';
 @import 'archive_col';
-@import 'include-media';
 @import 'banners';
 @import 'related_listings';
 @import 'lsx_blog_customizer';
-
-@CHARSET "UTF-8";
-
+@import 'shortcodes';
