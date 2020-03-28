@@ -257,11 +257,14 @@ function lsx_bd_get_term_thumbnail( $term_id = '', $size = 'lsx-thumbnail-wide',
 	$image = '';
 	if ( '' !== $term_id ) {
 		$image_src = get_term_meta( $term_id, 'lsx_bd_thumbnail_id', true );
-		if ( false !== $image_src && '' !== $image_src ) {
+		if ( false === $image_src || '' === $image_src ) {
+			$image_src = \lsx\business_directory\includes\get_placeholder( $size, 'archive_thumbnail' );
+			$image     = '<img width="150" height="150" src="' . $image_src . '" class="attachment-thumbnail size-thumbnail" alt="">';
+		} else if ( false !== $image_src && '' !== $image_src ) {
 			$image = wp_get_attachment_image( $image_src, $size );
-			if ( false !== $echo ) {
-				echo wp_kses_post( $image );
-			}
+		}
+		if ( false !== $echo ) {
+			echo wp_kses_post( $image );
 		}
 	}
 	return $image;

@@ -46,6 +46,10 @@ function get_placeholder( $size = 'lsx-thumbnail-wide', $key = 'single_thumbnail
 	// Default to the images stored in the plugin.
 	if ( '' === $placeholder ) {
 		switch ( $size ) {
+			case 'thumbnail':
+				$placeholder = LSX_BD_URL . 'assets/img/placeholder-thumbnail.jpg';
+				break;
+
 			case 'lsx-thumbnail-square':
 				$placeholder = LSX_BD_URL . 'assets/img/placeholder-350x350.jpg';
 				break;
