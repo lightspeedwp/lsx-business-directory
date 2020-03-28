@@ -187,6 +187,33 @@ function lsx_bd_random_listings( $args = array() ) {
 }
 
 /**
+ * Returns the industries nav block.
+ *
+ * @param  boolean $echo
+ * @return string
+ */
+function lsx_bd_industries_nav( $args = array() ) {
+	$defaults = array(
+		'echo'  => true,
+		'title' => esc_html__( 'Pick an industry', 'lsx-member-directory' ),
+	);
+	$args     = wp_parse_args( $args, $defaults );
+	$lsx_bd   = lsx_business_directory();
+	$params   = array(
+		'title_text'  => $args['title'],
+		'carousel'    => false,
+		'orderby'     => 'rand',
+		'taxonomy'    => 'industry',
+		'conten_type' => 'term',
+	);
+	if ( true === $args['echo'] ) {
+		echo wp_kses_post( $lsx_bd->frontend->widget->render( $params ) );
+	} else {
+		return $lsx_bd->frontend->widget->render( $params );
+	}
+}
+
+/**
  * Loads Business Template for Archive page for list layout.
  *
  * @return  void

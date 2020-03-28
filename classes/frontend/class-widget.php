@@ -42,6 +42,7 @@ class Widget {
 		'orderby'          => '',
 		'hide_meta'        => false,
 		'post_type'        => 'business-directory',
+		'content_type'     => 'post',
 	);
 
 	/**
@@ -94,8 +95,11 @@ class Widget {
 		global $shortcode_args;
 		$this->args     = wp_parse_args( $args, $this->defaults );
 		$shortcode_args = $this->args;
-
-		$this->query_post_type();
+		if ( 'post' === $this->args['content_type'] ) {
+			$this->query_post_type();
+		} else {
+			$this->query_terms();
+		}
 		if ( $this->has_items() ) {
 			$this->start_loop();
 			$this->run_loop();
@@ -135,8 +139,8 @@ class Widget {
 					break;
 
 				case 'recent':
-					$query_args['orderby'] = $this->args['date'];
-					$query_args['order']   = $this->args['desc'];
+					$query_args['orderby'] = 'date';
+					$query_args['order']   = 'desc';
 					break;
 
 				default:
@@ -162,16 +166,48 @@ class Widget {
 	}
 
 	/**
+	 *  Runs a WP_Query() for your members.
+	 */
+	public function query_terms() {
+		$args = array(
+			'taxonomy'   => $this->args['taxonomy'],
+			'number'     => (int) $this->args['limit'],
+			'include'    => explode( ',', $this->args['include'] ),
+			'orderby'    => $this->args['orderby'],
+			'order'      => $this->args['order'],
+			'hide_empty' => 0,
+		);
+
+		if ( '' !== $this->args['include'] ) {
+			$args = array(
+				'include' => explode( ',', $this->args['include'] ),
+				'orderby' => 'include',
+			);
+		}
+
+		if ( 'none' !== $this->args['orderby'] ) {
+			$args['suppress_filters']           = true;
+			$args['disabled_custom_post_order'] = true;
+		}
+
+		$this->query = get_terms( $args );
+	}
+
+	/**
 	 * Checks to see it the current query found any items
 	 *
 	 * @return boolean
 	 */
 	public function has_items() {
-		$has_members = false;
-		if ( false !== $this->query && $this->query->have_posts() ) {
-			$has_members = true;
+		$has_items = false;
+		if ( false !== $this->query ) {
+			if ( 'post' === $this->args['content_type'] && $this->query->have_posts() ) {
+				$has_items = true;	
+			} elseif ( ! empty( $this->query ) && ! is_wp_error( $this->query ) ) {
+				$has_items = true;
+			}
 		}
-		return $has_members;
+		return $has_items;
 	}
 
 	/**
