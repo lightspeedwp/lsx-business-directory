@@ -78,7 +78,7 @@
 		</div>
 
 		<div class="business-button">
-			<button class="read-more-link"><a href="<?php esc_url( the_permalink() ); ?>">View Listing<i class="fa fa-long-arrow-right"></i></a></button>
+			<a class="btn btn-primary" href="<?php esc_url( the_permalink() ); ?>">View Listing<i class="fa fa-long-arrow-right"></i></a>
 		</div>
 	</article>
 </div>

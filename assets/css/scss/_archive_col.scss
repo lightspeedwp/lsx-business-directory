@@ -52,11 +52,12 @@
 			}
 		}
 
-		.business-button button {
+		.business-button .btn {
 			width: 100%;
 			height: 45px;
-			background-color: $search_blue;
 			border: none;
+			box-shadow: none;
+			border-radius: 0;
 
 			a {
 				color: white;
