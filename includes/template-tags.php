@@ -264,7 +264,7 @@ function lsx_bd_listing_meta( $echo = true ) {
 	if ( ! empty( $industries ) || ! empty( $locations ) ) {
 		$col_class = '6';
 		if ( empty( $industries ) || empty( $locations ) ) {
-			$col_class = '2';
+			$col_class = '12';
 		}
 		ob_start();
 		?>
@@ -295,7 +295,7 @@ function lsx_bd_listing_meta( $echo = true ) {
 			?>
 
 			<?php
-			if ( ! empty( $industries ) ) {
+			if ( ! empty( $locations ) ) {
 				?>
 				<div class="location col-xs-12 col-sm-12 col-md-<?php echo esc_attr( $col_class ); ?>">
 					<span>
