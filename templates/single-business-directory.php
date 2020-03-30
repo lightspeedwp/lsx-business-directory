@@ -86,77 +86,75 @@ get_header(); ?>
 
 				<div class="entry-header business-header">
 					<div class="row">
-						<div class="col-xs-12 col-sm-12 col-md-4 business-content-left">
-							<div class="entry-image">
-								<img src="<?php echo esc_url( lsx_bd_get_thumbnail_wrapped( get_the_ID(), 'lsx-thumbnail-wide' ) ); ?>">
-							</div>
-
-							<div class="col-xs-12 col-sm-12 col-md-4">
-								<div class="contact-info business-content-section">
-									<div class="row">
-										<?php if ( $business_primary_phone ) : ?>
-										<div class="telephone lsx-flex-row">
-											<div class="col1"><i class="fa fa-phone-square"></i><strong><?php esc_html_e( 'Telephone', 'lsx-business-directory' ); ?>: </strong></div>
-											<div class="col2"><a href="tel:<?php echo esc_attr( str_replace( ' ', '', $business_primary_phone ) ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_attr( $business_primary_phone ); ?></a></div>
-										</div>
-										<?php endif; ?>
-
-										<?php if ( $business_contact_name ) : ?>
-										<div class="contact lsx-flex-row">
-											<div class="col1"><i class="fa fa-user"></i><strong><?php esc_html_e( 'Contact', 'lsx-business-directory' ); ?>: </strong></div>
-											<div class="col2"><?php echo esc_attr( $business_contact_name ); ?></div>
-										</div>
-										<?php endif; ?>
-
-										<?php if ( $business_primary_email ) : ?>
-										<div class="email lsx-flex-row">
-											<div class="col1"><i class="fa fa-envelope-square"></i><strong><?php esc_html_e( 'Email', 'lsx-business-directory' ); ?>: </strong></div>
-											<div class="col2"><a href="mailto:<?php echo esc_attr( $business_primary_email ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_attr( $business_primary_email ); ?></a></div>
-										</div>
-										<?php endif; ?>
-
-										<?php if ( $business_website ) : ?>
-										<div class="website lsx-flex-row">
-											<div class="col1"><i class="fa fa-home"></i><strong><?php esc_html_e( 'Website', 'lsx-business-directory' ); ?>: </strong></div>
-											<div class="col2"><a href="<?php echo esc_attr( $business_website ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_attr( $business_website ); ?></a></div>
-										</div>
-										<?php endif; ?>
-
-										<?php if ( $business_skype ) : ?>
-										<div class="skype lsx-flex-row">
-											<div class="col1"><i class="fa fa-skype"></i><strong><?php esc_html_e( 'Skype', 'lsx-business-directory' ); ?>: </strong></div>
-											<div class="col2 lsx-flex-center"><a href="skype:<?php echo esc_attr( $business_skype ); ?>?call"><i class="fa fa-skype"></i>Call: <?php echo esc_attr( $business_skype ); ?></a></div>
-										</div>
-										<?php endif; ?>
-
-										<?php if ( $business_whatsapp ) : ?>
-										<div class="whatsapp lsx-flex-row">
-											<div class="col1"><i class="fa fa-whatsapp"></i><strong><?php esc_html_e( 'Whatsapp', 'lsx-business-directory' ); ?>: </strong></div>
-											<div class="col2 lsx-flex-center"><a href="https://wa.me/<?php echo esc_attr( $business_whatsapp ); ?>">Click to Chat</a></div>
-										</div>
-										<?php endif; ?>
-
-										<?php if ( ! empty( $address ) ) : ?>
-										<div class="address lsx-flex-row">
-											<div class="col1"><i class="fa fa-map-marker"></i><strong><?php esc_html_e( 'Address', 'lsx-business-directory' ); ?>: </strong></div>
-											<div class="col2">
-												<?php
-												foreach ( $address as $field_string ) {
-													echo esc_attr( $field_string ) . '<br />';
-												}
-												?>
-											</div>
-										</div>
-										<?php endif; ?>
-									</div>
+						<div class="col-xs-12 col-sm-12 col-md-4">
+							<div class="business-content-left">
+								<div class="entry-image">
+									<img src="<?php echo esc_url( lsx_bd_get_thumbnail_wrapped( get_the_ID(), 'lsx-thumbnail-wide' ) ); ?>">
 								</div>
-							</div>
 
-							<?php if ( $business_enquiry_form ) : ?>
-							<div class="button col-xs-12 col-sm-12 col-md-12">
-								<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#enquiry-form-modal"><?php esc_html_e( 'Contact', 'lsx-business-directory' ); ?> <?php the_title(); ?></button>
+								<div class="contact-info business-content-section">
+									<?php if ( $business_primary_phone ) : ?>
+									<div class="telephone lsx-flex-row">
+										<div class="col1"><i class="fa fa-phone-square"></i><strong><?php esc_html_e( 'Telephone', 'lsx-business-directory' ); ?>: </strong></div>
+										<div class="col2"><a href="tel:<?php echo esc_attr( str_replace( ' ', '', $business_primary_phone ) ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_attr( $business_primary_phone ); ?></a></div>
+									</div>
+									<?php endif; ?>
+
+									<?php if ( $business_contact_name ) : ?>
+									<div class="contact lsx-flex-row">
+										<div class="col1"><i class="fa fa-user"></i><strong><?php esc_html_e( 'Contact', 'lsx-business-directory' ); ?>: </strong></div>
+										<div class="col2"><?php echo esc_attr( $business_contact_name ); ?></div>
+									</div>
+									<?php endif; ?>
+
+									<?php if ( $business_primary_email ) : ?>
+									<div class="email lsx-flex-row">
+										<div class="col1"><i class="fa fa-envelope-square"></i><strong><?php esc_html_e( 'Email', 'lsx-business-directory' ); ?>: </strong></div>
+										<div class="col2"><a href="mailto:<?php echo esc_attr( $business_primary_email ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_attr( $business_primary_email ); ?></a></div>
+									</div>
+									<?php endif; ?>
+
+									<?php if ( $business_website ) : ?>
+									<div class="website lsx-flex-row">
+										<div class="col1"><i class="fa fa-home"></i><strong><?php esc_html_e( 'Website', 'lsx-business-directory' ); ?>: </strong></div>
+										<div class="col2"><a href="<?php echo esc_attr( $business_website ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_attr( $business_website ); ?></a></div>
+									</div>
+									<?php endif; ?>
+
+									<?php if ( $business_skype ) : ?>
+									<div class="skype lsx-flex-row">
+										<div class="col1"><i class="fa fa-skype"></i><strong><?php esc_html_e( 'Skype', 'lsx-business-directory' ); ?>: </strong></div>
+										<div class="col2 lsx-flex-center"><a href="skype:<?php echo esc_attr( $business_skype ); ?>?call"><i class="fa fa-skype"></i>Call: <?php echo esc_attr( $business_skype ); ?></a></div>
+									</div>
+									<?php endif; ?>
+
+									<?php if ( $business_whatsapp ) : ?>
+									<div class="whatsapp lsx-flex-row">
+										<div class="col1"><i class="fa fa-whatsapp"></i><strong><?php esc_html_e( 'Whatsapp', 'lsx-business-directory' ); ?>: </strong></div>
+										<div class="col2 lsx-flex-center"><a href="https://wa.me/<?php echo esc_attr( $business_whatsapp ); ?>">Click to Chat</a></div>
+									</div>
+									<?php endif; ?>
+
+									<?php if ( ! empty( $address ) ) : ?>
+									<div class="address lsx-flex-row">
+										<div class="col1"><i class="fa fa-map-marker"></i><strong><?php esc_html_e( 'Address', 'lsx-business-directory' ); ?>: </strong></div>
+										<div class="col2">
+											<?php
+											foreach ( $address as $field_string ) {
+												echo esc_attr( $field_string ) . '<br />';
+											}
+											?>
+										</div>
+									</div>
+									<?php endif; ?>
+								</div>
+
+								<?php if ( $business_enquiry_form ) : ?>
+									<div class="button">
+										<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#enquiry-form-modal"><?php esc_html_e( 'Contact', 'lsx-business-directory' ); ?> <?php the_title(); ?></button>
+									</div>
+								<?php endif; ?>
 							</div>
-							<?php endif; ?>
 						</div>
 
 						<div class="col-md-8 business-content-right">
