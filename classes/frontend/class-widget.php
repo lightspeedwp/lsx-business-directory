@@ -207,7 +207,7 @@ class Widget {
 		$has_items = false;
 		if ( false !== $this->query ) {
 			if ( 'post' === $this->args['content_type'] && $this->query->have_posts() ) {
-				$has_items = true;	
+				$has_items = true;
 			} elseif ( ! empty( $this->query ) && ! is_wp_error( $this->query ) ) {
 				$has_items = true;
 			}
