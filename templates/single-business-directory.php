@@ -159,7 +159,10 @@ get_header(); ?>
 
 						<div class="col-md-8 business-content-right">
 							<div class="entry-header-content">
-								<?php lsx_business_listing_title(); ?>
+								<?php lsx_bd_listing_title(); ?>
+
+
+								<?php var_dump( $industries ); ?>
 
 								<div class="entry-meta lsx-flex-row">
 									<div class="industry col-xs-12 col-sm-12 col-md-6">

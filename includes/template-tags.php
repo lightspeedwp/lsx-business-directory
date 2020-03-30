@@ -242,7 +242,7 @@ function lsx_business_col() {
  * @param boolean $echo Output or return the title.
  * @return string
  */
-function lsx_business_listing_title( $echo = true ) {
+function lsx_bd_listing_title( $echo = true ) {
 	$title = apply_filters( 'lsx_bd_single_business_title', '<h1 class="entry-title">' . get_the_title() . '</h1>' );
 	if ( true === $echo ) {
 		echo wp_kses_post( $title );
