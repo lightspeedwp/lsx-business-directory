@@ -54,7 +54,7 @@ body.single-business-directory article .entry-meta > * { display: block; }
 
 .single .business-directory .business-header .entry-header-content .social-links > div { margin-left: 24px; }
 
-.single .business-directory .business-header .entry-header-content .social-links > div a { color: #5693D9; font-size: 22px; line-height: 22px; text-align: center; }
+.single .business-directory .business-header .entry-header-content .social-links > div a { font-size: 22px; line-height: 22px; text-align: center; }
 
 .single .business-directory .business-header .entry-header-content .social-links > div a:hover { color: #F7AE00; }
 
