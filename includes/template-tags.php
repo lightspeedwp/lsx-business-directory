@@ -252,6 +252,85 @@ function lsx_bd_listing_title( $echo = true ) {
 }
 
 /**
+ * Output the location and the industry for the single listing.
+ *
+ * @param  boolean $echo
+ * @return string
+ */
+function lsx_bd_listing_meta( $echo = true ) {
+	$entry_meta = '';
+	$industries = lsx_bd_get_formatted_taxonomy_str( get_the_ID(), 'industry', true );
+	$locations  = lsx_bd_get_formatted_taxonomy_str( get_the_ID(), 'location', true );
+	if ( ! empty( $industries ) || ! empty( $locations ) ) {
+		$col_class = '6';
+		if ( empty( $industries ) || empty( $locations ) ) {
+			$col_class = '2';
+		}
+		ob_start();
+		?>
+		<div class="entry-meta lsx-flex-row">
+			<?php
+			if ( ! empty( $industries ) ) {
+				?>
+				<div class="industry col-xs-12 col-sm-12 col-md-<?php echo esc_attr( $col_class ); ?>">
+					<span>
+						<i class="fa fa-th"></i>
+						<strong><?php esc_html_e( 'Industry', 'lsx-business-directory' ); ?>: </strong>
+						<?php
+						$count = 0;
+						foreach ( $industries as $industry ) :
+							if ( $count > 0 ) :
+								?>,
+							<?php endif;
+							?>
+								<a href="/industry/<?php echo esc_attr( $industry['slug'] ); ?>"><?php echo esc_attr( $industry['name'] ); ?></a>
+								<?php
+								$count++;
+						endforeach;
+						?>
+					</span>
+				</div>
+				<?php
+			}
+			?>
+
+			<?php
+			if ( ! empty( $industries ) ) {
+				?>
+				<div class="location col-xs-12 col-sm-12 col-md-<?php echo esc_attr( $col_class ); ?>">
+					<span>
+						<i class="fa fa-globe"></i>
+						<strong><?php esc_html_e( 'Location', 'lsx-business-directory' ); ?>: </strong>
+						<?php
+						$count = 0;
+						foreach ( $locations as $location ) :
+							if ( $count > 0 ) :
+								?>,
+							<?php endif;
+							?>
+								<a href="/location/<?php echo esc_attr( $location['slug'] ); ?>"><?php echo esc_attr( $location['name'] ); ?></a>
+								<?php
+								$count++;
+						endforeach;
+						?>
+					</span>
+				</div>
+				<?php
+			}
+			?>
+		</div>
+		<?php
+		$entry_meta = apply_filters( 'lsx_bd_single_listing_meta', $entry_meta );
+		$entry_meta = ob_get_clean();
+	}
+	if ( true === $echo ) {
+		echo wp_kses_post( $entry_meta );
+	} else {
+		return $entry_meta;
+	}
+}
+
+/**
  * This gets the term thunbnail from the taxonomies.
  *
  * @param string $term_id

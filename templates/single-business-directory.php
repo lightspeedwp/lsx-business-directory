@@ -45,8 +45,6 @@ get_header(); ?>
 			$business_instagram          = get_post_meta( get_the_ID(), $prefix . '_instagram', true );
 			$business_youtube            = get_post_meta( get_the_ID(), $prefix . '_youtube', true );
 			$business_pinterest          = get_post_meta( get_the_ID(), $prefix . '_pinterest', true );
-			$industries    				 = lsx_bd_get_formatted_taxonomy_str( get_the_ID(), 'industry', true );
-			$locations    				 = lsx_bd_get_formatted_taxonomy_str( get_the_ID(), 'location', true );
 			$address                     = array();
 
 			if ( ! empty( $business_whatsapp ) ) {
@@ -161,56 +159,7 @@ get_header(); ?>
 							<div class="entry-header-content">
 								<?php lsx_bd_listing_title(); ?>
 
-
-								<?php var_dump( $industries ); ?>
-
-								<div class="entry-meta lsx-flex-row">
-									<div class="industry col-xs-12 col-sm-12 col-md-6">
-										<span>
-											<i class="fa fa-th"></i>
-											<strong><?php esc_html_e( 'Industry', 'lsx-business-directory' ); ?>: </strong>
-											<?php
-											$count = 0;
-											foreach ( $industries as $industry ) :
-												if ( $count > 0 ) :
-													?>,
-												<?php endif;
-												?>
-													<a href="/industry/<?php echo esc_attr( $industry['slug'] ); ?>"><?php echo esc_attr( $industry['name'] ); ?></a>
-													<?php
-													$count++;
-											endforeach;
-											?>
-										</span>
-									</div>
-
-									<div class="location col-xs-12 col-sm-12 col-md-6">
-										<span>
-											<i class="fa fa-globe"></i>
-											<strong><?php esc_html_e( 'Location', 'lsx-business-directory' ); ?>: </strong>
-											<?php
-											$count = 0;
-											foreach ( $locations as $location ) :
-												if ( $count > 0 ) :
-													?>,
-												<?php endif;
-												?>
-													<a href="/location/<?php echo esc_attr( $location['slug'] ); ?>"><?php echo esc_attr( $location['name'] ); ?></a>
-													<?php
-													$count++;
-											endforeach;
-											?>
-										</span>
-									</div>
-
-									<?php
-									/**
-									 * Contains HTML for proposed "Claim This Listing" Button
-									 *
-									 * lsx_claim_this_listing_button();
-									 */
-									?>
-								</div>
+								<?php lsx_bd_listing_meta(); ?>
 
 								<div class="social-links lsx-flex-row">
 									<?php if ( $business_facebook ) : ?>
