@@ -21,7 +21,7 @@ class Translations {
 	 * Contructor
 	 */
 	public function __construct() {
-		add_action( 'lsx_bd_settings_page', array( $this, 'register_settings_translations' ), 1, 1 );
+		add_action( 'lsx_bd_settings_page', array( $this, 'register_settings_translations' ), 30, 1 );
 	}
 
 	/**
@@ -52,14 +52,14 @@ class Translations {
 				'type'        => 'title',
 				'name'        => __( 'Translations', 'lsx-business-directory' ),
 				'default'     => __( 'Translations', 'lsx-business-directory' ),
-				'description' => __( 'Change the slugs for your the listings, industry and regions.', 'lsx-business-directory' ),
+				'description' => __( 'Change the slugs for your the listings, industry and regions. Once you have saved your settings, open the <a href="/wp-admin/options-permalink.php">permalinks</a> page to flush the rewrite rules.', 'lsx-business-directory' ),
 			)
 		);
 		do_action( 'lsx_bd_settings_section_translations', $cmb, 'top' );
 		$cmb->add_field(
 			array(
 				'name'    => esc_html__( 'Listing Single', 'lsx-business-directory' ),
-				'id'      => 'translation_listing_single_slug',
+				'id'      => 'translations_listing_single_slug',
 				'type'    => 'text',
 				'default' => 'listing',
 			)
@@ -67,7 +67,7 @@ class Translations {
 		$cmb->add_field(
 			array(
 				'name'    => esc_html__( 'Business Directory', 'lsx-business-directory' ),
-				'id'      => 'translation_listing_archive_slug',
+				'id'      => 'translations_listing_archive_slug',
 				'type'    => 'text',
 				'default' => 'listings',
 			)
