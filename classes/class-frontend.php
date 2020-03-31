@@ -157,7 +157,7 @@ class Frontend {
 			$prefix = '';
 			$suffix = '.min';
 		}
-		wp_enqueue_script( 'lsx-business-directory', LSX_BD_URL . 'assets/js/' . $prefix . 'lsx-business-directory' . $suffix . '.js', array( 'jquery' ), LSX_BD_VER, true );
+		wp_enqueue_script( 'lsx-bd-frontend', LSX_BD_URL . 'assets/js/' . $prefix . 'lsx-bd-frontend' . $suffix . '.js', array( 'jquery' ), LSX_BD_VER, true );
 
 		/*
 		* Adds the Google Maps Javascript Call if a map field was included
