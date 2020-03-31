@@ -36,6 +36,24 @@ class Business_Directory {
 	public $prefix = 'lsx_bd';
 
 	/**
+	 * The Post Type Single Slug
+	 *
+	 * @since 1.0.0
+	 *
+	 * @var      string
+	 */
+	public $single_slug = 'listing';
+
+	/**
+	 * The Post Type Single Slug
+	 *
+	 * @since 1.0.0
+	 *
+	 * @var      string
+	 */
+	public $archive_slug = 'listings';
+
+	/**
 	 * Contructor
 	 */
 	public function __construct() {
@@ -104,11 +122,11 @@ class Business_Directory {
 			'menu_icon'           => 'dashicons-list-view',
 			'query_var'           => true,
 			'rewrite'             => array(
-				'slug' => 'listing',
+				'slug' => lsx_bd_get_option( 'translations_listing_single_slug', $this->single_slug ),
 			),
 			'exclude_from_search' => false,
 			'capability_type'     => 'page',
-			'has_archive'         => 'listings',
+			'has_archive'         => lsx_bd_get_option( 'translations_listing_archive_slug', $this->archive_slug ),
 			'hierarchical'        => false,
 			'menu_position'       => null,
 			'supports'            => $supports,
