@@ -53,6 +53,13 @@ class Frontend {
 	public $placeholders;
 
 	/**
+	 * Holds the google maps class.
+	 *
+	 * @var object \lsx\business_directory\classes\frontend\Google_Maps();
+	 */
+	public $google_maps;
+
+	/**
 	 * Contructor
 	 */
 	public function __construct() {
@@ -96,6 +103,9 @@ class Frontend {
 
 		require_once LSX_BD_PATH . 'classes/frontend/class-placeholders.php';
 		$this->placeholders = frontend\Placeholders::get_instance();
+
+		require_once LSX_BD_PATH . 'classes/frontend/class-google-maps.php';
+		$this->google_maps = frontend\Google_Maps::get_instance();
 	}
 
 	/**
