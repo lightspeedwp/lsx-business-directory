@@ -48,10 +48,10 @@ class Google_Maps {
 	public function register_settings( $cmb ) {
 		$cmb->add_field(
 			array(
-				'id'          => 'settings_google_maps',
-				'type'        => 'title',
-				'name'        => __( 'Maps', 'lsx-business-directory' ),
-				'default'     => __( 'Maps', 'lsx-business-directory' ),
+				'id'      => 'settings_google_maps',
+				'type'    => 'title',
+				'name'    => __( 'Maps', 'lsx-business-directory' ),
+				'default' => __( 'Maps', 'lsx-business-directory' ),
 			)
 		);
 		do_action( 'lsx_bd_settings_section_google_maps', $cmb, 'top' );
@@ -61,6 +61,22 @@ class Google_Maps {
 				'id'      => 'google_maps_api_key',
 				'type'    => 'text',
 				'default' => '',
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name' => esc_html__( 'Enable Placeholder', 'lsx-business-directory' ),
+				'id'   => 'google_maps_enable_placeholder',
+				'type' => 'checkbox',
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'         => esc_html__( 'Placeholder', 'lsx-business-directory' ),
+				'desc'         => esc_html__( 'Your image should be 800px x 800px preferably, but no less than 350px x 350px.', 'lsx-business-directory' ),
+				'id'           => 'google_maps_placeholder',
+				'type'         => 'file',
+				'preview_size' => 'lsx-thumbnail-sqaure',
 			)
 		);
 		do_action( 'lsx_bd_settings_section_google_maps', $cmb, 'bottom' );
