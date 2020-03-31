@@ -254,6 +254,14 @@ class Business_Directory {
 
 		$cmb_address->add_field(
 			array(
+				'name' => esc_html__( 'Complex Name / Business Park / Street Number', 'lsx-business-directory' ),
+				'id'   => $this->prefix . '_address_street_number',
+				'type' => 'text',
+			)
+		);
+
+		$cmb_address->add_field(
+			array(
 				'name' => esc_html__( 'Street Name', 'lsx-business-directory' ),
 				'id'   => $this->prefix . '_address_street_name',
 				'type' => 'text',
