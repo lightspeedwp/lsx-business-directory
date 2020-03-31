@@ -67,7 +67,6 @@ if ( ! class_exists( 'CMB2_Bootstrap_270', false ) ) {
 				// We are running outside of the context of WordPress.
 				return;
 			}
-
 			add_action( 'init', array( $this, 'include_cmb' ), self::PRIORITY );
 		}
 

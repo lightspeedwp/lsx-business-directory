@@ -53,6 +53,13 @@ class Admin {
 	public $settings_theme;
 
 	/**
+	 * Holds the slug translations for the post type archives and taxonomies.
+	 *
+	 * @var object \lsx\business_directory\classes\admin\Translations();
+	 */
+	public $translations;
+
+	/**
 	 * Contructor
 	 */
 	public function __construct() {
@@ -100,6 +107,9 @@ class Admin {
 
 		require_once LSX_BD_PATH . 'classes/admin/class-settings-theme.php';
 		$this->settings_theme = admin\Settings_Theme::get_instance();
+
+		require_once LSX_BD_PATH . 'classes/admin/class-translations.php';
+		$this->translations = admin\Translations::get_instance();
 	}
 
 	/**

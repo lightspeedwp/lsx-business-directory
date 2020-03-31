@@ -36,12 +36,48 @@ class Business_Directory {
 	public $prefix = 'lsx_bd';
 
 	/**
+	 * The Post Type Single Slug
+	 *
+	 * @since 1.0.0
+	 *
+	 * @var      string
+	 */
+	public $single_slug = 'listing';
+
+	/**
+	 * The Post Type Single Slug
+	 *
+	 * @since 1.0.0
+	 *
+	 * @var      string
+	 */
+	public $archive_slug = 'listings';
+
+	/**
+	 * The Industry Term Slug
+	 *
+	 * @since 1.0.0
+	 *
+	 * @var      string
+	 */
+	public $industry_slug = 'industry';
+
+	/**
+	 * The Location Term Slug
+	 *
+	 * @since 1.0.0
+	 *
+	 * @var      string
+	 */
+	public $location_slug = 'location';
+
+	/**
 	 * Contructor
 	 */
 	public function __construct() {
-		add_action( 'init', array( $this, 'register_post_type' ) );
-		add_action( 'init', array( $this, 'register_industry_taxonomy' ) );
-		add_action( 'init', array( $this, 'register_region_taxonomy' ) );
+		add_action( 'init', array( $this, 'register_post_type' ), 20 );
+		add_action( 'init', array( $this, 'register_industry_taxonomy' ), 20 );
+		add_action( 'init', array( $this, 'register_region_taxonomy' ), 20 );
 
 		// Register the custom fields.
 		add_action( 'cmb2_init', array( $this, 'register_address_custom_fields' ), 10 );
@@ -104,11 +140,11 @@ class Business_Directory {
 			'menu_icon'           => 'dashicons-list-view',
 			'query_var'           => true,
 			'rewrite'             => array(
-				'slug' => 'listing',
+				'slug' => lsx_bd_get_option( 'translations_listing_single_slug', $this->single_slug ),
 			),
 			'exclude_from_search' => false,
 			'capability_type'     => 'page',
-			'has_archive'         => 'listings',
+			'has_archive'         => lsx_bd_get_option( 'translations_listing_archive_slug', $this->archive_slug ),
 			'hierarchical'        => false,
 			'menu_position'       => null,
 			'supports'            => $supports,
@@ -143,7 +179,9 @@ class Business_Directory {
 			'exclude_from_search' => true,
 			'show_admin_column'   => true,
 			'query_var'           => true,
-			'rewrite'             => array( 'industry' ),
+			'rewrite'             => array(
+				'slug' => lsx_bd_get_option( 'translations_industry_slug', $this->industry_slug ),
+			),
 		);
 		register_taxonomy( 'industry', array( $this->slug ), $details );
 	}
@@ -174,7 +212,9 @@ class Business_Directory {
 			'exclude_from_search' => true,
 			'show_admin_column'   => true,
 			'query_var'           => true,
-			'rewrite'             => array( 'location' ),
+			'rewrite'             => array(
+				'slug' => lsx_bd_get_option( 'translations_location_slug', $this->location_slug ),
+			),
 		);
 		register_taxonomy( 'location', array( $this->slug ), $details );
 	}
