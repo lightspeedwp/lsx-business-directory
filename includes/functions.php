@@ -280,6 +280,11 @@ function lsx_bd_get_option( $key = '', $default = false ) {
 	$value = $default;
 	if ( '' !== $key && function_exists( 'cmb2_get_option' ) ) {
 		$value = cmb2_get_option( 'lsx-business-directory-settings', $key, $default );
+	} else {
+		$options = get_option( 'lsx-business-directory-settings', false );
+		if ( false !== $options && isset( $options[ $key ] ) && '' !== $options[ $key ] ) {
+			$value = $options[ $key ];
+		}
 	}
 	return $value;
 }

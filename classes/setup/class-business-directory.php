@@ -57,9 +57,9 @@ class Business_Directory {
 	 * Contructor
 	 */
 	public function __construct() {
-		add_action( 'init', array( $this, 'register_post_type' ) );
-		add_action( 'init', array( $this, 'register_industry_taxonomy' ) );
-		add_action( 'init', array( $this, 'register_region_taxonomy' ) );
+		add_action( 'init', array( $this, 'register_post_type' ), 20 );
+		add_action( 'init', array( $this, 'register_industry_taxonomy' ), 20 );
+		add_action( 'init', array( $this, 'register_region_taxonomy' ), 20 );
 
 		// Register the custom fields.
 		add_action( 'cmb2_init', array( $this, 'register_address_custom_fields' ), 10 );

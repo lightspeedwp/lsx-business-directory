@@ -52,7 +52,7 @@ class Translations {
 				'type'        => 'title',
 				'name'        => __( 'Translations', 'lsx-business-directory' ),
 				'default'     => __( 'Translations', 'lsx-business-directory' ),
-				'description' => __( 'Change the slugs for your the listings, industry and regions. Once you have saved your settings, open the <a href="/wp-admin/options-permalink.php">permalinks</a> page to flush the rewrite rules.', 'lsx-business-directory' ),
+				'description' => __( 'Change the slugs for your the listings, industry and regions. Once you have saved your settings, open the <a href="/wp-admin/options-permalink.php">permalinks</a> page to flush the rewrite rules.  This is only for the URLs.', 'lsx-business-directory' ),
 			)
 		);
 		do_action( 'lsx_bd_settings_section_translations', $cmb, 'top' );

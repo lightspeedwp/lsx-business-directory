@@ -48,8 +48,8 @@ class Core {
 	 * Contructor
 	 */
 	public function __construct() {
-		$this->load_includes();
 		$this->load_vendors();
+		$this->load_includes();
 		$this->load_classes();
 	}
 
