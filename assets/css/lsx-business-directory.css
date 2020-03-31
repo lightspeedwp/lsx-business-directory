@@ -304,16 +304,18 @@ body.archive.lsx-body-grid-layout .post-wrapper, body.search-results.lsx-body-gr
 
 .lsx-business-directory-shortcode.lsx-bd-industries-nav { margin-bottom: 2.4rem; }
 
-.lsx-business-directory-shortcode.lsx-bd-industries-nav .row-flex { display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; margin: 0; }
+.lsx-business-directory-shortcode.lsx-bd-industries-nav .row-flex { display: -webkit-box; display: -ms-flexbox; display: flex; margin: 0; -ms-flex-wrap: wrap; flex-wrap: wrap; }
 
-.lsx-business-directory-shortcode.lsx-bd-industries-nav .row-flex .btn-wrap { padding: 10px; margin: 0.5rem 0.5rem 0.5rem 0; -webkit-box-flex: 1; -ms-flex-positive: 1; flex-grow: 1; }
+.lsx-business-directory-shortcode.lsx-bd-industries-nav .row-flex .btn-wrap { padding: 10px; margin: 0.5rem 0.5rem 0.5rem 0; -webkit-box-flex: 1; -ms-flex-positive: 1; flex-grow: 1; word-break: break-all; min-width: 100px; }
 
 @media (max-width: 768px) { .lsx-business-directory-shortcode.lsx-bd-industries-nav .row-flex .btn-wrap { max-width: 50%; } }
 
-@media (min-width: 992px) { .lsx-business-directory-shortcode.lsx-bd-industries-nav .row-flex .btn-wrap { width: 100%; max-width: 185px; display: -webkit-box; display: -ms-flexbox; display: flex; } }
+.lsx-business-directory-shortcode.lsx-bd-industries-nav .row-flex .btn-wrap a { font-size: 12px; width: 100%; }
 
 .lsx-business-directory-shortcode.lsx-bd-industries-nav img { max-width: 25px; margin-right: 5px; }
 
 @media (min-width: 768px) { .archive .lsx-business-directory-shortcode { padding-right: 15px; padding-left: 15px; } }
+
+@media (min-width: 768px) { .gutenberg-compatible-template.using-gutenberg .entry-content .lsx-business-directory-shortcode { width: 80%; max-width: 80%; } }
 
 /*# sourceMappingURL=maps/lsx-business-directory.css.map */

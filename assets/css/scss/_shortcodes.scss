@@ -3,19 +3,20 @@
 		margin-bottom: 2.4rem;
 		.row-flex {
 			display: flex;
-			flex-wrap: wrap;
 			margin: 0;
+			flex-wrap: wrap;
 			.btn-wrap {
 				padding: 10px;
 				margin: 0.5rem 0.5rem 0.5rem 0;
 				flex-grow: 1;
+				word-break: break-all;
+				min-width: 100px;
 				@include media('<=phone') {
 					max-width: 50%;
 				}
-				@include media('>=tablet') {
+				a {
+					font-size: 12px;
 					width: 100%;
-					max-width: 185px;
-					display: flex;
 				}
 			}
 		}
@@ -28,6 +29,12 @@
 		@include media('>=phone') {
 			padding-right: 15px;
 			padding-left: 15px;
+		}
+	}
+	.gutenberg-compatible-template.using-gutenberg .entry-content & {
+		@include media('>=phone') {
+			width: 80%;
+			max-width: 80%;
 		}
 	}
 }
