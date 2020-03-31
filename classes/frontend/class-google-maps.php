@@ -325,12 +325,10 @@ class Google_Maps {
 			'newspaper',
 			'serpstatbot',
 		);
-		if ( isset( $_GET['debug_bot'] ) ) {
-			$user_agent = $_GET['debug_bot'];
-		} else {
-			$user_agent = $_SERVER['HTTP_USER_AGENT'];
-		}
 
+		if ( isset( $_SERVER['HTTP_USER_AGENT'] ) ) {
+			$user_agent = sanitize_text_field( wp_unslash( $_SERVER['HTTP_USER_AGENT'] ) );
+		}
 		foreach ( $user_agents as $agent ) {
 			if ( strtolower( $agent ) === strtolower( $user_agent ) ) {
 				$is_bot = true;
