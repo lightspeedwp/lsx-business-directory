@@ -31,7 +31,7 @@ class Google_Maps {
 		add_action( 'lsx_bd_settings_page', array( $this, 'register_settings' ), 25, 1 );
 		add_filter( 'cmb2_render_google_map', array( $this, 'render_field' ), 10, 5 );
 		add_filter( 'cmb2_sanitize_google_map', array( $this, 'sanitize_field' ), 10, 4 );
-		add_action( 'cmb2_init', array( $this, 'register_custom_fields' ), 15 );
+		add_action( 'init', array( $this, 'init' ), 1000 );
 	}
 
 	/**
@@ -47,6 +47,15 @@ class Google_Maps {
 			self::$instance = new self();
 		}
 		return self::$instance;
+	}
+
+	/**
+	 * Register the maps fields after the addresses.
+	 *
+	 * @return void
+	 */
+	public function init() {
+		add_action( 'cmb2_init', array( $this, 'register_custom_fields' ), 25 );
 	}
 
 	/**
@@ -120,7 +129,7 @@ class Google_Maps {
 			$field_type_object->input(
 				array(
 					'id'    => 'lsx_bd_google_map_latitude',
-					'type'  => 'text',
+					'type'  => 'hidden',
 					'name'  => $field->args( '_name' ) . '[latitude]',
 					'value' => isset( $field_escaped_value['latitude'] ) ? $field_escaped_value['latitude'] : '',
 					'class' => 'google-map-latitude',
@@ -132,7 +141,7 @@ class Google_Maps {
 			$field_type_object->input(
 				array(
 					'id'    => 'lsx_bd_google_map_longitude',
-					'type'  => 'text',
+					'type'  => 'hidden',
 					'name'  => $field->args( '_name' ) . '[longitude]',
 					'value' => isset( $field_escaped_value['longitude'] ) ? $field_escaped_value['longitude'] : '',
 					'class' => 'google-map-longitude',
