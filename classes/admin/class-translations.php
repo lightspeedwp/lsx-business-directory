@@ -66,7 +66,7 @@ class Translations {
 		);
 		$cmb->add_field(
 			array(
-				'name'    => esc_html__( 'Business Directory', 'lsx-business-directory' ),
+				'name'    => esc_html__( 'Listings Archive', 'lsx-business-directory' ),
 				'id'      => 'translations_listing_archive_slug',
 				'type'    => 'text',
 				'default' => 'listings',
@@ -74,7 +74,7 @@ class Translations {
 		);
 		$cmb->add_field(
 			array(
-				'name'    => esc_html__( 'Industries', 'lsx-business-directory' ),
+				'name'    => esc_html__( 'Industries Archives', 'lsx-business-directory' ),
 				'id'      => 'translations_industry_slug',
 				'type'    => 'text',
 				'default' => 'industry',
@@ -82,7 +82,7 @@ class Translations {
 		);
 		$cmb->add_field(
 			array(
-				'name'    => esc_html__( 'Locations', 'lsx-business-directory' ),
+				'name'    => esc_html__( 'Locations Archives', 'lsx-business-directory' ),
 				'id'      => 'translations_location_slug',
 				'type'    => 'text',
 				'default' => 'location',

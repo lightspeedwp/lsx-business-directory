@@ -179,7 +179,7 @@ class Business_Directory {
 			'exclude_from_search' => true,
 			'show_admin_column'   => true,
 			'query_var'           => true,
-			'rewrite'             => array( lsx_bd_get_option( 'translations_industry_slug', $this->industry_slug ) ),
+			'rewrite'             => array( 'slug' => lsx_bd_get_option( 'translations_industry_slug', $this->industry_slug ) ),
 		);
 		register_taxonomy( 'industry', array( $this->slug ), $details );
 	}
@@ -210,7 +210,7 @@ class Business_Directory {
 			'exclude_from_search' => true,
 			'show_admin_column'   => true,
 			'query_var'           => true,
-			'rewrite'             => array( lsx_bd_get_option( 'translations_location_slug', $this->location_slug ) ),
+			'rewrite'             => array( 'slug' => lsx_bd_get_option( 'translations_location_slug', $this->location_slug ) ),
 		);
 		register_taxonomy( 'location', array( $this->slug ), $details );
 	}
