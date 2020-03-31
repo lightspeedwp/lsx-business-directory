@@ -4,6 +4,7 @@
 
 ### Added
 - Added in a "Translations" settings tab to allow the translation of the post type and taxonomy slugs.
+- Added Industries shortcode to the Listing archive.
 
 ### Fixed
 - Removing the `using-gutenberg` body class when the listing is using blocks.

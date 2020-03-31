@@ -1,8 +1,33 @@
 .lsx-business-directory-shortcode {
-	&.lsx-bd-industries-nav{
+	&.lsx-bd-industries-nav {
+		margin-bottom: 2.4rem;
+		.row-flex {
+			display: flex;
+			flex-wrap: wrap;
+			margin: 0;
+			.btn-wrap {
+				padding: 10px;
+				margin: 0.5rem 0.5rem 0.5rem 0;
+				flex-grow: 1;
+				@include media('<=phone') {
+					max-width: 50%;
+				}
+				@include media('>=tablet') {
+					width: 100%;
+					max-width: 185px;
+					display: flex;
+				}
+			}
+		}
 		img {
-			max-width: 25%;
-			margin-right:10px;
+			max-width: 25px;
+			margin-right: 5px;
+		}
+	}
+	.archive & {
+		@include media('>=phone') {
+			padding-right: 15px;
+			padding-left: 15px;
 		}
 	}
 }
