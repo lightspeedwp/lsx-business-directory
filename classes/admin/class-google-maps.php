@@ -119,6 +119,7 @@ class Google_Maps {
 		echo wp_kses_post(
 			$field_type_object->input(
 				array(
+					'id'    => 'lsx_bd_google_map_latitude',
 					'type'  => 'text',
 					'name'  => $field->args( '_name' ) . '[latitude]',
 					'value' => isset( $field_escaped_value['latitude'] ) ? $field_escaped_value['latitude'] : '',
@@ -130,8 +131,9 @@ class Google_Maps {
 		echo wp_kses_post(
 			$field_type_object->input(
 				array(
+					'id'    => 'lsx_bd_google_map_longitude',
 					'type'  => 'text',
-					'name'  => $field->args('_name') . '[longitude]',
+					'name'  => $field->args( '_name' ) . '[longitude]',
 					'value' => isset( $field_escaped_value['longitude'] ) ? $field_escaped_value['longitude'] : '',
 					'class' => 'google-map-longitude',
 					'desc'  => '',

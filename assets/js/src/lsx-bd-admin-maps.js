@@ -31,6 +31,8 @@ var LSX_BD_GMAPS = Object.create( null );
 		var latLng = new google.maps.LatLng( -33.9152193,18.3751927 );
 		var zoom = 5;
 
+		console.log(searchInput);
+
 		// If we have saved values, let's set the position and zoom level
 		if ( latitude.val().length > 0 && longitude.val().length > 0 ) {
 			latLng = new google.maps.LatLng( latitude.val(), longitude.val() );
@@ -115,5 +117,15 @@ var LSX_BD_GMAPS = Object.create( null );
 			});
 		});
 	};
+
+	/**
+     * On document ready.
+     *
+     * @package    lsx-member-directory
+     * @subpackage scripts
+     */
+    LSX_BD_GMAPS.document.ready( function() {
+        LSX_BD_GMAPS.init();
+    } );
 
 } )( jQuery, window, document );
