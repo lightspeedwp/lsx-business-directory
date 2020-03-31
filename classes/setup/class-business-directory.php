@@ -54,6 +54,24 @@ class Business_Directory {
 	public $archive_slug = 'listings';
 
 	/**
+	 * The Industry Term Slug
+	 *
+	 * @since 1.0.0
+	 *
+	 * @var      string
+	 */
+	public $industry_slug = 'industry';
+
+	/**
+	 * The Location Term Slug
+	 *
+	 * @since 1.0.0
+	 *
+	 * @var      string
+	 */
+	public $location_slug = 'location';
+
+	/**
 	 * Contructor
 	 */
 	public function __construct() {
@@ -161,7 +179,7 @@ class Business_Directory {
 			'exclude_from_search' => true,
 			'show_admin_column'   => true,
 			'query_var'           => true,
-			'rewrite'             => array( 'industry' ),
+			'rewrite'             => array( lsx_bd_get_option( 'translations_industry_slug', $this->industry_slug ) ),
 		);
 		register_taxonomy( 'industry', array( $this->slug ), $details );
 	}
@@ -192,7 +210,7 @@ class Business_Directory {
 			'exclude_from_search' => true,
 			'show_admin_column'   => true,
 			'query_var'           => true,
-			'rewrite'             => array( 'location' ),
+			'rewrite'             => array( lsx_bd_get_option( 'translations_location_slug', $this->location_slug ) ),
 		);
 		register_taxonomy( 'location', array( $this->slug ), $details );
 	}

@@ -72,6 +72,22 @@ class Translations {
 				'default' => 'listings',
 			)
 		);
+		$cmb->add_field(
+			array(
+				'name'    => esc_html__( 'Industries', 'lsx-business-directory' ),
+				'id'      => 'translations_industry_slug',
+				'type'    => 'text',
+				'default' => 'industry',
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'    => esc_html__( 'Locations', 'lsx-business-directory' ),
+				'id'      => 'translations_location_slug',
+				'type'    => 'text',
+				'default' => 'location',
+			)
+		);
 		do_action( 'lsx_bd_settings_section_translations', $cmb, 'bottom' );
 		$cmb->add_field(
 			array(
