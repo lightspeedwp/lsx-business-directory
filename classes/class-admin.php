@@ -60,6 +60,13 @@ class Admin {
 	public $translations;
 
 	/**
+	 * Holds the slug google maps fields
+	 *
+	 * @var object \lsx\business_directory\classes\admin\Google_maps();
+	 */
+	public $google_maps;
+
+	/**
 	 * Contructor
 	 */
 	public function __construct() {
@@ -79,7 +86,7 @@ class Admin {
 	 */
 	public static function get_instance() {
 		// If the single instance hasn't been set, set it now.
-		if ( null == self::$instance ) {
+		if ( null === self::$instance ) {
 			self::$instance = new self();
 		}
 		return self::$instance;
@@ -110,6 +117,9 @@ class Admin {
 
 		require_once LSX_BD_PATH . 'classes/admin/class-translations.php';
 		$this->translations = admin\Translations::get_instance();
+
+		require_once LSX_BD_PATH . 'classes/admin/class-google-maps.php';
+		$this->google_maps = admin\Google_Maps::get_instance();
 	}
 
 	/**
