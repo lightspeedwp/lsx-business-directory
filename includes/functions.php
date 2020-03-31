@@ -273,12 +273,13 @@ function lsx_bd_get_country_options() {
  * Returns the current post type archive layout selection
  *
  * @param  string $key
+ * @param  string $default
  * @return string | boolean
  */
-function lsx_bd_get_option( $key = '' ) {
-	$value = false;
+function lsx_bd_get_option( $key = '', $default = false ) {
+	$value = $default;
 	if ( '' !== $key && function_exists( 'cmb2_get_option' ) ) {
-		$value = cmb2_get_option( 'lsx-business-directory-settings', $key, false );
+		$value = cmb2_get_option( 'lsx-business-directory-settings', $key, $default );
 	}
 	return $value;
 }
