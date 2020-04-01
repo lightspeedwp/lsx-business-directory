@@ -316,4 +316,5 @@ body.archive.lsx-body-grid-layout .post-wrapper, body.search-results.lsx-body-gr
 
 @media (min-width: 768px) { .archive .lsx-business-directory-shortcode { padding-left: 15px; padding-right: 15px; } }
 
-@media (min-width: 768px) { .gutenberg-compatible-template.using-gutenberg .entry-content .lsx-business-directory-shortcode { width: 80%; max-width: 80%; } }
+@media (min-width: 768px) { .gutenberg-compatible-template.using-gutenberg .entry-content .lsx-business-directory-shortcode { width: 100%; max-width: 100%; }
+  .gutenberg-compatible-template.using-gutenberg .entry-content .lsx-business-directory-shortcode.lsx-bd-industries-nav { width: 80%; max-width: 80%; } }
