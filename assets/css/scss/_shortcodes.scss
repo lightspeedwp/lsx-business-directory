@@ -36,10 +36,6 @@
 		@include media('>=phone') {
 			width: 100%;
 			max-width: 100%;
-			&.lsx-bd-industries-nav {
-				width: 80%;
-				max-width: 80%;
-			}
 		}
 	}
 }
