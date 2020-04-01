@@ -101,7 +101,7 @@ class Google_Maps {
 	 */
 	public function render( $lattitude = '', $longitude = '', $zoom = 6 ) {
 		if ( false !== $this->api_key && '' !== $lattitude && '' !== $longitude ){
-			$map = '<div id="lsx-map" style="width:100%;height:230px;" data-lattitude="' . $lattitude . '" data-longitude="' . $longitude . '">';
+			$map = '<div id="lsx-map" style="width:100%;" data-lattitude="' . $lattitude . '" data-longitude="' . $longitude . '">';
 			$map .= $this->get_map_thumbnail();
 			$map .= '</div>';
 			return $map;
@@ -114,19 +114,15 @@ class Google_Maps {
 	 * @return void
 	 */
 	public function get_map_thumbnail( $size = 'lsx-thumbnail-carousel' ) {
-		$thumbnail = '';
-		$map_data  = get_post_meta( get_the_ID(), 'lsx_bd_single_map_thumbnail', true );
-		if ( false !== $map_data && isset( $map_data['selection'] ) ) {
-			$map_data = json_decode( $map_data['selection'] );
-			if ( isset( $map_data->sizes ) && isset( $map_data->sizes->full ) ) {
-				$thumbnail = '<img class="map-preview" style="cursor:pointer;width:100%;height:200px;" src="' . $map_data->sizes->full->url . '" />';
-			}
+		$image         = '';
+		$map_thumbnail = get_post_meta( get_the_ID(), 'lsx_bd_single_map_thumbnail', true );
+		if ( false === $map_thumbnail || '' === $map_thumbnail ) {
+			$image_src = \lsx\business_directory\includes\get_placeholder( $size, 'google_maps_placeholder', 'map-' );
+			$image     = '<img src="' . $image_src . '" class="attachment-thumbnail size-thumbnail" alt="">';
+		} elseif ( false !== $image_src && '' !== $image_src ) {
+			$image = wp_get_attachment_image( $image_src, $size );
 		}
-		$thumbnail = apply_filters( 'lsx_bd_single_map_placeholder', $thumbnail, $map_data );
-		if ( '' !== $thumbnail && null !== $thumbnail ) {
-			$thumbnail = '<div>' . $thumbnail . '<div class="map-preview preview-text">' . esc_html__( 'Click to display the map', 'lsx-business-directory' ) . '</div></div>';
-		}
-		return $thumbnail;
+		return $image;
 	}
 
 	/**
