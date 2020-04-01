@@ -309,6 +309,32 @@ function lsx_bd_listing_meta( $echo = true ) {
 }
 
 /**
+ * Undocumented function
+ *
+ * @param boolean $echo
+ * @return void | string
+ */
+function lsx_bd_listing_map( $before = '', $after = '', $echo = true ) {
+	$map    = '';
+	$lsx_bd = lsx_business_directory();
+	$lat    = get_post_meta( get_the_ID(), 'lsx_bd_map_location_latitude', true );
+	$long   = get_post_meta( get_the_ID(), 'lsx_bd_map_location_longitude', true );
+
+	if ( ! empty( $lat ) || ! empty( $long ) ) {
+		$map = $lsx_bd->frontend->google_maps->render( $lat, $long );
+		if ( '' !== $map ) {
+			$map = $before . $map . $after;
+		}
+	}
+
+	if ( true === $echo ) {
+		echo wp_kses_post( $map );
+	} else {
+		return $map;
+	}
+}
+
+/**
  * This gets the term thunbnail from the taxonomies.
  *
  * @param string $term_id

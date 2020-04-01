@@ -32,6 +32,8 @@ body.single-business-directory article .entry-meta > * { display: block; }
 
 .single .business-directory .business-header .business-content-left > .entry-image > img { width: 100%; }
 
+.single .business-directory .business-header .business-content-left.map-wrapper { margin-top: 30px; padding: 25px 15px; }
+
 .single .business-directory .business-header .business-content-right { padding-left: 26px; }
 
 @media screen and (max-width: 991px) { .single .business-directory .business-header { margin-bottom: 52px; }

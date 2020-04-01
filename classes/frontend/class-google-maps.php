@@ -35,7 +35,7 @@ class Google_Maps {
 	 */
 	private function __construct() {
 		add_action( 'init', array( $this, 'init' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), 5 );
+		//add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), 5 );
 	}
 
 	/**
@@ -81,7 +81,7 @@ class Google_Maps {
 				} else {
 					wp_enqueue_script( 'google_maps_api', $google_url, array( 'jquery' ), null, false );
 				}
-				wp_enqueue_script( 'lsx_maps', LSX_FRAMEWORK_URL . 'assets/js/lsx-maps.js', $dependacies, null, true);
+				wp_enqueue_script( 'lsx_maps', LSX_BD_URL . 'assets/js/lsx-maps.js', $dependacies, null, true);
 				$param_array = array(
 					'api_key'    => $this->api_key,
 					'google_url' => $google_url,
@@ -99,10 +99,9 @@ class Google_Maps {
 	 *
 	 * @return    null
 	 */
-	public function map_output( $search = false , $zoom = 18 ) {
-		global $content_width;
-		if ( false !== $this->api_key && false !== $search ){
-			$map = '<div id="lsx-map" style="width:100%;height:400px;" data-address="' . $search . '">';
+	public function render( $lattitude = '', $longitude = '', $zoom = 6 ) {
+		if ( false !== $this->api_key && '' !== $lattitude && '' !== $longitude ){
+			$map = '<div id="lsx-map" style="width:100%;height:230px;" data-lattitude="' . $lattitude . '" data-longitude="' . $longitude . '">';
 			$map .= $this->get_map_thumbnail();
 			$map .= '</div>';
 			return $map;
@@ -114,13 +113,13 @@ class Google_Maps {
 	 *
 	 * @return void
 	 */
-	public function get_map_thumbnail() {
+	public function get_map_thumbnail( $size = 'lsx-thumbnail-carousel' ) {
 		$thumbnail = '';
-		$map_data = get_post_meta( get_the_ID(), 'lsx_bd_single_map_thumbnail', true );
+		$map_data  = get_post_meta( get_the_ID(), 'lsx_bd_single_map_thumbnail', true );
 		if ( false !== $map_data && isset( $map_data['selection'] ) ) {
 			$map_data = json_decode( $map_data['selection'] );
 			if ( isset( $map_data->sizes ) && isset( $map_data->sizes->full ) ) {
-				$thumbnail = '<img class="map-preview" style="cursor:pointer;width:100%;height:400px;" src="' . $map_data->sizes->full->url . '" />';
+				$thumbnail = '<img class="map-preview" style="cursor:pointer;width:100%;height:200px;" src="' . $map_data->sizes->full->url . '" />';
 			}
 		}
 		$thumbnail = apply_filters( 'lsx_bd_single_map_placeholder', $thumbnail, $map_data );
