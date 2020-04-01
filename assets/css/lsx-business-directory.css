@@ -312,7 +312,7 @@ body.archive.lsx-body-grid-layout .post-wrapper, body.search-results.lsx-body-gr
 
 .lsx-business-directory-shortcode.lsx-bd-industries-nav .row-flex .btn-wrap a { font-size: 12px; width: 100%; }
 
-.lsx-business-directory-shortcode.lsx-bd-industries-nav img { max-width: 25px; margin-right: 5px; }
+.lsx-business-directory-shortcode.lsx-bd-industries-nav img { max-width: 25px; max-height: 25px; margin-right: 5px; }
 
 @media (min-width: 768px) { .archive .lsx-business-directory-shortcode { padding-right: 15px; padding-left: 15px; } }
 
