@@ -314,17 +314,25 @@ function lsx_bd_single_listing_meta( $echo = true ) {
  * @param  boolean $echo
  * @return string
  */
-function lsx_bd_archive_listing_excerpt( $echo = true ) {
-	$excerpt = get_the_excerpt();
-	ob_start();
-	echo wp_kses_post( $excerpt );
-	$excerpt = ob_get_clean();
-	$excerpt = apply_filters( 'lsx_bd_archive_listing_excerpt', $excerpt );
+function lsx_bd_archive_listing_excerpt( $echo = true, $force_excerpt = false ) {
+	$key = 'archive';
+	if ( is_search() ) {
+		$key = 'engine';
+	}
+	$is_enabled = lsx_bd_get_option( $key . '_excerpt_enable', false );
 
-	if ( true === $echo ) {
+	if ( false !== $is_enabled && false === $force_excerpt ) {
+		$excerpt = get_the_excerpt();
+		ob_start();
 		echo wp_kses_post( $excerpt );
-	} else {
-		return $excerpt;
+		$excerpt = ob_get_clean();
+		$excerpt = apply_filters( 'lsx_bd_' . $key . '_listing_excerpt', $excerpt );
+
+		if ( true === $echo ) {
+			echo wp_kses_post( $excerpt );
+		} else {
+			return $excerpt;
+		}
 	}
 }
 
