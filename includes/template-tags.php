@@ -309,6 +309,30 @@ function lsx_bd_single_listing_meta( $echo = true ) {
 }
 
 /**
+ * Outputs the excerpt for the archive listing.
+ *
+ * @param  boolean $echo
+ * @return string
+ */
+function lsx_bd_archive_listing_excerpt( $echo = true ) {
+	$excerpt = get_the_excerpt();
+	ob_start();
+	?>
+	<div class="description">
+		<?php echo wp_kses_post( $excerpt ); ?>
+	</div>
+	<?php
+	$excerpt = apply_filters( 'lsx_bd_archive_listing_excerpt', $excerpt );
+	$excerpt = ob_get_clean();
+
+	if ( true === $echo ) {
+		echo wp_kses_post( $excerpt );
+	} else {
+		return $excerpt;
+	}
+}
+
+/**
  * Output the location and the industry for the archive listing.
  *
  * @param  boolean $echo

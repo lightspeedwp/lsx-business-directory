@@ -16,6 +16,8 @@
 					<?php lsx_bd_archive_listing_meta(); ?>
 
 					<?php lsx_bd_archive_listing_contact_info(); ?>
+
+					<?php lsx_bd_archive_listing_excerpt(); ?>
 				</div>
 			</div>
 		</div>
