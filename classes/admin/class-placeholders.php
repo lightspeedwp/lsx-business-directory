@@ -49,9 +49,9 @@ class Placeholders {
 	 */
 	public function register_single_placeholder_fields( $cmb, $position ) {
 		if ( 'bottom' === $position ) {
-			$fields = array();
-			$fields = array_merge( $fields, \lsx\business_directory\includes\get_featured_image_placeholder_field( 'single' ) );
-			$fields = array_merge( $fields, \lsx\business_directory\includes\get_banner_image_placeholder_field( 'single' ) );
+			$fields   = array();
+			$fields[] = \lsx\business_directory\includes\get_featured_image_placeholder_field( 'single' );
+			$fields[] = \lsx\business_directory\includes\get_banner_image_placeholder_field( 'single' );
 			foreach ( $fields as $field ) {
 				$cmb->add_field( $field );
 			}
@@ -67,10 +67,10 @@ class Placeholders {
 	 */
 	public function register_archive_placeholder_fields( $cmb, $position ) {
 		if ( 'top' === $position ) {
-			$fields = array();
-			$fields = array_merge( $fields, \lsx\business_directory\includes\get_industry_icon_placeholder_field( 'archive' ) );
-			$fields = array_merge( $fields, \lsx\business_directory\includes\get_featured_image_placeholder_field( 'archive' ) );
-			$fields = array_merge( $fields, \lsx\business_directory\includes\get_banner_image_placeholder_field( 'archive' ) );
+			$fields   = array();
+			$fields[] = \lsx\business_directory\includes\get_industry_icon_placeholder_field( 'archive' );
+			$fields[] = \lsx\business_directory\includes\get_location_featured_placeholder_field( 'archive' );
+			$fields[] = \lsx\business_directory\includes\get_banner_image_placeholder_field( 'archive' );
 			foreach ( $fields as $field ) {
 				$cmb->add_field( $field );
 			}
