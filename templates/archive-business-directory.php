@@ -20,11 +20,11 @@ get_header(); ?>
 
 		<?php if ( have_posts() ) : ?>
 			<?php
-			$layout     = lsx_bd_get_option( 'archive_grid_list' );
-			$template   = LSX_BD_PATH . '/templates/single-row-business.php';
+			$layout   = lsx_bd_get_option( 'archive_grid_list' );
+			$template = LSX_BD_PATH . '/templates/single-row-business.php';
 
 			if ( false !== $layout && '' !== $layout && 'grid' === $layout ) {
-				$template   = LSX_BD_PATH . '/templates/single-col-business.php';
+				$template = LSX_BD_PATH . '/templates/single-col-business.php';
 			}
 			?>
 			<div class="post-wrapper archive-plan">

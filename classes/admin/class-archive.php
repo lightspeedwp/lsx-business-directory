@@ -55,6 +55,15 @@ class Archive {
 			)
 		);
 		do_action( 'lsx_bd_settings_section_archive', $cmb, 'top' );
+
+		$cmb->add_field(
+			array(
+				'name'        => esc_html__( 'Industry Buttons', 'lsx-business-directory' ),
+				'id'          => 'archive_industry_buttons',
+				'type'        => 'checkbox',
+				'description' => __( 'Enable a list of Industry links above your listing archive page.', 'lsx-business-directory' ),
+			)
+		);
 		$cmb->add_field(
 			array(
 				'name'             => esc_html__( 'Layout option', 'lsx-business-directory' ),
