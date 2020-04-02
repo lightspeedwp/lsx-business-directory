@@ -353,6 +353,42 @@ function lsx_bd_archive_listing_meta( $echo = true ) {
 }
 
 /**
+ * Output the primary phone and primary email address stored on the listing.
+ *
+ * @param  boolean $echo
+ * @return string
+ */
+function lsx_bd_archive_listing_contact_info( $echo = true ) {
+	$contact_info  = '';
+	$primary_phone = get_post_meta( get_the_ID(), 'lsx_bd_primary_phone', true );
+	$primary_email = get_post_meta( get_the_ID(), 'lsx_bd_primary_email', true );
+	if ( ! empty( $primary_phone ) || ! empty( $primary_email ) ) {
+		ob_start();
+		if ( false !== $primary_phone && '' !== $primary_phone ) {
+			?>
+			<div class="telephone">
+				<span><i class="fa fa-phone-square"></i> <strong><?php esc_html_e( 'Phone', 'lsx-business-directory' ); ?>: </strong> <a href="tel:<?php echo esc_attr( str_replace( ' ', '', $primary_phone ) ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_attr( $primary_phone ); ?></a></span>
+			</div>
+			<?php
+		}
+		if ( false !== $primary_email && '' !== $primary_email ) {
+			?>
+			<div class="email">
+				<span><i class="fa fa-envelope-square"></i> <strong><?php esc_html_e( 'Email', 'lsx-business-directory' ); ?>: </strong> <a href="mailto:<?php echo esc_attr( $primary_email ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_attr( $primary_email ); ?></a></span>
+			</div>
+			<?php
+		}
+		$contact_info = apply_filters( 'lsx_bd_archive_listing_contact_info', $contact_info );
+		$contact_info = ob_get_clean();
+	}
+	if ( true === $echo ) {
+		echo wp_kses_post( $contact_info );
+	} else {
+		return $contact_info;
+	}
+}
+
+/**
  * This gets the term thunbnail from the taxonomies.
  *
  * @param string $term_id
