@@ -15,11 +15,11 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: classes/class-admin.php:126
+#: classes/class-admin.php:136
 msgid "Business Directory Settings"
 msgstr ""
 
-#: classes/class-admin.php:127
+#: classes/class-admin.php:137
 msgid "Settings"
 msgstr ""
 
@@ -1007,7 +1007,7 @@ msgstr ""
 msgid "Image"
 msgstr ""
 
-#: includes/getters.php:27, includes/getters.php:97
+#: includes/getters.php:27, includes/getters.php:212
 msgid "Your image should be 1920px x 600px preferably, but no less than 1440px x 430px."
 msgstr ""
 
@@ -1035,67 +1035,99 @@ msgstr ""
 msgid "Customize the subtitle for your banner, this will display just below your title."
 msgstr ""
 
-#: includes/getters.php:67, classes/admin/class-term-thumbnail.php:51
+#: includes/getters.php:67, classes/admin/class-term-thumbnail.php:72
 msgid "Featured Image"
 msgstr ""
 
-#: includes/getters.php:68
+#: includes/getters.php:68, includes/getters.php:76
 msgid "Your image should be 800px x 600px preferably, but no less than 360px x 168px"
 msgstr ""
 
-#: includes/getters.php:89
+#: includes/getters.php:75
+msgid "Featured Image (hover)"
+msgstr ""
+
+#: includes/getters.php:98
+msgid "Icon"
+msgstr ""
+
+#: includes/getters.php:99, includes/getters.php:107
+msgid "Your image should be 32px x 32px."
+msgstr ""
+
+#: includes/getters.php:106
+msgid "Icon (hover)"
+msgstr ""
+
+#: includes/getters.php:127
+msgid "Industry Placeholder"
+msgstr ""
+
+#: includes/getters.php:128, includes/getters.php:149, includes/getters.php:170
+msgid "Your image should be 32px x 32 preferably."
+msgstr ""
+
+#: includes/getters.php:148
+msgid "Industry Placeholder (hover)"
+msgstr ""
+
+#: includes/getters.php:169
+msgid "Location Placeholder"
+msgstr ""
+
+#: includes/getters.php:190
 msgid "Featured Placeholder"
 msgstr ""
 
-#: includes/getters.php:90
+#: includes/getters.php:191
 msgid "Your image should be 800px x 600px preferably, but no less than 360px x 168px."
 msgstr ""
 
-#: includes/getters.php:96
+#: includes/getters.php:211
 msgid "Banner Placeholder"
 msgstr ""
 
-#: includes/getters.php:123
+#: includes/getters.php:238
 msgid "You have no forms available"
 msgstr ""
 
-#: templates/single-business-directory.php:99
-msgid "Telephone"
-msgstr ""
-
-#: templates/single-business-directory.php:106, templates/single-business-directory.php:157, classes/frontend/class-enquiry.php:87
-msgid "Contact"
-msgstr ""
-
-#: templates/single-business-directory.php:113, templates/single-col-business.php:73, templates/single-row-business.php:76
-msgid "Email"
-msgstr ""
-
-#: templates/single-business-directory.php:120, classes/setup/class-business-directory.php:409
-msgid "Website"
-msgstr ""
-
-#: templates/single-business-directory.php:127
-msgid "Skype"
-msgstr ""
-
-#: templates/single-business-directory.php:134
-msgid "Whatsapp"
-msgstr ""
-
-#: templates/single-business-directory.php:141
-msgid "Address"
-msgstr ""
-
-#: templates/single-business-directory.php:170, templates/single-col-business.php:29, templates/single-row-business.php:31, classes/setup/class-business-directory.php:125, classes/setup/class-business-directory.php:126
+#: includes/template-tags.php:278, templates/single-col-business.php:29, templates/single-row-business.php:31, classes/setup/class-business-directory.php:161, classes/setup/class-business-directory.php:162
 msgid "Industry"
 msgstr ""
 
-#: templates/single-business-directory.php:189, templates/single-col-business.php:49, templates/single-row-business.php:50, classes/setup/class-business-directory.php:156, classes/setup/class-business-directory.php:157
+#: includes/template-tags.php:292, templates/single-col-business.php:49, templates/single-row-business.php:50, classes/setup/class-business-directory.php:194, classes/setup/class-business-directory.php:195
 msgid "Location"
 msgstr ""
 
-#: templates/single-business-directory.php:247
+#: templates/single-business-directory.php:96
+msgid "Telephone"
+msgstr ""
+
+#: templates/single-business-directory.php:103, templates/single-business-directory.php:152, classes/frontend/class-enquiry.php:87
+msgid "Contact"
+msgstr ""
+
+#: templates/single-business-directory.php:110, templates/single-col-business.php:73, templates/single-row-business.php:76
+msgid "Email"
+msgstr ""
+
+#: templates/single-business-directory.php:117, classes/setup/class-business-directory.php:449
+msgid "Website"
+msgstr ""
+
+#: templates/single-business-directory.php:124
+msgid "Skype"
+msgstr ""
+
+#: templates/single-business-directory.php:131
+msgid "Whatsapp"
+msgstr ""
+
+#: templates/single-business-directory.php:138
+msgid "Address"
+msgstr ""
+
+#: templates/single-business-directory.php:197
 msgid "Branches"
 msgstr ""
 
@@ -1115,15 +1147,23 @@ msgstr ""
 msgid "Business Directory post type archive settings."
 msgstr ""
 
-#: classes/admin/class-archive.php:60
+#: classes/admin/class-archive.php:61
+msgid "Industry Buttons"
+msgstr ""
+
+#: classes/admin/class-archive.php:64
+msgid "Enable a list of Industry links above your listing archive page."
+msgstr ""
+
+#: classes/admin/class-archive.php:69
 msgid "Layout option"
 msgstr ""
 
-#: classes/admin/class-archive.php:65, classes/integrations/class-lsx-search.php:147
+#: classes/admin/class-archive.php:74, classes/integrations/class-lsx-search.php:147
 msgid "Grid"
 msgstr ""
 
-#: classes/admin/class-archive.php:66, classes/integrations/class-lsx-search.php:148
+#: classes/admin/class-archive.php:75, classes/integrations/class-lsx-search.php:148
 msgid "List"
 msgstr ""
 
@@ -1145,6 +1185,34 @@ msgstr ""
 
 #: classes/admin/class-single.php:61
 msgid "Enquiry Form"
+msgstr ""
+
+#: classes/admin/class-term-thumbnail.php:52
+msgid "Industry Icon"
+msgstr ""
+
+#: classes/admin/class-translations.php:53, classes/admin/class-translations.php:54
+msgid "Translations"
+msgstr ""
+
+#: classes/admin/class-translations.php:55
+msgid "Change the slugs for your the listings, industry and regions. Once you have saved your settings, open the <a href=\"/wp-admin/options-permalink.php\">permalinks</a> page to flush the rewrite rules.  This is only for the URLs."
+msgstr ""
+
+#: classes/admin/class-translations.php:61
+msgid "Listing Single"
+msgstr ""
+
+#: classes/admin/class-translations.php:69
+msgid "Listings Archive"
+msgstr ""
+
+#: classes/admin/class-translations.php:77
+msgid "Industries Archives"
+msgstr ""
+
+#: classes/admin/class-translations.php:85
+msgid "Locations Archives"
 msgstr ""
 
 #: classes/frontend/class-banners.php:271
@@ -1227,276 +1295,276 @@ msgstr ""
 msgid "Choose your filters above, these will display on the page. Edit your FacetWP Facets to change the display of each of them."
 msgstr ""
 
-#: classes/setup/class-business-directory.php:74
+#: classes/setup/class-business-directory.php:110
 msgctxt "post type general name"
 msgid "Listings"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:75
+#: classes/setup/class-business-directory.php:111
 msgctxt "post type general name"
 msgid "Listing"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:76
+#: classes/setup/class-business-directory.php:112
 msgid "Add Listings"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:77
+#: classes/setup/class-business-directory.php:113
 msgid "Add New Listing"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:78
+#: classes/setup/class-business-directory.php:114
 msgid "Edit Listing"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:79
+#: classes/setup/class-business-directory.php:115
 msgid "New Listing"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:80
+#: classes/setup/class-business-directory.php:116
 msgid "All Listings"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:81
+#: classes/setup/class-business-directory.php:117
 msgid "View Listing"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:82
+#: classes/setup/class-business-directory.php:118
 msgid "Search Listings"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:83
+#: classes/setup/class-business-directory.php:119
 msgid "No listings defined"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:84
+#: classes/setup/class-business-directory.php:120
 msgid "No listings in the trash"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:86
+#: classes/setup/class-business-directory.php:122
 msgid "Listings"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:127
+#: classes/setup/class-business-directory.php:163
 msgid "Search Industries"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:128, classes/setup/class-business-directory.php:135
+#: classes/setup/class-business-directory.php:164, classes/setup/class-business-directory.php:171
 msgid "Industries"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:129
+#: classes/setup/class-business-directory.php:165
 msgid "Parent Industry"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:130
+#: classes/setup/class-business-directory.php:166
 msgid "Parent Industry:"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:131
+#: classes/setup/class-business-directory.php:167
 msgid "Edit Industry"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:132
+#: classes/setup/class-business-directory.php:168
 msgid "Update Industry"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:133
+#: classes/setup/class-business-directory.php:169
 msgid "Add New Industry"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:134
+#: classes/setup/class-business-directory.php:170
 msgid "New Industry"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:158
+#: classes/setup/class-business-directory.php:196
 msgid "Search Locations"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:159, classes/setup/class-business-directory.php:166
+#: classes/setup/class-business-directory.php:197, classes/setup/class-business-directory.php:204
 msgid "Locations"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:160
+#: classes/setup/class-business-directory.php:198
 msgid "Parent Location"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:161
+#: classes/setup/class-business-directory.php:199
 msgid "Parent Location:"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:162
+#: classes/setup/class-business-directory.php:200
 msgid "Edit Location"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:163
+#: classes/setup/class-business-directory.php:201
 msgid "Update Location"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:164
+#: classes/setup/class-business-directory.php:202
 msgid "Add New Location"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:165
+#: classes/setup/class-business-directory.php:203
 msgid "New Location"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:202
+#: classes/setup/class-business-directory.php:242
 msgid "Business Address"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:209
+#: classes/setup/class-business-directory.php:249
 msgid "Complex Name / Business Park / Street Number"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:217
+#: classes/setup/class-business-directory.php:257
 msgid "Street Name"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:225
+#: classes/setup/class-business-directory.php:265
 msgid "Suburb"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:233
+#: classes/setup/class-business-directory.php:273
 msgid "City"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:241
+#: classes/setup/class-business-directory.php:281
 msgid "Postal Code"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:249
+#: classes/setup/class-business-directory.php:289
 msgid "Country"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:259
+#: classes/setup/class-business-directory.php:299
 msgid "State / Province"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:275
+#: classes/setup/class-business-directory.php:315
 msgid "Business Branches"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:286
+#: classes/setup/class-business-directory.php:326
 msgid "Branch {#}"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:287
+#: classes/setup/class-business-directory.php:327
 msgid "Add Another Branch"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:288
+#: classes/setup/class-business-directory.php:328
 msgid "Remove Branch"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:291
+#: classes/setup/class-business-directory.php:331
 msgid "Are you sure you want to remove thie Branch?"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:300
+#: classes/setup/class-business-directory.php:340
 msgid "Branch Name"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:309
+#: classes/setup/class-business-directory.php:349
 msgid "Branch Telephone"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:318
+#: classes/setup/class-business-directory.php:358
 msgid "Branch Email"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:327
+#: classes/setup/class-business-directory.php:367
 msgid "Branch Website"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:337
+#: classes/setup/class-business-directory.php:377
 msgid "Branch Google Maps Search"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:353
+#: classes/setup/class-business-directory.php:393
 msgid "Business Contact Details"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:360
+#: classes/setup/class-business-directory.php:400
 msgid "Contact Person"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:368
+#: classes/setup/class-business-directory.php:408
 msgid "Primary Email"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:370
+#: classes/setup/class-business-directory.php:410
 msgid "This is the email address that the enquiry form will send to."
 msgstr ""
 
-#: classes/setup/class-business-directory.php:377
+#: classes/setup/class-business-directory.php:417
 msgid "Secondary Email"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:385
+#: classes/setup/class-business-directory.php:425
 msgid "Primary Phone"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:393
+#: classes/setup/class-business-directory.php:433
 msgid "Secondary Phone"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:401
+#: classes/setup/class-business-directory.php:441
 msgid "Fax"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:417
+#: classes/setup/class-business-directory.php:457
 msgid "Skype Username"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:425
+#: classes/setup/class-business-directory.php:465
 msgid "Whatsapp Number"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:433
+#: classes/setup/class-business-directory.php:473
 msgid "Facebook"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:434
+#: classes/setup/class-business-directory.php:474
 msgid "Add your Facebook profile URL."
 msgstr ""
 
-#: classes/setup/class-business-directory.php:442
+#: classes/setup/class-business-directory.php:482
 msgid "Twitter"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:444
+#: classes/setup/class-business-directory.php:484
 msgid "Add your Twitter profile URL."
 msgstr ""
 
-#: classes/setup/class-business-directory.php:451
+#: classes/setup/class-business-directory.php:491
 msgid "LinkedIn"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:453
+#: classes/setup/class-business-directory.php:493
 msgid "Add your LinkedIn profile URL."
 msgstr ""
 
-#: classes/setup/class-business-directory.php:460
+#: classes/setup/class-business-directory.php:500
 msgid "Instagram"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:462
+#: classes/setup/class-business-directory.php:502
 msgid "Add your Instagram profile URL."
 msgstr ""
 
-#: classes/setup/class-business-directory.php:469
+#: classes/setup/class-business-directory.php:509
 msgid "Youtube"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:471
+#: classes/setup/class-business-directory.php:511
 msgid "Add your Youtube profile or channel URL."
 msgstr ""
 
-#: classes/setup/class-business-directory.php:478
+#: classes/setup/class-business-directory.php:518
 msgid "Pinterest"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:480
+#: classes/setup/class-business-directory.php:520
 msgid "Add your Pinterest profile URL or any board you would like to highlight."
 msgstr ""
