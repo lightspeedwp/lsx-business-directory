@@ -61,16 +61,55 @@ function get_banner_fields( $prefix = '', $label_prefix = '' ) {
  * @param mixed $prefix Add a prefix to the fields IDS
  * @return array
  */
-function get_featured_image_field( $prefix = '' ) {
-	$fields = array(
-		array(
-			'name'         => esc_html__( 'Featured Image', 'lsx-business-directory' ),
+function get_featured_image_field( $prefix = '', $hover = false ) {
+	$fields   = array();
+	$fields[] = array(
+		'name'         => esc_html__( 'Featured Image', 'lsx-business-directory' ),
+		'desc'         => esc_html__( 'Your image should be 800px x 600px preferably, but no less than 360px x 168px', 'lsx-business-directory' ),
+		'id'           => '_thumbnail',
+		'type'         => 'file',
+		'preview_size' => 'lsx-thumbnail-wide',
+	);
+	if ( false !== $hover ) {
+		$fields[] = array(
+			'name'         => esc_html__( 'Featured Image (hover)', 'lsx-business-directory' ),
 			'desc'         => esc_html__( 'Your image should be 800px x 600px preferably, but no less than 360px x 168px', 'lsx-business-directory' ),
-			'id'           => '_thumbnail',
+			'id'           => '_thumbnail_hover',
 			'type'         => 'file',
 			'preview_size' => 'lsx-thumbnail-wide',
-		),
+		);
+	}
+
+	if ( '' !== $prefix ) {
+		$fields = apply_field_id_prefixes( $fields, $prefix );
+	}
+	return $fields;
+}
+
+/**
+ * Returns the banner fields for use in registering the custom fields, theme settings etc.
+ *
+ * @param mixed $prefix Add a prefix to the fields IDS
+ * @return array
+ */
+function get_industy_icon_field( $prefix = '', $hover = false ) {
+	$fields   = array();
+	$fields[] = array(
+		'name'         => esc_html__( 'Icon', 'lsx-business-directory' ),
+		'desc'         => esc_html__( 'Your image should be 32px x 32px.', 'lsx-business-directory' ),
+		'id'           => '_thumbnail',
+		'type'         => 'file',
+		'preview_size' => array( 32, 32 ),
 	);
+	if ( false !== $hover ) {
+		$fields[] = array(
+			'name'         => esc_html__( 'Icon (hover)', 'lsx-business-directory' ),
+			'desc'         => esc_html__( 'Your image should be 32px x 32px.', 'lsx-business-directory' ),
+			'id'           => '_thumbnail_hover',
+			'type'         => 'file',
+			'preview_size' => array( 32, 32 ),
+		);
+	}
 	if ( '' !== $prefix ) {
 		$fields = apply_field_id_prefixes( $fields, $prefix );
 	}

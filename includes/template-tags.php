@@ -346,13 +346,12 @@ function lsx_bd_get_term_thumbnail( $term_id = '', $size = 'lsx-thumbnail-wide',
 				$image = $image_src;
 			}
 		} elseif ( false !== $image_src && '' !== $image_src ) {
+			$image = wp_get_attachment_image_src( $image_src, $size );
+			if ( is_array( $image ) && isset( $image[0] ) ) {
+				$image = $image[0];
+			}
 			if ( false === $src ) {
-				$image = wp_get_attachment_image( $image_src, $size );
-			} else {
-				$image = wp_get_attachment_image_src( $image_src, $size );
-				if ( is_array( $image ) && isset( $image[0] ) ) {
-					$image = $image[0];
-				}
+				$image = '<img src="' . $image . '" class="attachment-thumbnail size-thumbnail" alt="">';
 			}
 		}
 		if ( false !== $echo ) {

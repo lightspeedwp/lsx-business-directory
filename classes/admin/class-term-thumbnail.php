@@ -21,7 +21,8 @@ class Term_Thumbnail {
 	 * Contructor
 	 */
 	public function __construct() {
-		add_action( 'cmb2_init', array( $this, 'register_term_thumbnail' ), 1 );
+		add_action( 'cmb2_init', array( $this, 'register_industy_icon' ), 1 );
+		add_action( 'cmb2_init', array( $this, 'register_industy_icon' ), 1 );
 	}
 
 	/**
@@ -44,18 +45,38 @@ class Term_Thumbnail {
 	 *
 	 * @return void
 	 */
+	public function register_industy_icon() {
+		$cmb    = new_cmb2_box(
+			array(
+				'id'           => '_term_thumbnail',
+				'title'        => esc_html__( 'Industry Icon', 'lsx-business-directory' ),
+				'object_types' => array( 'term' ),
+				'taxonomies'   => array( 'industry' ),
+			)
+		);
+		$fields = \lsx\business_directory\includes\get_industy_icon_field( 'lsx_bd', true );
+		foreach ( $fields as $field ) {
+			$cmb->add_field( $field );
+		}
+	}
+
+	/**
+	 * Configure Taxonomy Featured Images
+	 *
+	 * @return void
+	 */
 	public function register_term_thumbnail() {
 		$cmb    = new_cmb2_box(
 			array(
 				'id'           => '_term_thumbnail',
 				'title'        => esc_html__( 'Featured Image', 'lsx-business-directory' ),
 				'object_types' => array( 'term' ),
-				'taxonomies'   => array( 'industry', 'location' ),
+				'taxonomies'   => array( 'location' ),
 			)
 		);
-		$fields = \lsx\business_directory\includes\get_featured_image_field( 'lsx_bd' );
+		$fields = \lsx\business_directory\includes\get_featured_image_field( 'lsx_bd', true );
 		foreach ( $fields as $field ) {
 			$cmb->add_field( $field );
 		}
-	}
+	}	
 }
