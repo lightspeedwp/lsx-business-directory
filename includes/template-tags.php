@@ -87,8 +87,9 @@ function lsx_business_template( $filename_base ) {
  */
 function lsx_bd_related_listings( $args = array() ) {
 	$defaults      = array(
-		'echo'  => true,
-		'title' => esc_html__( 'You might also be interested in...', 'lsx-member-directory' ),
+		'echo'    => true,
+		'title'   => esc_html__( 'You might also be interested in...', 'lsx-member-directory' ),
+		'excerpt' => false,
 	);
 	$args          = wp_parse_args( $args, $defaults );
 	$lsx_bd        = lsx_business_directory();
@@ -104,6 +105,7 @@ function lsx_bd_related_listings( $args = array() ) {
 		'terms'      => $prepped_terms,
 		'orderby'    => 'rand',
 		'custom_css' => 'lsx-bd-related-listings',
+		'excerpt'    => $args['excerpt'],
 	);
 	if ( true === $args['echo'] ) {
 		echo wp_kses_post( $lsx_bd->frontend->widget->render( $params ) );
@@ -120,8 +122,9 @@ function lsx_bd_related_listings( $args = array() ) {
  */
 function lsx_bd_recent_listings( $args = array() ) {
 	$defaults = array(
-		'echo'  => true,
-		'title' => esc_html__( 'Recent Listings', 'lsx-member-directory' ),
+		'echo'    => true,
+		'title'   => esc_html__( 'Recent Listings', 'lsx-member-directory' ),
+		'excerpt' => false,
 	);
 	$args     = wp_parse_args( $args, $defaults );
 	$lsx_bd   = lsx_business_directory();
@@ -130,6 +133,7 @@ function lsx_bd_recent_listings( $args = array() ) {
 		'carousel'   => true,
 		'orderby'    => 'recent',
 		'custom_css' => 'lsx-bd-recent-listings',
+		'excerpt'    => $args['excerpt'],
 	);
 	if ( true === $args['echo'] ) {
 		echo wp_kses_post( $lsx_bd->frontend->widget->render( $params ) );
@@ -146,8 +150,9 @@ function lsx_bd_recent_listings( $args = array() ) {
  */
 function lsx_bd_featured_listings( $args = array() ) {
 	$defaults = array(
-		'echo'  => true,
-		'title' => esc_html__( 'Featured Listings', 'lsx-member-directory' ),
+		'echo'    => true,
+		'title'   => esc_html__( 'Featured Listings', 'lsx-member-directory' ),
+		'excerpt' => false,
 	);
 	$args     = wp_parse_args( $args, $defaults );
 	$lsx_bd   = lsx_business_directory();
@@ -156,6 +161,7 @@ function lsx_bd_featured_listings( $args = array() ) {
 		'carousel'   => true,
 		'orderby'    => 'featured',
 		'custom_css' => 'lsx-bd-featured-listings',
+		'excerpt'    => $args['excerpt'],
 	);
 	if ( true === $args['echo'] ) {
 		echo wp_kses_post( $lsx_bd->frontend->widget->render( $params ) );
@@ -172,8 +178,9 @@ function lsx_bd_featured_listings( $args = array() ) {
  */
 function lsx_bd_random_listings( $args = array() ) {
 	$defaults = array(
-		'echo'  => true,
-		'title' => esc_html__( 'Listings', 'lsx-member-directory' ),
+		'echo'    => true,
+		'title'   => esc_html__( 'Listings', 'lsx-member-directory' ),
+		'excerpt' => false,
 	);
 	$args     = wp_parse_args( $args, $defaults );
 	$lsx_bd   = lsx_business_directory();
@@ -182,6 +189,7 @@ function lsx_bd_random_listings( $args = array() ) {
 		'carousel'   => true,
 		'orderby'    => 'rand',
 		'custom_css' => 'lsx-bd-random-listings',
+		'excerpt'    => $args['excerpt'],
 	);
 	if ( true === $args['echo'] ) {
 		echo wp_kses_post( $lsx_bd->frontend->widget->render( $params ) );
@@ -321,16 +329,16 @@ function lsx_bd_archive_listing_excerpt( $before = '', $after = '', $echo = true
 	$key = 'archive';
 	if ( is_search() ) {
 		$key = 'engine';
+	} elseif ( lsx_bd_is_shortcode() ) {
+		$key = 'shortcode';
 	}
 	$is_enabled = lsx_bd_get_option( $key . '_excerpt_enable', false );
-
 	if ( false !== $is_enabled && false === $force_excerpt ) {
 		$excerpt = get_the_excerpt();
 		ob_start();
 		echo wp_kses_post( $excerpt );
 		$excerpt = ob_get_clean();
 		$excerpt = apply_filters( 'lsx_bd_' . $key . '_listing_excerpt', $before . $excerpt . $after );
-
 		if ( true === $echo ) {
 			echo wp_kses_post( $excerpt );
 		} else {
@@ -420,57 +428,4 @@ function lsx_bd_archive_listing_contact_info( $before = '', $after = '', $echo =
 	} else {
 		return $contact_info;
 	}
-}
-
-/**
- * This gets the term thunbnail from the taxonomies.
- *
- * @param string $term_id
- * @param string $size
- * @param boolean $echo
- * @param string $src
- * @return string
- */
-function lsx_bd_get_term_thumbnail( $term_id = '', $size = 'lsx-thumbnail-wide', $echo = false, $src = false, $hover = false ) {
-	$image = '';
-	if ( '' !== $term_id ) {
-		$meta_key  = 'lsx_bd_thumbnail_id';
-		if ( false !== $hover ) {
-			$meta_key = 'lsx_bd_thumbnail_hover_id';
-		}
-		$image_src = get_term_meta( $term_id, $meta_key, true );
-
-		// If the image is empty, then get the placeholder.
-		if ( false === $image_src || '' === $image_src ) {
-
-			$key = 'single_thumbnail';
-			if ( term_exists( $term_id, 'industry' ) ) {
-				$key = 'archive_industry';
-			} else {
-				$key = 'archive_location';
-			}
-			if ( false !== $hover ) {
-				$key = $key . '_hover';
-			}
-
-			$image_src = \lsx\business_directory\includes\get_placeholder( $key, $key );
-			if ( false === $src ) {
-				$image = '<img src="' . $image_src . '" class="attachment-thumbnail size-thumbnail" alt="">';
-			} else {
-				$image = $image_src;
-			}
-		} elseif ( false !== $image_src && '' !== $image_src ) {
-			$image = wp_get_attachment_image_src( $image_src, $size );
-			if ( is_array( $image ) && isset( $image[0] ) ) {
-				$image = $image[0];
-			}
-			if ( false === $src ) {
-				$image = '<img src="' . $image . '" class="attachment-thumbnail size-thumbnail" alt="">';
-			}
-		}
-		if ( false !== $echo ) {
-			echo wp_kses_post( $image );
-		}
-	}
-	return $image;
 }
