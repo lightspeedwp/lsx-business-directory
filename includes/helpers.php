@@ -51,7 +51,7 @@ function get_placeholder( $size = 'lsx-thumbnail-wide', $key = 'single_thumbnail
 				break;
 
 			case 'archive_industry_hover':
-				$placeholder = LSX_BD_URL . 'assets/img/placeholder-industry-icon.svg';
+				$placeholder = LSX_BD_URL . 'assets/img/placeholder-industry-icon-hover.svg';
 				break;
 
 			case 'thumbnail':
@@ -80,7 +80,6 @@ function get_placeholder( $size = 'lsx-thumbnail-wide', $key = 'single_thumbnail
 				$placeholder = LSX_BD_URL . 'assets/img/placeholder-360x168.jpg';
 				break;
 		}
-		var_dump( $size );
 	}
 	return $placeholder;
 }

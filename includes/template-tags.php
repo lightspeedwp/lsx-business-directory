@@ -314,23 +314,46 @@ function lsx_bd_listing_meta( $echo = true ) {
  * @param string $term_id
  * @param string $size
  * @param boolean $echo
+ * @param string $src
  * @return string
  */
-function lsx_bd_get_term_thumbnail( $term_id = '', $size = 'lsx-thumbnail-wide', $echo = false ) {
+function lsx_bd_get_term_thumbnail( $term_id = '', $size = 'lsx-thumbnail-wide', $echo = false, $src = false, $hover = false ) {
 	$image = '';
 	if ( '' !== $term_id ) {
-		$image_src = get_term_meta( $term_id, 'lsx_bd_thumbnail_id', true );
+		$meta_key  = 'lsx_bd_thumbnail_id';
+		if ( false !== $hover ) {
+			$meta_key = 'lsx_bd_thumbnail_hover_id';
+		}
+		$image_src = get_term_meta( $term_id, $meta_key, true );
+
+		// If the image is empty, then get the placeholder.
 		if ( false === $image_src || '' === $image_src ) {
+
 			$key = 'single_thumbnail';
 			if ( term_exists( $term_id, 'industry' ) ) {
 				$key = 'archive_industry';
 			} else {
 				$key = 'archive_location';
 			}
+			if ( false !== $hover ) {
+				$key = $key . '_hover';
+			}
+
 			$image_src = \lsx\business_directory\includes\get_placeholder( $key, $key );
-			$image     = '<img src="' . $image_src . '" class="attachment-thumbnail size-thumbnail" alt="">';
+			if ( false === $src ) {
+				$image = '<img src="' . $image_src . '" class="attachment-thumbnail size-thumbnail" alt="">';
+			} else {
+				$image = $image_src;
+			}
 		} elseif ( false !== $image_src && '' !== $image_src ) {
-			$image = wp_get_attachment_image( $image_src, $size );
+			if ( false === $src ) {
+				$image = wp_get_attachment_image( $image_src, $size );
+			} else {
+				$image = wp_get_attachment_image_src( $image_src, $size );
+				if ( is_array( $image ) && isset( $image[0] ) ) {
+					$image = $image[0];
+				}
+			}
 		}
 		if ( false !== $echo ) {
 			echo wp_kses_post( $image );

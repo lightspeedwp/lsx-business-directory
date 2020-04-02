@@ -206,6 +206,7 @@ class Frontend {
 	public function wp_kses_allowed_html( $allowedtags, $context ) {
 		$allowedtags['div']['data-lsx-slick'] = true;
 		$allowedtags['div']['data-slick']     = true;
+		$allowedtags['a']['onmouseover']      = true;
 		return $allowedtags;
 	}
 
