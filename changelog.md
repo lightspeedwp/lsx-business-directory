@@ -5,6 +5,8 @@
 ### Added
 - Added in a "Translations" settings tab to allow the translation of the post type and taxonomy slugs.
 - Added Industries shortcode to the Listing archive.
+- Added in a setting to control the display of the excerpt on the archive and the search pages.
+- Added in a setting to the shortcode to toggle the display of the excerpts.
 
 ### Fixed
 - Removing the `using-gutenberg` body class when the listing is using blocks.
