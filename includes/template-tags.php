@@ -338,7 +338,7 @@ function lsx_bd_archive_listing_excerpt( $echo = true ) {
  * @param  boolean $echo
  * @return string
  */
-function lsx_bd_archive_listing_meta( $echo = true ) {
+function lsx_bd_archive_listing_meta( $echo = true, $colum_class = '' ) {
 	$entry_meta = '';
 	$industries = get_the_term_list( get_the_ID(), 'industry', '', ', ', '' );
 	$locations  = get_the_term_list( get_the_ID(), 'location', '', ', ', '' );
@@ -346,7 +346,7 @@ function lsx_bd_archive_listing_meta( $echo = true ) {
 		ob_start();
 		if ( ! empty( $industries ) ) {
 			?>
-			<div class="industry">
+			<div class="industry <?php echo esc_attr( $colum_class ); ?>">
 				<span>
 					<i class="fa fa-th"></i>
 					<strong><?php esc_html_e( 'Industry', 'lsx-business-directory' ); ?>: </strong>
@@ -357,7 +357,7 @@ function lsx_bd_archive_listing_meta( $echo = true ) {
 		}
 		if ( ! empty( $locations ) ) {
 			?>
-			<div class="location">
+			<div class="location <?php echo esc_attr( $colum_class ); ?>">
 				<span>
 					<i class="fa fa-globe"></i>
 					<strong><?php esc_html_e( 'Location', 'lsx-business-directory' ); ?>: </strong>
@@ -382,7 +382,7 @@ function lsx_bd_archive_listing_meta( $echo = true ) {
  * @param  boolean $echo
  * @return string
  */
-function lsx_bd_archive_listing_contact_info( $echo = true ) {
+function lsx_bd_archive_listing_contact_info( $echo = true, $colum_class = '' ) {
 	$contact_info  = '';
 	$primary_phone = get_post_meta( get_the_ID(), 'lsx_bd_primary_phone', true );
 	$primary_email = get_post_meta( get_the_ID(), 'lsx_bd_primary_email', true );
@@ -390,14 +390,14 @@ function lsx_bd_archive_listing_contact_info( $echo = true ) {
 		ob_start();
 		if ( false !== $primary_phone && '' !== $primary_phone ) {
 			?>
-			<div class="telephone">
+			<div class="telephone <?php echo esc_attr( $colum_class ); ?>">
 				<span><i class="fa fa-phone-square"></i> <strong><?php esc_html_e( 'Phone', 'lsx-business-directory' ); ?>: </strong> <a href="tel:<?php echo esc_attr( str_replace( ' ', '', $primary_phone ) ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_attr( $primary_phone ); ?></a></span>
 			</div>
 			<?php
 		}
 		if ( false !== $primary_email && '' !== $primary_email ) {
 			?>
-			<div class="email">
+			<div class="email <?php echo esc_attr( $colum_class ); ?>">
 				<span><i class="fa fa-envelope-square"></i> <strong><?php esc_html_e( 'Email', 'lsx-business-directory' ); ?>: </strong> <a href="mailto:<?php echo esc_attr( $primary_email ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_attr( $primary_email ); ?></a></span>
 			</div>
 			<?php
