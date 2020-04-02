@@ -17,9 +17,7 @@
 
 					<?php lsx_bd_archive_listing_contact_info(); ?>
 
-					<div class="description">
-						<?php lsx_bd_archive_listing_excerpt(); ?>
-					</div>
+					<?php lsx_bd_archive_listing_excerpt( '<div class="description">', '</div>' ); ?>
 				</div>
 			</div>
 		</div>

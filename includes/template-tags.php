@@ -311,10 +311,13 @@ function lsx_bd_single_listing_meta( $echo = true ) {
 /**
  * Outputs the excerpt for the archive listing.
  *
+ * @param  string $before
+ * @param  string $after
  * @param  boolean $echo
+ * @param  boolean $force_excerpt
  * @return string
  */
-function lsx_bd_archive_listing_excerpt( $echo = true, $force_excerpt = false ) {
+function lsx_bd_archive_listing_excerpt( $before = '', $after = '', $echo = true, $force_excerpt = false ) {
 	$key = 'archive';
 	if ( is_search() ) {
 		$key = 'engine';
@@ -326,7 +329,7 @@ function lsx_bd_archive_listing_excerpt( $echo = true, $force_excerpt = false ) 
 		ob_start();
 		echo wp_kses_post( $excerpt );
 		$excerpt = ob_get_clean();
-		$excerpt = apply_filters( 'lsx_bd_' . $key . '_listing_excerpt', $excerpt );
+		$excerpt = apply_filters( 'lsx_bd_' . $key . '_listing_excerpt', $before . $excerpt . $after );
 
 		if ( true === $echo ) {
 			echo wp_kses_post( $excerpt );
@@ -339,10 +342,13 @@ function lsx_bd_archive_listing_excerpt( $echo = true, $force_excerpt = false ) 
 /**
  * Output the location and the industry for the archive listing.
  *
+ * @param  string $before
+ * @param  string $after
  * @param  boolean $echo
+ * @param  string $colum_class
  * @return string
  */
-function lsx_bd_archive_listing_meta( $echo = true, $colum_class = '' ) {
+function lsx_bd_archive_listing_meta( $before = '', $after = '', $echo = true, $colum_class = '' ) {
 	$entry_meta = '';
 	$industries = get_the_term_list( get_the_ID(), 'industry', '', ', ', '' );
 	$locations  = get_the_term_list( get_the_ID(), 'location', '', ', ', '' );
@@ -371,7 +377,7 @@ function lsx_bd_archive_listing_meta( $echo = true, $colum_class = '' ) {
 			<?php
 		}
 		$entry_meta = ob_get_clean();
-		$entry_meta = apply_filters( 'lsx_bd_archive_listing_meta', $entry_meta );
+		$entry_meta = apply_filters( 'lsx_bd_archive_listing_meta', $before . $entry_meta . $after );
 	}
 	if ( true === $echo ) {
 		echo wp_kses_post( $entry_meta );
@@ -386,7 +392,7 @@ function lsx_bd_archive_listing_meta( $echo = true, $colum_class = '' ) {
  * @param  boolean $echo
  * @return string
  */
-function lsx_bd_archive_listing_contact_info( $echo = true, $colum_class = '' ) {
+function lsx_bd_archive_listing_contact_info( $before = '', $after = '', $echo = true, $colum_class = '' ) {
 	$contact_info  = '';
 	$primary_phone = get_post_meta( get_the_ID(), 'lsx_bd_primary_phone', true );
 	$primary_email = get_post_meta( get_the_ID(), 'lsx_bd_primary_email', true );
@@ -407,7 +413,7 @@ function lsx_bd_archive_listing_contact_info( $echo = true, $colum_class = '' ) 
 			<?php
 		}
 		$contact_info = ob_get_clean();
-		$contact_info = apply_filters( 'lsx_bd_archive_listing_contact_info', $contact_info );
+		$contact_info = apply_filters( 'lsx_bd_archive_listing_contact_info', $before . $contact_info . $after );
 	}
 	if ( true === $echo ) {
 		echo wp_kses_post( $contact_info );

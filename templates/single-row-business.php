@@ -24,13 +24,9 @@
 
 					<div class="row">
 						<div class="business-meta lsx-flex-col">
-							<div class="lsx-flex-row">
-								<?php lsx_bd_archive_listing_meta( true, 'col-xs-6 col-sm-6 col-md-6' ); ?>
-							</div>
+							<?php lsx_bd_archive_listing_meta( '<div class="lsx-flex-row">', '</div>', true, 'col-xs-6 col-sm-6 col-md-6' ); ?>
 
-							<div class="lsx-flex-row">
-								<?php lsx_bd_archive_listing_contact_info( true, 'col-xs-6 col-sm-6 col-md-6' ); ?>
-							</div>
+							<?php lsx_bd_archive_listing_contact_info( '<div class="lsx-flex-row">', '</div>', true, 'col-xs-6 col-sm-6 col-md-6' ); ?>
 						</div>
 
 						<div class="business-excerpt lsx-flex-col">
