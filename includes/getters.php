@@ -104,6 +104,27 @@ function get_industry_icon_placeholder_field( $prefix = '' ) {
  * @param mixed $prefix Add a prefix to the fields IDS
  * @return array
  */
+function get_industry_icon_hover_placeholder_field( $prefix = '' ) {
+	$fields = array(
+		'name'         => esc_html__( 'Industry Placeholder (hover)', 'lsx-business-directory' ),
+		'desc'         => esc_html__( 'Your image should be 32px x 32 preferably.', 'lsx-business-directory' ),
+		'id'           => '_industry_hover_placeholder',
+		'type'         => 'file',
+		'preview_size' => array( 32, 32 ),
+	);
+	if ( '' !== $prefix ) {
+		$fields = apply_field_id_prefixes( array( $fields ), $prefix );
+		$fields = $fields[0];
+	}
+	return $fields;
+}
+
+/**
+ * Returns the banner fields for use in registering the custom fields, theme settings etc.
+ *
+ * @param mixed $prefix Add a prefix to the fields IDS
+ * @return array
+ */
 function get_location_featured_placeholder_field( $prefix = '' ) {
 	$fields = array(
 		'name'         => esc_html__( 'Location Placeholder', 'lsx-business-directory' ),

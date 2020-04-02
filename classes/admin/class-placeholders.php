@@ -69,6 +69,7 @@ class Placeholders {
 		if ( 'top' === $position ) {
 			$fields   = array();
 			$fields[] = \lsx\business_directory\includes\get_industry_icon_placeholder_field( 'archive' );
+			$fields[] = \lsx\business_directory\includes\get_industry_icon_hover_placeholder_field( 'archive' );
 			$fields[] = \lsx\business_directory\includes\get_location_featured_placeholder_field( 'archive' );
 			$fields[] = \lsx\business_directory\includes\get_banner_image_placeholder_field( 'archive' );
 			foreach ( $fields as $field ) {
