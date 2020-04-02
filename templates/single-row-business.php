@@ -6,6 +6,8 @@
 	$locations     = lsx_bd_get_formatted_taxonomy_str( get_the_ID(), 'location', true );
 	$primary_phone = get_post_meta( get_the_ID(), $prefix . '_primary_phone', true );
 	$primary_email = get_post_meta( get_the_ID(), $prefix . '_primary_email', true );
+	$industry_slug = lsx_bd_get_option( 'translations_industry_slug', false );
+	$location_slug = lsx_bd_get_option( 'translations_location_slug', false );
 ?>
 <div class="business-row-wrapper col-xs-12 col-sm-12 col-md-12">
 	<article class="business row-layout row">
@@ -36,7 +38,7 @@
 												?>,
 											<?php endif;
 											?>
-												<a href="/industry/<?php echo esc_attr( $industry['slug'] ); ?>"><?php echo esc_attr( $industry['name'] ); ?></a>
+												<a href="<?php echo esc_attr( '/' . $industry_slug . '/' . $industry['slug'] ); ?>"><?php echo esc_attr( $industry['name'] ); ?></a>
 												<?php
 												$count++;
 										endforeach;
@@ -55,7 +57,7 @@
 												?>,
 											<?php endif;
 											?>
-												<a href="/location/<?php echo esc_attr( $location['slug'] ); ?>"><?php echo esc_attr( $location['name'] ); ?></a>
+												<a href="<?php echo esc_attr( '/' . $location_slug . '/' . $location['slug'] ); ?>"><?php echo esc_attr( $location['name'] ); ?></a>
 												<?php
 												$count++;
 										endforeach;
@@ -86,6 +88,6 @@
 					</div>
 				</div>
 			</div>
-		</div>	
+		</div>
 	</article>
 </div>
