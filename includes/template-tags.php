@@ -298,8 +298,8 @@ function lsx_bd_single_listing_meta( $echo = true ) {
 			?>
 		</div>
 		<?php
-		$entry_meta = apply_filters( 'lsx_bd_single_listing_meta', $entry_meta );
 		$entry_meta = ob_get_clean();
+		$entry_meta = apply_filters( 'lsx_bd_single_listing_meta', $entry_meta );
 	}
 	if ( true === $echo ) {
 		echo wp_kses_post( $entry_meta );
@@ -317,13 +317,9 @@ function lsx_bd_single_listing_meta( $echo = true ) {
 function lsx_bd_archive_listing_excerpt( $echo = true ) {
 	$excerpt = get_the_excerpt();
 	ob_start();
-	?>
-	<div class="description">
-		<?php echo wp_kses_post( $excerpt ); ?>
-	</div>
-	<?php
-	$excerpt = apply_filters( 'lsx_bd_archive_listing_excerpt', $excerpt );
+	echo wp_kses_post( $excerpt );
 	$excerpt = ob_get_clean();
+	$excerpt = apply_filters( 'lsx_bd_archive_listing_excerpt', $excerpt );
 
 	if ( true === $echo ) {
 		echo wp_kses_post( $excerpt );
@@ -366,8 +362,8 @@ function lsx_bd_archive_listing_meta( $echo = true, $colum_class = '' ) {
 			</div>
 			<?php
 		}
-		$entry_meta = apply_filters( 'lsx_bd_archive_listing_meta', $entry_meta );
 		$entry_meta = ob_get_clean();
+		$entry_meta = apply_filters( 'lsx_bd_archive_listing_meta', $entry_meta );
 	}
 	if ( true === $echo ) {
 		echo wp_kses_post( $entry_meta );
@@ -402,8 +398,8 @@ function lsx_bd_archive_listing_contact_info( $echo = true, $colum_class = '' ) 
 			</div>
 			<?php
 		}
-		$contact_info = apply_filters( 'lsx_bd_archive_listing_contact_info', $contact_info );
 		$contact_info = ob_get_clean();
+		$contact_info = apply_filters( 'lsx_bd_archive_listing_contact_info', $contact_info );
 	}
 	if ( true === $echo ) {
 		echo wp_kses_post( $contact_info );

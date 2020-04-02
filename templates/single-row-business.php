@@ -34,7 +34,7 @@
 						</div>
 
 						<div class="business-excerpt lsx-flex-col">
-							<?php echo esc_attr( get_the_excerpt() ); ?>
+							<?php lsx_bd_archive_listing_excerpt(); ?>
 							<span class="read-more-link"><a href="<?php esc_url( the_permalink() ); ?>"><?php esc_html_e( 'Read More', 'lsx-business-directory' ); ?><i class="fa fa-long-arrow-right"></i></a></span>
 						</div>
 					</div>
