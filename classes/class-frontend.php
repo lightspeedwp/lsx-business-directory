@@ -61,6 +61,7 @@ class Frontend {
 		add_action( 'wp_enqueue_scripts', array( $this, 'assets' ), 5 );
 		add_filter( 'get_the_archive_title', array( $this, 'get_the_archive_title' ), 100 );
 		add_filter( 'wp_kses_allowed_html', array( $this, 'wp_kses_allowed_html' ), 10, 2 );
+		add_action( 'lsx_content_wrap_before', array( $this, 'bp_archive_industries_shortcode' ) );
 	}
 
 	/**
@@ -205,6 +206,20 @@ class Frontend {
 	public function wp_kses_allowed_html( $allowedtags, $context ) {
 		$allowedtags['div']['data-lsx-slick'] = true;
 		$allowedtags['div']['data-slick']     = true;
+		$allowedtags['a']['onmouseover']      = true;
 		return $allowedtags;
+	}
+
+	/**
+	 * Adds Industries shortcode to the Listing archive
+	 *
+	 * @param [type] $title
+	 * @return void
+	 */
+	public function bp_archive_industries_shortcode() {
+		if ( is_post_type_archive( 'business-directory' ) && 'on' === lsx_bd_get_option( 'archive_industry_buttons', false ) ) {
+			$industries_shortcode = '[lsx_bd_industries_nav title_text=""]';
+			echo do_shortcode( $industries_shortcode );
+		}
 	}
 }

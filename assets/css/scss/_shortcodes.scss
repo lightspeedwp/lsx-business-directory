@@ -1,8 +1,41 @@
 .lsx-business-directory-shortcode {
-	&.lsx-bd-industries-nav{
+	&.lsx-bd-industries-nav {
+		margin-bottom: 2.4rem;
+		.row-flex {
+			display: flex;
+			margin: 0;
+			flex-wrap: wrap;
+			.btn-wrap {
+				padding: 10px;
+				margin: 0.5rem 0.5rem 0.5rem 0;
+				flex-grow: 1;
+				word-break: break-all;
+				min-width: 100px;
+				@include media('<=phone') {
+					max-width: 50%;
+				}
+				a {
+					font-size: 12px;
+					width: 100%;
+				}
+			}
+		}
 		img {
-			max-width: 25%;
-			margin-right:10px;
+			max-width: 25px;
+			max-height: 25px;
+			margin-right: 5px;
+		}
+	}
+	.archive & {
+		@include media('>=phone') {
+			padding-left: 5px;
+			padding-right: 0;
+		}
+	}
+	.gutenberg-compatible-template.using-gutenberg .entry-content & {
+		@include media('>=phone') {
+			width: 100%;
+			max-width: 100%;
 		}
 	}
 }

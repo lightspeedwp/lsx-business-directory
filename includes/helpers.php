@@ -34,7 +34,7 @@ function apply_field_id_prefixes( $fields = array(), $prefix = '' ) {
  * @return string
  */
 function get_placeholder( $size = 'lsx-thumbnail-wide', $key = 'single_thumbnail' ) {
-	$placeholder = '';
+	$placeholder             = '';
 	$possible_placeholder_id = lsx_bd_get_option( $key . '_placeholder_id' );
 	if ( '' !== $possible_placeholder_id ) {
 		$image = wp_get_attachment_image_src( $possible_placeholder_id, $size );
@@ -46,6 +46,14 @@ function get_placeholder( $size = 'lsx-thumbnail-wide', $key = 'single_thumbnail
 	// Default to the images stored in the plugin.
 	if ( '' === $placeholder ) {
 		switch ( $size ) {
+			case 'archive_industry':
+				$placeholder = LSX_BD_URL . 'assets/img/placeholder-industry-icon.svg';
+				break;
+
+			case 'archive_industry_hover':
+				$placeholder = LSX_BD_URL . 'assets/img/placeholder-industry-icon-hover.svg';
+				break;
+
 			case 'thumbnail':
 				$placeholder = LSX_BD_URL . 'assets/img/placeholder-thumbnail.jpg';
 				break;

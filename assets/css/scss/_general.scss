@@ -67,3 +67,10 @@ body { /* For specificity */
 .lsx-flex-1 {
 	flex: 1;
 }
+
+.lsx-bd-shadow {
+	border: 1px solid $separator_color;
+	border-radius: 3px;
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+	background: white;
+}

@@ -4,12 +4,12 @@ var LSX_BD = Object.create( null );
 
     'use strict';
 
-    console.log(window.innerWidth);
-
     LSX_BD.document = $(document);
 
     //Holds the slider function
-    LSX_BD.sliders = Object.create( null );
+	LSX_BD.sliders = Object.create( null );
+	LSX_BD.industries = Object.create( null );
+	LSX_BD.readMore = Object.create( null );
 
     /**
      * Start the JS Class
@@ -20,6 +20,12 @@ var LSX_BD = Object.create( null );
         LSX_BD.sliders.element = jQuery('.lsx-business-directory-slider');
         if ( 0 <  LSX_BD.sliders.element.length ) {
             LSX_BD.sliders.init();
+		}
+
+		// initiate the industries.
+        LSX_BD.industries.element = jQuery('.lsx-bd-industries-nav');
+        if ( 0 <  LSX_BD.industries.element.length ) {
+            LSX_BD.industries.init();
         }
     };
 
@@ -72,6 +78,65 @@ var LSX_BD = Object.create( null );
                     }
                 ]
             });
+        } );
+	};
+	
+    /**
+     * Initiate the Industries functions
+     */
+    LSX_BD.industries.init = function( ) {
+		LSX_BD.industries.onHover();
+		LSX_BD.industries.offHover();
+	};
+
+    LSX_BD.industries.onHover = function( ) {
+		$( LSX_BD.industries.element ).on( 'mouseenter', 'a', function( e ) {
+			var holder = $(this).find('img').attr( 'src' );
+			$(this).find('img').attr( 'src', $(this).attr( 'data-hover' ) );
+			$(this).attr( 'data-original', holder );
+		});
+	};
+
+    LSX_BD.industries.offHover = function( ) {
+		$( LSX_BD.industries.element ).on( 'mouseleave', 'a', function( e ) {
+			var holder = $(this).find('img').attr( 'src' );
+			$(this).find('img').attr( 'src', $(this).attr( 'data-original' ) );
+			$(this).attr( 'data-hover', holder );
+		});
+	};
+
+    LSX_BD.readMore.init = function () {
+        $( '.description.content .more-link' ).each( function() {
+
+            if ( 'Read More' === $( this ).html() ) {
+                $( this ).closest( '.description.content' ).each( function() {
+                    var visible = true;
+
+                    $( this ).children().each( function() {
+                        if ( 'Read More' === $( this ).find( '.more-link' ).html() ) {
+                            visible = false;
+                        } else if ( ! visible && this.id !== 'sharing' ) {
+                            $( this ).hide();
+                        }
+                    } );
+                } );
+
+                $( this ).click( function( event ) {
+                    event.preventDefault();
+                    $( this ).hide();
+
+                    if ($( this ).hasClass( 'more-link-remove-p' ) ) {
+                        var html = '';
+
+                        $( this ).closest( '.description.content' ).children().each( function() {
+                            $( this ).show();
+                        } );
+                    } else {
+                        $( this ).closest( '.description.content' ).children().show();
+                    }
+                } );
+            }
+
         } );
     };
 
