@@ -78,5 +78,5 @@ class Term_Thumbnail {
 		foreach ( $fields as $field ) {
 			$cmb->add_field( $field );
 		}
-	}	
+	}
 }
