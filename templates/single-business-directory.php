@@ -159,7 +159,7 @@ get_header(); ?>
 							<div class="entry-header-content">
 								<?php lsx_bd_listing_title(); ?>
 
-								<?php lsx_bd_listing_meta(); ?>
+								<?php lsx_bd_single_listing_meta(); ?>
 
 								<div class="social-links lsx-flex-row">
 									<?php if ( $business_facebook ) : ?>

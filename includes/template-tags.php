@@ -257,7 +257,7 @@ function lsx_bd_listing_title( $echo = true ) {
  * @param  boolean $echo
  * @return string
  */
-function lsx_bd_listing_meta( $echo = true ) {
+function lsx_bd_single_listing_meta( $echo = true ) {
 	$entry_meta = '';
 	$industries = get_the_term_list( get_the_ID(), 'industry', '', ', ', '' );
 	$locations  = get_the_term_list( get_the_ID(), 'location', '', ', ', '' );

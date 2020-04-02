@@ -45,6 +45,7 @@ class Widget {
 		'post_type'        => 'business-directory',
 		'content_type'     => 'post',
 		'template'         => 'single-col-business',
+		'excerpt'          => false,
 	);
 
 	/**
@@ -268,7 +269,7 @@ class Widget {
 			$item_term = false;
 			foreach ( $this->query as $item_term ) {
 				$this->counter++;
-				$item_term->col_class = $this->args['col_class'];
+				$item_term->args = $this->args;
 				ob_start();
 				lsx_business_template( $this->args['template'] );
 				$this->html .= ob_get_clean();
