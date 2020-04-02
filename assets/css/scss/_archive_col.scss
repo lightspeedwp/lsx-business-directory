@@ -36,7 +36,7 @@
 				}
 			}
 
-			.industry, .location, .telephone, .email {
+			.industry, .location, .telephone, .email, .description {
 				padding: 0px 15px 1px 17px;
 
 				span {
@@ -48,6 +48,14 @@
 
 				i {
 					margin-right: 0px;
+				}
+			}
+
+			.description {
+				padding-top: 15px;
+
+				p {
+					margin-bottom: 0px;
 				}
 			}
 		}

@@ -278,13 +278,84 @@ function lsx_bd_get_country_options() {
  */
 function lsx_bd_get_option( $key = '', $default = false ) {
 	$value = $default;
-	if ( '' !== $key && function_exists( 'cmb2_get_option' ) ) {
-		$value = cmb2_get_option( 'lsx-business-directory-settings', $key, $default );
-	} else {
-		$options = get_option( 'lsx-business-directory-settings', false );
-		if ( false !== $options && isset( $options[ $key ] ) && '' !== $options[ $key ] ) {
-			$value = $options[ $key ];
+	if ( '' !== $key ) {
+		if ( 0 < strpos( ' ' . $key, 'shortcode_' ) ) {
+			$key = str_replace( array( 'shortcode_', '_enable', '_disable' ), '', $key );
+			if ( isset( lsx_business_directory()->frontend->widget->args[ $key ] ) ) {
+				$value = lsx_business_directory()->frontend->widget->args[ $key ];
+			}
+		} else {
+			if ( function_exists( 'cmb2_get_option' ) ) {
+				$value = cmb2_get_option( 'lsx-business-directory-settings', $key, $default );
+			} else {
+				$options = get_option( 'lsx-business-directory-settings', false );
+				if ( false !== $options && isset( $options[ $key ] ) && '' !== $options[ $key ] ) {
+					$value = $options[ $key ];
+				}
+			}
 		}
 	}
 	return $value;
+}
+
+/**
+ * Returns the boolean if it is the shortcode loop or not.
+ *
+ * @return boolean
+ */
+function lsx_bd_is_shortcode() {
+	return lsx_business_directory()->frontend->widget->is_shortcode();
+}
+
+/**
+ * This gets the term thunbnail from the taxonomies.
+ *
+ * @param string $term_id
+ * @param string $size
+ * @param boolean $echo
+ * @param string $src
+ * @return string
+ */
+function lsx_bd_get_term_thumbnail( $term_id = '', $size = 'lsx-thumbnail-wide', $echo = false, $src = false, $hover = false ) {
+	$image = '';
+	if ( '' !== $term_id ) {
+		$meta_key = 'lsx_bd_thumbnail_id';
+		if ( false !== $hover ) {
+			$meta_key = 'lsx_bd_thumbnail_hover_id';
+		}
+		$image_src = get_term_meta( $term_id, $meta_key, true );
+
+		// If the image is empty, then get the placeholder.
+		if ( false === $image_src || '' === $image_src ) {
+
+			$key = 'single_thumbnail';
+			if ( term_exists( $term_id, 'industry' ) ) {
+				$key = 'archive_industry';
+			} else {
+				$key = 'archive_location';
+			}
+			if ( false !== $hover ) {
+				$key = $key . '_hover';
+			}
+
+			$image_src = \lsx\business_directory\includes\get_placeholder( $key, $key );
+			if ( false === $src ) {
+				$image = '<img src="' . $image_src . '" class="attachment-thumbnail size-thumbnail" alt="">';
+			} else {
+				$image = $image_src;
+			}
+		} elseif ( false !== $image_src && '' !== $image_src ) {
+			$image = wp_get_attachment_image_src( $image_src, $size );
+			if ( is_array( $image ) && isset( $image[0] ) ) {
+				$image = $image[0];
+			}
+			if ( false === $src ) {
+				$image = '<img src="' . $image . '" class="attachment-thumbnail size-thumbnail" alt="">';
+			}
+		}
+		if ( false !== $echo ) {
+			echo wp_kses_post( $image );
+		}
+	}
+	return $image;
 }

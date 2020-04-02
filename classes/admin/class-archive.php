@@ -76,6 +76,14 @@ class Archive {
 				),
 			)
 		);
+		$cmb->add_field(
+			array(
+				'name'        => esc_html__( 'Display Excerpt', 'lsx-business-directory' ),
+				'id'          => 'archive_excerpt_enable',
+				'type'        => 'checkbox',
+				'description' => __( 'Display the excerpt of a listing.', 'lsx-business-directory' ),
+			)
+		);
 		do_action( 'lsx_bd_settings_section_archive', $cmb, 'bottom' );
 		$cmb->add_field(
 			array(
