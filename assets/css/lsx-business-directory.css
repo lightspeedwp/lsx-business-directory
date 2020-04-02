@@ -314,7 +314,7 @@ body.archive.lsx-body-grid-layout .post-wrapper, body.search-results.lsx-body-gr
 
 .lsx-business-directory-shortcode.lsx-bd-industries-nav img { max-width: 25px; max-height: 25px; margin-right: 5px; }
 
-@media (min-width: 768px) { .archive .lsx-business-directory-shortcode { padding-right: 15px; padding-left: 15px; } }
+@media (min-width: 768px) { .archive .lsx-business-directory-shortcode { padding-left: 5px; padding-right: 0; } }
 
 @media (min-width: 768px) { .gutenberg-compatible-template.using-gutenberg .entry-content .lsx-business-directory-shortcode { width: 100%; max-width: 100%; } }
 

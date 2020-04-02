@@ -28,8 +28,8 @@
 	}
 	.archive & {
 		@include media('>=phone') {
-			padding-right: 15px;
-			padding-left: 15px;
+			padding-left: 5px;
+			padding-right: 0;
 		}
 	}
 	.gutenberg-compatible-template.using-gutenberg .entry-content & {

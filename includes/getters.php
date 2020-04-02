@@ -78,12 +78,34 @@ function get_featured_image_field( $prefix = '' ) {
 }
 
 /**
- * Returns the Placeholder fields.
+ * Returns the banner fields for use in registering the custom fields, theme settings etc.
  *
  * @param mixed $prefix Add a prefix to the fields IDS
  * @return array
  */
-function get_placeholder_fields( $prefix = '' ) {
+function get_industry_icon_placeholder_field( $prefix = '' ) {
+	$fields = array(
+		array(
+			'name'         => esc_html__( 'Industry Placeholder', 'lsx-business-directory' ),
+			'desc'         => esc_html__( 'Your image should be 32px x 32 preferably.', 'lsx-business-directory' ),
+			'id'           => '_industry_placeholder',
+			'type'         => 'file',
+			'preview_size' => array( 32, 32 ),
+		),
+	);
+	if ( '' !== $prefix ) {
+		$fields = apply_field_id_prefixes( $fields, $prefix );
+	}
+	return $fields;
+}
+
+/**
+ * Returns the banner fields for use in registering the custom fields, theme settings etc.
+ *
+ * @param mixed $prefix Add a prefix to the fields IDS
+ * @return array
+ */
+function get_featured_image_placeholder_field( $prefix = '' ) {
 	$fields = array(
 		array(
 			'name'         => esc_html__( 'Featured Placeholder', 'lsx-business-directory' ),
@@ -92,6 +114,21 @@ function get_placeholder_fields( $prefix = '' ) {
 			'type'         => 'file',
 			'preview_size' => 'lsx-thumbnail-wide',
 		),
+	);
+	if ( '' !== $prefix ) {
+		$fields = apply_field_id_prefixes( $fields, $prefix );
+	}
+	return $fields;
+}
+
+/**
+ * Returns the banner fields for use in registering the custom fields, theme settings etc.
+ *
+ * @param mixed $prefix Add a prefix to the fields IDS
+ * @return array
+ */
+function get_banner_image_placeholder_field( $prefix = '' ) {
+	$fields = array(
 		array(
 			'name'         => esc_html__( 'Banner Placeholder', 'lsx-business-directory' ),
 			'desc'         => esc_html__( 'Your image should be 1920px x 600px preferably, but no less than 1440px x 430px.', 'lsx-business-directory' ),
