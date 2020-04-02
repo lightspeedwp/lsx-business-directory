@@ -309,6 +309,50 @@ function lsx_bd_single_listing_meta( $echo = true ) {
 }
 
 /**
+ * Output the location and the industry for the archive listing.
+ *
+ * @param  boolean $echo
+ * @return string
+ */
+function lsx_bd_archive_listing_meta( $echo = true ) {
+	$entry_meta = '';
+	$industries = get_the_term_list( get_the_ID(), 'industry', '', ', ', '' );
+	$locations  = get_the_term_list( get_the_ID(), 'location', '', ', ', '' );
+	if ( ! empty( $industries ) || ! empty( $locations ) ) {
+		ob_start();
+		if ( ! empty( $industries ) ) {
+			?>
+			<div class="industry">
+				<span>
+					<i class="fa fa-th"></i>
+					<strong><?php esc_html_e( 'Industry', 'lsx-business-directory' ); ?>: </strong>
+					<?php echo wp_kses_post( $industries ); ?>
+				</span>
+			</div>
+			<?php
+		}
+		if ( ! empty( $locations ) ) {
+			?>
+			<div class="location">
+				<span>
+					<i class="fa fa-globe"></i>
+					<strong><?php esc_html_e( 'Location', 'lsx-business-directory' ); ?>: </strong>
+					<?php echo wp_kses_post( $locations ); ?>
+				</span>
+			</div>
+			<?php
+		}
+		$entry_meta = apply_filters( 'lsx_bd_archive_listing_meta', $entry_meta );
+		$entry_meta = ob_get_clean();
+	}
+	if ( true === $echo ) {
+		echo wp_kses_post( $entry_meta );
+	} else {
+		return $entry_meta;
+	}
+}
+
+/**
  * This gets the term thunbnail from the taxonomies.
  *
  * @param string $term_id

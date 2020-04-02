@@ -22,45 +22,7 @@
 						<h4><a href="<?php esc_url( the_permalink() ); ?>"><?php echo esc_attr( $title ); ?></a></h4>
 					</div>
 
-					<?php if ( $industries ) : ?>
-					<div class="industry">
-						<span>
-							<i class="fa fa-th"></i>
-							<strong><?php esc_html_e( 'Industry', 'lsx-business-directory' ); ?>: </strong>
-							<?php
-							$count = 0;
-							foreach ( $industries as $industry ) :
-								if ( $count > 0 ) :
-								?>,<?php
-								endif;
-								?>
-								<a href="/industry/<?php echo esc_attr( $industry['slug'] ); ?>"><?php echo esc_attr( $industry['name'] ); ?></a><?php
-								$count++;
-							endforeach;
-							?>
-						</span>
-					</div>
-					<?php endif; ?>
-
-					<?php if ( $locations ) : ?>
-					<div class="location">
-						<span>
-							<i class="fa fa-globe"></i>
-							<strong><?php esc_html_e( 'Location', 'lsx-business-directory' ); ?>: </strong>
-							<?php
-							$count = 0;
-							foreach ( $locations as $location ) :
-								if ( $count > 0 ) :
-								?>,<?php
-								endif;
-								?>
-								<a href="/location/<?php echo esc_attr( $location['slug'] ); ?>"><?php echo esc_attr( $location['name'] ); ?></a><?php
-								$count++;
-							endforeach;
-							?>
-						</span>
-					</div>
-					<?php endif; ?>
+					<?php lsx_bd_archive_listing_meta(); ?>
 
 					<?php if ( $primary_phone ) : ?>
 					<div class="telephone">
