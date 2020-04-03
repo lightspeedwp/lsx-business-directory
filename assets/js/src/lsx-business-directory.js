@@ -27,7 +27,7 @@ var LSX_BD = Object.create( null );
         if ( 0 <  LSX_BD.industries.element.length ) {
             LSX_BD.industries.init();
         }
-    };
+	};
 
     /**
      * Initiate the Sliders
@@ -80,7 +80,7 @@ var LSX_BD = Object.create( null );
             });
         } );
 	};
-	
+
     /**
      * Initiate the Industries functions
      */
@@ -138,7 +138,20 @@ var LSX_BD = Object.create( null );
             }
 
         } );
-    };
+	};
+
+	LSX_BD.industries_nav = function() {
+		var pageURL = $(location).attr('href');
+		$( '.lsx-bd-industries-nav .btn-wrap' ).each( function() {
+			var itemURL = $(this).context.href;
+			if ( pageURL === itemURL ) {
+				$(this).addClass('current-industry');
+				var holder = $(this).find('img').attr( 'src' );
+				$(this).find('img').attr( 'src', $(this).attr( 'data-hover' ) );
+				$(this).attr( 'data-original', holder );
+			}
+		});
+	};
 
     /**
      * On document ready.
@@ -147,7 +160,8 @@ var LSX_BD = Object.create( null );
      * @subpackage scripts
      */
     LSX_BD.document.ready( function() {
-        LSX_BD.init();
+		LSX_BD.init();
+		LSX_BD.industries_nav();
     } );
 
 } )( jQuery, window, document );

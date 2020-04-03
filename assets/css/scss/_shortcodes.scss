@@ -11,18 +11,22 @@
 				flex-grow: 1;
 				word-break: break-all;
 				min-width: 100px;
+				font-size: 12px;
+				align-items: center;
+				display: flex;
 				@include media('<=phone') {
 					max-width: 50%;
 				}
-				a {
-					font-size: 12px;
-					width: 100%;
+				&.current-industry,
+				&:hover {
+					background: $blue;
+					color: white;
 				}
 			}
 		}
 		img {
-			max-width: 25px;
-			max-height: 25px;
+			width: 25px;
+			height: 25px;
 			margin-right: 5px;
 		}
 	}
