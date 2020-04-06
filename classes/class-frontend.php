@@ -153,7 +153,7 @@ class Frontend {
 		if ( defined( 'SCRIPT_DEBUG' ) ) {
 			$prefix = 'src/';
 			$suffix = '';
-			$debug  = true; 
+			$debug  = true;
 		} else {
 			$prefix = '';
 			$suffix = '.min';
