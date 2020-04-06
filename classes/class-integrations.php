@@ -53,6 +53,13 @@ class Integrations {
 	public $caldera_forms;
 
 	/**
+	 * Holds the Woocommerce integration functions.
+	 *
+	 * @var object \lsx\business_directory\classes\integrations\Woocommerce();
+	 */
+	public $woocommerce;
+
+	/**
 	 * This holds the current facet info.
 	 *
 	 * @var array
@@ -82,6 +89,9 @@ class Integrations {
 
 		require_once LSX_BD_PATH . '/classes/integrations/class-caldera-forms.php';
 		$this->caldera_forms = integrations\Caldera_Forms::get_instance();
+
+		require_once LSX_BD_PATH . '/classes/integrations/class-woocommerce.php';
+		$this->woocommerce = integrations\Woocommerce::get_instance();
 	}
 
 	/**
