@@ -114,7 +114,10 @@ class Google_Maps {
 		if ( false !== $this->api_key && '' !== $lattitude && '' !== $longitude ) {
 			$map = '<div id="lsx-bd-map" class="lsx-bd-map" style="width:100%;" data-search="22 West Ave, Somerset West, Cape Town, South Africa" data-lattitude="' . $lattitude . '" data-longitude="' . $longitude . '">';
 			if ( false !== lsx_bd_get_option( 'google_maps_enable_placeholder', false ) ) {
+				$map .= '<div class="lsx-bd-map-placeholder">';
 				$map .= $this->get_map_thumbnail();
+				$map .= '<div class="placeholder-text">' . esc_attr__( 'View map', 'lsx-business-directory' ) . '</div>';
+				$map .= '</div>';
 			}
 			$map .= '</div>';
 			return $map;

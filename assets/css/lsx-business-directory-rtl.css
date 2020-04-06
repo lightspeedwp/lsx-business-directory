@@ -36,6 +36,8 @@ body.single-business-directory article .entry-meta > * { display: block; }
 
 .single .business-directory .business-header .business-content-left.map-wrapper .map-loading { min-height: 230px; }
 
+.single .business-directory .business-header .business-content-left.map-wrapper .placeholder-text, .single .business-directory .business-header .business-content-left.map-wrapper .lsx-bd-map-placeholder { text-align: center; cursor: pointer; }
+
 .single .business-directory .business-header .business-content-right { padding-right: 26px; }
 
 @media screen and (max-width: 991px) { .single .business-directory .business-header { margin-bottom: 52px; }

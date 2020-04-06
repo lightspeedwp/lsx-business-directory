@@ -118,6 +118,14 @@
 		LSX_BD.maps.setMapCenterZoom();
 	};
 
+	LSX_BD.maps.watchMapTriggers = function() {
+		LSX_BD.document.on( 'click', '.lsx-bd-map-placeholder, .placeholder-text', function( event ) {
+			jQuery.getScript( lsx_bd_maps_params.google_url,function() {
+				LSX_BD.maps.init();
+			});
+		});
+	},
+
     /**
      * On document ready.
      *
@@ -129,7 +137,7 @@
 		if ( '1' === lsx_bd_maps_params.debug ) {
 			LSX_BD.maps.init();
 		} else {
-
+			LSX_BD.maps.watchMapTriggers();
 		}
     } );
 
