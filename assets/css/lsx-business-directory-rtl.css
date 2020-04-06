@@ -316,13 +316,13 @@ body.archive.lsx-body-grid-layout .post-wrapper, body.search-results.lsx-body-gr
 
 .lsx-business-directory-shortcode.lsx-bd-industries-nav .row-flex { display: -webkit-box; display: -ms-flexbox; display: flex; margin: 0; -ms-flex-wrap: wrap; flex-wrap: wrap; }
 
-.lsx-business-directory-shortcode.lsx-bd-industries-nav .row-flex .btn-wrap { padding: 10px; margin: 0.5rem 0 0.5rem 0.5rem; -webkit-box-flex: 1; -ms-flex-positive: 1; flex-grow: 1; word-break: break-all; min-width: 100px; }
+.lsx-business-directory-shortcode.lsx-bd-industries-nav .row-flex .btn-wrap { padding: 10px; margin: 0.5rem 0 0.5rem 0.5rem; -webkit-box-flex: 1; -ms-flex-positive: 1; flex-grow: 1; word-break: break-all; min-width: 100px; font-size: 12px; -webkit-box-align: center; -ms-flex-align: center; align-items: center; display: -webkit-box; display: -ms-flexbox; display: flex; border: 0.5px solid #DDDDDD; }
 
 @media (max-width: 768px) { .lsx-business-directory-shortcode.lsx-bd-industries-nav .row-flex .btn-wrap { max-width: 50%; } }
 
-.lsx-business-directory-shortcode.lsx-bd-industries-nav .row-flex .btn-wrap a { font-size: 12px; width: 100%; }
+.lsx-business-directory-shortcode.lsx-bd-industries-nav .row-flex .btn-wrap.current-industry, .lsx-business-directory-shortcode.lsx-bd-industries-nav .row-flex .btn-wrap:hover { background: #5693D9; color: white; }
 
-.lsx-business-directory-shortcode.lsx-bd-industries-nav img { max-width: 25px; max-height: 25px; margin-left: 5px; }
+.lsx-business-directory-shortcode.lsx-bd-industries-nav img { width: 25px; height: 25px; margin-left: 5px; }
 
 @media (min-width: 768px) { .archive .lsx-business-directory-shortcode { padding-right: 5px; padding-left: 0; } }
 

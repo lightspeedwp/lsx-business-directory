@@ -6,6 +6,15 @@
 	$locations     = lsx_bd_get_formatted_taxonomy_str( get_the_ID(), 'location', true );
 	$primary_phone = get_post_meta( get_the_ID(), $prefix . '_primary_phone', true );
 	$primary_email = get_post_meta( get_the_ID(), $prefix . '_primary_email', true );
+	$industry_slug = lsx_bd_get_option( 'translations_industry_slug', false );
+	$location_slug = lsx_bd_get_option( 'translations_location_slug', false );
+
+	if ( false === $industry_slug ) {
+		$industry_slug = 'industry';
+	}
+	if ( false === $location_slug ) {
+		$location_slug = 'location';
+	}
 ?>
 <div class="business-row-wrapper col-xs-12 col-sm-12 col-md-12">
 	<article class="business row-layout row">
@@ -36,6 +45,6 @@
 					</div>
 				</div>
 			</div>
-		</div>	
+		</div>
 	</article>
 </div>

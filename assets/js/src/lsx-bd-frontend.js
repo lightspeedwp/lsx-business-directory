@@ -25,7 +25,7 @@ var LSX_BD = Object.create( null );
         if ( 0 <  LSX_BD.industries.element.length ) {
             LSX_BD.industries.init();
         }
-    };
+	};
 
     /**
      * A useful logging class.
@@ -92,13 +92,14 @@ var LSX_BD = Object.create( null );
             });
         } );
 	};
-	
+
     /**
      * Initiate the Industries functions
      */
     LSX_BD.industries.init = function( ) {
 		LSX_BD.industries.onHover();
 		LSX_BD.industries.offHover();
+		LSX_BD.industries.nav();
 	};
 
     LSX_BD.industries.onHover = function( ) {
@@ -150,7 +151,20 @@ var LSX_BD = Object.create( null );
             }
 
         } );
-    };
+	};
+
+	LSX_BD.industries.nav = function() {
+		var pageURL = $(location).attr('href');
+		$( '.lsx-bd-industries-nav .btn-wrap' ).each( function() {
+			var itemURL = $(this).context.href;
+			if ( pageURL === itemURL ) {
+				$(this).addClass('current-industry');
+				var holder = $(this).find('img').attr( 'src' );
+				$(this).find('img').attr( 'src', $(this).attr( 'data-hover' ) );
+				$(this).attr( 'data-original', holder );
+			}
+		});
+	};
 
     /**
      * On document ready.
