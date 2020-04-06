@@ -70,23 +70,24 @@ class Google_Maps {
 	 * @return    null
 	 */
 	public function enqueue_scripts() {
-		if ( ! $this->is_a_bot() ) {
+		if ( ! $this->is_a_bot() && is_singular( 'business-directory' ) && false !== $this->api_key ) {
 			$address_tab_field = get_post_meta( get_the_ID(), 'address', true );
-			if ( false !== $this->api_key && is_singular( 'business-directory' ) && isset( $address_tab_field ) ) {
+			if ( isset( $address_tab_field ) ) {
 				$has_thumbnail = $this->get_map_thumbnail();
-				$dependacies   = array( 'jquery', 'google_maps_api' );
+				$dependacies   = array( 'jquery', 'lsx_bd_google_maps_api' );
 				$google_url    = 'https://maps.googleapis.com/maps/api/js?key=' . $this->api_key . '&libraries=places';
 				if ( '' !== $has_thumbnail ) {
 					$dependacies = array( 'jquery' );
 				} else {
-					wp_enqueue_script( 'google_maps_api', $google_url, array( 'jquery' ), null, false );
+					wp_enqueue_script( 'lsx_bd_google_maps_api', $google_url, array( 'jquery' ), LSX_BD_VER, false );
 				}
-				wp_enqueue_script( 'lsx_maps', LSX_BD_URL . 'assets/js/lsx-maps.js', $dependacies, null, true);
+				wp_enqueue_script( 'lsx_bd_maps', LSX_BD_URL . 'assets/js/lsx-bd-maps.min.js', $dependacies, LSX_BD_VER, true );
 				$param_array = array(
 					'api_key'    => $this->api_key,
 					'google_url' => $google_url,
 				);
 				wp_localize_script( 'lsx_maps', 'lsx_maps_params', $param_array );
+
 			}
 		}
 	}
@@ -100,7 +101,7 @@ class Google_Maps {
 	 * @return    null
 	 */
 	public function render( $lattitude = '', $longitude = '', $zoom = 6 ) {
-		if ( false !== $this->api_key && '' !== $lattitude && '' !== $longitude ){
+		if ( false !== $this->api_key && '' !== $lattitude && '' !== $longitude ) {
 			$map = '<div id="lsx-map" style="width:100%;" data-lattitude="' . $lattitude . '" data-longitude="' . $longitude . '">';
 			$map .= $this->get_map_thumbnail();
 			$map .= '</div>';
