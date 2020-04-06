@@ -328,4 +328,10 @@ body.archive.lsx-body-grid-layout .post-wrapper, body.search-results.lsx-body-gr
 
 @media (min-width: 768px) { .gutenberg-compatible-template.using-gutenberg .entry-content .lsx-business-directory-shortcode { width: 100%; max-width: 100%; } }
 
+.lsx-bd-my-account.listings .no-listings { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; -webkit-box-align: center; -ms-flex-align: center; align-items: center; text-align: center; padding: 52px; }
+
+.lsx-bd-my-account.listings .no-listings .fa-list { font-size: 37px; color: #919191; }
+
+.lsx-bd-my-account.listings .no-listings h3 { margin-top: 30px; margin-bottom: 30px; }
+
 /*# sourceMappingURL=maps/lsx-business-directory.css.map */
