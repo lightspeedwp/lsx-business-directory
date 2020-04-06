@@ -9,6 +9,7 @@
 - Added in a setting to the shortcode to toggle the display of the excerpts.
 - Added Industries shortcode to the Industries taxonomy archive.
 - Added dynamic links depending on the slug for the listing metadata.
+- Added in a Listings page to the WooCommerce My Account page.
 
 ### Fixed
 - Removing the `using-gutenberg` body class when the listing is using blocks.
