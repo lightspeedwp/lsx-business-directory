@@ -24,6 +24,21 @@
 						width: 100%;
 					}
 				}
+
+				&.map-wrapper {
+					margin-top: 30px;
+					padding: 25px 15px;
+
+
+					.map-loading {
+						min-height: 230px;
+					}
+
+					.placeholder-text, .lsx-bd-map-placeholder {
+						text-align: center;
+						cursor: pointer;
+					}
+				}
 			}
 
 			.business-content-right {

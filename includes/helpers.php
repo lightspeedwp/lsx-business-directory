@@ -30,10 +30,10 @@ function apply_field_id_prefixes( $fields = array(), $prefix = '' ) {
  *
  * @param string $id
  * @param string $size
- * @param string $type
+ * @param string $prefix
  * @return string
  */
-function get_placeholder( $size = 'lsx-thumbnail-wide', $key = 'single_thumbnail' ) {
+function get_placeholder( $size = 'lsx-thumbnail-wide', $key = 'single_thumbnail', $prefix = '' ) {
 	$placeholder             = '';
 	$possible_placeholder_id = lsx_bd_get_option( $key . '_placeholder_id' );
 	if ( '' !== $possible_placeholder_id ) {
@@ -55,29 +55,29 @@ function get_placeholder( $size = 'lsx-thumbnail-wide', $key = 'single_thumbnail
 				break;
 
 			case 'thumbnail':
-				$placeholder = LSX_BD_URL . 'assets/img/placeholder-thumbnail.jpg';
+				$placeholder = LSX_BD_URL . 'assets/img/placeholder-' . $prefix . 'thumbnail.jpg';
 				break;
 
 			case 'lsx-thumbnail-square':
-				$placeholder = LSX_BD_URL . 'assets/img/placeholder-350x350.jpg';
+				$placeholder = LSX_BD_URL . 'assets/img/placeholder-' . $prefix . '350x350.jpg';
 				break;
 
 			case 'lsx-thumbnail-single':
-				$placeholder = LSX_BD_URL . 'assets/img/placeholder-750x350.jpg';
+				$placeholder = LSX_BD_URL . 'assets/img/placeholder-' . $prefix . '750x350.jpg';
 				break;
 
 			case 'full':
 			case 'lsx-banner':
-				$placeholder = LSX_BD_URL . 'assets/img/placeholder-1920x600.jpg';
+				$placeholder = LSX_BD_URL . 'assets/img/placeholder-' . $prefix . '1920x600.jpg';
 				break;
 
 			case 'lsx-thumbnail-carousel':
-				$placeholder = LSX_BD_URL . 'assets/img/placeholder-350x230.jpg';
+				$placeholder = LSX_BD_URL . 'assets/img/placeholder-' . $prefix . '350x230.jpg';
 				break;
 
 			case 'lsx-thumbnail-wide':
 			default:
-				$placeholder = LSX_BD_URL . 'assets/img/placeholder-360x168.jpg';
+				$placeholder = LSX_BD_URL . 'assets/img/placeholder-' . $prefix . '360x168.jpg';
 				break;
 		}
 	}

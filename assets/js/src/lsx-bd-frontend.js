@@ -3,31 +3,43 @@ var LSX_BD = Object.create( null );
 ;( function( $, window, document, undefined ) {
 
     'use strict';
-
     LSX_BD.document = $(document);
 
     //Holds the slider function
 	LSX_BD.sliders = Object.create( null );
 	LSX_BD.industries = Object.create( null );
 	LSX_BD.readMore = Object.create( null );
+	LSX_BD.document = $(document);
 
     /**
      * Start the JS Class
      */
     LSX_BD.init = function() {
-
         //Init the sliders
         LSX_BD.sliders.element = jQuery('.lsx-business-directory-slider');
         if ( 0 <  LSX_BD.sliders.element.length ) {
             LSX_BD.sliders.init();
 		}
-
 		// initiate the industries.
         LSX_BD.industries.element = jQuery('.lsx-bd-industries-nav');
         if ( 0 <  LSX_BD.industries.element.length ) {
             LSX_BD.industries.init();
         }
     };
+
+    /**
+     * A useful logging class.
+     */
+	LSX_BD.log = function(message,stringValue,objectValue) {
+		if ( '1' === LSX_BD.debug ) {
+			if ( undefined !== stringValue && false !== stringValue ) {
+				console.log( message + ' ' + stringValue );
+			} else {
+				console.log( message );
+				console.log( objectValue );
+			}
+		}
+	};
 
     /**
      * Initiate the Sliders
@@ -147,6 +159,12 @@ var LSX_BD = Object.create( null );
      * @subpackage scripts
      */
     LSX_BD.document.ready( function() {
+		if ( undefined !== lsx_bd_params.debug && '1' === lsx_bd_params.debug ) {
+			LSX_BD.debug = lsx_bd_params.debug;
+		} else {
+			LSX_BD.debug = 0;
+		}
+		LSX_BD.log('LSX BD Params',false,lsx_bd_params);
         LSX_BD.init();
     } );
 

@@ -153,6 +153,7 @@ get_header(); ?>
 									</div>
 								<?php endif; ?>
 							</div>
+							<?php lsx_bd_listing_map( '<div class="business-content-left map-wrapper"><h3 class="title">' . esc_attr__( 'Map', 'lsx-business-directory' ) . '</h3>', '</div>' ); ?>
 						</div>
 
 						<div class="col-md-8 business-content-right">
@@ -186,58 +187,6 @@ get_header(); ?>
 									<?php the_content(); ?>
 								</div>
 							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-md-8">
-						<?php if ( ! empty( $branches ) && is_array( $branches ) && isset( $branches[0]['branch_name'] ) && '' !== $branches[0]['branch_name'] ) : ?>
-							<div class="branches business-content-section">
-								<h3 class="business-section-title"><?php esc_html_e( 'Branches', 'lsx-business-directory' ); ?></h3>
-								<?php
-								foreach ( $branches as $branch ) {
-									lsx_business_branch( $branch ); // TODO
-								}
-								?>
-							</div>
-						<?php endif; ?>
-						<?php
-						/**
-						 * Contains HTML for proposed Promotion Section.
-						 *
-						 * lsx_business_promotion();
-						 */
-						?>
-
-						<div class="business-map business-content-section">
-							<?php
-							/*
-							 * Render the Google Map Div
-							 * Includes API parameter and calls custom field
-							 */
-							if ( ! empty( $address ) ) {
-								if ( class_exists( 'Lsx_Options' ) ) {
-									$lsx         = Lsx_Options::get_single( 'lsx' );
-									$api_key     = $lsx['gmaps_api_key'];
-									$address_str = implode( ',', $address );
-
-									if ( ! empty( $api_key ) ) {
-										echo '<div id="gmap" data-search="' . esc_attr( $address_str ) . '" data-api="' . esc_attr( $api_key ) . '"></div>';
-									}
-								}
-							}
-
-							if ( ! empty( $branches ) ) :
-								?>
-								<div id="branch-markers">
-									<?php foreach ( $branches as $branch ) : ?>
-										<?php if ( $branch['branch_google_maps'] ) : ?>
-											<span class="branch-marker" data-search="<?php echo esc_attr( $branch['branch_google_maps'] ); ?>"></span>
-										<?php endif; ?>
-									<?php endforeach; ?>
-								</div>
-							<?php endif; ?>
 						</div>
 					</div>
 				</div>
