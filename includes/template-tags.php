@@ -429,3 +429,56 @@ function lsx_bd_archive_listing_contact_info( $before = '', $after = '', $echo =
 		return $contact_info;
 	}
 }
+/**
+ * Undocumented function
+ *
+ * @param boolean $echo
+ * @return void | string
+ */
+function lsx_bd_listing_map( $before = '', $after = '', $echo = true ) {
+	$map                  = '';
+	$lsx_bd               = lsx_business_directory();
+	$prefix               = 'lsx_bd';
+	$address              = array();
+	$business_address_1   = get_post_meta( get_the_ID(), $prefix . '_address_street_number', true );
+	$business_address_2   = get_post_meta( get_the_ID(), $prefix . '_address_street_name', true );
+	$business_address_3   = get_post_meta( get_the_ID(), $prefix . '_address_suburb', true );
+	$business_address_4   = get_post_meta( get_the_ID(), $prefix . '_address_city', true );
+	$business_postal_code = get_post_meta( get_the_ID(), $prefix . '_address_postal_code', true );
+	$business_province    = get_post_meta( get_the_ID(), $prefix . '_address_province', true );
+	$business_country     = get_post_meta( get_the_ID(), $prefix . '_address_country', true );
+	if ( $business_address_1 ) {
+		$address[] = $business_address_1;
+	}
+	if ( $business_address_2 ) {
+		$address[] = $business_address_2;
+	}
+	if ( $business_address_3 ) {
+		$address[] = $business_address_3;
+	}
+	if ( $business_address_4 ) {
+		$address[] = $business_address_4;
+	}
+	if ( $business_postal_code ) {
+		$address[] = $business_postal_code;
+	}
+	if ( $business_province ) {
+		$address[] = $business_province;
+	}
+	if ( $business_country ) {
+		$address[] = $business_country;
+	}
+
+	if ( ! empty( $address ) ) {
+		$map = $lsx_bd->frontend->google_maps->render( implode( ',', $address ) );
+		if ( '' !== $map ) {
+			$map = $before . $map . $after;
+		}
+	}
+
+	if ( true === $echo ) {
+		echo wp_kses_post( $map );
+	} else {
+		return $map;
+	}
+}
