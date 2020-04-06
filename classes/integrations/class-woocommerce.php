@@ -53,6 +53,7 @@ class Woocommerce {
 			add_filter( 'woocommerce_get_query_vars', array( $this, 'add_query_vars' ) );
 			add_filter( 'woocommerce_account_menu_items', array( $this, 'register_my_account_tabs' ) );
 			add_action( 'woocommerce_account_listings_endpoint', array( $this, 'endpoint_content' ) );
+			add_action( 'lsx_bd_settings_section_translations', array( $this, 'register_translations' ), 10, 2 );
 		}
 	}
 
@@ -101,7 +102,10 @@ class Woocommerce {
 	 * @return void
 	 */
 	public function register_my_account_tabs( $menu_links ) {
-		$menu_links = array_slice( $menu_links, 0, 1, true ) + $this->query_vars + array_slice( $menu_links, 1, null, true );
+		$new_links = array(
+			$this->get_my_listings_endpoint() => __( 'Listings', 'lsx-business-directory' ),
+		);
+		$menu_links = array_slice( $menu_links, 0, 1, true ) + $new_links + array_slice( $menu_links, 1, null, true );
 		return $menu_links;
 	}
 
@@ -112,5 +116,25 @@ class Woocommerce {
 	 */
 	public function endpoint_content() {
 		lsx_business_template( 'woocommerce/listings' );
+	}
+
+	/**
+	 * Configure Business Directory custom fields for the Settings page Translations section.
+	 *
+	 * @param object $cmb new_cmb2_box().
+	 * @return void
+	 */
+	public function register_translations( $cmb, $place ) {
+		if ( 'bottom' === $place ) {
+			$cmb->add_field(
+				array(
+					'name'    => esc_html__( 'Listings Endpoint', 'lsx-business-directory' ),
+					'id'      => 'translations_listings_endpoint',
+					'type'    => 'text',
+					'default' => 'listings',
+					'desc'    => __( 'This is the endpoint for the My Account "Listings" page.', 'lsx-business-directory' ),
+				)
+			);
+		}
 	}
 }
