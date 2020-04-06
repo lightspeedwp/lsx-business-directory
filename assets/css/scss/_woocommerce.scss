@@ -1,3 +1,21 @@
+// My Account - Listing Tab
+.woocommerce-page {
+	#main {
+		.woocommerce-MyAccount-navigation {
+			ul {
+				li {
+					&.woocommerce-MyAccount-navigation-link--listings {
+						a {
+							&:before {
+								content: '\f03a';
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+} 
 
 .lsx-bd-my-account {
 	&.listings {
