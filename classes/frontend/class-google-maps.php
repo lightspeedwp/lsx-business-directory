@@ -35,7 +35,7 @@ class Google_Maps {
 	 */
 	private function __construct() {
 		add_action( 'init', array( $this, 'init' ) );
-		//add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), 5 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), 5 );
 	}
 
 	/**
@@ -73,20 +73,30 @@ class Google_Maps {
 		if ( ! $this->is_a_bot() && is_singular( 'business-directory' ) && false !== $this->api_key ) {
 			$address_tab_field = get_post_meta( get_the_ID(), 'address', true );
 			if ( isset( $address_tab_field ) ) {
-				$has_thumbnail = $this->get_map_thumbnail();
-				$dependacies   = array( 'jquery', 'lsx_bd_google_maps_api' );
-				$google_url    = 'https://maps.googleapis.com/maps/api/js?key=' . $this->api_key . '&libraries=places';
-				if ( '' !== $has_thumbnail ) {
-					$dependacies = array( 'jquery' );
+				if ( defined( 'SCRIPT_DEBUG' ) ) {
+					$prefix = 'src/';
+					$suffix = '';
+					$debug  = true;
 				} else {
-					wp_enqueue_script( 'lsx_bd_google_maps_api', $google_url, array( 'jquery' ), LSX_BD_VER, false );
+					$prefix = '';
+					$suffix = '.min';
+					$debug  = false;
 				}
-				wp_enqueue_script( 'lsx_bd_maps', LSX_BD_URL . 'assets/js/lsx-bd-maps.min.js', $dependacies, LSX_BD_VER, true );
+				$has_thumbnail = $this->get_map_thumbnail();
+				$dependacies   = array( 'jquery', 'lsx-bd-google-maps-api', 'lsx-bd-frontend' );
+				$google_url    = 'https://maps.googleapis.com/maps/api/js?key=' . $this->api_key . '&libraries=places';
+				//if ( '' !== $has_thumbnail ) {
+					//$dependacies = array( 'jquery', 'lsx-bd-frontend' );
+				//} else {
+					wp_enqueue_script( 'lsx-bd-google-maps-api', $google_url, array( 'jquery' ), LSX_BD_VER, false );
+				//}
+				wp_enqueue_script( 'lsx-bd-frontend-maps', LSX_BD_URL . 'assets/js/' . $prefix . 'lsx-bd-frontend-maps' . $suffix . '.js', $dependacies, LSX_BD_VER, true );
 				$param_array = array(
 					'api_key'    => $this->api_key,
 					'google_url' => $google_url,
+					'debug'      => $debug,
 				);
-				wp_localize_script( 'lsx_maps', 'lsx_maps_params', $param_array );
+				wp_localize_script( 'lsx-bd-frontend-maps', 'lsx_bd_maps_params', $param_array );
 
 			}
 		}
@@ -102,7 +112,7 @@ class Google_Maps {
 	 */
 	public function render( $lattitude = '', $longitude = '', $zoom = 6 ) {
 		if ( false !== $this->api_key && '' !== $lattitude && '' !== $longitude ) {
-			$map = '<div id="lsx-map" style="width:100%;" data-lattitude="' . $lattitude . '" data-longitude="' . $longitude . '">';
+			$map = '<div id="lsx-bd-map" class="lsx-bd-map" style="width:100%;" data-search="22 West Ave, Somerset West, Cape Town, South Africa" data-lattitude="' . $lattitude . '" data-longitude="' . $longitude . '">';
 			$map .= $this->get_map_thumbnail();
 			$map .= '</div>';
 			return $map;

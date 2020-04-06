@@ -28,6 +28,11 @@
 				&.map-wrapper {
 					margin-top: 30px;
 					padding: 25px 15px;
+
+
+					.map-loading {
+						min-height: 230px;
+					}
 				}
 			}
 
