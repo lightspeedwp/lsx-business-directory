@@ -43,7 +43,7 @@
 		var query           = LSX_BD.maps.element.data( 'search' );
 		LSX_BD.maps.markers = [];
 		LSX_BD.maps.map     = new google.maps.Map( LSX_BD.maps.element.eq(0)[0], {
-			zoom: 12,
+			zoom: 8,
 			scrollwheel: false
 		});
 		LSX_BD.maps.element.addClass('map-loading');
@@ -61,7 +61,7 @@
 			if (status == google.maps.places.PlacesServiceStatus.OK) {
 				var myLocation = results[0].geometry.location;
 				LSX_BD.maps.map.setCenter( myLocation );
-				LSX_BD.maps.map.setZoom(5);
+				LSX_BD.maps.map.setZoom(8);
 				LSX_BD.maps.createMarker(results[0]);
 			}
 		});
@@ -88,7 +88,7 @@
 			}
 	
 			LSX_BD.maps.map.fitBounds(bounds);
-			LSX_BD.maps.map.setZoom(5);
+			LSX_BD.maps.map.setZoom(8);
 		}
 	};
 

@@ -206,5 +206,16 @@ class Google_Maps {
 				'split_values' => true,
 			)
 		);
+		if ( false !== lsx_bd_get_option( 'google_maps_enable_placeholder', false ) ) {
+			$cmb_contact->add_field(
+				array(
+					'name'         => esc_html__( 'Map Thumbnail', 'lsx-business-directory' ),
+					'desc'         => esc_html__( 'Your image should be 800px x 600px preferably, but no less than 360px x 168px', 'lsx-business-directory' ),
+					'id'           => 'lsx_bd_map_thumbnail',
+					'type'         => 'file',
+					'preview_size' => 'lsx-thumbnail-wide',
+				)
+			);
+		}
 	}
 }

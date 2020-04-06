@@ -110,9 +110,9 @@ class Google_Maps {
 	 *
 	 * @return    null
 	 */
-	public function render( $lattitude = '', $longitude = '', $zoom = 6 ) {
-		if ( false !== $this->api_key && '' !== $lattitude && '' !== $longitude ) {
-			$map = '<div id="lsx-bd-map" class="lsx-bd-map" style="width:100%;" data-search="22 West Ave, Somerset West, Cape Town, South Africa" data-lattitude="' . $lattitude . '" data-longitude="' . $longitude . '">';
+	public function render( $search = '', $zoom = 6 ) {
+		if ( false !== $this->api_key && '' !== $search && '' !== $search ) {
+			$map = '<div id="lsx-bd-map" class="lsx-bd-map" style="width:100%;" data-search="' . esc_attr( $search ) . '">';
 			if ( false !== lsx_bd_get_option( 'google_maps_enable_placeholder', false ) ) {
 				$map .= '<div class="lsx-bd-map-placeholder">';
 				$map .= $this->get_map_thumbnail();
@@ -125,18 +125,29 @@ class Google_Maps {
 	}
 
 	/**
-	 * Undocumented function
+	 * Get the map thumbnail for the Google Maps.
 	 *
-	 * @return void
+	 * @return string
 	 */
 	public function get_map_thumbnail( $size = 'lsx-thumbnail-carousel' ) {
 		$image         = '';
-		$map_thumbnail = get_post_meta( get_the_ID(), 'lsx_bd_single_map_thumbnail', true );
+		$image_src     = '';
+		$map_thumbnail = get_post_meta( get_the_ID(), 'lsx_bd_map_thumbnail_id', true );
 		if ( false === $map_thumbnail || '' === $map_thumbnail ) {
-			$image_src = \lsx\business_directory\includes\get_placeholder( $size, 'google_maps_placeholder', 'map-' );
+			// Lets look for a general placeholder.
+			$general_map_placeholder = lsx_bd_get_option( 'google_maps_placeholder_id', false );
+			if ( false !== $general_map_placeholder ) {
+				$src_array = wp_get_attachment_image_src( $general_map_placeholder, $size );
+				if ( is_array( $src_array ) && isset( $src_array[0] ) ) {
+					$image_src = $src_array[0];
+				}
+			}
+			if ( '' === $image_src ) {
+				$image_src = \lsx\business_directory\includes\get_placeholder( $size, 'google_maps_placeholder', 'map-' );
+			}
 			$image     = '<img src="' . $image_src . '" class="attachment-thumbnail size-thumbnail" alt="">';
-		} elseif ( false !== $image_src && '' !== $image_src ) {
-			$image = wp_get_attachment_image( $image_src, $size );
+		} elseif ( false !== $map_thumbnail && '' !== $map_thumbnail ) {
+			$image = wp_get_attachment_image( $map_thumbnail, $size );
 		}
 		return $image;
 	}
