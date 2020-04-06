@@ -482,3 +482,16 @@ function lsx_bd_listing_map( $before = '', $after = '', $echo = true ) {
 		return $map;
 	}
 }
+
+/**
+ * Outputs the Add new Listing button
+ *
+ * @param boolean $echo
+ * @return void | string
+ */
+function lsx_bd_add_listing_button() {
+	?>
+		<a class="btn btn-secondary" href=""><?php echo esc_attr( 'Add new listing', 'lsx-business-directory' ); ?> <i class="fa fa-plus-circle"></i></a>
+	<?php
+}
+
