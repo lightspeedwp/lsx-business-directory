@@ -150,6 +150,14 @@ class LSX_Search {
 						'default'          => 'list',
 					)
 				);
+				$cmb->add_field(
+					array(
+						'name'        => esc_html__( 'Display Excerpt', 'lsx-business-directory' ),
+						'id'          => $section . '_excerpt_enable',
+						'type'        => 'checkbox',
+						'description' => __( 'Display the excerpt of a listing.', 'lsx-business-directory' ),
+					)
+				);
 			}
 
 			$cmb->add_field(

@@ -87,8 +87,9 @@ function lsx_business_template( $filename_base ) {
  */
 function lsx_bd_related_listings( $args = array() ) {
 	$defaults      = array(
-		'echo'  => true,
-		'title' => esc_html__( 'You might also be interested in...', 'lsx-member-directory' ),
+		'echo'    => true,
+		'title'   => esc_html__( 'You might also be interested in...', 'lsx-member-directory' ),
+		'excerpt' => false,
 	);
 	$args          = wp_parse_args( $args, $defaults );
 	$lsx_bd        = lsx_business_directory();
@@ -104,6 +105,7 @@ function lsx_bd_related_listings( $args = array() ) {
 		'terms'      => $prepped_terms,
 		'orderby'    => 'rand',
 		'custom_css' => 'lsx-bd-related-listings',
+		'excerpt'    => $args['excerpt'],
 	);
 	if ( true === $args['echo'] ) {
 		echo wp_kses_post( $lsx_bd->frontend->widget->render( $params ) );
@@ -120,8 +122,9 @@ function lsx_bd_related_listings( $args = array() ) {
  */
 function lsx_bd_recent_listings( $args = array() ) {
 	$defaults = array(
-		'echo'  => true,
-		'title' => esc_html__( 'Recent Listings', 'lsx-member-directory' ),
+		'echo'    => true,
+		'title'   => esc_html__( 'Recent Listings', 'lsx-member-directory' ),
+		'excerpt' => false,
 	);
 	$args     = wp_parse_args( $args, $defaults );
 	$lsx_bd   = lsx_business_directory();
@@ -130,6 +133,7 @@ function lsx_bd_recent_listings( $args = array() ) {
 		'carousel'   => true,
 		'orderby'    => 'recent',
 		'custom_css' => 'lsx-bd-recent-listings',
+		'excerpt'    => $args['excerpt'],
 	);
 	if ( true === $args['echo'] ) {
 		echo wp_kses_post( $lsx_bd->frontend->widget->render( $params ) );
@@ -146,8 +150,9 @@ function lsx_bd_recent_listings( $args = array() ) {
  */
 function lsx_bd_featured_listings( $args = array() ) {
 	$defaults = array(
-		'echo'  => true,
-		'title' => esc_html__( 'Featured Listings', 'lsx-member-directory' ),
+		'echo'    => true,
+		'title'   => esc_html__( 'Featured Listings', 'lsx-member-directory' ),
+		'excerpt' => false,
 	);
 	$args     = wp_parse_args( $args, $defaults );
 	$lsx_bd   = lsx_business_directory();
@@ -156,6 +161,7 @@ function lsx_bd_featured_listings( $args = array() ) {
 		'carousel'   => true,
 		'orderby'    => 'featured',
 		'custom_css' => 'lsx-bd-featured-listings',
+		'excerpt'    => $args['excerpt'],
 	);
 	if ( true === $args['echo'] ) {
 		echo wp_kses_post( $lsx_bd->frontend->widget->render( $params ) );
@@ -172,8 +178,9 @@ function lsx_bd_featured_listings( $args = array() ) {
  */
 function lsx_bd_random_listings( $args = array() ) {
 	$defaults = array(
-		'echo'  => true,
-		'title' => esc_html__( 'Listings', 'lsx-member-directory' ),
+		'echo'    => true,
+		'title'   => esc_html__( 'Listings', 'lsx-member-directory' ),
+		'excerpt' => false,
 	);
 	$args     = wp_parse_args( $args, $defaults );
 	$lsx_bd   = lsx_business_directory();
@@ -182,6 +189,7 @@ function lsx_bd_random_listings( $args = array() ) {
 		'carousel'   => true,
 		'orderby'    => 'rand',
 		'custom_css' => 'lsx-bd-random-listings',
+		'excerpt'    => $args['excerpt'],
 	);
 	if ( true === $args['echo'] ) {
 		echo wp_kses_post( $lsx_bd->frontend->widget->render( $params ) );
@@ -257,7 +265,7 @@ function lsx_bd_listing_title( $echo = true ) {
  * @param  boolean $echo
  * @return string
  */
-function lsx_bd_listing_meta( $echo = true ) {
+function lsx_bd_single_listing_meta( $echo = true ) {
 	$entry_meta = '';
 	$industries = get_the_term_list( get_the_ID(), 'industry', '', ', ', '' );
 	$locations  = get_the_term_list( get_the_ID(), 'location', '', ', ', '' );
@@ -298,8 +306,8 @@ function lsx_bd_listing_meta( $echo = true ) {
 			?>
 		</div>
 		<?php
-		$entry_meta = apply_filters( 'lsx_bd_single_listing_meta', $entry_meta );
 		$entry_meta = ob_get_clean();
+		$entry_meta = apply_filters( 'lsx_bd_single_listing_meta', $entry_meta );
 	}
 	if ( true === $echo ) {
 		echo wp_kses_post( $entry_meta );
@@ -309,108 +317,115 @@ function lsx_bd_listing_meta( $echo = true ) {
 }
 
 /**
- * Undocumented function
+ * Outputs the excerpt for the archive listing.
  *
- * @param boolean $echo
- * @return void | string
+ * @param  string $before
+ * @param  string $after
+ * @param  boolean $echo
+ * @param  boolean $force_excerpt
+ * @return string
  */
-function lsx_bd_listing_map( $before = '', $after = '', $echo = true ) {
-	$map                  = '';
-	$lsx_bd               = lsx_business_directory();
-	$prefix               = 'lsx_bd';
-	$address              = array();
-	$business_address_1   = get_post_meta( get_the_ID(), $prefix . '_address_street_number', true );
-	$business_address_2   = get_post_meta( get_the_ID(), $prefix . '_address_street_name', true );
-	$business_address_3   = get_post_meta( get_the_ID(), $prefix . '_address_suburb', true );
-	$business_address_4   = get_post_meta( get_the_ID(), $prefix . '_address_city', true );
-	$business_postal_code = get_post_meta( get_the_ID(), $prefix . '_address_postal_code', true );
-	$business_province    = get_post_meta( get_the_ID(), $prefix . '_address_province', true );
-	$business_country     = get_post_meta( get_the_ID(), $prefix . '_address_country', true );
-	if ( $business_address_1 ) {
-		$address[] = $business_address_1;
+function lsx_bd_archive_listing_excerpt( $before = '', $after = '', $echo = true, $force_excerpt = false ) {
+	$key = 'archive';
+	if ( is_search() ) {
+		$key = 'engine';
+	} elseif ( lsx_bd_is_shortcode() ) {
+		$key = 'shortcode';
 	}
-	if ( $business_address_2 ) {
-		$address[] = $business_address_2;
-	}
-	if ( $business_address_3 ) {
-		$address[] = $business_address_3;
-	}
-	if ( $business_address_4 ) {
-		$address[] = $business_address_4;
-	}
-	if ( $business_postal_code ) {
-		$address[] = $business_postal_code;
-	}
-	if ( $business_province ) {
-		$address[] = $business_province;
-	}
-	if ( $business_country ) {
-		$address[] = $business_country;
-	}
-
-	if ( ! empty( $address ) ) {
-		$map = $lsx_bd->frontend->google_maps->render( implode( ',', $address ) );
-		if ( '' !== $map ) {
-			$map = $before . $map . $after;
+	$is_enabled = lsx_bd_get_option( $key . '_excerpt_enable', false );
+	if ( false !== $is_enabled && false === $force_excerpt ) {
+		$excerpt = get_the_excerpt();
+		ob_start();
+		echo wp_kses_post( $excerpt );
+		$excerpt = ob_get_clean();
+		$excerpt = apply_filters( 'lsx_bd_' . $key . '_listing_excerpt', $before . $excerpt . $after );
+		if ( true === $echo ) {
+			echo wp_kses_post( $excerpt );
+		} else {
+			return $excerpt;
 		}
-	}
-
-	if ( true === $echo ) {
-		echo wp_kses_post( $map );
-	} else {
-		return $map;
 	}
 }
 
 /**
- * This gets the term thunbnail from the taxonomies.
+ * Output the location and the industry for the archive listing.
  *
- * @param string $term_id
- * @param string $size
- * @param boolean $echo
- * @param string $src
+ * @param  string $before
+ * @param  string $after
+ * @param  boolean $echo
+ * @param  string $colum_class
  * @return string
  */
-function lsx_bd_get_term_thumbnail( $term_id = '', $size = 'lsx-thumbnail-wide', $echo = false, $src = false, $hover = false ) {
-	$image = '';
-	if ( '' !== $term_id ) {
-		$meta_key  = 'lsx_bd_thumbnail_id';
-		if ( false !== $hover ) {
-			$meta_key = 'lsx_bd_thumbnail_hover_id';
+function lsx_bd_archive_listing_meta( $before = '', $after = '', $echo = true, $colum_class = '' ) {
+	$entry_meta = '';
+	$industries = get_the_term_list( get_the_ID(), 'industry', '', ', ', '' );
+	$locations  = get_the_term_list( get_the_ID(), 'location', '', ', ', '' );
+	if ( ! empty( $industries ) || ! empty( $locations ) ) {
+		ob_start();
+		if ( ! empty( $industries ) ) {
+			?>
+			<div class="industry <?php echo esc_attr( $colum_class ); ?>">
+				<span>
+					<i class="fa fa-th"></i>
+					<strong><?php esc_html_e( 'Industry', 'lsx-business-directory' ); ?>: </strong>
+					<?php echo wp_kses_post( $industries ); ?>
+				</span>
+			</div>
+			<?php
 		}
-		$image_src = get_term_meta( $term_id, $meta_key, true );
-
-		// If the image is empty, then get the placeholder.
-		if ( false === $image_src || '' === $image_src ) {
-
-			$key = 'single_thumbnail';
-			if ( term_exists( $term_id, 'industry' ) ) {
-				$key = 'archive_industry';
-			} else {
-				$key = 'archive_location';
-			}
-			if ( false !== $hover ) {
-				$key = $key . '_hover';
-			}
-
-			$image_src = \lsx\business_directory\includes\get_placeholder( $key, $key );
-			if ( false === $src ) {
-				$image = '<img src="' . $image_src . '" class="attachment-thumbnail size-thumbnail" alt="">';
-			} else {
-				$image = $image_src;
-			}
-		} elseif ( false !== $image_src && '' !== $image_src ) {
-			$image = wp_get_attachment_image_src( $image_src, $size );
-			if ( is_array( $image ) && isset( $image[0] ) ) {
-				$image = $image[0];
-			}
-			if ( false === $src ) {
-				$image = '<img src="' . $image . '" class="attachment-thumbnail size-thumbnail" alt="">';
-			}
+		if ( ! empty( $locations ) ) {
+			?>
+			<div class="location <?php echo esc_attr( $colum_class ); ?>">
+				<span>
+					<i class="fa fa-globe"></i>
+					<strong><?php esc_html_e( 'Location', 'lsx-business-directory' ); ?>: </strong>
+					<?php echo wp_kses_post( $locations ); ?>
+				</span>
+			</div>
+			<?php
 		}
-		if ( false !== $echo ) {
-			echo wp_kses_post( $image );
-		}
+		$entry_meta = ob_get_clean();
+		$entry_meta = apply_filters( 'lsx_bd_archive_listing_meta', $before . $entry_meta . $after );
 	}
-	return $image;
+	if ( true === $echo ) {
+		echo wp_kses_post( $entry_meta );
+	} else {
+		return $entry_meta;
+	}
+}
+
+/**
+ * Output the primary phone and primary email address stored on the listing.
+ *
+ * @param  boolean $echo
+ * @return string
+ */
+function lsx_bd_archive_listing_contact_info( $before = '', $after = '', $echo = true, $colum_class = '' ) {
+	$contact_info  = '';
+	$primary_phone = get_post_meta( get_the_ID(), 'lsx_bd_primary_phone', true );
+	$primary_email = get_post_meta( get_the_ID(), 'lsx_bd_primary_email', true );
+	if ( ! empty( $primary_phone ) || ! empty( $primary_email ) ) {
+		ob_start();
+		if ( false !== $primary_phone && '' !== $primary_phone ) {
+			?>
+			<div class="telephone <?php echo esc_attr( $colum_class ); ?>">
+				<span><i class="fa fa-phone-square"></i> <strong><?php esc_html_e( 'Phone', 'lsx-business-directory' ); ?>: </strong> <a href="tel:<?php echo esc_attr( str_replace( ' ', '', $primary_phone ) ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_attr( $primary_phone ); ?></a></span>
+			</div>
+			<?php
+		}
+		if ( false !== $primary_email && '' !== $primary_email ) {
+			?>
+			<div class="email <?php echo esc_attr( $colum_class ); ?>">
+				<span><i class="fa fa-envelope-square"></i> <strong><?php esc_html_e( 'Email', 'lsx-business-directory' ); ?>: </strong> <a href="mailto:<?php echo esc_attr( $primary_email ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_attr( $primary_email ); ?></a></span>
+			</div>
+			<?php
+		}
+		$contact_info = ob_get_clean();
+		$contact_info = apply_filters( 'lsx_bd_archive_listing_contact_info', $before . $contact_info . $after );
+	}
+	if ( true === $echo ) {
+		echo wp_kses_post( $contact_info );
+	} else {
+		return $contact_info;
+	}
 }

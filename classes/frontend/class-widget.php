@@ -23,6 +23,13 @@ class Widget {
 	protected static $instance = null;
 
 	/**
+	 * Holds the boolean if this is a shortcode loop or not
+	 *
+	 * @var      object
+	 */
+	protected $is_shortcode = false;
+
+	/**
 	 * Holds the defaults for the current shortcode.
 	 *
 	 * @var array
@@ -45,6 +52,7 @@ class Widget {
 		'post_type'        => 'business-directory',
 		'content_type'     => 'post',
 		'template'         => 'single-col-business',
+		'excerpt'          => false,
 	);
 
 	/**
@@ -94,10 +102,8 @@ class Widget {
 	 * @return string
 	 */
 	public function render( $args = array() ) {
-		global $shortcode_args;
 		$this->args              = wp_parse_args( $args, $this->defaults );
 		$this->args['col_class'] = 12 / (int) $this->args['columns'];
-		$shortcode_args          = $this->args;
 		if ( 'post' === $this->args['content_type'] ) {
 			$this->query_post_type();
 		} else {
@@ -219,6 +225,8 @@ class Widget {
 	 * Create the Opening tags before the loop
 	 */
 	public function start_loop() {
+		$this->is_shortcode = true;
+
 		// This is the wrapper for the shortcode.
 		$this->html = '<div class="lsx-business-directory-shortcode ' . $this->args['custom_css'] . '">';
 
@@ -268,7 +276,7 @@ class Widget {
 			$item_term = false;
 			foreach ( $this->query as $item_term ) {
 				$this->counter++;
-				$item_term->col_class = $this->args['col_class'];
+				$item_term->args = $this->args;
 				ob_start();
 				lsx_business_template( $this->args['template'] );
 				$this->html .= ob_get_clean();
@@ -296,6 +304,7 @@ class Widget {
 	public function end_loop() {
 		$this->html .= '</div></div>';
 		$this->reset_query();
+		$this->is_shortcode = false;
 	}
 
 	/**
@@ -304,5 +313,14 @@ class Widget {
 	public function reset_query() {
 		$this->query = false;
 		wp_reset_postdata();
+	}
+
+	/**
+	 * Returns the boolean if it is the shortcode loop or not.
+	 *
+	 * @return boolean
+	 */
+	public function is_shortcode() {
+		return $this->is_shortcode;
 	}
 }

@@ -19,68 +19,18 @@
 			<div class="business-content col-xs-12 col-sm-12 col-md-8">
 				<div class="business-details">
 					<div class="row">
-						<h4 class="business-title"><a href="<?php esc_url( the_permalink() ); ?>"><?php echo esc_attr( $title ); ?></a></h4>
+						<h4 class="business-title"><a href="<?php esc_url( the_permalink() ); ?>"><?php the_title(); ?></a></h4>
 					</div>
 
 					<div class="row">
 						<div class="business-meta lsx-flex-col">
-							<div class="lsx-flex-row">
-								<div class="industry col-xs-6 col-sm-6 col-md-6">
-									<span>
-										<i class="fa fa-th"></i>
-										<strong><?php esc_html_e( 'Industry', 'lsx-business-directory' ); ?>: </strong>
-										<?php
-										$count = 0;
-										foreach ( $industries as $industry ) :
-											if ( $count > 0 ) :
-												?>,
-											<?php endif;
-											?>
-												<a href="/industry/<?php echo esc_attr( $industry['slug'] ); ?>"><?php echo esc_attr( $industry['name'] ); ?></a>
-												<?php
-												$count++;
-										endforeach;
-										?>
-									</span>
-								</div>
+							<?php lsx_bd_archive_listing_meta( '<div class="lsx-flex-row">', '</div>', true, 'col-xs-6 col-sm-6 col-md-6' ); ?>
 
-								<div class="location col-xs-6 col-sm-6 col-md-6">
-									<span>
-										<i class="fa fa-globe"></i>
-										<strong><?php esc_html_e( 'Location', 'lsx-business-directory' ); ?>: </strong>
-										<?php
-										$count = 0;
-										foreach ( $locations as $location ) :
-											if ( $count > 0 ) :
-												?>,
-											<?php endif;
-											?>
-												<a href="/location/<?php echo esc_attr( $location['slug'] ); ?>"><?php echo esc_attr( $location['name'] ); ?></a>
-												<?php
-												$count++;
-										endforeach;
-										?>
-									</span>
-								</div>
-							</div>
-
-							<div class="lsx-flex-row">
-								<?php if ( $primary_phone ) : ?>
-									<div class="telephone col-xs-6 col-sm-6 col-md-6">
-										<span><i class="fa fa-phone-square"></i><strong><?php esc_html_e( 'Phone', 'lsx-business-directory' ); ?>: </strong> <a href="tel:<?php echo esc_attr( str_replace( ' ', '', $primary_phone ) ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_attr( $primary_phone ); ?></a></span>
-									</div>
-								<?php endif; ?>
-
-								<?php if ( $primary_email ) : ?>
-								<div class="email col-xs-6 col-sm-6 col-md-6">
-									<span><i class="fa fa-envelope-square"></i><strong><?php esc_html_e( 'Email', 'lsx-business-directory' ); ?>: </strong> <a href="mailto:<?php echo esc_attr( $primary_email ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_attr( $primary_email ); ?></a></span>
-								</div>
-								<?php endif; ?>
-							</div>
+							<?php lsx_bd_archive_listing_contact_info( '<div class="lsx-flex-row">', '</div>', true, 'col-xs-6 col-sm-6 col-md-6' ); ?>
 						</div>
 
 						<div class="business-excerpt lsx-flex-col">
-							<?php echo esc_attr( get_the_excerpt() ); ?>
+							<?php lsx_bd_archive_listing_excerpt(); ?>
 							<span class="read-more-link"><a href="<?php esc_url( the_permalink() ); ?>"><?php esc_html_e( 'Read More', 'lsx-business-directory' ); ?><i class="fa fa-long-arrow-right"></i></a></span>
 						</div>
 					</div>
