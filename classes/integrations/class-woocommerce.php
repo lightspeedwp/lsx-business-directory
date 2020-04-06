@@ -53,7 +53,10 @@ class Woocommerce {
 			add_filter( 'woocommerce_get_query_vars', array( $this, 'add_query_vars' ) );
 			add_filter( 'woocommerce_account_menu_items', array( $this, 'register_my_account_tabs' ) );
 			add_action( 'woocommerce_account_listings_endpoint', array( $this, 'endpoint_content' ) );
+			add_action( 'woocommerce_account_add-listing_endpoint', array( $this, 'endpoint_content' ) );
+			add_action( 'woocommerce_account_edit-listing_endpoint', array( $this, 'endpoint_content' ) );
 			add_action( 'lsx_bd_settings_section_translations', array( $this, 'register_translations' ), 10, 2 );
+			add_filter( 'woocommerce_account_menu_item_classes', array( $this, 'menu_item_classes' ), 10, 2 );
 		}
 	}
 
@@ -64,7 +67,9 @@ class Woocommerce {
 	 */
 	public function init_query_vars() {
 		$this->query_vars = array(
-			'listings' => $this->get_my_listings_endpoint(),
+			'listings'     => lsx_bd_get_option( 'translations_listings_endpoint', 'listings' ),
+			'add-listing'  => lsx_bd_get_option( 'translations_listings_add_endpoint', 'add-listing' ),
+			'edit-listing' => lsx_bd_get_option( 'translations_listings__editendpoint', 'edit-listing' ),
 		);
 	}
 
@@ -80,33 +85,32 @@ class Woocommerce {
 	}
 
 	/**
-	 * Reset the woocommerce_myaccount_view_subscriptions_endpoint option name to woocommerce_myaccount_view_subscription_endpoint
-	 *
-	 * @return mixed Value set for the option
-	 * @since 2.2.18
-	 */
-	private function get_my_listings_endpoint() {
-		$value = lsx_bd_get_option( 'translations_listings_endpoint', false );
-		if ( false !== $value && '' !== $value ) {
-			$endpoint = $value;
-		} else {
-			$endpoint = 'listings';
-		}
-		return $endpoint;
-	}
-
-	/**
 	 * Registers the My Listing My account tab
 	 *
 	 * @param  array $menu_links
 	 * @return void
 	 */
 	public function register_my_account_tabs( $menu_links ) {
-		$new_links = array(
-			$this->get_my_listings_endpoint() => __( 'Listings', 'lsx-business-directory' ),
+		$new_links  = array(
+			lsx_bd_get_option( 'translations_listings_endpoint', 'listings' ) => __( 'Listings', 'lsx-business-directory' ),
 		);
 		$menu_links = array_slice( $menu_links, 0, 1, true ) + $new_links + array_slice( $menu_links, 1, null, true );
 		return $menu_links;
+	}
+
+	/**
+	 * Highlight the listings menu item if you are adding or editing a listing.
+	 *
+	 * @param  array $classes
+	 * @param  string $endpoint
+	 * @return array
+	 */
+	public function menu_item_classes( $classes, $endpoint ) {
+		global $wp;
+		if ( lsx_bd_get_option( 'translations_listings_endpoint', 'listings' ) === $endpoint && ( isset( $wp->query_vars['add-listing'] ) || isset( $wp->query_vars['edit-listing'] ) ) ) {
+			$classes[] = 'is-active';
+		}
+		return $classes;
 	}
 
 	/**
@@ -133,6 +137,24 @@ class Woocommerce {
 					'type'    => 'text',
 					'default' => 'listings',
 					'desc'    => __( 'This is the endpoint for the My Account "Listings" page.', 'lsx-business-directory' ),
+				)
+			);
+			$cmb->add_field(
+				array(
+					'name'    => esc_html__( 'Add Listing Endpoint', 'lsx-business-directory' ),
+					'id'      => 'translations_listings_add_endpoint',
+					'type'    => 'text',
+					'default' => 'add-listing',
+					'desc'    => __( 'This is the endpoint for the My Account "Add Listing" page.', 'lsx-business-directory' ),
+				)
+			);
+			$cmb->add_field(
+				array(
+					'name'    => esc_html__( 'Edit Listing Endpoint', 'lsx-business-directory' ),
+					'id'      => 'translations_listings_edit_endpoint',
+					'type'    => 'text',
+					'default' => 'edit-listing',
+					'desc'    => __( 'This is the endpoint for the My Account "Edit Listing" page.', 'lsx-business-directory' ),
 				)
 			);
 		}
