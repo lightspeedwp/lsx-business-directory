@@ -23,7 +23,7 @@
 			if ( typeof( google ) != 'undefined' && typeof( google.maps ) == 'object' ) {
 				LSX_BD.maps.initMap();
 			} else {
-				var mapTimer = window.setTimeout( LSX_BD.maps.watchForMap, 500 );
+				var mapTimer = window.setTimeout( LSX_BD.maps.pollForMap, 500 );
 			}
         }
 	};
@@ -48,16 +48,16 @@
 		});
 		LSX_BD.maps.element.addClass('map-loading');
 
-		LSX_BD.maps.log('Map Element',false,LSX_BD.maps.element);
-		LSX_BD.maps.log('Google Map Element',false,LSX_BD.maps.map);
-		LSX_BD.maps.log('Map data-search',query);
+		LSX_BD.log('Map Element',false,LSX_BD.maps.element);
+		LSX_BD.log('Google Map Element',false,LSX_BD.maps.map);
+		LSX_BD.log('Map data-search',query);
 		
 		var service = new google.maps.places.PlacesService( LSX_BD.maps.map );
 		service.textSearch( {
 			query: query
 		}, function( results, status ) {
-			LSX_BD.maps.log('Google Map Results',false,results);
-			LSX_BD.maps.log('Google Map Status',false,status);
+			LSX_BD.log('Google Map Results',false,results);
+			LSX_BD.log('Google Map Status',false,status);
 			if (status == google.maps.places.PlacesServiceStatus.OK) {
 				var myLocation = results[0].geometry.location;
 				LSX_BD.maps.map.setCenter( myLocation );
@@ -92,11 +92,11 @@
 		}
 	};
 
-	LSX_BD.maps.watchForMap = function ( ) {
+	LSX_BD.maps.pollForMap = function ( ) {
 		if ( typeof( google ) != 'undefined' && typeof( google.maps ) == 'object' ) {
 			LSX_BD.maps.initMap();
 		} else {
-			var mapTimer = window.setTimeout( LSX_BD.maps.watchForMap, 500 );
+			var mapTimer = window.setTimeout( LSX_BD.maps.pollForMap, 500 );
 		}
 	};
 	
@@ -118,17 +118,6 @@
 		LSX_BD.maps.setMapCenterZoom();
 	};
 
-	LSX_BD.maps.log = function(message,stringValue,objectValue) {
-		if ( '1' === lsx_bd_maps_params.debug ) {
-			if ( undefined !== stringValue && false !== stringValue ) {
-				console.log( message + ' ' + stringValue );
-			} else {
-				console.log( message );
-				console.log( objectValue );
-			}
-		}
-	};
-
     /**
      * On document ready.
      *
@@ -136,7 +125,12 @@
      * @subpackage scripts
      */
     LSX_BD.document.ready( function() {
-        LSX_BD.maps.init();
+		LSX_BD.log('LSX BD Map Params',false,lsx_bd_maps_params);
+		if ( '1' === lsx_bd_maps_params.debug ) {
+			LSX_BD.maps.init();
+		} else {
+
+		}
     } );
 
 } )( jQuery, window, document );

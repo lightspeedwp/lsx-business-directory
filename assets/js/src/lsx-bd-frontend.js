@@ -4,12 +4,7 @@ var LSX_BD = Object.create( null );
 
     'use strict';
 
-    console.log(window.innerWidth);
-
-    LSX_BD.document = $(document);
-
-    //Holds the slider function
-	LSX_BD.sliders = Object.create( null );
+	LSX_BD.document = $(document);
 
     /**
      * Start the JS Class
@@ -21,7 +16,24 @@ var LSX_BD = Object.create( null );
         if ( 0 <  LSX_BD.sliders.element.length ) {
             LSX_BD.sliders.init();
 		}
-    };
+	};
+
+    /**
+     * A useful logging class.
+     */
+	LSX_BD.log = function(message,stringValue,objectValue) {
+		if ( '1' === LSX_BD.debug ) {
+			if ( undefined !== stringValue && false !== stringValue ) {
+				console.log( message + ' ' + stringValue );
+			} else {
+				console.log( message );
+				console.log( objectValue );
+			}
+		}
+	};
+
+    //Holds the slider function
+	LSX_BD.sliders = Object.create( null );
 
     /**
      * Initiate the Sliders
@@ -82,6 +94,12 @@ var LSX_BD = Object.create( null );
      * @subpackage scripts
      */
     LSX_BD.document.ready( function() {
+		if ( undefined !== lsx_bd_params.debug && '1' === lsx_bd_params.debug ) {
+			LSX_BD.debug = lsx_bd_params.debug;
+		} else {
+			LSX_BD.debug = 0;
+		}
+		LSX_BD.log('LSX BD Params',false,lsx_bd_params);
         LSX_BD.init();
     } );
 

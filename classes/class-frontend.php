@@ -153,11 +153,17 @@ class Frontend {
 		if ( defined( 'SCRIPT_DEBUG' ) ) {
 			$prefix = 'src/';
 			$suffix = '';
+			$debug  = true; 
 		} else {
 			$prefix = '';
 			$suffix = '.min';
+			$debug  = false;
 		}
 		wp_enqueue_script( 'lsx-bd-frontend', LSX_BD_URL . 'assets/js/' . $prefix . 'lsx-bd-frontend' . $suffix . '.js', array( 'jquery' ), LSX_BD_VER, true );
+		$param_array = array(
+			'debug' => $debug,
+		);
+		wp_localize_script( 'lsx-bd-frontend', 'lsx_bd_params', $param_array );
 
 		wp_enqueue_style( 'lsx-business-directory', LSX_BD_URL . 'assets/css/lsx-business-directory.css', array(), LSX_BD_VER );
 		wp_style_add_data( 'lsx-business-directory', 'rtl', 'replace' );
