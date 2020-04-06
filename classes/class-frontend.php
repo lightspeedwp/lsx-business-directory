@@ -213,7 +213,7 @@ class Frontend {
 	 * @param [type] $title
 	 * @return void
 	 */
-	public function bp_archive_industries_shortcode() {
+	public function industries_shortcode() {
 		if ( ( is_post_type_archive( 'business-directory' ) || is_tax( 'industry' ) ) && 'on' === lsx_bd_get_option( 'archive_industry_buttons', false ) ) {
 			$industries_shortcode = '[lsx_bd_industries_nav title_text=""]';
 			echo do_shortcode( $industries_shortcode );
