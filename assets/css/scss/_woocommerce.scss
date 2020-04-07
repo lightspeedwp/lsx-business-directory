@@ -14,8 +14,21 @@
 				}
 			}
 		}
+		.woocommerce-MyAccount-content {
+			.lsx-bd-my-account.listings {
+				.my-listings {
+					.btn {
+						height: 40px;
+						padding: 12px 40px;
+						&.tertiary-border-btn {
+							padding: 10px 40px;
+						}
+					}
+				}
+			}
+		}
 	}
-} 
+}
 
 .lsx-bd-my-account {
 	&.listings {

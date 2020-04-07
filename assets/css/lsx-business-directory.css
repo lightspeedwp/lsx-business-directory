@@ -330,6 +330,10 @@ body.archive.lsx-body-grid-layout .post-wrapper, body.search-results.lsx-body-gr
 
 .woocommerce-page #main .woocommerce-MyAccount-navigation ul li.woocommerce-MyAccount-navigation-link--listings a:before { content: '\f03a'; }
 
+.woocommerce-page #main .woocommerce-MyAccount-content .lsx-bd-my-account.listings .my-listings .btn { height: 40px; padding: 12px 40px; }
+
+.woocommerce-page #main .woocommerce-MyAccount-content .lsx-bd-my-account.listings .my-listings .btn.tertiary-border-btn { padding: 10px 40px; }
+
 .lsx-bd-my-account.listings .no-listings { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; -webkit-box-align: center; -ms-flex-align: center; align-items: center; text-align: center; padding: 52px; }
 
 .lsx-bd-my-account.listings .no-listings .fa-list { font-size: 37px; color: #919191; }
