@@ -365,3 +365,26 @@ function get_caldera_forms() {
 
 	return $forms;
 }
+
+/**
+ * Gets the available listing form fields
+ *
+ * @return  array  Array with all available listing fields
+ */
+function get_listing_form_fields() {
+	$fields = array(
+		'listing-title' => array(
+			'label'  => esc_attr__( 'Listing Title', 'lsx-business-directory' ),
+			'fields' => array(
+				'listing_post_title' => array(
+					'type'     => 'text',
+					'label'    => __( 'Company Name', 'lsx-business-directory' ),
+					'class'    => array( 'listing-post-title form-row-wide' ),
+					'required' => true,
+				),
+			),
+		),
+	);
+	$fields = apply_filters( 'lsx_bd_listing_fields', $fields );
+	return $fields;
+}

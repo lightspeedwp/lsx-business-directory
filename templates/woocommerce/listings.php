@@ -21,6 +21,8 @@
 		} else {
 			lsx_business_template( 'woocommerce/no-listings' );
 		}
+	} elseif ( is_wc_endpoint_url( 'add-listing' ) ) {
+		lsx_business_template( 'woocommerce/add-listing' );
 	}
 	?>
 </div>
