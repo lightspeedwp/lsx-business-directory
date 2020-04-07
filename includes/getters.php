@@ -430,9 +430,50 @@ function get_listing_form_fields() {
 					'required' => false,
 				),
 				'lsx_bd_whatsapp' => array(
-					'type'     => 'email',
+					'type'     => 'text',
 					'label'    => __( 'Whatsapp Contact Number', 'lsx-business-directory' ),
 					'class'    => array( 'listing-whatsapp form-row-last' ),
+					'required' => false,
+				),
+			),
+		),
+		'social-media-accounts' => array(
+			'label'  => esc_attr__( 'Social Media Accounts', 'lsx-business-directory' ),
+			'fields' => array(
+				'lsx_bd_facebook' => array(
+					'type'     => 'text',
+					'label'    => __( 'Facebook', 'lsx-business-directory' ),
+					'class'    => array( 'listing-facebook form-row-first' ),
+					'required' => false,
+				),
+				'lsx_bd_twitter' => array(
+					'type'     => 'text',
+					'label'    => __( 'Twitter', 'lsx-business-directory' ),
+					'class'    => array( 'listing-twitter form-row-last' ),
+					'required' => false,
+				),
+				'lsx_bd_linkedin' => array(
+					'type'     => 'text',
+					'label'    => __( 'LinkedIn', 'lsx-business-directory' ),
+					'class'    => array( 'listing-linkedin form-row-first' ),
+					'required' => false,
+				),
+				'lsx_bd_instagram' => array(
+					'type'     => 'text',
+					'label'    => __( 'Instagram', 'lsx-business-directory' ),
+					'class'    => array( 'listing-instagram form-row-last' ),
+					'required' => false,
+				),
+				'lsx_bd_youtube' => array(
+					'type'     => 'text',
+					'label'    => __( 'Youtube', 'lsx-business-directory' ),
+					'class'    => array( 'listing-youtube form-row-first' ),
+					'required' => false,
+				),
+				'lsx_bd_pinterest' => array(
+					'type'     => 'text',
+					'label'    => __( 'Pinterest', 'lsx-business-directory' ),
+					'class'    => array( 'listing-pinterest form-row-last' ),
 					'required' => false,
 				),
 			),
