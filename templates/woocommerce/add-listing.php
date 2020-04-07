@@ -29,8 +29,8 @@ do_action( 'lsx_bd_before_add_listing_form' ); ?>
 		foreach ( $sections as $section_key => $section_values ) {
 			$class = str_replace( '_', '-', $section_key );
 			?>
-			<fieldset class="<?php esc_attr( $class ); ?>-fieldset">
-				<legend><?php esc_attr( $section_values['label'] ); ?></legend>
+			<fieldset class="<?php echo esc_attr( $class ); ?>-fieldset">
+				<legend><?php  echo esc_attr( $section_values['label'] ); ?></legend>
 				<?php
 				if ( ! empty( $section_values['fields'] ) ) {
 					foreach ( $section_values['fields'] as $field_key => $field_values ) {

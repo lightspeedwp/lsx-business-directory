@@ -376,11 +376,64 @@ function get_listing_form_fields() {
 		'listing-title' => array(
 			'label'  => esc_attr__( 'Listing Title', 'lsx-business-directory' ),
 			'fields' => array(
-				'listing_post_title' => array(
+				'lsx_bd_post_title' => array(
 					'type'     => 'text',
 					'label'    => __( 'Company Name', 'lsx-business-directory' ),
 					'class'    => array( 'listing-post-title form-row-wide' ),
 					'required' => true,
+				),
+			),
+		),
+		'contact-information' => array(
+			'label'  => esc_attr__( 'Contact Information', 'lsx-business-directory' ),
+			'fields' => array(
+				'lsx_bd_primary_contact' => array(
+					'type'     => 'text',
+					'label'    => __( 'Contact Person', 'lsx-business-directory' ),
+					'class'    => array( 'listing-primary-contact form-row-first' ),
+					'required' => false,
+				),
+				'lsx_bd_fax' => array(
+					'type'     => 'text',
+					'label'    => __( 'Fax Number', 'lsx-business-directory' ),
+					'class'    => array( 'listing-fax form-row-last' ),
+					'required' => false,
+				),
+				'lsx_bd_website' => array(
+					'type'     => 'text',
+					'label'    => __( 'Website', 'lsx-business-directory' ),
+					'class'    => array( 'listing-website form-row-first' ),
+					'required' => false,
+				),
+				'lsx_bd_primary_email' => array(
+					'type'     => 'email',
+					'label'    => __( 'Email Address (shown on the listing)', 'lsx-business-directory' ),
+					'class'    => array( 'listing-primary-email form-row-last' ),
+					'required' => false,
+				),
+				'lsx_bd_primary_phone' => array(
+					'type'     => 'text',
+					'label'    => __( 'Phone Number', 'lsx-business-directory' ),
+					'class'    => array( 'listing-primary-phone form-row-first' ),
+					'required' => false,
+				),
+				'lsx_bd_secondary_email' => array(
+					'type'     => 'email',
+					'label'    => __( 'Email Address (contact form recipient)', 'lsx-business-directory' ),
+					'class'    => array( 'listing-secondary-email form-row-last' ),
+					'required' => false,
+				),
+				'lsx_bd_skype' => array(
+					'type'     => 'text',
+					'label'    => __( 'Skype Username', 'lsx-business-directory' ),
+					'class'    => array( 'listing-skype form-row-first' ),
+					'required' => false,
+				),
+				'lsx_bd_whatsapp' => array(
+					'type'     => 'email',
+					'label'    => __( 'Whatsapp Contact Number', 'lsx-business-directory' ),
+					'class'    => array( 'listing-whatsapp form-row-last' ),
+					'required' => false,
 				),
 			),
 		),
