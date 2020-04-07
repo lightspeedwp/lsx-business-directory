@@ -37,6 +37,20 @@
 					.placeholder-text, .lsx-bd-map-placeholder {
 						text-align: center;
 						cursor: pointer;
+						position: relative;
+						.placeholder-text {
+							position: absolute;
+							left: 50%;
+							margin-left: -50px;
+							top: 50%;
+							margin-top: -50px;
+							display: flex;
+							align-items: center;
+							justify-content: center;
+							height: 100px;
+							width: 100px;
+							text-align: center;
+						}
 					}
 				}
 			}
@@ -135,7 +149,7 @@
 							margin-bottom: 15px;
 						}
 					}
-					
+
 
 					> div {
 						margin-bottom: 5px;
