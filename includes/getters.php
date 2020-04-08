@@ -478,6 +478,99 @@ function get_listing_form_fields() {
 				),
 			),
 		),
+		'physical-address' => array(
+			'label'  => esc_attr__( 'Physical Address', 'lsx-business-directory' ),
+			'fields' => array(
+				'lsx_bd_address_street_number' => array(
+					'type'     => 'text',
+					'label'    => __( 'Street / Apartment #', 'lsx-business-directory' ),
+					'class'    => array( 'listing-address-street-number form-row-first' ),
+					'required' => true,
+				),
+				'lsx_bd_address_street_name' => array(
+					'type'     => 'text',
+					'label'    => __( 'Street Address', 'lsx-business-directory' ),
+					'class'    => array( 'listing-street-name form-row-last' ),
+					'required' => true,
+				),
+				'lsx_bd_address_suburb' => array(
+					'type'     => 'text',
+					'label'    => __( 'Suburb', 'lsx-business-directory' ),
+					'class'    => array( 'listing-address-suburb form-row-wide' ),
+					'required' => true,
+				),
+				'lsx_bd_address_city' => array(
+					'type'     => 'text',
+					'label'    => __( 'Town / City', 'lsx-business-directory' ),
+					'class'    => array( 'listing-address-city form-row-wide' ),
+					'required' => true,
+				),
+				'lsx_bd_address_province' => array(
+					'type'     => 'text',
+					'label'    => __( 'Province', 'lsx-business-directory' ),
+					'class'    => array( 'listing-address-province form-row-wide' ),
+					'required' => true,
+				),
+				'lsx_bd_address_country' => array(
+					'type'     => 'text',
+					'label'    => __( 'Country', 'lsx-business-directory' ),
+					'class'    => array( 'listing-address-country form-row-wide' ),
+					'required' => true,
+				),
+				'lsx_bd_address_postal_code' => array(
+					'type'     => 'text',
+					'label'    => __( 'Postal Code', 'lsx-business-directory' ),
+					'class'    => array( 'listing-address-postal-code form-row-wide' ),
+					'required' => true,
+				),
+			),
+		),
+		'branding' => array(
+			'label'  => esc_attr__( 'Branding', 'lsx-business-directory' ),
+			'fields' => array(
+				'lsx_bd_post_thumbnail' => array(
+					'type'     => 'text',
+					'label'    => __( 'Company Logo', 'lsx-business-directory' ),
+					'class'    => array( 'listing-post-title form-row-first' ),
+					'required' => true,
+				),
+				'lsx_bd_banner' => array(
+					'type'     => 'text',
+					'label'    => __( 'Banner Image', 'lsx-business-directory' ),
+					'class'    => array( 'listing-post-title form-row-last' ),
+					'required' => true,
+				),
+			),
+		),
+		'company-information' => array(
+			'label'  => esc_attr__( 'Company Information', 'lsx-business-directory' ),
+			'fields' => array(
+				'lsx_bd_tax_industry' => array(
+					'type'     => 'text',
+					'label'    => __( 'Industry', 'lsx-business-directory' ),
+					'class'    => array( 'listing-industry form-row-first' ),
+					'required' => true,
+				),
+				'lsx_bd_tax_location' => array(
+					'type'     => 'text',
+					'label'    => __( 'Location', 'lsx-business-directory' ),
+					'class'    => array( 'listing-location form-row-last' ),
+					'required' => true,
+				),
+				'lsx_bd_post_content' => array(
+					'type'     => 'textarea',
+					'label'    => __( 'Description', 'lsx-business-directory' ),
+					'class'    => array( 'listing-post-content form-row-wide' ),
+					'required' => true,
+				),
+				'lsx_bd_post_except' => array(
+					'type'     => 'textarea',
+					'label'    => __( 'Excerpt', 'lsx-business-directory' ),
+					'class'    => array( 'listing-post-excerpt form-row-first' ),
+					'required' => true,
+				),
+			),
+		),
 	);
 	$fields = apply_filters( 'lsx_bd_listing_fields', $fields );
 	return $fields;
