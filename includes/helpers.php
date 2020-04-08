@@ -83,3 +83,47 @@ function get_placeholder( $size = 'lsx-thumbnail-wide', $key = 'single_thumbnail
 	}
 	return $placeholder;
 }
+
+/**
+ * Gets the values for the fields you supply.
+ *
+ * @param array $sections \lsx\business_directory\includes\get_listing_form_fields();
+ * @param int $listing_id This is the listing ID of the values you want to get.
+ * @return array
+ */
+function get_listing_form_field_values( $sections = array(), $listing_id = false ) {
+	$values   = array();
+	$defaults = \lsx\business_directory\includes\get_listing_form_field_defaults();
+	if ( ! empty( $sections ) ) {
+		foreach ( $sections as $section_key => $section_values ) {
+			if ( ! empty( $section_values['fields'] ) ) {
+				foreach ( $section_values['fields'] as $field_key => $field_args ) {
+					$field_args = wp_parse_args( $field_args, $defaults );
+					$type       = str_replace( 'lsx_bd_', '', $field_key );
+
+					$field_value = '';
+					if ( false !== $listing_id ) {
+						switch ( $type ) {
+							case 'post_title':
+								break;
+							case 'post_content':
+								break;
+
+							case 'post_excerpt':
+								break;
+
+							case 'tax_industry':
+							case 'tax_location':
+								break;
+
+							default:
+								break;
+						}
+					}
+					$values[ $field_key ] = $field_value;
+				}
+			}
+		}
+	}
+	return $values;
+}

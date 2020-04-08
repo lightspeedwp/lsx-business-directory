@@ -575,3 +575,24 @@ function get_listing_form_fields() {
 	$fields = apply_filters( 'lsx_bd_listing_fields', $fields );
 	return $fields;
 }
+
+/**
+ * Gets the default form field default arguments.
+ *
+ * @return array
+ */
+function get_listing_form_field_defaults() {
+	$defaults = array(
+		'type'         => '',
+		'class'        => array( 'form-row-wide' ),
+		'label'        => '',
+		'placeholder'  => '',
+		'required'     => false,
+		'autocomplete' => false,
+		'class'        => array(),
+		'label_class'  => array(),
+		'input_class'  => array(),
+	);
+	$defaults = apply_filters( 'lsx_bd_listing_field_defaults', $defaults );
+	return $defaults;
+}

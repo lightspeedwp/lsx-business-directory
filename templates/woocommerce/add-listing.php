@@ -12,33 +12,24 @@ do_action( 'lsx_bd_before_add_listing_form' ); ?>
 	<?php do_action( 'lsx_bd_add_listing_form_start' ); ?>
 
 	<?php
-	$sections = \lsx\business_directory\includes\get_listing_form_fields();
-	$defaults = array(
-		'type'         => '',
-		'class'        => array( 'form-row-wide' ),
-		'label'        => '',
-		'placeholder'  => '',
-		'required'     => false,
-		'autocomplete' => false,
-		'class'        => array(),
-		'label_class'  => array(),
-		'input_class'  => array(),
-	);
+	$sections   = \lsx\business_directory\includes\get_listing_form_fields();
+	$all_values = \lsx\business_directory\includes\get_listing_form_field_values( $sections );
+	$defaults   = \lsx\business_directory\includes\get_listing_form_field_defaults();
 
 	if ( ! empty( $sections ) ) {
 		foreach ( $sections as $section_key => $section_values ) {
 			$class = str_replace( '_', '-', $section_key );
 			?>
 			<fieldset class="<?php echo esc_attr( $class ); ?>-fieldset">
-				<legend><?php  echo esc_attr( $section_values['label'] ); ?></legend>
+				<legend><?php echo esc_attr( $section_values['label'] ); ?></legend>
 				<?php
 				if ( ! empty( $section_values['fields'] ) ) {
-					foreach ( $section_values['fields'] as $field_key => $field_values ) {
-						$field_values = wp_parse_args( $field_values, $defaults );
+					foreach ( $section_values['fields'] as $field_key => $field_args ) {
+						$field_args = wp_parse_args( $field_args, $defaults );
 						woocommerce_form_field(
 							$field_key,
-							$field_values,
-							''
+							$field_args,
+							$all_values[ $field_key ]
 						);
 					}
 				}
