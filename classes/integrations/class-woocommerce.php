@@ -1,6 +1,8 @@
 <?php
 namespace lsx\business_directory\classes\integrations;
 
+use Yoast\WP\SEO\WordPress\Integration;
+
 /**
  * Woocommerce Integration class
  *
@@ -16,6 +18,13 @@ class Woocommerce {
 	protected static $instance = null;
 
 	/**
+	 * Holds the form handler class
+	 *
+	 * @var      object \lsx\business_directory\classes\integrations\woocommerce\Form_Handler()
+	 */
+	public $form_handler = null;
+
+	/**
 	 * Holds the array of WC query vars
 	 *
 	 * @var array()
@@ -27,6 +36,8 @@ class Woocommerce {
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'init' ) );
+		require_once LSX_BD_PATH . '/classes/integrations/woocommerce/class-form-handler.php';
+		$this->form_handler = woocommerce\Form_Handler::get_instance();
 	}
 
 	/**
