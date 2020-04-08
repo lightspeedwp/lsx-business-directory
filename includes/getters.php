@@ -546,16 +546,18 @@ function get_listing_form_fields() {
 			'label'  => esc_attr__( 'Company Information', 'lsx-business-directory' ),
 			'fields' => array(
 				'lsx_bd_tax_industry' => array(
-					'type'     => 'text',
+					'type'     => 'select',
 					'label'    => __( 'Industry', 'lsx-business-directory' ),
 					'class'    => array( 'listing-industry form-row-first' ),
 					'required' => true,
+					'options'  => get_taxonomy_as_options( 'industry' ),
 				),
 				'lsx_bd_tax_location' => array(
-					'type'     => 'text',
+					'type'     => 'select',
 					'label'    => __( 'Location', 'lsx-business-directory' ),
 					'class'    => array( 'listing-location form-row-last' ),
 					'required' => true,
+					'options'  => get_taxonomy_as_options( 'location' ),
 				),
 				'lsx_bd_post_content' => array(
 					'type'     => 'textarea',
@@ -596,3 +598,33 @@ function get_listing_form_field_defaults() {
 	$defaults = apply_filters( 'lsx_bd_listing_field_defaults', $defaults );
 	return $defaults;
 }
+
+/**
+ * Returns the taxonomy options as an array.
+ *
+ * @param  string $taxonomy
+ * @return array
+ */
+function get_taxonomy_as_options( $taxonomy = '' ) {
+	$options = array(
+		'' => __( 'Select', 'lsx-business-directory' ),
+	);
+	if ( '' !== $taxonomy ) {
+		$args = array(
+			'taxonomy'        => $taxonomy,
+			'hide_empty'      => false,
+			'suppress_filter' => true,
+			'orderby'         => 'name',
+			'order'           => 'ASC',
+			'number'          => false,
+		);
+		$terms = get_terms( $args );
+		if ( ! is_wp_error( $terms ) ) {
+			foreach ( $terms as $term ) {
+				$options[ $term->term_id ] = $term->name;
+			}
+		}
+	}
+	return $options;
+}
+
