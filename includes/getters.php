@@ -394,13 +394,14 @@ function get_listing_form_fields() {
 					'required' => false,
 				),
 				'lsx_bd_fax' => array(
-					'type'     => 'text',
+					'type'     => 'tel',
 					'label'    => __( 'Fax Number', 'lsx-business-directory' ),
 					'class'    => array( 'listing-fax form-row-last' ),
 					'required' => false,
+					'validate' => array( 'phone' ),
 				),
 				'lsx_bd_website' => array(
-					'type'     => 'text',
+					'type'     => 'url',
 					'label'    => __( 'Website', 'lsx-business-directory' ),
 					'class'    => array( 'listing-website form-row-first' ),
 					'required' => false,
@@ -410,18 +411,21 @@ function get_listing_form_fields() {
 					'label'    => __( 'Email Address (shown on the listing)', 'lsx-business-directory' ),
 					'class'    => array( 'listing-primary-email form-row-last' ),
 					'required' => false,
+					'validate' => array( 'email' ),
 				),
 				'lsx_bd_primary_phone' => array(
-					'type'     => 'text',
+					'type'     => 'tel',
 					'label'    => __( 'Phone Number', 'lsx-business-directory' ),
 					'class'    => array( 'listing-primary-phone form-row-first' ),
 					'required' => false,
+					'validate' => array( 'phone' ),
 				),
 				'lsx_bd_secondary_email' => array(
 					'type'     => 'email',
 					'label'    => __( 'Email Address (contact form recipient)', 'lsx-business-directory' ),
 					'class'    => array( 'listing-secondary-email form-row-last' ),
 					'required' => false,
+					'validate' => array( 'email' ),
 				),
 				'lsx_bd_skype' => array(
 					'type'     => 'text',
@@ -430,10 +434,11 @@ function get_listing_form_fields() {
 					'required' => false,
 				),
 				'lsx_bd_whatsapp' => array(
-					'type'     => 'text',
+					'type'     => 'tel',
 					'label'    => __( 'Whatsapp Contact Number', 'lsx-business-directory' ),
 					'class'    => array( 'listing-whatsapp form-row-last' ),
 					'required' => false,
+					'validate' => array( 'phone' ),
 				),
 			),
 		),
@@ -505,22 +510,23 @@ function get_listing_form_fields() {
 					'class'    => array( 'listing-address-city form-row-wide' ),
 					'required' => true,
 				),
-				'lsx_bd_address_province' => array(
-					'type'     => 'text',
-					'label'    => __( 'Province', 'lsx-business-directory' ),
-					'class'    => array( 'listing-address-province form-row-wide' ),
-					'required' => true,
-				),
-				'lsx_bd_address_country' => array(
-					'type'     => 'text',
-					'label'    => __( 'Country', 'lsx-business-directory' ),
-					'class'    => array( 'listing-address-country form-row-wide' ),
-					'required' => true,
-				),
 				'lsx_bd_address_postal_code' => array(
 					'type'     => 'text',
 					'label'    => __( 'Postal Code', 'lsx-business-directory' ),
 					'class'    => array( 'listing-address-postal-code form-row-wide' ),
+					'required' => true,
+					'validate' => array( 'postcode' ),
+				),
+				'lsx_bd_address_country' => array(
+					'type'     => 'country',
+					'label'    => __( 'Country', 'lsx-business-directory' ),
+					'class'    => array( 'listing-address-country form-row-wide' ),
+					'required' => true,
+				),
+				'lsx_bd_address_province' => array(
+					'type'     => 'state',
+					'label'    => __( 'Province', 'lsx-business-directory' ),
+					'class'    => array( 'listing-address-province form-row-wide' ),
 					'required' => true,
 				),
 			),
@@ -594,6 +600,7 @@ function get_listing_form_field_defaults() {
 		'class'        => array(),
 		'label_class'  => array(),
 		'input_class'  => array(),
+		'validate'     => array(),
 	);
 	$defaults = apply_filters( 'lsx_bd_listing_field_defaults', $defaults );
 	return $defaults;

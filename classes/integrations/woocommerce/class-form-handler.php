@@ -23,6 +23,13 @@ class Form_Handler {
 	public $query_vars = array();
 
 	/**
+	 * Holds the listing ID if this is an edit submission.
+	 *
+	 * @var array()
+	 */
+	public $listing_id = false;
+
+	/**
 	 * Holds the array of sections and their fields
 	 *
 	 * @var array()
@@ -41,7 +48,10 @@ class Form_Handler {
 	 *
 	 * @var array()
 	 */
-	public $listing_array = array();
+	public $post_array = array(
+		'post_status' => 'publish',
+		'post_type'   => 'business-directory',
+	);
 
 	/**
 	 * Holds the values for the custom fields
@@ -61,6 +71,7 @@ class Form_Handler {
 	 * Contructor
 	 */
 	public function __construct() {
+		$this->listing_id = false;
 		add_action( 'template_redirect', array( $this, 'save_listing' ) );
 	}
 
@@ -96,6 +107,10 @@ class Form_Handler {
 			return;
 		}
 
+		if ( isset( $_POST['listing_id'] ) && empty( $_POST['listing_id'] ) && '' !== $_POST['listing_id'] && null !== $_POST['listing_id'] ) {
+			$this->listing_id = wc_clean( $_POST['listing_id'] );
+		}
+
 		wc_nocache_headers();
 
 		$user_id = get_current_user_id();
@@ -128,97 +143,106 @@ class Form_Handler {
 
 						// Validation: Required fields.
 						if ( ! empty( $field_args['required'] ) && empty( $field_value ) ) {
-							wc_add_notice( sprintf( __( '%s is a required field.', 'woocommerce' ), $field_args['label'] ), 'error', array( 'id' => $field_key ) );
+							wc_add_notice( sprintf( __( '%s is a required field.', 'lsx-business-directory' ), $field_args['label'] ), 'error', array( 'id' => $field_key ) );
+						}
+
+						// Check the specific values.
+						if ( ! empty( $field_value ) ) {
+							// Validation and formatting rules.
+							if ( ! empty( $field_args['validate'] ) && is_array( $field_args['validate'] ) ) {
+								foreach ( $field_args['validate'] as $rule ) {
+									switch ( $rule ) {
+										case 'postcode':
+											$country       = wc_clean( wp_unslash( $_POST[ 'lsx_bd_address_country' ] ) );
+											$field_value   = wc_format_postcode( $field_value, $country );
+
+											if ( '' !== $field_value && ! \WC_Validation::is_postcode( $field_value, $country ) ) {
+												switch ( $country ) {
+													case 'IE':
+														$postcode_validation_notice = __( 'Please enter a valid Eircode.', 'lsx-business-directory' );
+														break;
+													default:
+														$postcode_validation_notice = __( 'Please enter a valid postcode / ZIP.', 'lsx-business-directory' );
+												}
+												wc_add_notice( $postcode_validation_notice, 'error' );
+											}
+											break;
+										case 'phone':
+											if ( '' !== $field_value && ! \WC_Validation::is_phone( $field_value ) ) {
+												/* translators: %s: Phone number. */
+												wc_add_notice( sprintf( __( '%s is not a valid phone number.', 'lsx-business-directory' ), '<strong>' . $field_args['label'] . '</strong>' ), 'error' );
+											}
+											break;
+										case 'email':
+											$field_value = strtolower( $field_value );
+
+											if ( ! is_email( $field_value ) ) {
+												/* translators: %s: Email address. */
+												wc_add_notice( sprintf( __( '%s is not a valid email address.', 'lsx-business-directory' ), '<strong>' . $field_args['label'] . '</strong>' ), 'error' );
+											}
+											break;
+									}
+								}
+							}
 						}
 
 						switch ( $type ) {
 							case 'post_title':
-								break;
 							case 'post_content':
-								break;
-
 							case 'post_excerpt':
+								$this->post_array[ $type ] = $field_value;
 								break;
 
 							case 'tax_industry':
 							case 'tax_location':
+								$this->tax_array[ $type ] = $field_value;
 								break;
 
 							default:
+								$this->meta_array[ $type ] = $field_value;
 								break;
 						}
 					}
 				}
 			}
 		}
-
-		/*foreach ( $address as $key => $field ) {
-			if ( ! isset( $field['type'] ) ) {
-				$field['type'] = 'text';
-			}
-
-			// Get Value.
-			if ( 'checkbox' === $field['type'] ) {
-				$value = (int) isset( $_POST[ $key ] );
-			} else {
-				$value = isset( $_POST[ $key ] ) ? wc_clean( wp_unslash( $_POST[ $key ] ) ) : '';
-			}
-
-			// Hook to allow modification of value.
-			$value = apply_filters( 'lsx_bd_process_myaccount_field_' . $key, $value );
-
-			// Validation: Required fields.
-			if ( ! empty( $field['required'] ) && empty( $value ) ) {
-				wc_add_notice( sprintf( __( '%s is a required field.', 'woocommerce' ), $field['label'] ), 'error', array( 'id' => $key ) );
-			}
-
-			if ( ! empty( $value ) ) {
-				// Validation and formatting rules.
-				if ( ! empty( $field['validate'] ) && is_array( $field['validate'] ) ) {
-					foreach ( $field['validate'] as $rule ) {
-						switch ( $rule ) {
-							case 'postcode':
-								$country = wc_clean( wp_unslash( $_POST[ $load_address . '_country' ] ) );
-								$value   = wc_format_postcode( $value, $country );
-
-								if ( '' !== $value && ! WC_Validation::is_postcode( $value, $country ) ) {
-									switch ( $country ) {
-										case 'IE':
-											$postcode_validation_notice = __( 'Please enter a valid Eircode.', 'woocommerce' );
-											break;
-										default:
-											$postcode_validation_notice = __( 'Please enter a valid postcode / ZIP.', 'woocommerce' );
-									}
-									wc_add_notice( $postcode_validation_notice, 'error' );
-								}
-								break;
-							case 'phone':
-								if ( '' !== $value && ! WC_Validation::is_phone( $value ) ) {
-									wc_add_notice( sprintf( __( '%s is not a valid phone number.', 'woocommerce' ), '<strong>' . $field['label'] . '</strong>' ), 'error' );
-								}
-								break;
-							case 'email':
-								$value = strtolower( $value );
-
-								if ( ! is_email( $value ) ) {
-									wc_add_notice( sprintf( __( '%s is not a valid email address.', 'woocommerce' ), '<strong>' . $field['label'] . '</strong>' ), 'error' );
-								}
-								break;
-						}
-					}
-				}
-			}
-		}*/
 
 		if ( 0 < wc_notice_count( 'error' ) ) {
 			return;
 		}
 
-		wc_add_notice( __( 'Listing Succesfully Added.', 'woocommerce' ) );
+		wc_add_notice( __( 'Listing Succesfully Added.', 'lsx-business-directory' ) );
 
-		do_action( 'lsx_bd_save_listing', $user_id );
+		do_action( 'lsx_bd_save_listing', $this->listing_id, $this );
+		$this->add_new_listing();
+		$this->save_meta();
 
-		wp_safe_redirect( wc_get_endpoint_url( 'add-listing', '', wc_get_page_permalink( 'myaccount' ) ) );
+		wp_safe_redirect( wc_get_endpoint_url( 'listings', '', wc_get_page_permalink( 'myaccount' ) ) );
 		exit;
+	}
+
+	/**
+	 * This adds a new listing to the system.
+	 *
+	 * @return void
+	 */
+	public function add_new_listing() {
+		if ( false === $this->listing_id || '' === $this->listing_id ) {
+			$this->listing_id = wp_insert_post( $this->post_array );
+		}
+	}
+
+	/**
+	 * This saves the custom fields to the listing.
+	 *
+	 * @return void
+	 */
+	public function save_meta() {
+		if ( false !== $this->listing_id ) {
+			foreach ( $this->meta_array as $meta_key => $meta_value ) {
+				$previous_value = get_post_meta( $this->listing_id, $meta_key, true );
+				update_post_meta( $this->listing_id, $meta_key, $meta_value, $previous_value );
+			}
+		}
 	}
 }
