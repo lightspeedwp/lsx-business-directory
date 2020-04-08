@@ -102,7 +102,7 @@ function get_listing_form_field_values( $sections = array(), $listing_id = false
 					$type       = str_replace( 'lsx_bd_', '', $field_key );
 
 					$field_value = '';
-					if ( false !== $listing_id ) {
+					if ( false !== $listing_id && ! isset( $_POST[ $field_key ] ) ) {
 						switch ( $type ) {
 							case 'post_title':
 								break;
@@ -118,6 +118,12 @@ function get_listing_form_field_values( $sections = array(), $listing_id = false
 
 							default:
 								break;
+						}
+					} elseif ( isset( $_POST[ $field_key ] ) ) {
+						if ( 'checkbox' === $field_args['type'] ) {
+							$field_value = (int) isset( $_POST[ $field_key ] );
+						} else {
+							$field_value = wc_clean( wp_unslash( $_POST[ $field_key ] ) );
 						}
 					}
 					$values[ $field_key ] = $field_value;
