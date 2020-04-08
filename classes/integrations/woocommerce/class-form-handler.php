@@ -72,7 +72,7 @@ class Form_Handler {
 	 */
 	public function __construct() {
 		$this->listing_id = false;
-		add_action( 'template_redirect', array( $this, 'save_listing' ) );
+		add_action( 'template_redirect', array( $this, 'save' ) );
 	}
 
 	/**
@@ -94,7 +94,7 @@ class Form_Handler {
 	 * Save and and update a billing or shipping address if the
 	 * form was submitted through the user account page.
 	 */
-	public static function save_listing() {
+	public static function save() {
 		global $wp;
 
 		$nonce_value = wc_get_var( $_REQUEST['lsx-bd-add-listing-nonce'], wc_get_var( $_REQUEST['_wpnonce'], '' ) ); // @codingStandardsIgnoreLine.
@@ -214,7 +214,7 @@ class Form_Handler {
 		wc_add_notice( __( 'Listing Succesfully Added.', 'lsx-business-directory' ) );
 
 		do_action( 'lsx_bd_save_listing', $this->listing_id, $this );
-		$this->add_new_listing();
+		$this->save_listing();
 		$this->save_meta();
 
 		wp_safe_redirect( wc_get_endpoint_url( 'listings', '', wc_get_page_permalink( 'myaccount' ) ) );
@@ -226,7 +226,7 @@ class Form_Handler {
 	 *
 	 * @return void
 	 */
-	public function add_new_listing() {
+	public function save_listing() {
 		if ( false === $this->listing_id || '' === $this->listing_id ) {
 			$this->listing_id = wp_insert_post( $this->post_array );
 		}

@@ -491,7 +491,7 @@ function lsx_bd_listing_map( $before = '', $after = '', $echo = true ) {
  */
 function lsx_bd_add_listing_button() {
 	?>
-		<a class="btn btn-secondary" href=""><?php echo esc_attr( 'Add new listing', 'lsx-business-directory' ); ?> <i class="fa fa-plus-circle"></i></a>
+		<a class="btn btn-secondary" href="<?php echo esc_attr( wc_get_page_permalink( 'myaccount' ) . lsx_bd_get_option( 'translations_listings_add_endpoint', 'add-listing' ) ); ?>/"><?php echo esc_attr( 'Add new listing', 'lsx-business-directory' ); ?> <i class="fa fa-plus-circle"></i></a>
 	<?php
 }
 
