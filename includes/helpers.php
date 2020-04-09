@@ -105,9 +105,8 @@ function get_listing_form_field_values( $sections = array(), $listing_id = false
 		foreach ( $sections as $section_key => $section_values ) {
 			if ( ! empty( $section_values['fields'] ) ) {
 				foreach ( $section_values['fields'] as $field_key => $field_args ) {
-					$field_args = wp_parse_args( $field_args, $defaults );
-					$type       = str_replace( 'lsx_bd_', '', $field_key );
-
+					$field_args  = wp_parse_args( $field_args, $defaults );
+					$type        = str_replace( array( 'lsx_bd_', 'tax_' ), '', $field_key );
 					$field_value = '';
 					if ( false !== $listing_id && ! isset( $_POST[ $field_key ] ) ) {
 						$temp_listing = get_post( $listing_id );
@@ -118,8 +117,15 @@ function get_listing_form_field_values( $sections = array(), $listing_id = false
 									$field_value = $temp_listing->$type;
 								break;
 
-							case 'tax_industry':
-							case 'tax_location':
+							case 'industry':
+							case 'location':
+									$term_args = array(
+										'fields' => 'ids',
+									);
+									$temp_values = wp_get_post_terms( $temp_listing->ID, $type, $term_args );
+									if ( ! is_wp_error( $temp_values ) && ! empty( $temp_values ) && isset( $temp_values[0] ) ) {
+										$field_value = $temp_values[0];
+									}
 								break;
 
 							default:

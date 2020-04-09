@@ -546,6 +546,16 @@ function get_listing_form_fields() {
 					'class'    => array( 'listing-post-title form-row-last' ),
 					'required' => true,
 				),
+				'lsx_bd_post_thumbnail_id' => array(
+					'type'  => 'text',
+					'label' => '',
+					'class' => array( 'listing-post-title form-row-first form-row-hidden' ),
+				),
+				'lsx_bd_banner_id' => array(
+					'type'  => 'text',
+					'label' => '',
+					'class' => array( 'listing-post-title form-row-last form-row-hidden' ),
+				),
 			),
 		),
 		'company-information' => array(
@@ -634,4 +644,3 @@ function get_taxonomy_as_options( $taxonomy = '' ) {
 	}
 	return $options;
 }
-
