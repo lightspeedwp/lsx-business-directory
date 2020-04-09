@@ -524,7 +524,8 @@ function get_listing_form_fields() {
 					'required' => true,
 				),
 				'lsx_bd_address_province' => array(
-					'type'     => 'state',
+					//'type'     => 'state',
+					'type'     => 'text',
 					'label'    => __( 'Province', 'lsx-business-directory' ),
 					'class'    => array( 'listing-address-province form-row-wide' ),
 					'required' => true,
@@ -539,12 +540,14 @@ function get_listing_form_fields() {
 					'label'    => __( 'Company Logo', 'lsx-business-directory' ),
 					'class'    => array( 'listing-post-title form-row-first' ),
 					'required' => true,
+					'size'     => 'lsx-thumbnail-wide',
 				),
 				'lsx_bd_banner' => array(
 					'type'     => 'text',
 					'label'    => __( 'Banner Image', 'lsx-business-directory' ),
 					'class'    => array( 'listing-post-title form-row-last' ),
 					'required' => true,
+					'size'     => 'lsx-thumbnail-wide',
 				),
 				'lsx_bd_post_thumbnail_id' => array(
 					'type'  => 'text',

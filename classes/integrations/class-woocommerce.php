@@ -68,6 +68,7 @@ class Woocommerce {
 			add_action( 'woocommerce_account_edit-listing_endpoint', array( $this, 'endpoint_content' ) );
 			add_action( 'lsx_bd_settings_section_translations', array( $this, 'register_translations' ), 10, 2 );
 			add_filter( 'woocommerce_account_menu_item_classes', array( $this, 'menu_item_classes' ), 10, 2 );
+			add_filter( 'woocommerce_form_field_text', array( $this, 'replace_image_id_field' ), 10, 4 );
 		}
 	}
 
@@ -169,5 +170,23 @@ class Woocommerce {
 				)
 			);
 		}
+	}
+
+	/**
+	 * Change the post_thumbnail ID into a hidden field with a thumbnail if set.
+	 *
+	 * @param string $field
+	 * @param string $key
+	 * @param array $args
+	 * @param string $value
+	 * @return string
+	 */
+	public function replace_image_id_field( $field, $key, $args, $value ) {
+		if ( in_array( $key, array( 'lsx_bd_post_thumbnail_id', 'lsx_bd_banner_id' ) ) ) {
+			$field = str_replace( 'type="text"', 'type="hidden"', $field );
+			$image = '<img src="' . lsx_bd_get_thumbnail_wrapped( get_the_ID(), 'lsx-thumbnail-wide' ) . '">';
+			$field = str_replace( '</p>', $image . '</p>', $field );
+		}
+		return $field;
 	}
 }
