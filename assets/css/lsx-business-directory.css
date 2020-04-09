@@ -38,7 +38,9 @@ body.single-business-directory article .entry-meta > * { display: block; }
 
 .single .business-directory .business-header .business-content-left.map-wrapper .map-loading { min-height: 230px; }
 
-.single .business-directory .business-header .business-content-left.map-wrapper .placeholder-text, .single .business-directory .business-header .business-content-left.map-wrapper .lsx-bd-map-placeholder { text-align: center; cursor: pointer; }
+.single .business-directory .business-header .business-content-left.map-wrapper .placeholder-text, .single .business-directory .business-header .business-content-left.map-wrapper .lsx-bd-map-placeholder { text-align: center; cursor: pointer; position: relative; }
+
+.single .business-directory .business-header .business-content-left.map-wrapper .placeholder-text .placeholder-text, .single .business-directory .business-header .business-content-left.map-wrapper .lsx-bd-map-placeholder .placeholder-text { position: absolute; left: 50%; margin-left: -50px; top: 50%; margin-top: -50px; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; height: 100px; width: 100px; text-align: center; }
 
 .single .business-directory .business-header .business-content-right { padding-left: 26px; }
 
