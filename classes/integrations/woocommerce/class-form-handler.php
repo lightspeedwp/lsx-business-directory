@@ -94,21 +94,19 @@ class Form_Handler {
 	 * Save and and update a billing or shipping address if the
 	 * form was submitted through the user account page.
 	 */
-	public static function save() {
-		global $wp;
-
+	public function save() {
 		$nonce_value = wc_get_var( $_REQUEST['lsx-bd-add-listing-nonce'], wc_get_var( $_REQUEST['_wpnonce'], '' ) ); // @codingStandardsIgnoreLine.
 
 		if ( ! wp_verify_nonce( $nonce_value, 'lsx_bd_add_listing' ) ) {
-			return;
+			return false;
 		}
 
 		if ( empty( $_POST['action'] ) || 'save_listing_details' !== $_POST['action'] ) {
-			return;
+			return false;
 		}
 
 		if ( isset( $_POST['listing_id'] ) && empty( $_POST['listing_id'] ) && '' !== $_POST['listing_id'] && null !== $_POST['listing_id'] ) {
-			$this->listing_id = wc_clean( $_POST['listing_id'] );
+			$this->listing_id = sanitize_text_field( wp_unslash( $_POST['listing_id'] ) );
 		}
 
 		wc_nocache_headers();
@@ -244,5 +242,13 @@ class Form_Handler {
 				update_post_meta( $this->listing_id, $meta_key, $meta_value, $previous_value );
 			}
 		}
+	}
+
+	/**
+	 * Saves the listing taxonomy data.
+	 *
+	 * @return void
+	 */
+	public function save_tax() {
 	}
 }
