@@ -92,8 +92,15 @@ function get_placeholder( $size = 'lsx-thumbnail-wide', $key = 'single_thumbnail
  * @return array
  */
 function get_listing_form_field_values( $sections = array(), $listing_id = false ) {
-	$values   = array();
-	$defaults = \lsx\business_directory\includes\get_listing_form_field_defaults();
+	$values      = array();
+	$defaults    = \lsx\business_directory\includes\get_listing_form_field_defaults();
+	$nonce_value = wc_get_var( $_REQUEST['lsx-bd-add-listing-nonce'], wc_get_var( $_REQUEST['_wpnonce'], '' ) ); // @codingStandardsIgnoreLine.
+	if ( ! wp_verify_nonce( $nonce_value, 'lsx_bd_add_listing' ) || empty( $_POST['action'] ) || 'save_listing_details' !== $_POST['action'] ) {
+		$post_data = array();
+	} else {
+		$post_data = $_POST;
+	}
+
 	if ( ! empty( $sections ) ) {
 		foreach ( $sections as $section_key => $section_values ) {
 			if ( ! empty( $section_values['fields'] ) ) {
@@ -103,13 +110,12 @@ function get_listing_form_field_values( $sections = array(), $listing_id = false
 
 					$field_value = '';
 					if ( false !== $listing_id && ! isset( $_POST[ $field_key ] ) ) {
+						$temp_listing = get_post( $listing_id );
 						switch ( $type ) {
 							case 'post_title':
-								break;
 							case 'post_content':
-								break;
-
 							case 'post_excerpt':
+									$field_value = $temp_listing->$type;
 								break;
 
 							case 'tax_industry':
@@ -117,13 +123,14 @@ function get_listing_form_field_values( $sections = array(), $listing_id = false
 								break;
 
 							default:
+									$field_value = get_post_meta( $temp_listing->ID, $field_key, true );
 								break;
 						}
-					} elseif ( isset( $_POST[ $field_key ] ) ) {
+					} elseif ( isset( $post_data[ $field_key ] ) ) {
 						if ( 'checkbox' === $field_args['type'] ) {
-							$field_value = (int) isset( $_POST[ $field_key ] );
+							$field_value = (int) isset( $post_data[ $field_key ] );
 						} else {
-							$field_value = wc_clean( wp_unslash( $_POST[ $field_key ] ) );
+							$field_value = sanitize_text_field( wp_unslash( $post_data[ $field_key ] ) );
 						}
 					}
 					$values[ $field_key ] = $field_value;

@@ -80,7 +80,7 @@ class Woocommerce {
 		$this->query_vars = array(
 			'listings'     => lsx_bd_get_option( 'translations_listings_endpoint', 'listings' ),
 			'add-listing'  => lsx_bd_get_option( 'translations_listings_add_endpoint', 'add-listing' ),
-			'edit-listing' => lsx_bd_get_option( 'translations_listings__editendpoint', 'edit-listing' ),
+			'edit-listing' => lsx_bd_get_option( 'translations_listings_edit_endpoint', 'edit-listing' ),
 		);
 	}
 
