@@ -37,7 +37,7 @@
 					</td>
 					<td data-title="Actions">
 						<?php lsx_bd_edit_listing_button(); ?>
-						<a href="<?php the_permalink(); ?>" class="btn btn-primary"><?php echo esc_attr( 'View', 'lsx-business-directory' ); ?></a>
+						<?php lsx_bd_view_listing_button(); ?>
 					</td>
 				</tr>
 				<?php
