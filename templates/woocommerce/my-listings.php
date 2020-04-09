@@ -36,6 +36,7 @@
 						?>
 					</td>
 					<td data-title="Actions">
+						<a href="#" class="btn tertiary-border-btn"><?php echo esc_attr( 'Edit', 'lsx-business-directory' ); ?></a>
 						<a href="<?php the_permalink(); ?>" class="btn btn-primary"><?php echo esc_attr( 'View', 'lsx-business-directory' ); ?></a>
 					</td>
 				</tr>

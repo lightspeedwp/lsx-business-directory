@@ -209,7 +209,7 @@ class Form_Handler {
 			return;
 		}
 
-		wc_add_notice( __( 'Listing Succesfully Added.', 'lsx-business-directory' ) );
+		wc_add_notice( $this->post_array['post_title'] . ' ' . __( 'succesfully added.', 'lsx-business-directory' ) );
 
 		do_action( 'lsx_bd_save_listing', $this->listing_id, $this );
 		$this->save_listing();
