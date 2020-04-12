@@ -556,7 +556,6 @@ function get_listing_form_fields() {
 				'lsx_bd_banner_id' => array(
 					'label'    => __( 'Banner Image', 'lsx-business-directory' ),
 					'type'  => 'text',
-					'required' => true,
 					'class' => array( 'listing-post-title form-row-last' ),
 				),
 			),
@@ -588,7 +587,6 @@ function get_listing_form_fields() {
 					'type'     => 'textarea',
 					'label'    => __( 'Excerpt', 'lsx-business-directory' ),
 					'class'    => array( 'listing-post-excerpt form-row-first' ),
-					'required' => true,
 				),
 			),
 		),

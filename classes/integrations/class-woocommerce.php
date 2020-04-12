@@ -36,6 +36,7 @@ class Woocommerce {
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'init' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), 5 );
 		require_once LSX_BD_PATH . '/classes/integrations/woocommerce/class-form-handler.php';
 		$this->form_handler = woocommerce\Form_Handler::get_instance();
 	}
@@ -202,17 +203,48 @@ class Woocommerce {
 		if ( in_array( $key, array( 'lsx_bd__thumbnail_id', 'lsx_bd_banner_id' ) ) ) {
 			$field = str_replace( 'woocommerce-input-wrapper', 'woocommerce-file-wrapper', $field );
 			$field = str_replace( 'type="text"', 'type="hidden"', $field );
-			$image = '<input type="file" class="input-text form-control" name="' . esc_attr( $args['id'] ) . '_upload" id="' . esc_attr( $args['id'] ) . '_upload" placeholder="" value="">';
+
+			$image = '';
 			if ( ! empty( $value ) && '' !== $value ) {
+				$image      .= '<input type="file" class="input-text form-control hidden" name="' . esc_attr( $args['id'] ) . '_upload" id="' . esc_attr( $args['id'] ) . '_upload" placeholder="" value="">';
 				$temp_image = wp_get_attachment_image_src( $value, 'lsx-thumbnail-wide' );
 				$image_src  = ( strpos( $image[0], 'cover-logo.png' ) === false ) ? $temp_image[0] : '';
 				if ( '' !== $image_src ) {
 					$image .= '<img src="' . $image_src . '">';
 				}
-				$image .= '<span><i class="fa fa-cross"></i> ' . __( 'Remove image', 'lsx-business-directory' ) . '</span>';
+				$image .= '<a class="remove-image" href="#"><i class="fa fa-close"></i> ' . __( 'Remove image', 'lsx-business-directory' ) . '</a>';
+			} else {
+				$image .= '<input type="file" class="input-text form-control" name="' . esc_attr( $args['id'] ) . '_upload" id="' . esc_attr( $args['id'] ) . '_upload" placeholder="" value="">';
+				$image .= '<a class="remove-image hidden" href="#"><i class="fa fa-close"></i> ' . __( 'Remove image', 'lsx-business-directory' ) . '</a>';
 			}
-			$field = str_replace( '</span>', $image . '</span>', $field );
+
+			$field = str_replace( '<span class="woocommerce-file-wrapper">', $image . '<span class="woocommerce-file-wrapper">', $field );
 		}
 		return $field;
+	}
+
+	/**
+	 * Register and enqueue front-specific style sheet.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return    null
+	 */
+	public function enqueue_scripts() {
+		if ( defined( 'SCRIPT_DEBUG' ) ) {
+			$prefix = 'src/';
+			$suffix = '';
+		} else {
+			$prefix = '';
+			$suffix = '.min';
+		}
+		$dependacies = array( 'jquery', 'lsx-bd-frontend' );
+		wp_enqueue_script( 'lsx-bd-listing-form', LSX_BD_URL . 'assets/js/' . $prefix . 'lsx-bd-listing-form' . $suffix . '.js', $dependacies, LSX_BD_VER, true );
+		/*$param_array = array(
+			'api_key'     => $this->api_key,
+			'google_url'  => $google_url,
+			'placeholder' => $placeholder,
+		);
+		wp_localize_script( 'lsx-bd-frontend-maps', 'lsx_bd_maps_params', $param_array );*/
 	}
 }

@@ -102,7 +102,6 @@ class Google_Maps {
 		}
 	}
 
-
 	/**
 	 * Register and enqueue front-specific style sheet.
 	 *

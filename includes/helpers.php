@@ -99,6 +99,9 @@ function get_listing_form_field_values( $sections = array(), $listing_id = false
 		$post_data = array();
 	} else {
 		$post_data = $_POST;
+		print_r('<pre>');
+		print_r($_FILES);
+		print_r('</pre>');
 	}
 
 	if ( ! empty( $sections ) ) {
@@ -108,7 +111,18 @@ function get_listing_form_field_values( $sections = array(), $listing_id = false
 					$field_args  = wp_parse_args( $field_args, $defaults );
 					$type        = str_replace( array( 'lsx_bd_', 'tax_' ), '', $field_key );
 					$field_value = '';
-					if ( false !== $listing_id && ! isset( $_POST[ $field_key ] ) ) {
+
+					// Check the post data value or the file value.
+					$saved_value = '';
+					if ( isset( $post_data[ $field_key ] ) && '' !== $post_data[ $field_key ] ) {
+						if ( 'checkbox' === $field_args['type'] ) {
+							$field_value = (int) isset( $post_data[ $field_key ] );
+						} else {
+							$field_value = sanitize_text_field( wp_unslash( $post_data[ $field_key ] ) );
+						}
+					}
+
+					if ( false !== $listing_id ) {
 						$temp_listing = get_post( $listing_id );
 						switch ( $type ) {
 							case 'post_title':
@@ -135,12 +149,6 @@ function get_listing_form_field_values( $sections = array(), $listing_id = false
 									}
 									$field_value = get_post_meta( $temp_listing->ID, $meta_key, true );
 								break;
-						}
-					} elseif ( isset( $post_data[ $field_key ] ) ) {
-						if ( 'checkbox' === $field_args['type'] ) {
-							$field_value = (int) isset( $post_data[ $field_key ] );
-						} else {
-							$field_value = sanitize_text_field( wp_unslash( $post_data[ $field_key ] ) );
 						}
 					}
 					$values[ $field_key ] = $field_value;
