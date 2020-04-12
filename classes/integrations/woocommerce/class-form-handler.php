@@ -132,7 +132,7 @@ class Form_Handler {
 				if ( ! empty( $section_values['fields'] ) ) {
 					foreach ( $section_values['fields'] as $field_key => $field_args ) {
 						$field_args = wp_parse_args( $field_args, $this->defaults );
-						$type       = str_replace( array( 'lsx_bd_', 'tax_' ), '', $field_key );
+						$type       = str_replace( array( 'lsx_bd_', 'tax_', '_upload' ), '', $field_key );
 
 						if ( in_array( $field_key, array( 'lsx_bd__thumbnail_id', 'lsx_bd_banner_id' ) ) ) {
 							continue;
@@ -256,25 +256,35 @@ class Form_Handler {
 		}
 	}
 
+	/**
+	 * This saves the images and attaches them to the listing.
+	 *
+	 * @return void
+	 */
 	public function save_images() {
 		$att_id = false;
 
-		require_once( ABSPATH . 'wp-admin/includes/file.php' );
-		require_once( ABSPATH . 'wp-admin/includes/media.php' );
-		require_once( ABSPATH . 'wp-admin/includes/image.php' );
-		// Download file to temp location, returns full server path to temp file.
-		print_r('<pre>');
-		print_r($_FILES);
-		print_r($_POST);
-		print_r('</pre>');
+		require_once ABSPATH . 'wp-admin/includes/file.php';
+		require_once ABSPATH . 'wp-admin/includes/media.php';
+		require_once ABSPATH . 'wp-admin/includes/image.php';
 
 		if ( ! empty( $_FILES ) ) {
-			foreach( $_FILES as $file ) {
+			foreach ( $_FILES as $file_key => $file_array ) {
+
+				if ( ! empty( $file_array ) && isset( $file_array['error'] ) && 0 === (int) $file_array['error'] ) {
+					$att_id = media_handle_sideload( $file_array, $this->listing_id );
+					if ( false !== $att_id && '' !== $att_id ) {
+						$meta_key = str_replace( '_upload', '', $file_key );
+						$previous_val = get_post_meta( $this->listing_id, $meta_key, true );
+						update_post_meta( $this->listing_id, $meta_key, $att_id, $previous_val );
+
+						$meta_key = str_replace( '_id', '', $meta_key );
+						$previous_val = get_post_meta( $this->listing_id, $meta_key, true );
+						update_post_meta( $this->listing_id, $meta_key, get_permalink( $att_id ), $previous_val );
+					}
+				}
 			}
-			// do the validation and storage stuff.
-			$att_id = wp_handle_upload( $file_array, $post_id, null, $post_data );
 		}
-		die();
 		return $att_id;
 	}
 

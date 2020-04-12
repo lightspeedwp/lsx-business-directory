@@ -7,7 +7,7 @@ defined( 'ABSPATH' ) || exit;
 
 do_action( 'lsx_bd_before_listing_form' ); ?>
 
-<form class="woocommerce-EditAccountForm listing-form" action="" method="post" <?php do_action( 'lsx_bd_listing_form_tag' ); ?> >
+<form class="woocommerce-EditAccountForm listing-form" enctype="multipart/form-data" action="" method="post" <?php do_action( 'lsx_bd_listing_form_tag' ); ?> >
 
 	<?php do_action( 'lsx_bd_listing_form_start' ); ?>
 
