@@ -101,11 +101,13 @@ class Form_Handler {
 			return false;
 		}
 
-		if ( empty( $_POST['action'] ) || 'save_listing_details' !== $_POST['action'] ) {
+		if ( empty( $_POST['action'] ) || ( 'save_listing_details' !== $_POST['action'] && 'edit_listing_details' !== $_POST['action'] ) ) {
 			return false;
+		} else {
+			$this->action = sanitize_text_field( wp_unslash( $_POST['action'] ) );
 		}
 
-		if ( isset( $_POST['listing_id'] ) && empty( $_POST['listing_id'] ) && '' !== $_POST['listing_id'] && null !== $_POST['listing_id'] ) {
+		if ( isset( $_POST['listing_id'] ) && ! empty( $_POST['listing_id'] ) && '' !== $_POST['listing_id'] && null !== $_POST['listing_id'] && 0 !== $_POST['listing_id'] ) {
 			$this->listing_id = sanitize_text_field( wp_unslash( $_POST['listing_id'] ) );
 		}
 
@@ -130,7 +132,11 @@ class Form_Handler {
 				if ( ! empty( $section_values['fields'] ) ) {
 					foreach ( $section_values['fields'] as $field_key => $field_args ) {
 						$field_args = wp_parse_args( $field_args, $this->defaults );
-						$type       = str_replace( 'lsx_bd_', '', $field_key );
+						$type       = str_replace( array( 'lsx_bd_', 'tax_' ), '', $field_key );
+
+						if ( in_array( $field_key, array( 'lsx_bd__thumbnail_id', 'lsx_bd_banner_id' ) ) ) {
+							continue;
+						}
 
 						// Get Value.
 						if ( 'checkbox' === $field_args['type'] ) {
@@ -191,8 +197,8 @@ class Form_Handler {
 								$this->post_array[ $type ] = $field_value;
 								break;
 
-							case 'tax_industry':
-							case 'tax_location':
+							case 'industry':
+							case 'location':
 								$this->tax_array[ $type ] = $field_value;
 								break;
 
@@ -209,11 +215,17 @@ class Form_Handler {
 			return;
 		}
 
-		wc_add_notice( $this->post_array['post_title'] . ' ' . __( 'succesfully added.', 'lsx-business-directory' ) );
+		if ( 'save_listing_details' === $this->action ) {
+			wc_add_notice( $this->post_array['post_title'] . ' ' . __( 'succesfully added.', 'lsx-business-directory' ) );	
+		} else {
+			wc_add_notice( $this->post_array['post_title'] . ' ' . __( 'succesfully edited.', 'lsx-business-directory' ) );
+		}
 
 		do_action( 'lsx_bd_save_listing', $this->listing_id, $this );
 		$this->save_listing();
 		$this->save_meta();
+		$this->save_tax();
+		$this->save_images();
 
 		wp_safe_redirect( wc_get_endpoint_url( 'listings', '', wc_get_page_permalink( 'myaccount' ) ) );
 		exit;
@@ -225,7 +237,7 @@ class Form_Handler {
 	 * @return void
 	 */
 	public function save_listing() {
-		if ( false === $this->listing_id || '' === $this->listing_id ) {
+		if ( 'save_listing_details' === $this->action && ( false === $this->listing_id || '' === $this->listing_id ) ) {
 			$this->listing_id = wp_insert_post( $this->post_array );
 		}
 	}
@@ -244,11 +256,52 @@ class Form_Handler {
 		}
 	}
 
+	public function save_images() {
+		$att_id = false;
+
+		require_once( ABSPATH . 'wp-admin/includes/file.php' );
+		require_once( ABSPATH . 'wp-admin/includes/media.php' );
+		require_once( ABSPATH . 'wp-admin/includes/image.php' );
+		// Download file to temp location, returns full server path to temp file.
+		print_r('<pre>');
+		print_r($_FILES);
+		print_r($_POST);
+		print_r('</pre>');
+
+		if ( ! empty( $_FILES ) ) {
+			foreach( $_FILES as $file ) {
+			}
+			// do the validation and storage stuff.
+			$att_id = wp_handle_upload( $file_array, $post_id, null, $post_data );
+		}
+		die();
+		return $att_id;
+	}
+
 	/**
 	 * Saves the listing taxonomy data.
 	 *
 	 * @return void
 	 */
 	public function save_tax() {
+		$parent = false;
+		foreach ( $this->tax_array as $taxonomy => $name ) {
+			$term = term_exists( $name, $taxonomy );
+			if ( ! $term ) {
+				if ( false !== $parent ) {
+					$parent = array(
+						'parent' => $parent,
+					);
+				}
+				$term = wp_insert_term( trim( $name ), $taxonomy, $parent );
+				if ( is_wp_error( $term ) ) {
+					echo wp_kses_post( $term->get_error_message() );
+				} else {
+					wp_set_object_terms( $this->listing_id, intval( $term['term_id'] ), $taxonomy, false );
+				}
+			} else {
+				wp_set_object_terms( $this->listing_id, intval( $term['term_id'] ), $taxonomy, false );
+			}
+		}
 	}
 }

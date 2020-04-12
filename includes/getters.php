@@ -639,7 +639,7 @@ function get_taxonomy_as_options( $taxonomy = '' ) {
 		$terms = get_terms( $args );
 		if ( ! is_wp_error( $terms ) ) {
 			foreach ( $terms as $term ) {
-				$options[ $term->term_id ] = $term->name;
+				$options[ $term->slug ] = $term->name;
 			}
 		}
 	}

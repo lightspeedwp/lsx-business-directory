@@ -133,21 +133,19 @@ function get_listing_form_field_values( $sections = array(), $listing_id = false
 
 							case 'industry':
 							case 'location':
-									$term_args = array(
-										'fields' => 'ids',
-									);
+									$term_args = array();
 									$temp_values = wp_get_post_terms( $temp_listing->ID, $type, $term_args );
 									if ( ! is_wp_error( $temp_values ) && ! empty( $temp_values ) && isset( $temp_values[0] ) ) {
-										$field_value = $temp_values[0];
+										$field_value = $temp_values[0]->slug;
 									}
 								break;
 
 							default:
-									$meta_key = $field_key;
-									if ( 'lsx_bd__thumbnail_id' === $field_key ) {
-										$meta_key = $type;
-									}
-									$field_value = get_post_meta( $temp_listing->ID, $meta_key, true );
+								$meta_key = $field_key;
+								if ( 'lsx_bd__thumbnail_id' === $field_key ) {
+									$meta_key = $type;
+								}
+								$field_value = get_post_meta( $temp_listing->ID, $meta_key, true );
 								break;
 						}
 					}
