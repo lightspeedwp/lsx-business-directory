@@ -129,7 +129,11 @@ function get_listing_form_field_values( $sections = array(), $listing_id = false
 								break;
 
 							default:
-									$field_value = get_post_meta( $temp_listing->ID, $field_key, true );
+									$meta_key = $field_key;
+									if ( 'lsx_bd__thumbnail_id' === $field_key ) {
+										$meta_key = $type;
+									}
+									$field_value = get_post_meta( $temp_listing->ID, $meta_key, true );
 								break;
 						}
 					} elseif ( isset( $post_data[ $field_key ] ) ) {

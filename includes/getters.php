@@ -535,29 +535,29 @@ function get_listing_form_fields() {
 		'branding' => array(
 			'label'  => esc_attr__( 'Branding', 'lsx-business-directory' ),
 			'fields' => array(
-				'lsx_bd_post_thumbnail' => array(
+				'lsx_bd_thumbnail' => array(
 					'type'     => 'text',
 					'label'    => __( 'Company Logo', 'lsx-business-directory' ),
-					'class'    => array( 'listing-post-title form-row-first' ),
-					'required' => true,
+					'class'    => array( 'listing-logo form-row-first' ),
 					'size'     => 'lsx-thumbnail-wide',
 				),
 				'lsx_bd_banner' => array(
 					'type'     => 'text',
 					'label'    => __( 'Banner Image', 'lsx-business-directory' ),
-					'class'    => array( 'listing-post-title form-row-last' ),
-					'required' => true,
+					'class'    => array( 'listing-banner form-row-last' ),
 					'size'     => 'lsx-thumbnail-wide',
 				),
-				'lsx_bd_post_thumbnail_id' => array(
+				'lsx_bd__thumbnail_id' => array(
+					'label'    => __( 'Company Logo', 'lsx-business-directory' ),
 					'type'  => 'text',
-					'label' => '',
-					'class' => array( 'listing-post-title form-row-first form-row-hidden' ),
+					'required' => true,
+					'class' => array( 'listing-post-title form-row-first' ),
 				),
 				'lsx_bd_banner_id' => array(
+					'label'    => __( 'Banner Image', 'lsx-business-directory' ),
 					'type'  => 'text',
-					'label' => '',
-					'class' => array( 'listing-post-title form-row-last form-row-hidden' ),
+					'required' => true,
+					'class' => array( 'listing-post-title form-row-last' ),
 				),
 			),
 		),

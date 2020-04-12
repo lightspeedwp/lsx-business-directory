@@ -68,6 +68,7 @@ class Woocommerce {
 			add_action( 'woocommerce_account_edit-listing_endpoint', array( $this, 'endpoint_content' ) );
 			add_action( 'lsx_bd_settings_section_translations', array( $this, 'register_translations' ), 10, 2 );
 			add_filter( 'woocommerce_account_menu_item_classes', array( $this, 'menu_item_classes' ), 10, 2 );
+			add_filter( 'woocommerce_form_field_text', array( $this, 'replace_image_field' ), 10, 4 );
 			add_filter( 'woocommerce_form_field_text', array( $this, 'replace_image_id_field' ), 10, 4 );
 		}
 	}
@@ -173,6 +174,22 @@ class Woocommerce {
 	}
 
 	/**
+	 * Change the post_thumbnail into a file upload field.
+	 *
+	 * @param string $field
+	 * @param string $key
+	 * @param array $args
+	 * @param string $value
+	 * @return string
+	 */
+	public function replace_image_field( $field, $key, $args, $value ) {
+		if ( in_array( $key, array( 'lsx_bd_thumbnail', 'lsx_bd_banner' ) ) ) {
+			$field = '';
+		}
+		return $field;
+	}
+
+	/**
 	 * Change the post_thumbnail ID into a hidden field with a thumbnail if set.
 	 *
 	 * @param string $field
@@ -182,10 +199,19 @@ class Woocommerce {
 	 * @return string
 	 */
 	public function replace_image_id_field( $field, $key, $args, $value ) {
-		if ( in_array( $key, array( 'lsx_bd_post_thumbnail_id', 'lsx_bd_banner_id' ) ) ) {
+		if ( in_array( $key, array( 'lsx_bd__thumbnail_id', 'lsx_bd_banner_id' ) ) ) {
+			$field = str_replace( 'woocommerce-input-wrapper', 'woocommerce-file-wrapper', $field );
 			$field = str_replace( 'type="text"', 'type="hidden"', $field );
-			$image = '<img src="' . lsx_bd_get_thumbnail_wrapped( get_the_ID(), 'lsx-thumbnail-wide' ) . '">';
-			$field = str_replace( '</p>', $image . '</p>', $field );
+			$image = '<input type="file" class="input-text form-control" name="' . esc_attr( $args['id'] ) . '_upload" id="' . esc_attr( $args['id'] ) . '_upload" placeholder="" value="">';
+			if ( ! empty( $value ) && '' !== $value ) {
+				$temp_image = wp_get_attachment_image_src( $value, 'lsx-thumbnail-wide' );
+				$image_src  = ( strpos( $image[0], 'cover-logo.png' ) === false ) ? $temp_image[0] : '';
+				if ( '' !== $image_src ) {
+					$image .= '<img src="' . $image_src . '">';
+				}
+				$image .= '<span><i class="fa fa-cross"></i> ' . __( 'Remove image', 'lsx-business-directory' ) . '</span>';
+			}
+			$field = str_replace( '</span>', $image . '</span>', $field );
 		}
 		return $field;
 	}
