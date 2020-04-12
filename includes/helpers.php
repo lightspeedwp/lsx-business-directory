@@ -99,9 +99,6 @@ function get_listing_form_field_values( $sections = array(), $listing_id = false
 		$post_data = array();
 	} else {
 		$post_data = $_POST;
-		print_r('<pre>');
-		print_r($_FILES);
-		print_r('</pre>');
 	}
 
 	if ( ! empty( $sections ) ) {

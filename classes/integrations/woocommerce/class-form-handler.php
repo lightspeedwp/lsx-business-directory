@@ -270,17 +270,21 @@ class Form_Handler {
 
 		if ( ! empty( $_FILES ) ) {
 			foreach ( $_FILES as $file_key => $file_array ) {
-
 				if ( ! empty( $file_array ) && isset( $file_array['error'] ) && 0 === (int) $file_array['error'] ) {
 					$att_id = media_handle_sideload( $file_array, $this->listing_id );
 					if ( false !== $att_id && '' !== $att_id ) {
 						$meta_key = str_replace( '_upload', '', $file_key );
+						if ( 'lsx_bd__thumbnail_id' === $meta_key ) {
+							$meta_key = str_replace( 'lsx_bd_', '', $meta_key );
+						}
 						$previous_val = get_post_meta( $this->listing_id, $meta_key, true );
 						update_post_meta( $this->listing_id, $meta_key, $att_id, $previous_val );
 
-						$meta_key = str_replace( '_id', '', $meta_key );
-						$previous_val = get_post_meta( $this->listing_id, $meta_key, true );
-						update_post_meta( $this->listing_id, $meta_key, get_permalink( $att_id ), $previous_val );
+						if ( '_thumbnail_id' !== $meta_key ) {
+							$meta_key     = str_replace( '_id', '', $meta_key );
+							$previous_val = get_post_meta( $this->listing_id, $meta_key, true );
+							update_post_meta( $this->listing_id, $meta_key, get_permalink( $att_id ), $previous_val );
+						}
 					}
 				}
 			}
