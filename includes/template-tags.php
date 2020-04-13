@@ -213,7 +213,7 @@ function lsx_bd_industries_nav( $args = array() ) {
 		'taxonomy'       => 'industry',
 		'content_type'   => 'term',
 		'template'       => 'single-industry-nav',
-		'columns'        => 6,
+		'columns'        => -1,
 		'custom_css'     => 'lsx-bd-industries-nav',
 		'posts_per_page' => false,
 	);
