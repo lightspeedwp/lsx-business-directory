@@ -216,9 +216,12 @@ class Form_Handler {
 		}
 
 		if ( 'save_listing_details' === $this->action ) {
-			wc_add_notice( $this->post_array['post_title'] . ' ' . __( 'succesfully added.', 'lsx-business-directory' ) );	
+			wc_add_notice( $this->post_array['post_title'] . ' ' . __( 'succesfully added.', 'lsx-business-directory' ) );
+			$redirect = wc_get_endpoint_url( lsx_bd_get_option( 'translations_listings_endpoint', 'my-listings' ), '', wc_get_page_permalink( 'myaccount' ) );
 		} else {
-			wc_add_notice( $this->post_array['post_title'] . ' ' . __( 'succesfully edited.', 'lsx-business-directory' ) );
+			// translators:My Listtings account.
+			wc_add_notice( sprintf( __( 'Listing updated succesfully. Go back to <a href="%s">my listings</a>', 'lsx-business-directory' ), wc_get_endpoint_url( lsx_bd_get_option( 'translations_listings_endpoint', 'my-listings' ), '', wc_get_page_permalink( 'myaccount' ) ) ) );
+			$redirect = wc_get_endpoint_url( lsx_bd_get_option( 'translations_listings_edit_endpoint', 'edit-listing' ) . '/' . $this->listing_id . '/', '', wc_get_page_permalink( 'myaccount' ) );
 		}
 
 		do_action( 'lsx_bd_save_listing', $this->listing_id, $this );
@@ -227,7 +230,7 @@ class Form_Handler {
 		$this->save_tax();
 		$this->save_images();
 
-		wp_safe_redirect( wc_get_endpoint_url( 'listings', '', wc_get_page_permalink( 'myaccount' ) ) );
+		wp_safe_redirect( $redirect );
 		exit;
 	}
 
@@ -239,6 +242,9 @@ class Form_Handler {
 	public function save_listing() {
 		if ( 'save_listing_details' === $this->action && ( false === $this->listing_id || '' === $this->listing_id ) ) {
 			$this->listing_id = wp_insert_post( $this->post_array );
+		} else {
+			$this->post_array['ID'] = $this->listing_id;
+			wp_update_post( $this->post_array );
 		}
 	}
 
@@ -250,8 +256,8 @@ class Form_Handler {
 	public function save_meta() {
 		if ( false !== $this->listing_id ) {
 			foreach ( $this->meta_array as $meta_key => $meta_value ) {
-				$previous_value = get_post_meta( $this->listing_id, $meta_key, true );
-				update_post_meta( $this->listing_id, $meta_key, $meta_value, $previous_value );
+				delete_post_meta( $this->listing_id, 'lsx_bd_' . $meta_key );
+				add_post_meta( $this->listing_id, 'lsx_bd_' . $meta_key, $meta_value, true );
 			}
 		}
 	}

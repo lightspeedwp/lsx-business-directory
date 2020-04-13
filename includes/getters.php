@@ -583,7 +583,7 @@ function get_listing_form_fields() {
 					'class'    => array( 'listing-post-content form-row-wide' ),
 					'required' => true,
 				),
-				'lsx_bd_post_except' => array(
+				'lsx_bd_post_excerpt' => array(
 					'type'     => 'textarea',
 					'label'    => __( 'Excerpt', 'lsx-business-directory' ),
 					'class'    => array( 'listing-post-excerpt form-row-first' ),
