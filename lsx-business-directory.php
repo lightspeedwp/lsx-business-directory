@@ -22,7 +22,6 @@ define( 'LSX_BD_URL', plugin_dir_url( __FILE__ ) );
 define( 'LSX_BD_VER', '1.0.0' );
 
 /* ======================= Below is the Plugin Class init ========================= */
-
 require_once LSX_BD_PATH . '/classes/class-core.php';
 
 /**

@@ -38,7 +38,9 @@ body.single-business-directory article .entry-meta > * { display: block; }
 
 .single .business-directory .business-header .business-content-left.map-wrapper .map-loading { min-height: 230px; }
 
-.single .business-directory .business-header .business-content-left.map-wrapper .placeholder-text, .single .business-directory .business-header .business-content-left.map-wrapper .lsx-bd-map-placeholder { text-align: center; cursor: pointer; }
+.single .business-directory .business-header .business-content-left.map-wrapper .placeholder-text, .single .business-directory .business-header .business-content-left.map-wrapper .lsx-bd-map-placeholder { text-align: center; cursor: pointer; position: relative; }
+
+.single .business-directory .business-header .business-content-left.map-wrapper .placeholder-text .placeholder-text, .single .business-directory .business-header .business-content-left.map-wrapper .lsx-bd-map-placeholder .placeholder-text { position: absolute; left: 50%; margin-left: -50px; top: 50%; margin-top: -50px; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; height: 100px; width: 100px; text-align: center; }
 
 .single .business-directory .business-header .business-content-right { padding-left: 26px; }
 
@@ -329,6 +331,10 @@ body.archive.lsx-body-grid-layout .post-wrapper, body.search-results.lsx-body-gr
 @media (min-width: 768px) { .gutenberg-compatible-template.using-gutenberg .entry-content .lsx-business-directory-shortcode { width: 100%; max-width: 100%; } }
 
 .woocommerce-page #main .woocommerce-MyAccount-navigation ul li.woocommerce-MyAccount-navigation-link--listings a:before { content: '\f03a'; }
+
+.woocommerce-page #main .woocommerce-MyAccount-content .lsx-bd-my-account.listings .my-listings .btn { height: 40px; padding: 12px 40px; }
+
+.woocommerce-page #main .woocommerce-MyAccount-content .lsx-bd-my-account.listings .my-listings .btn.tertiary-border-btn { padding: 10px 40px; }
 
 .lsx-bd-my-account.listings .no-listings { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; -webkit-box-align: center; -ms-flex-align: center; align-items: center; text-align: center; padding: 52px; }
 
