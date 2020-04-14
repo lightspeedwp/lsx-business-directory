@@ -40,31 +40,29 @@ class Checkout {
 	 * Initiator
 	 */
 	public function init() {
-		if ( function_exists( 'WC' ) ) {
-			add_filter( 'woocommerce_cart_contents_changed', array( $this, 'maybe_clear_cart' ), 10, 1 );
+		if ( function_exists( 'WC' ) && 'on' === lsx_bd_get_option( 'woocommerce_enable_checkout_form', false ) ) {
+			add_filter( 'woocommerce_add_to_cart_validation', array( $this, 'maybe_clear_cart' ), 20, 6 );
 		}
 	}
 
 	/**
 	 * Checks to see if the current product is a listing product or service.
 	 *
-	 * @return void
+	 * @param boolean $passed
+	 * @param string $product_id
+	 * @param string $quantity
+	 * @return boolean
 	 */
-	public function maybe_clear_cart( $cart_contents = array() ) {
-		if ( ! empty( $cart_contents ) ) {
-			$new_contents = array();
-			foreach( $cart_contents as $key => $product_in_cart ) {
-				$product_id = $product_in_cart['data']->get_id();
-				$is_listing = get_post_meta( $product_id, '_lsx_bd_listing', true );
-				if ( 'yes' === $is_listing ) {
-					$new_contents[ $key ] = $product_in_cart;
-				}
+	public function maybe_clear_cart( $passed, $product_id, $quantity, $variation_id = false, $variations = array(), $cart_item_data = array() ) {
+		if ( ! WC()->cart->is_empty() ) {
+			if ( false !== $variation_id ) {
+				$product_id = $variation_id;
 			}
-
-			if ( ! empty( $new_contents ) ) {
-				$cart_contents = $new_contents;
+			$is_listing = get_post_meta( $product_id, '_lsx_bd_listing', true );
+			if ( 'yes' === $is_listing ) {
+				WC()->cart->empty_cart();
 			}
 		}
-		return $cart_contents;
+		return $passed;
 	}
 }

@@ -46,10 +46,12 @@ class Admin {
 	public function register_settings_woocommerce( $cmb ) {
 		$pages     = get_pages();
 		$all_pages = array(
-			'' => __( '', 'Select a page' ),
+			'' => __( 'Select a page', 'lsx-business-directory' ),
 		);
 		if ( ! empty( $pages ) ) {
-
+			foreach ( $pages as $page ) {
+				$all_pages[ $page->ID ] = $page->post_title;
+			}
 		}
 		$cmb->add_field(
 			array(
@@ -57,16 +59,25 @@ class Admin {
 				'type'        => 'title',
 				'name'        => __( 'WooCommerce', 'lsx-business-directory' ),
 				'default'     => __( 'WooCommerce', 'lsx-business-directory' ),
-				'description' => __( 'Configure you store to sell listings.', 'lsx-business-directory' ),
+				'description' => __( 'Configure your store to sell listings.', 'lsx-business-directory' ),
 			)
 		);
 		do_action( 'lsx_bd_settings_section_woocommerce', $cmb, 'top' );
 		$cmb->add_field(
 			array(
-				'name'        => esc_html__( 'Checkout form', 'lsx-business-directory' ),
-				'id'          => 'woocommerce_enable_checkout_listing_form',
+				'name'        => esc_html__( 'Enable Checkout Form', 'lsx-business-directory' ),
+				'id'          => 'woocommerce_enable_checkout_form',
 				'type'        => 'checkbox',
-				'description' => __( 'Allow users to create a listing before proceeding to checkout.', 'lsx-business-directory' ),
+				'description' => __( 'Allow customers to create a listing during checkout.', 'lsx-business-directory' ),
+			)
+		);
+		$cmb->add_field(
+			array(
+				'name'        => esc_html__( 'Checkout form', 'lsx-business-directory' ),
+				'id'          => 'woocommerce_checkout_form_id',
+				'type'        => 'select',
+				'options'     => $all_pages,
+				'description' => __( 'Select the page you have added the [lsx_bd_listing_form] shortcode to. The customer will be redirected here after their product is added the to cart.', 'lsx-business-directory' ),
 			)
 		);
 		do_action( 'lsx_bd_settings_section_woocommerce', $cmb, 'bottom' );
