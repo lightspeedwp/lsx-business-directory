@@ -39,6 +39,13 @@ class Woocommerce {
 	public $translations = null;
 
 	/**
+	 * Holds the My Account class
+	 *
+	 * @var      object \lsx\business_directory\classes\integrations\woocommerce\My_Account()
+	 */
+	public $my_account = null;
+
+	/**
 	 * Holds the array of WC query vars
 	 *
 	 * @var array()
@@ -50,7 +57,6 @@ class Woocommerce {
 	 */
 	public function __construct() {
 		$this->load_classes();
-		add_action( 'init', array( $this, 'init' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), 5 );
 	}
 
@@ -76,6 +82,9 @@ class Woocommerce {
 		require_once LSX_BD_PATH . '/classes/integrations/woocommerce/class-translations.php';
 		$this->translations = woocommerce\Translations::get_instance();
 
+		require_once LSX_BD_PATH . '/classes/integrations/woocommerce/class-my-account.php';
+		$this->my_account = woocommerce\My_Account::get_instance();
+
 		require_once LSX_BD_PATH . '/classes/integrations/woocommerce/class-form-handler.php';
 		$this->form_handler = woocommerce\Form_Handler::get_instance();
 
@@ -88,78 +97,9 @@ class Woocommerce {
 	 */
 	public function init() {
 		if ( function_exists( 'WC' ) ) {
-			$this->init_query_vars();
-			add_filter( 'woocommerce_get_query_vars', array( $this, 'add_query_vars' ) );
-			add_filter( 'woocommerce_account_menu_items', array( $this, 'register_my_account_tabs' ) );
-			add_action( 'woocommerce_account_listings_endpoint', array( $this, 'endpoint_content' ) );
-			add_action( 'woocommerce_account_add-listing_endpoint', array( $this, 'endpoint_content' ) );
-			add_action( 'woocommerce_account_edit-listing_endpoint', array( $this, 'endpoint_content' ) );
-			add_filter( 'woocommerce_account_menu_item_classes', array( $this, 'menu_item_classes' ), 10, 2 );
 			add_filter( 'woocommerce_form_field_text', array( $this, 'replace_image_field' ), 10, 4 );
 			add_filter( 'woocommerce_form_field_text', array( $this, 'replace_image_id_field' ), 10, 4 );
 		}
-	}
-
-	/**
-	 * Init query vars by loading options.
-	 *
-	 * @since 2.0
-	 */
-	public function init_query_vars() {
-		$this->query_vars = array(
-			'listings'     => lsx_bd_get_option( 'translations_listings_endpoint', 'listings' ),
-			'add-listing'  => lsx_bd_get_option( 'translations_listings_add_endpoint', 'add-listing' ),
-			'edit-listing' => lsx_bd_get_option( 'translations_listings_edit_endpoint', 'edit-listing' ),
-		);
-	}
-
-	/**
-	 * Hooks into `woocommerce_get_query_vars` to make sure query vars defined in
-	 * this class are also considered `WC_Query` query vars.
-	 *
-	 * @param  array $query_vars
-	 * @return array
-	 */
-	public function add_query_vars( $query_vars ) {
-		return array_merge( $query_vars, $this->query_vars );
-	}
-
-	/**
-	 * Registers the My Listing My account tab
-	 *
-	 * @param  array $menu_links
-	 * @return void
-	 */
-	public function register_my_account_tabs( $menu_links ) {
-		$new_links  = array(
-			lsx_bd_get_option( 'translations_listings_endpoint', 'listings' ) => __( 'Listings', 'lsx-business-directory' ),
-		);
-		$menu_links = array_slice( $menu_links, 0, 1, true ) + $new_links + array_slice( $menu_links, 1, null, true );
-		return $menu_links;
-	}
-
-	/**
-	 * Highlight the listings menu item if you are adding or editing a listing.
-	 *
-	 * @param  array $classes
-	 * @param  string $endpoint
-	 * @return array
-	 */
-	public function menu_item_classes( $classes, $endpoint ) {
-		global $wp;
-		if ( lsx_bd_get_option( 'translations_listings_endpoint', 'listings' ) === $endpoint && ( isset( $wp->query_vars['add-listing'] ) || isset( $wp->query_vars['edit-listing'] ) ) ) {
-			$classes[] = 'is-active';
-		}
-		return $classes;
-	}
-
-	/**
-	 * Gets the endpoint content
-	 *
-	 * @return void
-	 */
-	public function endpoint_content() {
-		lsx_business_template( 'woocommerce/listings' );
 	}
 
 	/**
