@@ -25,13 +25,6 @@ class Woocommerce {
 	public $form_handler = null;
 
 	/**
-	 * Holds the form handler class
-	 *
-	 * @var      object \lsx\business_directory\classes\integrations\woocommerce\Subscriptions()
-	 */
-	public $subscriptions = null;
-
-	/**
 	 * Holds the Translations class
 	 *
 	 * @var      object \lsx\business_directory\classes\integrations\woocommerce\Translations()
@@ -44,6 +37,20 @@ class Woocommerce {
 	 * @var      object \lsx\business_directory\classes\integrations\woocommerce\My_Account()
 	 */
 	public $my_account = null;
+
+	/**
+	 * Holds the subscriptions class
+	 *
+	 * @var      object \lsx\business_directory\classes\integrations\woocommerce\Subscriptions()
+	 */
+	public $subscriptions = null;
+
+	/**
+	 * Holds the Edit Subscriptions class
+	 *
+	 * @var      object \lsx\business_directory\classes\integrations\woocommerce\Subscriptions_Edit()
+	 */
+	public $subscriptions_edit = null;
 
 	/**
 	 * Holds the array of WC query vars
@@ -90,6 +97,9 @@ class Woocommerce {
 
 		require_once LSX_BD_PATH . '/classes/integrations/woocommerce/class-subscriptions.php';
 		$this->subscriptions = woocommerce\Subscriptions::get_instance();
+
+		require_once LSX_BD_PATH . '/classes/integrations/woocommerce/class-subscriptions-edit.php';
+		$this->subscriptions_edit = woocommerce\Subscriptions_Edit::get_instance();
 	}
 
 	/**
