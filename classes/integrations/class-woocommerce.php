@@ -94,7 +94,6 @@ class Woocommerce {
 			add_action( 'woocommerce_account_listings_endpoint', array( $this, 'endpoint_content' ) );
 			add_action( 'woocommerce_account_add-listing_endpoint', array( $this, 'endpoint_content' ) );
 			add_action( 'woocommerce_account_edit-listing_endpoint', array( $this, 'endpoint_content' ) );
-			add_action( 'lsx_bd_settings_section_translations', array( $this, 'register_translations' ), 10, 2 );
 			add_filter( 'woocommerce_account_menu_item_classes', array( $this, 'menu_item_classes' ), 10, 2 );
 			add_filter( 'woocommerce_form_field_text', array( $this, 'replace_image_field' ), 10, 4 );
 			add_filter( 'woocommerce_form_field_text', array( $this, 'replace_image_id_field' ), 10, 4 );
@@ -161,44 +160,6 @@ class Woocommerce {
 	 */
 	public function endpoint_content() {
 		lsx_business_template( 'woocommerce/listings' );
-	}
-
-	/**
-	 * Configure Business Directory custom fields for the Settings page Translations section.
-	 *
-	 * @param object $cmb new_cmb2_box().
-	 * @return void
-	 */
-	public function register_translations( $cmb, $place ) {
-		if ( 'bottom' === $place ) {
-			$cmb->add_field(
-				array(
-					'name'    => esc_html__( 'Listings Endpoint', 'lsx-business-directory' ),
-					'id'      => 'translations_listings_endpoint',
-					'type'    => 'text',
-					'default' => 'listings',
-					'desc'    => __( 'This is the endpoint for the My Account "Listings" page.', 'lsx-business-directory' ),
-				)
-			);
-			$cmb->add_field(
-				array(
-					'name'    => esc_html__( 'Add Listing Endpoint', 'lsx-business-directory' ),
-					'id'      => 'translations_listings_add_endpoint',
-					'type'    => 'text',
-					'default' => 'add-listing',
-					'desc'    => __( 'This is the endpoint for the My Account "Add Listing" page.', 'lsx-business-directory' ),
-				)
-			);
-			$cmb->add_field(
-				array(
-					'name'    => esc_html__( 'Edit Listing Endpoint', 'lsx-business-directory' ),
-					'id'      => 'translations_listings_edit_endpoint',
-					'type'    => 'text',
-					'default' => 'edit-listing',
-					'desc'    => __( 'This is the endpoint for the My Account "Edit Listing" page.', 'lsx-business-directory' ),
-				)
-			);
-		}
 	}
 
 	/**
