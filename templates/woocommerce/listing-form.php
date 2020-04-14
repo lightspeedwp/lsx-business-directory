@@ -2,7 +2,6 @@
 /**
  * Listing form
  */
-
 defined( 'ABSPATH' ) || exit;
 
 do_action( 'lsx_bd_before_listing_form' ); ?>

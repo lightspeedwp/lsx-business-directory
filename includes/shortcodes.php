@@ -76,3 +76,17 @@ function industries_nav( $atts = array() ) {
 	return $content;
 }
 add_shortcode( 'lsx_bd_industries_nav', '\lsx\business_directory\includes\industries_nav' );
+
+/**
+ * Returns the add listing form
+ *
+ * @param array $atts The shortcode atts.
+ * @return html
+ */
+function listing_form( $atts = array() ) {
+	ob_start();
+	lsx_business_template( 'woocommerce/listing-form' );
+	$content = ob_get_clean();
+	return $content;
+}
+add_shortcode( 'lsx_bd_listing_form', '\lsx\business_directory\includes\listing_form' );
