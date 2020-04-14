@@ -1091,12 +1091,144 @@ msgstr ""
 msgid "You have no forms available"
 msgstr ""
 
-#: includes/template-tags.php:286, includes/template-tags.php:370, classes/setup/class-business-directory.php:161, classes/setup/class-business-directory.php:162
+#: includes/getters.php:377
+msgid "Listing Title"
+msgstr ""
+
+#: includes/getters.php:381
+msgid "Company Name"
+msgstr ""
+
+#: includes/getters.php:388
+msgid "Contact Information"
+msgstr ""
+
+#: includes/getters.php:392, classes/setup/class-business-directory.php:400
+msgid "Contact Person"
+msgstr ""
+
+#: includes/getters.php:398
+msgid "Fax Number"
+msgstr ""
+
+#: includes/getters.php:405, templates/single-business-directory.php:117, classes/setup/class-business-directory.php:449
+msgid "Website"
+msgstr ""
+
+#: includes/getters.php:411
+msgid "Email Address (shown on the listing)"
+msgstr ""
+
+#: includes/getters.php:418
+msgid "Phone Number"
+msgstr ""
+
+#: includes/getters.php:425
+msgid "Email Address (contact form recipient)"
+msgstr ""
+
+#: includes/getters.php:432, classes/setup/class-business-directory.php:457
+msgid "Skype Username"
+msgstr ""
+
+#: includes/getters.php:438
+msgid "Whatsapp Contact Number"
+msgstr ""
+
+#: includes/getters.php:446
+msgid "Social Media Accounts"
+msgstr ""
+
+#: includes/getters.php:450, classes/setup/class-business-directory.php:473
+msgid "Facebook"
+msgstr ""
+
+#: includes/getters.php:456, classes/setup/class-business-directory.php:482
+msgid "Twitter"
+msgstr ""
+
+#: includes/getters.php:462, classes/setup/class-business-directory.php:491
+msgid "LinkedIn"
+msgstr ""
+
+#: includes/getters.php:468, classes/setup/class-business-directory.php:500
+msgid "Instagram"
+msgstr ""
+
+#: includes/getters.php:474, classes/setup/class-business-directory.php:509
+msgid "Youtube"
+msgstr ""
+
+#: includes/getters.php:480, classes/setup/class-business-directory.php:518
+msgid "Pinterest"
+msgstr ""
+
+#: includes/getters.php:487
+msgid "Physical Address"
+msgstr ""
+
+#: includes/getters.php:491
+msgid "Street / Apartment #"
+msgstr ""
+
+#: includes/getters.php:497
+msgid "Street Address"
+msgstr ""
+
+#: includes/getters.php:503, classes/setup/class-business-directory.php:265
+msgid "Suburb"
+msgstr ""
+
+#: includes/getters.php:509
+msgid "Town / City"
+msgstr ""
+
+#: includes/getters.php:515, classes/setup/class-business-directory.php:281
+msgid "Postal Code"
+msgstr ""
+
+#: includes/getters.php:522, classes/setup/class-business-directory.php:289
+msgid "Country"
+msgstr ""
+
+#: includes/getters.php:529
+msgid "Province"
+msgstr ""
+
+#: includes/getters.php:536
+msgid "Branding"
+msgstr ""
+
+#: includes/getters.php:540, includes/getters.php:551
+msgid "Company Logo"
+msgstr ""
+
+#: includes/getters.php:546, includes/getters.php:557
+msgid "Banner Image"
+msgstr ""
+
+#: includes/getters.php:564
+msgid "Company Information"
+msgstr ""
+
+#: includes/getters.php:568, includes/template-tags.php:286, includes/template-tags.php:370, classes/setup/class-business-directory.php:161, classes/setup/class-business-directory.php:162
 msgid "Industry"
 msgstr ""
 
-#: includes/template-tags.php:300, includes/template-tags.php:381, classes/setup/class-business-directory.php:194, classes/setup/class-business-directory.php:195
+#: includes/getters.php:575, includes/template-tags.php:300, includes/template-tags.php:381, classes/setup/class-business-directory.php:194, classes/setup/class-business-directory.php:195
 msgid "Location"
+msgstr ""
+
+#: includes/getters.php:582
+msgid "Description"
+msgstr ""
+
+#: includes/getters.php:588
+msgid "Excerpt"
+msgstr ""
+
+#: includes/getters.php:628
+msgid "Select"
 msgstr ""
 
 #: includes/template-tags.php:412
@@ -1113,10 +1245,6 @@ msgstr ""
 
 #: templates/single-business-directory.php:103, templates/single-business-directory.php:152, classes/frontend/class-enquiry.php:87
 msgid "Contact"
-msgstr ""
-
-#: templates/single-business-directory.php:117, classes/setup/class-business-directory.php:457
-msgid "Website"
 msgstr ""
 
 #: templates/single-business-directory.php:124
@@ -1259,7 +1387,7 @@ msgstr ""
 msgid "Search Results for: "
 msgstr ""
 
-#: classes/frontend/class-google-maps.php:119
+#: classes/frontend/class-google-maps.php:118
 msgid "View map"
 msgstr ""
 
@@ -1339,6 +1467,38 @@ msgstr ""
 msgid "Choose your filters above, these will display on the page. Edit your FacetWP Facets to change the display of each of them."
 msgstr ""
 
+#: classes/integrations/class-woocommerce.php:109, classes/setup/class-business-directory.php:122
+msgid "Listings"
+msgstr ""
+
+#: classes/integrations/class-woocommerce.php:149
+msgid "Listings Endpoint"
+msgstr ""
+
+#: classes/integrations/class-woocommerce.php:153
+msgid "This is the endpoint for the My Account \"Listings\" page."
+msgstr ""
+
+#: classes/integrations/class-woocommerce.php:158
+msgid "Add Listing Endpoint"
+msgstr ""
+
+#: classes/integrations/class-woocommerce.php:162
+msgid "This is the endpoint for the My Account \"Add Listing\" page."
+msgstr ""
+
+#: classes/integrations/class-woocommerce.php:167
+msgid "Edit Listing Endpoint"
+msgstr ""
+
+#: classes/integrations/class-woocommerce.php:171
+msgid "This is the endpoint for the My Account \"Edit Listing\" page."
+msgstr ""
+
+#: classes/integrations/class-woocommerce.php:215, classes/integrations/class-woocommerce.php:218
+msgid "Remove image"
+msgstr ""
+
 #: classes/setup/class-business-directory.php:110
 msgctxt "post type general name"
 msgid "Listings"
@@ -1383,10 +1543,6 @@ msgstr ""
 
 #: classes/setup/class-business-directory.php:120
 msgid "No listings in the trash"
-msgstr ""
-
-#: classes/setup/class-business-directory.php:122
-msgid "Listings"
 msgstr ""
 
 #: classes/setup/class-business-directory.php:163
@@ -1457,158 +1613,149 @@ msgstr ""
 msgid "Business Address"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:249, classes/setup/class-business-directory.php:257
+#: classes/setup/class-business-directory.php:249
 msgid "Complex Name / Business Park / Street Number"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:265
+#: classes/setup/class-business-directory.php:257
 msgid "Street Name"
 msgstr ""
 
 #: classes/setup/class-business-directory.php:273
-msgid "Suburb"
-msgstr ""
-
-#: classes/setup/class-business-directory.php:281
 msgid "City"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:289
-msgid "Postal Code"
-msgstr ""
-
-#: classes/setup/class-business-directory.php:297
-msgid "Country"
-msgstr ""
-
-#: classes/setup/class-business-directory.php:307
+#: classes/setup/class-business-directory.php:299
 msgid "State / Province"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:323
+#: classes/setup/class-business-directory.php:315
 msgid "Business Branches"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:334
+#: classes/setup/class-business-directory.php:326
 msgid "Branch {#}"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:335
+#: classes/setup/class-business-directory.php:327
 msgid "Add Another Branch"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:336
+#: classes/setup/class-business-directory.php:328
 msgid "Remove Branch"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:339
+#: classes/setup/class-business-directory.php:331
 msgid "Are you sure you want to remove thie Branch?"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:348
+#: classes/setup/class-business-directory.php:340
 msgid "Branch Name"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:357
+#: classes/setup/class-business-directory.php:349
 msgid "Branch Telephone"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:366
+#: classes/setup/class-business-directory.php:358
 msgid "Branch Email"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:375
+#: classes/setup/class-business-directory.php:367
 msgid "Branch Website"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:385
+#: classes/setup/class-business-directory.php:377
 msgid "Branch Google Maps Search"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:401
+#: classes/setup/class-business-directory.php:393
 msgid "Business Contact Details"
 msgstr ""
 
 #: classes/setup/class-business-directory.php:408
-msgid "Contact Person"
-msgstr ""
-
-#: classes/setup/class-business-directory.php:416
 msgid "Primary Email"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:418
+#: classes/setup/class-business-directory.php:410
 msgid "This is the email address that the enquiry form will send to."
 msgstr ""
 
-#: classes/setup/class-business-directory.php:425
+#: classes/setup/class-business-directory.php:417
 msgid "Secondary Email"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:433
+#: classes/setup/class-business-directory.php:425
 msgid "Primary Phone"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:441
+#: classes/setup/class-business-directory.php:433
 msgid "Secondary Phone"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:449
+#: classes/setup/class-business-directory.php:441
 msgid "Fax"
 msgstr ""
 
 #: classes/setup/class-business-directory.php:465
-msgid "Skype Username"
-msgstr ""
-
-#: classes/setup/class-business-directory.php:473
 msgid "Whatsapp Number"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:481
-msgid "Facebook"
-msgstr ""
-
-#: classes/setup/class-business-directory.php:482
+#: classes/setup/class-business-directory.php:474
 msgid "Add your Facebook profile URL."
 msgstr ""
 
-#: classes/setup/class-business-directory.php:490
-msgid "Twitter"
-msgstr ""
-
-#: classes/setup/class-business-directory.php:492
+#: classes/setup/class-business-directory.php:484
 msgid "Add your Twitter profile URL."
 msgstr ""
 
-#: classes/setup/class-business-directory.php:499
-msgid "LinkedIn"
-msgstr ""
-
-#: classes/setup/class-business-directory.php:501
+#: classes/setup/class-business-directory.php:493
 msgid "Add your LinkedIn profile URL."
 msgstr ""
 
-#: classes/setup/class-business-directory.php:508
-msgid "Instagram"
-msgstr ""
-
-#: classes/setup/class-business-directory.php:510
+#: classes/setup/class-business-directory.php:502
 msgid "Add your Instagram profile URL."
 msgstr ""
 
-#: classes/setup/class-business-directory.php:517
-msgid "Youtube"
-msgstr ""
-
-#: classes/setup/class-business-directory.php:519
+#: classes/setup/class-business-directory.php:511
 msgid "Add your Youtube profile or channel URL."
 msgstr ""
 
-#: classes/setup/class-business-directory.php:526
-msgid "Pinterest"
+#: classes/setup/class-business-directory.php:520
+msgid "Add your Pinterest profile URL or any board you would like to highlight."
 msgstr ""
 
-#: classes/setup/class-business-directory.php:528
-msgid "Add your Pinterest profile URL or any board you would like to highlight."
+#: templates/woocommerce/listing-form.php:56, templates/woocommerce/listing-form.php:56
+msgid "Save"
+msgstr ""
+
+#: classes/integrations/woocommerce/class-form-handler.php:150
+msgid "%s is a required field."
+msgstr ""
+
+#: classes/integrations/woocommerce/class-form-handler.php:166
+msgid "Please enter a valid Eircode."
+msgstr ""
+
+#: classes/integrations/woocommerce/class-form-handler.php:169
+msgid "Please enter a valid postcode / ZIP."
+msgstr ""
+
+#. translators: %s: Phone number.
+#: classes/integrations/woocommerce/class-form-handler.php:177
+msgid "%s is not a valid phone number."
+msgstr ""
+
+#. translators: %s: Email address.
+#: classes/integrations/woocommerce/class-form-handler.php:185
+msgid "%s is not a valid email address."
+msgstr ""
+
+#: classes/integrations/woocommerce/class-form-handler.php:219
+msgid "succesfully added."
+msgstr ""
+
+#. translators:My Listtings account.
+#: classes/integrations/woocommerce/class-form-handler.php:223
+msgid "Listing updated succesfully. Go back to <a href=\"%s\">my listings</a>"
 msgstr ""
