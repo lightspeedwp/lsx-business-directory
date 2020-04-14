@@ -25,6 +25,20 @@ class Woocommerce {
 	public $form_handler = null;
 
 	/**
+	 * Holds the form handler class
+	 *
+	 * @var      object \lsx\business_directory\classes\integrations\woocommerce\Subscriptions()
+	 */
+	public $subscriptions = null;
+
+	/**
+	 * Holds the Translations class
+	 *
+	 * @var      object \lsx\business_directory\classes\integrations\woocommerce\Translations()
+	 */
+	public $translations = null;
+
+	/**
 	 * Holds the array of WC query vars
 	 *
 	 * @var array()
@@ -35,10 +49,9 @@ class Woocommerce {
 	 * Contructor
 	 */
 	public function __construct() {
+		$this->load_classes();
 		add_action( 'init', array( $this, 'init' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), 5 );
-		require_once LSX_BD_PATH . '/classes/integrations/woocommerce/class-form-handler.php';
-		$this->form_handler = woocommerce\Form_Handler::get_instance();
 	}
 
 	/**
@@ -54,6 +67,20 @@ class Woocommerce {
 			self::$instance = new self();
 		}
 		return self::$instance;
+	}
+
+	/**
+	 * Loads the variable classes and the static classes.
+	 */
+	private function load_classes() {
+		require_once LSX_BD_PATH . '/classes/integrations/woocommerce/class-translations.php';
+		$this->translations = woocommerce\Translations::get_instance();
+
+		require_once LSX_BD_PATH . '/classes/integrations/woocommerce/class-form-handler.php';
+		$this->form_handler = woocommerce\Form_Handler::get_instance();
+
+		require_once LSX_BD_PATH . '/classes/integrations/woocommerce/class-subscriptions.php';
+		$this->subscriptions = woocommerce\Subscriptions::get_instance();
 	}
 
 	/**
