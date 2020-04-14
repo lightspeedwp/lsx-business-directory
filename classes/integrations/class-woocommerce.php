@@ -18,18 +18,18 @@ class Woocommerce {
 	protected static $instance = null;
 
 	/**
+	 * Holds the Admin class
+	 *
+	 * @var      object \lsx\business_directory\classes\integrations\woocommerce\Admin()
+	 */
+	public $admin = null;
+
+	/**
 	 * Holds the form handler class
 	 *
 	 * @var      object \lsx\business_directory\classes\integrations\woocommerce\Form_Handler()
 	 */
 	public $form_handler = null;
-
-	/**
-	 * Holds the Translations class
-	 *
-	 * @var      object \lsx\business_directory\classes\integrations\woocommerce\Translations()
-	 */
-	public $translations = null;
 
 	/**
 	 * Holds the My Account class
@@ -93,8 +93,8 @@ class Woocommerce {
 	 * Loads the variable classes and the static classes.
 	 */
 	private function load_classes() {
-		require_once LSX_BD_PATH . '/classes/integrations/woocommerce/class-translations.php';
-		$this->translations = woocommerce\Translations::get_instance();
+		require_once LSX_BD_PATH . '/classes/integrations/woocommerce/class-admin.php';
+		$this->admin = woocommerce\Admin::get_instance();
 
 		require_once LSX_BD_PATH . '/classes/integrations/woocommerce/class-my-account.php';
 		$this->my_account = woocommerce\My_Account::get_instance();
