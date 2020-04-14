@@ -53,6 +53,13 @@ class Woocommerce {
 	public $subscriptions_edit = null;
 
 	/**
+	 * Holds the Checkout class
+	 *
+	 * @var      object \lsx\business_directory\classes\integrations\woocommerce\Checkout()
+	 */
+	public $checkout = null;
+
+	/**
 	 * Holds the array of WC query vars
 	 *
 	 * @var array()
@@ -100,6 +107,9 @@ class Woocommerce {
 
 		require_once LSX_BD_PATH . '/classes/integrations/woocommerce/class-subscriptions-edit.php';
 		$this->subscriptions_edit = woocommerce\Subscriptions_Edit::get_instance();
+
+		require_once LSX_BD_PATH . '/classes/integrations/woocommerce/class-checkout.php';
+		$this->checkout = woocommerce\Checkout::get_instance();
 	}
 
 	/**
