@@ -215,20 +215,25 @@ class Form_Handler {
 			return;
 		}
 
-		if ( 'save_listing_details' === $this->action ) {
-			wc_add_notice( $this->post_array['post_title'] . ' ' . __( 'succesfully added.', 'lsx-business-directory' ) );
-			$redirect = wc_get_endpoint_url( lsx_bd_get_option( 'translations_listings_endpoint', 'my-listings' ), '', wc_get_page_permalink( 'myaccount' ) );
-		} else {
-			// translators:My Listtings account.
-			wc_add_notice( sprintf( __( 'Listing updated succesfully. Go back to <a href="%s">my listings</a>', 'lsx-business-directory' ), wc_get_endpoint_url( lsx_bd_get_option( 'translations_listings_endpoint', 'my-listings' ), '', wc_get_page_permalink( 'myaccount' ) ) ) );
-			$redirect = wc_get_endpoint_url( lsx_bd_get_option( 'translations_listings_edit_endpoint', 'edit-listing' ) . '/' . $this->listing_id . '/', '', wc_get_page_permalink( 'myaccount' ) );
-		}
-
 		do_action( 'lsx_bd_save_listing', $this->listing_id, $this );
-		$this->save_listing();
-		$this->save_meta();
-		$this->save_tax();
-		$this->save_images();
+		if ( isset( $_POST['lsx_bd_plan_id'] ) && '' !== $_POST['lsx_bd_plan_id'] ) {
+			$this->save_to_cart();
+			$redirect = wc_get_page_permalink( 'checkout' );
+		} else {
+			if ( 'save_listing_details' === $this->action ) {
+				wc_add_notice( $this->post_array['post_title'] . ' ' . __( 'succesfully added.', 'lsx-business-directory' ) );
+				$redirect = wc_get_endpoint_url( lsx_bd_get_option( 'translations_listings_endpoint', 'my-listings' ), '', wc_get_page_permalink( 'myaccount' ) );
+			} else {
+				// translators:My Listtings account.
+				wc_add_notice( sprintf( __( 'Listing updated succesfully. Go back to <a href="%s">my listings</a>', 'lsx-business-directory' ), wc_get_endpoint_url( lsx_bd_get_option( 'translations_listings_endpoint', 'my-listings' ), '', wc_get_page_permalink( 'myaccount' ) ) ) );
+				$redirect = wc_get_endpoint_url( lsx_bd_get_option( 'translations_listings_edit_endpoint', 'edit-listing' ) . '/' . $this->listing_id . '/', '', wc_get_page_permalink( 'myaccount' ) );
+			}
+
+			$this->save_listing();
+			$this->save_meta();
+			$this->save_tax();
+			$this->save_images();
+		}
 
 		wp_safe_redirect( $redirect );
 		exit;
@@ -323,5 +328,23 @@ class Form_Handler {
 				wp_set_object_terms( $this->listing_id, intval( $term['term_id'] ), $taxonomy, false );
 			}
 		}
+	}
+
+	/**
+	 * If this is the checkout process, then save the data to the cart to be used later.
+	 *
+	 * @return void
+	 */
+	public function save_to_cart() {
+		$cookie_data = array(
+			'post' => $this->post_array,
+			'meta' => $this->meta_array,
+			'tax'  => $this->tax_array,
+		);
+		$is_https = false;
+		if ( is_ssl() ) {
+			$is_https = true;
+		}
+		wc_setcookie( 'lsx_bd_add_listing', json_encode( $cookie_data ), 60 * 60, $is_https );
 	}
 }
