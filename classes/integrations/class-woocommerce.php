@@ -72,6 +72,7 @@ class Woocommerce {
 	public function __construct() {
 		$this->load_classes();
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), 5 );
+		add_action( 'init', array( $this, 'init' ) );
 	}
 
 	/**

@@ -53,8 +53,6 @@ class Checkout {
 	public function init() {
 		if ( function_exists( 'WC' ) && 'on' === lsx_bd_get_option( 'woocommerce_enable_checkout_form', false ) ) {
 			add_filter( 'woocommerce_add_to_cart_validation', array( $this, 'maybe_clear_cart' ), 20, 6 );
-			add_filter( 'woocommerce_add_to_cart_redirect', array( $this, 'redirect_to_listing_form' ), 200, 2 );
-			add_action( 'lsx_bd_listing_form_start', array( $this, 'add_product_selection_to_form' ) );
 		}
 	}
 
@@ -78,33 +76,5 @@ class Checkout {
 			}
 		}
 		return $passed;
-	}
-
-	/**
-	 * Redirects to the listing form.
-	 *
-	 * @param string $url
-	 * @param string $adding_to_cart
-	 * @return boolean
-	 */
-	public function redirect_to_listing_form( $url, $adding_to_cart ) {
-		if ( false !== $this->should_redirect ) {
-			$listing_form = lsx_bd_get_option( 'woocommerce_checkout_form_id', false );
-			if ( false !== $listing_form ) {
-				$url = get_permalink( $listing_form );
-			}
-		}
-		return $url;
-	}
-
-	/**
-	 * Redirects to the listing form.
-	 *
-	 * @param string $url
-	 * @param string $adding_to_cart
-	 * @return boolean
-	 */
-	public function add_product_selection_to_form() {
-		lsx_business_template( 'woocommerce/listing-form-options' );
 	}
 }
