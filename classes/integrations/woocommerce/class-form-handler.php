@@ -224,7 +224,7 @@ class Form_Handler {
 				wc_add_notice( $this->post_array['post_title'] . ' ' . __( 'succesfully added.', 'lsx-business-directory' ) );
 				$redirect = wc_get_endpoint_url( lsx_bd_get_option( 'translations_listings_endpoint', 'my-listings' ), '', wc_get_page_permalink( 'myaccount' ) );
 			} else {
-				// translators:My Listtings account.
+				/* translators: %s: my-account */
 				wc_add_notice( sprintf( __( 'Listing updated succesfully. Go back to <a href="%s">my listings</a>', 'lsx-business-directory' ), wc_get_endpoint_url( lsx_bd_get_option( 'translations_listings_endpoint', 'my-listings' ), '', wc_get_page_permalink( 'myaccount' ) ) ) );
 				$redirect = wc_get_endpoint_url( lsx_bd_get_option( 'translations_listings_edit_endpoint', 'edit-listing' ) . '/' . $this->listing_id . '/', '', wc_get_page_permalink( 'myaccount' ) );
 			}

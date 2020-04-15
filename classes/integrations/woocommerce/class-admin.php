@@ -71,6 +71,15 @@ class Admin {
 				'description' => __( 'Force customers to purchase a subscription before being able to add a listing.', 'lsx-business-directory' ),
 			)
 		);
+		$cmb->add_field(
+			array(
+				'name'        => esc_html__( 'Thank You Text', 'lsx-business-directory' ),
+				'id'          => 'woocommerce_thank_you_text',
+				'type'        => 'textarea',
+				'default'     => __( 'Head on over to your <a href="/my-account/">My Account</a> dashboard and add your listing.', 'lsx-business-directory' ),
+				'description' => __( 'Display a note to the customer after checkout. This is only shown if the order contained a "listing" product and has a status of "complete"', 'lsx-business-directory' ),
+			)
+		);
 		do_action( 'lsx_bd_settings_section_woocommerce', $cmb, 'bottom' );
 		$cmb->add_field(
 			array(
