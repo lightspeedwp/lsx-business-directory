@@ -346,11 +346,11 @@ body.archive.lsx-body-grid-layout .post-wrapper, body.search-results.lsx-body-gr
 
 #main .lsx-bd-my-account.listings .listing-form fieldset label { font-weight: 500; }
 
-#main .lsx-bd-my-account.listings .listing-form fieldset.listing-title-fieldset { padding-right: 0; padding-left: 0; margin-top: 0; }
+#main .lsx-bd-my-account.listings .listing-form fieldset:first-of-type { padding-right: 0; padding-left: 0; margin-top: 0; }
 
-#main .lsx-bd-my-account.listings .listing-form fieldset.listing-title-fieldset legend, #main .lsx-bd-my-account.listings .listing-form fieldset.listing-title-fieldset .form-row { padding-right: 3rem !important; padding-left: 3rem !important; }
+#main .lsx-bd-my-account.listings .listing-form fieldset:first-of-type legend, #main .lsx-bd-my-account.listings .listing-form fieldset:first-of-type .form-row { padding-right: 3rem !important; padding-left: 3rem !important; }
 
-#main .lsx-bd-my-account.listings .listing-form fieldset.listing-title-fieldset legend { text-transform: capitalize; font-weight: normal; background: #E6E6E6; padding-top: 2rem; padding-bottom: 2rem; font-family: Lora; font-size: 22px; color: #434343; }
+#main .lsx-bd-my-account.listings .listing-form fieldset:first-of-type legend { text-transform: capitalize; font-weight: normal; background: #E6E6E6; padding-top: 2rem; padding-bottom: 2rem; font-family: Lora; font-size: 22px; color: #434343; }
 
 #main .lsx-bd-my-account.listings .listing-form p button[type="submit"] { margin: 4rem 3rem 3rem; padding-right: 4rem; padding-left: 4rem; }
 
