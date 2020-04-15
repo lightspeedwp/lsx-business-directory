@@ -119,6 +119,7 @@ class Woocommerce {
 		if ( function_exists( 'WC' ) ) {
 			add_filter( 'woocommerce_form_field_text', array( $this, 'replace_image_field' ), 10, 4 );
 			add_filter( 'woocommerce_form_field_text', array( $this, 'replace_image_id_field' ), 10, 4 );
+			add_filter( 'woocommerce_product_data_store_cpt_get_products_query', array( $this, 'handle_listing_query_var' ), 10, 2 );
 		}
 	}
 
@@ -194,5 +195,20 @@ class Woocommerce {
 			'placeholder' => $placeholder,
 		);
 		wp_localize_script( 'lsx-bd-frontend-maps', 'lsx_bd_maps_params', $param_array );*/
+	}
+	/**
+	 * Handle a custom 'customvar' query var to get products with the 'customvar' meta.
+	 * @param array $query - Args for WP_Query.
+	 * @param array $query_vars - Query vars from WC_Product_Query.
+	 * @return array modified $query
+	 */
+	public function handle_listing_query_var( $query, $query_vars ) {
+		if ( ! empty( $query_vars['is_listing'] ) ) {
+			$query['meta_query'][] = array(
+				'key'   => '_lsx_bd_listing',
+				'value' => 'yes',
+			);
+		}
+		return $query;
 	}
 }
