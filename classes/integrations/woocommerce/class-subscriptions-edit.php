@@ -31,10 +31,11 @@ class Subscriptions_Edit {
 	 */
 	public function __construct() {
 		// Add in the checkboxes.
-		add_action( 'woocommerce_variation_options', array( $this, 'variation_settings_fields' ), 10, 3 );
+		//add_action( 'woocommerce_variation_options', array( $this, 'variation_settings_fields' ), 10, 3 );
 
 		// Save Custom Field Data.
 		add_action( 'woocommerce_process_product_meta', array( $this, 'save_product_meta' ), 30, 2 );
+		//add_action( 'woocommerce_save_product_variation', array( $this, 'save_product_meta' ), 30, 2 );
 
 		add_filter( 'product_type_options', array( $this, 'register_product_type' ), 10, 1 );
 	}
@@ -60,12 +61,13 @@ class Subscriptions_Edit {
 	 * @return array
 	 */
 	public function register_product_type( $filters = array() ) {
-		$filters['listing'] = array(
+		$filters['lsx_bd_listing'] = array(
 			'id'            => '_lsx_bd_listing',
 			'wrapper_class' => 'show_if_simple show_if_variable show_if_subscription',
 			'label'         => __( 'Listing', 'lsx-business-directory' ),
 			'description'   => __( 'Listing Products allows you to sell listings.', 'lsx-business-directory' ),
 			'default'       => 'no',
+			'value'         => get_post_meta( $_GET['post'], '_lsx_bd_listing', true ),
 		);
 		return $filters;
 	}
@@ -80,14 +82,17 @@ class Subscriptions_Edit {
 	 * @return bool
 	 */
 	public function save_product_meta( $post_id, $post ) {
-
 		if ( ! ( isset( $_POST['woocommerce_meta_nonce'] ) || wp_verify_nonce( sanitize_key( $_POST['woocommerce_meta_nonce'] ), 'woocommerce_save_data' ) ) ) {
 			return false;
 		}
 
 		// Checkbox.
 		$woocommerce_checkbox = isset( $_POST['_lsx_bd_listing'] ) ? 'yes' : 'no';
-		update_post_meta( $post_id, '_lsx_bd_listing', $woocommerce_checkbox );
+		if ( 'yes' === $woocommerce_checkbox ) {
+			add_post_meta( $post_id, '_lsx_bd_listing', $woocommerce_checkbox, true );
+		} else {
+			delete_post_meta( $post_id, '_lsx_bd_listing' );
+		}
 	}
 
 	/**
