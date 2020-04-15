@@ -51,7 +51,7 @@ class Checkout {
 	 * Initiator
 	 */
 	public function init() {
-		if ( function_exists( 'WC' ) && 'on' === lsx_bd_get_option( 'woocommerce_enable_checkout_form', false ) ) {
+		if ( function_exists( 'WC' ) && 'on' === lsx_bd_get_option( 'woocommerce_enable_checkout', false ) ) {
 			add_filter( 'woocommerce_add_to_cart_validation', array( $this, 'maybe_clear_cart' ), 20, 6 );
 		}
 	}
