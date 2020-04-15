@@ -7,6 +7,10 @@ defined( 'ABSPATH' ) || exit;
 $listing_args = array(
 	'is_listing' => 'yes',
 );
+$listing_product_id = '';
+if ( isset( $_POST['lsx_bd_plan_id'] ) ) { // phpcs:ignore
+	$listing_product_id = sanitize_text_field( $_POST['lsx_bd_plan_id'] ); // phpcs:ignore
+}
 $listing_products = wc_get_products( $listing_args );
 if ( ! empty( $listing_products ) ) {
 	$options = array();
@@ -36,7 +40,8 @@ if ( ! empty( $listing_products ) ) {
 		);
 		woocommerce_form_field(
 			'lsx_bd_plan_id',
-			$field_args
+			$field_args,
+			$listing_product_id
 		);
 		?>
 	</fieldset>
