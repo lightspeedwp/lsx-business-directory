@@ -105,9 +105,6 @@ class Checkout {
 	 * @return boolean
 	 */
 	public function add_product_selection_to_form() {
-		$listing_form = lsx_bd_get_option( 'woocommerce_checkout_form_id', false );
-		if ( WC()->cart->is_empty() ) {
-			lsx_business_template( 'woocommerce/listing-form-options' );
-		}
+		lsx_business_template( 'woocommerce/listing-form-options' );
 	}
 }

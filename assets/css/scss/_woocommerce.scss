@@ -51,3 +51,29 @@
 		}
 	}
 }
+
+.listing-form {
+	.form-row {
+		&.listing-options {
+			label {
+				width:100%;
+				display:block;
+			}
+			.woocommerce-input-wrapper {
+				input {
+					width:5%;
+					display:inline-block;
+					min-height: 10px;
+					height: auto;
+					border: none;
+					box-shadow: none;
+				}
+				label {
+					width: 94%;
+					display:inline-block;
+				}	
+			}
+		}
+	}
+}
+

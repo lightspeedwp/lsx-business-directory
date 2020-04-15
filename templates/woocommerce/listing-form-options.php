@@ -11,34 +11,38 @@ if ( false !== $listing_form && get_the_ID() === (int) $listing_form ) {
 	);
 	$listing_products = wc_get_products( $listing_args );
 	if ( ! empty( $listing_products ) ) {
-		foreach( $listing_products as $product ) {
-
+		$options = array();
+		foreach ( $listing_products as $product ) {
+			if ( $product->is_visible() ) {
+				if ( 'variable' === $product->get_type() ) {
+					$children = $product->get_visible_children();
+					foreach ( $children as $child ) {
+						$child                       = wc_get_product( $child );
+						$options[ $child->get_id() ] = get_the_title( $child->get_id() ) . ' - ' . $child->get_price_html();
+					}
+				} else {
+					$options[ $product->get_id() ] = $product->get_title() . ' - ' . $product->get_price_html();
+				}
+			}
 		}
+		?>
+		<fieldset class="listing-plan-fieldset">
+			<legend><?php esc_attr_e( 'Choose your plan', 'lsx-business-directory' ); ?></legend>
+			<?php
+			$field_args = array(
+				'type'     => 'radio',
+				'label'    => __( 'Available options', 'lsx-business-directory' ),
+				'class'    => array( 'listing-options form-row-wide' ),
+				'required' => true,
+				'options'  => $options,
+			);
+			woocommerce_form_field(
+				'lsx_bd_plan_id',
+				$field_args
+			);
+			?>
+		</fieldset>
+		<?php
 	}
 }
-
-?>
-<fieldset class="<?php echo esc_attr( $class ); ?>-fieldset">
-	<legend><?php echo esc_attr( $section_values['label'] ); ?></legend>
-	<?php
-	if ( ! empty( $section_values['fields'] ) ) {
-		foreach ( $section_values['fields'] as $field_key => $field_args ) {
-			// This adds the handle of the image field.
-			$field_args = wp_parse_args( $field_args, $defaults );
-			woocommerce_form_field(
-				$field_key,
-				$field_args,
-				$all_values[ $field_key ]
-			);
-			if ( false !== $listing_id && 'image' === $field_args['type'] ) {
-				?>
-				<p>
-					<img src="<?php echo esc_url( lsx_bd_get_thumbnail_wrapped( $listing_id, 'lsx-thumbnail-wide' ) ); ?>">
-				</p>
-				<?php
-			}s
-		}
-	}
-	?>
-</fieldset>
 ?>

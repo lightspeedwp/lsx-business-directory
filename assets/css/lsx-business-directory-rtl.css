@@ -341,3 +341,9 @@ body.archive.lsx-body-grid-layout .post-wrapper, body.search-results.lsx-body-gr
 .lsx-bd-my-account.listings .no-listings .fa-list { font-size: 37px; color: #919191; }
 
 .lsx-bd-my-account.listings .no-listings h3 { margin-top: 30px; margin-bottom: 30px; }
+
+.listing-form .form-row.listing-options label { width: 100%; display: block; }
+
+.listing-form .form-row.listing-options .woocommerce-input-wrapper input { width: 5%; display: inline-block; min-height: 10px; height: auto; border: none; -webkit-box-shadow: none; box-shadow: none; }
+
+.listing-form .form-row.listing-options .woocommerce-input-wrapper label { width: 94%; display: inline-block; }
