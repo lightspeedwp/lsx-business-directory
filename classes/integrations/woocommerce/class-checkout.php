@@ -30,7 +30,10 @@ class Checkout {
 	 * Contructor
 	 */
 	public function __construct() {
-		add_action( 'init', array( $this, 'init' ) );
+		if ( 'on' === lsx_bd_get_option( 'woocommerce_enable_checkout', false ) ) {
+			add_filter( 'woocommerce_add_to_cart_validation', array( $this, 'maybe_clear_cart' ), 20, 6 );
+			add_action( 'woocommerce_checkout_order_processed', array( $this, 'mark_order_as_listing' ), 20, 3 );
+		}
 	}
 
 	/**
@@ -46,14 +49,6 @@ class Checkout {
 			self::$instance = new self();
 		}
 		return self::$instance;
-	}
-	/**
-	 * Initiator
-	 */
-	public function init() {
-		if ( function_exists( 'WC' ) && 'on' === lsx_bd_get_option( 'woocommerce_enable_checkout', false ) ) {
-			add_filter( 'woocommerce_add_to_cart_validation', array( $this, 'maybe_clear_cart' ), 20, 6 );
-		}
 	}
 
 	/**
@@ -76,5 +71,28 @@ class Checkout {
 			}
 		}
 		return $passed;
+	}
+
+	/**
+	 * Saves the a custom field to the order for easy querying.
+	 *
+	 * @param int $order_id
+	 * @param array $posted_data
+	 * @param object $order WC_Order()
+	 * @return void
+	 */
+	public function mark_order_as_listing( $order_id, $posted_data, $order ) {
+		$order_items = $order->get_items();
+		if ( ! empty( $order_items ) ) {
+			foreach ( $order_items as $item_id => $item ) {
+				$product_id = $item->get_product_id();
+				if ( false !== $product_id && '' !== $product_id ) {
+					$is_listing = get_post_meta( $product_id, '_lsx_bd_listing', true );
+					if ( 'yes' === $is_listing ) {
+						add_post_meta( $order_id, '_lsx_bd_listing', 'yes', true );
+					}
+				}
+			}
+		}
 	}
 }
