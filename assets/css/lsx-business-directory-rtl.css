@@ -330,29 +330,29 @@ body.archive.lsx-body-grid-layout .post-wrapper, body.search-results.lsx-body-gr
 
 @media (min-width: 768px) { .gutenberg-compatible-template.using-gutenberg .entry-content .lsx-business-directory-shortcode { width: 100%; max-width: 100%; } }
 
-.woocommerce-page #main .woocommerce-MyAccount-navigation ul li.woocommerce-MyAccount-navigation-link--listings a:before { content: '\f03a'; }
+.woocommerce #main .woocommerce-MyAccount-navigation ul li.woocommerce-MyAccount-navigation-link--listings a:before { content: '\f03a'; }
 
-.woocommerce-page #main .woocommerce-MyAccount-content .lsx-bd-my-account.listings .my-listings .btn { height: 40px; padding: 12px 40px; }
+.woocommerce #main .lsx-bd-my-account.listings .my-listings .btn { height: 40px; padding: 12px 40px; }
 
-.woocommerce-page #main .woocommerce-MyAccount-content .lsx-bd-my-account.listings .my-listings .btn.tertiary-border-btn { padding: 10px 40px; }
+.woocommerce #main .lsx-bd-my-account.listings .my-listings .btn.tertiary-border-btn { padding: 10px 40px; }
 
-.woocommerce-page #main .woocommerce-MyAccount-content .lsx-bd-my-account.listings .listing-form { background: white; border: 1px solid #DDDDDD; border-radius: 6px; }
+.woocommerce #main .lsx-bd-my-account.listings .listing-form { background: white; border: 1px solid #DDDDDD; border-radius: 6px; text-align: right; }
 
-.woocommerce-page #main .woocommerce-MyAccount-content .lsx-bd-my-account.listings .listing-form fieldset { padding-right: 3rem; padding-left: 3rem; margin-top: 3rem; }
+.woocommerce #main .lsx-bd-my-account.listings .listing-form fieldset { padding-right: 3rem; padding-left: 3rem; margin-top: 3rem; }
 
-@media (max-width: 992px) { .woocommerce-page #main .woocommerce-MyAccount-content .lsx-bd-my-account.listings .listing-form fieldset .form-row { float: inherit; width: 100%; } }
+@media (max-width: 992px) { .woocommerce #main .lsx-bd-my-account.listings .listing-form fieldset .form-row { float: inherit; width: 100%; } }
 
-.woocommerce-page #main .woocommerce-MyAccount-content .lsx-bd-my-account.listings .listing-form fieldset legend { font-size: 18px; font-weight: bold; text-transform: uppercase; }
+.woocommerce #main .lsx-bd-my-account.listings .listing-form fieldset legend { font-size: 18px; font-weight: bold; text-transform: uppercase; }
 
-.woocommerce-page #main .woocommerce-MyAccount-content .lsx-bd-my-account.listings .listing-form fieldset label { font-weight: 500; }
+.woocommerce #main .lsx-bd-my-account.listings .listing-form fieldset label { font-weight: 500; }
 
-.woocommerce-page #main .woocommerce-MyAccount-content .lsx-bd-my-account.listings .listing-form fieldset.listing-title-fieldset { padding-right: 0; padding-left: 0; margin-top: 0; }
+.woocommerce #main .lsx-bd-my-account.listings .listing-form fieldset.listing-title-fieldset { padding-right: 0; padding-left: 0; margin-top: 0; }
 
-.woocommerce-page #main .woocommerce-MyAccount-content .lsx-bd-my-account.listings .listing-form fieldset.listing-title-fieldset legend, .woocommerce-page #main .woocommerce-MyAccount-content .lsx-bd-my-account.listings .listing-form fieldset.listing-title-fieldset .form-row { padding-right: 3rem !important; padding-left: 3rem !important; }
+.woocommerce #main .lsx-bd-my-account.listings .listing-form fieldset.listing-title-fieldset legend, .woocommerce #main .lsx-bd-my-account.listings .listing-form fieldset.listing-title-fieldset .form-row { padding-right: 3rem !important; padding-left: 3rem !important; }
 
-.woocommerce-page #main .woocommerce-MyAccount-content .lsx-bd-my-account.listings .listing-form fieldset.listing-title-fieldset legend { text-transform: capitalize; font-weight: normal; background: #E6E6E6; padding-top: 2rem; padding-bottom: 2rem; font-family: Lora; font-size: 22px; color: #434343; }
+.woocommerce #main .lsx-bd-my-account.listings .listing-form fieldset.listing-title-fieldset legend { text-transform: capitalize; font-weight: normal; background: #E6E6E6; padding-top: 2rem; padding-bottom: 2rem; font-family: Lora; font-size: 22px; color: #434343; }
 
-.woocommerce-page #main .woocommerce-MyAccount-content .lsx-bd-my-account.listings .listing-form p button[type="submit"] { margin: 4rem 3rem 3rem; padding-right: 4rem; padding-left: 4rem; }
+.woocommerce #main .lsx-bd-my-account.listings .listing-form p button[type="submit"] { margin: 4rem 3rem 3rem; padding-right: 4rem; padding-left: 4rem; }
 
 .lsx-bd-my-account.listings .no-listings { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; -webkit-box-align: center; -ms-flex-align: center; align-items: center; text-align: center; padding: 52px; }
 

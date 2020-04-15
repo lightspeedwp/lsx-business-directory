@@ -1,5 +1,5 @@
-// My Account - Listing Tab
-.woocommerce-page {
+// My Account - Listing Tab.
+.woocommerce {
 	#main {
 		.woocommerce-MyAccount-navigation {
 			ul {
@@ -14,65 +14,64 @@
 				}
 			}
 		}
-		.woocommerce-MyAccount-content {
-			.lsx-bd-my-account.listings {
-				.my-listings {
-					.btn {
-						height: 40px;
-						padding: 12px 40px;
-						&.tertiary-border-btn {
-							padding: 10px 40px;
+		.lsx-bd-my-account.listings {
+			.my-listings {
+				.btn {
+					height: 40px;
+					padding: 12px 40px;
+					&.tertiary-border-btn {
+						padding: 10px 40px;
+					}
+				}
+			}
+			.listing-form {
+				background: white;
+				border: 1px solid $separator_color;
+				border-radius: 6px;
+				text-align: left;
+				fieldset {
+					padding-left: 3rem;
+					padding-right: 3rem;
+					margin-top: 3rem;
+					.form-row {
+						@include media('<=tablet') {
+							float: inherit;
+							width: 100%;
+						}
+					}
+					legend {
+						font-size: 18px;
+						font-weight: bold;
+						text-transform: uppercase;
+					}
+					label {
+						font-weight: 500;
+					}
+					&.listing-title-fieldset {
+						padding-left: 0;
+						padding-right: 0;
+						margin-top: 0;
+						legend, .form-row {
+							padding-left: 3rem !important;
+							padding-right: 3rem !important;
+						}
+						legend {
+							text-transform: capitalize;
+							font-weight: normal;
+							background: #E6E6E6;
+							padding-top: 2rem;
+							padding-bottom: 2rem;
+							font-family: Lora;
+							font-size: 22px;
+							color: #434343;
 						}
 					}
 				}
-				.listing-form {
-					background: white;
-					border: 1px solid $separator_color;
-					border-radius: 6px;
-					fieldset {
-						padding-left: 3rem;
-						padding-right: 3rem;
-						margin-top: 3rem;
-						.form-row {
-							@include media('<=tablet') {
-								float: inherit;
-								width: 100%;
-							}
-						}
-						legend {
-							font-size: 18px;
-							font-weight: bold;
-							text-transform: uppercase;
-						}
-						label {
-							font-weight: 500;
-						}
-						&.listing-title-fieldset {
-							padding-left: 0;
-							padding-right: 0;
-							margin-top: 0;
-							legend, .form-row {
-								padding-left: 3rem !important;
-								padding-right: 3rem !important;
-							}
-							legend {
-								text-transform: capitalize;
-								font-weight: normal;
-								background: #E6E6E6;
-								padding-top: 2rem;
-								padding-bottom: 2rem;
-								font-family: Lora;
-								font-size: 22px;
-								color: #434343;
-							}
-						}
-					}
-					p {
-						button[type="submit"] {
-							margin: 4rem 3rem 3rem;
-							padding-left: 4rem;
-							padding-right: 4rem;
-						}
+				p {
+					button[type="submit"] {
+						margin: 4rem 3rem 3rem;
+						padding-left: 4rem;
+						padding-right: 4rem;
 					}
 				}
 			}
@@ -121,7 +120,7 @@
 				label {
 					width: 94%;
 					display:inline-block;
-				}	
+				}
 			}
 		}
 	}
