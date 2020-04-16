@@ -65,19 +65,19 @@ class Admin {
 		do_action( 'lsx_bd_settings_section_woocommerce', $cmb, 'top' );
 		$cmb->add_field(
 			array(
-				'name'        => esc_html__( 'Enable Checkout Form', 'lsx-business-directory' ),
-				'id'          => 'woocommerce_enable_checkout_form',
+				'name'        => esc_html__( 'Enable Paid Listings', 'lsx-business-directory' ),
+				'id'          => 'woocommerce_enable_checkout',
 				'type'        => 'checkbox',
-				'description' => __( 'Allow customers to create a listing during checkout.', 'lsx-business-directory' ),
+				'description' => __( 'Force customers to purchase a subscription before being able to add a listing.', 'lsx-business-directory' ),
 			)
 		);
 		$cmb->add_field(
 			array(
-				'name'        => esc_html__( 'Checkout form', 'lsx-business-directory' ),
-				'id'          => 'woocommerce_checkout_form_id',
-				'type'        => 'select',
-				'options'     => $all_pages,
-				'description' => __( 'Select the page you have added the [lsx_bd_listing_form] shortcode to. The customer will be redirected here after their product is added the to cart.', 'lsx-business-directory' ),
+				'name'        => esc_html__( 'Thank You Text', 'lsx-business-directory' ),
+				'id'          => 'woocommerce_thank_you_text',
+				'type'        => 'textarea',
+				'default'     => __( 'Head on over to your <a href="/my-account/">My Account</a> dashboard and add your listing.', 'lsx-business-directory' ),
+				'description' => __( 'Display a note to the customer after checkout. This is only shown if the order contained a "listing" product and has a status of "complete"', 'lsx-business-directory' ),
 			)
 		);
 		do_action( 'lsx_bd_settings_section_woocommerce', $cmb, 'bottom' );
