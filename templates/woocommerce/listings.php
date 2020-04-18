@@ -12,7 +12,7 @@
 			'post_status'    => array( 'publish', 'pending', 'draft' ),
 			'posts_per_page' => -1,
 			'nopagin'        => true,
-			'post_author'    => WC()->customer->get_id(),
+			'author'         => WC()->customer->get_id(),
 		);
 		$my_listings = new WP_Query( $args );
 		lsx_business_directory()->integrations->woocommerce->listings_query = $my_listings;

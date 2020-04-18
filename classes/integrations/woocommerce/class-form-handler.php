@@ -68,6 +68,13 @@ class Form_Handler {
 	public $tax_array = array();
 
 	/**
+	 * Holds the url to redirect to after processing the form.
+	 *
+	 * @var string
+	 */
+	public $redirect;
+
+	/**
 	 * Contructor
 	 */
 	public function __construct() {
@@ -216,26 +223,22 @@ class Form_Handler {
 		}
 
 		do_action( 'lsx_bd_save_listing', $this->listing_id, $this );
-		if ( isset( $_POST['lsx_bd_plan_id'] ) && '' !== $_POST['lsx_bd_plan_id'] ) {
-			$this->save_to_cart();
-			$redirect = wc_get_page_permalink( 'checkout' );
-		} else {
-			if ( 'save_listing_details' === $this->action ) {
-				wc_add_notice( $this->post_array['post_title'] . ' ' . __( 'succesfully added.', 'lsx-business-directory' ) );
-				$redirect = wc_get_endpoint_url( lsx_bd_get_option( 'translations_listings_endpoint', 'my-listings' ), '', wc_get_page_permalink( 'myaccount' ) );
-			} else {
-				/* translators: %s: my-account */
-				wc_add_notice( sprintf( __( 'Listing updated succesfully. Go back to <a href="%s">my listings</a>', 'lsx-business-directory' ), wc_get_endpoint_url( lsx_bd_get_option( 'translations_listings_endpoint', 'my-listings' ), '', wc_get_page_permalink( 'myaccount' ) ) ) );
-				$redirect = wc_get_endpoint_url( lsx_bd_get_option( 'translations_listings_edit_endpoint', 'edit-listing' ) . '/' . $this->listing_id . '/', '', wc_get_page_permalink( 'myaccount' ) );
-			}
 
-			$this->save_listing();
-			$this->save_meta();
-			$this->save_tax();
-			$this->save_images();
+		if ( 'save_listing_details' === $this->action ) {
+			wc_add_notice( $this->post_array['post_title'] . ' ' . __( 'succesfully added.', 'lsx-business-directory' ) );
+			$this->redirect = wc_get_endpoint_url( lsx_bd_get_option( 'translations_listings_endpoint', 'my-listings' ), '', wc_get_page_permalink( 'myaccount' ) );
+		} else {
+			/* translators: %s: my-account */
+			wc_add_notice( sprintf( __( 'Listing updated succesfully. Go back to <a href="%s">my listings</a>', 'lsx-business-directory' ), wc_get_endpoint_url( lsx_bd_get_option( 'translations_listings_endpoint', 'my-listings' ), '', wc_get_page_permalink( 'myaccount' ) ) ) );
+			$this->redirect = wc_get_endpoint_url( lsx_bd_get_option( 'translations_listings_edit_endpoint', 'edit-listing' ) . '/' . $this->listing_id . '/', '', wc_get_page_permalink( 'myaccount' ) );
 		}
 
-		wp_safe_redirect( $redirect );
+		$this->save_listing();
+		$this->save_meta();
+		$this->save_tax();
+		$this->save_images();
+
+		wp_safe_redirect( $this->redirect );
 		exit;
 	}
 
@@ -246,7 +249,17 @@ class Form_Handler {
 	 */
 	public function save_listing() {
 		if ( 'save_listing_details' === $this->action && ( false === $this->listing_id || '' === $this->listing_id ) ) {
+			// If purchasing is enabled, then first set the post to draft.
+			if ( 'on' === lsx_bd_get_option( 'woocommerce_enable_checkout', false ) ) {
+				$this->post_array['post_status']                 = 'draft';
+				$this->meta_array['lsx_bd_subscription_product'] = isset( $_POST['lsx_bd_plan_id'] ) ? wc_clean( wp_unslash( $_POST['lsx_bd_plan_id'] ) ) : '';// phpcs:ignore
+			}
 			$this->listing_id = wp_insert_post( $this->post_array );
+			// Make sure our URL has an ID to save to the Cart.
+			if ( 'on' === lsx_bd_get_option( 'woocommerce_enable_checkout', false ) ) {
+				$product        = wc_get_product( $this->meta_array['lsx_bd_subscription_product'] );
+				$this->redirect = add_query_arg( 'lsx_bd_id', 'value', $product->add_to_cart_url() );
+			}
 		} else {
 			$this->post_array['ID'] = $this->listing_id;
 			wp_update_post( $this->post_array );
@@ -328,23 +341,5 @@ class Form_Handler {
 				wp_set_object_terms( $this->listing_id, intval( $term['term_id'] ), $taxonomy, false );
 			}
 		}
-	}
-
-	/**
-	 * If this is the checkout process, then save the data to the cart to be used later.
-	 *
-	 * @return void
-	 */
-	public function save_to_cart() {
-		$cookie_data = array(
-			'post' => $this->post_array,
-			'meta' => $this->meta_array,
-			'tax'  => $this->tax_array,
-		);
-		$is_https = false;
-		if ( is_ssl() ) {
-			$is_https = true;
-		}
-		wc_setcookie( 'lsx_bd_add_listing', json_encode( $cookie_data ), 60 * 60, $is_https );
 	}
 }
