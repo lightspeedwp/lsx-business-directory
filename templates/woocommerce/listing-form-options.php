@@ -16,7 +16,7 @@ if ( ! empty( $listing_products ) ) {
 	$options = array();
 	foreach ( $listing_products as $product ) {
 		if ( $product->is_visible() ) {
-			if ( 'variable' === $product->get_type() ) {
+			if ( in_array( $product->get_type(), array( 'variable', 'variable-subscription' ) ) ) {
 				$children = $product->get_visible_children();
 				foreach ( $children as $child ) {
 					$child                       = wc_get_product( $child );
