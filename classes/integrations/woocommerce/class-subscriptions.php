@@ -45,6 +45,8 @@ class Subscriptions {
 			add_filter( 'woocommerce_form_field_text', array( $this, 'replace_image_field' ), 10, 4 );
 			add_filter( 'woocommerce_form_field_text', array( $this, 'replace_image_id_field' ), 10, 4 );
 			add_filter( 'woocommerce_product_data_store_cpt_get_products_query', array( $this, 'handle_listing_query_var' ), 10, 2 );
+
+			add_action( 'woocommerce_subscription_status_changed', array( $this, 'subscription_status_changed' ), 10, 4 );
 		}
 	}
 	/**
@@ -119,5 +121,43 @@ class Subscriptions {
 			);
 		}
 		return $query;
+	}
+
+	/**
+	 * Handles the status of the listings when the activation changes.
+	 *
+	 * @param string $subscription_id
+	 * @param string $status_from
+	 * @param string $status_to
+	 * @param object \WC_Subscription() $subscription_obj
+	 * @return void
+	 */
+	public function subscription_status_changed( $subscription_id, $status_from, $status_to, $subscription_obj ) {
+		if ( '' !== $status_to ) {
+			$listing_ids = get_post_meta( $subscription_id, '_lsx_bd_listing_id', false );
+			if ( ! empty( $listing_ids ) ) {
+				switch ( $status_to ) {
+					case 'active':
+						$post_status = 'published';
+						break;
+
+					case 'on-hold':
+						$post_status = 'pending';
+						break;
+
+					default:
+						$post_status = 'draft';
+						break;
+				}
+				foreach ( $listing_ids as $listing_id ) {
+					wp_update_post(
+						array(
+							'ID'          => $listing_id,
+							'post_status' => $post_status,
+						)
+					);
+				}
+			}
+		}
 	}
 }
