@@ -218,6 +218,15 @@ class Form_Handler {
 			}
 		}
 
+		// If we are charging for listings then we need to check for a selected product.
+		if ( 'on' === lsx_bd_get_option( 'woocommerce_enable_checkout', false ) ) {
+			$lsx_bd_plan_id = filter_input( INPUT_POST, 'lsx_bd_plan_id' );
+			if ( empty( $lsx_bd_plan_id ) || '' === $lsx_bd_plan_id ) {
+				/* translators: %s: Subscription Field Label */
+				wc_add_notice( __( 'Please select an available listing product.', 'lsx-business-directory' ), 'error', array( 'id' => 'lsx_bd_plan_id' ) );
+			}
+		}
+
 		if ( 0 < wc_notice_count( 'error' ) ) {
 			return;
 		}
@@ -248,21 +257,24 @@ class Form_Handler {
 	 * @return void
 	 */
 	public function save_listing() {
+		if ( 'on' === lsx_bd_get_option( 'woocommerce_enable_checkout', false ) ) {
+			$this->meta_array['lsx_bd_subscription_product'] = isset( $_POST['lsx_bd_plan_id'] ) ? wc_clean( wp_unslash( $_POST['lsx_bd_plan_id'] ) ) : '';// phpcs:ignore
+		}
+
 		if ( 'save_listing_details' === $this->action && ( false === $this->listing_id || '' === $this->listing_id ) ) {
 			// If purchasing is enabled, then first set the post to draft.
 			if ( 'on' === lsx_bd_get_option( 'woocommerce_enable_checkout', false ) ) {
 				$this->post_array['post_status']                 = 'draft';
-				$this->meta_array['lsx_bd_subscription_product'] = isset( $_POST['lsx_bd_plan_id'] ) ? wc_clean( wp_unslash( $_POST['lsx_bd_plan_id'] ) ) : '';// phpcs:ignore
 			}
 			$this->listing_id = wp_insert_post( $this->post_array );
-			// Make sure our URL has an ID to save to the Cart.
-			if ( 'on' === lsx_bd_get_option( 'woocommerce_enable_checkout', false ) ) {
-				$product        = wc_get_product( $this->meta_array['lsx_bd_subscription_product'] );
-				$this->redirect = add_query_arg( 'lsx_bd_id', 'value', $product->add_to_cart_url() );
-			}
 		} else {
 			$this->post_array['ID'] = $this->listing_id;
 			wp_update_post( $this->post_array );
+		}
+		// Make sure our URL has an ID to save to the Cart.
+		if ( 'on' === lsx_bd_get_option( 'woocommerce_enable_checkout', false ) ) {
+			$product        = wc_get_product( $this->meta_array['lsx_bd_subscription_product'] );
+			$this->redirect = add_query_arg( 'lsx_bd_id', $this->listing_id, $product->add_to_cart_url() );
 		}
 	}
 

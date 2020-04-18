@@ -61,13 +61,18 @@ class Subscriptions_Edit {
 	 * @return array
 	 */
 	public function register_product_type( $filters = array() ) {
+		$value = '';
+		if ( isset( $_GET['post'] ) && '' !== $_GET['post'] ) {// phpcs:ignore
+			$value = sanitize_text_field( $_GET['post'] ); // phpcs:ignore
+			$value = get_post_meta( $value, '_lsx_bd_listing', true );// phpcs:ignore
+		}
 		$filters['lsx_bd_listing'] = array(
 			'id'            => '_lsx_bd_listing',
-			'wrapper_class' => 'show_if_simple show_if_variable show_if_subscription',
+			'wrapper_class' => 'show_if_subscription show_if_variable-subscription',
 			'label'         => __( 'Listing', 'lsx-business-directory' ),
 			'description'   => __( 'Listing Products allows you to sell listings.', 'lsx-business-directory' ),
 			'default'       => 'no',
-			'value'         => get_post_meta( $_GET['post'], '_lsx_bd_listing', true ),
+			'value'         => $value,
 		);
 		return $filters;
 	}

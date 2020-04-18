@@ -32,9 +32,12 @@ class Checkout {
 	public function __construct() {
 		if ( 'on' === lsx_bd_get_option( 'woocommerce_enable_checkout', false ) ) {
 			add_filter( 'woocommerce_add_to_cart_validation', array( $this, 'maybe_clear_cart' ), 20, 6 );
+			add_filter( 'woocommerce_thankyou_order_received_text', array( $this, 'order_received_text' ), 20, 2 );
+			add_filter( 'woocommerce_add_cart_item_data', array( $this, 'add_listing_id_to_cart' ), 10, 3 );
+			add_action( 'woocommerce_checkout_create_order_line_item', array( $this, 'add_listing_id_to_order_item' ), 10, 4 );
 			add_action( 'woocommerce_checkout_order_processed', array( $this, 'mark_order_as_listing' ), 20, 3 );
 			add_action( 'woocommerce_checkout_create_subscription', array( $this, 'mark_subscription_as_listing' ), 20, 4 );
-			add_filter( 'woocommerce_thankyou_order_received_text', array( $this, 'order_received_text' ), 20, 2 );
+			add_filter( 'woocommerce_get_item_data', array( $this, 'get_item_data_cart_text' ), 10, 2 );
 		}
 	}
 
@@ -133,5 +136,63 @@ class Checkout {
 			$text        .= ' ' . $append_text;
 		}
 		return $text;
+	}
+
+	/**
+	 * Saves the listing ID to the cart data, so we can attach it to the order later.
+	 *
+	 * @param [type] $cart_item_data
+	 * @param [type] $product_id
+	 * @param [type] $variation_id
+	 * @return void
+	 */
+	public function add_listing_id_to_cart( $cart_item_data, $product_id, $variation_id ) {
+		$listing_id = filter_input( INPUT_GET, 'lsx_bd_id' );
+		if ( empty( $listing_id ) || '' === $listing_id ) {
+			return $listing_id;
+		}
+		$cart_item_data['lsx_bd_id'] = $listing_id;
+		return $cart_item_data;
+	}
+
+	/**
+	 * Add the listings ID to the order.
+	 *
+	 * @param \WC_Order_Item_Product $item
+	 * @param string                $cart_item_key
+	 * @param array                 $values
+	 * @param \WC_Order              $order
+	 */
+	public function add_listing_id_to_order_item( $item, $cart_item_key, $values, $order ) {
+		if ( empty( $values['lsx_bd_id'] ) ) {
+			return;
+		}
+		$item->add_meta_data( __( 'Listing', 'lsx-business-directory' ), $values['lsx_bd_id'] );
+		if ( ! empty( $values['lsx_bd_id'] ) ) {
+			add_post_meta( $order->get_id(), '_lsx_bd_listing_id', $values['lsx_bd_id'], false );
+			add_post_meta( $values['lsx_bd_id'], '_lsx_bd_order_id', $order->get_id(), false );
+		}
+	}
+
+	/**
+	 * Display text in the cart.
+	 *
+	 * @param array $item_data
+	 * @param array $cart_item
+	 *
+	 * @return array
+	 */
+	public function get_item_data_cart_text( $item_data, $cart_item ) {
+		if ( empty( $cart_item['lsx_bd_id'] ) ) {
+			return $item_data;
+		}
+
+		$item_data[] = array(
+			'key'     => __( 'Listing', 'lsx-business-directory' ),
+			'value'   => wc_clean( $cart_item['lsx_bd_id'] ),
+			'display' => get_the_title( $cart_item['lsx_bd_id'] ),
+		);
+
+		return $item_data;
 	}
 }

@@ -7,6 +7,8 @@ defined( 'ABSPATH' ) || exit;
 $listing_args = array(
 	'is_listing' => 'yes',
 );
+
+// Find if we have a listing product ID set.
 $listing_product_id = '';
 if ( isset( $_POST['lsx_bd_plan_id'] ) ) { // phpcs:ignore
 	$listing_product_id = sanitize_text_field( $_POST['lsx_bd_plan_id'] ); // phpcs:ignore
@@ -24,6 +26,20 @@ if ( ! empty( $listing_products ) ) {
 				}
 			} else {
 				$options[ $product->get_id() ] = $product->get_title() . ' - ' . $product->get_price_html();
+			}
+		}
+	}
+	$listing_id = get_query_var( 'edit-listing', false );
+	if ( false !== $listing_id ) {
+		$listing_subscription_id          = get_post_meta( $listing_id, '_lsx_bd_order_id', true );
+		if ( false !== $listing_subscription_id && '' !== $listing_subscription_id ) {
+			$listing_subscription = wc_get_order( $listing_subscription_id );
+			print_r('<pre>');
+			print_r($listing_subscription);
+			print_r('</pre>');
+			if ( ! empty( $listing_subscription ) ) {
+				$options[ $listing_subscription_id ] = 'Current Subscription - ' . $listing_subscription->get_date_completed();
+				$listing_product_id                  = $listing_subscription_id;
 			}
 		}
 	}
