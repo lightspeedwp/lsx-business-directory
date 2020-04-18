@@ -31,14 +31,18 @@ if ( ! empty( $listing_products ) ) {
 	}
 	$listing_id = get_query_var( 'edit-listing', false );
 	if ( false !== $listing_id ) {
-		$listing_subscription_id          = get_post_meta( $listing_id, '_lsx_bd_order_id', true );
+		$listing_subscription_id = get_post_meta( $listing_id, '_lsx_bd_order_id', true );
 		if ( false !== $listing_subscription_id && '' !== $listing_subscription_id ) {
 			$listing_subscription = wc_get_order( $listing_subscription_id );
-			print_r('<pre>');
-			print_r($listing_subscription);
-			print_r('</pre>');
 			if ( ! empty( $listing_subscription ) ) {
-				$options[ $listing_subscription_id ] = 'Current Subscription - ' . $listing_subscription->get_date_completed();
+				$label = sprintf(
+					/* translators: %s: The subscription info */
+					__( 'Subscription <a href="%1$s">#%2$s - %3$s</a>', 'woocommerce' ),
+					$listing_subscription->get_view_order_url(),
+					$listing_subscription_id,
+					$listing_subscription->get_status()
+				);
+				$options[ $listing_subscription_id ] = $label;
 				$listing_product_id                  = $listing_subscription_id;
 			}
 		}
