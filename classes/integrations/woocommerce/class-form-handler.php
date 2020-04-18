@@ -222,6 +222,8 @@ class Form_Handler {
 		if ( 'on' === lsx_bd_get_option( 'woocommerce_enable_checkout', false ) ) {
 			$lsx_bd_plan_id = filter_input( INPUT_POST, 'lsx_bd_plan_id' );
 			if ( empty( $lsx_bd_plan_id ) || '' === $lsx_bd_plan_id ) {
+
+
 				/* translators: %s: Subscription Field Label */
 				wc_add_notice( __( 'Please select an available listing product.', 'lsx-business-directory' ), 'error', array( 'id' => 'lsx_bd_plan_id' ) );
 			}
@@ -273,7 +275,6 @@ class Form_Handler {
 		}
 		// Make sure our URL has an ID to save to the Cart.
 		if ( 'on' === lsx_bd_get_option( 'woocommerce_enable_checkout', false ) ) {
-
 			// if the current subscription product is the same as the subscription, then its the active one, and you dont need to redirect to the cart.
 			$current_subscription = get_post_meta( $this->listing_id, '_lsx_bd_order_id', true );
 			if ( (int) $current_subscription !== (int) $this->meta_array['lsx_bd_subscription_product'] ) {

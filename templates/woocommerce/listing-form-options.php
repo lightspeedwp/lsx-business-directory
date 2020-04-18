@@ -35,6 +35,15 @@ if ( ! empty( $listing_products ) ) {
 		if ( false !== $listing_subscription_id && '' !== $listing_subscription_id ) {
 			$listing_subscription = wc_get_order( $listing_subscription_id );
 			if ( ! empty( $listing_subscription ) ) {
+				// We save the listing ID to a variable. Then we check to see if the subscription is active. if it isnt, then dont add a value forcing the user to purchae a new subscription.
+				$listing_option_value = $listing_subscription_id;
+				if ( 'active' !== $listing_subscription->get_status() ) {
+					$listing_option_value = '';
+				} else {
+					$listing_product_id = $listing_subscription_id;
+				}
+
+				// Generate a label for the current subscription.
 				$label = sprintf(
 					/* translators: %s: The subscription info */
 					__( 'Subscription <a href="%1$s">#%2$s - %3$s</a>', 'woocommerce' ),
@@ -42,8 +51,7 @@ if ( ! empty( $listing_products ) ) {
 					$listing_subscription_id,
 					$listing_subscription->get_status()
 				);
-				$options[ $listing_subscription_id ] = $label;
-				$listing_product_id                  = $listing_subscription_id;
+				$options[ $listing_option_value ] = $label;
 			}
 		}
 	}
