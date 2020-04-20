@@ -1,6 +1,8 @@
 <?php
 namespace lsx\business_directory\classes\integrations\woocommerce;
 
+use stdClass;
+
 /**
  * Add / Edit listing form handler
  *
@@ -68,11 +70,20 @@ class Form_Handler {
 	public $tax_array = array();
 
 	/**
+	 * Holds the url to redirect to after processing the form.
+	 *
+	 * @var string
+	 */
+	public $redirect;
+
+	/**
 	 * Contructor
 	 */
 	public function __construct() {
 		$this->listing_id = false;
 		add_action( 'template_redirect', array( $this, 'save' ) );
+		add_filter( 'template_include', array( $this, 'preview_template_include' ), 2, 1 );
+		add_action( 'wp_head', array( $this, 'preview_handler' ) );
 	}
 
 	/**
@@ -211,31 +222,36 @@ class Form_Handler {
 			}
 		}
 
+		// If we are charging for listings then we need to check for a selected product.
+		if ( 'on' === lsx_bd_get_option( 'woocommerce_enable_checkout', false ) ) {
+			$lsx_bd_plan_id = filter_input( INPUT_POST, 'lsx_bd_plan_id' );
+			if ( empty( $lsx_bd_plan_id ) || '' === $lsx_bd_plan_id ) {
+				/* translators: %s: Subscription Field Label */
+				wc_add_notice( __( 'Please select an available listing product.', 'lsx-business-directory' ), 'error', array( 'id' => 'lsx_bd_plan_id' ) );
+			}
+		}
+
 		if ( 0 < wc_notice_count( 'error' ) ) {
 			return;
 		}
 
 		do_action( 'lsx_bd_save_listing', $this->listing_id, $this );
-		if ( isset( $_POST['lsx_bd_plan_id'] ) && '' !== $_POST['lsx_bd_plan_id'] ) {
-			$this->save_to_cart();
-			$redirect = wc_get_page_permalink( 'checkout' );
-		} else {
-			if ( 'save_listing_details' === $this->action ) {
-				wc_add_notice( $this->post_array['post_title'] . ' ' . __( 'succesfully added.', 'lsx-business-directory' ) );
-				$redirect = wc_get_endpoint_url( lsx_bd_get_option( 'translations_listings_endpoint', 'my-listings' ), '', wc_get_page_permalink( 'myaccount' ) );
-			} else {
-				/* translators: %s: my-account */
-				wc_add_notice( sprintf( __( 'Listing updated succesfully. Go back to <a href="%s">my listings</a>', 'lsx-business-directory' ), wc_get_endpoint_url( lsx_bd_get_option( 'translations_listings_endpoint', 'my-listings' ), '', wc_get_page_permalink( 'myaccount' ) ) ) );
-				$redirect = wc_get_endpoint_url( lsx_bd_get_option( 'translations_listings_edit_endpoint', 'edit-listing' ) . '/' . $this->listing_id . '/', '', wc_get_page_permalink( 'myaccount' ) );
-			}
 
-			$this->save_listing();
-			$this->save_meta();
-			$this->save_tax();
-			$this->save_images();
+		if ( 'save_listing_details' === $this->action ) {
+			wc_add_notice( $this->post_array['post_title'] . ' ' . __( 'succesfully added.', 'lsx-business-directory' ) );
+			$this->redirect = wc_get_endpoint_url( lsx_bd_get_option( 'translations_listings_endpoint', 'my-listings' ), '', wc_get_page_permalink( 'myaccount' ) );
+		} else {
+			/* translators: %s: my-account */
+			wc_add_notice( sprintf( __( 'Listing updated succesfully. Go back to <a href="%s">my listings</a>', 'lsx-business-directory' ), wc_get_endpoint_url( lsx_bd_get_option( 'translations_listings_endpoint', 'my-listings' ), '', wc_get_page_permalink( 'myaccount' ) ) ) );
+			$this->redirect = wc_get_endpoint_url( lsx_bd_get_option( 'translations_listings_edit_endpoint', 'edit-listing' ) . '/' . $this->listing_id . '/', '', wc_get_page_permalink( 'myaccount' ) );
 		}
 
-		wp_safe_redirect( $redirect );
+		$this->save_listing();
+		$this->save_meta();
+		$this->save_tax();
+		$this->save_images();
+
+		wp_safe_redirect( $this->redirect );
 		exit;
 	}
 
@@ -245,11 +261,24 @@ class Form_Handler {
 	 * @return void
 	 */
 	public function save_listing() {
+		if ( 'on' === lsx_bd_get_option( 'woocommerce_enable_checkout', false ) ) {
+			$this->meta_array['lsx_bd_subscription_product'] = isset( $_POST['lsx_bd_plan_id'] ) ? wc_clean( wp_unslash( $_POST['lsx_bd_plan_id'] ) ) : '';// phpcs:ignore
+		}
+
 		if ( 'save_listing_details' === $this->action && ( false === $this->listing_id || '' === $this->listing_id ) ) {
+			// If purchasing is enabled, then first set the post to draft.
+			if ( 'on' === lsx_bd_get_option( 'woocommerce_enable_checkout', false ) ) {
+				$this->post_array['post_status']                 = 'draft';
+			}
 			$this->listing_id = wp_insert_post( $this->post_array );
 		} else {
 			$this->post_array['ID'] = $this->listing_id;
 			wp_update_post( $this->post_array );
+		}
+
+		// Make sure our URL has an ID to save to the Cart.
+		if ( 'on' === lsx_bd_get_option( 'woocommerce_enable_checkout', false ) ) {
+			$this->maybe_switching_subscription();
 		}
 	}
 
@@ -331,20 +360,121 @@ class Form_Handler {
 	}
 
 	/**
-	 * If this is the checkout process, then save the data to the cart to be used later.
+	 * If the current subscription product is the same as the subscription, then its the active one, then you are switching.
 	 *
 	 * @return void
 	 */
-	public function save_to_cart() {
-		$cookie_data = array(
-			'post' => $this->post_array,
-			'meta' => $this->meta_array,
-			'tax'  => $this->tax_array,
-		);
-		$is_https = false;
-		if ( is_ssl() ) {
-			$is_https = true;
+	public function maybe_switching_subscription() {
+		if ( false !== $this->listing_id && '' !== $this->listing_id ) {
+			$current_subscription = get_post_meta( $this->listing_id, '_lsx_bd_order_id', true );
+			if ( false !== $current_subscription && '' !== $current_subscription ) {
+				// if the current subscription product is the same as the subscription, then its the active one, then you are switching.
+				if ( (int) $current_subscription !== (int) $this->meta_array['lsx_bd_subscription_product'] ) {
+					$product      = wc_get_product( $this->meta_array['lsx_bd_subscription_product'] );
+					$subscription = wcs_get_subscription( $current_subscription );
+					if ( ! empty( $subscription ) ) {
+						$items = $subscription->get_items();
+						foreach ( $items as $item_key => $item_value ) {
+							$this->redirect = add_query_arg(
+								array(
+									'switch-subscription' => $current_subscription,
+									'item'                => $item_key,
+									'_wcsnonce'           => wp_create_nonce( 'wcs_switch_request' ),
+									'lsx_bd_id'           => $this->listing_id,
+								),
+								$product->add_to_cart_url()
+							);
+						}
+					}
+				}
+			} else {
+				$product        = wc_get_product( $this->meta_array['lsx_bd_subscription_product'] );
+				$this->redirect = add_query_arg( 'lsx_bd_id', $this->listing_id, $product->add_to_cart_url() );
+			}
+		} else {
+			$product        = wc_get_product( $this->meta_array['lsx_bd_subscription_product'] );
+			$this->redirect = add_query_arg( 'lsx_bd_id', $this->listing_id, $product->add_to_cart_url() );
 		}
-		wc_setcookie( 'lsx_bd_add_listing', json_encode( $cookie_data ), 60 * 60, $is_https );
+	}
+
+	/**
+	 * Archive template redirect.
+	 *
+	 * @param  string $template The path to the template to load.
+	 * @return string
+	 */
+	public function preview_template_include( $template ) {
+		$nonce_value = wc_get_var( $_REQUEST['lsx-bd-add-listing-nonce'], wc_get_var( $_REQUEST['_wpnonce'], '' ) ); // @codingStandardsIgnoreLine.
+		if ( ! wp_verify_nonce( $nonce_value, 'lsx_bd_add_listing' ) ) {
+			return $template;
+		}
+		if ( __( 'Preview', 'lsx-business-directory' ) === filter_input( INPUT_POST, 'preview_listing_details' ) ) {
+			if ( empty( locate_template( array( 'single-business-directory.php' ) ) ) && file_exists( LSX_BD_PATH . 'templates/single-business-directory.php' ) ) {
+				$template = LSX_BD_PATH . 'templates/single-business-directory.php';
+			}
+		}
+		return $template;
+	}
+
+	/**
+	 * Setup the post data with our preview information
+	 *
+	 * @return void
+	 */
+	public function preview_handler() {
+		if ( is_wc_endpoint_url( 'preview-listing' ) ) {
+			global $post;
+
+			$user_id = get_current_user_id();
+			if ( $user_id <= 0 ) {
+				return;
+			}
+			$customer = new \WC_Customer( $user_id );
+			if ( ! $customer ) {
+				return;
+			}
+
+			$preview_object = new stdClass();
+
+			$time_now = date( 'Y-m-d g:i:s', strtotime( 'now' ) );
+
+			$preview_object->ID                    = get_query_var( 'preview-listing' );
+			$preview_object->post_author           = $user_id;
+			$preview_object->post_date             = $time_now;
+			$preview_object->post_date_gmt         = $time_now;
+			$preview_object->post_content          = 'Warwicks World';
+			$preview_object->post_title            = 'Warwicks World';
+			$preview_object->post_excerpt          = 'Warwicks World';
+			$preview_object->post_status           = 'publish';
+			$preview_object->comment_status        = 'closed';
+			$preview_object->ping_status           = 'closed';
+			$preview_object->post_name             = 'warwick-world';
+			$preview_object->to_ping               = '';
+			$preview_object->pinged                = '';
+			$preview_object->post_modified         = $time_now;
+			$preview_object->post_modified_gmt     = $time_now;
+			$preview_object->post_content_filtered = '';
+			$preview_object->post_parent           = 0;
+			$preview_object->guid                  = 'https://lsxbusinessdirectory.local/?post_type=business-directory&p=1347';
+			$preview_object->menu_order            = 0;
+			$preview_object->post_type             = 'business-directory';
+			$preview_object->post_mime_type        = '';
+			$preview_object->comment_count         = 0;
+			$preview_object->filter                = 'raw';
+			$post                                  = $preview_object; // @codingStandardsIgnoreLine.
+
+			add_filter( 'get_post_metadata', array( $this, 'post_custom_fields' ), 11, 3 );
+		}
+	}
+
+	/**
+	 * Replace the custom fields with their preview values.
+	 */
+	public function post_custom_fields( $meta, $post_id, $meta_key ) {
+		$value = filter_input( INPUT_POST, $meta_key );
+		if ( ! empty( $value ) && '' !== $value ) {
+			$meta = $value;
+		}
+		return $meta;
 	}
 }

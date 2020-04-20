@@ -184,7 +184,7 @@ get_header(); ?>
 								</div>
 
 								<div class="business-description business-content-section">
-									<?php the_content(); ?>
+									<?php lsx_bd_listing_content(); ?>
 								</div>
 							</div>
 						</div>

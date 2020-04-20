@@ -128,6 +128,7 @@ class Business_Directory {
 			'thumbnail',
 			'excerpt',
 			'custom-fields',
+			'author',
 		);
 
 		$details = array(

@@ -116,6 +116,15 @@ class Admin {
 			);
 			$cmb->add_field(
 				array(
+					'name'    => esc_html__( 'Preview Listing Endpoint', 'lsx-business-directory' ),
+					'id'      => 'translations_listings_preview_endpoint',
+					'type'    => 'text',
+					'default' => 'preview-listing',
+					'desc'    => __( 'This is the endpoint for the My Account "Preview Listing" page.', 'lsx-business-directory' ),
+				)
+			);
+			$cmb->add_field(
+				array(
 					'name'    => esc_html__( 'Edit Listing Endpoint', 'lsx-business-directory' ),
 					'id'      => 'translations_listings_edit_endpoint',
 					'type'    => 'text',

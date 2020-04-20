@@ -57,9 +57,10 @@ class My_Account {
 	 */
 	public function init_query_vars() {
 		$this->query_vars = array(
-			'listings'     => lsx_bd_get_option( 'translations_listings_endpoint', 'listings' ),
-			'add-listing'  => lsx_bd_get_option( 'translations_listings_add_endpoint', 'add-listing' ),
-			'edit-listing' => lsx_bd_get_option( 'translations_listings_edit_endpoint', 'edit-listing' ),
+			'listings'        => lsx_bd_get_option( 'translations_listings_endpoint', 'listings' ),
+			'add-listing'     => lsx_bd_get_option( 'translations_listings_add_endpoint', 'add-listing' ),
+			'preview-listing' => lsx_bd_get_option( 'translations_listings_preview_endpoint', 'preview-listing' ),
+			'edit-listing'    => lsx_bd_get_option( 'translations_listings_edit_endpoint', 'edit-listing' ),
 		);
 	}
 	/**
@@ -96,7 +97,7 @@ class My_Account {
 	 */
 	public function menu_item_classes( $classes, $endpoint ) {
 		global $wp;
-		if ( lsx_bd_get_option( 'translations_listings_endpoint', 'listings' ) === $endpoint && ( isset( $wp->query_vars['add-listing'] ) || isset( $wp->query_vars['edit-listing'] ) ) ) {
+		if ( lsx_bd_get_option( 'translations_listings_endpoint', 'listings' ) === $endpoint && ( isset( $wp->query_vars['add-listing'] ) || isset( $wp->query_vars['edit-listing'] ) || isset( $wp->query_vars['preview-listing'] ) ) ) {
 			$classes[] = 'is-active';
 		}
 		return $classes;

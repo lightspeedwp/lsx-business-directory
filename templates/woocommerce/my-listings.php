@@ -2,6 +2,11 @@
 /**
  * This is the template for the my account, my listings page.
  */
+
+$is_selling_listings = false;
+if ( 'on' === lsx_bd_get_option( 'woocommerce_enable_checkout', false ) ) {
+	$is_selling_listings = true;
+}
 ?>
 <div class="my-listings">
 	<p>
@@ -13,6 +18,9 @@
 				<th><span class="nobr"></th>
 				<th><span class="nobr"><?php echo esc_attr( 'Name', 'lsx-business-directory' ); ?></span></th>
 				<th><span class="nobr"><?php echo esc_attr( 'Date Listed', 'lsx-business-directory' ); ?></span></th>
+				<?php if ( $is_selling_listings ) { ?>
+					<th><span class="nobr"><?php echo esc_attr( 'Subscription', 'lsx-business-directory' ); ?></span></th>
+				<?php } ?>
 				<th><span class="nobr"><?php echo esc_attr( 'Actions', 'lsx-business-directory' ); ?></span></th>
 			</tr>
 		</thead>
@@ -35,6 +43,15 @@
 							echo esc_attr( $date->format( 'd/m/Y' ) );
 						?>
 					</td>
+					<?php
+					if ( $is_selling_listings ) {
+						?>
+						<td data-title="Subscription">
+							<?php lsx_bd_subscription_details(); ?>
+						</td>
+						<?php
+					}
+					?>
 					<td data-title="Actions">
 						<?php lsx_bd_edit_listing_button(); ?>
 						<?php lsx_bd_view_listing_button(); ?>

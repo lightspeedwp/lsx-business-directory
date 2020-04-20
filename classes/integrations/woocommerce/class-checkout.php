@@ -31,10 +31,7 @@ class Checkout {
 	 */
 	public function __construct() {
 		if ( 'on' === lsx_bd_get_option( 'woocommerce_enable_checkout', false ) ) {
-			add_filter( 'woocommerce_add_to_cart_validation', array( $this, 'maybe_clear_cart' ), 20, 6 );
-			add_action( 'woocommerce_checkout_order_processed', array( $this, 'mark_order_as_listing' ), 20, 3 );
-			add_action( 'woocommerce_checkout_create_subscription', array( $this, 'mark_subscription_as_listing' ), 20, 4 );
-			add_filter( 'woocommerce_thankyou_order_received_text', array( $this, 'order_received_text' ), 20, 2 );
+			add_action( 'woocommerce_loaded', array( $this, 'attach_dependant_hooks' ) );
 		}
 	}
 
@@ -51,6 +48,22 @@ class Checkout {
 			self::$instance = new self();
 		}
 		return self::$instance;
+	}
+
+	/**
+	 * Attach_dependant_hooks.
+	 */
+	public function attach_dependant_hooks() {
+		if ( class_exists( 'WC_Subscriptions' ) && ! \WC_Subscriptions::is_woocommerce_pre( '3.0' ) ) {
+			add_filter( 'woocommerce_add_to_cart_validation', array( $this, 'maybe_clear_cart' ), 20, 6 );
+			add_filter( 'woocommerce_thankyou_order_received_text', array( $this, 'order_received_text' ), 20, 2 );
+			add_filter( 'woocommerce_add_cart_item_data', array( $this, 'add_listing_id_to_cart' ), 10, 3 );
+			add_action( 'woocommerce_checkout_order_processed', array( $this, 'mark_order_as_listing' ), 20, 3 );
+			add_action( 'woocommerce_checkout_create_subscription', array( $this, 'mark_subscription_as_listing' ), 20, 4 );
+			add_filter( 'woocommerce_get_item_data', array( $this, 'get_item_data_cart_text' ), 10, 2 );
+			add_action( 'woocommerce_order_status', array( $this, 'process_order_status' ), 20, 3 );
+			add_action( 'woocommerce_checkout_create_order_line_item', array( $this, 'add_listing_id_to_order_item' ), 10, 4 );
+		}
 	}
 
 	/**
@@ -133,5 +146,93 @@ class Checkout {
 			$text        .= ' ' . $append_text;
 		}
 		return $text;
+	}
+
+	/**
+	 * Saves the listing ID to the cart data, so we can attach it to the order later.
+	 *
+	 * @param [type] $cart_item_data
+	 * @param [type] $product_id
+	 * @param [type] $variation_id
+	 * @return void
+	 */
+	public function add_listing_id_to_cart( $cart_item_data, $product_id, $variation_id ) {
+		$listing_id = filter_input( INPUT_GET, 'lsx_bd_id' );
+		if ( empty( $listing_id ) || '' === $listing_id ) {
+			return $listing_id;
+		}
+		$cart_item_data['lsx_bd_id'] = $listing_id;
+		return $cart_item_data;
+	}
+
+	/**
+	 * Add the listings ID to the order.
+	 *
+	 * @param \WC_Order_Item_Product $item
+	 * @param string                $cart_item_key
+	 * @param array                 $values
+	 * @param \WC_Order              $order
+	 */
+	public function add_listing_id_to_order_item( $item, $cart_item_key, $values, $order ) {
+		if ( empty( $values['lsx_bd_id'] ) ) {
+			return;
+		}
+		$item->add_meta_data( __( 'Listing', 'lsx-business-directory' ), $values['lsx_bd_id'] );
+		if ( ! empty( $values['lsx_bd_id'] ) && ! empty( $order->get_id() ) ) {
+			add_post_meta( $order->get_id(), '_lsx_bd_listing_id', $values['lsx_bd_id'], false );
+
+			// Preserve any previous orders, and get ready for the new one.
+			$this->preserve_previous_orders( $values['lsx_bd_id'] );
+			add_post_meta( $values['lsx_bd_id'], '_lsx_bd_order_id', $order->get_id(), true );
+		}
+	}
+
+	/**
+	 * If the listing had any previous orders attached to it, we preserve those in a custom field `_lsx_bd_previous_order_ids`;
+	 *
+	 * @param [type] $item_id
+	 * @return void
+	 */
+	public function preserve_previous_orders( $item_id ) {
+		$current_order = get_post_meta( $item_id, '_lsx_bd_order_id', true );
+		// If then current order isnt empty then we need to save it as a "history".
+		if ( ! empty( $current_order ) ) {
+			$new_order_array = array();
+			$previous_orders = get_post_meta( $item_id, '_lsx_bd_previous_order_ids', true );
+			if ( is_array( $previous_orders ) ) {
+				if ( empty( $previous_orders ) ) {
+					$new_order_array[] = $current_order;
+				} else {
+					$new_order_array = array_merge( $previous_orders, array( $current_order ) );
+				}
+			} else {
+				$new_order_array[] = $current_order;
+			}
+			delete_post_meta( $item_id, '_lsx_bd_previous_order_ids' );
+			add_post_meta( $item_id, '_lsx_bd_previous_order_ids', $new_order_array, true );
+			delete_post_meta( $item_id, '_lsx_bd_order_id' );
+		}
+	}
+
+	/**
+	 * Display text in the cart.
+	 *
+	 * @param array $item_data
+	 * @param array $cart_item
+	 *
+	 * @return array
+	 */
+	public function get_item_data_cart_text( $item_data, $cart_item ) {
+		if ( empty( $cart_item['lsx_bd_id'] ) ) {
+			return $item_data;
+		}
+
+		$item_data[] = array(
+			'key'     => __( 'Listing', 'lsx-business-directory' ),
+			'value'   => wc_clean( $cart_item['lsx_bd_id'] ),
+			'display' => get_the_title( $cart_item['lsx_bd_id'] ),
+		);
+
+		return $item_data;
 	}
 }

@@ -56,6 +56,19 @@ do_action( 'lsx_bd_before_listing_form' ); ?>
 			<button type="submit" class="woocommerce-Button button" name="save_listing_details" value="<?php esc_attr_e( 'Save', 'lsx-business-directory' ); ?>"><?php esc_html_e( 'Save', 'lsx-business-directory' ); ?></button>
 
 			<?php
+				$preview_action = wc_get_endpoint_url( lsx_bd_get_option( 'translations_listings_preview_endpoint', 'preview-listing' ) . '/' . $listing_id . '/', '', wc_get_page_permalink( 'myaccount' ) );
+			?>
+			<button
+				type="submit"
+				class="woocommerce-Button button"
+				name="preview_listing_details"
+				value="<?php esc_attr_e( 'Preview', 'lsx-business-directory' ); ?>"
+				formtarget="_blank"
+				formaction="<?php esc_attr_e( $preview_action ); ?>">
+					<?php esc_html_e( 'Preview', 'lsx-business-directory' ); ?>
+			</button>
+
+			<?php
 			if ( false !== $listing_id && '' !== $listing_id ) {
 				?>
 				<input type="hidden" name="listing_id" value="<?php echo esc_attr( $listing_id ); ?>" />
