@@ -138,7 +138,7 @@ class Subscriptions {
 			if ( ! empty( $listing_ids ) ) {
 				switch ( $status_to ) {
 					case 'active':
-						$post_status = 'published';
+						$post_status = 'publish';
 						break;
 
 					case 'on-hold':

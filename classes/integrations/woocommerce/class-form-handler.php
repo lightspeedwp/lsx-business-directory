@@ -273,6 +273,7 @@ class Form_Handler {
 			$this->post_array['ID'] = $this->listing_id;
 			wp_update_post( $this->post_array );
 		}
+
 		// Make sure our URL has an ID to save to the Cart.
 		if ( 'on' === lsx_bd_get_option( 'woocommerce_enable_checkout', false ) ) {
 			// if the current subscription product is the same as the subscription, then its the active one, and you dont need to redirect to the cart.
