@@ -30,6 +30,7 @@ if ( ! empty( $listing_products ) ) {
 		if ( false !== $listing_subscription_id && '' !== $listing_subscription_id ) {
 			$listing_subscription = wcs_get_subscription( $listing_subscription_id );
 			if ( ! empty( $listing_subscription ) ) {
+
 				// We save the listing ID to a variable. Then we check to see if the subscription is active. if it isnt, then dont add a value forcing the user to purchae a new subscription.
 				$listing_option_value = $listing_subscription_id;
 				if ( 'active' !== $listing_subscription->get_status() ) {

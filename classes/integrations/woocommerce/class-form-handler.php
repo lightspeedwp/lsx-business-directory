@@ -222,8 +222,6 @@ class Form_Handler {
 		if ( 'on' === lsx_bd_get_option( 'woocommerce_enable_checkout', false ) ) {
 			$lsx_bd_plan_id = filter_input( INPUT_POST, 'lsx_bd_plan_id' );
 			if ( empty( $lsx_bd_plan_id ) || '' === $lsx_bd_plan_id ) {
-
-
 				/* translators: %s: Subscription Field Label */
 				wc_add_notice( __( 'Please select an available listing product.', 'lsx-business-directory' ), 'error', array( 'id' => 'lsx_bd_plan_id' ) );
 			}
@@ -276,15 +274,9 @@ class Form_Handler {
 
 		// Make sure our URL has an ID to save to the Cart.
 		if ( 'on' === lsx_bd_get_option( 'woocommerce_enable_checkout', false ) ) {
-
-			// if the current subscription product is the same as the subscription, then its the active one, and you dont need to redirect to the cart.
-			$current_subscription = get_post_meta( $this->listing_id, '_lsx_bd_order_id', true );
-			$subscription         = wcs_get_subscription( $current_subscription );
-
-			if ( (int) $current_subscription !== (int) $this->meta_array['lsx_bd_subscription_product'] ) {
-				$product        = wc_get_product( $this->meta_array['lsx_bd_subscription_product'] );
-				$this->redirect = add_query_arg( 'lsx_bd_id', $this->listing_id, $product->add_to_cart_url() );
-			}
+			$product = wc_get_product( $this->meta_array['lsx_bd_subscription_product'] );
+			$this->redirect = add_query_arg( 'lsx_bd_id', $this->listing_id, $product->add_to_cart_url() );
+			$this->maybe_switching_subscription( $product );
 		}
 	}
 
@@ -361,6 +353,37 @@ class Form_Handler {
 				}
 			} else {
 				wp_set_object_terms( $this->listing_id, intval( $term['term_id'] ), $taxonomy, false );
+			}
+		}
+	}
+
+	/**
+	 * If the current subscription product is the same as the subscription, then its the active one, then you are switching.
+	 *
+	 * @var object $product /WC_Product()
+	 * @return void
+	 */
+	public function maybe_switching_subscription( $product ) {
+		if ( false !== $this->listing_id && '' !== $this->listing_id ) {
+			$current_subscription = get_post_meta( $this->listing_id, '_lsx_bd_order_id', true );
+			if ( false !== $current_subscription ) {
+				// if the current subscription product is the same as the subscription, then its the active one, then you are switching.
+				if ( (int) $current_subscription !== (int) $this->meta_array['lsx_bd_subscription_product'] ) {
+					$subscription = wcs_get_subscription( $current_subscription );
+					if ( ! empty( $subscription ) ) {
+						$items = $subscription->get_items();
+						foreach ( $items as $item_key => $item_value ) {
+							$this->redirect = add_query_arg(
+								array(
+									'switch-subscription' => $current_subscription,
+									'item'                => $item_key,
+									'_wcsnonce'           => wp_create_nonce( 'wcs_switch_request' )
+								),
+								$product->add_to_cart_url()
+							);
+						}
+					}
+				}
 			}
 		}
 	}

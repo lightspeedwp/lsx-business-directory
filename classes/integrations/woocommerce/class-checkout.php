@@ -172,7 +172,37 @@ class Checkout {
 		$item->add_meta_data( __( 'Listing', 'lsx-business-directory' ), $values['lsx_bd_id'] );
 		if ( ! empty( $values['lsx_bd_id'] ) ) {
 			add_post_meta( $order->get_id(), '_lsx_bd_listing_id', $values['lsx_bd_id'], false );
+
+			// Preserve any previous orders, and get ready for the new one.
+			$this->preserve_previous_orders( $values['lsx_bd_id'] );
 			add_post_meta( $values['lsx_bd_id'], '_lsx_bd_order_id', $order->get_id(), false );
+		}
+	}
+
+	/**
+	 * If the listing had any previous orders attached to it, we preserve those in a custom field `_lsx_bd_previous_order_ids`;
+	 *
+	 * @param [type] $item_id
+	 * @return void
+	 */
+	public function preserve_previous_orders( $item_id ) {
+		$current_order = get_post_meta( $item_id, '_lsx_bd_order_id', true );
+		// If then current order isnt empty then we need to save it as a "history".
+		if ( ! empty( $current_order ) ) {
+			$new_order_array = array();
+			$previous_orders = get_post_meta( $item_id, '_lsx_bd_previous_order_ids', true );
+			if ( is_array( $previous_orders ) ) {
+				if ( empty( $previous_orders ) ) {
+					$new_order_array[] = $current_order;
+				} else {
+					$new_order_array = array_merge( $previous_orders, array( $current_order ) );
+				}
+			} else {
+				$new_order_array[] = $current_order;
+			}
+			delete_post_meta( $item_id, '_lsx_bd_previous_order_ids' );
+			add_post_meta( $item_id, '_lsx_bd_previous_order_ids', $new_order_array, true );
+			delete_post_meta( $item_id, '_lsx_bd_order_id' );
 		}
 	}
 
