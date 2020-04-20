@@ -31,14 +31,7 @@ class Checkout {
 	 */
 	public function __construct() {
 		if ( 'on' === lsx_bd_get_option( 'woocommerce_enable_checkout', false ) ) {
-			add_filter( 'woocommerce_add_to_cart_validation', array( $this, 'maybe_clear_cart' ), 20, 6 );
-			add_filter( 'woocommerce_thankyou_order_received_text', array( $this, 'order_received_text' ), 20, 2 );
-			add_filter( 'woocommerce_add_cart_item_data', array( $this, 'add_listing_id_to_cart' ), 10, 3 );
-			add_action( 'woocommerce_checkout_create_order_line_item', array( $this, 'add_listing_id_to_order_item' ), 10, 4 );
-			add_action( 'woocommerce_checkout_order_processed', array( $this, 'mark_order_as_listing' ), 20, 3 );
-			add_action( 'woocommerce_checkout_create_subscription', array( $this, 'mark_subscription_as_listing' ), 20, 4 );
-			add_filter( 'woocommerce_get_item_data', array( $this, 'get_item_data_cart_text' ), 10, 2 );
-			add_action( 'woocommerce_order_status', array( $this, 'process_order_status' ), 20, 3 );
+			add_action( 'woocommerce_loaded', array( $this, 'attach_dependant_hooks' ) );
 		}
 	}
 
@@ -55,6 +48,22 @@ class Checkout {
 			self::$instance = new self();
 		}
 		return self::$instance;
+	}
+
+	/**
+	 * Attach_dependant_hooks.
+	 */
+	public function attach_dependant_hooks() {
+		if ( class_exists( 'WC_Subscriptions' ) && ! \WC_Subscriptions::is_woocommerce_pre( '3.0' ) ) {
+			add_filter( 'woocommerce_add_to_cart_validation', array( $this, 'maybe_clear_cart' ), 20, 6 );
+			add_filter( 'woocommerce_thankyou_order_received_text', array( $this, 'order_received_text' ), 20, 2 );
+			add_filter( 'woocommerce_add_cart_item_data', array( $this, 'add_listing_id_to_cart' ), 10, 3 );
+			add_action( 'woocommerce_checkout_order_processed', array( $this, 'mark_order_as_listing' ), 20, 3 );
+			add_action( 'woocommerce_checkout_create_subscription', array( $this, 'mark_subscription_as_listing' ), 20, 4 );
+			add_filter( 'woocommerce_get_item_data', array( $this, 'get_item_data_cart_text' ), 10, 2 );
+			add_action( 'woocommerce_order_status', array( $this, 'process_order_status' ), 20, 3 );
+			add_action( 'woocommerce_checkout_create_order_line_item', array( $this, 'add_listing_id_to_order_item' ), 10, 4 );
+		}
 	}
 
 	/**
@@ -169,12 +178,12 @@ class Checkout {
 			return;
 		}
 		$item->add_meta_data( __( 'Listing', 'lsx-business-directory' ), $values['lsx_bd_id'] );
-		if ( ! empty( $values['lsx_bd_id'] ) ) {
+		if ( ! empty( $values['lsx_bd_id'] ) && ! empty( $order->get_id() ) ) {
 			add_post_meta( $order->get_id(), '_lsx_bd_listing_id', $values['lsx_bd_id'], false );
 
 			// Preserve any previous orders, and get ready for the new one.
 			$this->preserve_previous_orders( $values['lsx_bd_id'] );
-			add_post_meta( $values['lsx_bd_id'], '_lsx_bd_order_id', $order->get_id(), false );
+			add_post_meta( $values['lsx_bd_id'], '_lsx_bd_order_id', $order->get_id(), true );
 		}
 	}
 
