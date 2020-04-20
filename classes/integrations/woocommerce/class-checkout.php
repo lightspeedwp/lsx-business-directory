@@ -38,7 +38,6 @@ class Checkout {
 			add_action( 'woocommerce_checkout_order_processed', array( $this, 'mark_order_as_listing' ), 20, 3 );
 			add_action( 'woocommerce_checkout_create_subscription', array( $this, 'mark_subscription_as_listing' ), 20, 4 );
 			add_filter( 'woocommerce_get_item_data', array( $this, 'get_item_data_cart_text' ), 10, 2 );
-
 			add_action( 'woocommerce_order_status', array( $this, 'process_order_status' ), 20, 3 );
 		}
 	}

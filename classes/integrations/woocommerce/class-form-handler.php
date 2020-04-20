@@ -274,8 +274,6 @@ class Form_Handler {
 
 		// Make sure our URL has an ID to save to the Cart.
 		if ( 'on' === lsx_bd_get_option( 'woocommerce_enable_checkout', false ) ) {
-			$product = wc_get_product( $this->meta_array['lsx_bd_subscription_product'] );
-			$this->redirect = add_query_arg( 'lsx_bd_id', $this->listing_id, $product->add_to_cart_url() );
 			$this->maybe_switching_subscription( $product );
 		}
 	}
@@ -360,15 +358,16 @@ class Form_Handler {
 	/**
 	 * If the current subscription product is the same as the subscription, then its the active one, then you are switching.
 	 *
-	 * @var object $product /WC_Product()
 	 * @return void
 	 */
-	public function maybe_switching_subscription( $product ) {
+	public function maybe_switching_subscription() {
 		if ( false !== $this->listing_id && '' !== $this->listing_id ) {
+
 			$current_subscription = get_post_meta( $this->listing_id, '_lsx_bd_order_id', true );
 			if ( false !== $current_subscription ) {
 				// if the current subscription product is the same as the subscription, then its the active one, then you are switching.
 				if ( (int) $current_subscription !== (int) $this->meta_array['lsx_bd_subscription_product'] ) {
+					$product      = wc_get_product( $this->meta_array['lsx_bd_subscription_product'] );
 					$subscription = wcs_get_subscription( $current_subscription );
 					if ( ! empty( $subscription ) ) {
 						$items = $subscription->get_items();
@@ -385,6 +384,9 @@ class Form_Handler {
 					}
 				}
 			}
+		} else {
+			$product        = wc_get_product( $this->meta_array['lsx_bd_subscription_product'] );
+			$this->redirect = add_query_arg( 'lsx_bd_id', $this->listing_id, $product->add_to_cart_url() );
 		}
 	}
 }
