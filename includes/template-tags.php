@@ -251,7 +251,15 @@ function lsx_business_col() {
  * @return string
  */
 function lsx_bd_listing_title( $echo = true ) {
-	$title = apply_filters( 'lsx_bd_single_business_title', '<h1 class="entry-title">' . get_the_title() . '</h1>' );
+	if ( function_exists( 'is_wc_endpoint_url' ) && is_wc_endpoint_url( 'preview-listing' ) ) {
+		$title = '';
+		$saved = filter_input( INPUT_POST, 'lsx_bd_post_title' );
+		if ( ! empty( $saved ) && '' !== $saved ) {
+			$title = apply_filters( 'lsx_bd_single_business_title', '<h1 class="entry-title">' . $saved . '</h1>' );
+		}
+	} else {
+		$title = apply_filters( 'lsx_bd_single_business_title', '<h1 class="entry-title">' . get_the_title() . '</h1>' );
+	}
 	if ( true === $echo ) {
 		echo wp_kses_post( $title );
 	} else {
@@ -313,6 +321,30 @@ function lsx_bd_single_listing_meta( $echo = true ) {
 		echo wp_kses_post( $entry_meta );
 	} else {
 		return $entry_meta;
+	}
+}
+
+/**
+ * This function outputs the single business listing title wrapped in <h1>.
+ *
+ * @param boolean $echo Output or return the title.
+ * @return string
+ */
+function lsx_bd_listing_content( $echo = true ) {
+	if ( function_exists( 'is_wc_endpoint_url' ) && is_wc_endpoint_url( 'preview-listing' ) ) {
+		$content = '';
+		$saved = filter_input( INPUT_POST, 'lsx_bd_post_content' );
+		if ( ! empty( $saved ) && '' !== $saved ) {
+			$content = $saved;
+		}
+	} else {
+		$content = get_the_content();
+	}
+
+	if ( true === $echo ) {
+		echo wp_kses_post( $content );
+	} else {
+		return $content;
 	}
 }
 

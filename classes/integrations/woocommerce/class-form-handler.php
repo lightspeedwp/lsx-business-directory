@@ -1,6 +1,8 @@
 <?php
 namespace lsx\business_directory\classes\integrations\woocommerce;
 
+use stdClass;
+
 /**
  * Add / Edit listing form handler
  *
@@ -80,6 +82,8 @@ class Form_Handler {
 	public function __construct() {
 		$this->listing_id = false;
 		add_action( 'template_redirect', array( $this, 'save' ) );
+		add_filter( 'template_include', array( $this, 'preview_template_include' ), 2, 1 );
+		add_action( 'wp_head', array( $this, 'preview_handler' ) );
 	}
 
 	/**
@@ -233,10 +237,7 @@ class Form_Handler {
 
 		do_action( 'lsx_bd_save_listing', $this->listing_id, $this );
 
-		if ( 'preview_listing_details' === $this->action ) {
-			$this->redirect = wc_get_endpoint_url( lsx_bd_get_option( 'translations_listings_preview_endpoint', 'preview-listing' ) . '/' . $this->listing_id . '/', '', wc_get_page_permalink( 'myaccount' ) );
-			wp_safe_redirect( $this->redirect );
-		} elseif ( 'save_listing_details' === $this->action ) {
+		if ( 'save_listing_details' === $this->action ) {
 			wc_add_notice( $this->post_array['post_title'] . ' ' . __( 'succesfully added.', 'lsx-business-directory' ) );
 			$this->redirect = wc_get_endpoint_url( lsx_bd_get_option( 'translations_listings_endpoint', 'my-listings' ), '', wc_get_page_permalink( 'myaccount' ) );
 		} else {
@@ -394,5 +395,86 @@ class Form_Handler {
 			$product        = wc_get_product( $this->meta_array['lsx_bd_subscription_product'] );
 			$this->redirect = add_query_arg( 'lsx_bd_id', $this->listing_id, $product->add_to_cart_url() );
 		}
+	}
+
+	/**
+	 * Archive template redirect.
+	 *
+	 * @param  string $template The path to the template to load.
+	 * @return string
+	 */
+	public function preview_template_include( $template ) {
+		$nonce_value = wc_get_var( $_REQUEST['lsx-bd-add-listing-nonce'], wc_get_var( $_REQUEST['_wpnonce'], '' ) ); // @codingStandardsIgnoreLine.
+		if ( ! wp_verify_nonce( $nonce_value, 'lsx_bd_add_listing' ) ) {
+			return $template;
+		}
+		if ( __( 'Preview', 'lsx-business-directory' ) === filter_input( INPUT_POST, 'preview_listing_details' ) ) {
+			if ( empty( locate_template( array( 'single-business-directory.php' ) ) ) && file_exists( LSX_BD_PATH . 'templates/single-business-directory.php' ) ) {
+				$template = LSX_BD_PATH . 'templates/single-business-directory.php';
+			}
+		}
+		return $template;
+	}
+
+	/**
+	 * Setup the post data with our preview information
+	 *
+	 * @return void
+	 */
+	public function preview_handler() {
+		if ( is_wc_endpoint_url( 'preview-listing' ) ) {
+			global $post;
+
+			$user_id = get_current_user_id();
+			if ( $user_id <= 0 ) {
+				return;
+			}
+			$customer = new \WC_Customer( $user_id );
+			if ( ! $customer ) {
+				return;
+			}
+
+			$preview_object = new stdClass();
+
+			$time_now = date( 'Y-m-d g:i:s', strtotime( 'now' ) );
+
+			$preview_object->ID                    = get_query_var( 'preview-listing' );
+			$preview_object->post_author           = $user_id;
+			$preview_object->post_date             = $time_now;
+			$preview_object->post_date_gmt         = $time_now;
+			$preview_object->post_content          = 'Warwicks World';
+			$preview_object->post_title            = 'Warwicks World';
+			$preview_object->post_excerpt          = 'Warwicks World';
+			$preview_object->post_status           = 'publish';
+			$preview_object->comment_status        = 'closed';
+			$preview_object->ping_status           = 'closed';
+			$preview_object->post_name             = 'warwick-world';
+			$preview_object->to_ping               = '';
+			$preview_object->pinged                = '';
+			$preview_object->post_modified         = $time_now;
+			$preview_object->post_modified_gmt     = $time_now;
+			$preview_object->post_content_filtered = '';
+			$preview_object->post_parent           = 0;
+			$preview_object->guid                  = 'https://lsxbusinessdirectory.local/?post_type=business-directory&p=1347';
+			$preview_object->menu_order            = 0;
+			$preview_object->post_type             = 'business-directory';
+			$preview_object->post_mime_type        = '';
+			$preview_object->comment_count         = 0;
+			$preview_object->filter                = 'raw';
+			$post                                  = $preview_object; // @codingStandardsIgnoreLine.
+
+			add_filter( 'get_post_metadata', array( $this, 'post_custom_fields' ), 11, 3 );
+		}
+	}
+
+	/**
+	 * Replace the custom fields with their preview values.
+	 */
+	public function post_custom_fields( $meta, $post_id, $meta_key ) {
+		$value = filter_input( INPUT_POST, $meta_key );
+		if ( ! empty( $value ) && '' !== $value ) {
+			$meta = $value;
+		}
+		return $meta;
 	}
 }

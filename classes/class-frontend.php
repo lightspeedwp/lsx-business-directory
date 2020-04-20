@@ -117,10 +117,10 @@ class Frontend {
 	 * @return array
 	 */
 	public function body_class( $classes = array() ) {
-		if ( is_singular( 'business-directory' ) || is_post_type_archive( 'business-directory' ) || is_tax( array( 'industry', 'location' ) ) || is_search() ) {
+		if ( is_singular( 'business-directory' ) || is_post_type_archive( 'business-directory' ) || is_tax( array( 'industry', 'location' ) ) || is_search() || ( function_exists( 'is_wc_endpoint_url' ) && is_wc_endpoint_url( 'preview-listing' ) ) ) {
 			$classes[] = 'lsx-business-directory-page';
 
-			if ( is_singular( 'business-directory' ) ) {
+			if ( is_singular( 'business-directory' ) || ( function_exists( 'is_wc_endpoint_url' ) && is_wc_endpoint_url( 'preview-listing' ) ) ) {
 				$classes[] = 'lsx-body-full-width';
 
 				if ( function_exists( 'has_blocks' ) && has_blocks( get_the_ID() ) && ( ! is_search() ) && ( ! is_archive() ) ) {
