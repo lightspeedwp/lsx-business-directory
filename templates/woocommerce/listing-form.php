@@ -55,6 +55,8 @@ do_action( 'lsx_bd_before_listing_form' ); ?>
 			<?php wp_nonce_field( 'lsx_bd_add_listing', 'lsx-bd-add-listing-nonce' ); ?>
 			<button type="submit" class="woocommerce-Button button" name="save_listing_details" value="<?php esc_attr_e( 'Save', 'lsx-business-directory' ); ?>"><?php esc_html_e( 'Save', 'lsx-business-directory' ); ?></button>
 
+			<button type="submit" class="woocommerce-Button button" name="preview_listing_details" value="<?php esc_attr_e( 'Preview', 'lsx-business-directory' ); ?>"><?php esc_html_e( 'Preview', 'lsx-business-directory' ); ?></button>
+
 			<?php
 			if ( false !== $listing_id && '' !== $listing_id ) {
 				?>

@@ -233,7 +233,10 @@ class Form_Handler {
 
 		do_action( 'lsx_bd_save_listing', $this->listing_id, $this );
 
-		if ( 'save_listing_details' === $this->action ) {
+		if ( 'preview_listing_details' === $this->action ) {
+			$this->redirect = wc_get_endpoint_url( lsx_bd_get_option( 'translations_listings_preview_endpoint', 'preview-listing' ) . '/' . $this->listing_id . '/', '', wc_get_page_permalink( 'myaccount' ) );
+			wp_safe_redirect( $this->redirect );
+		} elseif ( 'save_listing_details' === $this->action ) {
 			wc_add_notice( $this->post_array['post_title'] . ' ' . __( 'succesfully added.', 'lsx-business-directory' ) );
 			$this->redirect = wc_get_endpoint_url( lsx_bd_get_option( 'translations_listings_endpoint', 'my-listings' ), '', wc_get_page_permalink( 'myaccount' ) );
 		} else {
