@@ -112,7 +112,7 @@ class Form_Handler {
 			return false;
 		}
 
-		if ( empty( $_POST['action'] ) || ( 'save_listing_details' !== $_POST['action'] && 'edit_listing_details' !== $_POST['action'] ) ) {
+		if ( empty( $_POST['action'] ) || ( 'save_listing_details' !== $_POST['action'] && 'edit_listing_details' !== $_POST['action'] ) || is_wc_endpoint_url( 'preview-listing' ) ) {
 			return false;
 		} else {
 			$this->action = sanitize_text_field( wp_unslash( $_POST['action'] ) );
