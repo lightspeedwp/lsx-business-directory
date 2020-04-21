@@ -122,14 +122,14 @@ get_header(); ?>
 									<?php if ( $business_skype ) : ?>
 									<div class="skype lsx-flex-row">
 										<div class="col1"><i class="fa fa-skype"></i><strong><?php esc_html_e( 'Skype', 'lsx-business-directory' ); ?>: </strong></div>
-										<div class="col2 lsx-flex-center"><a href="skype:<?php echo esc_attr( $business_skype ); ?>?call"><i class="fa fa-skype"></i>Call: <?php echo esc_attr( $business_skype ); ?></a></div>
+										<div class="col2 lsx-flex-center"><a target="_blank" href="skype:<?php echo esc_attr( $business_skype ); ?>?call"><i class="fa fa-skype"></i>Call: <?php echo esc_attr( $business_skype ); ?></a></div>
 									</div>
 									<?php endif; ?>
 
 									<?php if ( $business_whatsapp ) : ?>
 									<div class="whatsapp lsx-flex-row">
 										<div class="col1"><i class="fa fa-whatsapp"></i><strong><?php esc_html_e( 'Whatsapp', 'lsx-business-directory' ); ?>: </strong></div>
-										<div class="col2 lsx-flex-center"><a href="https://wa.me/<?php echo esc_attr( $business_whatsapp ); ?>">Click to Chat</a></div>
+										<div class="col2 lsx-flex-center"><a target="_blank" href="https://wa.me/<?php echo esc_attr( $business_whatsapp ); ?>">Click to Chat</a></div>
 									</div>
 									<?php endif; ?>
 
