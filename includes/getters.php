@@ -488,7 +488,7 @@ function get_listing_form_fields() {
 			'fields' => array(
 				'lsx_bd_address_street_number' => array(
 					'type'     => 'text',
-					'label'    => __( 'Street / Apartment #', 'lsx-business-directory' ),
+					'label'    => __( 'Street #', 'lsx-business-directory' ),
 					'class'    => array( 'listing-address-street-number form-row-first' ),
 					'required' => true,
 				),
