@@ -364,6 +364,8 @@ body.archive.lsx-body-grid-layout .post-wrapper, body.search-results.lsx-body-gr
 
 .listing-form .form-row.listing-options .woocommerce-input-wrapper input { width: 5%; display: inline-block; min-height: 10px; height: auto; border: none; -webkit-box-shadow: none; box-shadow: none; }
 
-.listing-form .form-row.listing-options .woocommerce-input-wrapper label { width: 94%; display: inline-block; }
+.listing-form .form-row.listing-options .woocommerce-input-wrapper label { width: 90%; display: inline-block; }
+
+.listing-form .form-row .remove-image { width: 100%; display: block; }
 
 /*# sourceMappingURL=maps/lsx-business-directory.css.map */

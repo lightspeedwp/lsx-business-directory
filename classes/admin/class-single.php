@@ -68,6 +68,15 @@ class Single {
 		do_action( 'lsx_bd_settings_section_single', $cmb, 'bottom' );
 		$cmb->add_field(
 			array(
+				'name'    => esc_html__( 'Enable Related Listings', 'lsx-business-directory' ),
+				'id'      => 'single_enable_related_listings',
+				'type'    => 'checkbox',
+				'default' => 1,
+			)
+		);
+
+		$cmb->add_field(
+			array(
 				'id'   => 'settings_single_closing',
 				'type' => 'tab_closing',
 			)

@@ -65,11 +65,13 @@ class Frontend {
 	public function __construct() {
 		$this->load_classes();
 		add_filter( 'body_class', array( $this, 'body_class' ), 200, 1 );
+		add_filter( 'post_class', array( $this, 'post_class' ), 200, 1 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'assets' ), 5 );
 		add_filter( 'get_the_archive_title', array( $this, 'get_the_archive_title' ), 100 );
 		add_filter( 'wp_kses_allowed_html', array( $this, 'wp_kses_allowed_html' ), 10, 2 );
 		add_action( 'lsx_content_wrap_before', array( $this, 'industries_shortcode' ) );
 		add_filter( 'get_the_excerpt', array( $this, 'crop_excerpt' ), 1, 15 );
+		add_action( 'lsx_content_bottom', array( $this, 'add_related_listings_to_single' ) );
 	}
 
 	/**
@@ -122,19 +124,20 @@ class Frontend {
 
 			if ( is_singular( 'business-directory' ) || ( lsx_bd_is_preview() ) ) {
 				$classes[] = 'lsx-body-full-width';
-
 				if ( function_exists( 'has_blocks' ) && has_blocks( get_the_ID() ) && ( ! is_search() ) && ( ! is_archive() ) ) {
 					$key = array_search( 'using-gutenberg', $classes );
 					if ( false !== $key ) {
 						unset( $classes[ $key ] );
 					}
 				}
-
 				if ( lsx_bd_is_preview() ) {
 					$classes[] = 'single';
 					$classes[] = 'single-business-directory';
+					$key       = array_search( 'woocommerce-page', $classes );
+					if ( false !== $key ) {
+						unset( $classes[ $key ] );
+					}
 				}
-
 			} else {
 				$classes[] = 'lsx-body-full-width';
 				$prefix    = 'archive';
@@ -148,6 +151,21 @@ class Frontend {
 					$classes[] = 'lsx-body-list-layout';
 				}
 			}
+		}
+		return $classes;
+	}
+
+	/**
+	 * Adds a body class to all the business directory pages.
+	 *
+	 * @param array $classes The current <body> tag classes.
+	 * @return array
+	 */
+	public function post_class( $classes = array() ) {
+		if ( lsx_bd_is_preview() ) {
+			$classes[] = 'business-directory';
+			$classes[] = 'type-business-directory';
+			$classes[] = 'has-post-thumbnail';
 		}
 		return $classes;
 	}
@@ -279,5 +297,22 @@ class Frontend {
 			}
 		}
 		return $wpse_excerpt;
+	}
+
+	/**
+	 * Adds the related listing shortcode to the bottom of the single listing.
+	 *
+	 * @return void
+	 */
+	public function add_related_listings_to_single() {
+		$should_add = apply_filters( 'lsx_bd_enable_related_listings', lsx_bd_get_option( 'single_enable_related_listings', true ) );
+
+		// We disable the related listings on the single preview.
+		if ( lsx_bd_is_preview() ) {
+			$should_add = false;
+		}
+		if ( true === $should_add || 1 === $should_add || '1' === $should_add ) {
+			lsx_bd_related_listings();
+		}
 	}
 }

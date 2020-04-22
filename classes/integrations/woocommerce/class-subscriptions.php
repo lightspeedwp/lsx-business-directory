@@ -188,7 +188,9 @@ class Subscriptions {
 		foreach ( $item->get_formatted_meta_data() as $meta_id => $meta ) {
 			if ( __( 'Listing', 'lsx-business-directory' ) === $meta->display_key ) {
 				$listing_id = trim( strip_tags( $meta->display_value ) );
-				$value      = '<a href="' . get_permalink( $listing_id ) . '">' . get_the_title( $listing_id ) . '</a>';
+				$title      = get_the_title( $listing_id );
+				$title      = str_replace( __( 'Listing for #', 'lsx-business-directory' ), __( ' for #', 'lsx-business-directory' ), $title );
+				$value      = '<a href="' . get_permalink( $listing_id ) . '">' . $title . '</a>';
 			} else {
 				$value = $args['autop'] ? wp_kses_post( $meta->display_value ) : wp_kses_post( make_clickable( trim( $meta->display_value ) ) );
 			}

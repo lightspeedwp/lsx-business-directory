@@ -26,19 +26,31 @@ do_action( 'lsx_bd_before_listing_form' ); ?>
 					<?php
 					if ( ! empty( $section_values['fields'] ) ) {
 						foreach ( $section_values['fields'] as $field_key => $field_args ) {
-							// This adds the handle of the image field.
-							$field_args = wp_parse_args( $field_args, $defaults );
-							woocommerce_form_field(
-								$field_key,
-								$field_args,
-								$all_values[ $field_key ]
-							);
-							if ( false !== $listing_id && 'image' === $field_args['type'] ) {
+							if ( 'lsx_bd_post_content' === $field_key ) {
+								$eitor_settings = array(
+									'wpautop'       => true,
+									'media_buttons' => false,
+								);
 								?>
-								<p>
-									<img src="<?php echo esc_url( lsx_bd_get_thumbnail_wrapped( $listing_id, 'lsx-thumbnail-wide' ) ); ?>">
-								</p>
+								<div class="form-row listing-content form-row-wide validate-required" id="lsx_bd_post_content_field" data-priority="">
+									<?php wp_editor( $all_values[ $field_key ], $field_key, $eitor_settings ); ?>
+								</div>
 								<?php
+							} else {
+								// This adds the handle of the image field.
+								$field_args = wp_parse_args( $field_args, $defaults );
+								woocommerce_form_field(
+									$field_key,
+									$field_args,
+									$all_values[ $field_key ]
+								);
+								if ( false !== $listing_id && 'image' === $field_args['type'] ) {
+									?>
+									<p>
+										<img src="<?php echo esc_url( lsx_bd_get_thumbnail_wrapped( $listing_id, 'lsx-thumbnail-wide' ) ); ?>">
+									</p>
+									<?php
+								}
 							}
 						}
 					}

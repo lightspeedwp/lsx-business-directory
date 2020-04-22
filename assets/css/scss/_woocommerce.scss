@@ -116,10 +116,14 @@
 					box-shadow: none;
 				}
 				label {
-					width: 94%;
+					width: 90%;
 					display:inline-block;
 				}
 			}
+		}
+		.remove-image {
+			width: 100%;
+			display: block;
 		}
 	}
 }
