@@ -156,6 +156,10 @@ class Form_Handler {
 							$field_value = isset( $_POST[ $field_key ] ) ? wc_clean( wp_unslash( $_POST[ $field_key ] ) ) : '';
 						}
 
+						if ( 'lsx_bd_post_content' === $field_key ) {
+							$field_value = wpautop( $_POST['lsx_bd_post_content'] ); // @codingStandardsIgnoreLine.
+						}
+
 						// Validation: Required fields.
 						if ( ! empty( $field_args['required'] ) && empty( $field_value ) ) {
 							wc_add_notice( sprintf( __( '%s is a required field.', 'lsx-business-directory' ), $field_args['label'] ), 'error', array( 'id' => $field_key ) );
@@ -474,14 +478,13 @@ class Form_Handler {
 		$value = filter_input( INPUT_POST, $meta_key );
 		if ( ! empty( $value ) && '' !== $value ) {
 			$meta = $value;
-		} else {
-			if ( 'lsx_bd_banner' === $meta_key ) {
-				$image_id = filter_input( INPUT_POST, 'lsx_bd_banner_id' );
-				if ( ! empty( $image_id ) && '' !== $image_id ) {
-					$image_src = wp_get_attachment_image_src( $image_id, 'full' );
-					if ( ! empty( $image_src ) ) {
-						$meta = $image_src[0];
-					}
+		}
+		if ( 'lsx_bd_banner' === $meta_key ) {
+			$image_id = filter_input( INPUT_POST, 'lsx_bd_banner_id' );
+			if ( ! empty( $image_id ) && '' !== $image_id ) {
+				$image_src = wp_get_attachment_image_src( $image_id, 'full' );
+				if ( ! empty( $image_src ) ) {
+					$meta = $image_src[0];
 				}
 			}
 		}
