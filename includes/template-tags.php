@@ -335,7 +335,7 @@ function lsx_bd_listing_content( $echo = true ) {
 		$content = '';
 		$saved = filter_input( INPUT_POST, 'lsx_bd_post_content' );
 		if ( ! empty( $saved ) && '' !== $saved ) {
-			$content = $saved;
+			$content = apply_filters( 'the_content', $saved );
 		}
 	} else {
 		$content = get_the_content();
