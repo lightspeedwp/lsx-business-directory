@@ -148,10 +148,6 @@ class Checkout {
 		$item_key           = false;
 		$listing_id         = false;
 
-		print_r('<pre>');
-		print_r($subscription_items);
-		print_r('</pre>');
-
 		if ( ! empty( $subscription_items ) ) {
 			/**
 			 * @var $item \WC_Order_Item_Product
@@ -175,9 +171,6 @@ class Checkout {
 								'post_author' => $subscription->get_customer_id(),
 							);
 							$listing_id    = wp_insert_post( $listing_array );
-							print_r('<pre>');
-							print_r($listing_id);
-							print_r('</pre>');
 							$item->add_meta_data( __( 'Listing', 'lsx-business-directory' ), $listing_id, true );
 							$item->save_meta_data();
 							add_post_meta( $subscription->get_id(), '_lsx_bd_listing_id', $listing_id, false );
@@ -191,7 +184,6 @@ class Checkout {
 				}
 			}
 		}
-		//die();
 	}
 
 	/**
