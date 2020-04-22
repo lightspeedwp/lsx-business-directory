@@ -161,11 +161,15 @@ class Banners {
 	public function single_banner() {
 		$disable = get_post_meta( get_the_ID(), 'lsx_bd_banner_disable', true );
 		if ( true !== $disable && 'on' !== $disable ) {
+			$listing_id = get_the_ID();
+			if ( lsx_bd_is_preview() ) {
+				$listing_id = get_query_var( 'preview-listing' );
+			}
 			$args = array(
-				'image'    => apply_filters( 'lsx_bd_banner_image', get_post_meta( get_the_ID(), 'lsx_bd_banner', true ) ),
-				'colour'   => apply_filters( 'lsx_bd_banner_colour', get_post_meta( get_the_ID(), 'lsx_bd_banner_colour', true ) ),
-				'title'    => apply_filters( 'lsx_bd_banner_title', get_post_meta( get_the_ID(), 'lsx_bd_banner_title', true ) ),
-				'subtitle' => apply_filters( 'lsx_bd_banner_subtitle', get_post_meta( get_the_ID(), 'lsx_bd_banner_subtitle', true ) ),
+				'image'    => apply_filters( 'lsx_bd_banner_image', get_post_meta( $listing_id, 'lsx_bd_banner', true ) ),
+				'colour'   => apply_filters( 'lsx_bd_banner_colour', get_post_meta( $listing_id, 'lsx_bd_banner_colour', true ) ),
+				'title'    => apply_filters( 'lsx_bd_banner_title', get_post_meta( $listing_id, 'lsx_bd_banner_title', true ) ),
+				'subtitle' => apply_filters( 'lsx_bd_banner_subtitle', get_post_meta( $listing_id, 'lsx_bd_banner_subtitle', true ) ),
 			);
 			$this->do_banner( $args );
 		}

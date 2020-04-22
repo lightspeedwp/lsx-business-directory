@@ -474,6 +474,16 @@ class Form_Handler {
 		$value = filter_input( INPUT_POST, $meta_key );
 		if ( ! empty( $value ) && '' !== $value ) {
 			$meta = $value;
+		} else {
+			if ( 'lsx_bd_banner' === $meta_key ) {
+				$image_id = filter_input( INPUT_POST, 'lsx_bd_banner_id' );
+				if ( ! empty( $image_id ) && '' !== $image_id ) {
+					$image_src = wp_get_attachment_image_src( $image_id, 'full' );
+					if ( ! empty( $image_src ) ) {
+						$meta = $image_src[0];
+					}
+				}
+			}
 		}
 		return $meta;
 	}
