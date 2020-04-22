@@ -87,7 +87,7 @@ get_header(); ?>
 						<div class="col-xs-12 col-sm-12 col-md-4">
 							<div class="business-content-left">
 								<div class="entry-image">
-									<img src="<?php echo esc_url( lsx_bd_get_thumbnail_wrapped( get_the_ID(), 'lsx-thumbnail-wide' ) ); ?>">
+									<img src="<?php echo lsx_bd_get_thumbnail_wrapped( get_the_ID(), 'lsx-thumbnail-wide' ); // phpcs:ignore ?>">
 								</div>
 
 								<div class="contact-info business-content-section">

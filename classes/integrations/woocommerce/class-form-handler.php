@@ -510,13 +510,26 @@ class Form_Handler {
 		if ( ! empty( $value ) && '' !== $value ) {
 			$meta = $value;
 		}
-		if ( 'lsx_bd_banner' === $meta_key ) {
-			$image_id = filter_input( INPUT_POST, 'lsx_bd_banner_id' );
+		if ( 'lsx_bd_banner' === $meta_key || 'lsx_bd__thumbnail' === $meta_key ) {
+
+			$size = 'full';
+			if ( 'lsx_bd__thumbnail' === $meta_key ) {
+				$size = 'lsx-thumbnail-wide';
+			}
+			$meta_key .= '_id';
+
+			$image_id = filter_input( INPUT_POST, $meta_key );
 			if ( ! empty( $image_id ) && '' !== $image_id ) {
-				$image_src = wp_get_attachment_image_src( $image_id, 'full' );
+				$image_src = wp_get_attachment_image_src( $image_id, $size );
 				if ( ! empty( $image_src ) ) {
 					$meta = $image_src[0];
 				}
+			}
+
+			$meta_key .= '_upload';
+			if ( isset( $_FILES[ $meta_key ] ) ) {
+				$image_src = getimagesize( $_FILES[ $meta_key ]['tmp_name'] ); // phpcs:ignore
+				$meta      = 'data:' . $image_src['mime'] . ";base64," . base64_encode( file_get_contents( $_FILES[ $meta_key ]['tmp_name'] ) ); // phpcs:ignore
 			}
 		}
 		return $meta;
