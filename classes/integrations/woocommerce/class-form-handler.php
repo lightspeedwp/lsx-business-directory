@@ -246,7 +246,14 @@ class Form_Handler {
 			$this->redirect = wc_get_endpoint_url( lsx_bd_get_option( 'translations_listings_endpoint', 'my-listings' ), '', wc_get_page_permalink( 'myaccount' ) );
 		} else {
 			/* translators: %s: my-account */
-			wc_add_notice( sprintf( __( 'Listing updated succesfully. Go back to <a href="%s">my listings</a>', 'lsx-business-directory' ), wc_get_endpoint_url( lsx_bd_get_option( 'translations_listings_endpoint', 'my-listings' ), '', wc_get_page_permalink( 'myaccount' ) ) ) );
+			wc_add_notice(
+				sprintf(
+					/* translators: %s: My Account link and the View listing link */
+					__( 'Listing updated succesfully. Go back to <a href="%1$s">my listings</a> or view your <a href="%2$s">listing</a>', 'lsx-business-directory' ),
+					wc_get_endpoint_url( lsx_bd_get_option( 'translations_listings_endpoint', 'my-listings' ), '', wc_get_page_permalink( 'myaccount' ) ),
+					get_permalink( $this->listing_id )
+				)
+			);
 			$this->redirect = wc_get_endpoint_url( lsx_bd_get_option( 'translations_listings_edit_endpoint', 'edit-listing' ) . '/' . $this->listing_id . '/', '', wc_get_page_permalink( 'myaccount' ) );
 		}
 
@@ -254,6 +261,7 @@ class Form_Handler {
 		$this->save_meta();
 		$this->save_tax();
 		$this->save_images();
+		$this->set_redirect();
 
 		wp_safe_redirect( $this->redirect );
 		exit;
@@ -268,21 +276,16 @@ class Form_Handler {
 		if ( 'on' === lsx_bd_get_option( 'woocommerce_enable_checkout', false ) ) {
 			$this->meta_array['lsx_bd_subscription_product'] = isset( $_POST['lsx_bd_plan_id'] ) ? wc_clean( wp_unslash( $_POST['lsx_bd_plan_id'] ) ) : '';// phpcs:ignore
 		}
-
+		$this->post_array['post_name'] = sanitize_title_with_dashes( $this->post_array['post_title'] );
 		if ( 'save_listing_details' === $this->action && ( false === $this->listing_id || '' === $this->listing_id ) ) {
 			// If purchasing is enabled, then first set the post to draft.
 			if ( 'on' === lsx_bd_get_option( 'woocommerce_enable_checkout', false ) ) {
-				$this->post_array['post_status']                 = 'draft';
+				$this->post_array['post_status'] = 'draft';
 			}
 			$this->listing_id = wp_insert_post( $this->post_array );
 		} else {
 			$this->post_array['ID'] = $this->listing_id;
 			wp_update_post( $this->post_array );
-		}
-
-		// Make sure our URL has an ID to save to the Cart.
-		if ( 'on' === lsx_bd_get_option( 'woocommerce_enable_checkout', false ) ) {
-			$this->maybe_switching_subscription();
 		}
 	}
 
@@ -360,6 +363,34 @@ class Form_Handler {
 			} else {
 				wp_set_object_terms( $this->listing_id, intval( $term['term_id'] ), $taxonomy, false );
 			}
+		}
+	}
+
+	/**
+	 * Sets the appropriate URL to redirect to.
+	 *
+	 * @return void
+	 */
+	public function set_redirect() {
+		if ( 'save_listing_details' === $this->action ) {
+			wc_add_notice( $this->post_array['post_title'] . ' ' . __( 'succesfully added.', 'lsx-business-directory' ) );
+			$this->redirect = wc_get_endpoint_url( lsx_bd_get_option( 'translations_listings_endpoint', 'my-listings' ), '', wc_get_page_permalink( 'myaccount' ) );
+		} else {
+			/* translators: %s: my-account */
+			wc_add_notice(
+				sprintf(
+					/* translators: %s: My Account link and the View listing link */
+					__( 'Listing updated succesfully. Go back to <a href="%1$s">my listings</a> or view your <a href="%2$s">listing</a>', 'lsx-business-directory' ),
+					wc_get_endpoint_url( lsx_bd_get_option( 'translations_listings_endpoint', 'my-listings' ), '', wc_get_page_permalink( 'myaccount' ) ),
+					get_permalink( $this->listing_id )
+				)
+			);
+			$this->redirect = wc_get_endpoint_url( lsx_bd_get_option( 'translations_listings_edit_endpoint', 'edit-listing' ) . '/' . $this->listing_id . '/', '', wc_get_page_permalink( 'myaccount' ) );
+		}
+
+		// Make sure our URL has an ID to save to the Cart.
+		if ( 'on' === lsx_bd_get_option( 'woocommerce_enable_checkout', false ) ) {
+			$this->maybe_switching_subscription();
 		}
 	}
 
