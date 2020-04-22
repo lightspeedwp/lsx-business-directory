@@ -26,6 +26,8 @@ class Checkout {
 	 */
 	private $should_redirect = false;
 
+	public $order_listing_item = false;
+
 	/**
 	 * Contructor
 	 */
@@ -93,20 +95,25 @@ class Checkout {
 	 *
 	 * @param int $order_id
 	 * @param array $posted_data
-	 * @param object $order WC_Order()
+	 * @param \WC_Order() $order
 	 * @return void
 	 */
 	public function mark_order_as_listing( $order_id, $posted_data, $order ) {
 		$order_items = $order->get_items();
 		$listing_set = false;
 		if ( ! empty( $order_items ) ) {
+			/**
+			 * @var $item \WC_Order_Item_Product
+			 */
 			foreach ( $order_items as $item_id => $item ) {
 				$product_id = $item->get_product_id();
+
 				if ( false !== $product_id && '' !== $product_id ) {
 					$is_listing = get_post_meta( $product_id, '_lsx_bd_listing', true );
 					if ( 'yes' === $is_listing ) {
 						add_post_meta( $order_id, '_lsx_bd_listing', 'yes', true );
 						$listing_set = true;
+						$this->order_listing_item = $item;
 					}
 				}
 			}
@@ -127,7 +134,64 @@ class Checkout {
 		$is_listing_order = $this->mark_order_as_listing( $order->get_id(), $posted_data, $order );
 		if ( true === $is_listing_order ) {
 			add_post_meta( $subscription->get_id(), '_lsx_bd_listing', 'yes', true );
+			$this->maybe_needs_listing( $subscription );
 		}
+	}
+
+	/**
+	 * Checks to see if the current order needs a subscription.
+	 *
+	 * @return void
+	 */
+	public function maybe_needs_listing( $subscription ) {
+		$subscription_items = $subscription->get_items();
+		$item_key           = false;
+		$listing_id         = false;
+
+		print_r('<pre>');
+		print_r($subscription_items);
+		print_r('</pre>');
+
+		if ( ! empty( $subscription_items ) ) {
+			/**
+			 * @var $item \WC_Order_Item_Product
+			 */
+			foreach ( $subscription_items as $item_id => $item ) {
+				$listing_id = $item->get_meta( __( 'Listing', 'lsx-business-directory' ) );
+
+				if ( empty( $listing_id ) ) {
+					$product_id = $item->get_product_id();
+					if ( false !== $product_id && '' !== $product_id ) {
+						$is_listing = get_post_meta( $product_id, '_lsx_bd_listing', true );
+						if ( 'yes' === $is_listing ) {
+							$listing_title = $subscription->get_billing_company();
+							if ( '' === $listing_title ) {
+								$listing_title = __( 'Listing for #', 'lsx-business-directory' ) . $subscription->get_id();
+							}
+							$listing_array = array(
+								'post_status' => 'draft',
+								'post_title'  => $listing_title,
+								'post_type'   => 'business-directory',
+								'post_author' => $subscription->get_customer_id(),
+							);
+							$listing_id    = wp_insert_post( $listing_array );
+							print_r('<pre>');
+							print_r($listing_id);
+							print_r('</pre>');
+							$item->add_meta_data( __( 'Listing', 'lsx-business-directory' ), $listing_id, true );
+							$item->save_meta_data();
+							add_post_meta( $subscription->get_id(), '_lsx_bd_listing_id', $listing_id, false );
+							add_post_meta( $listing_id, '_lsx_bd_order_id', $subscription->get_id(), true );
+
+							// Make sure the order saves the ID as well.
+							$this->order_listing_item->add_meta_data( __( 'Listing', 'lsx-business-directory' ), $listing_id, true );
+							$this->order_listing_item->save_meta_data();
+						}
+					}
+				}
+			}
+		}
+		//die();
 	}
 
 	/**

@@ -31,7 +31,11 @@ do_action( 'lsx_bd_before_listing_form' ); ?>
 									'wpautop'       => true,
 									'media_buttons' => false,
 								);
-								wp_editor( $all_values[ $field_key ], $field_key, $eitor_settings );
+								?>
+								<div class="form-row listing-content form-row-wide validate-required" id="lsx_bd_post_content_field" data-priority="">
+									<?php wp_editor( $all_values[ $field_key ], $field_key, $eitor_settings ); ?>
+								</div>
+								<?php
 							} else {
 								// This adds the handle of the image field.
 								$field_args = wp_parse_args( $field_args, $defaults );
