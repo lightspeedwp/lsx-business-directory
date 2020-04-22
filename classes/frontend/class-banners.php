@@ -55,6 +55,10 @@ class Banners {
 		$this->set_screen();
 		if ( '' !== $this->screen ) {
 			remove_action( 'lsx_content_wrap_before', 'lsx_global_header' );
+			add_filter( 'lsx_banner_disable', array( $this, 'disable_banner' ), 100, 1 );
+			add_filter( 'lsx_global_header_disable', array( $this, 'disable_banner' ), 100, 1 );
+			add_filter( 'lsx_page_banner_disable', array( $this, 'disable_banner' ), 100, 1 );
+
 			add_filter( 'body_class', array( $this, 'banner_class' ), 10, 1 );
 			add_action( 'lsx_header_wrap_after', array( $this, 'maybe_display_banner' ) );
 
@@ -70,17 +74,29 @@ class Banners {
 	 * @return void
 	 */
 	public function set_screen() {
-		if ( is_singular( 'business-directory' ) ) {
+		if ( is_singular( 'business-directory' ) || lsx_bd_is_preview() ) {
 			$this->screen = 'single';
 		} elseif ( is_post_type_archive( 'business-directory' ) ) {
 			$this->screen = 'archive';
 		} elseif ( is_tax( array( 'industry', 'location' ) ) ) {
 			$this->screen = 'taxonomy';
 		} elseif ( is_search() ) {
+			$engine       = get_query_var( 'engine' );
 			$this->screen = 'search';
 		} else {
 			$this->screen = '';
 		}
+	}
+
+	/**
+	 * Disable the LSX banners
+	 *
+	 * @param  boolean $disable
+	 * @return boolean
+	 */
+	public function disable_banner( $disable ) {
+		$disable = true;
+		return $disable;
 	}
 
 	/**

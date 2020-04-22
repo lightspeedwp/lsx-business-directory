@@ -333,7 +333,7 @@ function lsx_bd_single_listing_meta( $echo = true ) {
 function lsx_bd_listing_content( $echo = true ) {
 	if ( lsx_bd_is_preview() ) {
 		$content = '';
-		$saved = filter_input( INPUT_POST, 'lsx_bd_post_content' );
+		$saved   = filter_input( INPUT_POST, 'lsx_bd_post_content' );
 		if ( ! empty( $saved ) && '' !== $saved ) {
 			$content = apply_filters( 'the_content', $saved );
 		}

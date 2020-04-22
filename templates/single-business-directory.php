@@ -199,8 +199,6 @@ get_header(); ?>
 
 		<?php endwhile; // end of the loop. ?>
 
-		<?php lsx_bd_related_listings(); ?>
-
 		<?php lsx_content_bottom(); ?>
 
 		</main><!-- #main -->

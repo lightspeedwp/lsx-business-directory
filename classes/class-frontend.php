@@ -70,6 +70,7 @@ class Frontend {
 		add_filter( 'wp_kses_allowed_html', array( $this, 'wp_kses_allowed_html' ), 10, 2 );
 		add_action( 'lsx_content_wrap_before', array( $this, 'industries_shortcode' ) );
 		add_filter( 'get_the_excerpt', array( $this, 'crop_excerpt' ), 1, 15 );
+		add_action( 'lsx_content_bottom', array( $this, 'add_related_listings_to_single' ) );
 	}
 
 	/**
@@ -122,19 +123,16 @@ class Frontend {
 
 			if ( is_singular( 'business-directory' ) || ( lsx_bd_is_preview() ) ) {
 				$classes[] = 'lsx-body-full-width';
-
 				if ( function_exists( 'has_blocks' ) && has_blocks( get_the_ID() ) && ( ! is_search() ) && ( ! is_archive() ) ) {
 					$key = array_search( 'using-gutenberg', $classes );
 					if ( false !== $key ) {
 						unset( $classes[ $key ] );
 					}
 				}
-
 				if ( lsx_bd_is_preview() ) {
 					$classes[] = 'single';
 					$classes[] = 'single-business-directory';
 				}
-
 			} else {
 				$classes[] = 'lsx-body-full-width';
 				$prefix    = 'archive';
@@ -279,5 +277,22 @@ class Frontend {
 			}
 		}
 		return $wpse_excerpt;
+	}
+
+	/**
+	 * Adds the related listing shortcode to the bottom of the single listing.
+	 *
+	 * @return void
+	 */
+	public function add_related_listings_to_single() {
+		$should_add = apply_filters( 'lsx_bd_enable_related_listings', lsx_bd_get_option( 'single_enable_related_listings', true ) );
+
+		// We disable the related listings on the single preview.
+		if ( lsx_bd_is_preview() ) {
+			$should_add = false;
+		}
+		if ( true === $should_add || 1 === $should_add || '1' === $should_add ) {
+			lsx_bd_related_listings();
+		}
 	}
 }
