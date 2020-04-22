@@ -65,6 +65,7 @@ class Frontend {
 	public function __construct() {
 		$this->load_classes();
 		add_filter( 'body_class', array( $this, 'body_class' ), 200, 1 );
+		add_filter( 'post_class', array( $this, 'post_class' ), 200, 1 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'assets' ), 5 );
 		add_filter( 'get_the_archive_title', array( $this, 'get_the_archive_title' ), 100 );
 		add_filter( 'wp_kses_allowed_html', array( $this, 'wp_kses_allowed_html' ), 10, 2 );
@@ -132,6 +133,10 @@ class Frontend {
 				if ( lsx_bd_is_preview() ) {
 					$classes[] = 'single';
 					$classes[] = 'single-business-directory';
+					$key       = array_search( 'woocommerce-page', $classes );
+					if ( false !== $key ) {
+						unset( $classes[ $key ] );
+					}
 				}
 			} else {
 				$classes[] = 'lsx-body-full-width';
@@ -146,6 +151,21 @@ class Frontend {
 					$classes[] = 'lsx-body-list-layout';
 				}
 			}
+		}
+		return $classes;
+	}
+
+	/**
+	 * Adds a body class to all the business directory pages.
+	 *
+	 * @param array $classes The current <body> tag classes.
+	 * @return array
+	 */
+	public function post_class( $classes = array() ) {
+		if ( lsx_bd_is_preview() ) {
+			$classes[] = 'business-directory';
+			$classes[] = 'type-business-directory';
+			$classes[] = 'has-post-thumbnail';
 		}
 		return $classes;
 	}
