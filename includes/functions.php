@@ -359,3 +359,16 @@ function lsx_bd_get_term_thumbnail( $term_id = '', $size = 'lsx-thumbnail-wide',
 	}
 	return $image;
 }
+
+/**
+ * Returns the boolean if it is the preview page or not.
+ *
+ * @return boolean
+ */
+function lsx_bd_is_preview() {
+	$is_preview = false;
+	if ( function_exists( 'is_wc_endpoint_url' ) && is_wc_endpoint_url( 'preview-listing' ) ) {
+		$is_preview = true;
+	}
+	return $is_preview;
+}

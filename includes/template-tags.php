@@ -251,7 +251,7 @@ function lsx_business_col() {
  * @return string
  */
 function lsx_bd_listing_title( $echo = true ) {
-	if ( function_exists( 'is_wc_endpoint_url' ) && is_wc_endpoint_url( 'preview-listing' ) ) {
+	if ( lsx_bd_is_preview() ) {
 		$title = '';
 		$saved = filter_input( INPUT_POST, 'lsx_bd_post_title' );
 		if ( ! empty( $saved ) && '' !== $saved ) {
@@ -331,7 +331,7 @@ function lsx_bd_single_listing_meta( $echo = true ) {
  * @return string
  */
 function lsx_bd_listing_content( $echo = true ) {
-	if ( function_exists( 'is_wc_endpoint_url' ) && is_wc_endpoint_url( 'preview-listing' ) ) {
+	if ( lsx_bd_is_preview() ) {
 		$content = '';
 		$saved = filter_input( INPUT_POST, 'lsx_bd_post_content' );
 		if ( ! empty( $saved ) && '' !== $saved ) {
