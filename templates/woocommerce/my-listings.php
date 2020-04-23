@@ -16,12 +16,12 @@ if ( 'on' === lsx_bd_get_option( 'woocommerce_enable_checkout', false ) ) {
 		<thead>
 			<tr>
 				<th><span class="nobr"></th>
-				<th><span class="nobr"><?php echo esc_attr( 'Name', 'lsx-business-directory' ); ?></span></th>
-				<th><span class="nobr"><?php echo esc_attr( 'Date Listed', 'lsx-business-directory' ); ?></span></th>
+				<th><span class="nobr"><?php echo esc_attr__( 'Name', 'lsx-business-directory' ); ?></span></th>
+				<th><span class="nobr"><?php echo esc_attr__( 'Date Listed', 'lsx-business-directory' ); ?></span></th>
 				<?php if ( $is_selling_listings ) { ?>
-					<th><span class="nobr"><?php echo esc_attr( 'Subscription', 'lsx-business-directory' ); ?></span></th>
+					<th><span class="nobr"><?php echo esc_attr__( 'Subscription', 'lsx-business-directory' ); ?></span></th>
 				<?php } ?>
-				<th><span class="nobr"><?php echo esc_attr( 'Actions', 'lsx-business-directory' ); ?></span></th>
+				<th><span class="nobr"><?php echo esc_attr__( 'Actions', 'lsx-business-directory' ); ?></span></th>
 			</tr>
 		</thead>
 
