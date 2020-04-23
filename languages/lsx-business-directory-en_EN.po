@@ -1239,6 +1239,18 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
+#: includes/template-tags.php:538
+msgid "Add new listing"
+msgstr ""
+
+#: includes/template-tags.php:550
+msgid "Edit"
+msgstr ""
+
+#: includes/template-tags.php:562
+msgid "View"
+msgstr ""
+
 #. translators: %s: The subscription info
 #: includes/template-tags.php:584
 msgid "<a href=\"%1$s\">#%2$s - %3$s</a>"
@@ -1720,6 +1732,30 @@ msgstr ""
 
 #: templates/woocommerce/listing-form.php:77, templates/woocommerce/listing-form.php:80, classes/integrations/woocommerce/class-form-handler.php:446
 msgid "Preview"
+msgstr ""
+
+#: templates/woocommerce/my-listings.php:19
+msgid "Name"
+msgstr ""
+
+#: templates/woocommerce/my-listings.php:20
+msgid "Date Listed"
+msgstr ""
+
+#: templates/woocommerce/my-listings.php:22
+msgid "Subscription"
+msgstr ""
+
+#: templates/woocommerce/my-listings.php:24
+msgid "Actions"
+msgstr ""
+
+#: templates/woocommerce/no-listings.php:8
+msgid "You have not added any listings yet,"
+msgstr ""
+
+#: templates/woocommerce/no-listings.php:8
+msgid "click here to add your business"
 msgstr ""
 
 #: classes/integrations/woocommerce/class-admin.php:49
