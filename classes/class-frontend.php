@@ -305,14 +305,16 @@ class Frontend {
 	 * @return void
 	 */
 	public function add_related_listings_to_single() {
-		$should_add = apply_filters( 'lsx_bd_enable_related_listings', lsx_bd_get_option( 'single_enable_related_listings', true ) );
+		if ( is_singular( 'business-directory' ) ) {
+			$should_add = apply_filters( 'lsx_bd_enable_related_listings', lsx_bd_get_option( 'single_enable_related_listings', true ) );
 
-		// We disable the related listings on the single preview.
-		if ( lsx_bd_is_preview() ) {
-			$should_add = false;
-		}
-		if ( true === $should_add || 1 === $should_add || '1' === $should_add ) {
-			lsx_bd_related_listings();
+			// We disable the related listings on the single preview.
+			if ( lsx_bd_is_preview() ) {
+				$should_add = false;
+			}
+			if ( true === $should_add || 1 === $should_add || '1' === $should_add ) {
+				lsx_bd_related_listings();
+			}
 		}
 	}
 }
