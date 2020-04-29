@@ -330,6 +330,10 @@ body.archive.lsx-body-grid-layout .post-wrapper, body.search-results.lsx-body-gr
 
 @media (min-width: 768px) { .gutenberg-compatible-template.using-gutenberg .entry-content .lsx-business-directory-shortcode { width: 100%; max-width: 100%; } }
 
+@media (min-width: 1200px) { .gutenberg-compatible-template.using-gutenberg .entry-content .woocommerce { width: 100%; max-width: 100%; margin-bottom: 8.4rem; margin-top: 4.25rem; } }
+
+.woocommerce-page #main .quicktags-toolbar .button { background: none; -webkit-box-shadow: none; box-shadow: none; color: #333; text-decoration: underline; height: initial !important; min-height: auto; padding: 1px 7px 2px; text-transform: initial; font-weight: 200; }
+
 #main .woocommerce-MyAccount-navigation ul li.woocommerce-MyAccount-navigation-link--listings a:before { content: '\f03a'; }
 
 #main .lsx-bd-my-account.listings .my-listings .btn { height: 40px; padding: 12px 40px; }
@@ -352,6 +356,10 @@ body.archive.lsx-body-grid-layout .post-wrapper, body.search-results.lsx-body-gr
 
 #main .lsx-bd-my-account.listings .listing-form fieldset:first-of-type legend { text-transform: capitalize; font-weight: normal; background: #E6E6E6; padding-top: 2rem; padding-bottom: 2rem; font-family: Lora; font-size: 22px; color: #434343; }
 
+#main .lsx-bd-my-account.listings .listing-form fieldset.listing-back-fieldset a { font-size: 14px; font-weight: bold; font-family: "Noto Sans"; }
+
+#main .lsx-bd-my-account.listings .listing-form fieldset.listing-back-fieldset a:before { content: '\f104'; margin-left: 5px; font-family: FontAwesome; font-size: 18px; font-weight: 200; }
+
 #main .lsx-bd-my-account.listings .listing-form p button[type="submit"] { margin: 4rem 3rem 3rem; padding-right: 4rem; padding-left: 4rem; }
 
 .lsx-bd-my-account.listings .no-listings { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; -webkit-box-align: center; -ms-flex-align: center; align-items: center; text-align: center; padding: 52px; }
@@ -363,6 +371,8 @@ body.archive.lsx-body-grid-layout .post-wrapper, body.search-results.lsx-body-gr
 .listing-form .form-row.listing-options label { width: 100%; display: block; }
 
 .listing-form .form-row.listing-options .woocommerce-input-wrapper input { width: 5%; display: inline-block; min-height: 10px; height: auto; border: none; -webkit-box-shadow: none; box-shadow: none; }
+
+.listing-form .form-row.listing-options .woocommerce-input-wrapper input[checked="checked"]:before { content: 'Current Subscription'; position: absolute; bottom: 2rem; width: 100%; min-width: 250px; }
 
 .listing-form .form-row.listing-options .woocommerce-input-wrapper label { width: 90%; display: inline-block; }
 

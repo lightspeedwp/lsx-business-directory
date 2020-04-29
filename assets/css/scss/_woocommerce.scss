@@ -1,3 +1,33 @@
+.gutenberg-compatible-template.using-gutenberg {
+	.entry-content {
+		.woocommerce {
+			@include media('>=desktop') {
+				width: 100%;
+				max-width: 100%;
+				margin-bottom: 8.4rem;
+				margin-top: 4.25rem;
+			}
+		}
+
+	}
+}
+.woocommerce-page {
+	#main {
+		.quicktags-toolbar {
+			.button {
+				background: none;
+				box-shadow: none;
+				color: #333;
+				text-decoration: underline;
+				height: initial !important;
+				min-height: auto;
+				padding: 1px 7px 2px;
+				text-transform: initial;
+				font-weight: 200;
+			}
+		}
+	}
+}
 // My Account - Listing Tab.
 #main {
 	.woocommerce-MyAccount-navigation {
@@ -65,6 +95,20 @@
 						color: #434343;
 					}
 				}
+				&.listing-back-fieldset {
+					a {
+						font-size: 14px;
+						font-weight: bold;
+						font-family: "Noto Sans";
+						&:before {
+							content: '\f104';
+							margin-right: 5px;
+							font-family: FontAwesome;
+							font-size: 18px;
+							font-weight: 200;
+						}
+					}
+				}
 			}
 			p {
 				button[type="submit"] {
@@ -114,6 +158,15 @@
 					height: auto;
 					border: none;
 					box-shadow: none;
+					&[checked="checked"] {
+						&:before {
+							content: 'Current Subscription';
+							position: absolute;
+							bottom: 2rem;
+							width: 100%;
+							min-width: 250px;
+						}
+					}
 				}
 				label {
 					width: 90%;

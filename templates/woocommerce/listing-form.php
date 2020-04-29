@@ -12,6 +12,14 @@ do_action( 'lsx_bd_before_listing_form' ); ?>
 		<?php do_action( 'lsx_bd_listing_form_start' ); ?>
 
 		<?php
+		$listing_url = lsx_bd_get_option( 'translations_listings_endpoint', 'listings' );
+		$listing_url = get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) . $listing_url;
+		?>
+		<fieldset class="listing-back-fieldset">
+			<legend><a href="<?php echo esc_url( $listing_url ); ?>"><?php esc_html_e( 'Back to My listings', 'lsx-business-directory' ); ?></a></legend>
+		</fieldset>
+
+		<?php
 		$listing_id = get_query_var( 'edit-listing', false );
 		$sections   = \lsx\business_directory\includes\get_listing_form_fields();
 		$all_values = \lsx\business_directory\includes\get_listing_form_field_values( $sections, $listing_id );
