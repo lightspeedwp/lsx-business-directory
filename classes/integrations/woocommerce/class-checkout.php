@@ -198,7 +198,7 @@ class Checkout {
 		if ( 'yes' === $is_listing && in_array( $order->get_status(), array( 'complete', 'processing' ) ) ) {
 			$url         = wc_get_endpoint_url( lsx_bd_get_option( 'translations_listings_add_endpoint', 'add-listing' ), '', wc_get_page_permalink( 'myaccount' ) );
 			// :translators: %s: Add Listing link
-			$append_text = lsx_bd_get_option( 'woocommerce_thank_you_text', __( sprintf( 'Head on over to your <a href="%s">My Account</a> dashboard and add your listing.', $url ), 'lsx-business-directory' ) );
+			$append_text = lsx_bd_get_option( 'woocommerce_thank_you_text', __( sprintf( 'Head on over to your <a href="%s">My Account</a> dashboard and add your listing.', $url ), 'lsx-business-directory' ) );// @codingStandardsIgnoreLine
 			$text        .= ' ' . $append_text;
 		}
 		return $text;

@@ -162,7 +162,7 @@ class Form_Handler {
 
 						// Validation: Required fields.
 						if ( ! empty( $field_args['required'] ) && empty( $field_value ) ) {
-							wc_add_notice( sprintf( __( '%s is a required field.', 'lsx-business-directory' ), $field_args['label'] ), 'error', array( 'id' => $field_key ) );
+							wc_add_notice( sprintf( __( '%s is a required field.', 'lsx-business-directory' ), $field_args['label'] ), 'error', array( 'id' => $field_key ) );// @codingStandardsIgnoreLine
 						}
 
 						// Check the specific values.
@@ -172,7 +172,7 @@ class Form_Handler {
 								foreach ( $field_args['validate'] as $rule ) {
 									switch ( $rule ) {
 										case 'postcode':
-											$country       = wc_clean( wp_unslash( $_POST[ 'lsx_bd_address_country' ] ) );
+											$country       = wc_clean( wp_unslash( $_POST[ 'lsx_bd_address_country' ] ) ); // @codingStandardsIgnoreLine
 											$field_value   = wc_format_postcode( $field_value, $country );
 
 											if ( '' !== $field_value && ! \WC_Validation::is_postcode( $field_value, $country ) ) {
