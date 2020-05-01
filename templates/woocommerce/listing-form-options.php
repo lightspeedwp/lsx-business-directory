@@ -13,8 +13,8 @@ $listing_subscription_id = false;
 $listing_subscription    = false;
 
 // Find if we have a listing product ID set.
-if ( isset( $_POST['lsx_bd_plan_id'] ) ) { // phpcs:ignore
-	$selected_option = sanitize_text_field( $_POST['lsx_bd_plan_id'] ); // phpcs:ignore
+if ( isset( $_POST['lsx_bd_plan_id'] ) ) { // @codingStandardsIgnoreLine
+	$selected_option = sanitize_text_field( $_POST['lsx_bd_plan_id'] ); // @codingStandardsIgnoreLine
 }
 
 // Next make sure we have some listing products to choose or switch to.

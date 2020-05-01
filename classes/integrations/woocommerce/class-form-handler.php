@@ -274,7 +274,7 @@ class Form_Handler {
 	 */
 	public function save_listing() {
 		if ( 'on' === lsx_bd_get_option( 'woocommerce_enable_checkout', false ) ) {
-			$this->meta_array['lsx_bd_subscription_product'] = isset( $_POST['lsx_bd_plan_id'] ) ? wc_clean( wp_unslash( $_POST['lsx_bd_plan_id'] ) ) : '';// phpcs:ignore
+			$this->meta_array['lsx_bd_subscription_product'] = isset( $_POST['lsx_bd_plan_id'] ) ? wc_clean( wp_unslash( $_POST['lsx_bd_plan_id'] ) ) : '';// @codingStandardsIgnoreLine
 		}
 		$this->post_array['post_name'] = sanitize_title_with_dashes( $this->post_array['post_title'] );
 		if ( 'save_listing_details' === $this->action && ( false === $this->listing_id || '' === $this->listing_id ) ) {
@@ -528,8 +528,8 @@ class Form_Handler {
 
 			$meta_key .= '_upload';
 			if ( isset( $_FILES[ $meta_key ] ) ) {
-				$image_src = getimagesize( $_FILES[ $meta_key ]['tmp_name'] ); // phpcs:ignore
-				$meta      = 'data:' . $image_src['mime'] . ";base64," . base64_encode( file_get_contents( $_FILES[ $meta_key ]['tmp_name'] ) ); // phpcs:ignore
+				$image_src = getimagesize( $_FILES[ $meta_key ]['tmp_name'] ); // @codingStandardsIgnoreLine
+				$meta      = 'data:' . $image_src['mime'] . ";base64," . base64_encode( file_get_contents( $_FILES[ $meta_key ]['tmp_name'] ) ); // @codingStandardsIgnoreLine
 			}
 		}
 		return $meta;

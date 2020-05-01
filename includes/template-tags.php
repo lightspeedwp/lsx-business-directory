@@ -25,8 +25,8 @@ function lsx_bd_get_thumbnail_wrapped( $id, $size = 'lsx-thumbnail-wide', $key =
 		$image_src  = ( strpos( $image[0], 'cover-logo.png' ) === false ) ? $image[0] : $image_src;
 
 		if ( isset( $_FILES['lsx_bd__thumbnail_id_upload'] ) ) {
-			$image     = getimagesize( $_FILES[ 'lsx_bd__thumbnail_id_upload' ]['tmp_name'] ); // phpcs:ignore
-			$image_src = 'data:' . $image['mime'] . ";base64," . base64_encode( file_get_contents( $_FILES[ 'lsx_bd__thumbnail_id_upload' ]['tmp_name'] ) ); // phpcs:ignore
+			$image     = getimagesize( $_FILES['lsx_bd__thumbnail_id_upload']['tmp_name'] ); // @codingStandardsIgnoreLine
+			$image_src = 'data:' . $image['mime'] . ';base64,' . base64_encode( file_get_contents( $_FILES['lsx_bd__thumbnail_id_upload']['tmp_name'] ) ); // @codingStandardsIgnoreLine
 		}
 	} elseif ( has_post_thumbnail( $id ) ) {
 		$image     = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), $size );

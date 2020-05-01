@@ -62,9 +62,9 @@ class Subscriptions_Edit {
 	 */
 	public function register_product_type( $filters = array() ) {
 		$value = '';
-		if ( isset( $_GET['post'] ) && '' !== $_GET['post'] ) {// phpcs:ignore
-			$value = sanitize_text_field( $_GET['post'] ); // phpcs:ignore
-			$value = get_post_meta( $value, '_lsx_bd_listing', true );// phpcs:ignore
+		if ( isset( $_GET['post'] ) && '' !== $_GET['post'] ) {// @codingStandardsIgnoreLine
+			$value = sanitize_text_field( $_GET['post'] ); // @codingStandardsIgnoreLine
+			$value = get_post_meta( $value, '_lsx_bd_listing', true );// @codingStandardsIgnoreLine
 		}
 		$filters['lsx_bd_listing'] = array(
 			'id'            => '_lsx_bd_listing',
