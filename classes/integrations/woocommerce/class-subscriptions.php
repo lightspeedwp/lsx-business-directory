@@ -48,6 +48,7 @@ class Subscriptions {
 
 			add_action( 'woocommerce_subscription_status_changed', array( $this, 'subscription_status_changed' ), 10, 4 );
 			add_filter( 'woocommerce_display_item_meta', array( $this, 'show_listing_link' ), 10, 3 );
+			add_filter( 'woocommerce_form_field_radio', array( $this, 'replace_dummy_option' ), 10, 4 );
 		}
 	}
 	/**
@@ -200,5 +201,31 @@ class Subscriptions {
 			$html = $args['before'] . implode( $args['separator'], $strings ) . $args['after'];
 		}
 		return $html;
+	}
+
+
+	/**
+	 * Replace the dummy option with a title.
+	 *
+	 * @param string $field
+	 * @param string $key
+	 * @param array  $args
+	 * @param string $value
+	 * @return void
+	 */
+	public function replace_dummy_option( $field, $key, $args, $value ) {
+		$search = 'id="lsx_bd_plan_id_dummy_option"';
+		$title  = $search . ' style="display:none" disabled="disabled"';
+		$field  = str_replace( $search, $title, $field );
+
+		$search = 'value="dummy_option"';
+		$title  = 'value=""';
+		$field  = str_replace( $search, $title, $field );
+
+		$search = 'for="lsx_bd_plan_id_dummy_option"';
+		$title  = $search . ' style="width:100%;"';
+		$field  = str_replace( $search, $title, $field );
+
+		return $field;
 	}
 }

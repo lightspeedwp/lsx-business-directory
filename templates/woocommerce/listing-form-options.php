@@ -50,6 +50,7 @@ if ( ! empty( $listing_products ) ) {
 					$listing_subscription->get_formatted_order_total()
 				);
 				$options[ $listing_option_value ] = $label;
+				$options['dummy_option']          = __( 'Choose a new subscription', 'lsx-business-directory' );
 			}
 		}
 	}
@@ -73,7 +74,17 @@ if ( ! empty( $listing_products ) ) {
 	}
 	?>
 	<fieldset class="listing-plan-fieldset">
-		<legend><?php esc_attr_e( 'Choose your plan', 'lsx-business-directory' ); ?></legend>
+		<?php
+		if ( false !== $listing_id ) {
+			?>
+			<legend><?php esc_attr_e( 'Feature this listing', 'lsx-business-directory' ); ?></legend>
+			<?php
+		} else {
+			?>
+			<legend><?php esc_attr_e( 'Choose your plan', 'lsx-business-directory' ); ?></legend>
+			<?php
+		}
+		?>
 		<?php
 		$field_args = array(
 			'type'     => 'radio',
