@@ -231,7 +231,13 @@ class Form_Handler {
 			$lsx_bd_plan_id = filter_input( INPUT_POST, 'lsx_bd_plan_id' );
 			if ( empty( $lsx_bd_plan_id ) || '' === $lsx_bd_plan_id ) {
 				/* translators: %s: Subscription Field Label */
-				wc_add_notice( __( 'Please select an available listing product.', 'lsx-business-directory' ), 'error', array( 'id' => 'lsx_bd_plan_id' ) );
+				wc_add_notice(
+					__( 'Please select an available listing product.', 'lsx-business-directory' ),
+					'error',
+					array(
+						'id' => 'lsx_bd_plan_id',
+					)
+				);
 			}
 		}
 
