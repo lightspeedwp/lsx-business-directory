@@ -12,9 +12,13 @@
 - Added in a Listings page to the WooCommerce My Account page.
 - Added styling for listing forms.
 
+### Changed
+- Refactored layout templates tags.
+
 ### Fixed
 - Removing the `using-gutenberg` body class when the listing is using blocks.
 - Removing the Bootstrap column classes breaking the padding of the single listings on mobile.
+- Fixing the button styling to allow the customizer colours.
 
 
 ## [[1.0.0]](https://github.com/lightspeeddevelopment/lsx-business-directory/releases/tag/1.0.0) - 30 March 2020
