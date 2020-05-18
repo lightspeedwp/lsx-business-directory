@@ -23,7 +23,7 @@
 		</div>
 
 		<div class="business-button">
-			<a class="btn btn-primary" href="<?php esc_url( the_permalink() ); ?>">View Listing<i class="fa fa-long-arrow-right"></i></a>
+			<a class="btn btn-primary" href="<?php esc_url( the_permalink() ); ?>"><?php esc_html_e( 'View Listing', 'lsx-business-directory' ); ?><i class="fa fa-long-arrow-right"></i></a>
 		</div>
 	</article>
 </div>

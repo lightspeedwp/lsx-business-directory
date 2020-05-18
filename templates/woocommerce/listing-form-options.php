@@ -42,7 +42,7 @@ if ( ! empty( $listing_products ) ) {
 				// Generate a label for the current subscription.
 				$label = sprintf(
 					/* translators: %s: The subscription info */
-					__( 'Subscription <a href="%1$s">#%2$s - %3$s</a> - %5$s - Next Payment %4$s', 'woocommerce' ),
+					__( 'Subscription <a href="%1$s">#%2$s - %3$s</a> - %5$s - Next Payment %4$s', 'lsx-business-directory' ),
 					$listing_subscription->get_view_order_url(),
 					$listing_subscription_id,
 					$listing_subscription->get_status(),

@@ -1280,6 +1280,10 @@ msgstr ""
 msgid "Map"
 msgstr ""
 
+#: templates/single-col-business.php:26, classes/setup/class-business-directory.php:117
+msgid "View Listing"
+msgstr ""
+
 #: templates/single-row-business.php:43
 msgid "Read More"
 msgstr ""
@@ -1518,10 +1522,6 @@ msgstr ""
 msgid "All Listings"
 msgstr ""
 
-#: classes/setup/class-business-directory.php:117
-msgid "View Listing"
-msgstr ""
-
 #: classes/setup/class-business-directory.php:118
 msgid "Search Listings"
 msgstr ""
@@ -1718,19 +1718,36 @@ msgstr ""
 msgid "Add your Pinterest profile URL or any board you would like to highlight."
 msgstr ""
 
-#: templates/woocommerce/listing-form-options.php:76
-msgid "Choose your plan"
+#. translators: %s: The subscription info
+#: templates/woocommerce/listing-form-options.php:45
+msgid "Subscription <a href=\"%1$s\">#%2$s - %3$s</a> - %5$s - Next Payment %4$s"
+msgstr ""
+
+#: templates/woocommerce/listing-form-options.php:53
+msgid "Choose a new subscription"
 msgstr ""
 
 #: templates/woocommerce/listing-form-options.php:80
+msgid "Feature this listing"
+msgstr ""
+
+#: templates/woocommerce/listing-form-options.php:84
+msgid "Choose your plan"
+msgstr ""
+
+#: templates/woocommerce/listing-form-options.php:91
 msgid "Available options"
 msgstr ""
 
-#: templates/woocommerce/listing-form.php:68, templates/woocommerce/listing-form.php:68
+#: templates/woocommerce/listing-form.php:17
+msgid "Back to My listings"
+msgstr ""
+
+#: templates/woocommerce/listing-form.php:76, templates/woocommerce/listing-form.php:76
 msgid "Save"
 msgstr ""
 
-#: templates/woocommerce/listing-form.php:77, templates/woocommerce/listing-form.php:80, classes/integrations/woocommerce/class-form-handler.php:446
+#: templates/woocommerce/listing-form.php:85, templates/woocommerce/listing-form.php:88, classes/integrations/woocommerce/class-form-handler.php:452
 msgid "Preview"
 msgstr ""
 
@@ -1822,11 +1839,11 @@ msgstr ""
 msgid "This is the endpoint for the My Account \"Edit Listing\" page."
 msgstr ""
 
-#: classes/integrations/woocommerce/class-checkout.php:156, classes/integrations/woocommerce/class-checkout.php:174, classes/integrations/woocommerce/class-checkout.php:180, classes/integrations/woocommerce/class-checkout.php:236, classes/integrations/woocommerce/class-checkout.php:287, classes/integrations/woocommerce/class-subscriptions-edit.php:72, classes/integrations/woocommerce/class-subscriptions-edit.php:109, classes/integrations/woocommerce/class-subscriptions.php:189
+#: classes/integrations/woocommerce/class-checkout.php:156, classes/integrations/woocommerce/class-checkout.php:174, classes/integrations/woocommerce/class-checkout.php:180, classes/integrations/woocommerce/class-checkout.php:236, classes/integrations/woocommerce/class-checkout.php:287, classes/integrations/woocommerce/class-subscriptions-edit.php:72, classes/integrations/woocommerce/class-subscriptions-edit.php:109, classes/integrations/woocommerce/class-subscriptions.php:190
 msgid "Listing"
 msgstr ""
 
-#: classes/integrations/woocommerce/class-checkout.php:165, classes/integrations/woocommerce/class-subscriptions.php:192
+#: classes/integrations/woocommerce/class-checkout.php:165, classes/integrations/woocommerce/class-subscriptions.php:193
 msgid "Listing for #"
 msgstr ""
 
@@ -1853,17 +1870,17 @@ msgid "%s is not a valid email address."
 msgstr ""
 
 #. translators: %s: Subscription Field Label
-#: classes/integrations/woocommerce/class-form-handler.php:234
+#: classes/integrations/woocommerce/class-form-handler.php:235
 msgid "Please select an available listing product."
 msgstr ""
 
-#: classes/integrations/woocommerce/class-form-handler.php:245, classes/integrations/woocommerce/class-form-handler.php:376
+#: classes/integrations/woocommerce/class-form-handler.php:251, classes/integrations/woocommerce/class-form-handler.php:382
 msgid "succesfully added."
 msgstr ""
 
 #. translators: %s: My Account link and the View listing link
 #. translators: %s: My Account link and the View listing link
-#: classes/integrations/woocommerce/class-form-handler.php:252, classes/integrations/woocommerce/class-form-handler.php:383
+#: classes/integrations/woocommerce/class-form-handler.php:258, classes/integrations/woocommerce/class-form-handler.php:389
 msgid "Listing updated succesfully. Go back to <a href=\"%1$s\">my listings</a> or view your <a href=\"%2$s\">listing</a>"
 msgstr ""
 
@@ -1871,10 +1888,10 @@ msgstr ""
 msgid "Listing Products allows you to sell listings."
 msgstr ""
 
-#: classes/integrations/woocommerce/class-subscriptions.php:101, classes/integrations/woocommerce/class-subscriptions.php:104
+#: classes/integrations/woocommerce/class-subscriptions.php:102, classes/integrations/woocommerce/class-subscriptions.php:105
 msgid "Remove image"
 msgstr ""
 
-#: classes/integrations/woocommerce/class-subscriptions.php:192
+#: classes/integrations/woocommerce/class-subscriptions.php:193
 msgid " for #"
 msgstr ""
