@@ -158,7 +158,7 @@
 					height: auto;
 					border: none;
 					box-shadow: none;
-					&[checked="checked"] {
+					/*&[checked="checked"] {
 						&:before {
 							content: 'Current Subscription';
 							position: absolute;
@@ -166,7 +166,7 @@
 							width: 100%;
 							min-width: 250px;
 						}
-					}
+					}*/
 				}
 				label {
 					width: 90%;
