@@ -1,6 +1,6 @@
 # Change log
 
-## [[1.1.0]] - Unreleased
+## [[1.1.0]](https://github.com/lightspeeddevelopment/lsx-business-directory/releases/tag/1.1.0) - 19 May 2020
 
 ### Added
 - Added in a "Translations" settings tab to allow the translation of the post type and taxonomy slugs.
@@ -11,6 +11,7 @@
 - Added dynamic links depending on the slug for the listing metadata.
 - Added in a Listings page to the WooCommerce My Account page.
 - Added styling for listing forms.
+- Added in integration for the WooCommerce Subscriptions plugin.
 
 ### Changed
 - Refactored layout templates tags.
