@@ -106,6 +106,9 @@ class Form_Handler {
 	 * form was submitted through the user account page.
 	 */
 	public function save() {
+		if ( ! function_exists( 'wc_get_var' ) ) {
+			return;
+		}
 		$nonce_value = wc_get_var( $_REQUEST['lsx-bd-add-listing-nonce'], wc_get_var( $_REQUEST['_wpnonce'], '' ) ); // @codingStandardsIgnoreLine.
 
 		if ( ! wp_verify_nonce( $nonce_value, 'lsx_bd_add_listing' ) ) {
@@ -445,6 +448,9 @@ class Form_Handler {
 	 * @return string
 	 */
 	public function preview_template_include( $template ) {
+		if ( ! function_exists( 'wc_get_var' ) ) {
+			return $template;
+		}
 		$nonce_value = wc_get_var( $_REQUEST['lsx-bd-add-listing-nonce'], wc_get_var( $_REQUEST['_wpnonce'], '' ) ); // @codingStandardsIgnoreLine.
 		if ( ! wp_verify_nonce( $nonce_value, 'lsx_bd_add_listing' ) ) {
 			return $template;
@@ -463,7 +469,7 @@ class Form_Handler {
 	 * @return void
 	 */
 	public function preview_handler() {
-		if ( is_wc_endpoint_url( 'preview-listing' ) ) {
+		if ( function_exists( 'is_wc_endpoint_url' ) && is_wc_endpoint_url( 'preview-listing' ) ) {
 			global $post;
 
 			$user_id = get_current_user_id();

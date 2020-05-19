@@ -118,8 +118,8 @@ class Admin {
 		require_once LSX_BD_PATH . 'classes/admin/class-translations.php';
 		$this->translations = admin\Translations::get_instance();
 
-		require_once LSX_BD_PATH . 'classes/admin/class-google-maps.php';
-		$this->google_maps = admin\Google_Maps::get_instance();
+		//require_once LSX_BD_PATH . 'classes/admin/class-google-maps.php';
+		//$this->google_maps = admin\Google_Maps::get_instance();
 	}
 
 	/**
