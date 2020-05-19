@@ -477,6 +477,8 @@ function lsx_bd_archive_listing_contact_info( $before = '', $after = '', $echo =
  * @return void | string
  */
 function lsx_bd_listing_map( $before = '', $after = '', $echo = true ) {
+	return '';
+
 	$map                  = '';
 	$lsx_bd               = lsx_business_directory();
 	if ( false === lsx_bd_get_option( 'google_maps_api_key', false ) ) {
