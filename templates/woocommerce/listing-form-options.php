@@ -62,12 +62,12 @@ if ( ! empty( $listing_products ) ) {
 				foreach ( $children as $child ) {
 					if ( ( false === $listing_subscription ) || ( false !== $listing_subscription && ! $listing_subscription->has_product( $child ) ) ) {
 						$child                       = wc_get_product( $child );
-						$options[ $child->get_id() ] = get_the_title( $child->get_id() ) . ' - ' . $child->get_price_html();
+						$options[ $child->get_id() ] = get_the_title( $child->get_id() ) . ' - ' . strip_tags( $child->get_price_html() );
 					}
 				}
 			} else {
 				if ( ( false === $listing_subscription ) || ( false !== $listing_subscription && ! $listing_subscription->has_product( $child ) ) ) {
-					$options[ $product->get_id() ] = $product->get_title() . ' - ' . $product->get_price_html();
+					$options[ $product->get_id() ] = $product->get_title() . ' - ' . strip_tags( $product->get_price_html() );
 				}
 			}
 		}
