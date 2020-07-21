@@ -1,5 +1,10 @@
 # Change log
 
+## [[1.1.1]](https://github.com/lightspeeddevelopment/lsx-business-directory/releases/tag/1.1.1) - Unreleased
+
+### Changed
+- Removed the LSX Search integration class, as LSX Search now handles the post types.
+
 ## [[1.1.0]](https://github.com/lightspeeddevelopment/lsx-business-directory/releases/tag/1.1.0) - 19 May 2020
 
 ### Added

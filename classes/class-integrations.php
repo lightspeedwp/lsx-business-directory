@@ -18,13 +18,6 @@ class Integrations {
 	protected static $instance = null;
 
 	/**
-	 * Holds the LSX Search integration functions.
-	 *
-	 * @var object \lsx\business_directory\classes\Frontend();
-	 */
-	public $lsx_search;
-
-	/**
 	 * Holds the LSX WPForms integration functions.
 	 *
 	 * @var object \lsx\business_directory\classes\integrations\WPForms();
@@ -73,10 +66,6 @@ class Integrations {
 		if ( ! function_exists( 'is_plugin_active' ) ) {
 			require_once ABSPATH . 'wp-admin/includes/plugin.php';
 		}
-
-		// Load plugin settings related functionality.
-		require_once LSX_BD_PATH . '/classes/integrations/class-lsx-search.php';
-		$this->lsx_search = integrations\LSX_Search::get_instance();
 
 		require_once LSX_BD_PATH . '/classes/integrations/class-wpforms.php';
 		$this->wpforms = integrations\WPForms::get_instance();
