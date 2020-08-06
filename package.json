@@ -42,7 +42,7 @@
     "clean-css": "^4.2.3",
     "extend": "^3.0.2",
     "fstream": "^1.0.12",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "lodash.template": ">=4.5.0",
     "minimatch": "^3.0.4",
     "minimist": "^1.2.5",
