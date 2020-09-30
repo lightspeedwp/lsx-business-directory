@@ -1,17 +1,9 @@
-.archive, .search {
-	.facetwp-filter-title, .lsx-search-title {
+.archive,
+.search {
+	.facetwp-filter-title,
+	.lsx-search-title {
 		font-size: 20px;
 		line-height: 24px;
-	}
-
-	.facetwp-sort {
-		margin-right: 22px;
-
-		.facetwp-sort-select {
-			left: 32px !important;
-			bottom: -1px;
-			line-height: 14px;
-		}
 	}
 
 	.facetwp-type-checkboxes {
@@ -31,7 +23,7 @@
 
 	#secondary.facetwp-sidebar .facetwp-item.parent-facetwp-facet-post_search {
 		background: transparent;
-		padding:0px;
+		padding: 0px;
 		margin-top: 0;
 
 		.lsx-search-title {
