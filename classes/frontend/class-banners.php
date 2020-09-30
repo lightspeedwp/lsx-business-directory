@@ -80,9 +80,9 @@ class Banners {
 			$this->screen = 'archive';
 		} elseif ( is_tax( array( 'industry', 'location' ) ) ) {
 			$this->screen = 'taxonomy';
-		} elseif ( is_search() ) {
+		/*} /*elseif ( is_search() ) {
 			$engine       = get_query_var( 'engine' );
-			$this->screen = 'search';
+			$this->screen = 'search';*/
 		} else {
 			$this->screen = '';
 		}
