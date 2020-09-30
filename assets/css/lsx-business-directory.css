@@ -208,15 +208,15 @@ body.single-business-directory article .entry-meta > * { display: block; }
 .archive .business.col-layout .business-button .btn a .fa, .single .business.col-layout .business-button .btn a .fa, .search .business.col-layout .business-button .btn a .fa, .lsx-business-directory-shortcode .business.col-layout .business-button .btn a .fa { margin-left: 5px; }
 
 /** Business Directory Banner Styles. @package lsx-business-directory */
-body.lsx-business-directory-page:not(.using-gutenberg):not(.banner-disabled):not(.search) .business-banner .wp-block-cover { padding-top: 36px; min-height: 214px; }
+body.lsx-business-directory-page:not(.using-gutenberg):not(.banner-disabled):not(.search):not(.tax-industry):not(.tax-location) .business-banner .wp-block-cover { padding-top: 36px; min-height: 214px; }
 
-body.lsx-business-directory-page:not(.using-gutenberg):not(.banner-disabled):not(.search) .business-banner .wp-block-cover .archive-title { margin-top: 0; margin-bottom: 0; }
+body.lsx-business-directory-page:not(.using-gutenberg):not(.banner-disabled):not(.search):not(.tax-industry):not(.tax-location) .business-banner .wp-block-cover .archive-title { margin-top: 0; margin-bottom: 0; }
 
-body.lsx-business-directory-page:not(.using-gutenberg):not(.banner-disabled):not(.search) .business-banner .wp-block-cover.has-background-img { min-height: 430px; }
+body.lsx-business-directory-page:not(.using-gutenberg):not(.banner-disabled):not(.search):not(.tax-industry):not(.tax-location) .business-banner .wp-block-cover.has-background-img { min-height: 430px; }
 
-body.lsx-business-directory-page:not(.using-gutenberg):not(.banner-disabled):not(.search) .business-banner .wp-block-cover.alignfull { width: 100%; max-width: 100%; }
+body.lsx-business-directory-page:not(.using-gutenberg):not(.banner-disabled):not(.search):not(.tax-industry):not(.tax-location) .business-banner .wp-block-cover.alignfull { width: 100%; max-width: 100%; }
 
-body.lsx-business-directory-page:not(.using-gutenberg):not(.banner-disabled):not(.search) #primary, body.lsx-business-directory-page:not(.using-gutenberg):not(.banner-disabled):not(.search) #secondary { margin-top: 0px; }
+body.lsx-business-directory-page:not(.using-gutenberg):not(.banner-disabled):not(.search):not(.tax-industry):not(.tax-location) #primary, body.lsx-business-directory-page:not(.using-gutenberg):not(.banner-disabled):not(.search):not(.tax-industry):not(.tax-location) #secondary { margin-top: 0px; }
 
 body.lsx-business-directory-page.archive:not(.using-gutenberg):not(.banner-disabled) .wrap.container .content.role > div:first-child#primary, body.lsx-business-directory-page.search:not(.using-gutenberg):not(.banner-disabled) .wrap.container .content.role > div:first-child#primary { margin-top: 0px; }
 
