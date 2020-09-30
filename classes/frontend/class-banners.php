@@ -78,8 +78,8 @@ class Banners {
 			$this->screen = 'single';
 		} elseif ( is_post_type_archive( 'business-directory' ) ) {
 			$this->screen = 'archive';
-		} elseif ( is_tax( array( 'industry', 'location' ) ) ) {
-			$this->screen = 'taxonomy';
+		/*} elseif ( is_tax( array( 'industry', 'location' ) ) ) {
+			$this->screen = 'taxonomy';*/
 		/*} /*elseif ( is_search() ) {
 			$engine       = get_query_var( 'engine' );
 			$this->screen = 'search';*/
