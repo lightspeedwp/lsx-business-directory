@@ -6,7 +6,7 @@
 
 body.lsx-business-directory-page {
 	// General Banner
-	&:not(.using-gutenberg):not(.banner-disabled) {
+	&:not(.using-gutenberg):not(.banner-disabled):not(.search) {
 		.business-banner {
 
 			.wp-block-cover {
