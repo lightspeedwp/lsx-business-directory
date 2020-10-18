@@ -61,3 +61,24 @@ If you still require help with the LSX Business Directory Plugin, please log any
 
 If you're a developer who's spotted a bug issue and have a fix, or simply have functionality you think would extend our core plugin, we are always happy to accept your contribution! Visit the [LSX Business Directory Plugin on Github](https://github.com/lightspeeddevelopment/lsx-business-directory/) and submit a Pull Request with your updates.
 
+== Screenshots ==
+
+
+== Frequently Asked Questions ==
+
+Take a look at all our [Frequently Asked Questions](https://www.lsdev.biz/lsx/documentation/lsx-theme/lsx-theme-faqs/), we are sure you'll find what you're looking for. 
+
+= First question? =
+First answer
+
+= Second question? =
+First answer
+
+= Third question? =
+First answer
+
+== Changelog == 
+
+[Lastest changelogs can be found on GitHub](https://github.com/lightspeeddevelopment/lsx-blocks/blob/master/changelog.md).
+
+== Upgrade Notice == 
