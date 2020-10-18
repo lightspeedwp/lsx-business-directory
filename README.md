@@ -1,7 +1,7 @@
 <h1 align="center"><a target="_blank" href="https://www.lsdev.biz/lsx/extensions/business-directory/"><img src="https://www.lsdev.biz/lsx/wp-content/uploads/2020/09/Logo-LSX-Business-Directory.svg" alt="LSX Business Directory"></a></h1>
 
 <p align="center">
-  <a href="https://www.lsdev.biz/lsx/"><img src="https://lsx.lsdev.biz/wp-content/uploads/2019/06/Designed-for-LSX-Theme-blue.png" alt="Made for LSX"></a>
+  <a href="https://www.lsdev.biz/lsx/"><img src="https://lsdev.biz/lsx/wp-content/uploads/2019/06/Designed-for-LSX-Theme-blue.png" alt="Made for LSX"></a>
   <a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://poser.pugx.org/woocommerce/woocommerce/license" alt="license"></a> 
   <a href="http://gulpjs.com/"><img src="https://img.shields.io/badge/built%20with-gulp.js-green.svg" alt="Built gulp.js"></a>
 </p>
@@ -10,6 +10,8 @@
     <a href="https://scrutinizer-ci.com/g/lightspeeddevelopment/lsx-business-directory/?branch=master"><img src="https://scrutinizer-ci.com/g/lightspeeddevelopment/lsx-customizer/badges/quality-score.png?b=master" alt="Scrutinizer"></a>
   <a href="https://travis-ci.org/github/lightspeeddevelopment/lsx-business-directory"><img src="https://travis-ci.org/lightspeeddevelopment/lsx-business-directory.svg?branch=master"></a>
 </p>
+
+<br>
 
 LSX Business Directory plugin allows you to add a business directory listings to your WordPress website using the LSX Theme and extensions.
 
@@ -25,7 +27,7 @@ The *LSX Business Directory* is a fully Gutenberg compatible [WordPress](https:/
 
 ## Works with the LSX Theme
 
-The LSX Business Directory is designed for [LSX Theme](https://lsx.lsdev.biz/), improving internal linking, website SEO and user experience!
+The LSX Business Directory is designed for [LSX Theme](https://www.lsdev.biz/lsx/), improving internal linking, website SEO and user experience!
 
 ## Getting started with LSX Business Directory
 * Login to the backend of your Wordpress website.
@@ -38,7 +40,7 @@ The LSX Business Directory is designed for [LSX Theme](https://lsx.lsdev.biz/), 
 
 ## Documentation
 
-[LSX Business Directory Documentation](https://lsx.lsdev.biz/documentation/business-directory/) has everything you need to use the plugin.
+[LSX Business Directory Documentation](https://www.lsdev.biz/lsx/documentation/lsx-extensions/lsx-business-directory/) has everything you need to use the plugin.
 
 ## Help & Support
 
