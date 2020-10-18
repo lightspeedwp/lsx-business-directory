@@ -2,8 +2,13 @@
 
 <p align="center">
   <a href="https://www.lsdev.biz/lsx/"><img src="https://lsx.lsdev.biz/wp-content/uploads/2019/06/Designed-for-LSX-Theme-blue.png" alt="Made for LSX"></a>
+  <a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://poser.pugx.org/woocommerce/woocommerce/license" alt="license"></a> 
   <a href="http://gulpjs.com/"><img src="https://img.shields.io/badge/built%20with-gulp.js-green.svg" alt="Built gulp.js"></a>
-  <a href="https://travis-ci.org/github/lightspeeddevelopment/http://lsx-business-directory"><img src="https://travis-ci.org/lightspeeddevelopment/lsx-business-directory.svg?branch=master"></a>
+</p>
+<p align="center">
+    <a href="https://codeclimate.com/github/lightspeeddevelopment/lsx-business-directory/"><img src="https://codeclimate.com/github/lightspeeddevelopment/lsx-business-directory/badges/gpa.svg" alt="Code Climate"></a>
+    <a href="https://scrutinizer-ci.com/g/lightspeeddevelopment/lsx-business-directory/?branch=master"><img src="https://scrutinizer-ci.com/g/lightspeeddevelopment/lsx-customizer/badges/quality-score.png?b=master" alt="Scrutinizer"></a>
+  <a href="https://travis-ci.org/github/lightspeeddevelopment/lsx-business-directory"><img src="https://travis-ci.org/lightspeeddevelopment/lsx-business-directory.svg?branch=master"></a>
 </p>
 
 LSX Business Directory plugin allows you to add a business directory listings to your WordPress website using the LSX Theme and extensions.
