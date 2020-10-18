@@ -10,7 +10,7 @@ License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 
-LSX Business Directory plugin allows you to add a business directory listings to your WordPress website using the LSX Theme and extensions.
+This plugin allows you to add a business listings to your WordPress website using the LSX Theme and extensions.
 
 == Description ==
 
