@@ -51,7 +51,7 @@ class Form_Handler {
 	 * @var array()
 	 */
 	public $post_array = array(
-		'post_status' => 'publish',
+		'post_status' => 'draft',
 		'post_type'   => 'business-directory',
 	);
 
@@ -288,9 +288,9 @@ class Form_Handler {
 		$this->post_array['post_name'] = sanitize_title_with_dashes( $this->post_array['post_title'] );
 		if ( 'save_listing_details' === $this->action && ( false === $this->listing_id || '' === $this->listing_id ) ) {
 			// If purchasing is enabled, then first set the post to draft.
-			if ( 'on' === lsx_bd_get_option( 'woocommerce_enable_checkout', false ) ) {
+			//if ( 'on' === lsx_bd_get_option( 'woocommerce_enable_checkout', false ) ) {
 				$this->post_array['post_status'] = 'draft';
-			}
+			//}
 			$this->listing_id = wp_insert_post( $this->post_array );
 		} else {
 			$this->post_array['ID'] = $this->listing_id;
