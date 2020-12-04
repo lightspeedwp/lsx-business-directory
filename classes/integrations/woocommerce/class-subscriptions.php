@@ -141,9 +141,6 @@ class Subscriptions {
 				switch ( $status_to ) {
 					case 'active':
 						$post_status = get_post_status( $subscription_id );
-						if ( 'draft' === $post_status ) {
-							$post_status = 'pending';
-						}
 						break;
 
 					default:
