@@ -138,16 +138,18 @@ class Subscriptions {
 		if ( '' !== $status_to ) {
 			$listing_ids = get_post_meta( $subscription_id, '_lsx_bd_listing_id', false );
 			if ( ! empty( $listing_ids ) ) {
-				switch ( $status_to ) {
-					case 'active':
-						$post_status = get_post_status( $subscription_id );
-						break;
 
-					default:
-						$post_status = 'draft';
-						break;
-				}
 				foreach ( $listing_ids as $listing_id ) {
+					switch ( $status_to ) {
+						case 'active':
+							$post_status = get_post_status( $listing_id );
+							break;
+
+						default:
+							$post_status = 'draft';
+							break;
+					}
+
 					wp_update_post(
 						array(
 							'ID'          => $listing_id,
