@@ -48,7 +48,7 @@ do_action( 'lsx_bd_before_listing_form' ); ?>
 								<?php
 							} else {
 
-								// hide the status if the item subscription is on hold
+								// hide the status if the item subscription is on hold.
 								if ( 'lsx_bd_post_status' === $field_key && 'active' !== get_post_status( $listing_active_sub_id ) ) {
 									continue;
 								}
