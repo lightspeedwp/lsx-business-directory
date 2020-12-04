@@ -291,7 +291,6 @@ class Form_Handler {
 			$this->listing_id = wp_insert_post( $this->post_array );
 		} else {
 			$this->post_array['ID'] = $this->listing_id;
-			unset( $this->post_array['post_status'] );
 			wp_update_post( $this->post_array );
 		}
 	}
