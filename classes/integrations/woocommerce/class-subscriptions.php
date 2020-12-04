@@ -140,11 +140,10 @@ class Subscriptions {
 			if ( ! empty( $listing_ids ) ) {
 				switch ( $status_to ) {
 					case 'active':
-						$post_status = 'pending';
-						break;
-
-					case 'on-hold':
-						$post_status = 'pending';
+						$post_status = get_post_status( $subscription_id );
+						if ( 'draft' === $post_status ) {
+							$post_status = 'pending';
+						}
 						break;
 
 					default:
