@@ -374,13 +374,23 @@ function get_caldera_forms() {
 function get_listing_form_fields() {
 	$fields = array(
 		'listing-title' => array(
-			'label'  => esc_attr__( 'Listing Title', 'lsx-business-directory' ),
+			'label'  => esc_attr__( 'Listing Details', 'lsx-business-directory' ),
 			'fields' => array(
 				'lsx_bd_post_title' => array(
 					'type'     => 'text',
 					'label'    => __( 'Company Name', 'lsx-business-directory' ),
 					'class'    => array( 'listing-post-title form-row-wide' ),
 					'required' => true,
+				),
+				'lsx_bd_post_status' => array(
+					'type'     => 'select',
+					'label'    => __( 'Status', 'lsx-business-directory' ),
+					'class'    => array( 'listing-industry form-row-first' ),
+					'required' => true,
+					'options'  => array(
+						'pending' => __( 'Pending', 'lsx-business-directory' ),
+						'publish' => __( 'Publish', 'lsx-business-directory' ),
+					),
 				),
 			),
 		),

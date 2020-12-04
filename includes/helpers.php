@@ -125,6 +125,7 @@ function get_listing_form_field_values( $sections = array(), $listing_id = false
 							case 'post_title':
 							case 'post_content':
 							case 'post_excerpt':
+							case 'post_status':
 									$field_value = $temp_listing->$type;
 								break;
 
