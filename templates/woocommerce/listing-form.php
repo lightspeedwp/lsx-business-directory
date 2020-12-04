@@ -4,6 +4,8 @@
  */
 defined( 'ABSPATH' ) || exit;
 
+global $listing_active_sub_id;
+
 do_action( 'lsx_bd_before_listing_form' ); ?>
 
 <div class="lsx-bd-my-account listings">
@@ -47,7 +49,7 @@ do_action( 'lsx_bd_before_listing_form' ); ?>
 							} else {
 
 								// hide the status if the item subscription is on hold
-								if ( 'lsx_bd_post_status' === $field_key && 'active' !== $listing_active_sub_id ) {
+								if ( 'lsx_bd_post_status' === $field_key && 'active' !== get_post_status( $listing_active_sub_id ) ) {
 									continue;
 								}
 
