@@ -45,6 +45,12 @@ do_action( 'lsx_bd_before_listing_form' ); ?>
 								</div>
 								<?php
 							} else {
+
+								// hide the status if the item subscription is on hold
+								if ( 'lsx_bd_post_status' === $field_key && 'active' !== $listing_active_sub_id ) {
+									continue;
+								}
+
 								// This adds the handle of the image field.
 								$field_args = wp_parse_args( $field_args, $defaults );
 								woocommerce_form_field(

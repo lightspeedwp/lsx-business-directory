@@ -4,6 +4,8 @@
  */
 defined( 'ABSPATH' ) || exit;
 
+global $listing_active_sub_id;
+
 $listing_args = array(
 	'is_listing' => 'yes',
 );
@@ -98,6 +100,7 @@ if ( ! empty( $listing_products ) ) {
 			$field_args,
 			$selected_option
 		);
+		$listing_active_sub_id = $selected_option;
 		?>
 	</fieldset>
 	<?php
