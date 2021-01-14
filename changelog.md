@@ -2,8 +2,14 @@
 
 ## [[1.1.1]](https://github.com/lightspeeddevelopment/lsx-business-directory/releases/tag/1.1.1) - Unreleased
 
+### Added
+- Enabled the use of the block editor for the TO post types descriptions.
+
 ### Changed
 - Removed the LSX Search integration class, as LSX Search now handles the post types.
+
+### Security
+- General testing to ensure compatibility with latest WordPress version (5.6)
 
 ## [[1.1.0]](https://github.com/lightspeeddevelopment/lsx-business-directory/releases/tag/1.1.0) - 19 May 2020
 

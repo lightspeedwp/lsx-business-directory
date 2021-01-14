@@ -4,7 +4,7 @@
  * Plugin URI:	https://github.com/lightspeeddevelopment/lsx-business-directory
  * Description:	LSX Business Directory plugin for business listings.
  * Author:		LightSpeed
- * Version: 	1.1.0
+ * Version: 	1.1.1
  * Author URI: 	https://www.lsdev.biz/
  * License: 	GPL3
  * Text Domain: lsx-business-directory
@@ -19,7 +19,7 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'LSX_BD_PATH', plugin_dir_path( __FILE__ ) );
 define( 'LSX_BD_CORE', __FILE__ );
 define( 'LSX_BD_URL', plugin_dir_url( __FILE__ ) );
-define( 'LSX_BD_VER', '1.1.0' );
+define( 'LSX_BD_VER', '1.1.1' );
 
 /* ======================= Below is the Plugin Class init ========================= */
 require_once LSX_BD_PATH . '/classes/class-core.php';
