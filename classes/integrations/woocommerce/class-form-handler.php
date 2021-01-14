@@ -382,15 +382,6 @@ class Form_Handler {
 			wc_add_notice( $this->post_array['post_title'] . ' ' . __( 'succesfully added.', 'lsx-business-directory' ) );
 			$this->redirect = wc_get_endpoint_url( lsx_bd_get_option( 'translations_listings_endpoint', 'my-listings' ), '', wc_get_page_permalink( 'myaccount' ) );
 		} else {
-			/* translators: %s: my-account */
-			wc_add_notice(
-				sprintf(
-					/* translators: %s: My Account link and the View listing link */
-					__( 'Listing updated succesfully. Go back to <a href="%1$s">my listings</a> or view your <a href="%2$s">listing</a>', 'lsx-business-directory' ),
-					wc_get_endpoint_url( lsx_bd_get_option( 'translations_listings_endpoint', 'my-listings' ), '', wc_get_page_permalink( 'myaccount' ) ),
-					get_permalink( $this->listing_id )
-				)
-			);
 			$this->redirect = wc_get_endpoint_url( lsx_bd_get_option( 'translations_listings_edit_endpoint', 'edit-listing' ) . '/' . $this->listing_id . '/', '', wc_get_page_permalink( 'myaccount' ) );
 		}
 
