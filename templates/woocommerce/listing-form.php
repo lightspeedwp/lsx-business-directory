@@ -49,11 +49,13 @@ do_action( 'lsx_bd_before_listing_form' ); ?>
 							} else {
 
 								// hide the status if the item subscription is on hold.
-								if ( 'lsx_bd_post_status' === $field_key && '' !== $listing_active_sub_id ) {
-									//var_dump( get_post_status( $listing_active_sub_id ) );
-									if ( 'active' !== get_post_status( $listing_active_sub_id ) ) {
+								if ( 'lsx_bd_post_status' === $field_key ) {
+									if ( '' === $listing_active_sub_id ) {
+										$field_args['class'][] = 'hidden';
+									} elseif ( 'active' !== get_post_status( $listing_active_sub_id ) ) {
 										continue;
 									}
+									//var_dump( get_post_status( $listing_active_sub_id ) );
 								}
 								//var_dump( $listing_active_sub_id );
 
