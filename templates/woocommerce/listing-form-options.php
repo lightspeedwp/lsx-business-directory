@@ -95,7 +95,7 @@ if ( ! empty( $listing_products ) ) {
 			'required' => true,
 			'options'  => $options,
 		);
-		woocommerce_form_field(
+		lsx_bd_form_field(
 			'lsx_bd_plan_id',
 			$field_args,
 			$selected_option
