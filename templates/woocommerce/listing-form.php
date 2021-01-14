@@ -49,8 +49,14 @@ do_action( 'lsx_bd_before_listing_form' ); ?>
 							} else {
 
 								// hide the status if the item subscription is on hold.
-								if ( 'lsx_bd_post_status' === $field_key && 'active' !== get_post_status( $listing_active_sub_id ) ) {
-									continue;
+								if ( 'lsx_bd_post_status' === $field_key ) {
+									if ( false === $listing_id ) {
+										$field_args['class'][] = 'hidden';
+									} elseif ( '' !== $listing_active_sub_id ) {
+										if ( 'wc-active' !== get_post_status( $listing_active_sub_id ) ) {
+											continue;
+										}
+									}
 								}
 
 								// This adds the handle of the image field.
@@ -92,7 +98,7 @@ do_action( 'lsx_bd_before_listing_form' ); ?>
 				name="preview_listing_details"
 				value="<?php esc_attr_e( 'Preview', 'lsx-business-directory' ); ?>"
 				formtarget="_blank"
-				formaction="<?php esc_attr( $preview_action ); ?>">
+				formaction="<?php echo wp_kses_post( $preview_action ); ?>">
 					<?php esc_html_e( 'Preview', 'lsx-business-directory' ); ?>
 			</button>
 

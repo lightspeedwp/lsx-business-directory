@@ -4,6 +4,7 @@
 
 ### Added
 - Enabled the use of the block editor for the TO post types descriptions.
+- The listings now have a status drop down to allow you to change your listing from published to pending without affecting the subscription status.
 
 ### Changed
 - Removed the LSX Search integration class, as LSX Search now handles the post types.
