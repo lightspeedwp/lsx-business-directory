@@ -436,6 +436,7 @@ class Form_Handler {
 	 * @return string
 	 */
 	public function preview_template_include( $template ) {
+
 		if ( ! function_exists( 'wc_get_var' ) ) {
 			return $template;
 		}
@@ -528,8 +529,10 @@ class Form_Handler {
 
 			$meta_key .= '_upload';
 			if ( isset( $_FILES[ $meta_key ] ) ) {
-				$image_src = getimagesize( $_FILES[ $meta_key ]['tmp_name'] ); // @codingStandardsIgnoreLine
-				$meta      = 'data:' . $image_src['mime'] . ";base64," . base64_encode( file_get_contents( $_FILES[ $meta_key ]['tmp_name'] ) ); // @codingStandardsIgnoreLine
+				if ( '' !== $_FILES[ $meta_key ]['tmp_name'] && ! empty( $_FILES[ $meta_key ]['tmp_name'] ) ) {
+					$image_src = getimagesize( $_FILES[ $meta_key ]['tmp_name'] ); // @codingStandardsIgnoreLine
+					$meta      = 'data:' . $image_src['mime'] . ";base64," . base64_encode( file_get_contents( $_FILES[ $meta_key ]['tmp_name'] ) ); // @codingStandardsIgnoreLine	
+				}
 			}
 		}
 		return $meta;

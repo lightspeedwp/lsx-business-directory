@@ -98,7 +98,7 @@ do_action( 'lsx_bd_before_listing_form' ); ?>
 				name="preview_listing_details"
 				value="<?php esc_attr_e( 'Preview', 'lsx-business-directory' ); ?>"
 				formtarget="_blank"
-				formaction="<?php esc_attr( $preview_action ); ?>">
+				formaction="<?php echo wp_kses_post( $preview_action ); ?>">
 					<?php esc_html_e( 'Preview', 'lsx-business-directory' ); ?>
 			</button>
 

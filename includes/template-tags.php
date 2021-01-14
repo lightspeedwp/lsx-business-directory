@@ -23,8 +23,7 @@ function lsx_bd_get_thumbnail_wrapped( $id, $size = 'lsx-thumbnail-wide', $key =
 		$listing_id = get_query_var( 'preview-listing' );
 		$image      = wp_get_attachment_image_src( get_post_thumbnail_id( $listing_id ), $size );
 		$image_src  = ( strpos( $image[0], 'cover-logo.png' ) === false ) ? $image[0] : $image_src;
-
-		if ( isset( $_FILES['lsx_bd__thumbnail_id_upload'] ) ) {
+		if ( isset( $_FILES['lsx_bd__thumbnail_id_upload'] ) && isset( $_FILES['lsx_bd__thumbnail_id_upload']['tmp_name'] ) && '' !== $_FILES['lsx_bd__thumbnail_id_upload']['tmp_name'] ) {
 			$image     = getimagesize( $_FILES['lsx_bd__thumbnail_id_upload']['tmp_name'] ); // @codingStandardsIgnoreLine
 			$image_src = 'data:' . $image['mime'] . ';base64,' . base64_encode( file_get_contents( $_FILES['lsx_bd__thumbnail_id_upload']['tmp_name'] ) ); // @codingStandardsIgnoreLine
 		}
