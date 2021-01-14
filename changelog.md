@@ -2,6 +2,9 @@
 
 ## [[1.1.1]](https://github.com/lightspeeddevelopment/lsx-business-directory/releases/tag/1.1.1) - Unreleased
 
+### Added
+- The listings now have a status drop down to allow you to change your listing from published to pending without affecting the 
+
 ### Changed
 - Removed the LSX Search integration class, as LSX Search now handles the post types.
 
