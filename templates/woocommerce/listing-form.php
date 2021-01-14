@@ -53,12 +53,11 @@ do_action( 'lsx_bd_before_listing_form' ); ?>
 									if ( false === $listing_id ) {
 										$field_args['class'][] = 'hidden';
 									} elseif ( '' !== $listing_active_sub_id ) {
-										if ( 'active' !== get_post_status( $listing_active_sub_id ) ) {
+										if ( 'wc-active' !== get_post_status( $listing_active_sub_id ) ) {
 											continue;
 										}
 									}
 								}
-								//var_dump( $listing_active_sub_id );
 
 								// This adds the handle of the image field.
 								$field_args = wp_parse_args( $field_args, $defaults );
