@@ -3,7 +3,7 @@ Contributors: feedmymedia, lightspeedwp, eleshar, krugazul, jacquesvdh, ignusver
 Donate link: https://lsdev.biz/lsx/donate/
 Tags: lsx, business, directory, blocks, listings
 Requires at least: 5.0
-Tested up to: 5.5.1
+Tested up to: 5.6
 Requires PHP: 7.0
 Stable tag: 1.1.1
 License: GPLv3
