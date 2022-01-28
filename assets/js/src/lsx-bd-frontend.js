@@ -154,9 +154,9 @@ var LSX_BD = Object.create( null );
 	};
 
 	LSX_BD.industries.nav = function() {
-		var pageURL = $(location).attr('href');
+		var pageURL = location.href;
 		$( '.lsx-bd-industries-nav .btn-wrap' ).each( function() {
-			var itemURL = $(this).context.href;
+			var itemURL = $(this).attr('href');
 			if ( pageURL === itemURL ) {
 				$(this).addClass('current-industry');
 				var holder = $(this).find('img').attr( 'src' );
