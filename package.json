@@ -44,7 +44,7 @@
     "fstream": "^1.0.12",
     "lodash": "^4.17.20",
     "lodash.template": ">=4.5.0",
-    "minimatch": "^5.0.0",
+    "minimatch": "^6.0.4",
     "minimist": "^1.2.5",
     "set-value": "^4.0.0",
     "shelljs": "^0.8.4",
