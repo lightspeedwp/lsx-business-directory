@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/lightspeeddevelopment/lsx-business-directory#readme",
   "devDependencies": {
-    "gulp": "^4.0.2",
+    "gulp": "^5.0.0",
     "gulp-autoprefixer": "^9.0.0",
     "gulp-concat": "^2.6.1",
     "gulp-gettext": "^0.3.0",
