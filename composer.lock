@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "778c4bfd55cb18f259475bc79953878e",
+    "content-hash": "b7c5aec88582aa088d633b4d86fec754",
     "packages": [
         {
             "name": "cmb2/cmb2",
@@ -2264,15 +2264,15 @@
         },
         {
             "name": "wpackagist-plugin/tour-operator",
-            "version": "1.4.9",
+            "version": "2.1.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/tour-operator/",
-                "reference": "tags/1.4.9"
+                "reference": "tags/2.1.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/tour-operator.1.4.9.zip"
+                "url": "https://downloads.wordpress.org/plugin/tour-operator.2.1.1.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
