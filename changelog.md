@@ -1,5 +1,21 @@
 # Change log
 
+## [[1.1.2]](https://github.com/lightspeedwp/lsx-business-directory/releases/tag/1.1.2) - Unreleased
+
+### Fixed
+- The WooCommerce listing form script was enqueued but never compiled, so `assets/js/lsx-bd-listing-form.min.js` 404'd on the front end. The build now emits it.
+- The admin script enqueue pointed at `lsx-business-directory-admin.min.js`, which has never existed in this repository. It now points at `lsx-bd-admin.min.js`, the file the admin source actually compiles to.
+
+### Changed
+- Rebuilt the asset pipeline on gulp 5. The previous gulpfile used gulp 3 task syntax and had not run since gulp 4 landed, so no asset change could be compiled.
+- Replaced gulp-uglify with gulp-terser, gulp-autoprefixer with gulp-postcss + autoprefixer, and gulp-sourcemaps with gulp 5's built-in sourcemaps. Dropped gulp-util, gulp-jshint, jshint, gulp-minify-css and gulp-concat, none of which were still in use.
+- CSS is now compiled compressed rather than compact; dart-sass does not support the compact output style. The rules are unchanged.
+- Node pinned to 24.20.0, the current LTS line.
+
+### Removed
+- The `dependencies` block. acorn, clean-css, extend, fstream, lodash, lodash.template, minimatch, minimist, set-value, shelljs and tar were never imported by any source file - they were leftover `npm audit fix` pins, and clearing them resolves both Dependabot alerts, including `lodash.template <= 4.5.0`, which has no patched version.
+- Stale `lsx-starter-plugin` sourcemaps left over from the plugin this was forked from.
+
 ## [[1.1.1]](https://github.com/lightspeeddevelopment/lsx-business-directory/releases/tag/1.1.1) - Unreleased
 
 ### Added

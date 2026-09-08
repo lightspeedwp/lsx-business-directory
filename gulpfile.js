@@ -1,132 +1,101 @@
 const gulp         = require('gulp');
-const autoprefixer = require('gulp-autoprefixer');
-const concat       = require('gulp-concat');
-const gettext      = require('gulp-gettext');
-const jshint       = require('gulp-jshint');
-const minify       = require('gulp-minify-css');
-const plumber      = require('gulp-plumber');
-const rename       = require('gulp-rename');
+const sass         = require('gulp-sass')(require('sass'));
+const postcss      = require('gulp-postcss');
+const autoprefixer = require('autoprefixer');
 const rtlcss       = require('gulp-rtlcss');
-const sass         = require('gulp-sass');
+const rename       = require('gulp-rename');
+const terser       = require('gulp-terser');
+const plumber      = require('gulp-plumber');
 const sort         = require('gulp-sort');
-const sourcemaps   = require('gulp-sourcemaps');
-const uglify       = require('gulp-uglify');
-const gutil        = require('gulp-util');
 const wppot        = require('gulp-wp-pot');
 
-const browserlist  = ['last 2 version', '> 1%'];
+const onError = function (err) {
+	console.error(err.toString());
+	this.emit('end');
+};
 
-gulp.task('default', function() {
+const sassOptions = {
+	style: 'compressed',
+	loadPaths: ['assets/css/scss']
+};
+
+const potOptions = {
+	domain: 'lsx-business-directory',
+	package: 'lsx-business-directory',
+	bugReport: 'https://github.com/lightspeedwp/lsx-business-directory/issues',
+	team: 'LightSpeed <webmaster@lsdev.biz>'
+};
+
+// Sourcemaps come from gulp 5's built-in support rather than gulp-sourcemaps,
+// which is unmaintained.
+function styles() {
+	return gulp.src('assets/css/scss/*.scss', { sourcemaps: true })
+		.pipe(plumber({ errorHandler: onError }))
+		.pipe(sass.sync(sassOptions).on('error', sass.logError))
+		.pipe(postcss([autoprefixer()]))
+		.pipe(gulp.dest('assets/css', { sourcemaps: 'maps' }));
+}
+
+function stylesRtl() {
+	return gulp.src('assets/css/scss/*.scss')
+		.pipe(plumber({ errorHandler: onError }))
+		.pipe(sass.sync(sassOptions).on('error', sass.logError))
+		.pipe(postcss([autoprefixer()]))
+		.pipe(rtlcss())
+		.pipe(rename({ suffix: '-rtl' }))
+		.pipe(gulp.dest('assets/css'));
+}
+
+function js() {
+	return gulp.src('assets/js/src/**/*.js')
+		.pipe(plumber({ errorHandler: onError }))
+		.pipe(terser())
+		.pipe(rename({ suffix: '.min' }))
+		.pipe(gulp.dest('assets/js'));
+}
+
+function wordpressPot() {
+	return gulp.src('**/*.php')
+		.pipe(sort())
+		.pipe(wppot(potOptions))
+		.pipe(gulp.dest('languages/lsx-business-directory.pot'));
+}
+
+function wordpressPo() {
+	return gulp.src('**/*.php')
+		.pipe(sort())
+		.pipe(wppot(potOptions))
+		.pipe(gulp.dest('languages/lsx-business-directory-en_EN.po'));
+}
+
+const compileCss = gulp.parallel(styles, stylesRtl);
+const build = gulp.parallel(compileCss, js);
+
+function watchFiles() {
+	gulp.watch('assets/css/**/*.scss', compileCss);
+	gulp.watch('assets/js/src/**/*.js', js);
+}
+
+function help(cb) {
 	console.log('Use the following commands');
 	console.log('--------------------------');
-	console.log('gulp compile-css               to compile the scss to css');
-	console.log('gulp compile-js                to compile the js to min.js');
-	console.log('gulp watch                     to continue watching the files for changes');
-	console.log('gulp wordpress-lang            to compile the lsx-business-directory.pot, lsx-business-directory-en_EN.po and lsx-business-directory-en_EN.mo');
-});
+	console.log('gulp compile-css    to compile the scss to css');
+	console.log('gulp compile-js     to compile the js to min.js');
+	console.log('gulp build          to compile both');
+	console.log('gulp watch          to keep watching the files for changes');
+	console.log('gulp wordpress-pot  to regenerate the .pot');
+	console.log('');
+	console.log('The .po -> .mo step is `npm run build:mo` (WP-CLI), not gulp.');
+	cb();
+}
 
-gulp.task('styles', function () {
-	return gulp.src('assets/css/scss/*.scss')
-		.pipe(plumber({
-			errorHandler: function(err) {
-				console.log(err);
-				this.emit('end');
-			}
-		}))
-		.pipe(sourcemaps.init())
-		.pipe(sass({
-			outputStyle: 'compact',
-			includePaths: ['assets/css/scss']
-		}).on('error', gutil.log))
-		.pipe(autoprefixer({
-			browsers: browserlist,
-			casacade: true
-		}))
-		.pipe(sourcemaps.write('maps'))
-		.pipe(gulp.dest('assets/css'))
-});
-
-gulp.task('styles-rtl', function () {
-	return gulp.src('assets/css/scss/*.scss')
-		.pipe(plumber({
-			errorHandler: function(err) {
-				console.log(err);
-				this.emit('end');
-			}
-		}))
-		.pipe(sass({
-			outputStyle: 'compact',
-			includePaths: ['assets/css/scss']
-		}).on('error', gutil.log))
-		.pipe(autoprefixer({
-			browsers: browserlist,
-			casacade: true
-		}))
-		.pipe(rtlcss())
-		.pipe(rename({
-			suffix: '-rtl'
-		}))
-		.pipe(gulp.dest('assets/css'))
-});
-
-gulp.task('compile-css', ['styles', 'styles-rtl']);
-
-gulp.task('js', function() {
-	return gulp.src('assets/js/src/**/*.js')
-		.pipe(plumber({
-			errorHandler: function(err) {
-				console.log(err);
-				this.emit('end');
-			}
-		}))
-		.pipe(jshint())
-		.pipe(uglify())
-		.pipe(rename({
-			suffix: '.min'
-		}))
-		.pipe(gulp.dest('assets/js'))
-});
-
-gulp.task('compile-js', (['js']));
-
-gulp.task('watch-css', function () {
-	return gulp.watch('assets/css/**/*.scss', ['compile-css']);
-});
-
-gulp.task('watch-js', function () {
-	return gulp.watch('assets/js/src/**/*.js', ['compile-js']);
-});
-
-gulp.task('watch', ['watch-css', 'watch-js']);
-
-gulp.task('wordpress-pot', function() {
-	return gulp.src('**/*.php')
-		.pipe(sort())
-		.pipe(wppot({
-			domain: 'lsx-business-directory',
-			package: 'lsx-business-directory',
-			bugReport: 'https://github.com/lightspeeddevelopment/lsx-business-directory/issues',
-			team: 'LightSpeed <webmaster@lsdev.biz>'
-		}))
-		.pipe(gulp.dest('languages/lsx-business-directory.pot'))
-});
-
-gulp.task('wordpress-po', function() {
-	return gulp.src('**/*.php')
-		.pipe(sort())
-		.pipe(wppot({
-			domain: 'lsx-business-directory',
-			package: 'lsx-business-directory',
-			bugReport: 'https://github.com/lightspeeddevelopment/lsx-business-directory/issues',
-			team: 'LightSpeed <webmaster@lsdev.biz>'
-		}))
-		.pipe(gulp.dest('languages/lsx-business-directory-en_EN.po'))
-});
-
-gulp.task('wordpress-po-mo', ['wordpress-po'], function() {
-	return gulp.src('languages/lsx-business-directory-en_EN.po')
-		.pipe(gettext())
-		.pipe(gulp.dest('languages'))
-});
-
-gulp.task('wordpress-lang', (['wordpress-pot', 'wordpress-po-mo']));
+exports.styles = styles;
+exports['styles-rtl'] = stylesRtl;
+exports['compile-css'] = compileCss;
+exports.js = js;
+exports['compile-js'] = js;
+exports.build = build;
+exports.watch = watchFiles;
+exports['wordpress-pot'] = wordpressPot;
+exports['wordpress-po'] = wordpressPo;
+exports.default = help;
