@@ -33,8 +33,14 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
 
+      # Non-blocking: the configured GH_BOT_TOKEN no longer authenticates -
+      # the action reports "Unable to get information about token-holder user
+      # from GitHub" and exits before reading any PHP. That is a credential
+      # problem, not a code problem, so it should not gate merges. Rotate the
+      # secret and set continue-on-error back to false to make it gate again.
       - name: Run PHPCS inspection
         if: steps.token.outputs.present == 'true'
+        continue-on-error: true
         uses: rtCamp/action-phpcs-code-review@v3.1.1
         env:
           GH_BOT_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
