@@ -1,19 +1,44 @@
 on: pull_request
 
 name: Inspections
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   runPHPCSInspection:
     name: Run PHPCS inspection
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v7
-      with:
-        ref: ${{ github.event.pull_request.head.sha }}
-    - name: Run PHPCS inspection
-      uses: rtCamp/action-phpcs-code-review@v3.1.1
-      env:
-        GH_BOT_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
-        SKIP_FOLDERS: "tests,.github"
-        PHPCS_SNIFFS_EXCLUDE: "WordPress.Files.FileName"
-      with:
-        args: "WordPress,WordPress-Core,WordPress-Docs"
+      # rtCamp/action-phpcs-code-review authenticates as a bot to post review
+      # comments, and fails outright with "Unable to get information about
+      # token-holder user from GitHub" when GH_BOT_TOKEN is unset. It is not
+      # configured on this repository, so the job skips rather than reporting a
+      # red check that says nothing about the code. Set the secret to enable it.
+      - name: Check for the bot token
+        id: token
+        env:
+          GH_BOT_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
+        run: |
+          if [ -n "${GH_BOT_TOKEN:-}" ]; then
+            echo "present=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "present=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::GH_BOT_TOKEN is not configured; skipping the PHPCS review."
+          fi
+
+      - uses: actions/checkout@v7
+        if: steps.token.outputs.present == 'true'
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Run PHPCS inspection
+        if: steps.token.outputs.present == 'true'
+        uses: rtCamp/action-phpcs-code-review@v3.1.1
+        env:
+          GH_BOT_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
+          SKIP_FOLDERS: "tests,.github"
+          PHPCS_SNIFFS_EXCLUDE: "WordPress.Files.FileName"
+        with:
+          args: "WordPress,WordPress-Core,WordPress-Docs"
