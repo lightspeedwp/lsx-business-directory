@@ -1,0 +1,71 @@
+name: CI
+
+on:
+  push:
+    branches: [master, develop]
+  pull_request:
+
+# Supersedes the old cancel.yml / styfle/cancel-workflow-action pattern:
+# GitHub cancels superseded runs natively per ref.
+# github.ref is unique per pull request (refs/pull/N/merge). github.head_ref
+# is only the branch name, so two fork PRs sharing a branch name would land in
+# the same group and cancel each other's checks.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  php:
+    name: PHP ${{ matrix.php }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # composer.json declares php >=7.2, so the floor is tested too.
+        php: ['7.2', '7.4', '8.0', '8.2', '8.3', '8.4']
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
+
+      # vendor/ holds bundled third-party libraries (Custom-Meta-Boxes, uix)
+      # that predate PHP 8 and are not ours to fix, so they stay out of scope.
+      - name: Lint PHP syntax
+        run: |
+          git ls-files '*.php' ':!:vendor/**' | xargs -r -n1 -P4 php -l
+
+  assets:
+    name: Built assets are current
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: '.nvmrc'
+          cache: npm
+
+      - run: npm ci
+
+      - name: Rebuild CSS and JS
+        run: npm run build
+
+      # The committed assets must match what the sources compile to, so a
+      # source-only change cannot ship stale output.
+      - name: Fail if the committed output is stale
+        run: |
+          # --exit-code only looks at tracked paths, so a newly generated
+          # asset would be invisible here. Porcelain status with
+          # --untracked-files=all catches added output too.
+          changes="$(git status --porcelain --untracked-files=all -- assets/css assets/js)"
+          test -z "$changes" || { printf '%s\n' "$changes"; exit 1; }

@@ -2,6 +2,5 @@ node_modules
 .sass-cache
 .idea
 *.sublime-workspace
-package-lock.json
 vendor
 wp-content
