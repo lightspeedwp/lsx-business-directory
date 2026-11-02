@@ -31,10 +31,10 @@
     "gulp-sass": "^6.0.1",
     "gulp-sort": "^2.0.0",
     "gulp-wp-pot": "^2.5.0",
-    "autoprefixer": "^10.6.1",
+    "autoprefixer": "^10.6.2",
     "gulp-postcss": "^10.0.0",
     "gulp-terser": "^2.1.0",
-    "sass": "^1.106.1"
+    "sass": "^1.107.0"
   },
   "engines": {
     "node": ">=24.0.0",
